@@ -28,7 +28,7 @@ $$
 
 The speed of light appears nowhere in this equation, and thus the group velocity is unbound. In early quantum mechanics, barring pathological exceptions, group velocity is particle velocity, so the theory predicts that particle velocity can exceed lightspeed in an experimentally observable way. This is exactly what one should expect from a theory built for Galilean rather than Minkowskian spacetime.
 
-
+[Will cut]
 This is also why early quantum mechanics tends, ontologically, back toward action at a distance. Consider the hydrogen atom. The electron is described quantum mechanically, but it is placed in a Coulomb potential that is simply already there:
 
 $$
@@ -38,3 +38,4 @@ $$
 That is an extremely successful model, but what is it actually saying? It is not showing us a local disturbance propagating outward from the proton through some field and reaching the electron in a light-cone-respecting way. It is giving the electron a potential defined over space in advance and telling us to solve the resulting eigenvalue problem. As effective physics this is excellent. As a fundamental relativistic ontology it is thin. The formalism contains no dynamical local medium in spacetime that carries the influence. The effect of one charge on another is encoded globally in the Hamiltonian rather than locally in a mediating field.
 
 So the real complaint is not merely that early quantum mechanics "gets relativity wrong" in some crude or sensational sense. It is that it is not built to express relativity's deepest demand, namely that causal influence be local. Its fundamental state is global. Its time-evolution equation has the wrong structural type for light-cone propagation. Its free-particle kinematics contain no invariant limiting speed. Its interaction picture relies on prescribed potentials rather than visible local mediators. All of this tells us the same thing. If quantum theory is to live comfortably inside a relativistic spacetime, then something more local than the early wave function is needed. We need an object attached to spacetime itself, one whose disturbances propagate with the right causal structure from the start. That object is a field.
+[end cut]
