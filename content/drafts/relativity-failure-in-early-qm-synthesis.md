@@ -29,13 +29,19 @@ $$
 The speed of light appears nowhere in this equation, and thus the group velocity is unbound. In early quantum mechanics, barring pathological exceptions, group velocity is particle velocity, so the theory predicts that particle velocity can exceed lightspeed in an experimentally observable way. This is exactly what one should expect from a theory built for Galilean rather than Minkowskian spacetime.
 
 [Will cut]
-This is also why early quantum mechanics tends, ontologically, back toward action at a distance. Consider the hydrogen atom. The electron is described quantum mechanically, but it is placed in a Coulomb potential that is simply already there:
+One can see the same problem by starting from a localized state. Suppose that on some equal-time slice the particle is sharply confined to a small spatial region. Under Schrödinger evolution, that localization does not spread by advancing outward through neighboring points at some finite characteristic speed. It evolves according to
 
 $$
-V(r) = -\frac{e^2}{4\pi\epsilon_0 r}.
+\psi(x,t) = \int_{-\infty}^{\infty} \phi(k)\, e^{i(kx-\omega t)}\, dk,
 $$
 
-That is an extremely successful model, but what is it actually saying? It is not showing us a local disturbance propagating outward from the proton through some field and reaching the electron in a light-cone-respecting way. It is giving the electron a potential defined over space in advance and telling us to solve the resulting eigenvalue problem. As effective physics this is excellent. As a fundamental relativistic ontology it is thin. The formalism contains no dynamical local medium in spacetime that carries the influence. The effect of one charge on another is encoded globally in the Hamiltonian rather than locally in a mediating field.
+with
 
-So the real complaint is not merely that early quantum mechanics "gets relativity wrong" in some crude or sensational sense. It is that it is not built to express relativity's deepest demand, namely that causal influence be local. Its fundamental state is global. Its time-evolution equation has the wrong structural type for light-cone propagation. Its free-particle kinematics contain no invariant limiting speed. Its interaction picture relies on prescribed potentials rather than visible local mediators. All of this tells us the same thing. If quantum theory is to live comfortably inside a relativistic spacetime, then something more local than the early wave function is needed. We need an object attached to spacetime itself, one whose disturbances propagate with the right causal structure from the start. That object is a field.
+$$
+\omega = \frac{\hbar k^2}{2m}.
+$$
+
+Since every Fourier mode is immediately present in the evolved state, the wave function acquires nonzero support arbitrarily far away after any nonzero time, however short. The tails may be tiny, but they are there at once. In a relativistic theory that matters. If a particle is localized here now, there must be regions elsewhere now that remain exactly outside causal reach. The light cone must bite. Here it does not.
+
+This is where the thought experiment becomes necessary. Because the wave function is a slippery object, the contradiction does not sit nakedly on the page. One must specify an arrangement of emitters, detectors, separations, and time windows in order to pin down what sort of spacelike influence the formalism implies. But that need for a thought experiment is itself part of the indictment. The formalism is global and slice-based from the start. It is not built as a local causal relay through spacetime.
 [end cut]
