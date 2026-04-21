@@ -28,7 +28,8 @@ $$
 
 The speed of light appears nowhere in this equation, and thus the group velocity is unbound. In early quantum mechanics, barring pathological exceptions, group velocity is particle velocity, so the theory predicts that particle velocity can exceed lightspeed in an experimentally observable way. This is exactly what one should expect from a theory built for Galilean rather than Minkowskian spacetime.
 
-[Will cut]
+We can devise an experiment to test this. Prepare a narrow free-particle wave packet with sufficiently large central wavenumber, let it propagate across a known baseline, and compare the arrival time of the packet peak to the light-travel time across the same distance. Since the group velocity in the theory is unbounded, the theory permits choosing the packet so that its peak arrives sooner than any light signal could.
+
 One can see the same problem by starting from a localized state. Suppose that on some equal-time slice the particle is sharply confined to a small spatial region. Under Schrödinger evolution, that localization does not spread by advancing outward through neighboring points at some finite characteristic speed. It evolves according to
 
 $$
@@ -41,7 +42,7 @@ $$
 \omega = \frac{\hbar k^2}{2m}.
 $$
 
-Since every Fourier mode is immediately present in the evolved state, the wave function acquires nonzero support arbitrarily far away after any nonzero time, however short. The tails may be tiny, but they are there at once. In a relativistic theory that matters. If a particle is localized here now, there must be regions elsewhere now that remain exactly outside causal reach. The light cone must bite. Here it does not.
+Since every Fourier mode is immediately present in the evolved state, the wave function acquires nonzero support arbitrarily far away after any nonzero time, however short. The tails may be tiny, but they are there at once. In a relativistic theory that matters. If a particle is localized here now, there must be regions elsewhere now that remain exactly outside causal reach. 
 
-This is where the thought experiment becomes necessary. Because the wave function is a slippery object, the contradiction does not sit nakedly on the page. One must specify an arrangement of emitters, detectors, separations, and time windows in order to pin down what sort of spacelike influence the formalism implies. But that need for a thought experiment is itself part of the indictment. The formalism is global and slice-based from the start. It is not built as a local causal relay through spacetime.
-[end cut]
+Here too the experiment is straightforward. Localize the particle near one detector on an equal-time slice, place a second detector far enough away that for a chosen short time window it is spacelike separated from the first, and then allow the state to evolve for that short time. Schrödinger evolution immediately assigns the distant detector a nonzero amplitude where relativity demands it be exactly zero.
+
