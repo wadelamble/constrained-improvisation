@@ -18,3 +18,7 @@
 - Unnecessary jargon
 - Throat-clearing intros
 - Repeating the same point in multiple phrasings
+
+## See Also
+
+- Sentence-level rhythm and drafting notes live in `docs/repository/15_prose_style_notes.md`.
