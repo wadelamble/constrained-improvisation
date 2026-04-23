@@ -7334,7 +7334,7 @@ If particles are field excitations, what then are waves in the classical E&M fie
 The second conceptual gap in early quantum mechanics is that it is not constructed on spacetime.
 
 
-## Where is Spacetime
+### Where is Spacetime
 Early quantum mechanics is lacking a notion of local spacetime. If quantum mechanics is a theory only of probaility distributions over position, removing the the theoretic elements of bodies with trajectories, it is unmoored from spacetime. But Relativity demands that influence be local. Were this not the case, spatially separate locations on the same equal-time slice could influence one another, that is, their influence could act outside their light cones. But the wave function is not, in the classical sense, a field spread through spacetime that passes influence from neighbor to neighbor. It is an amplitude over position space or other dynamical variables, in the one-particle case over position space or some other dynamical variable, and in the many-particle case over configuration space. As such, it does not move through space. It is simply given on the whole slice at once, or, equivalently, moves at infinite speed. While this structure appears to present a causal contradiction, knowing what a slippery thing the wave function is, we will specify experiments that pin down what sort of spacelike influence this quantum formalism implies. 
 
 We can see this relativistically impermissible structure directly in the Schrödinger equation,
@@ -7381,7 +7381,7 @@ Since every Fourier mode is immediately present in the evolved state, the wave f
 
 Here too the experiment is straightforward. Localize the particle near one detector on an equal-time slice, place a second detector far enough away that for a chosen short time window it is spacelike separated from the first, and then allow the state to evolve for that short time. Schrödinger evolution immediately assigns the distant detector a nonzero amplitude where relativity demands it be exactly zero.
 
-## Making Particles
+### Making Particles
 
 Early quantum mechanics fixes the particle count at the start. For $N$ particles, the state is a wave function on an $N$-particle configuration space,
 
@@ -7403,7 +7403,7 @@ $$
 
 These ladder operators imply an extension of state space to the direct sum of all fixed-particle-number spaces, called Fock space.
 
-## Where Potentials Come From
+### Where Potentials Come From
 
 Classical physics says "give me a potential energy function, and I will tell you a body's trajectory." What it does not say is the origin of that potential. It may label it, e.g., gravitation or electrical, but it takes the potential as a given, and proceeds from there. 
 
@@ -7437,31 +7437,234 @@ $$
 
 The first term is the electron-field dynamics, the second the photon-field dynamics, and the third their coupling. At that point the potential is no longer primitive. It survives only as an effective description of a deeper process in which fields interact locally.
 
-We can see this incomplete nature in three ways. First, non-relativistic quantum mechanics is an “everything everywhere all at once” model. When the state evolves in time, the distribution over the position observable “updates” over all space. This is manifestly counter to the central tenet of relativity that an event can only influence other events within its light cone. Second, fixed-particle quantum mechanics cannot account for particles being created or destroyed, which routinely happens, for example, any time an excited atom emits a photon. Third, prior to QFE, quantum mechanics described how a particle behaves in a prescribed potential but gives no account of the origin of that potential.
+## The Spaces of QFT
+We are going to construct specific quantum fields, formalize their interactions, and make calculations with them. However, as QFT adds a layer of abstraction on top of the already extraordinarily abstract ideas of quantum mechanics and Relativity, when working through the details, one can feel they have lost sight of the concepts underlying the calculations. Therefore, let's start by discussing the theoretic elements of QFT, and let's do so by anchoring these in the language of spaces, for every element in a physical theory is reflected in the spaces it invokes, the structure of those spaces and the objects that inhabit them. 
 
-What elements did early quantum mechanics “take as givens”? First, and most basically, it assumed the existence of “particles” and “waves” as operationally defined physical entities. Electrons were particles with paradoxically wave-like behavior governing the distribution of measurements, while light came in the form of waves with paradoxically particle-like properties upon detection. Of course, early quantum theory wrestled with wave/particle duality, but what it didn’t do was attempt to push the understanding of waves and particles down a level so that particle-like behavior and wave-like behavior grew out of a common substrate. One is tempted to think that early quantum mechanics suggests that that “quantization” means energy comes in “quanta” that are particles, but early quantum mechanics actually says nothing of the sort. Quantization in early quantum mechanics related to energy levels in bound systems stemming from the periodicity of the U1 symmetry of the wave function, but it did not associate such quantization with the existence of particles. However, QFT, through so-called “second quantization” does fulfill this intuition, defining particles as quanta of excitation of a field in spacetime.
+We are biased to favor spacetime because it is the space we directly perceive, but nature is not required to privilege our perception. In physics, how influence transmits locally, how a complete state is specified, how symmetries constrain possibility, and how identity is preserved in a probabilistic world are organized in the interplay of multiple spaces. To best appreciate the elements of  QFT, let's begin by reviewing the spaces of classical and early quantum mechanics, and then turn to the changes made by QFT.
 
-Second, quantum mechanics assumes the pre-existence of potentials that particles live in. It has no account of where these potential come from, nor how there influence has no account of local mediation of influence. In Newton’s gravitation, if you were to snuff out the sun, the earth would immediately be cut loose. In Maxwell’s electromagnetism, if you were snuff out a charge, the impact would have to propagate through the field, somewhat like interconnected springs. Relativity demands such local mediation, for otherwise influence would exceed light speed. But according to Schrödinger’s equation, $`i\partial_{t}\psi = H\psi,`$ as the state evolves, the distribution over all of space updates. To say it differently, the wave function is a function over configuration space – there is simply nothing in early quantum mechanics that “shakes hands” from neighbor to neighbor in spacetime and thus abides its structure. **\[HERE\]** Third, in its early incarnation, quantum mechanics did not explain the origin of potentials. For example, in the model of the hydrogen atom, the electron was treated according to the rules of quantum mechanics, but it did so using a Hamiltonian that included the Coulomb potential due to the charge of the nucleus with no account of where that potential arose. We have discussed how potentials can arise from gauge interactions. In QFT, we will see that all potentials except gravity arise from interactions between matter and gauge fields. Finally, early quantum mechanics assumed that particles were never created or annihilated, nor converted from one type to another. In QFT, all these elements – particles as quanta of energy, dynamical behavior that adheres to relativistic local causality, potentials and forces, and particle creation – arise from a dynamic spacetime field of operators acting on a wave function in state space. One can always then ask, “but what are the fields made of”? Our answer is, sticking to our theme, that they are what is allowable under our world’s constraints – its symmetries, its causal structure, and its distinguishability of states.
+### Spaces in Hamiltonian Mechanics
 
-***The Limits of Early Quantum Mechanics***
-
-*In this essay, we have tried to present modern physics in the most logically economical way possible, deliberately avoiding the historical twists and turns by which the subject was actually discovered. But in quantum theory we must break somewhat with that principle, partly because quantum theory is hard to digest in one gulp, and partly because quantum field theory builds on early quantum mechanics more than it replaces it. In its early phase, quantum mechanics was busy inventing a brilliant new formalism to express wildly counterintuitive evidence. It was not, at the same time, giving a full account of the ontology implied by that evidence — that is, a full account of what kinds of things the world contains and how they are represented in the theory. QFT goes much further in that direction, though it too falls short of a final ontology, most obviously in that it does not include gravitation in the same framework.*
-
-*What, then, did early quantum mechanics take as givens? First, and most basically, it took for granted what “particles” and “waves” were. The experiments that led to quantum mechanics showed that entities that had seemed particle-like, such as electrons, produced interference patterns characteristic of waves, while entities that had seemed wave-like, such as light, arrived in localized detection events characteristic of particles. One therefore gets the impression that “quantization” means that energy comes in particle-like quanta. But early quantum mechanics did not yet really explain that connection. In its original form, quantization appeared most clearly as the discreteness of allowed states in bound systems, tied to the phase structure of the wave function and the periodicity of its symmetry. It did not yet supply a general account of particles themselves. QFT does.*
-
-*Second, early quantum mechanics had no intrinsic account of local mediation of influence. In Newtonian gravitation, if one could somehow snuff out the sun, the earth would be cut loose immediately. In Maxwell’s electromagnetism, by contrast, if one were to snuff out a charge, the change would have to propagate through the field, more like a disturbance traveling through an interconnected medium. Relativity demands such local mediation, because otherwise influence would outrun light. But in Schrödinger’s equation,*
+A classical theory must distinguish a **state at an instant** from a **history through time**. A history is the full trajectory. A state is the information on one time slice from which that trajectory can be generated. In Hamiltonian mechanics that state is organized in **phase space**. For finitely many degrees of freedom one writes
 
 ``` math
-i\partial_{t}\psi = H\psi,
+z = (q^{i},p_{i}),
 ```
 
-*the state evolves as a single object, and with it the amplitude distribution over all of configuration space. To say this differently, the wave function is not, in general, a thing spread point by point through ordinary space. It is a function on configuration space. Early quantum mechanics therefore does not tell its story in terms of local quantum degrees of freedom shaking hands from neighbor to neighbor through spacetime, and so does not build relativistic locality into its foundations.*
+and for a classical field one writes, on a time slice,
 
-*Third, early quantum mechanics did not explain the origin of the potentials it used. In the hydrogen atom, for example, the electron was treated quantum mechanically, but the Hamiltonian simply included the Coulomb potential due to the nuclear charge, without any account of how that interaction itself arose. As we have discussed, potentials can arise from gauge interactions. In QFT, all nongravitational potentials are understood instead as arising from interactions between matter fields and gauge fields.*
+``` math
+z = (\phi(x),\pi(x)).
+```
 
-*Finally, early quantum mechanics assumed that particles were neither created nor annihilated, nor converted from one species into another. The number and type of particles were built in from the start. QFT changes this completely. In it, particles appear as excitations of fields, interactions are mediated locally, and creation and annihilation are part of the formalism itself.*
+The variables $q^{i}$, or $\phi(x)$ in the field case, specify the configuration. The variables $p_{i}$, or $\pi(x)$, specify the conjugate momentum. We stress “on a time slice” because spacetime contains entire histories, while dynamics asks a different question: what present state is enough to determine the future.
 
-*One can always ask, of course, what the fields themselves are made of. Our answer, in keeping with the theme of this essay, is that they are not made of anything more primitive within the theory. Rather, they are the kinds of entities permitted by the constraints the world appears to obey — its symmetries, its causal structure, and the distinguishability of its states. We can begin building toward QFT by examining one of these gaps more concretely: the way early quantum mechanics fails, by construction, to respect relativity at the level of its basic objects.*
+One could try to organize the state using position and velocity. For simple systems that often works. But momentum is not just velocity renamed. It is defined from the Lagrangian by
+
+``` math
+p_{i} = \frac{\partial L}{\partial{\dot{q}}^{i}},\pi(x) = \frac{\partial L}{\partial\dot{\phi}(x)}.
+```
+
+In the simplest cases momentum is proportional to velocity. In general it is not. The distinction matters in generalized coordinates, in relativistic systems, in gauge theories, and in field theory. More importantly, momentum lets us rewrite the theory in a form that carries much more structure than a bare position-velocity description. The state is no longer just “where things are” and “how fast they are changing.” It is organized into conjugate pairs, whose structure we will unpack. The upper index on $`q^{i}`$and the lower index on $`p_{i}`$are distinguishing two different kinds of object. An infinitesimal displacement $`dq^{i}`$is a position-type change. The momentum $`p_{i}`$is the corresponding dual object, written with a lower index because its role is to combine with such a displacement to produce the scalar quantity
+
+``` math
+p_{i}\text{ }dq^{i}.
+```
+
+This pairing is the first sign that phase space is not an arbitrary list of variables. Once the rate data are written in this momentum form, position and momentum fit together in a built-in geometric structure.
+
+That built-in structure is the symplectic form,
+
+``` math
+\omega = dq^{i} \land dp_{i}.
+```
+
+Here $`dq^{i} \land dp_{i}`$represents the infinitesimal oriented area in each position-momentum plane. So the symplectic form is the phase-space area structure. It tells us that the basic geometry of phase space is not a geometry of lengths and angles, but a geometry of paired position-momentum areas.
+
+This matters because that area structure turns functions into flows. A function on phase space, such as the Hamiltonian, tells us how its value changes under small moves away from a point. The symplectic structure converts that change-data into a vector field, meaning an actual direction of motion through phase space. In this sense, the symplectic form is the rule that turns gradients into flows.
+
+The Poisson bracket is the algebraic expression of that rule. For two functions $`F`$and $`G`$on phase space,
+
+``` math
+\{ F,G\} = \frac{\partial F}{\partial q^{i}}\frac{\partial G}{\partial p_{i}} - \frac{\partial F}{\partial p_{i}}\frac{\partial G}{\partial q^{i}}.
+```
+
+This bracket tells us how the flow generated by one function acts on another. Classical observables are then ordinary functions on phase space,
+
+``` math
+A = A(q,p)\text{or}A = A\lbrack\phi,\pi\rbrack.
+```
+
+When the generating function is the Hamiltonian $`H`$, the resulting flow is physical time evolution. Hamilton’s equations are
+
+``` math
+{\dot{q}}^{i} = \{ q^{i},H\},{\dot{p}}_{i} = \{ p_{i},H\}.
+```
+
+So the symplectic form, the Poisson bracket, and Hamilton’s equations are three parts of one structure. The symplectic form gives phase space its position-momentum area geometry. The Poisson bracket is the corresponding algebra on functions. Hamilton’s equations are the flow generated by the energy function within that geometry.
+
+Because the flow is generated in this way, it preserves the symplectic structure itself. In the simplest picture, a region of phase space may be stretched and sheared as the system evolves, but its basic position-momentum area is not destroyed. In higher dimensions the corresponding phase-space volume is preserved as well. This property is known as Liouville’s theorem, which states that a statistical ensemble of initial conditions, however it evolves, occupies the same phase space volume.
+
+Phase space therefore does more than store enough information to start the system evolving. It organizes the classical state in a form that makes time evolution a vector flow, gives a natural bracket algebra on observables, preserves phase-space volume, and supplies exactly the structural features that quantum mechanics will keep in translated form. In quantum theory, the Poisson bracket becomes the commutator, and the structure-preserving role played here by symplectic flow reappears in the preservation laws of unitary evolution. Some people say Hamiltonian Mechanics is the “river of time” formulation of mechanics. Indeed, by picking a conjugate pairing of position and momentum, we can see time evolution as a vector flow, as though in a fluid, and Liouville’s theorem is that statement that this fluid in incompressible.
+
+Spacetime enters classical theory as the space in which events occur and in which local dynamical (changing over time) quantities are assigned. In classical particle mechanics a trajectory is a worldline in spacetime. In classical field theory the basic variables are already local functions on spacetime,
+
+``` math
+\phi(x)\ (scalar),\ \ \ \ \ A_{\mu}(x)\ (vector),\ \ \ \ \psi(x)\ (spinor),
+```
+
+and causality is built into their equations of motion. A relativistic classical field theory inherits adherence to the structure of Relativity “for free” because its state variables already inhabit spacetime. This seems obvious, but we will see how quantum mechanics breaks this relationship.
+
+Symmetry groups that constrain dynamics like the Poincare group reside in their own space, whose geometric structure constrains the theory. In Hamiltonian mechanics each continuous symmetry has a generator, a function on phase space, and the Poisson brackets among the generators reproduce the Lie algebra of the symmetry group:
+
+``` math
+\{ G_{a},G_{b}\} = f_{ab}{}^{c}\text{ }G_{c}.
+```
+
+This is the local algebraic shadow of the group geometry. For example, for angular momentum,
+
+``` math
+\{ J_{i},J_{j}\} = \epsilon_{ijk}J_{k}.
+```
+
+For spacetime symmetry one gets the classical Poincaré algebra. The meaning is direct: the way infinitesimal transformations fail to commute is fixed by the structure of the symmetry group itself.
+
+Symmetries therefore already act physically in classical mechanics. A generator $`G`$ produces an infinitesimal canonical transformation by
+
+``` math
+\delta F = \{ F,\epsilon G\}.
+```
+
+The group geometry is reflected in the Poisson algebra, and the Poisson algebra acts on the phase-space observables.
+
+The minimal classical picture is therefore this. Spacetime carries locality and causal order. Phase space carries complete instantaneous state data and symplectic structure. Symmetry structure supplies invariants and generator algebra.
+
+### Quantum mechanics
+
+Quantum mechanics keeps the classical need for spacetime, canonical structure, and symmetry, but it adds something genuinely new. The classical state was a point in phase space. The quantum state is not. It is a vector, or more precisely a ray, in a complex Hilbert space $`H`$.
+
+This new space is required to carry the structure demanded by superposition, interference, and probabilistic prediction. A point in phase space singles out one actual configuration and momentum, but quantum state assigns amplitudes to many alternatives at once *for the same state*. We must, therefore, have a space that can preserve the structure of such states as time evolves.
+
+The observables are now self-adjoint, or real-eigenvalued, operators on $`H`$. In ordinary one-particle quantum mechanics one may represent the state as a wavefunction
+
+``` math
+\psi(x) = \langle x \mid \Psi\rangle.
+```
+
+Now, we could look at this and think that we’ve represented the state in spacetime, but we have not, for this is a representation over space only, and we could just as easily have represented the state in the basis of any other observable. Time evolution acts on the state as a whole in Hilbert space, and nothing in this representation ties that evolution to position in a way that builds in relativistic locality. Without that, there is no Minkowski metric, no light cones, and no causal structure of the sort that defines the spacetime in which our emitters and detectors live. But what if we could somehow arrange the time evolution of the state so that emission and detection events do respect the proper causal structure. That is what we will do in QFT.
+
+While Hilbert space does not carry the needed structure of spacetime, it does take over structural elements of phase space’s job. Hilbert space looks very different from phase space. We know it encodes superposition rather than definite observable values, but it also is represented in the eigenbasis of only one chosen observable at a time. How can a space that is represented in a basis of “either position or momentum” replace a space whose coordinates were “position and momentum”? The reason it can do so is that, unlike particles, the wave object encodes both position and wavelength information. Once we associate wavelength with momentum, the wave-like state encodes position and momentum.
+
+We have seen that Hilbert space contributes to the structure needed for quantum evolution. A complex inner product gives a norm, so states can be normalized and total probability can remain one. It also gives angles, so distinct states can remain distinguishable under unitary evolution. But the same inner product carries more than length and angle. Through the magic of complex numbers, Hilbert space’s real and imaginary parts bear different loads. The real part supplies the metric-like structure just mentioned. The imaginary part supplies an antisymmetric, area-like structure that is the quantum remnant of the classical symplectic form, $`dq^{i} \land dp_{i}`$.
+
+If $`\langle\psi,\phi\rangle`$is the complex inner product, then its real and imaginary parts define
+
+``` math
+g(\psi,\phi) = 2\text{ }Re\text{ }\left\langle \psi,\phi \right\rangle,\ \ \ \ \ \ \ \ \ \ \ \ \ \omega(\psi,\phi) = 2\text{ }Im\text{ }\langle\psi,\phi\rangle.
+```
+
+Here $`g`$ is symmetric and metric-like. The second quantity, $`\omega`$, is antisymmetric. We can see this with a simple example. Writing $`z\  = x + iy,\ \ \ \ w = u + iv`$:
+
+``` math
+{\langle z,w\rangle = xu + yv + i(xv - yu).
+}
+```
+That antisymmetric part is exactly what one needs for a symplectic form. (This is just the signed area of the parallelogram spanned by $`\left( x,y \right)`$and $`\left( u,v \right)`$:
+
+``` math
+{\text{Area} = \  \mid xv - yu \mid .
+}
+```
+With this symplectic structure retained in translated form, Hilbert space preserves the part of classical mechanics concerned with reversible flow and conjugate pairings. In classical phase space, position and momentum were paired by the symplectic form, and that pairing gave rise to Hamiltonian flow through the Poisson bracket:
+
+``` math
+\{ F,G\} = \frac{\partial F}{\partial q^{i}}\frac{\partial G}{\partial p_{i}} - \frac{\partial F}{\partial p_{i}}\frac{\partial G}{\partial q^{i}}.
+```
+
+Quantum mechanics preserves that structure in operator form, replacing the Poisson bracket with the commutator,
+
+``` math
+\{ F,G\}\text{\:\,} \longrightarrow \text{\:\,}\frac{1}{i\hslash}\lbrack\widehat{F},\widehat{G}\rbrack,
+```
+
+Which for canonical position and momentum becomes:
+
+``` math
+\lbrack{\widehat{q}}^{\text{ }i},{\widehat{p}}_{j}\rbrack = i\hslash\text{ }\delta^{i}{}_{j}.
+```
+
+Symmetry works in quantum mechanics much as it did in Hamiltonian mechanics, except that Poisson brackets are replaced by commutators. If the symmetry group is the Poincaré group, one may represent it on Hilbert space, so ordinary quantum mechanics can describe how states transform between inertial observers and can correctly encode quantities such as energy, momentum, and spin. But this is not yet relativistic causality. Causality is not just the statement that whole states transform correctly. It is the statement that operations associated with spacelike separated regions do not interfere in a way that would permit superluminal influence. A representation of the Poincaré group on states does not by itself provide spacetime-local observables or require the appropriate commutation relations between them. That is the additional structure QFT must supply.
+
+### Quantum field theory
+
+Quantum field theory adjusts the roles of spacetime and Hilbert space so that quantum observables carry local spacetime structure, and so that interactions can create and destroy particles.
+
+In quantum mechanics there are two objects that work together to calculate measurements, the state and the operators. If we want to bring spacetime into quantum mechanics, it is natural to ask whether one or the other should be situated in spacetime. Since operators are observables, they are the natural choice. The state, by contrast, is better understood as a global object, whose job is to encode the amplitudes and correlations from which measurement outcomes are computed. If we want the operators to depend on spacetime, we must further specify what sort of local spacetime structure they inhabit: discrete points, as in a particle configuration, or a field, as in electromagnetism and gravity. In fact, only fields can mediate influence relativistically. If influence could act directly across a spacelike gap, then because spacelike separated events have no observer-independent time order, one observer’s cause could be another observer’s effect, opening the door to causal paradox. Influence cannot simply jump the gap. But once it does not jump the gap, whatever later makes a difference elsewhere must be instantiated in the intervening region while it is on its way. The moment one says that information propagates, one has already admitted local degrees of freedom that carry it from place to place. In the continuum, that distributed local state is by definition a field.
+
+We can now state this in notation. The basic local objects are operator-valued fields:
+
+``` math
+\widehat{\phi}(x)\text{~[scalar]},\widehat{\ \psi}(x)\text{~[spinor]},{\ \ \ \widehat{A}}_{\mu}(x)\text{~[vector]}.
+```
+
+More carefully, because exact point values are singular, one should work with smeared operators,
+
+``` math
+\widehat{\phi}(f) = \int d^{4}x\text{ }f(x)\widehat{\phi}(x),
+```
+
+and similarly for the other fields.
+
+Once the basic observables are placed in spacetime, relativistic causality can be stated directly:
+
+``` math
+\left\lbrack \widehat{O}(x),\widehat{O}(y) \right\rbrack = 0\ \ \ \text{for~spacelike~separated~}x,y.
+```
+
+This is how relativistic causality is expressed in commutator algebra. It says that the order of two spacelike separated operations has no physical effect. A representation of the Poincaré group on state space alone was not enough, because this new condition presupposes local observables attached to spacetime regions.
+
+A state in Hilbert space is still an amplitude assignment over possible alternatives, but now those alternatives are entire field configurations written in the eigenbasis of field operators.If $`\mid \phi\rangle`$ denotes a field-configuration eigenstate at fixed time $`t`$, then
+
+``` math
+\widehat{\phi}(x,t) \mid \phi\rangle = \phi(x) \mid \phi\rangle,
+```
+
+and the state may be represented as a wave functional,
+
+``` math
+\Psi_{t}\lbrack\phi\rbrack = \langle\phi \mid \Psi(t)\rangle
+```
+
+thus shifting the notion of locality to the field itself rather than trying to exist in the position representation of the state.
+
+We can see how this provides the needed spacetime constraint by looking at an example. Consider two localized interventions, one in region $`A`$ near “Alice” and one in region $`B`$ near “Bob,” with $`A`$ and $`B`$ spacelike separated. Alice changes something in her lab. Bob asks whether his detector statistics change immediately.
+
+In ordinary one-particle quantum mechanics, Alice’s intervention is represented by modifying the Hamiltonian near $`A`$, but the state is global and the theory has no condition forbidding that change from having an immediate effect at spacelike separated $`B`$. It can represent position outcomes, but it does not natively contain distinct local observables attached to spacetime regions whose algebra enforces relativistic separation.
+
+In QFT, it does. Alice’s intervention is represented by a local operator $`{\widehat{O}}_{A}`$and Bob’s by a local operator $`{\widehat{O}}_{B}`$. If the regions are spacelike separated, the theory requires
+
+``` math
+\lbrack{\widehat{O}}_{A},{\widehat{O}}_{B}\rbrack = 0.
+```
+
+That means their order has no physical effect. Since different observers may disagree on which spacelike-separated event happened first, this is exactly what relativistic causality requires.
+
+Poincaré transformations of spacetime are represented by unitary operators on the Hilbert or Fock space, and local fields transform accordingly. For a scalar field,
+
+``` math
+U(\Lambda,a)^{\dagger}\text{ }\widehat{\phi}(x)\text{ }U(\Lambda,a) = \widehat{\phi}\text{ }(\Lambda^{- 1}(x - a)).
+```
+
+This is the bridge connecting state space to spacetime. The relation holds because the field operator and the unitary Poincaré transformations are inherited from the same classical relativistic structure. The classical field already carries a covariant mode expansion and a Poincaré action on those modes. Quantization lifts that structure rather than replacing it: the mode coefficients become operators, and the classical symmetry generators become operators on Hilbert or Fock space. The unitary $`U(\Lambda,a)`$is built from those generators — not from the Hamiltonian alone, which gives only time translations — so its action on the field reproduces the same spacetime transformation law in operator form.
+
+The state space must also be enlarged. Since the field may have no excitations, one excitation, two excitations, and so on, the state space must contain all of those sectors. This is “Fock space,” the direct sum of particle-number sectors:
+
+``` math
+\mathcal{F =}\mathbb{C} \oplus H_{1} \oplus H_{2} \oplus H_{3} \oplus \cdots\text{ }.
+```
+
+The vacuum sector $`\mathbb{C}`$ contains the zero-particle state. The sector $`H_{n}`$ contains the $`n`$-particle sector.
+
+
 
 ## The QFT Model
 
@@ -8067,6 +8270,35 @@ We can see straight away that each independent equation of motion in the Fourier
 ### Unused QFT material\
 intro material
 
+~~We can see this incomplete nature in three ways. First, non-relativistic quantum mechanics is an “everything everywhere all at once” model. When the state evolves in time, the distribution over the position observable “updates” over all space. This is manifestly counter to the central tenet of relativity that an event can only influence other events within its light cone. Second, fixed-particle quantum mechanics cannot account for particles being created or destroyed, which routinely happens, for example, any time an excited atom emits a photon. Third, prior to QFE, quantum mechanics described how a particle behaves in a prescribed potential but gives no account of the origin of that potential.~~
+
+~~What elements did early quantum mechanics “take as givens”? First, and most basically, it assumed the existence of “particles” and “waves” as operationally defined physical entities. Electrons were particles with paradoxically wave-like behavior governing the distribution of measurements, while light came in the form of waves with paradoxically particle-like properties upon detection. Of course, early quantum theory wrestled with wave/particle duality, but what it didn’t do was attempt to push the understanding of waves and particles down a level so that particle-like behavior and wave-like behavior grew out of a common substrate. One is tempted to think that early quantum mechanics suggests that that “quantization” means energy comes in “quanta” that are particles, but early quantum mechanics actually says nothing of the sort. Quantization in early quantum mechanics related to energy levels in bound systems stemming from the periodicity of the U1 symmetry of the wave function, but it did not associate such quantization with the existence of particles. However, QFT, through so-called “second quantization” does fulfill this intuition, defining particles as quanta of excitation of a field in spacetime.~~
+
+~~Second, quantum mechanics assumes the pre-existence of potentials that particles live in. It has no account of where these potential come from, nor how there influence has no account of local mediation of influence. In Newton’s gravitation, if you were to snuff out the sun, the earth would immediately be cut loose. In Maxwell’s electromagnetism, if you were snuff out a charge, the impact would have to propagate through the field, somewhat like interconnected springs. Relativity demands such local mediation, for otherwise influence would exceed light speed. But according to Schrödinger’s equation, $`i\partial_{t}\psi = H\psi,`$ as the state evolves, the distribution over all of space updates. To say it differently, the wave function is a function over configuration space – there is simply nothing in early quantum mechanics that “shakes hands” from neighbor to neighbor in spacetime and thus abides its structure. **\[HERE\]** Third, in its early incarnation, quantum mechanics did not explain the origin of potentials. For example, in the model of the hydrogen atom, the electron was treated according to the rules of quantum mechanics, but it did so using a Hamiltonian that included the Coulomb potential due to the charge of the nucleus with no account of where that potential arose. We have discussed how potentials can arise from gauge interactions. In QFT, we will see that all potentials except gravity arise from interactions between matter and gauge fields. Finally, early quantum mechanics assumed that particles were never created or annihilated, nor converted from one type to another. In QFT, all these elements – particles as quanta of energy, dynamical behavior that adheres to relativistic local causality, potentials and forces, and particle creation – arise from a dynamic spacetime field of operators acting on a wave function in state space. One can always then ask, “but what are the fields made of”? Our answer is, sticking to our theme, that they are what is allowable under our world’s constraints – its symmetries, its causal structure, and its distinguishability of states.~~
+
+***spaces intro material***
+
+~~Classical mechanics incorporates spacetime, phase space, and symmetry structure. Quantum mechanics needs this classical structure in translated form, but it also needs a new space, state space, because a quantum state is not a point in phase space. Quantum field theory keeps the quantum state space, restores local objects to spacetime in the form of fields, enlarges the state space to allow variable particle number, and requires the resulting arrangement to satisfy both relativistic symmetry and unitary evolution.~~
+~~***The Limits of Early Quantum Mechanics***~~
+
+~~In this essay, we have tried to present modern physics in the most logically economical way possible, deliberately avoiding the historical twists and turns by which the subject was actually discovered. But in quantum theory we must break somewhat with that principle, partly because quantum theory is hard to digest in one gulp, and partly because quantum field theory builds on early quantum mechanics more than it replaces it. In its early phase, quantum mechanics was busy inventing a brilliant new formalism to express wildly counterintuitive evidence. It was not, at the same time, giving a full account of the ontology implied by that evidence — that is, a full account of what kinds of things the world contains and how they are represented in the theory. QFT goes much further in that direction, though it too falls short of a final ontology, most obviously in that it does not include gravitation in the same framework.~~
+
+~~What, then, did early quantum mechanics take as givens? First, and most basically, it took for granted what “particles” and “waves” were. The experiments that led to quantum mechanics showed that entities that had seemed particle-like, such as electrons, produced interference patterns characteristic of waves, while entities that had seemed wave-like, such as light, arrived in localized detection events characteristic of particles. One therefore gets the impression that “quantization” means that energy comes in particle-like quanta. But early quantum mechanics did not yet really explain that connection. In its original form, quantization appeared most clearly as the discreteness of allowed states in bound systems, tied to the phase structure of the wave function and the periodicity of its symmetry. It did not yet supply a general account of particles themselves. QFT does.~~
+
+~~Second, early quantum mechanics had no intrinsic account of local mediation of influence. In Newtonian gravitation, if one could somehow snuff out the sun, the earth would be cut loose immediately. In Maxwell’s electromagnetism, by contrast, if one were to snuff out a charge, the change would have to propagate through the field, more like a disturbance traveling through an interconnected medium. Relativity demands such local mediation, because otherwise influence would outrun light. But in Schrödinger’s equation,~~
+
+``` math
+i\partial_{t}\psi = H\psi,
+```
+
+~~the state evolves as a single object, and with it the amplitude distribution over all of configuration space. To say this differently, the wave function is not, in general, a thing spread point by point through ordinary space. It is a function on configuration space. Early quantum mechanics therefore does not tell its story in terms of local quantum degrees of freedom shaking hands from neighbor to neighbor through spacetime, and so does not build relativistic locality into its foundations.~~
+
+~~Third, early quantum mechanics did not explain the origin of the potentials it used. In the hydrogen atom, for example, the electron was treated quantum mechanically, but the Hamiltonian simply included the Coulomb potential due to the nuclear charge, without any account of how that interaction itself arose. As we have discussed, potentials can arise from gauge interactions. In QFT, all nongravitational potentials are understood instead as arising from interactions between matter fields and gauge fields.~~
+
+~~Finally, early quantum mechanics assumed that particles were neither created nor annihilated, nor converted from one species into another. The number and type of particles were built in from the start. QFT changes this completely. In it, particles appear as excitations of fields, interactions are mediated locally, and creation and annihilation are part of the formalism itself.~~
+
+~~One can always ask, of course, what the fields themselves are made of. Our answer, in keeping with the theme of this essay, is that they are not made of anything more primitive within the theory. Rather, they are the kinds of entities permitted by the constraints the world appears to obey — its symmetries, its causal structure, and the distinguishability of its states. We can begin building toward QFT by examining one of these gaps more concretely: the way early quantum mechanics fails, by construction, to respect relativity at the level of its basic objects.~~
+
 ~~We can see the incomplete nature of quantum mechanics in three ways. First, non-relativistic quantum mechanics is an “everything everywhere all at once” model. When the state evolves in time, the distribution over the position observable “updates” over all space. This is manifestly counter to the central tenet of relativity that an event can only influence other events within its light cone. Second, fixed-particle quantum mechanics cannot account for particles being created or destroyed, which routinely happens, for example, any time an excited atom emits a photon. Third, prior to QFE, quantum mechanics described how a particle behaves in a prescribed potential but gives no account of the origin of that potential.~~
 
 ~~Given that we want to put quantum mechanics in a spacetime setting, it makes sense that we must choose to give either the state or the operators a spacetime dependency and that we must choose some set of spacetime points as our domain. We will choose to situate the operators in spacetime. After all, it is observables that define an experimental basis in which to make measurements in spacetime. And we will choose our domain to be a field~~ $`\widehat{\phi}(x)`$~~. Fields are necessary because relativity leaves only two possibilities, and one is impossible. If influence could act directly across a spacelike gap, then because spacelike separated events have no observer-independent time order, one observer’s cause could be another observer’s effect, opening the door to causal paradox. So influence cannot simply jump the gap. But once it does not jump the gap, whatever later makes a difference elsewhere must be instantiated in the intervening region while it is on its way. The moment one says that information propagates, one has already admitted local degrees of freedom that carry it from place to place. In the continuum, that distributed local state is what we call a field. While our target is a field, we will start with a discreet lattice and take the continuous limit when needed. Specifically, QFT can be modelled as a lattice of coupled springs. The mechanism of springs, or, more abstractly, simple harmonics oscillators, is somewhat justified as any well-behaved periodic motion is approximated to first order by an SHO. The sites themselves do not behave as SHOs due to their coupling to neighboring sites, however, the Fourier modes, as we will explain, do behave as independent SHOs. The associated mode amplitudes correspond to the eigenvalues of the mode operator on each mode, thus weighting the field’s components in the mode expansion. This model, we will show, ensures that disturbances to the field travel in accordance with relativity.~~ ~~As we know, scalars, vectors, and spinors all transform under Lorentz, and, indeed, in quantum fields the localized operators can transform as any of these objects.~~ ~~\<HERE: check transition.\>As we have seen \[I don’t think we showed this in the QM section, need to add it there\], levels in a quantum harmonic oscillator are discreet, or quantized. The same is true of the quantum field’s oscillators in momentum space where the overall field behavior can be decomposed into oscillations of uncoupled modes. This allows the addition of quanta to the field by stepping up a level in the energy of a mode. Each such addition is a new particle. Every species of particle is an excitation in the associated field. The collection of fields is all there is. Kinematics describes the free behavior of each field in isolation, and interaction within or between the fields is the origin of dynamics. Particles properties come from the fields. The mass of the particle is determined by the mass in term in field equation, while its spin is determined by how the operators transform. In the position basis, the expectation value of the field operator squared is the particle number density.~~
@@ -8567,235 +8799,6 @@ clean.
     8.1.3 Why a force law reappears in the classical regime
 
 \
-The Spaces of QFT
------------------
-
-Nature unfolds in spaces. We are biased to favor spacetime because it is the space we directly perceive, but nature is not required to privilege our habits of perception. In physics, how influence transmits locally, how a complete instantaneous state is specified, how symmetries constrain possibility, and, in a quantum theory, how identity is preserved in a probabilistic world are organized in the interplay of multiple spaces. We will begin by reviewing the spaces of classical and early quantum mechanics, then turn to the changes made by QFT. This language of spaces is not a mathematical detour. It is a way of making QFT’s “ontology” precise, the kinds of things the theory says exist, in terms of which phenomena are explained.
-
-Classical mechanics incorporates spacetime, phase space, and symmetry structure. Quantum mechanics needs this classical structure in translated form, but it also needs a new space, state space, because a quantum state is not a point in phase space. Quantum field theory keeps the quantum state space, restores local objects to spacetime in the form of fields, enlarges the state space to allow variable particle number, and requires the resulting arrangement to satisfy both relativistic symmetry and unitary evolution.
-
-### Spaces in Hamiltonian Mechanics
-
-A classical theory must distinguish a **state at an instant** from a **history through time**. A history is the full trajectory. A state is the information on one time slice from which that trajectory can be generated. In Hamiltonian mechanics that state is organized in **phase space**. For finitely many degrees of freedom one writes
-
-``` math
-z = (q^{i},p_{i}),
-```
-
-and for a classical field one writes, on a time slice,
-
-``` math
-z = (\phi(x),\pi(x)).
-```
-
-The variables $`q^{i}`$, or $`\phi(x)`$in the field case, specify the configuration. The variables $`p_{i}`$, or $`\pi(x)`$, specify the conjugate momentum. We stress “on a time slice” because spacetime contains entire histories, while dynamics asks a different question: what present state is enough to determine the future.
-
-One could try to organize the state using position and velocity. For simple systems that often works. But momentum is not just velocity renamed. It is defined from the Lagrangian by
-
-``` math
-p_{i} = \frac{\partial L}{\partial{\dot{q}}^{i}},\pi(x) = \frac{\partial L}{\partial\dot{\phi}(x)}.
-```
-
-In the simplest cases momentum is proportional to velocity. In general it is not. The distinction matters in generalized coordinates, in relativistic systems, in gauge theories, and in field theory. More importantly, momentum lets us rewrite the theory in a form that carries much more structure than a bare position-velocity description. The state is no longer just “where things are” and “how fast they are changing.” It is organized into conjugate pairs, whose structure we will unpack. The upper index on $`q^{i}`$and the lower index on $`p_{i}`$are distinguishing two different kinds of object. An infinitesimal displacement $`dq^{i}`$is a position-type change. The momentum $`p_{i}`$is the corresponding dual object, written with a lower index because its role is to combine with such a displacement to produce the scalar quantity
-
-``` math
-p_{i}\text{ }dq^{i}.
-```
-
-This pairing is the first sign that phase space is not an arbitrary list of variables. Once the rate data are written in this momentum form, position and momentum fit together in a built-in geometric structure.
-
-That built-in structure is the symplectic form,
-
-``` math
-\omega = dq^{i} \land dp_{i}.
-```
-
-Here $`dq^{i} \land dp_{i}`$represents the infinitesimal oriented area in each position-momentum plane. So the symplectic form is the phase-space area structure. It tells us that the basic geometry of phase space is not a geometry of lengths and angles, but a geometry of paired position-momentum areas.
-
-This matters because that area structure turns functions into flows. A function on phase space, such as the Hamiltonian, tells us how its value changes under small moves away from a point. The symplectic structure converts that change-data into a vector field, meaning an actual direction of motion through phase space. In this sense, the symplectic form is the rule that turns gradients into flows.
-
-The Poisson bracket is the algebraic expression of that rule. For two functions $`F`$and $`G`$on phase space,
-
-``` math
-\{ F,G\} = \frac{\partial F}{\partial q^{i}}\frac{\partial G}{\partial p_{i}} - \frac{\partial F}{\partial p_{i}}\frac{\partial G}{\partial q^{i}}.
-```
-
-This bracket tells us how the flow generated by one function acts on another. Classical observables are then ordinary functions on phase space,
-
-``` math
-A = A(q,p)\text{or}A = A\lbrack\phi,\pi\rbrack.
-```
-
-When the generating function is the Hamiltonian $`H`$, the resulting flow is physical time evolution. Hamilton’s equations are
-
-``` math
-{\dot{q}}^{i} = \{ q^{i},H\},{\dot{p}}_{i} = \{ p_{i},H\}.
-```
-
-So the symplectic form, the Poisson bracket, and Hamilton’s equations are three parts of one structure. The symplectic form gives phase space its position-momentum area geometry. The Poisson bracket is the corresponding algebra on functions. Hamilton’s equations are the flow generated by the energy function within that geometry.
-
-Because the flow is generated in this way, it preserves the symplectic structure itself. In the simplest picture, a region of phase space may be stretched and sheared as the system evolves, but its basic position-momentum area is not destroyed. In higher dimensions the corresponding phase-space volume is preserved as well. This property is known as Liouville’s theorem, which states that a statistical ensemble of initial conditions, however it evolves, occupies the same phase space volume.
-
-Phase space therefore does more than store enough information to start the system evolving. It organizes the classical state in a form that makes time evolution a vector flow, gives a natural bracket algebra on observables, preserves phase-space volume, and supplies exactly the structural features that quantum mechanics will keep in translated form. In quantum theory, the Poisson bracket becomes the commutator, and the structure-preserving role played here by symplectic flow reappears in the preservation laws of unitary evolution. Some people say Hamiltonian Mechanics is the “river of time” formulation of mechanics. Indeed, by picking a conjugate pairing of position and momentum, we can see time evolution as a vector flow, as though in a fluid, and Liouville’s theorem is that statement that this fluid in incompressible.
-
-Spacetime enters classical theory as the space in which events occur and in which local dynamical (changing over time) quantities are assigned. In classical particle mechanics a trajectory is a worldline in spacetime. In classical field theory the basic variables are already local functions on spacetime,
-
-``` math
-\phi(x)\ (scalar),\ \ \ \ \ A_{\mu}(x)\ (vector),\ \ \ \ \psi(x)\ (spinor),
-```
-
-and causality is built into their equations of motion. A relativistic classical field theory inherits adherence to the structure of Relativity “for free” because its state variables already inhabit spacetime. This seems obvious, but we will see how quantum mechanics breaks this relationship.
-
-Symmetry groups that constrain dynamics like the Poincare group reside in their own space, whose geometric structure constrains the theory. In Hamiltonian mechanics each continuous symmetry has a generator, a function on phase space, and the Poisson brackets among the generators reproduce the Lie algebra of the symmetry group:
-
-``` math
-\{ G_{a},G_{b}\} = f_{ab}{}^{c}\text{ }G_{c}.
-```
-
-This is the local algebraic shadow of the group geometry. For example, for angular momentum,
-
-``` math
-\{ J_{i},J_{j}\} = \epsilon_{ijk}J_{k}.
-```
-
-For spacetime symmetry one gets the classical Poincaré algebra. The meaning is direct: the way infinitesimal transformations fail to commute is fixed by the structure of the symmetry group itself.
-
-Symmetries therefore already act physically in classical mechanics. A generator $`G`$ produces an infinitesimal canonical transformation by
-
-``` math
-\delta F = \{ F,\epsilon G\}.
-```
-
-The group geometry is reflected in the Poisson algebra, and the Poisson algebra acts on the phase-space observables.
-
-The minimal classical picture is therefore this. Spacetime carries locality and causal order. Phase space carries complete instantaneous state data and symplectic structure. Symmetry structure supplies invariants and generator algebra.
-
-### Quantum mechanics
-
-Quantum mechanics keeps the classical need for spacetime, canonical structure, and symmetry, but it adds something genuinely new. The classical state was a point in phase space. The quantum state is not. It is a vector, or more precisely a ray, in a complex Hilbert space $`H`$.
-
-This new space is required to carry the structure demanded by superposition, interference, and probabilistic prediction. A point in phase space singles out one actual configuration and momentum, but quantum state assigns amplitudes to many alternatives at once *for the same state*. We must, therefore, have a space that can preserve the structure of such states as time evolves.
-
-The observables are now self-adjoint, or real-eigenvalued, operators on $`H`$. In ordinary one-particle quantum mechanics one may represent the state as a wavefunction
-
-``` math
-\psi(x) = \langle x \mid \Psi\rangle.
-```
-
-Now, we could look at this and think that we’ve represented the state in spacetime, but we have not, for this is a representation over space only, and we could just as easily have represented the state in the basis of any other observable. Time evolution acts on the state as a whole in Hilbert space, and nothing in this representation ties that evolution to position in a way that builds in relativistic locality. Without that, there is no Minkowski metric, no light cones, and no causal structure of the sort that defines the spacetime in which our emitters and detectors live. But what if we could somehow arrange the time evolution of the state so that emission and detection events do respect the proper causal structure. That is what we will do in QFT.
-
-While Hilbert space does not carry the needed structure of spacetime, it does take over structural elements of phase space’s job. Hilbert space looks very different from phase space. We know it encodes superposition rather than definite observable values, but it also is represented in the eigenbasis of only one chosen observable at a time. How can a space that is represented in a basis of “either position or momentum” replace a space whose coordinates were “position and momentum”? The reason it can do so is that, unlike particles, the wave object encodes both position and wavelength information. Once we associate wavelength with momentum, the wave-like state encodes position and momentum.
-
-We have seen that Hilbert space contributes to the structure needed for quantum evolution. A complex inner product gives a norm, so states can be normalized and total probability can remain one. It also gives angles, so distinct states can remain distinguishable under unitary evolution. But the same inner product carries more than length and angle. Through the magic of complex numbers, Hilbert space’s real and imaginary parts bear different loads. The real part supplies the metric-like structure just mentioned. The imaginary part supplies an antisymmetric, area-like structure that is the quantum remnant of the classical symplectic form, $`dq^{i} \land dp_{i}`$.
-
-If $`\langle\psi,\phi\rangle`$is the complex inner product, then its real and imaginary parts define
-
-``` math
-g(\psi,\phi) = 2\text{ }Re\text{ }\left\langle \psi,\phi \right\rangle,\ \ \ \ \ \ \ \ \ \ \ \ \ \omega(\psi,\phi) = 2\text{ }Im\text{ }\langle\psi,\phi\rangle.
-```
-
-Here $`g`$ is symmetric and metric-like. The second quantity, $`\omega`$, is antisymmetric. We can see this with a simple example. Writing $`z\  = x + iy,\ \ \ \ w = u + iv`$:
-
-``` math
-{\langle z,w\rangle = xu + yv + i(xv - yu).
-}
-```
-That antisymmetric part is exactly what one needs for a symplectic form. (This is just the signed area of the parallelogram spanned by $`\left( x,y \right)`$and $`\left( u,v \right)`$:
-
-``` math
-{\text{Area} = \  \mid xv - yu \mid .
-}
-```
-With this symplectic structure retained in translated form, Hilbert space preserves the part of classical mechanics concerned with reversible flow and conjugate pairings. In classical phase space, position and momentum were paired by the symplectic form, and that pairing gave rise to Hamiltonian flow through the Poisson bracket:
-
-``` math
-\{ F,G\} = \frac{\partial F}{\partial q^{i}}\frac{\partial G}{\partial p_{i}} - \frac{\partial F}{\partial p_{i}}\frac{\partial G}{\partial q^{i}}.
-```
-
-Quantum mechanics preserves that structure in operator form, replacing the Poisson bracket with the commutator,
-
-``` math
-\{ F,G\}\text{\:\,} \longrightarrow \text{\:\,}\frac{1}{i\hslash}\lbrack\widehat{F},\widehat{G}\rbrack,
-```
-
-Which for canonical position and momentum becomes:
-
-``` math
-\lbrack{\widehat{q}}^{\text{ }i},{\widehat{p}}_{j}\rbrack = i\hslash\text{ }\delta^{i}{}_{j}.
-```
-
-Symmetry works in quantum mechanics much as it did in Hamiltonian mechanics, except that Poisson brackets are replaced by commutators. If the symmetry group is the Poincaré group, one may represent it on Hilbert space, so ordinary quantum mechanics can describe how states transform between inertial observers and can correctly encode quantities such as energy, momentum, and spin. But this is not yet relativistic causality. Causality is not just the statement that whole states transform correctly. It is the statement that operations associated with spacelike separated regions do not interfere in a way that would permit superluminal influence. A representation of the Poincaré group on states does not by itself provide spacetime-local observables or require the appropriate commutation relations between them. That is the additional structure QFT must supply.
-
-### Quantum field theory
-
-Quantum field theory adjusts the roles of spacetime and Hilbert space so that quantum observables carry local spacetime structure, and so that interactions can create and destroy particles.
-
-In quantum mechanics there are two objects that work together to calculate measurements, the state and the operators. If we want to bring spacetime into quantum mechanics, it is natural to ask whether one or the other should be situated in spacetime. Since operators are observables, they are the natural choice. The state, by contrast, is better understood as a global object, whose job is to encode the amplitudes and correlations from which measurement outcomes are computed. If we want the operators to depend on spacetime, we must further specify what sort of local spacetime structure they inhabit: discrete points, as in a particle configuration, or a field, as in electromagnetism and gravity. In fact, only fields can mediate influence relativistically. If influence could act directly across a spacelike gap, then because spacelike separated events have no observer-independent time order, one observer’s cause could be another observer’s effect, opening the door to causal paradox. Influence cannot simply jump the gap. But once it does not jump the gap, whatever later makes a difference elsewhere must be instantiated in the intervening region while it is on its way. The moment one says that information propagates, one has already admitted local degrees of freedom that carry it from place to place. In the continuum, that distributed local state is by definition a field.
-
-We can now state this in notation. The basic local objects are operator-valued fields:
-
-``` math
-\widehat{\phi}(x)\text{~[scalar]},\widehat{\ \psi}(x)\text{~[spinor]},{\ \ \ \widehat{A}}_{\mu}(x)\text{~[vector]}.
-```
-
-More carefully, because exact point values are singular, one should work with smeared operators,
-
-``` math
-\widehat{\phi}(f) = \int d^{4}x\text{ }f(x)\widehat{\phi}(x),
-```
-
-and similarly for the other fields.
-
-Once the basic observables are placed in spacetime, relativistic causality can be stated directly:
-
-``` math
-\left\lbrack \widehat{O}(x),\widehat{O}(y) \right\rbrack = 0\ \ \ \text{for~spacelike~separated~}x,y.
-```
-
-This is how relativistic causality is expressed in commutator algebra. It says that the order of two spacelike separated operations has no physical effect. A representation of the Poincaré group on state space alone was not enough, because this new condition presupposes local observables attached to spacetime regions.
-
-A state in Hilbert space is still an amplitude assignment over possible alternatives, but now those alternatives are entire field configurations written in the eigenbasis of field operators.If $`\mid \phi\rangle`$ denotes a field-configuration eigenstate at fixed time $`t`$, then
-
-``` math
-\widehat{\phi}(x,t) \mid \phi\rangle = \phi(x) \mid \phi\rangle,
-```
-
-and the state may be represented as a wave functional,
-
-``` math
-\Psi_{t}\lbrack\phi\rbrack = \langle\phi \mid \Psi(t)\rangle
-```
-
-thus shifting the notion of locality to the field itself rather than trying to exist in the position representation of the state.
-
-We can see how this provides the needed spacetime constraint by looking at an example. Consider two localized interventions, one in region $`A`$ near “Alice” and one in region $`B`$ near “Bob,” with $`A`$ and $`B`$ spacelike separated. Alice changes something in her lab. Bob asks whether his detector statistics change immediately.
-
-In ordinary one-particle quantum mechanics, Alice’s intervention is represented by modifying the Hamiltonian near $`A`$, but the state is global and the theory has no condition forbidding that change from having an immediate effect at spacelike separated $`B`$. It can represent position outcomes, but it does not natively contain distinct local observables attached to spacetime regions whose algebra enforces relativistic separation.
-
-In QFT, it does. Alice’s intervention is represented by a local operator $`{\widehat{O}}_{A}`$and Bob’s by a local operator $`{\widehat{O}}_{B}`$. If the regions are spacelike separated, the theory requires
-
-``` math
-\lbrack{\widehat{O}}_{A},{\widehat{O}}_{B}\rbrack = 0.
-```
-
-That means their order has no physical effect. Since different observers may disagree on which spacelike-separated event happened first, this is exactly what relativistic causality requires.
-
-Poincaré transformations of spacetime are represented by unitary operators on the Hilbert or Fock space, and local fields transform accordingly. For a scalar field,
-
-``` math
-U(\Lambda,a)^{\dagger}\text{ }\widehat{\phi}(x)\text{ }U(\Lambda,a) = \widehat{\phi}\text{ }(\Lambda^{- 1}(x - a)).
-```
-
-This is the bridge connecting state space to spacetime. The relation holds because the field operator and the unitary Poincaré transformations are inherited from the same classical relativistic structure. The classical field already carries a covariant mode expansion and a Poincaré action on those modes. Quantization lifts that structure rather than replacing it: the mode coefficients become operators, and the classical symmetry generators become operators on Hilbert or Fock space. The unitary $`U(\Lambda,a)`$is built from those generators — not from the Hamiltonian alone, which gives only time translations — so its action on the field reproduces the same spacetime transformation law in operator form.
-
-The state space must also be enlarged. Since the field may have no excitations, one excitation, two excitations, and so on, the state space must contain all of those sectors. This is “Fock space,” the direct sum of particle-number sectors:
-
-``` math
-\mathcal{F =}\mathbb{C} \oplus H_{1} \oplus H_{2} \oplus H_{3} \oplus \cdots\text{ }.
-```
-
-The vacuum sector $`\mathbb{C}`$ contains the zero-particle state. The sector $`H_{n}`$ contains the $`n`$-particle sector.
-
 ## 
 
 ## 
