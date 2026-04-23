@@ -3450,9 +3450,806 @@ or:
 
 We read this as saying that the force density — the rate at which momentum is transferred — is given by the gauge field curvature contracted with the current.
 
-# Quantum Field Theory - Notes
 
-## Random notes
+# Quantum Field Theory
+
+Relativity flouts our intuition – measuring sticks themselves change with relative motions – but leaves our categories intact. Quantum mechanics demands a new categories altogether – we can no longer reason about a world filled with objects at definite locations but must instead probe nature to find statistical patterns. These theories constitute our modern insights into nature’s fundamental structure, but do not fit together to form a coherent and complete story. “Quantum field theory” is an attempt to address this. In this section, we will not encounter any new intuition-smashing result. Instead, we will recount the – often somewhat messy – synthesis that comprises our current fundamental model of all but gravity.
+
+In presenting quantum field theory, we will first look at the gaps and inconsistencies of early quantum mechanics to understand why we need QFT. Next, we will discuss the major building blocks of the ontology, or fundamental constituents of reality, the theory asserts. We will then develop a simple working physical field model and using that make the decisive of step marrying the ideas of a classical field and quantum operators. At this point we will be able to say what it means to be a particle. We will complete this development of the core model by formally expressing the field theory in the algebraic structure of quantum canonical commutators. At this point we can ask ourselves what we are the building-block calculation we can make with such a theory. To approach these calculations, we will switch our approach from thinking about local differential equations to thinking about global action variation. This will lead to perturbative solutions and Feynman diagrams that give definition to our conception of discreet interactions. We will then move from our simple example field to actual matter and gauge fields, focusing particularly on the electron and photon fields, known collectively as quantum electrodynamics, or QED. Finally, as a pay off for the long journey to present physics at its most fundamental level, we will show that we can use QED to derive the familiar Coulomb electromagnetic forces.
+
+## The Limits of Early Quantum Mechanics 
+
+In its early development, the originators of quantum mechanics were too busy inventing a brilliant new formalism to express wildly counterintuitive evidence to, at the same time, offer a fully complete and coherent physical theory.
+
+### Wherefore Particles?
+The first conceptual gap in early quantum mechanics is that it offers no answer to the natural question: what is a particle? If one is happy with the operational definition that a particle is a sort of rigid object, this isn’t a problem, but this definition quickly becomes untenable in quantum theory. How can a rigid body have an uncertain location? What accounts for different particle types? How is a rigid body an irreducible representation of symmetry? When one learns about the particle nature of light demonstrated by the photoelectric effect, one may be tempted to think that a particle, in early quantum mechanics, is a “quantum,” a little parcel of energy. This is, in fact, what QFT will tell us, but early quantum mechanics does not say this. It explained how a particle confined to a location has quantized energy levels due to the need to fit its wave function into the potential, like harmonics fit on a guitar string. In fact, using early quantum theory, calculating these energy levels is an introductory undergraduate exercise. But there is no similar way to calculate that free energy must come in discrete quanta. From de Broglie’s equations, we do know the energy of a particle is related to frequency by $`E = h\nu`$, but this does not answer why additional energy must be added as discrete particles. QFT, through so-called “second quantization,” does take exactly this step, defining particles as quanta of excitation of a field in spacetime, where the discrete spectrum is still picked out by a boundary-condition-type requirement: the total probability across all field configurations must add up to some finite constant, which means that the probability assigned to arbitrarily large field amplitudes — and thus arbitrarily large energies — must die away. Second quanization uplevels the discreet spectrum associated with boundary conditions from the wave function to the wave functional of the field configuration. 
+
+If particles are field excitations, what then are waves in the classical E&M field sense? The answer is that they are quantum fields in the case where many particles occupy the same mode. This is true for light but not for fermionic matter fields due to the Pauli exclusion principle, which prevents multiple fermions from occupying the same state. Now one might fairly ask, if the origin of particles is field excitations, what is the origin of the field? QFT offers no answer for this other than that it is the only object we know of that can meet the demands of spacetime symmetry and unitarity of state.
+
+
+The second conceptual gap in early quantum mechanics is that it is not constructed on spacetime.
+
+
+### Where is Spacetime
+Early quantum mechanics is lacking a notion of local spacetime. If quantum mechanics is a theory only of probaility distributions over position, removing the the theoretic elements of bodies with trajectories, it is unmoored from spacetime. But Relativity demands that influence be local. Were this not the case, spatially separate locations on the same equal-time slice could influence one another, that is, their influence could act outside their light cones. But the wave function is not, in the classical sense, a field spread through spacetime that passes influence from neighbor to neighbor. It is an amplitude over position space or other dynamical variables, in the one-particle case over position space or some other dynamical variable, and in the many-particle case over configuration space. As such, it does not move through space. It is simply given on the whole slice at once, or, equivalently, moves at infinite speed. While this structure appears to present a causal contradiction, knowing what a slippery thing the wave function is, we will specify experiments that pin down what sort of spacelike influence this quantum formalism implies. 
+
+We can see this relativistically impermissible structure directly in the Schrödinger equation,
+
+$$
+i\hbar \frac{\partial \psi}{\partial t}
+=
+\left(
+-\frac{\hbar^2}{2m}\nabla^2 + V
+\right)\psi.
+$$
+
+It is first order in time and second order in space, but in spacetime space and time stand, modulo the metric sign, on equal footing. That mismatch is already a strong clue that something is wrong. Equations of this kind belong to the broad family of diffusion equations, such as those describing heat flow, in which an amplitude spreads with exponential falloff but becomes immediately nonzero everywhere. In a relativistic setting that is impermissible, since influence should remain confined to the light cone.
+
+From the Schrödinger equation’s solutions, we can find the dispersion relation,
+
+$$
+\omega = \frac{\hbar k^2}{2m},
+$$
+
+from which we find the group velocity,
+
+$$
+v_g = \frac{\partial \omega}{\partial k} = \frac{\hbar k}{m}.
+$$
+
+The speed of light appears nowhere in this equation, and thus the group velocity is unbound. In early quantum mechanics, barring pathological exceptions, group velocity is particle velocity, so the theory predicts that particle velocity can exceed lightspeed in an experimentally observable way. This is exactly what one should expect from a theory built for Galilean rather than Minkowskian spacetime.
+
+We can devise an experiment to test this. Prepare a narrow free-particle wave packet with sufficiently large central wavenumber, let it propagate across a known baseline, and compare the arrival time of the packet peak to the light-travel time across the same distance. Since the group velocity in the theory is unbounded, the theory permits choosing the packet so that its peak arrives sooner than any light signal could.
+
+One can see the same problem by starting from a localized state. Suppose that on some equal-time slice the particle is sharply confined to a small spatial region. Under Schrödinger evolution, that localization does not spread by advancing outward through neighboring points at some finite characteristic speed. It evolves according to
+
+$$
+\psi(x,t) = \int_{-\infty}^{\infty} \phi(k)\, e^{i(kx-\omega t)}\, dk,
+$$
+
+with
+
+$$
+\omega = \frac{\hbar k^2}{2m}.
+$$
+
+Since every Fourier mode is immediately present in the evolved state, the wave function acquires nonzero support arbitrarily far away after any nonzero time, however short. The tails may be tiny, but they are there at once. In a relativistic theory that matters. If a particle is localized here now, there must be regions elsewhere now that remain exactly outside causal reach. 
+
+Here too the experiment is straightforward. Localize the particle near one detector on an equal-time slice, place a second detector far enough away that for a chosen short time window it is spacelike separated from the first, and then allow the state to evolve for that short time. Schrödinger evolution immediately assigns the distant detector a nonzero amplitude where relativity demands it be exactly zero.
+
+### Making Particles
+
+Early quantum mechanics fixes the particle count at the start. For $N$ particles, the state is a wave function on an $N$-particle configuration space,
+
+$$
+\psi(x_1,\dots,x_N,t).
+$$
+
+The number of particles is built into the space the state lives on. Time evolution can move amplitude around inside that space, but it cannot leave it. An $N$-particle Schrödinger theory can reshuffle the state of $N$ particles. It cannot turn $N$ into $N+1$ or $N-1$.
+
+But particle creation in nature is commonplace. An excited atom emits a photon, and an energetic collision produces new particles. Matter and radiation exchange quanta. One may model different particle compositions with different Hilbert spaces, but that is exactly the point. The theory does not contain one unified state space in which particle composition may change.
+
+QFT will fix this by changing what a particle is. In second quantization, a particle is not a primitive object that happens to carry energy. It is one step in the discrete excitation spectrum of a field mode. Once a mode is quantized, its occupation number, how many particles are in a given momentum mode, comes in levels $n=0,1,2,\dots$, and there are operators that move up and down that ladder,
+
+$$
+\hat a^\dagger |n\rangle \propto |n+1\rangle,
+\qquad
+\hat a |n\rangle \propto |n-1\rangle.
+$$
+
+These ladder operators imply an extension of state space to the direct sum of all fixed-particle-number spaces, called Fock space.
+
+### Where Potentials Come From
+
+Classical physics says "give me a potential energy function, and I will tell you a body's trajectory." What it does not say is the origin of that potential. It may label it, e.g., gravitation or electrical, but it takes the potential as a given, and proceeds from there. 
+
+We see this in the form of a typical Hamiltonian, 
+
+$$
+H = \frac{p^2}{2m} + V(x),
+$$
+
+Early quantum mechanics likewise takes the potential as a given, 
+
+$$
+\hat H = \frac{\hat p^2}{2m} + V(\hat x),
+$$
+
+and then solves for the state in the prescribed environment. The hydrogen atom illustrates this point. The electron is treated quantum mechanically, but the Coulomb potential is simply posited. Likewise, a particle in a box is given walls, and a harmonic oscillator is given a restoring force. 
+
+This approach is unassailably effective, but we a priori prefer a theory that explains what had been given in terms of a smaller number of theoretic elements. 
+
+Classical electromagnetism takes a step toward giving an origin story for potentials. Rather than simply positing a potential function over space, it gives the field potential an energetic, dynamic body that evolves in accordance with Relativity. What this does not do, however, is provide a mechanism by which potential acts on matter. 
+
+At the same time, as we have seen, gauge fields can provide such a mechanism, through the curvature of the connection field. However, before QFT, the role of the electromagnetic field as a connection for a matter field was not worked out. We will see that in QED (QFT for electromagnetism), there are fields associated with matter particles and a gauge field associated with photons whose curvature is responsible for the electromagnetic force. In the formalism, it will appear as an interaction term in the Lagrangian of the full system. Schematically, one writes
+
+$$
+\mathcal{L}_{\mathrm{QED}}
+=
+\mathcal{L}_{\mathrm{electron}}
++ \mathcal{L}_{\mathrm{photon}}
++ \mathcal{L}_{\mathrm{interaction}}.
+$$
+
+The first term is the electron-field dynamics, the second the photon-field dynamics, and the third their coupling. At that point the potential is no longer primitive. It survives only as an effective description of a deeper process in which fields interact locally.
+
+## The Spaces of QFT
+We are going to construct specific quantum fields, formalize their interactions, and make calculations with them. However, as QFT adds a layer of abstraction on top of the already extraordinarily abstract ideas of quantum mechanics and Relativity, when working through the details, one can feel they have lost sight of the concepts underlying the calculations. Therefore, let's start by discussing the theoretic elements of QFT, and let's do so by anchoring these in the language of spaces, for every element in a physical theory is reflected in the spaces it invokes, the structure of those spaces and the objects that inhabit them. 
+
+We are biased to favor spacetime because it is the space we directly perceive, but nature is not required to privilege our perception. In physics, how influence transmits locally, how a complete state is specified, how symmetries constrain possibility, and how identity is preserved in a probabilistic world are organized in the interplay of multiple spaces. To best appreciate the elements of  QFT, let's begin by reviewing the spaces of classical and early quantum mechanics, and then turn to the changes made by QFT.
+
+### Spaces in Hamiltonian Mechanics
+
+A classical theory must distinguish a **state at an instant** from a **history through time**. A history is the full trajectory. A state is the information on one time slice from which that trajectory can be generated. In Hamiltonian mechanics that state is organized in **phase space**. For finitely many degrees of freedom one writes
+
+``` math
+z = (q^{i},p_{i}),
+```
+
+and for a classical field one writes, on a time slice,
+
+``` math
+z = (\phi(x),\pi(x)).
+```
+
+The variables $q^{i}$, or $\phi(x)$ in the field case, specify the configuration. The variables $p_{i}$, or $\pi(x)$, specify the conjugate momentum. We stress “on a time slice” because spacetime contains entire histories, while dynamics asks a different question: what present state is enough to determine the future.
+
+One could try to organize the state using position and velocity. For simple systems that often works. But momentum is not just velocity renamed. It is defined from the Lagrangian by
+
+``` math
+p_{i} = \frac{\partial L}{\partial{\dot{q}}^{i}},\pi(x) = \frac{\partial L}{\partial\dot{\phi}(x)}.
+```
+
+In the simplest cases momentum is proportional to velocity. In general it is not. The distinction matters in generalized coordinates, in relativistic systems, in gauge theories, and in field theory. More importantly, momentum lets us rewrite the theory in a form that carries much more structure than a bare position-velocity description. The state is no longer just “where things are” and “how fast they are changing.” It is organized into conjugate pairs, whose structure we will unpack. The upper index on $`q^{i}`$and the lower index on $`p_{i}`$are distinguishing two different kinds of object. An infinitesimal displacement $`dq^{i}`$is a position-type change. The momentum $`p_{i}`$is the corresponding dual object, written with a lower index because its role is to combine with such a displacement to produce the scalar quantity
+
+``` math
+p_{i}\text{ }dq^{i}.
+```
+
+This pairing is the first sign that phase space is not an arbitrary list of variables. Once the rate data are written in this momentum form, position and momentum fit together in a built-in geometric structure.
+
+That built-in structure is the symplectic form,
+
+``` math
+\omega = dq^{i} \land dp_{i}.
+```
+
+Here $`dq^{i} \land dp_{i}`$represents the infinitesimal oriented area in each position-momentum plane. So the symplectic form is the phase-space area structure. It tells us that the basic geometry of phase space is not a geometry of lengths and angles, but a geometry of paired position-momentum areas.
+
+This matters because that area structure turns functions into flows. A function on phase space, such as the Hamiltonian, tells us how its value changes under small moves away from a point. The symplectic structure converts that change-data into a vector field, meaning an actual direction of motion through phase space. In this sense, the symplectic form is the rule that turns gradients into flows.
+
+The Poisson bracket is the algebraic expression of that rule. For two functions $`F`$and $`G`$on phase space,
+
+``` math
+\{ F,G\} = \frac{\partial F}{\partial q^{i}}\frac{\partial G}{\partial p_{i}} - \frac{\partial F}{\partial p_{i}}\frac{\partial G}{\partial q^{i}}.
+```
+
+This bracket tells us how the flow generated by one function acts on another. Classical observables are then ordinary functions on phase space,
+
+``` math
+A = A(q,p)\text{or}A = A\lbrack\phi,\pi\rbrack.
+```
+
+When the generating function is the Hamiltonian $`H`$, the resulting flow is physical time evolution. Hamilton’s equations are
+
+``` math
+{\dot{q}}^{i} = \{ q^{i},H\},{\dot{p}}_{i} = \{ p_{i},H\}.
+```
+
+So the symplectic form, the Poisson bracket, and Hamilton’s equations are three parts of one structure. The symplectic form gives phase space its position-momentum area geometry. The Poisson bracket is the corresponding algebra on functions. Hamilton’s equations are the flow generated by the energy function within that geometry.
+
+Because the flow is generated in this way, it preserves the symplectic structure itself. In the simplest picture, a region of phase space may be stretched and sheared as the system evolves, but its basic position-momentum area is not destroyed. In higher dimensions the corresponding phase-space volume is preserved as well. This property is known as Liouville’s theorem, which states that a statistical ensemble of initial conditions, however it evolves, occupies the same phase space volume.
+
+Phase space therefore does more than store enough information to start the system evolving. It organizes the classical state in a form that makes time evolution a vector flow, gives a natural bracket algebra on observables, preserves phase-space volume, and supplies exactly the structural features that quantum mechanics will keep in translated form. In quantum theory, the Poisson bracket becomes the commutator, and the structure-preserving role played here by symplectic flow reappears in the preservation laws of unitary evolution. Some people say Hamiltonian Mechanics is the “river of time” formulation of mechanics. Indeed, by picking a conjugate pairing of position and momentum, we can see time evolution as a vector flow, as though in a fluid, and Liouville’s theorem is that statement that this fluid in incompressible.
+
+Spacetime enters classical theory as the space in which events occur and in which local dynamical (changing over time) quantities are assigned. In classical particle mechanics a trajectory is a worldline in spacetime. In classical field theory the basic variables are already local functions on spacetime,
+
+``` math
+\phi(x)\ (scalar),\ \ \ \ \ A_{\mu}(x)\ (vector),\ \ \ \ \psi(x)\ (spinor),
+```
+
+and causality is built into their equations of motion. A relativistic classical field theory inherits adherence to the structure of Relativity “for free” because its state variables already inhabit spacetime. This seems obvious, but we will see how quantum mechanics breaks this relationship.
+
+Symmetry groups that constrain dynamics like the Poincare group reside in their own space, whose geometric structure constrains the theory. In Hamiltonian mechanics each continuous symmetry has a generator, a function on phase space, and the Poisson brackets among the generators reproduce the Lie algebra of the symmetry group:
+
+``` math
+\{ G_{a},G_{b}\} = f_{ab}{}^{c}\text{ }G_{c}.
+```
+
+This is the local algebraic shadow of the group geometry. For example, for angular momentum,
+
+``` math
+\{ J_{i},J_{j}\} = \epsilon_{ijk}J_{k}.
+```
+
+For spacetime symmetry one gets the classical Poincaré algebra. The meaning is direct: the way infinitesimal transformations fail to commute is fixed by the structure of the symmetry group itself.
+
+Symmetries therefore already act physically in classical mechanics. A generator $`G`$ produces an infinitesimal canonical transformation by
+
+``` math
+\delta F = \{ F,\epsilon G\}.
+```
+
+The group geometry is reflected in the Poisson algebra, and the Poisson algebra acts on the phase-space observables.
+
+The minimal classical picture is therefore this. Spacetime carries locality and causal order. Phase space carries complete instantaneous state data and symplectic structure. Symmetry structure supplies invariants and generator algebra.
+
+### Quantum mechanics
+
+Quantum mechanics keeps the classical need for spacetime, canonical structure, and symmetry, but it adds something genuinely new. The classical state was a point in phase space. The quantum state is not. It is a vector, or more precisely a ray, in a complex Hilbert space $`H`$.
+
+This new space is required to carry the structure demanded by superposition, interference, and probabilistic prediction. A point in phase space singles out one actual configuration and momentum, but quantum state assigns amplitudes to many alternatives at once *for the same state*. We must, therefore, have a space that can preserve the structure of such states as time evolves.
+
+The observables are now self-adjoint, or real-eigenvalued, operators on $`H`$. In ordinary one-particle quantum mechanics one may represent the state as a wavefunction
+
+``` math
+\psi(x) = \langle x \mid \Psi\rangle.
+```
+
+Now, we could look at this and think that we’ve represented the state in spacetime, but we have not, for this is a representation over space only, and we could just as easily have represented the state in the basis of any other observable. Time evolution acts on the state as a whole in Hilbert space, and nothing in this representation ties that evolution to position in a way that builds in relativistic locality. Without that, there is no Minkowski metric, no light cones, and no causal structure of the sort that defines the spacetime in which our emitters and detectors live. But what if we could somehow arrange the time evolution of the state so that emission and detection events do respect the proper causal structure. That is what we will do in QFT.
+
+While Hilbert space does not carry the needed structure of spacetime, it does take over structural elements of phase space’s job. Hilbert space looks very different from phase space. We know it encodes superposition rather than definite observable values, but it also is represented in the eigenbasis of only one chosen observable at a time. How can a space that is represented in a basis of “either position or momentum” replace a space whose coordinates were “position and momentum”? The reason it can do so is that, unlike particles, the wave object encodes both position and wavelength information. Once we associate wavelength with momentum, the wave-like state encodes position and momentum.
+
+We have seen that Hilbert space contributes to the structure needed for quantum evolution. A complex inner product gives a norm, so states can be normalized and total probability can remain one. It also gives angles, so distinct states can remain distinguishable under unitary evolution. But the same inner product carries more than length and angle. Through the magic of complex numbers, Hilbert space’s real and imaginary parts bear different loads. The real part supplies the metric-like structure just mentioned. The imaginary part supplies an antisymmetric, area-like structure that is the quantum remnant of the classical symplectic form, $`dq^{i} \land dp_{i}`$.
+
+If $`\langle\psi,\phi\rangle`$is the complex inner product, then its real and imaginary parts define
+
+``` math
+g(\psi,\phi) = 2\text{ }Re\text{ }\left\langle \psi,\phi \right\rangle,\ \ \ \ \ \ \ \ \ \ \ \ \ \omega(\psi,\phi) = 2\text{ }Im\text{ }\langle\psi,\phi\rangle.
+```
+
+Here $`g`$ is symmetric and metric-like. The second quantity, $`\omega`$, is antisymmetric. We can see this with a simple example. Writing $`z\  = x + iy,\ \ \ \ w = u + iv`$:
+
+``` math
+{\langle z,w\rangle = xu + yv + i(xv - yu).
+}
+```
+That antisymmetric part is exactly what one needs for a symplectic form. (This is just the signed area of the parallelogram spanned by $`\left( x,y \right)`$and $`\left( u,v \right)`$:
+
+``` math
+{\text{Area} = \  \mid xv - yu \mid .
+}
+```
+With this symplectic structure retained in translated form, Hilbert space preserves the part of classical mechanics concerned with reversible flow and conjugate pairings. In classical phase space, position and momentum were paired by the symplectic form, and that pairing gave rise to Hamiltonian flow through the Poisson bracket:
+
+``` math
+\{ F,G\} = \frac{\partial F}{\partial q^{i}}\frac{\partial G}{\partial p_{i}} - \frac{\partial F}{\partial p_{i}}\frac{\partial G}{\partial q^{i}}.
+```
+
+Quantum mechanics preserves that structure in operator form, replacing the Poisson bracket with the commutator,
+
+``` math
+\{ F,G\}\text{\:\,} \longrightarrow \text{\:\,}\frac{1}{i\hslash}\lbrack\widehat{F},\widehat{G}\rbrack,
+```
+
+Which for canonical position and momentum becomes:
+
+``` math
+\lbrack{\widehat{q}}^{\text{ }i},{\widehat{p}}_{j}\rbrack = i\hslash\text{ }\delta^{i}{}_{j}.
+```
+
+Symmetry works in quantum mechanics much as it did in Hamiltonian mechanics, except that Poisson brackets are replaced by commutators. If the symmetry group is the Poincaré group, one may represent it on Hilbert space, so ordinary quantum mechanics can describe how states transform between inertial observers and can correctly encode quantities such as energy, momentum, and spin. But this is not yet relativistic causality. Causality is not just the statement that whole states transform correctly. It is the statement that operations associated with spacelike separated regions do not interfere in a way that would permit superluminal influence. A representation of the Poincaré group on states does not by itself provide spacetime-local observables or require the appropriate commutation relations between them. That is the additional structure QFT must supply.
+
+### Quantum field theory
+
+Quantum field theory adjusts the roles of spacetime and Hilbert space so that quantum observables carry local spacetime structure, and so that interactions can create and destroy particles.
+
+In quantum mechanics there are two objects that work together to calculate measurements, the state and the operators. If we want to bring spacetime into quantum mechanics, it is natural to ask whether one or the other should be situated in spacetime. Since operators are observables, they are the natural choice. The state, by contrast, is better understood as a global object, whose job is to encode the amplitudes and correlations from which measurement outcomes are computed. If we want the operators to depend on spacetime, we must further specify what sort of local spacetime structure they inhabit: discrete points, as in a particle configuration, or a field, as in electromagnetism and gravity. In fact, only fields can mediate influence relativistically. If influence could act directly across a spacelike gap, then because spacelike separated events have no observer-independent time order, one observer’s cause could be another observer’s effect, opening the door to causal paradox. Influence cannot simply jump the gap. But once it does not jump the gap, whatever later makes a difference elsewhere must be instantiated in the intervening region while it is on its way. The moment one says that information propagates, one has already admitted local degrees of freedom that carry it from place to place. In the continuum, that distributed local state is by definition a field.
+
+We can now state this in notation. The basic local objects are operator-valued fields:
+
+``` math
+\widehat{\phi}(x)\text{~[scalar]},\widehat{\ \psi}(x)\text{~[spinor]},{\ \ \ \widehat{A}}_{\mu}(x)\text{~[vector]}.
+```
+
+More carefully, because exact point values are singular, one should work with smeared operators,
+
+``` math
+\widehat{\phi}(f) = \int d^{4}x\text{ }f(x)\widehat{\phi}(x),
+```
+
+and similarly for the other fields.
+
+Once the basic observables are placed in spacetime, relativistic causality can be stated directly:
+
+``` math
+\left\lbrack \widehat{O}(x),\widehat{O}(y) \right\rbrack = 0\ \ \ \text{for~spacelike~separated~}x,y.
+```
+
+This is how relativistic causality is expressed in commutator algebra. It says that the order of two spacelike separated operations has no physical effect. A representation of the Poincaré group on state space alone was not enough, because this new condition presupposes local observables attached to spacetime regions.
+
+A state in Hilbert space is still an amplitude assignment over possible alternatives, but now those alternatives are entire field configurations written in the eigenbasis of field operators.If $`\mid \phi\rangle`$ denotes a field-configuration eigenstate at fixed time $`t`$, then
+
+``` math
+\widehat{\phi}(x,t) \mid \phi\rangle = \phi(x) \mid \phi\rangle,
+```
+
+and the state may be represented as a wave functional,
+
+``` math
+\Psi_{t}\lbrack\phi\rbrack = \langle\phi \mid \Psi(t)\rangle
+```
+
+thus shifting the notion of locality to the field itself rather than trying to exist in the position representation of the state.
+
+We can see how this provides the needed spacetime constraint by looking at an example. Consider two localized interventions, one in region $`A`$ near “Alice” and one in region $`B`$ near “Bob,” with $`A`$ and $`B`$ spacelike separated. Alice changes something in her lab. Bob asks whether his detector statistics change immediately.
+
+In ordinary one-particle quantum mechanics, Alice’s intervention is represented by modifying the Hamiltonian near $`A`$, but the state is global and the theory has no condition forbidding that change from having an immediate effect at spacelike separated $`B`$. It can represent position outcomes, but it does not natively contain distinct local observables attached to spacetime regions whose algebra enforces relativistic separation.
+
+In QFT, it does. Alice’s intervention is represented by a local operator $`{\widehat{O}}_{A}`$and Bob’s by a local operator $`{\widehat{O}}_{B}`$. If the regions are spacelike separated, the theory requires
+
+``` math
+\lbrack{\widehat{O}}_{A},{\widehat{O}}_{B}\rbrack = 0.
+```
+
+That means their order has no physical effect. Since different observers may disagree on which spacelike-separated event happened first, this is exactly what relativistic causality requires.
+
+Poincaré transformations of spacetime are represented by unitary operators on the Hilbert or Fock space, and local fields transform accordingly. For a scalar field,
+
+``` math
+U(\Lambda,a)^{\dagger}\text{ }\widehat{\phi}(x)\text{ }U(\Lambda,a) = \widehat{\phi}\text{ }(\Lambda^{- 1}(x - a)).
+```
+
+This is the bridge connecting state space to spacetime. The relation holds because the field operator and the unitary Poincaré transformations are inherited from the same classical relativistic structure. The classical field already carries a covariant mode expansion and a Poincaré action on those modes. Quantization lifts that structure rather than replacing it: the mode coefficients become operators, and the classical symmetry generators become operators on Hilbert or Fock space. The unitary $`U(\Lambda,a)`$is built from those generators — not from the Hamiltonian alone, which gives only time translations — so its action on the field reproduces the same spacetime transformation law in operator form.
+
+The state space must also be enlarged. Since the field may have no excitations, one excitation, two excitations, and so on, the state space must contain all of those sectors. This is “Fock space,” the direct sum of particle-number sectors:
+
+``` math
+\mathcal{F =}\mathbb{C} \oplus H_{1} \oplus H_{2} \oplus H_{3} \oplus \cdots\text{ }.
+```
+
+The vacuum sector $`\mathbb{C}`$ contains the zero-particle state. The sector $`H_{n}`$ contains the $`n`$-particle sector.
+
+
+
+### Quantizing the Field
+
+It is one thing to say that a quantum field is an operator attached to every point in space, obeying canonical commutation relations. We need to first construct a suitable field and then quantize it, or promote its values to operators. For a field to abide relativistic constraints, first, its values must be well-behaved under Lorentz transformations. This requires the values to be scalars, vectors, or spinors. Second, it must support transmitting signals are bounded by the speed of light. Before we get to nature’s actual quantum fields, we will work with a useful starting field called the Klein Gordon field. This is scalar valued, and it can be readily understood via a simple mechanical model. We will first construct a completely classical relativistic field and then promote its values to operators at which point we will see how quantum fields support particle creation.
+
+#### The Classical Model
+
+We will construct the Klein-Gordon field using a model of a lattice of interconnected springs, and then take the limit of the that lattice spacing shrinking to the continuum limit, reflect on how such a model adheres to Relativity, and finally understand what it means to work in Fourier mode bases, which will become the momentum basis upon quantization.
+
+##### The Spring Lattice Field Model
+
+Let’s look at the mechanical model of this spring lattice. It may seem like we are being a bit obsessive about the details, but each element in the model plays a role in the properties particles have in QFT. The lattice we eventually want has 3 spatial dimensions, and at each node there is some value type. If that value is a scalar, we could represent the picture in 4 dimensions. Therefore if we, without loss of generality, reduce our spatial dimensions to one and let our field value use another, we can draw nice 2d pictures. We can start with a one-dimensional row of beads connected with springs, each bead constrained to slide up and down on a second spring connected to a base point.
+
+\<picture\>
+
+Call the vertical displacement of the $`n`$-th bead $`q_{n}(t)`$. Neighboring beads are connected by springs, so if one bead moves differently from its neighbors they pull it back toward them. In addition, each bead is attached to the fixed frame by its own local spring, so even if all the beads move together there is still a restoring force pulling each one back toward equilibrium.
+
+That second ingredient matters. A chain with only neighbor springs supports waves, but its uniform mode costs no spring energy at all, because if every bead rises by the same amount no spring is stretched. The local spring changes that. It gives the uniform mode a nonzero oscillation frequency. That is the ingredient that will later become the mass scale of the field. There is something really subtle going on here that carries with it the relativistic structure of spacetime as manifest in the mass shell. Remember that the vertical dimension in our picture is spatial only for the purposes of drawing – it represents any scalar value. All spatial motion is contained in our horizontal dimension. Therefore, energy associated with uniform vertical oscillation is the energy when the system is at rest, which should sound familiar. It is structurally the same statement as $`E = mc^{2}`$. Recall that $`E = mc^{2}`$ is the rest case for the more general dispersion equation (setting $`c`$ to 1):
+
+``` math
+\ E^{2} = \ m^{2} + \ p^{2}
+```
+
+Looking ahead just a bit, once we derive the equation of motion for this lattice model, tune the propagation speed to $`c`$, and take the long-wavelength limit relative to the lattice spacing, we will find
+
+``` math
+\omega^{2} = \omega_{0}^{2} + c^{2}k^{2},
+```
+
+where $`\omega_{0}`$is the nonzero frequency of the uniform mode set by the local tether, matching the relativistic dispersion equation, and associating the rest frequency with math. If you are worried about units, one could look a bit farther ahead to the quantum energy-frequency relation and complete this equivalency with:
+
+``` math
+\left( \hslash\omega)^{2} = (\hslash\omega_{0})^{2} + c^{2}(\hslash k)^{2} \leftrightarrow E^{2} = m^{2}c^{4} + c^{2}p^{2}. \right.\ 
+```
+
+From this equation, we can read off the particle mass associated with the field:
+
+``` math
+m = \frac{\hslash\text{ }\omega_{0}}{c^{2}}
+```
+
+The natural classical Lagrangian for this lattice is
+
+``` math
+L = \sum_{n}^{}\left\lbrack \frac{1}{2}M{\dot{q}}_{n}^{\text{ }2} - \frac{1}{2}K_{0}q_{n}^{2} - \frac{1}{2}K(q_{n + 1} - q_{n})^{2} \right\rbrack.
+```
+
+Here $`M`$ is the mass of each bead, $`K`$is the spring constant coupling neighbors, and $`K_{0}`$is the spring constant of the local tether to the frame.
+
+The terms have a simple interpretation. The first is kinetic energy. The middle term penalizes each bead for being away from zero, regardless of what the others are doing. The last penalizes neighboring beads for being at different heights. We can rewrite the Lagrangian in a way that is more idiomatic for fields by assigning each lattice site a position $`x_{n}`$and writing the site variable as a discrete field value,
+
+``` math
+q_{n}(t) \equiv \phi(x_{n},t),
+```
+
+so that
+
+``` math
+L = \sum_{n}^{}\left\lbrack \frac{1}{2}M\text{ }\dot{\phi}(x_{n},t)^{2} - \frac{1}{2}K_{0}\text{ }\phi(x_{n},t)^{2} - \frac{1}{2}K(\phi(x_{n + 1},t) - \phi(x_{n},t))^{2} \right\rbrack.
+```
+
+Using the standard procedure, the Euler–Lagrange equation of motion is hten:
+
+``` math
+M\ddot{\phi}(x_{n},t) + K_{0}\phi(x_{n},t) + K(2\phi(x_{n},t) - \phi(x_{n + 1},t) - \phi(x_{n - 1},t)) = 0.
+```
+
+This is the mechanical lattice analog of the field equation we are heading toward. The first term, $`M\ddot{\phi}`$, says the site value has inertia. The second term, $`K_{0}\phi`$, says the value itself is costly. Even a perfectly uniform displacement wants to relax back. The third term says the says mismatch between nearby sites is costly, so disturbances spread attempting to compensate for this cost.
+
+We can define a new variable, $`\phi_{n} = \sqrt{M}\text{ }q_{n}`$, and rewrite the Lagrangian
+
+``` math
+L = \sum_{n}^{}\left\lbrack \frac{1}{2}{\dot{\phi}}_{n}^{\text{ }2} - \frac{1}{2}\frac{K_{0}}{M}\phi_{n}^{2} - \frac{1}{2}\frac{K}{M}(\phi_{n + 1} - \phi_{n})^{2} \right\rbrack,
+```
+
+and the equation of motion becomes
+
+``` math
+{\ddot{\phi}}_{n} - \frac{K}{M}(\phi_{n + 1} - 2\phi_{n} + \phi_{n - 1}) + \frac{K_{0}}{M}\phi_{n} = 0.
+```
+
+Now we have shifted the focus from mass and spring constants to frequency scales. The ratios
+
+$`\Omega^{2} = \frac{K}{M},{\ \ \ \ \omega}_{0}^{2} = \frac{K_{0}}{M}`$
+
+both have dimensions of inverse time squared. In this form the equation reads
+
+``` math
+{\ddot{\phi}}_{n} - \Omega^{2}(\phi_{n + 1} - 2\phi_{n} + \phi_{n - 1}) + \omega_{0}^{2}\phi_{n} = 0.
+```
+
+We can now look at its normal modes. If we try a “lattice plane wave" of the form
+
+``` math
+\phi_{n}(t) \propto e^{i(kna - \omega t)},
+```
+
+with $`a`$the lattice spacing, then substitution into the equation gives the lattice dispersion relation
+
+``` math
+\omega^{2} = \omega_{0}^{2} + 4\Omega^{2}{sin}^{2}\left( \frac{ka}{2} \right).
+```
+
+This equation nearly has the form of the dispersion equation we need. All that is left is to take the continuum limit that this lattice approximates at long wavelengths. For small $`ka`$,
+
+``` math
+\sin\left( \frac{ka}{2} \right) \approx \frac{ka}{2},
+```
+
+so that the dispersion relation becomes
+
+``` math
+\omega^{2} \approx \omega_{0}^{2} + \Omega^{2}a^{2}k^{2}.
+```
+
+This is the point at which the effective propagation speed emerges. Define
+
+``` math
+c^{2} = \Omega^{2}a^{2} = \frac{Ka^{2}}{M}.
+```
+
+Then the long-wavelength dispersion relation becomes, as promised,
+
+``` math
+\omega^{2} \approx \omega_{0}^{2} + c^{2}k^{2}.
+```
+
+Now let the lattice spacing go to zero while keeping the long-wavelength structure fixed. The discrete index $`n`$becomes a continuous position $`x`$, the discrete field $`\phi_{n}(t)`$becomes a continuous field $`\phi(x,t)`$, and the second difference becomes a spatial second derivative. The lattice equation turns into
+
+``` math
+\partial_{t}^{2}\phi - c^{2}\partial_{x}^{2}\phi + \omega_{0}^{2}\phi = 0.
+```
+
+In higher dimensions the same logic gives
+
+``` math
+\partial_{t}^{2}\phi - c^{2}\nabla^{2}\phi + \omega_{0}^{2}\phi = 0.
+```
+
+This is now a continuum classical field equation. And it is already very close to the relativistic form we want. The term with $`\nabla^{2}`$ came from the neighbor springs. The term with $`\omega_{0}^{2}`$ came from the local tether. The constant $`c`$ is no longer a spring-lattice parameter but the propagation speed of disturbances in the continuum limit. When we identify $`c`$ with the speed of light, we have completed building a model of a field that respects Lorentz symmetry.
+
+Note that we are not merely making the claim that disturbances in the Klein Gordon field travel at finite speed. We are also making the more restrictive claim that their motion respects Lorentz transformations as the differential operator \<equation\> has the same Minkowski sign structure as the spacetime interval itself. That such an equation transforms properly under Lorentz in tantamount to any symmetry generator does so.
+
+##### Comparing Klein Gordon and Schrödinger Equations
+
+Let’s now look at the Klein Gordon and Schrodinger equations side by side and reflect on their differences.
+
+Schrodinger: $`i\hslash\text{ }\partial_{t}\psi = - \frac{\hslash^{2}}{2m}\text{ }\partial_{x}^{2}\psi + V\psi`$*\*
+Klein Gordon: $`\partial_{t}^{2}\phi - c^{2}\partial_{x}^{2}\phi + \omega_{0}^{2}\phi = 0.`$*\*
+
+The Schrödinger equation is first order in time but second order in space. The Klein–Gordon, on the other hand, equation is second order in both. That second spatial derivative in the Schrödinger equation comes from the kinetic-energy term $`p^{2}/2m`$. In position space, $`p`$ becomes $`- i\hslash\partial_{x}`$, so $`p^{2}`$ becomes $`- \hslash^{2}\partial_{x}^{2}`$. This difference in the derivative structure places the two equations into different mathematical families. The Schrödinger equation belongs to the same broad class as diffusion equations, such as the heat equation. Such equations are extremely useful, and often physically accurate within their proper domain, but they have feature that, according to the diffusion equation, every other point is instantly affected, however slightly. The equation allows influence to leak outside any finite-speed causal cone, which is exactly our objection the Schrödinger equation. The Klein–Gordon equation behaves differently. Because time and space enter at the same differential order, it supports genuinely wave-like propagation. Disturbances travel at a finite characteristic speed. In the massless case that speed is exactly $`c`$. In the massive case the field still obeys a hyperbolic equation, so causal influence remains confined to the light cone even though individual wave packets need not move exactly at $`c`$.
+
+We can gain insight into why an equation of the form of Klein Gordon requires finite speed propagation by examining classes of differential equations, which we can divide to hyperbolic, elliptic, and parabolic:
+
+``` math
+\boxed{\begin{matrix}
+\text{Elliptic} & \partial_{t}^{2}\phi + c^{2}\partial_{x}^{2}\phi = 0 \\
+\text{Parabolic} & \partial_{t}\phi - D\text{ }\partial_{x}^{2}\phi = 0 \\
+\text{Hyperbolic} & \partial_{t}^{2}\phi - c^{2}\partial_{x}^{2}\phi = 0
+\end{matrix}}
+```
+
+lliptic equations have second-derivative terms with the same sign. That is the same sign structure as Euclidean distance, where all squared directions add:
+
+``` math
+ds^{2} = dx^{2} + dy^{2} + \cdots
+```
+
+Nothing in that structure singles out a cone or a limiting speed. Accordingly, elliptic equations do not describe propagation from one event to another. They instead constrain a field over a region all at once. That is why they are the natural equations for static or steady-state configurations.
+
+Parabolic equations introduce time evolution, but in an asymmetric way:
+
+``` math
+\partial_{t}\phi - D\text{ }\partial_{x}^{2}\phi = 0.
+```
+
+If we try a Fourier mode
+
+``` math
+\phi(x,t) \propto e^{i(kx - \omega t)},
+```
+
+then
+
+``` math
+- i\omega + Dk^{2} = 0,\text{so}\omega = - \text{ }iDk^{2}.
+```
+
+The frequency is imaginary rather than real, which means the mode does not oscillate. It decays:
+
+``` math
+\phi(x,t) \propto e^{ikx}e^{- Dk^{2}t}.
+```
+
+So parabolic equations smooth out differences instead of carrying traveling waves. A local disturbance spreads immediately, however weakly, to all distances. That is why diffusion equations do not respect a strict speed limit.
+
+Hyperbolic equations have a mixed sign as the Minkowski metric does in hyperbolic spacetime.
+
+``` math
+\partial_{t}^{2}\phi - c^{2}\partial_{x}^{2}\phi = 0.
+```
+
+If we again try a plane wave *\*
+``` math
+\phi(x,t) \propto e^{ikx}e^{- Dk^{2}t}
+```
+
+we find
+
+``` math
+- \omega^{2} + c^{2}k^{2} = 0\  = > \ \omega^{2} = c^{2}k^{2}.
+```
+
+Now $`\omega`$ is real, so the solutions genuinely oscillate and propagate as waves. In fact, the operator factors:
+
+``` math
+\partial_{t}^{2} - c^{2}\partial_{x}^{2} = (\partial_{t} - c\partial_{x})(\partial_{t} + c\partial_{x}),
+```
+
+so disturbances move along
+
+``` math
+x \pm ct = \text{constant}.
+```
+
+That is finite-speed propagation.
+
+This is exactly the structure relativity requires. The spacetime interval is
+
+``` math
+ds^{2} = - c^{2}dt^{2} + dx^{2}.
+```
+
+Because of the minus sign, the null condition
+
+``` math
+ds^{2} = 0
+```
+
+has nontrivial solutions:
+
+``` math
+dx = \pm c\text{ }dt.
+```
+
+These are the edges of the light cone. For a massive worldline,
+
+``` math
+d\tau^{2} = dt^{2} - \frac{dx^{2}}{c^{2}}
+```
+
+Thus, if $`dx/dt > c`$, then $`d\tau^{2} < 0`$ and proper time becomes imaginary. Physical worldlines must therefore remain inside or on the light cone.
+
+The key point is that the operator
+
+``` math
+\partial_{t}^{2} - c^{2}\partial_{x}^{2}
+```
+
+has the same mixed-sign structure as the interval
+
+``` math
+- c^{2}dt^{2} + dx^{2}.
+```
+
+In spacetime, that structure produces a light cone. In the differential equation, it produces characteristic wave propagation at finite speed.
+
+Elliptic equations have second-derivative terms with the same sign. That is the same sign structure as Euclidean distance, where all squared directions add:
+
+``` math
+ds^{2} = dx^{2} + dy^{2} + \cdots
+```
+
+Unlike the hyperbolic case, this structure does not produce a nontrivial null condition and so does not single out a characteristic cone or a finite propagation speed. Accordingly, elliptic equations do not describe propagation from one event to another. They instead constrain a field over a region all at once, which is why they are the natural equations for static or steady-state configurations.
+
+Elliptic operators are Euclidean in sign structure, so they govern spatial balance; hyperbolic operators are Minkowskian in sign structure, so they govern causal propagation.
+
+You may rightfully say at this point, ok, you’ve convinced me, the Klein Gordon field abides Relativity in a way that the Schrödinger equation does not, but we’ve done nothing to say the Klein Gordon field describes the evolution of quantum observables. That is exactly right. For now, we’re only saying that if we could use something like the Klein Gordon to describe quantum evolution, it would play well with Relativity.
+
+This is also a good moment to look ahead. The Klein–Gordon equation is not itself the whole story of matter, and in fact no known fundamental matter field is a simple Klein–Gordon field. One might wonder whether the real secret of relativity is merely matching the order of time and space derivatives, and whether one could instead write an equation first order in both. That would be attractive, because first-order time evolution requires only one initial datum rather than two, which feels closer to ordinary quantum theory, where one specifies a state rather than both a value and its time derivative. The answer is yes, but only if the field has more structure than a scalar value at each point. A scalar field cannot support such an equation in a Lorentz-covariant way. But a spinor field can. That is exactly what happens in the Dirac equation, which is first order in both time and space and describes spin-$`\frac{1}{2}`$ particles such as electrons and quarks.
+
+##### Working in the Momentum Basis
+
+Before we leave our toy spring model, let's take the decisive step of switching to what will become the momentum basis and is for now the "normal mode," or "fourier mode" basis.
+
+First, we need to understand the idea of diagonalizing an operator. As we know, an operator is a generalization of a matrix and diagonalizing a matrix – literally writing it in a form with only diagonal entries – is writing in a basis (the column vectors) of its eigenvectors so that its actions on those vectors is to scale them by their eigenvalues, but never to mix with other basis vectors. From this it follows that any vector written as a superposition of basis vectors transforms under the matrix by having its components scaled by the respective eigenvalues so that each component transforms independently. Looking ahead just a bit, we know that energy commutes with momentum (it can be written in terms of momentum), and we also know that energy is the time evolution generator, thus, if we write our systems Hamiltonian in term in the momentum basis, its components will evolve independently. This independence of evolution will determine how we talk about particle creation, annihilation, and count. We will build up a procedure in the decoupled momentum basis for which we have no equivalent in the coupled position basis.
+
+Let’s hop down a level in detail and see what this looks like in our spring lattice. For the sake of simplicity, we will move to the massless case where this is simply once spring connecting each site. What we want to do is to describe an arbitrary vibrational pattern in terms of so-called independent normal modes. This is actually entirely concrete and in fact a common undergraduate classical mechanics problem used to illustrate the necessity of finding an eigenbasis, or decoupled basis, to solve mechanical problems. Let’s start by actually looking at some simple modes. Below are the k = 0, k=1, k=2 modes and then the k = (k=1) + (k=2) superposition mode.
+
+<img src="C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image494.gif" style="width:6.5in;height:1.9875in" />
+
+<img src="C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image495.gif" style="width:6.5in;height:1.9875in" />
+
+<img src="C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image496.gif" style="width:6.5in;height:1.9875in" />
+
+<figure>
+<img src="C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image497.gif" style="width:6.5in;height:2.06944in" />
+<figcaption><p>Figure 67 - Example modes in spring lattice</p></figcaption>
+</figure>
+
+Now let’s actually solve this system.
+
+Let the lattice have $`N`$sites, with one scalar degree of freedom $`\phi_{n}(t)`$at each site. The Lagrangian is
+
+``` math
+L = \sum_{n = 0}^{N - 1}\left\lbrack \frac{1}{2}{\dot{\phi}}_{n}^{2} - \frac{1}{2}m_{0}^{2}\phi_{n}^{2} - \frac{1}{2}\kappa(\phi_{n + 1} - \phi_{n})^{2} \right\rbrack,
+```
+
+with periodic boundary conditions, so $`\phi_{N} \equiv \phi_{0}`$. The first term is kinetic energy, the second is the onsite restoring term, and the third is the coupling between neighboring sites.
+
+Applying the Euler–Lagrange equation to each $`\phi_{n}`$,
+
+``` math
+\frac{d}{dt}\frac{\partial L}{\partial{\dot{\phi}}_{n}} - \frac{\partial L}{\partial\phi_{n}} = 0,
+```
+
+gives
+
+``` math
+{\ddot{\phi}}_{n} + m_{0}^{2}\phi_{n} + \kappa(2\phi_{n} - \phi_{n + 1} - \phi_{n - 1}) = 0.
+```
+
+This is the system we want to solve. Written this way, it is in the site basis. The unknowns are the site values $`\phi_{n}(t)`$, and the equations are coupled because each site talks to its neighbors. To understand moving to the normal basis, let’s look at the Hamiltonian as this is the time generator.
+
+The free lattice Hamiltonian is
+
+``` math
+H = \sum_{n}^{}\left\lbrack \frac{1}{2}{\dot{\phi}}_{n}^{\text{ }2} + \frac{1}{2}m_{0}^{2}\phi_{n}^{\text{ }2} + \frac{\kappa}{2}(\phi_{n + 1} - \phi_{n})^{2} \right\rbrack.
+```
+
+Here $`m_{0}`$sets the strength of the onsite restoring force, and $`\kappa`$sets the stiffness of the coupling between neighboring sites. In the site basis this Hamiltonian is not diagonal, because the last term ties each site to its neighbors.
+
+What matters is that this coupling has the same form at every site. Shifting the whole lattice by one site leaves the Hamiltonian unchanged. The free lattice therefore has translation symmetry. To exploit that symmetry, we choose a basis of patterns that respond to a one-site shift as simply as possible. The discrete Fourier patterns do exactly that:
+
+``` math
+{e^{ikx_{n}} \rightarrow e}^{ika}e^{ikx_{n}}.
+```
+
+That is, as we have discussed earlier, plane waves, or equivalently here, normal modes, form an eigenbasis of the spatial translation operator. The entire complexity of each wave mode viewed in the position basis reduces to the eigenvalue $`k`$ in the mode basis.
+
+Mathematically, we expand the site values, $`\phi_{0},\phi_{1},\ldots,\phi_{N - 1}`$, as
+
+``` math
+\phi_{n}(t) = \frac{1}{\sqrt{N}}\sum_{k}^{}q_{k}(t)e^{ikx_{n}},k = \frac{2\pi m}{Na},m = 0,1,\ldots,N - 1.
+```
+In the site basis, a configuration is a spatial pattern spread across all sites. In the Fourier basis, that same configuration is specified by the coefficients $`q_{k}(t)`$. The label $`k`$ tells us which translation-eigenpattern we mean. The coefficient $`q_{k}`$ tells us how much of that pattern is present. To use another visual analogy, a note on a guitar string has one characteristic shape, but the weight of that pattern oscillates with time:
+
+<figure>
+<img src="C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image498.png" style="width:6.5in;height:1.59514in" />
+<figcaption><p>Figure 68 - Mode oscillations (not position oscillations)</p></figcaption>
+</figure>
+
+Substituting this expansion into the equations of motion gives
+
+``` math
+{\ddot{q}}_{k} + \omega_{k}^{2}q_{k} = 0,\ \ \omega_{k}^{2} = m_{0}^{2} + 4\kappa{\sin}^{2}\left( \frac{ka}{2} \right).
+```
+
+Equivalently, the Hamiltonian becomes
+
+``` math
+H = \frac{1}{2}\sum_{k}^{}\left\lbrack p_{k}p_{- k} + \omega_{k}^{2}q_{k}q_{- k} \right\rbrack.
+```
+
+Thus, in the Fourier basis the Hamiltonian is diagonal in which the free lattice is written as a sum of independent oscillator energies, one for each allowed $`k`$.
+
+We can see straight away that each independent equation of motion in the Fourier mode basis is simpler to solve than the coupled equation of motion in the position basis. But what really matters for us is that we have a procedure from fixed-particle quantum mechanics that quantizes energy levels in a harmonic oscillator. The fact that the field decomposes into decouple oscillators in the momentum basis will be the basis of the bridge from the field to particles. Whereas in fixed-particle quantum mechanics quantization of energy *for a* particle in a potential, in QFT energy quantization of the field *is a* particle.
+
+# To-be-used-material
+
+## Unitarity
+
+Before introducing the full machinery of quantum mechanics, it is worth isolating one requirement that already tells us a great deal about what the theory must look like. If the basic object of the theory is not a point in phase space but a superposition of amplitudes, then its evolution cannot be arbitrary. It must preserve the structure that makes those amplitudes physically meaningful. That requirement is unitarity.
+
+Let the state of a system be represented by a vector $`\mid \psi\rangle`$in a complex vector space equipped with an inner product $`\langle\phi \mid \psi\rangle`$. This inner product is not an ornamental extra. It is the structure from which the measurable content of the theory is built. Norms come from it. Overlaps come from it. Transition amplitudes come from it. Once probabilities are extracted from squared overlaps, the inner product becomes the quantity whose preservation matters.
+
+An allowed time evolution must therefore preserve that inner product. If the state evolves by a linear map $`U`$, then the condition is
+
+``` math
+\langle U\phi \mid U\psi\rangle = \langle\phi \mid \psi\rangle
+```
+
+for all states $`\mid \phi\rangle`$and $`\mid \psi\rangle`$. A map with this property is called unitary. In operator form, this is
+
+``` math
+U^{\dagger}U = I.
+```
+
+That compact equation says a great deal. It says the evolution may rotate the state in its abstract space, it may mix components, it may alter phases, but it may not stretch, shrink, or scramble the geometry that gives the state physical meaning.
+
+This geometry is richer than ordinary Euclidean geometry because the inner product is complex. If we temporarily view the complex vector space as a real one with extra structure, then the inner product splits into two parts,
+
+``` math
+\langle\phi \mid \psi\rangle = g(\phi,\psi) + i\text{ }\omega(\phi,\psi),
+```
+
+where
+
+``` math
+g(\phi,\psi) = Re\text{ }\langle\phi \mid \psi\rangle,\omega(\phi,\psi) = Im\text{ }\langle\phi \mid \psi\rangle.
+```
+
+The real part $`g`$plays the role of a metric-like structure. It measures lengths and angles. The imaginary part $`\omega`$is antisymmetric and area-like. It is the Hilbert-space remnant of the symplectic structure that classical mechanics preserves in phase space. In classical mechanics, lawful evolution preserves symplectic area. In quantum mechanics, lawful evolution preserves something stronger. It preserves the entire complex inner product, and therefore preserves both the metric-like and symplectic-like parts at once. Symplecticity has not disappeared. It has been absorbed into unitarity.
+
+This is one reason quantum theory needs Hilbert space rather than ordinary configuration space. A wave-like state carries internal structure. Its components do not merely list mutually exclusive possibilities. They coexist with relative magnitudes and relative phases, and those relative phases affect future outcomes through interference. The state is therefore not just a distribution over alternatives. It is a single object whose parts can reinforce or cancel one another. A theory of such objects needs a geometry that can keep track of both size and phase relations. The complex inner product does exactly that.
+
+Consider a state written as a superposition,
+
+``` math
+\mid \psi\rangle = \sum_{n}^{}c_{n} \mid n\rangle.
+```
+
+The coefficients $`c_{n}`$are amplitudes, not probabilities. Their squared magnitudes may eventually be read probabilistically in a suitable basis, but the state itself contains more than those magnitudes. It also contains the phase relations among the $`c_{n}`$. Those phases are not decorative. They are what make interference possible. Under unitary evolution,
+
+``` math
+\mid \psi(t)\rangle = U(t) \mid \psi(0)\rangle,
+```
+
+the amplitudes change, but they change in a way that preserves the full pattern of relations among components. A superposition may spread, twist, and recombine, but it does not come apart. The geometry that makes interference meaningful is carried forward intact.
+
+From this one condition follow many of the most familiar features of quantum mechanics.
+
+First, unitarity preserves norm. Since
+
+``` math
+\langle\psi(t) \mid \psi(t)\rangle = \langle\psi(0) \mid \psi(0)\rangle,
+```
+
+a normalized state remains normalized. This is why total probability is conserved in a closed quantum system. But probability conservation is only the most visible consequence, not the deepest one.
+
+Second, unitarity preserves transition amplitudes and therefore transition probabilities. If two states have a given overlap now, they retain that overlap after both are evolved. The mutual relations among states are not distorted.
+
+Third, unitarity preserves angles and orthogonality. If two states are orthogonal, meaning perfectly distinguishable in principle, then unitary evolution keeps them orthogonal. Quantum evolution may make a state harder for us to describe in everyday terms, but it does not erase the distinctions the theory itself makes. Distinguishability is preserved.
+
+Fourth, unitarity makes closed-system evolution reversible. Since $`U^{\dagger}U = I`$, the inverse of $`U`$exists and is $`U^{\dagger}`$. One can run the evolution backward. This does not mean that every practical process in the world is reversible. Measurements, coarse-graining, and open-system effects complicate the story. But the underlying law for an isolated system does not discard information. It transforms without tearing.
+
+These consequences are often taught separately. Probability conservation is presented in one place, reversibility in another, orthogonality in another. But they are all facets of the same geometric fact. A unitary evolution preserves the full inner-product structure of state space.
+
+This gives quantum mechanics a kind of continuity very different from classical continuity. In classical mechanics, a system remains itself by tracing a path through phase space. In quantum mechanics, a state need not follow a sharp trajectory at all. It may be spread across many possibilities. It may evolve into a superposition whose components correspond to outcomes that classical language would regard as incompatible. Yet the state is not thereby destroyed into a formless cloud. What persists is not a point, but a structure. What survives is not certainty, but identity of form.
+
+That is why unitarity deserves to be understood before the usual interpretive puzzles arrive. It tells us that quantum uncertainty is not chaos. Superposition does not mean that anything goes. The amplitudes evolve under a severe constraint. Their total geometric organization must be preserved. Norm is preserved. Distinguishability is preserved. Reversibility is preserved. The metric-like and symplectic-like aspects of the theory are preserved together.
+
+Unitarity, then, is the principle that pulls identity out of the ashes of uncertainty. A quantum state may be indefinite with respect to many classical questions, but it is not without structure, and that structure is not allowed to decay under lawful evolution. The state may rotate through possibility, but it must remain itself.
+
+# Unused material
+
+## Quantum Field Theory - Notes
+
+### Random notes
 
 - There’s a procedure. Quantize/operators, path integrals, propagators, S-matrix. We can’t poopoo the procedure contains the ontology, but still, trudging through the procedure on its on, is, ugh.
 
@@ -7315,440 +8112,93 @@ A few things I particularly like in this version:
 
 - Gauge fields are back where they belong: before the full calculational machinery, as part of the ontology and architecture rather than as an afterthought.
 
-# Quantum Field Theory
 
-Relativity flouts our intuition – measuring sticks themselves change with relative motions – but leaves our categories intact. Quantum mechanics demands a new categories altogether – we can no longer reason about a world filled with objects at definite locations but must instead probe nature to find statistical patterns. These theories constitute our modern insights into nature’s fundamental structure, but do not fit together to form a coherent and complete story. “Quantum field theory” is an attempt to address this. In this section, we will not encounter any new intuition-smashing result. Instead, we will recount the – often somewhat messy – synthesis that comprises our current fundamental model of all but gravity.
+## Unused QFT material\
+intro material
 
-In presenting quantum field theory, we will first look at the gaps and inconsistencies of early quantum mechanics to understand why we need QFT. Next, we will discuss the major building blocks of the ontology, or fundamental constituents of reality, the theory asserts. We will then develop a simple working physical field model and using that make the decisive of step marrying the ideas of a classical field and quantum operators. At this point we will be able to say what it means to be a particle. We will complete this development of the core model by formally expressing the field theory in the algebraic structure of quantum canonical commutators. At this point we can ask ourselves what we are the building-block calculation we can make with such a theory. To approach these calculations, we will switch our approach from thinking about local differential equations to thinking about global action variation. This will lead to perturbative solutions and Feynman diagrams that give definition to our conception of discreet interactions. We will then move from our simple example field to actual matter and gauge fields, focusing particularly on the electron and photon fields, known collectively as quantum electrodynamics, or QED. Finally, as a pay off for the long journey to present physics at its most fundamental level, we will show that we can use QED to derive the familiar Coulomb electromagnetic forces.
+~~## The QFT Model~~
 
-## The Limits of Early Quantum Mechanics 
+~~- Fields~~
 
-In its early development, the originators of quantum mechanics were too busy inventing a brilliant new formalism to express wildly counterintuitive evidence to, at the same time, offer a fully complete and coherent physical theory.
+~~  - nature of fields – classical maxwell field – carries energy dynamic~~
 
-### Wherefore Particles?
-The first conceptual gap in early quantum mechanics is that it offers no answer to the natural question: what is a particle? If one is happy with the operational definition that a particle is a sort of rigid object, this isn’t a problem, but this definition quickly becomes untenable in quantum theory. How can a rigid body have an uncertain location? What accounts for different particle types? How is a rigid body an irreducible representation of symmetry? When one learns about the particle nature of light demonstrated by the photoelectric effect, one may be tempted to think that a particle, in early quantum mechanics, is a “quantum,” a little parcel of energy. This is, in fact, what QFT will tell us, but early quantum mechanics does not say this. It explained how a particle confined to a location has quantized energy levels due to the need to fit its wave function into the potential, like harmonics fit on a guitar string. In fact, using early quantum theory, calculating these energy levels is an introductory undergraduate exercise. But there is no similar way to calculate that free energy must come in discrete quanta. From de Broglie’s equations, we do know the energy of a particle is related to frequency by $`E = h\nu`$, but this does not answer why additional energy must be added as discrete particles. QFT, through so-called “second quantization,” does take exactly this step, defining particles as quanta of excitation of a field in spacetime, where the discrete spectrum is still picked out by a boundary-condition-type requirement: the total probability across all field configurations must add up to some finite constant, which means that the probability assigned to arbitrarily large field amplitudes — and thus arbitrarily large energies — must die away. Second quanization uplevels the discreet spectrum associated with boundary conditions from the wave function to the wave functional of the field configuration. 
+~~    - why this is needed forces~~
 
-If particles are field excitations, what then are waves in the classical E&M field sense? The answer is that they are quantum fields in the case where many particles occupy the same mode. This is true for light but not for fermionic matter fields due to the Pauli exclusion principle, which prevents multiple fermions from occupying the same state. Now one might fairly ask, if the origin of particles is field excitations, what is the origin of the field? QFT offers no answer for this other than that it is the only object we know of that can meet the demands of spacetime symmetry and unitarity of state.
+~~  - spring model~~
 
+~~- The wave function is not the field~~
 
-The second conceptual gap in early quantum mechanics is that it is not constructed on spacetime.
+~~- But what is a QFT field.~~
 
+~~  - Operators~~
 
-### Where is Spacetime
-Early quantum mechanics is lacking a notion of local spacetime. If quantum mechanics is a theory only of probaility distributions over position, removing the the theoretic elements of bodies with trajectories, it is unmoored from spacetime. But Relativity demands that influence be local. Were this not the case, spatially separate locations on the same equal-time slice could influence one another, that is, their influence could act outside their light cones. But the wave function is not, in the classical sense, a field spread through spacetime that passes influence from neighbor to neighbor. It is an amplitude over position space or other dynamical variables, in the one-particle case over position space or some other dynamical variable, and in the many-particle case over configuration space. As such, it does not move through space. It is simply given on the whole slice at once, or, equivalently, moves at infinite speed. While this structure appears to present a causal contradiction, knowing what a slippery thing the wave function is, we will specify experiments that pin down what sort of spacelike influence this quantum formalism implies. 
+~~    - Think of them as actors not values, but what -are- they, well let them act if you must~~
 
-We can see this relativistically impermissible structure directly in the Schrödinger equation,
+~~    - Put observations in space~~
 
-$$
-i\hbar \frac{\partial \psi}{\partial t}
-=
-\left(
--\frac{\hbar^2}{2m}\nabla^2 + V
-\right)\psi.
-$$
+~~The first step in constructing quantum field theory is to construct a field that is joined to quantum mechanics’ notion of state space. After that, we can describe how to “use” the field and state space as a foundation from which to derive physical predictions.~~
 
-It is first order in time and second order in space, but in spacetime space and time stand, modulo the metric sign, on equal footing. That mismatch is already a strong clue that something is wrong. Equations of this kind belong to the broad family of diffusion equations, such as those describing heat flow, in which an amplitude spreads with exponential falloff but becomes immediately nonzero everywhere. In a relativistic setting that is impermissible, since influence should remain confined to the light cone.
+~~There are two directions from which to approach quantum fields. The more ontologically satisfying direction is to move the operators of fixed-particle quantum mechanics which exist only as actions on state space into a causal spacetime setting. This makes intuitive sense. Since quantum mechanics said nothing about how observation interact in spacetime in accordance with relativity, to put the operators in spacetime is to put observations in spacetime. But simply saying $`O(x)`$ does not give any mechanics and moreover, it does not entail the required energetic physicality of the field which is necessary to abide local causality. The more useful direction for gaining a hands-on grasp of the model is to formulate a classical field and then “quantize” it, or promote the field values to operators. This approach lends itself to ontological confusion – what was the classical field before we quantized it? And how exactly did quantizing change it? By keeping both directions in mind, we can attain a level of ontological perspective while building a model that is suitably mechanical to abide local causality.~~
 
-From the Schrödinger equation’s solutions, we can find the dispersion relation,
+~~There are two ways to think of quantum fields that start from different points, but amount to the same thing. The first way is to start with fixed-particle quantum mechanics and move the operators of which existed only as actions on state space into a causal spacetime setting:~~ $`\mathcal{O \rightarrow O}(x).`$ ~~This makes intuitive sense. Since quantum mechanics said nothing about how observation interact in spacetime in accordance with relativity, to put the operators in spacetime is to put observations in spacetime. But simply saying~~ $`O(x)`$ ~~does not itself provide the basis of a mechanical system nor entail the required energetic physicality of the field which is necessary to abide local causality. The second way, which is more useful direction for gaining a hands-on grasp quantum fields, is to formulate a classical field and then “quantize” it, or promote the field values to operators. But this approach raises puzzling questions. Was there a classical field before we quantized it? And how exactly did quantizing change it? The quantum field for photons in fact is constructed identically to Maxwell’s classic E&M field, but what about the electron field? Classical mechanics of matter was never formulated as a matter field, but we could imagine a sort of semi-classical view in which we don’t know the full formalism of quantum mechanics but we have some intuition of particle delocalization, and we could in fact express the mechanics of “rigid bodies on average” in terms of a field. What matters is that the classical field we quantize must have the same causal flow of energy as our target quantum field. In particular, in the classical field the field strength is related to the energy density and in the quantum field it is as well but with energy density in being turn related to particle density.~~
 
-$$
-\omega = \frac{\hbar k^2}{2m},
-$$
+~~There are two ways to think about quantum fields. They begin from different starting points, but meet in the same theory. The first is to begin with fixed-particle quantum mechanics and place its operators, which otherwise act only on state space, into a causal spacetime setting,~~ $`\mathcal{O \rightarrow O(}x)`$~~. This makes intuitive sense. If early quantum mechanics said little about how observables are situated in spacetime in a way compatible with relativity, then to place operators in spacetime is, in an important sense, to place observations in spacetime. But simply writing~~ $`\mathcal{O(}x)`$ ~~does not yet give us a mechanical system, nor does it by itself supply the dynamical, energy-carrying physicality required for local causality.~~
 
-from which we find the group velocity,
+~~The second route, and the more useful one for gaining a hands-on grasp of quantum fields, is to begin with a classical field and then quantize it, replacing ordinary field values with operator-valued content. But this route raises puzzling questions of its own. Was there really a classical field there before quantization, and what exactly changed when we quantized it? For photons, the situation is unusually favorable, because the quantum field is built by quantizing Maxwell’s already existing classical electromagnetic field. But what about the electron field? Classical mechanics was never formulated as a classical field theory of matter in the same straightforward way. Still, one can imagine a semi-classical point of view in which one had no full quantum formalism, but did have some grasp of delocalization, and so described the mechanics of matter in terms of distributed fields rather than perfectly localized particles. What matters is that the classical field we quantize must share with the target quantum field the same local causal flow of energy. In the classical theory, the field configuration itself determines the energy density. In the quantum theory, the corresponding energy density is encoded in local operators built from the field, and in regimes where a particle picture applies, this can also be read as a greater or lesser density of excitation from place to place.~~
 
-$$
-v_g = \frac{\partial \omega}{\partial k} = \frac{\hbar k}{m}.
-$$
+~~### Operators in Spacetime~~
 
-The speed of light appears nowhere in this equation, and thus the group velocity is unbound. In early quantum mechanics, barring pathological exceptions, group velocity is particle velocity, so the theory predicts that particle velocity can exceed lightspeed in an experimentally observable way. This is exactly what one should expect from a theory built for Galilean rather than Minkowskian spacetime.
-
-We can devise an experiment to test this. Prepare a narrow free-particle wave packet with sufficiently large central wavenumber, let it propagate across a known baseline, and compare the arrival time of the packet peak to the light-travel time across the same distance. Since the group velocity in the theory is unbounded, the theory permits choosing the packet so that its peak arrives sooner than any light signal could.
-
-One can see the same problem by starting from a localized state. Suppose that on some equal-time slice the particle is sharply confined to a small spatial region. Under Schrödinger evolution, that localization does not spread by advancing outward through neighboring points at some finite characteristic speed. It evolves according to
-
-$$
-\psi(x,t) = \int_{-\infty}^{\infty} \phi(k)\, e^{i(kx-\omega t)}\, dk,
-$$
-
-with
-
-$$
-\omega = \frac{\hbar k^2}{2m}.
-$$
-
-Since every Fourier mode is immediately present in the evolved state, the wave function acquires nonzero support arbitrarily far away after any nonzero time, however short. The tails may be tiny, but they are there at once. In a relativistic theory that matters. If a particle is localized here now, there must be regions elsewhere now that remain exactly outside causal reach. 
-
-Here too the experiment is straightforward. Localize the particle near one detector on an equal-time slice, place a second detector far enough away that for a chosen short time window it is spacelike separated from the first, and then allow the state to evolve for that short time. Schrödinger evolution immediately assigns the distant detector a nonzero amplitude where relativity demands it be exactly zero.
-
-### Making Particles
-
-Early quantum mechanics fixes the particle count at the start. For $N$ particles, the state is a wave function on an $N$-particle configuration space,
-
-$$
-\psi(x_1,\dots,x_N,t).
-$$
-
-The number of particles is built into the space the state lives on. Time evolution can move amplitude around inside that space, but it cannot leave it. An $N$-particle Schrödinger theory can reshuffle the state of $N$ particles. It cannot turn $N$ into $N+1$ or $N-1$.
-
-But particle creation in nature is commonplace. An excited atom emits a photon, and an energetic collision produces new particles. Matter and radiation exchange quanta. One may model different particle compositions with different Hilbert spaces, but that is exactly the point. The theory does not contain one unified state space in which particle composition may change.
-
-QFT will fix this by changing what a particle is. In second quantization, a particle is not a primitive object that happens to carry energy. It is one step in the discrete excitation spectrum of a field mode. Once a mode is quantized, its occupation number, how many particles are in a given momentum mode, comes in levels $n=0,1,2,\dots$, and there are operators that move up and down that ladder,
-
-$$
-\hat a^\dagger |n\rangle \propto |n+1\rangle,
-\qquad
-\hat a |n\rangle \propto |n-1\rangle.
-$$
-
-These ladder operators imply an extension of state space to the direct sum of all fixed-particle-number spaces, called Fock space.
-
-### Where Potentials Come From
-
-Classical physics says "give me a potential energy function, and I will tell you a body's trajectory." What it does not say is the origin of that potential. It may label it, e.g., gravitation or electrical, but it takes the potential as a given, and proceeds from there. 
-
-We see this in the form of a typical Hamiltonian, 
-
-$$
-H = \frac{p^2}{2m} + V(x),
-$$
-
-Early quantum mechanics likewise takes the potential as a given, 
-
-$$
-\hat H = \frac{\hat p^2}{2m} + V(\hat x),
-$$
-
-and then solves for the state in the prescribed environment. The hydrogen atom illustrates this point. The electron is treated quantum mechanically, but the Coulomb potential is simply posited. Likewise, a particle in a box is given walls, and a harmonic oscillator is given a restoring force. 
-
-This approach is unassailably effective, but we a priori prefer a theory that explains what had been given in terms of a smaller number of theoretic elements. 
-
-Classical electromagnetism takes a step toward giving an origin story for potentials. Rather than simply positing a potential function over space, it gives the field potential an energetic, dynamic body that evolves in accordance with Relativity. What this does not do, however, is provide a mechanism by which potential acts on matter. 
-
-At the same time, as we have seen, gauge fields can provide such a mechanism, through the curvature of the connection field. However, before QFT, the role of the electromagnetic field as a connection for a matter field was not worked out. We will see that in QED (QFT for electromagnetism), there are fields associated with matter particles and a gauge field associated with photons whose curvature is responsible for the electromagnetic force. In the formalism, it will appear as an interaction term in the Lagrangian of the full system. Schematically, one writes
-
-$$
-\mathcal{L}_{\mathrm{QED}}
-=
-\mathcal{L}_{\mathrm{electron}}
-+ \mathcal{L}_{\mathrm{photon}}
-+ \mathcal{L}_{\mathrm{interaction}}.
-$$
-
-The first term is the electron-field dynamics, the second the photon-field dynamics, and the third their coupling. At that point the potential is no longer primitive. It survives only as an effective description of a deeper process in which fields interact locally.
-
-## The Spaces of QFT
-We are going to construct specific quantum fields, formalize their interactions, and make calculations with them. However, as QFT adds a layer of abstraction on top of the already extraordinarily abstract ideas of quantum mechanics and Relativity, when working through the details, one can feel they have lost sight of the concepts underlying the calculations. Therefore, let's start by discussing the theoretic elements of QFT, and let's do so by anchoring these in the language of spaces, for every element in a physical theory is reflected in the spaces it invokes, the structure of those spaces and the objects that inhabit them. 
-
-We are biased to favor spacetime because it is the space we directly perceive, but nature is not required to privilege our perception. In physics, how influence transmits locally, how a complete state is specified, how symmetries constrain possibility, and how identity is preserved in a probabilistic world are organized in the interplay of multiple spaces. To best appreciate the elements of  QFT, let's begin by reviewing the spaces of classical and early quantum mechanics, and then turn to the changes made by QFT.
-
-### Spaces in Hamiltonian Mechanics
-
-A classical theory must distinguish a **state at an instant** from a **history through time**. A history is the full trajectory. A state is the information on one time slice from which that trajectory can be generated. In Hamiltonian mechanics that state is organized in **phase space**. For finitely many degrees of freedom one writes
-
-``` math
-z = (q^{i},p_{i}),
-```
-
-and for a classical field one writes, on a time slice,
-
-``` math
-z = (\phi(x),\pi(x)).
-```
-
-The variables $q^{i}$, or $\phi(x)$ in the field case, specify the configuration. The variables $p_{i}$, or $\pi(x)$, specify the conjugate momentum. We stress “on a time slice” because spacetime contains entire histories, while dynamics asks a different question: what present state is enough to determine the future.
-
-One could try to organize the state using position and velocity. For simple systems that often works. But momentum is not just velocity renamed. It is defined from the Lagrangian by
-
-``` math
-p_{i} = \frac{\partial L}{\partial{\dot{q}}^{i}},\pi(x) = \frac{\partial L}{\partial\dot{\phi}(x)}.
-```
-
-In the simplest cases momentum is proportional to velocity. In general it is not. The distinction matters in generalized coordinates, in relativistic systems, in gauge theories, and in field theory. More importantly, momentum lets us rewrite the theory in a form that carries much more structure than a bare position-velocity description. The state is no longer just “where things are” and “how fast they are changing.” It is organized into conjugate pairs, whose structure we will unpack. The upper index on $`q^{i}`$and the lower index on $`p_{i}`$are distinguishing two different kinds of object. An infinitesimal displacement $`dq^{i}`$is a position-type change. The momentum $`p_{i}`$is the corresponding dual object, written with a lower index because its role is to combine with such a displacement to produce the scalar quantity
-
-``` math
-p_{i}\text{ }dq^{i}.
-```
-
-This pairing is the first sign that phase space is not an arbitrary list of variables. Once the rate data are written in this momentum form, position and momentum fit together in a built-in geometric structure.
-
-That built-in structure is the symplectic form,
-
-``` math
-\omega = dq^{i} \land dp_{i}.
-```
-
-Here $`dq^{i} \land dp_{i}`$represents the infinitesimal oriented area in each position-momentum plane. So the symplectic form is the phase-space area structure. It tells us that the basic geometry of phase space is not a geometry of lengths and angles, but a geometry of paired position-momentum areas.
-
-This matters because that area structure turns functions into flows. A function on phase space, such as the Hamiltonian, tells us how its value changes under small moves away from a point. The symplectic structure converts that change-data into a vector field, meaning an actual direction of motion through phase space. In this sense, the symplectic form is the rule that turns gradients into flows.
-
-The Poisson bracket is the algebraic expression of that rule. For two functions $`F`$and $`G`$on phase space,
-
-``` math
-\{ F,G\} = \frac{\partial F}{\partial q^{i}}\frac{\partial G}{\partial p_{i}} - \frac{\partial F}{\partial p_{i}}\frac{\partial G}{\partial q^{i}}.
-```
-
-This bracket tells us how the flow generated by one function acts on another. Classical observables are then ordinary functions on phase space,
-
-``` math
-A = A(q,p)\text{or}A = A\lbrack\phi,\pi\rbrack.
-```
-
-When the generating function is the Hamiltonian $`H`$, the resulting flow is physical time evolution. Hamilton’s equations are
-
-``` math
-{\dot{q}}^{i} = \{ q^{i},H\},{\dot{p}}_{i} = \{ p_{i},H\}.
-```
-
-So the symplectic form, the Poisson bracket, and Hamilton’s equations are three parts of one structure. The symplectic form gives phase space its position-momentum area geometry. The Poisson bracket is the corresponding algebra on functions. Hamilton’s equations are the flow generated by the energy function within that geometry.
-
-Because the flow is generated in this way, it preserves the symplectic structure itself. In the simplest picture, a region of phase space may be stretched and sheared as the system evolves, but its basic position-momentum area is not destroyed. In higher dimensions the corresponding phase-space volume is preserved as well. This property is known as Liouville’s theorem, which states that a statistical ensemble of initial conditions, however it evolves, occupies the same phase space volume.
-
-Phase space therefore does more than store enough information to start the system evolving. It organizes the classical state in a form that makes time evolution a vector flow, gives a natural bracket algebra on observables, preserves phase-space volume, and supplies exactly the structural features that quantum mechanics will keep in translated form. In quantum theory, the Poisson bracket becomes the commutator, and the structure-preserving role played here by symplectic flow reappears in the preservation laws of unitary evolution. Some people say Hamiltonian Mechanics is the “river of time” formulation of mechanics. Indeed, by picking a conjugate pairing of position and momentum, we can see time evolution as a vector flow, as though in a fluid, and Liouville’s theorem is that statement that this fluid in incompressible.
-
-Spacetime enters classical theory as the space in which events occur and in which local dynamical (changing over time) quantities are assigned. In classical particle mechanics a trajectory is a worldline in spacetime. In classical field theory the basic variables are already local functions on spacetime,
-
-``` math
-\phi(x)\ (scalar),\ \ \ \ \ A_{\mu}(x)\ (vector),\ \ \ \ \psi(x)\ (spinor),
-```
-
-and causality is built into their equations of motion. A relativistic classical field theory inherits adherence to the structure of Relativity “for free” because its state variables already inhabit spacetime. This seems obvious, but we will see how quantum mechanics breaks this relationship.
-
-Symmetry groups that constrain dynamics like the Poincare group reside in their own space, whose geometric structure constrains the theory. In Hamiltonian mechanics each continuous symmetry has a generator, a function on phase space, and the Poisson brackets among the generators reproduce the Lie algebra of the symmetry group:
-
-``` math
-\{ G_{a},G_{b}\} = f_{ab}{}^{c}\text{ }G_{c}.
-```
-
-This is the local algebraic shadow of the group geometry. For example, for angular momentum,
-
-``` math
-\{ J_{i},J_{j}\} = \epsilon_{ijk}J_{k}.
-```
-
-For spacetime symmetry one gets the classical Poincaré algebra. The meaning is direct: the way infinitesimal transformations fail to commute is fixed by the structure of the symmetry group itself.
-
-Symmetries therefore already act physically in classical mechanics. A generator $`G`$ produces an infinitesimal canonical transformation by
-
-``` math
-\delta F = \{ F,\epsilon G\}.
-```
-
-The group geometry is reflected in the Poisson algebra, and the Poisson algebra acts on the phase-space observables.
-
-The minimal classical picture is therefore this. Spacetime carries locality and causal order. Phase space carries complete instantaneous state data and symplectic structure. Symmetry structure supplies invariants and generator algebra.
-
-### Quantum mechanics
-
-Quantum mechanics keeps the classical need for spacetime, canonical structure, and symmetry, but it adds something genuinely new. The classical state was a point in phase space. The quantum state is not. It is a vector, or more precisely a ray, in a complex Hilbert space $`H`$.
-
-This new space is required to carry the structure demanded by superposition, interference, and probabilistic prediction. A point in phase space singles out one actual configuration and momentum, but quantum state assigns amplitudes to many alternatives at once *for the same state*. We must, therefore, have a space that can preserve the structure of such states as time evolves.
-
-The observables are now self-adjoint, or real-eigenvalued, operators on $`H`$. In ordinary one-particle quantum mechanics one may represent the state as a wavefunction
-
-``` math
-\psi(x) = \langle x \mid \Psi\rangle.
-```
-
-Now, we could look at this and think that we’ve represented the state in spacetime, but we have not, for this is a representation over space only, and we could just as easily have represented the state in the basis of any other observable. Time evolution acts on the state as a whole in Hilbert space, and nothing in this representation ties that evolution to position in a way that builds in relativistic locality. Without that, there is no Minkowski metric, no light cones, and no causal structure of the sort that defines the spacetime in which our emitters and detectors live. But what if we could somehow arrange the time evolution of the state so that emission and detection events do respect the proper causal structure. That is what we will do in QFT.
-
-While Hilbert space does not carry the needed structure of spacetime, it does take over structural elements of phase space’s job. Hilbert space looks very different from phase space. We know it encodes superposition rather than definite observable values, but it also is represented in the eigenbasis of only one chosen observable at a time. How can a space that is represented in a basis of “either position or momentum” replace a space whose coordinates were “position and momentum”? The reason it can do so is that, unlike particles, the wave object encodes both position and wavelength information. Once we associate wavelength with momentum, the wave-like state encodes position and momentum.
-
-We have seen that Hilbert space contributes to the structure needed for quantum evolution. A complex inner product gives a norm, so states can be normalized and total probability can remain one. It also gives angles, so distinct states can remain distinguishable under unitary evolution. But the same inner product carries more than length and angle. Through the magic of complex numbers, Hilbert space’s real and imaginary parts bear different loads. The real part supplies the metric-like structure just mentioned. The imaginary part supplies an antisymmetric, area-like structure that is the quantum remnant of the classical symplectic form, $`dq^{i} \land dp_{i}`$.
-
-If $`\langle\psi,\phi\rangle`$is the complex inner product, then its real and imaginary parts define
-
-``` math
-g(\psi,\phi) = 2\text{ }Re\text{ }\left\langle \psi,\phi \right\rangle,\ \ \ \ \ \ \ \ \ \ \ \ \ \omega(\psi,\phi) = 2\text{ }Im\text{ }\langle\psi,\phi\rangle.
-```
-
-Here $`g`$ is symmetric and metric-like. The second quantity, $`\omega`$, is antisymmetric. We can see this with a simple example. Writing $`z\  = x + iy,\ \ \ \ w = u + iv`$:
-
-``` math
-{\langle z,w\rangle = xu + yv + i(xv - yu).
-}
-```
-That antisymmetric part is exactly what one needs for a symplectic form. (This is just the signed area of the parallelogram spanned by $`\left( x,y \right)`$and $`\left( u,v \right)`$:
-
-``` math
-{\text{Area} = \  \mid xv - yu \mid .
-}
-```
-With this symplectic structure retained in translated form, Hilbert space preserves the part of classical mechanics concerned with reversible flow and conjugate pairings. In classical phase space, position and momentum were paired by the symplectic form, and that pairing gave rise to Hamiltonian flow through the Poisson bracket:
-
-``` math
-\{ F,G\} = \frac{\partial F}{\partial q^{i}}\frac{\partial G}{\partial p_{i}} - \frac{\partial F}{\partial p_{i}}\frac{\partial G}{\partial q^{i}}.
-```
-
-Quantum mechanics preserves that structure in operator form, replacing the Poisson bracket with the commutator,
-
-``` math
-\{ F,G\}\text{\:\,} \longrightarrow \text{\:\,}\frac{1}{i\hslash}\lbrack\widehat{F},\widehat{G}\rbrack,
-```
-
-Which for canonical position and momentum becomes:
-
-``` math
-\lbrack{\widehat{q}}^{\text{ }i},{\widehat{p}}_{j}\rbrack = i\hslash\text{ }\delta^{i}{}_{j}.
-```
-
-Symmetry works in quantum mechanics much as it did in Hamiltonian mechanics, except that Poisson brackets are replaced by commutators. If the symmetry group is the Poincaré group, one may represent it on Hilbert space, so ordinary quantum mechanics can describe how states transform between inertial observers and can correctly encode quantities such as energy, momentum, and spin. But this is not yet relativistic causality. Causality is not just the statement that whole states transform correctly. It is the statement that operations associated with spacelike separated regions do not interfere in a way that would permit superluminal influence. A representation of the Poincaré group on states does not by itself provide spacetime-local observables or require the appropriate commutation relations between them. That is the additional structure QFT must supply.
-
-### Quantum field theory
-
-Quantum field theory adjusts the roles of spacetime and Hilbert space so that quantum observables carry local spacetime structure, and so that interactions can create and destroy particles.
-
-In quantum mechanics there are two objects that work together to calculate measurements, the state and the operators. If we want to bring spacetime into quantum mechanics, it is natural to ask whether one or the other should be situated in spacetime. Since operators are observables, they are the natural choice. The state, by contrast, is better understood as a global object, whose job is to encode the amplitudes and correlations from which measurement outcomes are computed. If we want the operators to depend on spacetime, we must further specify what sort of local spacetime structure they inhabit: discrete points, as in a particle configuration, or a field, as in electromagnetism and gravity. In fact, only fields can mediate influence relativistically. If influence could act directly across a spacelike gap, then because spacelike separated events have no observer-independent time order, one observer’s cause could be another observer’s effect, opening the door to causal paradox. Influence cannot simply jump the gap. But once it does not jump the gap, whatever later makes a difference elsewhere must be instantiated in the intervening region while it is on its way. The moment one says that information propagates, one has already admitted local degrees of freedom that carry it from place to place. In the continuum, that distributed local state is by definition a field.
-
-We can now state this in notation. The basic local objects are operator-valued fields:
-
-``` math
-\widehat{\phi}(x)\text{~[scalar]},\widehat{\ \psi}(x)\text{~[spinor]},{\ \ \ \widehat{A}}_{\mu}(x)\text{~[vector]}.
-```
-
-More carefully, because exact point values are singular, one should work with smeared operators,
-
-``` math
-\widehat{\phi}(f) = \int d^{4}x\text{ }f(x)\widehat{\phi}(x),
-```
-
-and similarly for the other fields.
-
-Once the basic observables are placed in spacetime, relativistic causality can be stated directly:
-
-``` math
-\left\lbrack \widehat{O}(x),\widehat{O}(y) \right\rbrack = 0\ \ \ \text{for~spacelike~separated~}x,y.
-```
-
-This is how relativistic causality is expressed in commutator algebra. It says that the order of two spacelike separated operations has no physical effect. A representation of the Poincaré group on state space alone was not enough, because this new condition presupposes local observables attached to spacetime regions.
-
-A state in Hilbert space is still an amplitude assignment over possible alternatives, but now those alternatives are entire field configurations written in the eigenbasis of field operators.If $`\mid \phi\rangle`$ denotes a field-configuration eigenstate at fixed time $`t`$, then
-
-``` math
-\widehat{\phi}(x,t) \mid \phi\rangle = \phi(x) \mid \phi\rangle,
-```
-
-and the state may be represented as a wave functional,
-
-``` math
-\Psi_{t}\lbrack\phi\rbrack = \langle\phi \mid \Psi(t)\rangle
-```
-
-thus shifting the notion of locality to the field itself rather than trying to exist in the position representation of the state.
-
-We can see how this provides the needed spacetime constraint by looking at an example. Consider two localized interventions, one in region $`A`$ near “Alice” and one in region $`B`$ near “Bob,” with $`A`$ and $`B`$ spacelike separated. Alice changes something in her lab. Bob asks whether his detector statistics change immediately.
-
-In ordinary one-particle quantum mechanics, Alice’s intervention is represented by modifying the Hamiltonian near $`A`$, but the state is global and the theory has no condition forbidding that change from having an immediate effect at spacelike separated $`B`$. It can represent position outcomes, but it does not natively contain distinct local observables attached to spacetime regions whose algebra enforces relativistic separation.
-
-In QFT, it does. Alice’s intervention is represented by a local operator $`{\widehat{O}}_{A}`$and Bob’s by a local operator $`{\widehat{O}}_{B}`$. If the regions are spacelike separated, the theory requires
-
-``` math
-\lbrack{\widehat{O}}_{A},{\widehat{O}}_{B}\rbrack = 0.
-```
-
-That means their order has no physical effect. Since different observers may disagree on which spacelike-separated event happened first, this is exactly what relativistic causality requires.
-
-Poincaré transformations of spacetime are represented by unitary operators on the Hilbert or Fock space, and local fields transform accordingly. For a scalar field,
-
-``` math
-U(\Lambda,a)^{\dagger}\text{ }\widehat{\phi}(x)\text{ }U(\Lambda,a) = \widehat{\phi}\text{ }(\Lambda^{- 1}(x - a)).
-```
-
-This is the bridge connecting state space to spacetime. The relation holds because the field operator and the unitary Poincaré transformations are inherited from the same classical relativistic structure. The classical field already carries a covariant mode expansion and a Poincaré action on those modes. Quantization lifts that structure rather than replacing it: the mode coefficients become operators, and the classical symmetry generators become operators on Hilbert or Fock space. The unitary $`U(\Lambda,a)`$is built from those generators — not from the Hamiltonian alone, which gives only time translations — so its action on the field reproduces the same spacetime transformation law in operator form.
-
-The state space must also be enlarged. Since the field may have no excitations, one excitation, two excitations, and so on, the state space must contain all of those sectors. This is “Fock space,” the direct sum of particle-number sectors:
-
-``` math
-\mathcal{F =}\mathbb{C} \oplus H_{1} \oplus H_{2} \oplus H_{3} \oplus \cdots\text{ }.
-```
-
-The vacuum sector $`\mathbb{C}`$ contains the zero-particle state. The sector $`H_{n}`$ contains the $`n`$-particle sector.
-
-
-
-## The QFT Model
-
-- Fields
-
-  - nature of fields – classical maxwell field – carries energy dynamic
-
-    - why this is needed forces
-
-  - spring model
-
-- The wave function is not the field
-
-- But what is a QFT field.
-
-  - Operators
-
-    - Think of them as actors not values, but what -are- they, well let them act if you must
-
-    - Put observations in space
-
-The first step in constructing quantum field theory is to construct a field that is joined to quantum mechanics’ notion of state space. After that, we can describe how to “use” the field and state space as a foundation from which to derive physical predictions.
-
-There are two directions from which to approach quantum fields. The more ontologically satisfying direction is to move the operators of fixed-particle quantum mechanics which exist only as actions on state space into a causal spacetime setting. This makes intuitive sense. Since quantum mechanics said nothing about how observation interact in spacetime in accordance with relativity, to put the operators in spacetime is to put observations in spacetime. But simply saying $`O(x)`$ does not give any mechanics and moreover, it does not entail the required energetic physicality of the field which is necessary to abide local causality. The more useful direction for gaining a hands-on grasp of the model is to formulate a classical field and then “quantize” it, or promote the field values to operators. This approach lends itself to ontological confusion – what was the classical field before we quantized it? And how exactly did quantizing change it? By keeping both directions in mind, we can attain a level of ontological perspective while building a model that is suitably mechanical to abide local causality.
-
-*There are two ways to think of quantum fields that start from different points, but amount to the same thing. The first way is to start with fixed-particle quantum mechanics and move the operators of which existed only as actions on state space into a causal spacetime setting:* $`\mathcal{O \rightarrow O}(x).`$ *This makes intuitive sense. Since quantum mechanics said nothing about how observation interact in spacetime in accordance with relativity, to put the operators in spacetime is to put observations in spacetime. But simply saying* $`O(x)`$ *does not itself provide the basis of a mechanical system nor entail the required energetic physicality of the field which is necessary to abide local causality. The second way, which is more useful direction for gaining a hands-on grasp quantum fields, is to formulate a classical field and then “quantize” it, or promote the field values to operators. But this approach raises puzzling questions. Was there a classical field before we quantized it? And how exactly did quantizing change it? The quantum field for photons in fact is constructed identically to Maxwell’s classic E&M field, but what about the electron field? Classical mechanics of matter was never formulated as a matter field, but we could imagine a sort of semi-classical view in which we don’t know the full formalism of quantum mechanics but we have some intuition of particle delocalization, and we could in fact express the mechanics of “rigid bodies on average” in terms of a field. What matters is that the classical field we quantize must have the same causal flow of energy as our target quantum field. In particular, in the classical field the field strength is related to the energy density and in the quantum field it is as well but with energy density in being turn related to particle density.\
-\
-There are two ways to think about quantum fields. They begin from different starting points, but meet in the same theory. The first is to begin with fixed-particle quantum mechanics and place its operators, which otherwise act only on state space, into a causal spacetime setting,* $`\mathcal{O \rightarrow O(}x)`$*. This makes intuitive sense. If early quantum mechanics said little about how observables are situated in spacetime in a way compatible with relativity, then to place operators in spacetime is, in an important sense, to place observations in spacetime. But simply writing* $`\mathcal{O(}x)`$*does not yet give us a mechanical system, nor does it by itself supply the dynamical, energy-carrying physicality required for local causality.*
-
-*The second route, and the more useful one for gaining a hands-on grasp of quantum fields, is to begin with a classical field and then quantize it, replacing ordinary field values with operator-valued content. But this route raises puzzling questions of its own. Was there really a classical field there before quantization, and what exactly changed when we quantized it? For photons, the situation is unusually favorable, because the quantum field is built by quantizing Maxwell’s already existing classical electromagnetic field. But what about the electron field? Classical mechanics was never formulated as a classical field theory of matter in the same straightforward way. Still, one can imagine a semi-classical point of view in which one had no full quantum formalism, but did have some grasp of delocalization, and so described the mechanics of matter in terms of distributed fields rather than perfectly localized particles. What matters is that the classical field we quantize must share with the target quantum field the same local causal flow of energy. In the classical theory, the field configuration itself determines the energy density. In the quantum theory, the corresponding energy density is encoded in local operators built from the field, and in regimes where a particle picture applies, this can also be read as a greater or lesser density of excitation from place to place.*
-
-### Operators in Spacetime
-
-*\<Comment\> a note for all formatting: your comma separated equation or hard to read. Please in all cases put a few spaces on each side of the comma\</comment\> In fixed-particle quantum mechanics, the state is written as a vector in Hilbert space and evolves according to the Schrödinger equation,*
+~~\<Comment\> a note for all formatting: your comma separated equation or hard to read. Please in all cases put a few spaces on each side of the comma\</comment\> In fixed-particle quantum mechanics, the state is written as a vector in Hilbert space and evolves according to the Schrödinger equation,~~
 
 ``` math
 i\hslash\text{ }\partial_{t} \mid \psi(t)\rangle = \widehat{H} \mid \psi(t)\rangle.
 ```
 
-*This is the form in which quantum mechanics is usually first learned. The state changes with time, while the operators representing observables are held fixed. If we ask for the probability distribution of position, momentum, or spin at some later time, that changing information is carried by the evolving state.*
+~~This is the form in which quantum mechanics is usually first learned. The state changes with time, while the operators representing observables are held fixed. If we ask for the probability distribution of position, momentum, or spin at some later time, that changing information is carried by the evolving state.~~
 
-*But there is another mathematically equivalent way to package the same theory. Instead of allowing the state to evolve while the observables remain fixed, we can hold the state fixed and let the observables evolve. This is the Heisenberg picture. The relation between the two pictures is*
+~~But there is another mathematically equivalent way to package the same theory. Instead of allowing the state to evolve while the observables remain fixed, we can hold the state fixed and let the observables evolve. This is the Heisenberg picture. The relation between the two pictures is~~
 
 ``` math
 \mid \psi_{H}\rangle = \mid \psi(0)\rangle,\ \ {\widehat{\mathcal{\ O}}}_{H}(t) = U^{\dagger}(t)\text{ }{\widehat{\mathcal{O}}}_{S}\text{ }U(t),\ \ U(t) = e^{- i\widehat{H}t/\hslash}.
 ```
 
-\<insert\>where O-sub-H O-sub-S are the …\</insert\> *Nothing physical has changed. We have only changed where the time dependence lives.* \<insert\>An expectation value is given by \<psi\|O\|psi\> giving us the freedom to put the time dependence on either the state or the operator. \[Show the algebra of inserting U(t) and moving it onto the operator\]\</insert\> *One can think of this the way one thinks of rotating a vector versus rotating the coordinate axes in the opposite direction. The geometric content is the same. \<cut\>~~Only the bookkeeping differs.~~\</cut\> In the Schrödinger picture the \<insert\>time evolution of the expectation value is given by moving a vector through a fixed frame, while in the Heisenberg picture the frame moves around a fixed vector. This is standard linear algebra – the same linear map has different matrix representation under a change of basis.\<cut\>The measurable predictions remain identical.\</cut\> \<insert\>We can now write the U(t) in the Heisenberg picture \[equation U(t) = e^integral(…)\] This form will arise later when working through QFT calculations.\</insert\>*
+~~\<insert\>where O-sub-H O-sub-S are the …\</insert\> Nothing physical has changed. We have only changed where the time dependence lives. \<insert\>An expectation value is given by \<psi\|O\|psi\> giving us the freedom to put the time dependence on either the state or the operator. \[Show the algebra of inserting U(t) and moving it onto the operator\]\</insert\> One can think of this the way one thinks of rotating a vector versus rotating the coordinate axes in the opposite direction. The geometric content is the same. \<cut\>Only the bookkeeping differs.~~\</cut\> ~~In the Schrödinger picture the \<insert\>time evolution of the expectation value is given by moving a vector through a fixed frame, while in the Heisenberg picture the frame moves around a fixed vector. This is standard linear algebra – the same linear map has different matrix representation under a change of basis.\<cut\>The measurable predictions remain identical.\</cut\> \<insert\>We can now write the U(t) in the Heisenberg picture \[equation U(t) = e^integral(…)\] This form will arise later when working through QFT calculations.\</insert\>~~
 
-*Once the time dependence is moved into the operators, their evolution is determined by differentiating the expression above. This gives the Heisenberg equation of motion,*
+~~Once the time dependence is moved into the operators, their evolution is determined by differentiating the expression above. This gives the Heisenberg equation of motion,~~
 
 ``` math
 \frac{d{\widehat{\mathcal{O}}}_{H}}{dt} = \frac{i}{\hslash}\text{ }\lbrack\widehat{H},{\widehat{\mathcal{O}}}_{H}\rbrack + \left( \frac{\partial\widehat{\mathcal{O}}}{\partial t} \right)_{H}.
 ```
 
-*Already this is suggestive. The theory is beginning to speak less in terms the evolution of an abstract state and more in terms of the evolution of observables. The commutator encodes how the Hamiltonian acts as a generator of time translations on observables. In the same way that ordinary derivatives tell us how a function changes under a small shift in its argument, commutators tell us how an operator changes under the action of the symmetry generated by another operator. \<comment\>I’m tripping on the word ‘action’ – its neither super evocative nor precise. Can we say “changes under symmetry transformations generated by another operator” is that correct?\</commend\> They also measure incompatibility. If two observables commute, they can be simultaneously sharp \<cut\>in the relevant sense\</cut\>.\<insert\>or explain what you mean by this phrase\</insert\> If they do not, the order in which they act matters. In this way the commutator encodes both dynamics and kinematics at once.\<comment\>Not sure what to do with this sentence. Either explain it better – what part of what precedes is “kinematic” and “dynamic,” or leave it out, or, if you are adding content to what precedes, say it plainer language.\</comment\>*
+~~Already this is suggestive. The theory is beginning to speak less in terms the evolution of an abstract state and more in terms of the evolution of observables. The commutator encodes how the Hamiltonian acts as a generator of time translations on observables. In the same way that ordinary derivatives tell us how a function changes under a small shift in its argument, commutators tell us how an operator changes under the action of the symmetry generated by another operator. \<comment\>I’m tripping on the word ‘action’ – its neither super evocative nor precise. Can we say “changes under symmetry transformations generated by another operator” is that correct?\</commend\> They also measure incompatibility. If two observables commute, they can be simultaneously sharp \<cut\>in the relevant sense\</cut\>.\<insert\>or explain what you mean by this phrase\</insert\> If they do not, the order in which they act matters. In this way the commutator encodes both dynamics and kinematics at once.\<comment\>Not sure what to do with this sentence. Either explain it better – what part of what precedes is “kinematic” and “dynamic,” or leave it out, or, if you are adding content to what precedes, say it plainer language.\</comment\>~~
 
-*For a single particle, this is already enough to reproduce familiar mechanics. If the Hamiltonian is*
+~~For a single particle, this is already enough to reproduce familiar mechanics. If the Hamiltonian is~~
 
 ``` math
 \widehat{H} = \frac{{\widehat{p}}^{2}}{2m} + V(\widehat{x}),
 ```
 
-*then the Heisenberg equations give*
+~~then the Heisenberg equations give~~
 
 ``` math
 \frac{d\widehat{x}}{dt} = \frac{i}{\hslash}\lbrack\widehat{H},\widehat{x}\rbrack = \frac{\widehat{p}}{m},\frac{d\widehat{p}}{dt} = \frac{i}{\hslash}\lbrack\widehat{H},\widehat{p}\rbrack = - \nabla V(\widehat{x}),
 ```
 
-*\<comment\>let’s just leave out the potential term for more beauty on the page. \</comment\>which look like operator versions of Hamilton’s equations. This is one reason the Heisenberg picture is so appealing for our purposes. It begins to look like a mechanics of evolving observables rather than merely a law for updating a probability distribution.\<comment\>I guess the preceding two sentences are good. It’s weird that switching between interchangeable views would have such a profound effect. Kind of feels like smoke and mirrors. I wonder if it might be better to say something along the lines that “having this in familiar Hamilton equation form points the way to using a repurposing a Hamiltonian classical field treatment. Think about what I’m saying conceptually, not prosaically, I’m not trying to write my best.\</comment\>*
+~~\<comment\>let’s just leave out the potential term for more beauty on the page. \</comment\>which look like operator versions of Hamilton’s equations. This is one reason the Heisenberg picture is so appealing for our purposes. It begins to look like a mechanics of evolving observables rather than merely a law for updating a probability distribution.\<comment\>I guess the preceding two sentences are good. It’s weird that switching between interchangeable views would have such a profound effect. Kind of feels like smoke and mirrors. I wonder if it might be better to say something along the lines that “having this in familiar Hamilton equation form points the way to using a repurposing a Hamiltonian classical field treatment. Think about what I’m saying conceptually, not prosaically, I’m not trying to write my best.\</comment\>~~
 
-*Still, in fixed-particle quantum mechanics these quantities are observables of a prescribed collection of particles. They are not yet attached point by point to spacetime. Quantum field theory takes the next step. It replaces the particle observables* $`\widehat{x},\widehat{p},\widehat{S}`$ *\<comment\>S? Action? If so, cut it\</comment\> with operator-valued fields*
+~~Still, in fixed-particle quantum mechanics these quantities are observables of a prescribed collection of particles. They are not yet attached point by point to spacetime. Quantum field theory takes the next step. It replaces the particle observables~~ $`\widehat{x},\widehat{p},\widehat{S}`$ ~~\<comment\>S? Action? If so, cut it\</comment\> with operator-valued fields~~
 
 ``` math
 \widehat{\phi}(x),\widehat{\psi}(x),{\widehat{A}}_{\mu}(x),
 ```
 
-*where now* $`x`$*denotes a spacetime point. A quantum field is thus not a number assigned to each point, but an operator assigned to each point. The Heisenberg equation survives intact, but now it governs fields,*
+~~where now~~ $`x`$ ~~denotes a spacetime point. A quantum field is thus not a number assigned to each point, but an operator assigned to each point. The Heisenberg equation survives intact, but now it governs fields,~~
 
 ``` math
 \partial_{t}\widehat{\phi}(\mathbf{x},t) = \frac{i}{\hslash}\lbrack\widehat{H},\widehat{\phi}(\mathbf{x},t)\rbrack,\partial_{t}\widehat{\pi}(\mathbf{x},t) = \frac{i}{\hslash}\lbrack\widehat{H},\widehat{\pi}(\mathbf{x},t)\rbrack,
 ```
 
-*with* $`\widehat{\pi}(\mathbf{x},t)`$*the momentum conjugate to the field. At equal times these obey canonical commutation relations,*
+~~with~~ $`\widehat{\pi}(\mathbf{x},t)`$ ~~the momentum conjugate to the field. At equal times these obey canonical commutation relations,~~
 
 ``` math
 {\lbrack\widehat{\phi}(\mathbf{x},t),\widehat{\phi}(\mathbf{y},t)\rbrack = 0,
@@ -7757,518 +8207,41 @@ i\hslash\text{ }\partial_{t} \mid \psi(t)\rangle = \widehat{H} \mid \psi(t)\ra
 }
 ```
 
-*These are the field analogues of the ordinary canonical commutators of position and momentum. They tell us that the field and its conjugate momentum are not independent. They also tell us that field values at different spatial points are coupled in a way sharp enough to support local dynamics. \<comment\>ok. Starting at “at equal times” above through where this comment begins, I want you to distinguish between which of these commutators are imposed by relativity and which come from by necessity from the Heisenberg equation.\</comment\>*
+~~These are the field analogues of the ordinary canonical commutators of position and momentum. They tell us that the field and its conjugate momentum are not independent. They also tell us that field values at different spatial points are coupled in a way sharp enough to support local dynamics. \<comment\>ok. Starting at “at equal times” above through where this comment begins, I want you to distinguish between which of these commutators are imposed by relativity and which come from by necessity from the Heisenberg equation.\</comment\>~~
 
-*At this stage we can finally state locality in a form appropriate to relativity. It is not enough that the theory have spacetime labels. The operator algebra itself must respect causal structure. For bosonic fields the required condition is*
+~~At this stage we can finally state locality in a form appropriate to relativity. It is not enough that the theory have spacetime labels. The operator algebra itself must respect causal structure. For bosonic fields the required condition is~~
 
 ``` math
 \lbrack\widehat{\phi}(x),\widehat{\phi}(y)\rbrack = 0\text{whenever }(x - y)^{2} < 0,
 ```
 
-*\<comment\>I don’t get the minkowski math of (x-y)^2 \< 0 being spacelike separation\</comment\> that is, whenever the two spacetime points are separated by a spacelike interval. More generally, we can impose relativistic causal structure into quantum kinematics by requiring that observables commute at spacelike separation. \<cut\>This is the mathematical expression of the statement that no observable influence can pass between spacelike-separated regions.\</cut\> The theory may still admit entangled states spread across space, but its local observables do not shake hands faster than light. In this sense, relativistic causality is built not merely into the wave equation, but into the algebra of the observables themselves.\<comment\>rather than saying “built into algebra”, can we say something like “expressing relativistic causality as commutation relations provides rules that our subsequent field model must demonstrate adherence to.”\</comment\>*
+~~\<comment\>I don’t get the minkowski math of (x-y)^2 \< 0 being spacelike separation\</comment\> that is, whenever the two spacetime points are separated by a spacelike interval. More generally, we can impose relativistic causal structure into quantum kinematics by requiring that observables commute at spacelike separation. \<cut\>This is the mathematical expression of the statement that no observable influence can pass between spacelike-separated regions.\</cut\> The theory may still admit entangled states spread across space, but its local observables do not shake hands faster than light. In this sense, relativistic causality is built not merely into the wave equation, but into the algebra of the observables themselves.\<comment\>rather than saying “built into algebra”, can we say something like “expressing relativistic causality as commutation relations provides rules that our subsequent field model must demonstrate adherence to.”\</comment\>~~
 
-*\<cut\>One can now see more clearly why early quantum mechanics sat uneasily with relativity. In fixed-particle quantum mechanics, the central object is a global state over configuration space. In quantum field theory, by contrast, the central observables are local operators assigned to spacetime points, and their commutation relations explicitly encode the causal order permitted by relativity. What had been, in particle mechanics, a problem about how interactions propagate has become, in field theory, part of the kinematical structure from the start.\</cut\> \<comment\>we’re going to come back to show how QFT makes good on its promises. No need to do it inline here.\</comment\>*
+~~\<cut\>One can now see more clearly why early quantum mechanics sat uneasily with relativity. In fixed-particle quantum mechanics, the central object is a global state over configuration space. In quantum field theory, by contrast, the central observables are local operators assigned to spacetime points, and their commutation relations explicitly encode the causal order permitted by relativity. What had been, in particle mechanics, a problem about how interactions propagate has become, in field theory, part of the kinematical structure from the start.\</cut\> \<comment\>we’re going to come back to show how QFT makes good on its promises. No need to do it inline here.\</comment\>~~
 
-*We can express quantum fields in the Schrödinger picture. States now are no longer wavefunctions of particle positions but wavefunctionals of entire field configurations. If* $`\phi(\mathbf{x})`$*denotes a field configuration on a time slice, then the state is written*
+~~We can express quantum fields in the Schrödinger picture. States now are no longer wavefunctions of particle positions but wavefunctionals of entire field configurations. If~~ $`\phi(\mathbf{x})`$ ~~denotes a field configuration on a time slice, then the state is written~~
 
 ``` math
 \Psi\lbrack\phi(\mathbf{x}),t\rbrack.
 ```
 
-*This is a functional, not a function, because its argument is itself a whole function of space. The field operator acts by multiplication,*
+~~This is a functional, not a function, because its argument is itself a whole function of space. The field operator acts by multiplication,~~
 
 ``` math
 \widehat{\phi}(\mathbf{x})\Psi\lbrack\phi,t\rbrack = \phi(\mathbf{x})\Psi\lbrack\phi,t\rbrack,
 ```
 
-*while the conjugate momentum acts by functional differentiation,*
+~~while the conjugate momentum acts by functional differentiation,~~
 
 ``` math
 \widehat{\pi}(\mathbf{x})\Psi\lbrack\phi,t\rbrack = - i\hslash\text{ }\frac{\delta}{\delta\phi(\mathbf{x})}\Psi\lbrack\phi,t\rbrack.
 ```
 
-*The Schrödinger equation then becomes an equation for the time evolution of an entire distribution over field configurations,*
+~~The Schrödinger equation then becomes an equation for the time evolution of an entire distribution over field configurations,~~
 
 ``` math
 i\hslash\text{ }\partial_{t}\Psi\lbrack\phi,t\rbrack = \widehat{H}\text{ }\Psi\lbrack\phi,t\rbrack.
 ```
-
-*\<cut\>So the three ideas we have met are really the same theory seen from different angles. In the fixed-particle Schrödinger picture, time evolution is carried by a state over particle configurations. In the fixed-particle Heisenberg picture, time evolution is carried by observables acting on a fixed state. In quantum field theory, those observables are promoted to local operator-valued fields on spacetime, and the Schrödinger version of the same theory reappears as a wavefunctional over field configurations. The gain is enormous. We have not merely rewritten quantum mechanics. We have placed its observables into spacetime, given them a local causal algebra, and prepared the ground for a mechanics in which excitations can be created, destroyed, and propagated as genuinely relativistic fields.\</cut\> \<comment\>I’m aesthetically opposed to telegraphed summaries. Very high school essay to me. I’m ok with chanting, but not summarizing* 😊*\</comment\>\
-\
-**Operators in Spacetime***
-
-***In fixed-particle quantum mechanics, the state is written as a vector in Hilbert space and evolves according to the Schrödinger equation,***
-
-``` math
-\mathbf{i\hslash}\text{ }\mathbf{\partial}_{\mathbf{t}}\mathbf{\mid \psi(t)\rangle =}\widehat{\mathbf{H}}\mathbf{\mid \psi(t)\rangle.}
-```
-
-***This is the form in which quantum mechanics is usually first learned. The state changes with time, while the operators representing observables are held fixed. If we ask for the probability distribution of position, momentum, or spin at some later time, that changing information is carried by the evolving state.***
-
-***But there is another mathematically equivalent way to package the same theory. Instead of allowing the state to evolve while the observables remain fixed, we can hold the state fixed and let the observables evolve. This is the Heisenberg picture. The relation between the two pictures is***
-
-``` math
-\mathbf{\mid}\mathbf{\psi}_{\mathbf{H}}\mathbf{\rangle = \mid \psi(0)\rangle}\text{ }\mathbf{,}{\widehat{\mathcal{O}}}_{\mathbf{H}}\mathbf{(t) =}\mathbf{U}^{\mathbf{\dagger}}\mathbf{(t)}\text{ }{\widehat{\mathcal{O}}}_{\mathbf{S}}\text{ }\mathbf{U(t)}\text{ }\mathbf{,U(t) =}\mathbf{e}^{\mathbf{-}\text{ }\mathbf{i}\widehat{\mathbf{H}}\mathbf{t/\hslash}}\mathbf{.}
-```
-
-***Here*** $`{\widehat{\mathcal{O}}}_{\mathbf{S}}`$***is the operator in the Schrödinger picture, and*** $`{\widehat{\mathcal{O}}}_{\mathbf{H}}\mathbf{(t)}`$***is the corresponding operator in the Heisenberg picture. Nothing physical has changed. We have only changed where the time dependence lives. The point can be seen directly from the expectation value,***
-
-``` math
-\mathbf{\langle\psi(t) \mid}\text{ }{\widehat{\mathcal{O}}}_{\mathbf{S}}\text{ }\mathbf{\mid \psi(t)\rangle = \langle\psi(0) \mid}\text{ }\mathbf{U}^{\mathbf{\dagger}}\mathbf{(t)}\text{ }{\widehat{\mathcal{O}}}_{\mathbf{S}}\text{ }\mathbf{U(t)}\text{ }\mathbf{\mid \psi(0)\rangle.}
-```
-
-***So the evolving quantity that carries physical meaning is the scalar expectation value. This gives us the freedom to place the time dependence either on the state or on the operator. In linear algebra terms, the same linear map acquires a different matrix representation under a unitary change of basis. In the Schrödinger picture, time evolution is represented by moving the vector through a fixed frame. In the Heisenberg picture, the vector is held fixed and the operator is conjugated by the same unitary evolution.***
-
-***More generally, when the Hamiltonian depends on time, we write***
-
-``` math
-\mathbf{U(t) =}\mathbf{e}^{\mathbf{-}\text{ }\frac{\mathbf{i}}{\mathbf{\hslash}}\int_{\mathbf{0}}^{\mathbf{t}}\mathbf{H(}\mathbf{t}^{\mathbf{'}}\mathbf{)}\text{ }\mathbf{d}\mathbf{t}^{\mathbf{'}}}\mathbf{.}
-```
-
-***This form will arise again later when we begin actually calculating in quantum field theory.***
-
-***Once the time dependence is moved into the operators, their evolution is determined by differentiating the expression above. This gives the Heisenberg equation of motion,***
-
-``` math
-\frac{\mathbf{d}{\widehat{\mathcal{O}}}_{\mathbf{H}}}{\mathbf{dt}}\mathbf{=}\frac{\mathbf{i}}{\mathbf{\hslash}}\text{ }\mathbf{\lbrack}\widehat{\mathbf{H}}\mathbf{,}{\widehat{\mathcal{O}}}_{\mathbf{H}}\mathbf{\rbrack +}\left( \frac{\mathbf{\partial}\widehat{\mathcal{O}}}{\mathbf{\partial t}} \right)_{\mathbf{H}}\mathbf{.}
-```
-
-***Already this is suggestive. The theory is beginning to speak less in terms of the evolution of an abstract state and more in terms of the evolution of observables. The commutator tells us how an observable changes under the symmetry transformation generated by another operator. In this case, the Hamiltonian generates time translations, so its commutator with an operator tells us how that operator changes in time. Commutators also measure incompatibility. If two observables commute, they can be simultaneously sharp. If they do not, the order in which they act matters. In this sense, commutators carry both the rules of motion and the rules of compatibility among observables.***
-
-***For a single particle, this is already enough to reproduce familiar mechanics. For example,***
-
-``` math
-\frac{\mathbf{d}\widehat{\mathbf{x}}}{\mathbf{dt}}\mathbf{=}\frac{\mathbf{i}}{\mathbf{\hslash}}\text{ }\mathbf{\lbrack}\widehat{\mathbf{H}}\mathbf{,}\widehat{\mathbf{x}}\mathbf{\rbrack =}\frac{\widehat{\mathbf{p}}}{\mathbf{m}}\mathbf{.}
-```
-
-***This makes the Heisenberg picture appealing for our purposes. It puts the theory into a form that resembles Hamiltonian mechanics and points naturally toward a field-theoretic version of the same idea.***
-
-***Still, in fixed-particle quantum mechanics these quantities are observables of a prescribed collection of particles. They are not yet attached point by point to spacetime. Quantum field theory takes the next step. It replaces particle observables such as*** $`\widehat{\mathbf{x}}`$***and*** $`\widehat{\mathbf{p}}`$***with operator-valued fields***
-
-``` math
-\widehat{\mathbf{\phi}}\mathbf{(x)}\text{ }\mathbf{,}\widehat{\mathbf{\psi}}\mathbf{(x)}\text{ }\mathbf{,}{\widehat{\mathbf{A}}}_{\mathbf{\mu}}\mathbf{(x),}
-```
-
-***where now*** $`\mathbf{x}`$***denotes a spacetime point. A quantum field is thus not a number assigned to each point, but an operator assigned to each point. The Heisenberg equation survives intact, but now it governs fields,***
-
-``` math
-\mathbf{\partial}_{\mathbf{t}}\widehat{\mathbf{\phi}}\mathbf{(x,t) =}\frac{\mathbf{i}}{\mathbf{\hslash}}\text{ }\mathbf{\lbrack}\widehat{\mathbf{H}}\mathbf{,}\widehat{\mathbf{\phi}}\mathbf{(x,t)\rbrack}\text{ }\mathbf{,}\mathbf{\partial}_{\mathbf{t}}\widehat{\mathbf{\pi}}\mathbf{(x,t) =}\frac{\mathbf{i}}{\mathbf{\hslash}}\text{ }\mathbf{\lbrack}\widehat{\mathbf{H}}\mathbf{,}\widehat{\mathbf{\pi}}\mathbf{(x,t)\rbrack,}
-```
-
-***with*** $`\widehat{\mathbf{\pi}}\mathbf{(x,t)}`$***the momentum conjugate to the field.***
-
-***At equal times these obey canonical commutation relations,***
-
-``` math
-{\mathbf{\lbrack}\widehat{\mathbf{\phi}}\mathbf{(x,t)}\text{ }\mathbf{,}\widehat{\mathbf{\phi}}\mathbf{(y,t)\rbrack = 0,}
-}{\mathbf{\lbrack}\widehat{\mathbf{\pi}}\mathbf{(x,t)}\text{ }\mathbf{,}\widehat{\mathbf{\pi}}\mathbf{(y,t)\rbrack = 0,}
-}{\mathbf{\lbrack}\widehat{\mathbf{\phi}}\mathbf{(x,t)}\text{ }\mathbf{,}\widehat{\mathbf{\pi}}\mathbf{(y,t)\rbrack = i\hslash}\text{ }\mathbf{\delta}^{\mathbf{3}}\mathbf{(x - y).}
-}
-```
-
-***These are the field analogues of the canonical commutator of position and momentum. They are not derived from the Heisenberg equation. Rather, they are part of the quantum structure we impose at the outset. The Heisenberg equation then tells us how those quantum degrees of freedom evolve in time. The equal-time commutators say that the field and its conjugate momentum form a canonical pair at each spatial point, much as position and momentum do for a particle.***
-
-***Relativity adds a further requirement. Once observables are attached to spacetime itself, we can ask what relation should hold between measurements performed at spacelike-separated points, that is, points too far apart in space for light to travel between them in the available time. For bosonic fields, the required condition is***
-
-``` math
-\mathbf{\lbrack}\widehat{\mathbf{\phi}}\mathbf{(x)}\text{ }\mathbf{,}\widehat{\mathbf{\phi}}\mathbf{(y)\rbrack = 0}\text{whenever }\mathbf{x}\text{ and }\mathbf{y}\text{ are spacelike separated.}
-```
-
-***More generally, relativistic causal structure is expressed in quantum language by requiring that observables commute at spacelike separation. The theory may still admit entangled states spread across space, but its local observables do not shake hands faster than light. Expressing relativistic causality as commutation relations gives rules that our subsequent field model must be shown to satisfy.***
-
-***We can also express quantum fields in the Schrödinger picture. States now are no longer wavefunctions of particle positions, but wavefunctionals of entire field configurations. If*** $`\mathbf{\phi(x)}`$***denotes a field configuration on a time slice, then the state is written***
-
-``` math
-\mathbf{\Psi\lbrack\phi(x),t\rbrack.}
-```
-
-***This is a functional, not a function, because its argument is itself a whole function of space. The field operator acts by multiplication,***
-
-``` math
-\widehat{\mathbf{\phi}}\mathbf{(x)\Psi\lbrack\phi,t\rbrack = \phi(x)\Psi\lbrack\phi,t\rbrack,}
-```
-
-***while the conjugate momentum acts by functional differentiation,***
-
-``` math
-\widehat{\mathbf{\pi}}\mathbf{(x)\Psi\lbrack\phi,t\rbrack = - i\hslash}\text{ }\frac{\mathbf{\delta}}{\mathbf{\delta\phi(x)}}\mathbf{\Psi\lbrack\phi,t\rbrack.}
-```
-
-***The Schrödinger equation then becomes an equation for the time evolution of an entire distribution over field configurations,***
-
-``` math
-\mathbf{i\hslash}\text{ }\mathbf{\partial}_{\mathbf{t}}\mathbf{\Psi\lbrack\phi,t\rbrack =}\widehat{\mathbf{H}}\text{ }\mathbf{\Psi\lbrack\phi,t\rbrack.}
-```
-
-### Quantizing the Field
-
-It is one thing to say that a quantum field is an operator attached to every point in space, obeying canonical commutation relations. We need to first construct a suitable field and then quantize it, or promote its values to operators. For a field to abide relativistic constraints, first, its values must be well-behaved under Lorentz transformations. This requires the values to be scalars, vectors, or spinors. Second, it must support transmitting signals are bounded by the speed of light. Before we get to nature’s actual quantum fields, we will work with a useful starting field called the Klein Gordon field. This is scalar valued, and it can be readily understood via a simple mechanical model. We will first construct a completely classical relativistic field and then promote its values to operators at which point we will see how quantum fields support particle creation.
-
-#### The Classical Model
-
-We will construct the Klein-Gordon field using a model of a lattice of interconnected springs, and then take the limit of the that lattice spacing shrinking to the continuum limit, reflect on how such a model adheres to Relativity, and finally understand what it means to work in Fourier mode bases, which will become the momentum basis upon quantization.
-
-##### The Spring Lattice Field Model
-
-Let’s look at the mechanical model of this spring lattice. It may seem like we are being a bit obsessive about the details, but each element in the model plays a role in the properties particles have in QFT. The lattice we eventually want has 3 spatial dimensions, and at each node there is some value type. If that value is a scalar, we could represent the picture in 4 dimensions. Therefore if we, without loss of generality, reduce our spatial dimensions to one and let our field value use another, we can draw nice 2d pictures. We can start with a one-dimensional row of beads connected with springs, each bead constrained to slide up and down on a second spring connected to a base point.
-
-\<picture\>
-
-Call the vertical displacement of the $`n`$-th bead $`q_{n}(t)`$. Neighboring beads are connected by springs, so if one bead moves differently from its neighbors they pull it back toward them. In addition, each bead is attached to the fixed frame by its own local spring, so even if all the beads move together there is still a restoring force pulling each one back toward equilibrium.
-
-That second ingredient matters. A chain with only neighbor springs supports waves, but its uniform mode costs no spring energy at all, because if every bead rises by the same amount no spring is stretched. The local spring changes that. It gives the uniform mode a nonzero oscillation frequency. That is the ingredient that will later become the mass scale of the field. There is something really subtle going on here that carries with it the relativistic structure of spacetime as manifest in the mass shell. Remember that the vertical dimension in our picture is spatial only for the purposes of drawing – it represents any scalar value. All spatial motion is contained in our horizontal dimension. Therefore, energy associated with uniform vertical oscillation is the energy when the system is at rest, which should sound familiar. It is structurally the same statement as $`E = mc^{2}`$. Recall that $`E = mc^{2}`$ is the rest case for the more general dispersion equation (setting $`c`$ to 1):
-
-``` math
-\ E^{2} = \ m^{2} + \ p^{2}
-```
-
-Looking ahead just a bit, once we derive the equation of motion for this lattice model, tune the propagation speed to $`c`$, and take the long-wavelength limit relative to the lattice spacing, we will find
-
-``` math
-\omega^{2} = \omega_{0}^{2} + c^{2}k^{2},
-```
-
-where $`\omega_{0}`$is the nonzero frequency of the uniform mode set by the local tether, matching the relativistic dispersion equation, and associating the rest frequency with math. If you are worried about units, one could look a bit farther ahead to the quantum energy-frequency relation and complete this equivalency with:
-
-``` math
-\left( \hslash\omega)^{2} = (\hslash\omega_{0})^{2} + c^{2}(\hslash k)^{2} \leftrightarrow E^{2} = m^{2}c^{4} + c^{2}p^{2}. \right.\ 
-```
-
-From this equation, we can read off the particle mass associated with the field:
-
-``` math
-m = \frac{\hslash\text{ }\omega_{0}}{c^{2}}
-```
-
-The natural classical Lagrangian for this lattice is
-
-``` math
-L = \sum_{n}^{}\left\lbrack \frac{1}{2}M{\dot{q}}_{n}^{\text{ }2} - \frac{1}{2}K_{0}q_{n}^{2} - \frac{1}{2}K(q_{n + 1} - q_{n})^{2} \right\rbrack.
-```
-
-Here $`M`$ is the mass of each bead, $`K`$is the spring constant coupling neighbors, and $`K_{0}`$is the spring constant of the local tether to the frame.
-
-The terms have a simple interpretation. The first is kinetic energy. The middle term penalizes each bead for being away from zero, regardless of what the others are doing. The last penalizes neighboring beads for being at different heights. We can rewrite the Lagrangian in a way that is more idiomatic for fields by assigning each lattice site a position $`x_{n}`$and writing the site variable as a discrete field value,
-
-``` math
-q_{n}(t) \equiv \phi(x_{n},t),
-```
-
-so that
-
-``` math
-L = \sum_{n}^{}\left\lbrack \frac{1}{2}M\text{ }\dot{\phi}(x_{n},t)^{2} - \frac{1}{2}K_{0}\text{ }\phi(x_{n},t)^{2} - \frac{1}{2}K(\phi(x_{n + 1},t) - \phi(x_{n},t))^{2} \right\rbrack.
-```
-
-Using the standard procedure, the Euler–Lagrange equation of motion is hten:
-
-``` math
-M\ddot{\phi}(x_{n},t) + K_{0}\phi(x_{n},t) + K(2\phi(x_{n},t) - \phi(x_{n + 1},t) - \phi(x_{n - 1},t)) = 0.
-```
-
-This is the mechanical lattice analog of the field equation we are heading toward. The first term, $`M\ddot{\phi}`$, says the site value has inertia. The second term, $`K_{0}\phi`$, says the value itself is costly. Even a perfectly uniform displacement wants to relax back. The third term says the says mismatch between nearby sites is costly, so disturbances spread attempting to compensate for this cost.
-
-We can define a new variable, $`\phi_{n} = \sqrt{M}\text{ }q_{n}`$, and rewrite the Lagrangian
-
-``` math
-L = \sum_{n}^{}\left\lbrack \frac{1}{2}{\dot{\phi}}_{n}^{\text{ }2} - \frac{1}{2}\frac{K_{0}}{M}\phi_{n}^{2} - \frac{1}{2}\frac{K}{M}(\phi_{n + 1} - \phi_{n})^{2} \right\rbrack,
-```
-
-and the equation of motion becomes
-
-``` math
-{\ddot{\phi}}_{n} - \frac{K}{M}(\phi_{n + 1} - 2\phi_{n} + \phi_{n - 1}) + \frac{K_{0}}{M}\phi_{n} = 0.
-```
-
-Now we have shifted the focus from mass and spring constants to frequency scales. The ratios
-
-$`\Omega^{2} = \frac{K}{M},{\ \ \ \ \omega}_{0}^{2} = \frac{K_{0}}{M}`$
-
-both have dimensions of inverse time squared. In this form the equation reads
-
-``` math
-{\ddot{\phi}}_{n} - \Omega^{2}(\phi_{n + 1} - 2\phi_{n} + \phi_{n - 1}) + \omega_{0}^{2}\phi_{n} = 0.
-```
-
-We can now look at its normal modes. If we try a “lattice plane wave" of the form
-
-``` math
-\phi_{n}(t) \propto e^{i(kna - \omega t)},
-```
-
-with $`a`$the lattice spacing, then substitution into the equation gives the lattice dispersion relation
-
-``` math
-\omega^{2} = \omega_{0}^{2} + 4\Omega^{2}{sin}^{2}\left( \frac{ka}{2} \right).
-```
-
-This equation nearly has the form of the dispersion equation we need. All that is left is to take the continuum limit that this lattice approximates at long wavelengths. For small $`ka`$,
-
-``` math
-\sin\left( \frac{ka}{2} \right) \approx \frac{ka}{2},
-```
-
-so that the dispersion relation becomes
-
-``` math
-\omega^{2} \approx \omega_{0}^{2} + \Omega^{2}a^{2}k^{2}.
-```
-
-This is the point at which the effective propagation speed emerges. Define
-
-``` math
-c^{2} = \Omega^{2}a^{2} = \frac{Ka^{2}}{M}.
-```
-
-Then the long-wavelength dispersion relation becomes, as promised,
-
-``` math
-\omega^{2} \approx \omega_{0}^{2} + c^{2}k^{2}.
-```
-
-Now let the lattice spacing go to zero while keeping the long-wavelength structure fixed. The discrete index $`n`$becomes a continuous position $`x`$, the discrete field $`\phi_{n}(t)`$becomes a continuous field $`\phi(x,t)`$, and the second difference becomes a spatial second derivative. The lattice equation turns into
-
-``` math
-\partial_{t}^{2}\phi - c^{2}\partial_{x}^{2}\phi + \omega_{0}^{2}\phi = 0.
-```
-
-In higher dimensions the same logic gives
-
-``` math
-\partial_{t}^{2}\phi - c^{2}\nabla^{2}\phi + \omega_{0}^{2}\phi = 0.
-```
-
-This is now a continuum classical field equation. And it is already very close to the relativistic form we want. The term with $`\nabla^{2}`$ came from the neighbor springs. The term with $`\omega_{0}^{2}`$ came from the local tether. The constant $`c`$ is no longer a spring-lattice parameter but the propagation speed of disturbances in the continuum limit. When we identify $`c`$ with the speed of light, we have completed building a model of a field that respects Lorentz symmetry.
-
-Note that we are not merely making the claim that disturbances in the Klein Gordon field travel at finite speed. We are also making the more restrictive claim that their motion respects Lorentz transformations as the differential operator \<equation\> has the same Minkowski sign structure as the spacetime interval itself. That such an equation transforms properly under Lorentz in tantamount to any symmetry generator does so.
-
-##### Comparing Klein Gordon and Schrödinger Equations
-
-Let’s now look at the Klein Gordon and Schrodinger equations side by side and reflect on their differences.
-
-Schrodinger: $`i\hslash\text{ }\partial_{t}\psi = - \frac{\hslash^{2}}{2m}\text{ }\partial_{x}^{2}\psi + V\psi`$*\*
-Klein Gordon: $`\partial_{t}^{2}\phi - c^{2}\partial_{x}^{2}\phi + \omega_{0}^{2}\phi = 0.`$*\*
-
-The Schrödinger equation is first order in time but second order in space. The Klein–Gordon, on the other hand, equation is second order in both. That second spatial derivative in the Schrödinger equation comes from the kinetic-energy term $`p^{2}/2m`$. In position space, $`p`$ becomes $`- i\hslash\partial_{x}`$, so $`p^{2}`$ becomes $`- \hslash^{2}\partial_{x}^{2}`$. This difference in the derivative structure places the two equations into different mathematical families. The Schrödinger equation belongs to the same broad class as diffusion equations, such as the heat equation. Such equations are extremely useful, and often physically accurate within their proper domain, but they have feature that, according to the diffusion equation, every other point is instantly affected, however slightly. The equation allows influence to leak outside any finite-speed causal cone, which is exactly our objection the Schrödinger equation. The Klein–Gordon equation behaves differently. Because time and space enter at the same differential order, it supports genuinely wave-like propagation. Disturbances travel at a finite characteristic speed. In the massless case that speed is exactly $`c`$. In the massive case the field still obeys a hyperbolic equation, so causal influence remains confined to the light cone even though individual wave packets need not move exactly at $`c`$.
-
-We can gain insight into why an equation of the form of Klein Gordon requires finite speed propagation by examining classes of differential equations, which we can divide to hyperbolic, elliptic, and parabolic:
-
-``` math
-\boxed{\begin{matrix}
-\text{Elliptic} & \partial_{t}^{2}\phi + c^{2}\partial_{x}^{2}\phi = 0 \\
-\text{Parabolic} & \partial_{t}\phi - D\text{ }\partial_{x}^{2}\phi = 0 \\
-\text{Hyperbolic} & \partial_{t}^{2}\phi - c^{2}\partial_{x}^{2}\phi = 0
-\end{matrix}}
-```
-
-lliptic equations have second-derivative terms with the same sign. That is the same sign structure as Euclidean distance, where all squared directions add:
-
-``` math
-ds^{2} = dx^{2} + dy^{2} + \cdots
-```
-
-Nothing in that structure singles out a cone or a limiting speed. Accordingly, elliptic equations do not describe propagation from one event to another. They instead constrain a field over a region all at once. That is why they are the natural equations for static or steady-state configurations.
-
-Parabolic equations introduce time evolution, but in an asymmetric way:
-
-``` math
-\partial_{t}\phi - D\text{ }\partial_{x}^{2}\phi = 0.
-```
-
-If we try a Fourier mode
-
-``` math
-\phi(x,t) \propto e^{i(kx - \omega t)},
-```
-
-then
-
-``` math
-- i\omega + Dk^{2} = 0,\text{so}\omega = - \text{ }iDk^{2}.
-```
-
-The frequency is imaginary rather than real, which means the mode does not oscillate. It decays:
-
-``` math
-\phi(x,t) \propto e^{ikx}e^{- Dk^{2}t}.
-```
-
-So parabolic equations smooth out differences instead of carrying traveling waves. A local disturbance spreads immediately, however weakly, to all distances. That is why diffusion equations do not respect a strict speed limit.
-
-Hyperbolic equations have a mixed sign as the Minkowski metric does in hyperbolic spacetime.
-
-``` math
-\partial_{t}^{2}\phi - c^{2}\partial_{x}^{2}\phi = 0.
-```
-
-If we again try a plane wave *\*
-``` math
-\phi(x,t) \propto e^{ikx}e^{- Dk^{2}t}
-```
-
-we find
-
-``` math
-- \omega^{2} + c^{2}k^{2} = 0\  = > \ \omega^{2} = c^{2}k^{2}.
-```
-
-Now $`\omega`$ is real, so the solutions genuinely oscillate and propagate as waves. In fact, the operator factors:
-
-``` math
-\partial_{t}^{2} - c^{2}\partial_{x}^{2} = (\partial_{t} - c\partial_{x})(\partial_{t} + c\partial_{x}),
-```
-
-so disturbances move along
-
-``` math
-x \pm ct = \text{constant}.
-```
-
-That is finite-speed propagation.
-
-This is exactly the structure relativity requires. The spacetime interval is
-
-``` math
-ds^{2} = - c^{2}dt^{2} + dx^{2}.
-```
-
-Because of the minus sign, the null condition
-
-``` math
-ds^{2} = 0
-```
-
-has nontrivial solutions:
-
-``` math
-dx = \pm c\text{ }dt.
-```
-
-These are the edges of the light cone. For a massive worldline,
-
-``` math
-d\tau^{2} = dt^{2} - \frac{dx^{2}}{c^{2}}
-```
-
-Thus, if $`dx/dt > c`$, then $`d\tau^{2} < 0`$ and proper time becomes imaginary. Physical worldlines must therefore remain inside or on the light cone.
-
-The key point is that the operator
-
-``` math
-\partial_{t}^{2} - c^{2}\partial_{x}^{2}
-```
-
-has the same mixed-sign structure as the interval
-
-``` math
-- c^{2}dt^{2} + dx^{2}.
-```
-
-In spacetime, that structure produces a light cone. In the differential equation, it produces characteristic wave propagation at finite speed.
-
-Elliptic equations have second-derivative terms with the same sign. That is the same sign structure as Euclidean distance, where all squared directions add:
-
-``` math
-ds^{2} = dx^{2} + dy^{2} + \cdots
-```
-
-Unlike the hyperbolic case, this structure does not produce a nontrivial null condition and so does not single out a characteristic cone or a finite propagation speed. Accordingly, elliptic equations do not describe propagation from one event to another. They instead constrain a field over a region all at once, which is why they are the natural equations for static or steady-state configurations.
-
-Elliptic operators are Euclidean in sign structure, so they govern spatial balance; hyperbolic operators are Minkowskian in sign structure, so they govern causal propagation.
-
-You may rightfully say at this point, ok, you’ve convinced me, the Klein Gordon field abides Relativity in a way that the Schrödinger equation does not, but we’ve done nothing to say the Klein Gordon field describes the evolution of quantum observables. That is exactly right. For now, we’re only saying that if we could use something like the Klein Gordon to describe quantum evolution, it would play well with Relativity.
-
-This is also a good moment to look ahead. The Klein–Gordon equation is not itself the whole story of matter, and in fact no known fundamental matter field is a simple Klein–Gordon field. One might wonder whether the real secret of relativity is merely matching the order of time and space derivatives, and whether one could instead write an equation first order in both. That would be attractive, because first-order time evolution requires only one initial datum rather than two, which feels closer to ordinary quantum theory, where one specifies a state rather than both a value and its time derivative. The answer is yes, but only if the field has more structure than a scalar value at each point. A scalar field cannot support such an equation in a Lorentz-covariant way. But a spinor field can. That is exactly what happens in the Dirac equation, which is first order in both time and space and describes spin-$`\frac{1}{2}`$ particles such as electrons and quarks.
-
-##### Working in the Momentum Basis
-
-Before we leave our toy spring model, let's take the decisive step of switching to what will become the momentum basis and is for now the "normal mode," or "fourier mode" basis.
-
-First, we need to understand the idea of diagonalizing an operator. As we know, an operator is a generalization of a matrix and diagonalizing a matrix – literally writing it in a form with only diagonal entries – is writing in a basis (the column vectors) of its eigenvectors so that its actions on those vectors is to scale them by their eigenvalues, but never to mix with other basis vectors. From this it follows that any vector written as a superposition of basis vectors transforms under the matrix by having its components scaled by the respective eigenvalues so that each component transforms independently. Looking ahead just a bit, we know that energy commutes with momentum (it can be written in terms of momentum), and we also know that energy is the time evolution generator, thus, if we write our systems Hamiltonian in term in the momentum basis, its components will evolve independently. This independence of evolution will determine how we talk about particle creation, annihilation, and count. We will build up a procedure in the decoupled momentum basis for which we have no equivalent in the coupled position basis.
-
-Let’s hop down a level in detail and see what this looks like in our spring lattice. For the sake of simplicity, we will move to the massless case where this is simply once spring connecting each site. What we want to do is to describe an arbitrary vibrational pattern in terms of so-called independent normal modes. This is actually entirely concrete and in fact a common undergraduate classical mechanics problem used to illustrate the necessity of finding an eigenbasis, or decoupled basis, to solve mechanical problems. Let’s start by actually looking at some simple modes. Below are the k = 0, k=1, k=2 modes and then the k = (k=1) + (k=2) superposition mode.
-
-<img src="C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image494.gif" style="width:6.5in;height:1.9875in" />
-
-<img src="C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image495.gif" style="width:6.5in;height:1.9875in" />
-
-<img src="C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image496.gif" style="width:6.5in;height:1.9875in" />
-
-<figure>
-<img src="C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image497.gif" style="width:6.5in;height:2.06944in" />
-<figcaption><p>Figure 67 - Example modes in spring lattice</p></figcaption>
-</figure>
-
-Now let’s actually solve this system.
-
-Let the lattice have $`N`$sites, with one scalar degree of freedom $`\phi_{n}(t)`$at each site. The Lagrangian is
-
-``` math
-L = \sum_{n = 0}^{N - 1}\left\lbrack \frac{1}{2}{\dot{\phi}}_{n}^{2} - \frac{1}{2}m_{0}^{2}\phi_{n}^{2} - \frac{1}{2}\kappa(\phi_{n + 1} - \phi_{n})^{2} \right\rbrack,
-```
-
-with periodic boundary conditions, so $`\phi_{N} \equiv \phi_{0}`$. The first term is kinetic energy, the second is the onsite restoring term, and the third is the coupling between neighboring sites.
-
-Applying the Euler–Lagrange equation to each $`\phi_{n}`$,
-
-``` math
-\frac{d}{dt}\frac{\partial L}{\partial{\dot{\phi}}_{n}} - \frac{\partial L}{\partial\phi_{n}} = 0,
-```
-
-gives
-
-``` math
-{\ddot{\phi}}_{n} + m_{0}^{2}\phi_{n} + \kappa(2\phi_{n} - \phi_{n + 1} - \phi_{n - 1}) = 0.
-```
-
-This is the system we want to solve. Written this way, it is in the site basis. The unknowns are the site values $`\phi_{n}(t)`$, and the equations are coupled because each site talks to its neighbors. To understand moving to the normal basis, let’s look at the Hamiltonian as this is the time generator.
-
-The free lattice Hamiltonian is
-
-``` math
-H = \sum_{n}^{}\left\lbrack \frac{1}{2}{\dot{\phi}}_{n}^{\text{ }2} + \frac{1}{2}m_{0}^{2}\phi_{n}^{\text{ }2} + \frac{\kappa}{2}(\phi_{n + 1} - \phi_{n})^{2} \right\rbrack.
-```
-
-Here $`m_{0}`$sets the strength of the onsite restoring force, and $`\kappa`$sets the stiffness of the coupling between neighboring sites. In the site basis this Hamiltonian is not diagonal, because the last term ties each site to its neighbors.
-
-What matters is that this coupling has the same form at every site. Shifting the whole lattice by one site leaves the Hamiltonian unchanged. The free lattice therefore has translation symmetry. To exploit that symmetry, we choose a basis of patterns that respond to a one-site shift as simply as possible. The discrete Fourier patterns do exactly that:
-
-``` math
-{e^{ikx_{n}} \rightarrow e}^{ika}e^{ikx_{n}}.
-```
-
-That is, as we have discussed earlier, plane waves, or equivalently here, normal modes, form an eigenbasis of the spatial translation operator. The entire complexity of each wave mode viewed in the position basis reduces to the eigenvalue $`k`$ in the mode basis.
-
-Mathematically, we expand the site values, $`\phi_{0},\phi_{1},\ldots,\phi_{N - 1}`$, as
-
-``` math
-\phi_{n}(t) = \frac{1}{\sqrt{N}}\sum_{k}^{}q_{k}(t)e^{ikx_{n}},k = \frac{2\pi m}{Na},m = 0,1,\ldots,N - 1.
-```
-In the site basis, a configuration is a spatial pattern spread across all sites. In the Fourier basis, that same configuration is specified by the coefficients $`q_{k}(t)`$. The label $`k`$ tells us which translation-eigenpattern we mean. The coefficient $`q_{k}`$ tells us how much of that pattern is present. To use another visual analogy, a note on a guitar string has one characteristic shape, but the weight of that pattern oscillates with time:
-
-<figure>
-<img src="C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image498.png" style="width:6.5in;height:1.59514in" />
-<figcaption><p>Figure 68 - Mode oscillations (not position oscillations)</p></figcaption>
-</figure>
-
-Substituting this expansion into the equations of motion gives
-
-``` math
-{\ddot{q}}_{k} + \omega_{k}^{2}q_{k} = 0,\ \ \omega_{k}^{2} = m_{0}^{2} + 4\kappa{\sin}^{2}\left( \frac{ka}{2} \right).
-```
-
-Equivalently, the Hamiltonian becomes
-
-``` math
-H = \frac{1}{2}\sum_{k}^{}\left\lbrack p_{k}p_{- k} + \omega_{k}^{2}q_{k}q_{- k} \right\rbrack.
-```
-
-Thus, in the Fourier basis the Hamiltonian is diagonal in which the free lattice is written as a sum of independent oscillator energies, one for each allowed $`k`$.
-
-We can see straight away that each independent equation of motion in the Fourier mode basis is simpler to solve than the coupled equation of motion in the position basis. But what really matters for us is that we have a procedure from fixed-particle quantum mechanics that quantizes energy levels in a harmonic oscillator. The fact that the field decomposes into decouple oscillators in the momentum basis will be the basis of the bridge from the field to particles. Whereas in fixed-particle quantum mechanics quantization of energy *for a* particle in a potential, in QFT energy quantization of the field *is a* particle.
-
-### Unused QFT material\
-intro material
 
 ~~We can see this incomplete nature in three ways. First, non-relativistic quantum mechanics is an “everything everywhere all at once” model. When the state evolves in time, the distribution over the position observable “updates” over all space. This is manifestly counter to the central tenet of relativity that an event can only influence other events within its light cone. Second, fixed-particle quantum mechanics cannot account for particles being created or destroyed, which routinely happens, for example, any time an excited atom emits a photon. Third, prior to QFE, quantum mechanics described how a particle behaves in a prescribed potential but gives no account of the origin of that potential.~~
 
@@ -8819,79 +8792,6 @@ clean.
 
 ## 
 
-## Unitarity
-
-Before introducing the full machinery of quantum mechanics, it is worth isolating one requirement that already tells us a great deal about what the theory must look like. If the basic object of the theory is not a point in phase space but a superposition of amplitudes, then its evolution cannot be arbitrary. It must preserve the structure that makes those amplitudes physically meaningful. That requirement is unitarity.
-
-Let the state of a system be represented by a vector $`\mid \psi\rangle`$in a complex vector space equipped with an inner product $`\langle\phi \mid \psi\rangle`$. This inner product is not an ornamental extra. It is the structure from which the measurable content of the theory is built. Norms come from it. Overlaps come from it. Transition amplitudes come from it. Once probabilities are extracted from squared overlaps, the inner product becomes the quantity whose preservation matters.
-
-An allowed time evolution must therefore preserve that inner product. If the state evolves by a linear map $`U`$, then the condition is
-
-``` math
-\langle U\phi \mid U\psi\rangle = \langle\phi \mid \psi\rangle
-```
-
-for all states $`\mid \phi\rangle`$and $`\mid \psi\rangle`$. A map with this property is called unitary. In operator form, this is
-
-``` math
-U^{\dagger}U = I.
-```
-
-That compact equation says a great deal. It says the evolution may rotate the state in its abstract space, it may mix components, it may alter phases, but it may not stretch, shrink, or scramble the geometry that gives the state physical meaning.
-
-This geometry is richer than ordinary Euclidean geometry because the inner product is complex. If we temporarily view the complex vector space as a real one with extra structure, then the inner product splits into two parts,
-
-``` math
-\langle\phi \mid \psi\rangle = g(\phi,\psi) + i\text{ }\omega(\phi,\psi),
-```
-
-where
-
-``` math
-g(\phi,\psi) = Re\text{ }\langle\phi \mid \psi\rangle,\omega(\phi,\psi) = Im\text{ }\langle\phi \mid \psi\rangle.
-```
-
-The real part $`g`$plays the role of a metric-like structure. It measures lengths and angles. The imaginary part $`\omega`$is antisymmetric and area-like. It is the Hilbert-space remnant of the symplectic structure that classical mechanics preserves in phase space. In classical mechanics, lawful evolution preserves symplectic area. In quantum mechanics, lawful evolution preserves something stronger. It preserves the entire complex inner product, and therefore preserves both the metric-like and symplectic-like parts at once. Symplecticity has not disappeared. It has been absorbed into unitarity.
-
-This is one reason quantum theory needs Hilbert space rather than ordinary configuration space. A wave-like state carries internal structure. Its components do not merely list mutually exclusive possibilities. They coexist with relative magnitudes and relative phases, and those relative phases affect future outcomes through interference. The state is therefore not just a distribution over alternatives. It is a single object whose parts can reinforce or cancel one another. A theory of such objects needs a geometry that can keep track of both size and phase relations. The complex inner product does exactly that.
-
-Consider a state written as a superposition,
-
-``` math
-\mid \psi\rangle = \sum_{n}^{}c_{n} \mid n\rangle.
-```
-
-The coefficients $`c_{n}`$are amplitudes, not probabilities. Their squared magnitudes may eventually be read probabilistically in a suitable basis, but the state itself contains more than those magnitudes. It also contains the phase relations among the $`c_{n}`$. Those phases are not decorative. They are what make interference possible. Under unitary evolution,
-
-``` math
-\mid \psi(t)\rangle = U(t) \mid \psi(0)\rangle,
-```
-
-the amplitudes change, but they change in a way that preserves the full pattern of relations among components. A superposition may spread, twist, and recombine, but it does not come apart. The geometry that makes interference meaningful is carried forward intact.
-
-From this one condition follow many of the most familiar features of quantum mechanics.
-
-First, unitarity preserves norm. Since
-
-``` math
-\langle\psi(t) \mid \psi(t)\rangle = \langle\psi(0) \mid \psi(0)\rangle,
-```
-
-a normalized state remains normalized. This is why total probability is conserved in a closed quantum system. But probability conservation is only the most visible consequence, not the deepest one.
-
-Second, unitarity preserves transition amplitudes and therefore transition probabilities. If two states have a given overlap now, they retain that overlap after both are evolved. The mutual relations among states are not distorted.
-
-Third, unitarity preserves angles and orthogonality. If two states are orthogonal, meaning perfectly distinguishable in principle, then unitary evolution keeps them orthogonal. Quantum evolution may make a state harder for us to describe in everyday terms, but it does not erase the distinctions the theory itself makes. Distinguishability is preserved.
-
-Fourth, unitarity makes closed-system evolution reversible. Since $`U^{\dagger}U = I`$, the inverse of $`U`$exists and is $`U^{\dagger}`$. One can run the evolution backward. This does not mean that every practical process in the world is reversible. Measurements, coarse-graining, and open-system effects complicate the story. But the underlying law for an isolated system does not discard information. It transforms without tearing.
-
-These consequences are often taught separately. Probability conservation is presented in one place, reversibility in another, orthogonality in another. But they are all facets of the same geometric fact. A unitary evolution preserves the full inner-product structure of state space.
-
-This gives quantum mechanics a kind of continuity very different from classical continuity. In classical mechanics, a system remains itself by tracing a path through phase space. In quantum mechanics, a state need not follow a sharp trajectory at all. It may be spread across many possibilities. It may evolve into a superposition whose components correspond to outcomes that classical language would regard as incompatible. Yet the state is not thereby destroyed into a formless cloud. What persists is not a point, but a structure. What survives is not certainty, but identity of form.
-
-That is why unitarity deserves to be understood before the usual interpretive puzzles arrive. It tells us that quantum uncertainty is not chaos. Superposition does not mean that anything goes. The amplitudes evolve under a severe constraint. Their total geometric organization must be preserved. Norm is preserved. Distinguishability is preserved. Reversibility is preserved. The metric-like and symplectic-like aspects of the theory are preserved together.
-
-Unitarity, then, is the principle that pulls identity out of the ashes of uncertainty. A quantum state may be indefinite with respect to many classical questions, but it is not without structure, and that structure is not allowed to decay under lawful evolution. The state may rotate through possibility, but it must remain itself.
 
 Top of Form
 
