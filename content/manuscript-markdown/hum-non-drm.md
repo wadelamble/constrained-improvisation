@@ -7317,7 +7317,7 @@ A few things I particularly like in this version:
 
 # Quantum Field Theory
 
-Relativity flouts our intuition – measuring sticks themselves change with relative motions – but leaves our categories intact. Quantum mechanics demands a new categories altogether – we can no longer reason about a world filled with objects at definite locations but must instead probe nature to find statistical patterns. These theories constitute our modern insights into nature’s fundamental structure, but do not fit together to form a coherent and complete story. “Quantum field theory” addresses this. In this section, we will not encounter any new intuition-smashing result. Instead, we will recount the – often somewhat messy – synthesis that comprises our current fundamental model of all but gravity.
+Relativity flouts our intuition – measuring sticks themselves change with relative motions – but leaves our categories intact. Quantum mechanics demands a new categories altogether – we can no longer reason about a world filled with objects at definite locations but must instead probe nature to find statistical patterns. These theories constitute our modern insights into nature’s fundamental structure, but do not fit together to form a coherent and complete story. “Quantum field theory” is an attempt to address this. In this section, we will not encounter any new intuition-smashing result. Instead, we will recount the – often somewhat messy – synthesis that comprises our current fundamental model of all but gravity.
 
 In presenting quantum field theory, we will first look at the gaps and inconsistencies of early quantum mechanics to understand why we need QFT. Next, we will discuss the major building blocks of the ontology, or fundamental constituents of reality, the theory asserts. We will then develop a simple working physical field model and using that make the decisive of step marrying the ideas of a classical field and quantum operators. At this point we will be able to say what it means to be a particle. We will complete this development of the core model by formally expressing the field theory in the algebraic structure of quantum canonical commutators. At this point we can ask ourselves what we are the building-block calculation we can make with such a theory. To approach these calculations, we will switch our approach from thinking about local differential equations to thinking about global action variation. This will lead to perturbative solutions and Feynman diagrams that give definition to our conception of discreet interactions. We will then move from our simple example field to actual matter and gauge fields, focusing particularly on the electron and photon fields, known collectively as quantum electrodynamics, or QED. Finally, as a pay off for the long journey to present physics at its most fundamental level, we will show that we can use QED to derive the familiar Coulomb electromagnetic forces.
 
@@ -7325,9 +7325,87 @@ In presenting quantum field theory, we will first look at the gaps and inconsist
 
 In its early development, the originators of quantum mechanics were too busy inventing a brilliant new formalism to express wildly counterintuitive evidence to, at the same time, offer a fully complete and coherent physical theory.
 
-The first conceptual gap in early quantum mechanics is that it offers no answer to the natural question: what is a particle? If one is happy with the operational definition that a particle is a sort of rigid object, this isn’t a problem, but this definition quickly becomes untenable in quantum theory. How can a rigid body have an uncertain location? What accounts for different particle types? How is a rigid body an irreducible representation of symmetry? When one learns about the particle nature of light demonstrated by the photoelectric effect, one may be tempted to think that a particle, in early quantum mechanics, is a “quantum,” a little parcel of energy. This is, in fact, what QFT will tell us, but early quantum mechanics does not say this. It explained how a particle confined to a location has quantized energy levels due to the need to fit its wave function into the potential, like harmonics fit on a guitar string. In fact, using early quantum theory, calculating these energy levels is an introductory undergraduate exercise. But there is no similar way to calculate that free energy must come in discrete quanta. From de Broglie’s equations, we do know the energy of a particle is related to frequency by $`E = h\nu`$, but this does not answer why additional energy must be added as discrete particles. QFT, through so-called “second quantization,” does take exactly this step, defining particles as quanta of excitation of a field in spacetime, where the discrete spectrum is still picked out by a boundary-condition-type requirement: the total probability across all field configurations must add up to some finite constant, which means that the probability assigned to arbitrarily large field amplitudes — and thus arbitrarily large energies — must die away. If particles are field excitations, what then are waves in the classical E&M field sense? The answer is that they are quantum fields in the case where many particles occupy the same mode. This is true for light but not for fermionic matter fields due to the Pauli exclusion principle, which prevents multiple fermions from occupying the same state. Now one might fairly ask, if the origin of particles is field excitations, what is the origin of the field? QFT offers no answer for this other than that it is the only mathematical object we know of that can meet the demands of spacetime symmetry and unitarity of state.
+### Wherefore Particles?
+The first conceptual gap in early quantum mechanics is that it offers no answer to the natural question: what is a particle? If one is happy with the operational definition that a particle is a sort of rigid object, this isn’t a problem, but this definition quickly becomes untenable in quantum theory. How can a rigid body have an uncertain location? What accounts for different particle types? How is a rigid body an irreducible representation of symmetry? When one learns about the particle nature of light demonstrated by the photoelectric effect, one may be tempted to think that a particle, in early quantum mechanics, is a “quantum,” a little parcel of energy. This is, in fact, what QFT will tell us, but early quantum mechanics does not say this. It explained how a particle confined to a location has quantized energy levels due to the need to fit its wave function into the potential, like harmonics fit on a guitar string. In fact, using early quantum theory, calculating these energy levels is an introductory undergraduate exercise. But there is no similar way to calculate that free energy must come in discrete quanta. From de Broglie’s equations, we do know the energy of a particle is related to frequency by $`E = h\nu`$, but this does not answer why additional energy must be added as discrete particles. QFT, through so-called “second quantization,” does take exactly this step, defining particles as quanta of excitation of a field in spacetime, where the discrete spectrum is still picked out by a boundary-condition-type requirement: the total probability across all field configurations must add up to some finite constant, which means that the probability assigned to arbitrarily large field amplitudes — and thus arbitrarily large energies — must die away. Second quanization uplevels the discreet spectrum associated with boundary conditions from the wave function to the wave functional of the field configuration. 
 
-, and defining the classical wave as a limit of the quantum field. The fact that matter (electrons) doesn’t behave as a wave in the classical limit is more of a detail of the kind of field it arises from than a conceptual gap. This then is one of the most important steps QFT takes toward becoming a coherent theory – it doesn’t take particles as a given but rather says they are excitations of fields. And it doesn’t take classical light waves as givens, but says they are the quantum field in the appropriate limit.
+If particles are field excitations, what then are waves in the classical E&M field sense? The answer is that they are quantum fields in the case where many particles occupy the same mode. This is true for light but not for fermionic matter fields due to the Pauli exclusion principle, which prevents multiple fermions from occupying the same state. Now one might fairly ask, if the origin of particles is field excitations, what is the origin of the field? QFT offers no answer for this other than that it is the only object we know of that can meet the demands of spacetime symmetry and unitarity of state.
+
+
+The second conceptual gap in early quantum mechanics is that it is not constructed on spacetime.
+
+
+## Where is Spacetime
+Early quantum mechanics is lacking a notion of local spacetime. If quantum mechanics is a theory only of probaility distributions over position, removing the the theoretic elements of bodies with trajectories, it is unmoored from spacetime. But Relativity demands that influence be local. Were this not the case, spatially separate locations on the same equal-time slice could influence one another, that is, their influence could act outside their light cones. But the wave function is not, in the classical sense, a field spread through spacetime that passes influence from neighbor to neighbor. It is an amplitude over position space or other dynamical variables, in the one-particle case over position space or some other dynamical variable, and in the many-particle case over configuration space. As such, it does not move through space. It is simply given on the whole slice at once, or, equivalently, moves at infinite speed. While this structure appears to present a causal contradiction, knowing what a slippery thing the wave function is, we will specify experiments that pin down what sort of spacelike influence this quantum formalism implies. 
+
+We can see this relativistically impermissible structure directly in the Schrödinger equation,
+
+$$
+i\hbar \frac{\partial \psi}{\partial t}
+=
+\left(
+-\frac{\hbar^2}{2m}\nabla^2 + V
+\right)\psi.
+$$
+
+It is first order in time and second order in space, but in spacetime space and time stand, modulo the metric sign, on equal footing. That mismatch is already a strong clue that something is wrong. Equations of this kind belong to the broad family of diffusion equations, such as those describing heat flow, in which an amplitude spreads with exponential falloff but becomes immediately nonzero everywhere. In a relativistic setting that is impermissible, since influence should remain confined to the light cone.
+
+From the Schrödinger equation’s solutions, we can find the dispersion relation,
+
+$$
+\omega = \frac{\hbar k^2}{2m},
+$$
+
+from which we find the group velocity,
+
+$$
+v_g = \frac{\partial \omega}{\partial k} = \frac{\hbar k}{m}.
+$$
+
+The speed of light appears nowhere in this equation, and thus the group velocity is unbound. In early quantum mechanics, barring pathological exceptions, group velocity is particle velocity, so the theory predicts that particle velocity can exceed lightspeed in an experimentally observable way. This is exactly what one should expect from a theory built for Galilean rather than Minkowskian spacetime.
+
+We can devise an experiment to test this. Prepare a narrow free-particle wave packet with sufficiently large central wavenumber, let it propagate across a known baseline, and compare the arrival time of the packet peak to the light-travel time across the same distance. Since the group velocity in the theory is unbounded, the theory permits choosing the packet so that its peak arrives sooner than any light signal could.
+
+One can see the same problem by starting from a localized state. Suppose that on some equal-time slice the particle is sharply confined to a small spatial region. Under Schrödinger evolution, that localization does not spread by advancing outward through neighboring points at some finite characteristic speed. It evolves according to
+
+$$
+\psi(x,t) = \int_{-\infty}^{\infty} \phi(k)\, e^{i(kx-\omega t)}\, dk,
+$$
+
+with
+
+$$
+\omega = \frac{\hbar k^2}{2m}.
+$$
+
+Since every Fourier mode is immediately present in the evolved state, the wave function acquires nonzero support arbitrarily far away after any nonzero time, however short. The tails may be tiny, but they are there at once. In a relativistic theory that matters. If a particle is localized here now, there must be regions elsewhere now that remain exactly outside causal reach. 
+
+Here too the experiment is straightforward. Localize the particle near one detector on an equal-time slice, place a second detector far enough away that for a chosen short time window it is spacelike separated from the first, and then allow the state to evolve for that short time. Schrödinger evolution immediately assigns the distant detector a nonzero amplitude where relativity demands it be exactly zero.
+
+## Making Particles
+
+Early quantum mechanics fixes the particle count at the start. For $N$ particles, the state is a wave function on an $N$-particle configuration space,
+
+$$
+\psi(x_1,\dots,x_N,t).
+$$
+
+The number of particles is built into the space the state lives on. Time evolution can move amplitude around inside that space, but it cannot leave it. An $N$-particle Schrödinger theory can reshuffle the state of $N$ particles. It cannot turn $N$ into $N+1$ or $N-1$.
+
+But particle creation in nature is commonplace. An excited atom emits a photon, and an energetic collision produces new particles. Matter and radiation exchange quanta. One may model different particle compositions with different Hilbert spaces, but that is exactly the point. The theory does not contain one unified state space in which particle composition may change.
+
+QFT will fix this by changing what a particle is. In second quantization, a particle is not a primitive object that happens to carry energy. It is one step in the discrete excitation spectrum of a field mode. Once a mode is quantized, its occupation number, how many particles are in a given momentum mode, comes in levels $n=0,1,2,\dots$, and there are operators that move up and down that ladder,
+
+$$
+\hat a^\dagger |n\rangle \propto |n+1\rangle,
+\qquad
+\hat a |n\rangle \propto |n-1\rangle.
+$$
+
+These ladder operators imply an extension of state space to the direct sum of all fixed-particle-number spaces, called Fock space.
+
+
+
+
 
 We can see this incomplete nature in three ways. First, non-relativistic quantum mechanics is an “everything everywhere all at once” model. When the state evolves in time, the distribution over the position observable “updates” over all space. This is manifestly counter to the central tenet of relativity that an event can only influence other events within its light cone. Second, fixed-particle quantum mechanics cannot account for particles being created or destroyed, which routinely happens, for example, any time an excited atom emits a photon. Third, prior to QFE, quantum mechanics described how a particle behaves in a prescribed potential but gives no account of the origin of that potential.
 
