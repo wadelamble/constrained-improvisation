@@ -192,7 +192,7 @@ State that QFT is the point where relativity and quantum mechanics stop merely c
 ### 10.2 What this chapter will do
 Lay out the sequence:
 - limits of early QM,
-- two routes into QFT,
+- the spaces of QFT as ontological overview,
 - free relativistic field and quantization,
 - what the theory calculates,
 - second formulation via the path integral,
@@ -223,48 +223,52 @@ Avoid saying early QM is merely “wrong.” Avoid overstating the causality ind
 
 ---
 
-## 12. Two ways into QFT [CANONICAL]
+## 12. The spaces of QFT [CANONICAL ontological overview]
 
-### 12.1 Route A — ontological route
-Move from ordinary quantum theory, through the Heisenberg picture, to local operator-valued fields in spacetime.
+### 12.1 Function
+This section now replaces the earlier plan of opening with a separate “operators in spacetime” block. Its job is to orient the reader before the constructive field model begins.
 
-### 12.2 Route B — constructive route
-Start from a classical relativistic field model, diagonalize it into modes, quantize those modes, and recover particles.
+### 12.2 Spacetime
+Locality, causality, detector placement, field insertion points.
 
-### 12.3 Why both routes are needed
-- Route A tells you what kind of thing a quantum field is.
-- Route B tells you how such a field becomes a many-particle quantum system.
+### 12.3 Field-configuration space
+Functional Schrödinger viewpoint and the idea of a state over entire field values.
 
-### 12.4 Structural note
-The chapter should treat them as convergent, not rival.
+### 12.4 Hilbert / Fock space
+Quantum states of the field.
+
+### 12.5 Momentum space
+Normal modes, translation-adapted basis, and the later recovery of particle language.
+
+### 12.6 Local operators and microcausality
+This section should still carry the key ontological content previously assigned to the operator route:
+- observables are attached to spacetime,
+- the field is not the wave function,
+- relativistic independence is encoded through spacelike commutation,
+- field-configuration states can be recovered as a secondary representation.
+
+### 12.7 Placement note [CURRENT JUDGMENT]
+The spaces section now comes early by design. It is not a late synthesis section in the current architecture. It is the chapter’s ontological map.
+
+### 12.8 Risk to avoid
+Do not let this section become a premature detour into full quantization or calculation. Its role is orientation.
 
 ---
 
-## 13. Operators in spacetime [CANONICAL]
+## 13. Earlier operator-route material [ABSORBED]
 
-### 13.1 Schrödinger to Heisenberg transition
-Use the Heisenberg picture as the bridge that reveals observables can carry dynamics.
+### 13.1 Status
+The former “two ways into QFT” and “operators in spacetime” sections are no longer required as separate early sections.
 
-### 13.2 From evolving observables to local observables
-Motivate attaching operators to spacetime points.
+### 13.2 What survives
+Their strongest content survives, but distributed differently:
+- the Heisenberg-to-local-operator motivation,
+- the field-versus-wave-function distinction,
+- canonical commutators and microcausality,
+- the functional Schrödinger recovery.
 
-### 13.3 Field and conjugate momentum
-Introduce $\hat\phi(x)$ and $\hat\pi(x)$ as local operator-valued fields.
-
-### 13.4 Equal-time canonical commutators
-State them and connect them to the ordinary single-degree-of-freedom commutator.
-
-### 13.5 Microcausality
-Explain vanishing spacelike commutators as the algebraic expression of local relativistic independence.
-
-### 13.6 Distinguish field from wave function
-Make explicit that the field is not the wave function; they occupy different conceptual roles.
-
-### 13.7 Functional Schrödinger recovery [CANONICAL but secondary]
-Briefly show how states over field configurations recover a Schrödinger-like representation.
-
-### 13.8 Editorial note
-This is one of the chapter’s core identity sections and should be protected.
+### 13.3 Structural consequence
+After the spaces overview, the chapter now moves directly into the constructive Klein-Gordon route.
 
 ---
 
@@ -387,35 +391,20 @@ Reinforce the nontriviality of the vacuum.
 This is one of the decisive conceptual upgrades.
 
 ### 18.5 Transition note
-This section should bridge naturally to “spaces of QFT.”
+This section should now bridge naturally to “what the theory calculates,” with at most a brief reorientation reminder if needed.
 
 ---
 
-## 19. The spaces of QFT [CANONICAL synthesis section]
+## 19. Late spaces-of-QFT synthesis slot [RETIRED]
 
-### 19.1 Spacetime
-Locality, causality, detector placement, field insertion points.
+### 19.1 Status
+A separate later “spaces of QFT” section is no longer canonical. The active judgment is that this material belongs earlier as the chapter’s ontological overview.
 
-### 19.2 Momentum space
-Normal modes, free propagation, translation-adapted basis.
+### 19.2 What may still survive here
+At most, a brief reminder may appear after Fock space if the reader needs reorientation. It should not be a second full section.
 
-### 19.3 Field-configuration space
-Functional Schrödinger viewpoint and later path-integral intuition.
-
-### 19.4 Hilbert / Fock space
-Quantum states of the field.
-
-### 19.5 Optional mention of symmetry-action / representation spaces [PROVISIONAL]
-Only if it clarifies rather than clutters.
-
-### 19.6 Function of this section
-Prevent category errors such as:
-- confusing field with state,
-- confusing Hilbert space with spacetime,
-- confusing momentum representation with ontology.
-
-### 19.7 Placement
-This section now appears vindicated as an internal chapter synthesis after free-field quantization and before the calculations block.
+### 19.3 Consequence
+Nothing after the classical Klein-Gordon route needs structural reordering on account of this clarification.
 
 ---
 
