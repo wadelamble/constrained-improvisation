@@ -1,6 +1,9 @@
 # Liouville Intuition
 
-We can get a feel for this kind of structure in the simpler example of permuting a set. Take a deck of three cards labeled `A`, `B`, and `C`. The exact possible states are the six deck orders
+One might justifiably think that the content of our physical laws is limited to predicting future histories from initial conditions. Yet in conservative systems, where energy is never lost to a bath of chaos but is instead continuously traded between potential and kinetic form, our laws make the addition implication that the information encoded in the arrangement of the probability density over possible instantaneous states is never lost. This is a categorically different kind of claim. It is not about one particle's specific initial conditions and its future, but about the information-theoretic behavior of a statistical ensemble of initial conditions drawn from a distribution. How can laws that seem wholly oriented toward initial states and future trajectories contain implications about ensembles, whose members, by definition, follow independent trajectories? The answer we will arrive at lies in the structural relationship between paired position and momentum, which defines a measure of information content, and in the way a conservative system preserves that measure.
+
+## Example -- Set Permutation
+We can get a feel for this kind of structure in the  example of permuting a set. Take a deck of three cards labeled `A`, `B`, and `C`. The exact possible states are the six deck orders
 
 ```text
 ABC, ACB, BAC, BCA, CAB, CBA.
@@ -18,7 +21,7 @@ CBA -> BAC
 BAC -> ACB
 ```
 
-Now place a probability distribution on these six exact states. For example,
+And place a probability distribution on these six exact states. For example,
 
 ```text
 P(ABC) = 1/2
@@ -34,11 +37,23 @@ P(ACB) = 1/3
 P(BAC) = 1/6
 ```
 
-with all other states still assigned probability `0`. Nothing has been blurred or averaged. The same probability weights are still present. They have only been reassigned to different exact states.
+with all other states still assigned probability `0`. The same probability weights are still present. They have only been reassigned to different exact states.
 
-This example isolates the elements at play. The state space is a set of exact possibilities. The natural measure on such a space is just counting measure: how many exact states lie in a given subset. The evolution rule is invertible: every state has one image and one preimage. Because it is a permutation, any subset containing `k` exact states is carried to another subset containing `k` exact states. That is what measure preservation means here.
+Let's make a few observations about this example:
+1. An initial arrangement is unique.
+2. Under a given permutation rule, a new arrangement is dictated by the previous arrangement.
+3. We can run the permutation in reverse and recover the original arrangement.
+4. Two arrangements under the same number of permutations remain distinct.
 
-So the apparently obvious fact that the probability distribution simply gets moved around is not a separate fact floating above the mathematics. In this discrete setting it is exactly the same fact as preservation of the natural measure. No exact states are created, destroyed, merged, or duplicated, and for that reason probability can only be reassigned, not smeared out.
+These properties, which we will show exist in physical situations, can be labelled "determinism," "reversibility," and "distinguishability" under time evolution.
+
+We can map the elements of our card to Hamiltonian mechanics, in which "phase space" is position/momentum space for one body, or the product of such for multiple bodies.
+
+1. An arrangement -> an \(instaneous\) state
+2. All possible arrangements -> phase space
+3. The count of distinct arrangements available in a ditribution -> phase space area
+
+The last of these elements is what we call a "measure" on the space. A measure has a similar role to a "metric," which we have seen on Euclidean and Minkowski space. It measures some infinitesimal attribute that like length or area that, when preserved under transformation, encodes some regularity or structure to the space. Conservative systems bestow an "incompressibility" on phase space -- one that is inherenly built into our card deck by virtue of the set of cards being fixed -- that ensures preservation of the measure. 
 
 We see this same structure in physical systems. Consider a mass on a spring. To speak experimentally about a probability distribution over initial conditions, we need an ensemble: many runs of the same system, prepared by the same procedure, with initial position and momentum drawn from some distribution around a nominal starting state. At the initial time, measurements across the ensemble reveal that distribution. We then let each member of the ensemble evolve under the same conservative law, and at some later time we again measure position and momentum across the ensemble. Those later measurements reveal a new distribution.
 
