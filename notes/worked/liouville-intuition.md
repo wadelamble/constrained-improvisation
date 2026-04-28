@@ -1,6 +1,6 @@
 # Information Evolution in Physical Systems
 
-One might justifiably think that the content of our physical laws is limited to predicting future histories from initial conditions. Yet in conservative systems, where energy is never given off to a heat bath but is instead continuously traded between potential and kinetic form, our laws make the additional implication that the information encoded in the arrangement over possible instantaneous states is never lost. This is a categorically different kind of claim. It is not about one particle's specific initial conditions and its future, but about the information-theoretic behavior of a statistical ensemble of initial conditions drawn from a distribution. How can laws that seem wholly oriented toward initial states and future trajectories contain implications about ensembles, whose members, by definition, follow independent trajectories? The answer we will arrive at lies in the structural relationship between paired position and momentum, which defines a measure of information content, and in the way a conservative system preserves that measure.
+One might justifiably think that the content of our physical laws is limited to predicting future histories from initial conditions. Yet in conservative systems, where energy is never given off to a heat bath but is instead continuously traded between potential and kinetic form, our laws make the additional implication that the information encoded in the arrangement of the probability density over possible instantaneous states is never lost. This is a categorically different kind of claim. It is not about one particle's specific initial conditions and its future, but about the information-theoretic behavior of a statistical ensemble of initial conditions drawn from a distribution. How can laws that seem wholly oriented toward initial states and future trajectories contain implications about ensembles, whose members, by definition, follow independent trajectories? The answer we will arrive at lies in the structural relationship between paired position and momentum, which defines a measure of information content, and in the way a conservative system preserves that measure.
 
 ## Example -- Set Permutation
 We can get a feel for this kind of structure in the example of permuting a set. Take a deck of three cards labeled `A`, `B`, and `C`. The exact possible states are the six deck orders
@@ -20,7 +20,7 @@ CBA -> BAC
 BAC -> ACB
 ```
 
-And draw the specific arrangement from a probability distribution on these six exact states. For example,
+And assign a probability distribution on these six exact states. For example,
 
 ```text
 P(ABC) = 1/2
@@ -28,7 +28,7 @@ P(BAC) = 1/3
 P(CBA) = 1/6
 ```
 
-with all other states assigned probability `0`. After applying the permutation to all arrangements consitent with the distribution, the distribution becomes
+with all other states assigned probability `0`. After applying the permutation to all arrangements consistent with the distribution, the distribution becomes
 
 ```text
 P(BCA) = 1/2
@@ -44,7 +44,7 @@ Let's make a few observations about this example:
 3. We can run the permutation in reverse and recover the original arrangement.
 4. Two arrangements under the same number of permutations remain distinct.
 
-These properties, which we will show exist in physical situations, are what we mean by "determinism" and "reversibility" and, following from these, "distinguishability" of the ensemble under time evolution
+These properties, which we will show exist in physical situations, are what we mean by "determinism" and "reversibility" and, following from these, by "distinguishability" of the ensemble under time evolution.
 
 We can map the elements of our card deck to Hamiltonian mechanics, in which "phase space" is position/momentum space for one body, or the product of such for multiple bodies.
 
@@ -52,13 +52,13 @@ We can map the elements of our card deck to Hamiltonian mechanics, in which "pha
 2. All possible arrangements -> phase space
 3. The count of distinct arrangements in a collection -> phase space area
 
-The last of these elements is what we call a "measure" on the space. A measure has a similar role to a "metric," which we have seen on Euclidean and Minkowski spaces. It measures some infinitesimal attribute that, like length or area, when preserved under transformation, encodes some regularity or structure in the space. Conservative systems bestow an "incompressibility" on phase space -- one that is inherently built into our card deck by virtue of the set of cards being fixed -- that ensures preservation of the measure. 
+The last of these elements is what we call a "measure" on the space. A measure has a role analogous to a metric, though it does something different. A metric measures separation. A measure assigns size to regions or collections. In the present case, what matters is that when such a quantity is preserved under transformation, it encodes some regularity or structure in the space. Conservative systems bestow an "incompressibility" on phase space. In our card deck, the discrete analogue is already built in by the fact that the law is a permutation, so collections of arrangements are rearranged without losing or gaining members.
 
 ## Example -- Mass on a Spring
 
 We see this same structure in physical systems. Consider a mass on a spring. To speak experimentally about a probability distribution over initial conditions, we need an ensemble, that is, many runs of the same system, prepared by the same procedure, with initial position and momentum drawn from some distribution around an average starting state. At the initial time, measurements across the ensemble reveal that distribution. We then let each member of the ensemble evolve under the same conservative law, and at some later time we again measure position and momentum across the ensemble. Those later measurements reveal a new distribution.
 
-We observe, again, that the distribution is never flattened or sharpened. Rather, each exact initial state in the ensemble is carried to one exact later state by the dynamics, so the later distribution is the earlier one transported by the law of motion. In a dissipative system, nearby runs can truly be driven together, so distinctions among initial conditions are washed out. The extreme example of such a disspative system is that all initial conditions end at rest. But in a conservative system, such distributions are not flattened or sharpened but moved onto new ensembles.
+At the full phase-space level, we observe, again, that the distribution is not flattened or sharpened by the dynamics. Rather, each exact initial state in the ensemble is carried to one exact later state, so the later distribution is the earlier one transported by the law of motion. In a dissipative system, nearby runs can truly be driven together, so distinctions among initial conditions are washed out. The extreme example of such a dissipative system is one in which all initial conditions end at rest. But in a conservative system, such distributions are not washed out. They are transported onto new ensembles.
 
 As promised, this is the direct analogue of the permutation example. There, the state space was a finite set, the natural measure was counting measure, and the law was a permutation. Here, the state space is continuous, the natural measure is phase-space measure, and the law is a Hamiltonian flow generated by conservative forces. A permutation rearranges exact states without merging them. A Hamiltonian flow does the same for a continuum of exact states, with phase-space measure playing the role that counting measure played before. In conservative physical systems, this behavior is known as Liouville's theorem.
 
@@ -69,7 +69,7 @@ In the set permutation and physical ensembles example, we looked at spaces of po
 This is the clearest physical picture of what measure preservation means. The law of motion does not leave the patch rigid, but neither does it compress it into less fluid-space. The patch is rearranged, not diminished. That is why incompressible flow is such a good model for Liouville intuition. In the card example, exact states were permuted. In the ensemble example, exact initial conditions were carried by a Hamiltonian flow. Here, a material patch is carried by the velocity field of the fluid. In all three cases, the same structural fact is present: the dynamics moves possibilities around without changing their identity as defined by the information they encode.
 
 ## Information Embodied in States
-We have talked about systems that preserve the structure of distributions. Let's briefly exress this in the language of information theory. 
+We have talked about systems that preserve the structure of distributions. Let us now express this briefly in the language of information theory.
 
 How much information does a penny showing heads contain? A good way to think about this is as a question about surprise. If a coin were weighted so that heads always appeared, seeing heads would contain no information at all. If it showed heads 90% of the time, seeing heads would confirm what I already expected, and would therefore contain only a small amount of information. But if it came up tails, it would force a revision of my expectations. That is the sense in which it would be informative. Let us call this quantity "surprisal." We want surprisal to go up as probability goes down.
 
@@ -99,4 +99,4 @@ where \(d\mu\) is the natural measure on the space of states. In this precise se
 Liouville's theorem implies that this fine-grained entropy is preserved in ideal conservative evolution. That alone is not yet the full strength of the theorem. Different probability densities can have the same entropy while encoding different distinctions among possible states. The informational identity of an ensemble therefore lies not merely in the scalar \(H[\rho]\), but in the full fine-grained arrangement of its density \(\rho(x)\) over the state space. The key point we want to emphasize here is that the structure Hamiltonian Mechanics illuminates pertains to the embodiment and preservation of information in physical systems.
 
 ## The Importance of the Information Perspective
-Liouville's theorem and the information-theoretic implications of conservative systems is at the heart of statistical mechanics in which the exact microscopic initial conditions of the constituent bodies are never knowable precisely, both due to the impossibility of knowing the exact state of any one particle in a continuous phase space and due to the unfathomably large number of combinations of microscopic states, even if one were to divide phase space into a finite number of parcels. The laws of thermodynamics expressing how temperature, volume, pressure, and number of particles relate would be impossible without understanding this preservation of information. But even more deeply, when we move to quantum mechanics and individual bodies give way to distributions over possibile measurements, physics must be expressed as the evolution of distributions, for distributions are all there is.
+Liouville's theorem and the information-theoretic implications of conservative systems are at the heart of statistical mechanics, in which the exact microscopic initial conditions of the constituent bodies are never knowable precisely, both because one cannot know the exact state of any one particle in a continuous phase space and because the number of combinations of microscopic states is unfathomably large, even if one were to divide phase space into a finite number of parcels. The laws of thermodynamics, expressing how temperature, volume, pressure, and number of particles relate, would be impossible without understanding this preservation of information. But even more deeply, when we move to quantum mechanics and individual bodies give way to distributions over possible measurements, physics must be expressed as the evolution of distributions, for distributions are all there is.

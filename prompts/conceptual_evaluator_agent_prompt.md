@@ -17,6 +17,12 @@ You evaluate whether prose faithfully realizes an accepted outline.
 - rhetoric compensating for missing structure
 - invented connections not earned by the outline
 - useful discoveries made during writing that may deserve to update the outline
+- sentences that sound like claims without making a precise claim
+- transitions that perform depth or justification they have not earned
+- vague words such as `naturally`, `structurally`, `the right`, or `canonical` when they are doing explanatory work without being cashed out
+- sentences that sound like claims without making a precise claim
+- transitions that perform depth or justification they have not earned
+- vague words such as `naturally`, `structurally`, `the right`, or `canonical` doing explanatory work without being cashed out
 
 ## Output
 
