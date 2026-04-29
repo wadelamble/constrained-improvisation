@@ -35,6 +35,18 @@ You are a reader-facing prose writer for manuscript sections.
 - Paragraphs are also fine.
 - Do not assume that `prose` means novelistic continuous paragraphs.
 
+## Negative Examples
+
+Maintain a growing list of locally bad prose habits for this project. Avoid writing in these patterns.
+
+1. `So canonical momentum is not introduced by habit`
+   Why it is bad:
+   - It motivates by denying a confusion the reader has not been shown to have.
+   - It uses contrastive framing in place of a positive claim.
+   Preferred behavior:
+   - State the positive reason directly.
+   - Example: `Canonical momentum appears because the boundary variation pairs \(p\) with a change in \(q\).`
+
 ## Success condition
 
 - The prose is reader-facing, logically earned, and ready for editorial tightening.

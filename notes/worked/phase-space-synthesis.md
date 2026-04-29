@@ -47,6 +47,8 @@ The bulk term and the boundary term have different meanings.
 
 This is the first important factorization. The action is still a statement about a whole history, but the boundary variation has separated from that history the structure of the state at one time. Once the question is no longer merely "which path extremizes the action?" but also "what data at one time count as a state?", the boundary term becomes decisive.
 
+
+
 ### 3. Canonical momentum comes from the boundary response
 
 The boundary term singles out the quantity
@@ -77,7 +79,7 @@ The pairing
 p_i\,\delta q^i
 ```
 
-is a `1`-form statement. It acts on one infinitesimal variation of one state and returns a number. It is therefore action-flavored rather than ensemble-flavored. It tells us the first-order action-cost of one infinitesimal displacement of the state.
+is a `1`-form statement. It acts on one infinitesimal variation of one state and returns a number. It is therefore action-flavored rather than ensemble-flavored. It tells us the first-order action-cost of one infinitesimal displacement of the state. <say more here about how the form of the momentum comes from the functional form of the Lagrangian, which is just KE when free, which comes from spacetime kinematics, so the momentum is, coming full circle, fundamentally about the energy/momentum dispersion relation, and, just as in relativity, mass is but a parameter of that dispersion. The exact form of the conjugate momentum is determined by the form of the lagrangian, but conceptually, the pairing's roots are in spacetime structure>
 
 This is not yet the object Liouville cares about.
 
@@ -118,6 +120,27 @@ So the logic is:
 
 This is the real bridge from one path to many nearby paths.
 
+### INSERTION TO INTEGRATE LATER
+
+One further clarification seems necessary here. The difference between the `1`-form and the `2`-form is not best understood in terms of "more dimensions" alone. It is better understood in terms of what kind of object each form measures.
+
+The `1`-form arises from a virtual endpoint displacement. It does not yet involve running the clock. The action begins as a quantity attached to a whole history, but the boundary variation factors out the dynamics in the sense that it expresses the response of the action purely in terms of neighboring instantaneous states. In that sense it factors out time and gives a way to compare states at a moment. The pairing
+
+```math
+p_i\,\delta q^i
+```
+
+therefore measures one infinitesimal virtual displacement of one state.
+
+The `2`-form enters for a different reason. Once the question is no longer how the action responds to one infinitesimal displacement, but how much state-space room is occupied by a little family of nearby states, a line element is no longer enough. A `1`-form can be integrated along a curve. A `2`-form can be integrated over a region. In a two-dimensional phase space, this means:
+
+- the `1`-form gives line data
+- the `2`-form gives area data
+
+This helps answer a possible objection. One can certainly imagine an ensemble supported on a line. A line of nearby states can be evolved, and under smooth Hamiltonian flow it remains a one-dimensional set, though it may bend or tilt. But such a line is a singular object inside a two-dimensional phase space. It has zero area and therefore cannot serve as the support of an ordinary phase-space density. A generic ensemble must be represented by an object that can tile the ambient space by local patches. In a two-dimensional phase space, that means area elements, not line elements.
+
+So the `2`-form is the first object that measures neighborhoods of nearby states in the sense relevant to Liouville. The `1`-form compares nearby states one infinitesimal displacement at a time. The `2`-form measures local patches of such states in a way that can assign finite measure to open sets in phase space. That is why the `2`-form, rather than the `1`-form, is the correct local object for an ensemble-preservation theorem.
+
 ### 7. What phase space is
 
 Phase space is the space whose points are the instantaneous states of the system when those states are expressed in terms of the conjugate variables selected by the action.
@@ -138,7 +161,7 @@ So phase space is not "position-velocity space" by default. In simple cases the 
 
 ### 8. The role of the Legendre transform
 
-Once `p_i = \partial L/\partial \dot q^i` has been selected, the next question is not what momentum is, but how to rewrite the theory in terms of `q` and `p` rather than `q` and `\dot q`.
+Once $p_i = \partial L/\partial \dot q^i$ has been selected, the next question is not what momentum is, but how to rewrite the theory, that is, a procedure for finding the equations of motion, in terms of `q` and `p` rather than `q` and `\dot q`.
 
 That is the role of the Legendre transform.
 
@@ -154,7 +177,7 @@ then the Legendre transform constructs
 g(p) = pq - f(q),
 ```
 
-with `q` understood as the variable determined by the slope relation.
+with `q` understood as the variable determined by the slope relation. <insert animation in time>
 
 The point of this construction is the cancellation in the differential:
 
@@ -162,7 +185,7 @@ The point of this construction is the cancellation in the differential:
 dg = p\,dq + q\,dp - df.
 ```
 
-Since `df = p\,dq`, the `dq` terms cancel, and the transformed function is rewritten in terms of `dp`.
+Since $df = p\,dq$, the $dq$ terms cancel, and the transformed function is rewritten in terms of $dp$.
 
 The mechanical case is exactly the same pattern, but now the transform is taken with respect to velocity rather than position. The Lagrangian is
 
@@ -183,6 +206,111 @@ H(q,p,t) = p_i \dot q^i - L(q,\dot q,t),
 ```
 
 with `\dot q` understood, when possible, as a function of `(q,p,t)`.
+
+When the abstract notation starts to feel slippery, the right move is to do the simplest possible example.
+
+Start with a one-variable function:
+
+```math
+f(q) = q^2.
+```
+
+Its derivative is
+
+```math
+p = \frac{df}{dq} = 2q.
+```
+
+So if we want to express things in terms of `p` instead of `q`, we solve for `q`:
+
+```math
+q = \frac{p}{2}.
+```
+
+Now form the Legendre transform:
+
+```math
+g(p) = pq - f(q).
+```
+
+Substitute in `f(q) = q^2`:
+
+```math
+g(p) = pq - q^2.
+```
+
+Now replace `q` by `p/2`:
+
+```math
+g(p) = p\left(\frac{p}{2}\right) - \left(\frac{p}{2}\right)^2
+= \frac{p^2}{2} - \frac{p^2}{4}
+= \frac{p^2}{4}.
+```
+
+So the Legendre transform of `f(q) = q^2` is
+
+```math
+g(p) = \frac{p^2}{4}.
+```
+
+That is the concrete procedure:
+1. Differentiate to get the conjugate variable.
+2. Solve for the old variable in terms of the new one.
+3. Form `pq - f(q)`.
+4. Substitute so the result is written entirely in the new variable.
+
+Why this strange combination?
+
+Because it cancels the old differential. For this example,
+
+```math
+dg = d(pq - f) = p\,dq + q\,dp - df.
+```
+
+But since
+
+```math
+df = \frac{df}{dq}\,dq = p\,dq,
+```
+
+those terms cancel, leaving
+
+```math
+dg = q\,dp.
+```
+
+So the transform rewrites the information in terms of `dp` rather than `dq`.
+
+That is the whole trick.
+
+This works just as well with more than one input variable. If
+
+```math
+f = f(x_1,\dots,x_n),
+```
+
+then for whichever variables you choose to transform, you define the conjugates by differentiation with respect to those variables, and then subtract the corresponding linear pairing. In mechanics the Lagrangian is
+
+```math
+L(q^1,\dots,q^n,\dot q^1,\dots,\dot q^n,t),
+```
+
+and we transform with respect to the velocity variables, not the position variables:
+
+```math
+p_i = \frac{\partial L}{\partial \dot q^i}.
+```
+
+Then the transformed function is
+
+```math
+H(q,p,t) = p_i \dot q^i - L(q,\dot q,t),
+```
+
+with the velocities understood in terms of `(q,p,t)` after solving the relations above.
+
+So the abstract one-variable example and the many-variable mechanical case are exactly the same pattern. The only difference is that in mechanics there are several velocity variables, and each gets its own conjugate momentum.
+
 
 Its significance is not that it mysteriously creates the correct structure. The action has already selected the correct conjugate variable. What the Legendre transform does is remove the unwanted dependence on `d\dot q` and rewrite the theory cleanly in terms of the already-selected variables.
 
