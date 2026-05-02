@@ -1,6 +1,9 @@
 ﻿## The Symplectic Geometry of Phase Space and Hamiltonian Dynamics
 
-### From histories to states
+### Phase Space
+Phase space, or position/momentum space is the arena for Hamiltonian Mechanics. To appreciate the theory, we need to understand the nature of this space.
+
+#### From histories to states
 
 The objects in Hamiltonian Mechanics -- the state variables and the Hamiltonian function on those variables are obtained from Lagrangian Mechanics. We know that Lagrangian mechanics selects whole paths from path space by extremizing action. The task we thus need to perform is to somehow extract the essential objects of a local theory of instantaneous state from the Lagrangian global theory.
 
@@ -60,7 +63,7 @@ As advertised, we see that the variation separates into the the bulk term, which
 
 `[INSERT ANIMATION LATER: a single path between t_1 and t_2, with the interior variation contributing the bulk term and the endpoint displacements contributing the boundary term.]`
 
-### Why momentum appears
+#### The Definition of Momentum
 
 The boundary term has the form $p_i\,\delta q^i$, with
 
@@ -106,7 +109,7 @@ p_\mu\,\delta x^\mu = p_i\,\delta q^i - E\,\delta t,
 
 up to sign convention. Holding endpoint time fixed leaves precisely the spatial boundary pairing $p_i\,\delta q^i$. Thus the Hamiltonian pairing is not a new structure invented after Lagrangian mechanics. It is the time-sliced form of a relation that relativistic mechanics displays directly among action, displacement, and momentum.
 
-### From the one-form to the two-form
+#### From the one-form to the two-form
 
 Thus far, we have identified $q$ and $p$ as the correct variables for specifying instantaneous state vis-a-vis action variation. However, the pairing $p_i\,\delta q^i$ is a "one-form" statement, that is, it takes in one vector and returns a number. Specifically, it acts on one infinitesimal variation of one state and returns the action. But to tell the story of Liouville's theorem and statistical behavior, we need something different. We need a way to combine $p$ and $q$ to represent an ensemble of states.
 
@@ -118,20 +121,68 @@ dq^i \wedge dp_i.
 
 Integrating this 2-form over a region of phase space measures the "count," or "amount" of states in the region. Once we have the 2-form, we can see the job of Hamiltonian mechanics as finding flows under which the area measured by the 2-form is invariant.
 
-### Why the two-form is intrinsic
+The two-form is not only the measure we need for counting states, it is the instrinsic form that expresses the geometry phase space. We defined momentum by looking at the one-form measuring the contribution of the boundary term to the variation of the action. That boundary term is real, but it also carries a redundancy. The equations of motion are determined by the bulk term, and those equations are unchanged if the Lagrangian is modified by an endpoint-only term. The boundary one-form changes under that modification, while the two-form remains agnostic to it. This is expected in that the physical, or "Hamiltonian," flows we will find do not preserve any notion of length in phase space, but only the notion of area. 
 
-There is a second reason the two-form matters. The one-form is not yet fully intrinsic. If the Lagrangian is changed by adding a total time derivative, the equations of motion do not change, but the one-form extracted from the boundary term can shift. The two-form built from that pairing is insensitive to this ambiguity. It is therefore the first intrinsic local geometric object naturally extracted from the action.
+We derive this below, though this can be skipped if desired. Add a total time derivative to the Lagrangian:
 
-The logic is now visible. The action yields a boundary pairing. The pairing yields a one-form. The one-form yields an intrinsic two-form. The two-form measures local patches of nearby states. That is the object on which a later Liouville theorem can act.
+```math
+L' = L + \frac{dF(q,t)}{dt}.
+```
 
-### What phase space is
+This changes the action by an endpoint term:
 
-Phase space can now be defined without hand-waving. It is the space whose points are instantaneous states expressed in the conjugate variables selected by the action. For one degree of freedom, a point is $(q,p)$. For many degrees of freedom, a point is $(q^1,\dots,q^n,p_1,\dots,p_n)$. This is why phase space is not, in general, position-velocity space. In simple systems momentum may be proportional to velocity, but that coincidence is not the principle.
+```math
+S'
+=
+\int_{t_1}^{t_2} L'\,dt
+=
+S + F(q(t_2),t_2)-F(q(t_1),t_1).
+```
 
-The move to phase space is therefore not a change of subject. It is a reorganization of what counts as an instantaneous state. Once the boundary variation has told us what variable is paired with $q$, the state is no longer most naturally described by $(q,\dot q)$, but by $(q,p)$.
+Intuitively, this is like adding "final elevation minus initial elevation" to the cost of a hike with fixed endpoints. It changes the endpoint accounting, but it does not change which interior route extremizes the cost.
 
-### Why the Legendre transform belongs here
+The boundary one-form shifts by the differential of that added endpoint function:
 
+```math
+\theta' = \theta + dF.
+```
+
+Here
+
+```math
+\theta = p_i\,dq^i.
+```
+
+But the two-form is built by taking the exterior derivative of the one-form:
+
+```math
+\omega = d\theta.
+```
+
+So after the shift,
+
+```math
+\omega'
+=
+d\theta'
+=
+d(\theta + dF)
+=
+d\theta + d(dF)
+=
+d\theta
+=
+\omega.
+```
+
+#### What Phase Space Is
+
+We are now able to define phase space. It is the space whose points are instantaneous states expressed in the paired, or conjugate, variables selected by the action. For one degree of freedom, a point is $(q,p)$. For many degrees of freedom, a point is $(q^1,\dots,q^n,p_1,\dots,p_n)$. Phase space is a reorganization of what counts as an instantaneous state as with respect to action extremization. Once the boundary variation has told us what variable is paired with $q$, the state is no longer most naturally described by $(q,\dot q)$, but by $(q,p)$.
+
+### Hamiltonian Flows
+Compare phase space plots to spacetime diagrams \(Galilean or Minkowskian\). There, motion is baked into the shape of the worldline. The history is contained in a static plot. In phase space, there is no motion, no history, until a point or region begins to flow. Our next task, then, is to describe the flows that characterize conservative physical systems. 
+
+#### Why the Legendre transform belongs here
 Once $p_i = \partial L/\partial \dot q^i$ has been identified, the next question is how to rewrite the theory in terms of $(q,p)$ rather than $(q,\dot q)$. That is the role of the Legendre transform. It is not a trick that creates the canonical pairing. The pairing is already in hand. The transform is the device that follows that pairing and rewrites the dynamics in its terms.
 
 The abstract pattern is simple. A Legendre transform replaces one chosen variable by its derivative-conjugate variable, while leaving any untouched variables in place as parameters. That is why the many-variable case is not a problem. In mechanics, one transforms only with respect to the velocity variables $\dot q^i$, not with respect to the position variables $q^i$. The transformed function is
