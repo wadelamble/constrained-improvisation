@@ -131,22 +131,630 @@ Liouville's theorem implies that this fine-grained entropy is preserved in ideal
 ### The Importance of the Information Perspective
 Liouville's theorem and the information-theoretic implications of conservative systems are at the heart of statistical mechanics, in which the exact microscopic initial conditions of the constituent bodies are never knowable precisely, both because one cannot know the exact state of any one particle in a continuous phase space and because the number of combinations of microscopic states is unfathomably large, even if one were to divide phase space into a finite number of parcels. The laws of thermodynamics, expressing how temperature, volume, pressure, and number of particles relate, would be impossible without understanding this preservation of information. But even more deeply, when we move to quantum mechanics and individual bodies give way to distributions over possible measurements, physics must be expressed as the evolution of distributions, for distributions are all there is.
 
-## From the Lagrangian to Canonical Momentum
+## From the Geoemetry of Phase Space to Hamilton's Equations of Motion
+The function that encodes flow in phase space, the flow of state through time is the formulation's eponymous function, the Hamiltonian. Let's see how we can arrive at its form and the equation. 
 
-## Phase Space and the Hidden Geometry of State
+### Phase Space
+Phase space, or position/momentum space is the arena for Hamiltonian Mechanics. To appreciate the theory, we need to understand the nature of this space.
 
-## The Symplectic Structure
+#### From histories to states
 
-## Kinematics and Dynamics in Phase Space
+The objects in Hamiltonian Mechanics -- the state variables and the Hamiltonian function on those variables are obtained from Lagrangian Mechanics. We know that Lagrangian mechanics selects whole paths from path space by extremizing action. The task we thus need to perform is to somehow extract the essential objects of a local theory of instantaneous state from the Lagrangian global theory.
 
-## Generator Pairing
+The impact of instantaneous state displacements on action appears when the action is varied. After integrating by parts, the variation separates into a "bulk" term and a "boundary" term. The bulk term determines which paths satisfy the Euler-Lagrange equations. The boundary term, on the other hand, records how the action changes when the endpoint state is infinitesimally changed. Isolating the boundary term's contribution to the variation "factors out" the contribution of state displacements from that of the full path history.
 
-## Poisson Brackets as Algebraic Bookkeeping
+To see this explicitly, start with the expression for the action:
 
-## The Legendre Transformation Proper and the Hamiltonian
+```math
+S[q] = \int_{t_1}^{t_2} L(q,\dot q,t)\,dt.
+```
 
-## The Hamiltonian as Time Generator
+Now vary the path $q(t)\to q(t)+\delta q(t)$. Because the Lagrangian depends on both $q$ and $\dot q$, varying the path also varies the velocity: $\dot q(t)\to \dot q(t)+\delta \dot q(t)$. The first-order change in $L$ is therefore just the multivariable chain rule applied to those two arguments. Then
 
-## Hamilton's Equations
+```math
+\delta S
+=
+\int_{t_1}^{t_2}
+\left(
+\frac{\partial L}{\partial q^i}\,\delta q^i
++
+\frac{\partial L}{\partial \dot q^i}\,\delta \dot q^i
+\right)dt.
+```
 
-## Why This Matters for QM and QFT
+The second term contains $\delta \dot q^i$ rather than $\delta q^i$, so integrate it by parts:
+
+```math
+\int_{t_1}^{t_2}
+\frac{\partial L}{\partial \dot q^i}\,\delta \dot q^i\,dt
+=
+\left.
+\frac{\partial L}{\partial \dot q^i}\,\delta q^i
+\right|_{t_1}^{t_2}
+-
+\int_{t_1}^{t_2}
+\frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot q^i}\right)\delta q^i\,dt.
+```
+
+Substituting this back in gives
+
+```math
+\delta S
+=
+\int_{t_1}^{t_2}
+\left(
+\frac{\partial L}{\partial q^i}
+-
+\frac{d}{dt}\frac{\partial L}{\partial \dot q^i}
+\right)\delta q^i\,dt
++
+\left.
+\frac{\partial L}{\partial \dot q^i}\,\delta q^i
+\right|_{t_1}^{t_2}.
+```
+
+As advertised, we see that the variation separates into the the bulk term, which governs the equations of motion, and the boundary term, which governs the action's sensitivity to endpoint configuration displacement on a time slice.
+
+`[INSERT ANIMATION LATER: a single path between t_1 and t_2, with the interior variation contributing the bulk term and the endpoint displacements contributing the boundary term.]`
+
+#### The Definition of Momentum
+
+The boundary term has the form $p_i\,\delta q^i$, with
+
+```math
+p_i := \frac{\partial L}{\partial \dot q^i}.
+```
+
+This tells us what quantity is paired with an infinitesimal change in the state at a moment. That quantity is not, in general, the velocity. Velocity answers the question of how configuration changes along a path. The boundary variation answers a different question: if the endpoint state is nudged in the $q^i$ direction, what coefficient measures the first-order change in the action? The answer is $p_i$.
+
+The functional form of the momentum is determined by the form of the Lagrangian function. In a free system, in which only the kinetic term appears in the Lagrangian, $p$ arises inevitably from the theory's kinematics. In the Newtonian free-particle theory, the kinetic term is proportional to the square of the velocity, a fact that can be shown to follow from Galilean symmetry, so
+
+```math
+L = \frac{1}{2}m\dot q^2,
+\qquad
+p = \frac{\partial L}{\partial \dot q} = m\dot q.
+```
+
+In that setting the familiar formula $p=mv$ is inherited from the kinetic term. In a relativistic theory, by contrast, the free kinematics is constrained by Minkowski structure and the mass-shell relation
+
+```math
+E^2 = p^2 + m^2
+```
+
+in units with $c=1$. The corresponding free Lagrangian then yields the relativistic momentum instead.
+
+Relativity makes this same structure visible from another angle. For a free relativistic particle, the action is built from spacetime length,
+
+```math
+S = -m\int ds.
+```
+
+Varying an endpoint of the worldline gives a boundary term of the form
+
+```math
+\delta S_{\partial} = p_\mu\,\delta x^\mu.
+```
+
+So four-momentum is already the covector paired with spacetime displacement in the variation of the action. If we choose a time coordinate, this pairing splits into spatial and temporal pieces,
+
+```math
+p_\mu\,\delta x^\mu = p_i\,\delta q^i - E\,\delta t,
+```
+
+up to sign convention. Holding endpoint time fixed leaves precisely the spatial boundary pairing $p_i\,\delta q^i$. Thus the Hamiltonian pairing is not a new structure invented after Lagrangian mechanics. It is the time-sliced form of a relation that relativistic mechanics displays directly among action, displacement, and momentum.
+
+#### From the one-form to the two-form
+
+Thus far, we have identified $q$ and $p$ as the correct variables for specifying instantaneous state vis-a-vis action variation. However, the pairing $p_i\,\delta q^i$ is a "one-form" statement, that is, it takes in one vector and returns a number. Specifically, it acts on one infinitesimal variation of one state and returns the action. But to tell the story of Liouville's theorem and statistical behavior, we need something different. We need a way to combine $p$ and $q$ to represent an ensemble of states.
+
+The entire $q,p$ plane contains all possible states. An ensemble is a subset of this set of all possible states. To form such subsets, we need some way to "tile" the space, which we can do with a 2-form, which takes in two vectors and returns an area:
+
+```math
+dq^i \wedge dp_i.
+```
+
+Integrating this 2-form over a region of phase space measures the "count," or "amount" of states in the region. Once we have the 2-form, we can see the job of Hamiltonian mechanics as finding flows under which the area measured by the 2-form is invariant.
+
+The two-form is not only the measure we need for counting states, it is the instrinsic form that expresses the geometry phase space. We defined momentum by looking at the one-form measuring the contribution of the boundary term to the variation of the action. That boundary term is real, but it also carries a redundancy. The equations of motion are determined by the bulk term, and those equations are unchanged if the Lagrangian is modified by an endpoint-only term. The boundary one-form changes under that modification, while the two-form remains agnostic to it. This is expected in that the physical, or "Hamiltonian," flows we will find do not preserve any notion of length in phase space, but only the notion of area. 
+
+We derive this below, though this can be skipped if desired. Add a total time derivative to the Lagrangian:
+
+```math
+L' = L + \frac{dF(q,t)}{dt}.
+```
+
+This changes the action by an endpoint term:
+
+```math
+S'
+=
+\int_{t_1}^{t_2} L'\,dt
+=
+S + F(q(t_2),t_2)-F(q(t_1),t_1).
+```
+
+Intuitively, this is like adding "final elevation minus initial elevation" to the cost of a hike with fixed endpoints. It changes the endpoint accounting, but it does not change which interior route extremizes the cost.
+
+The boundary one-form shifts by the differential of that added endpoint function:
+
+```math
+\theta' = \theta + dF.
+```
+
+Here
+
+```math
+\theta = p_i\,dq^i.
+```
+
+But the two-form is built by taking the exterior derivative of the one-form:
+
+```math
+\omega = d\theta.
+```
+
+So after the shift,
+
+```math
+\omega'
+=
+d\theta'
+=
+d(\theta + dF)
+=
+d\theta + d(dF)
+=
+d\theta
+=
+\omega.
+```
+
+#### What Phase Space Is
+
+We are now able to define phase space. It is the space whose points are instantaneous states expressed in the paired, or conjugate, variables selected by the action. For one degree of freedom, a point is $(q,p)$. For many degrees of freedom, a point is $(q^1,\dots,q^n,p_1,\dots,p_n)$. Phase space is a reorganization of what counts as an instantaneous state as with respect to action extremization. Once the boundary variation has told us what variable is paired with $q$, the state is no longer most naturally described by $(q,\dot q)$, but by $(q,p)$.
+
+### Hamiltonian Flows
+Compare phase space plots to spacetime diagrams \(Galilean or Minkowskian\). There, motion is baked into the shape of the worldline. The history is contained in a static plot. In phase space, there is no motion, no history, until a point or region begins to flow. Our next task, then, is to describe the flows that characterize conservative physical systems. The function that encodes flow in phase space, the flow of state through time, is the formulation's eponymous function, the Hamiltonian. Let's see how we can arrive at its form and the equation. 
+
+#### Functions on phase space
+We have already seen in our example of an incompressible fluid that any flow can be encoded by a generating function. Let's spell this out more carefully and put it in the arena of phase space.
+
+Picture a contour map on the $q,p$ plane. The value of a function, $F(q(t),p(t))$, assigns a height to each point. This 3-dimensional "hilly" picture can, as with topographic maps, be represented in 2 dimensions with contours, or level sets. Now, we have a rule that the denser the level sets are, equivalently, the steeper the surface is, the faster the flow along that contour. This flow can then be represented as a vector field, that is, a phase-space velocity arrow at every point.
+
+`[INSERT ANIMATION LATER: a scalar function on the q,p plane shown first as contours only, then with a small arrow attached at each point to indicate the induced flow.]`
+
+The way to turn $F$'s level set density into such a vector field is:
+
+```math
+\dot q^i = \frac{\partial F}{\partial p_i},
+\qquad
+\dot p_i = -\frac{\partial F}{\partial q^i}.
+```
+
+One can work through this visually step by step to convince themselves it works, but the way it works can be thought of simply as taking the function gradient vector and turning it 90 degrees to create the flow.
+
+In phase space with one degree of freedom, if the vector field is
+
+```math
+\dot q = \frac{\partial F}{\partial p},
+\qquad
+\dot p = -\frac{\partial F}{\partial q},
+```
+
+then we can solve these differential equations for $q(t)$ and $p(t)$ to find the flow.
+
+A trivial example is $F=p$. Then
+
+```math
+\dot q = 1,
+\qquad
+\dot p = 0.
+```
+
+And integrating gives
+
+```math
+q(t) = q_0 + t,
+\qquad
+p(t) = p_0.
+```
+
+We see in these cross-coupled differential equations the shadow of symplectic area preservation:
+
+```math
+\omega = dq^i \wedge dp_i
+```
+
+Change of $F$ in the $p_i$ direction determines motion in the $q^i$ direction. Change of $F$ in the $q^i$ direction determines motion in the $p_i$ direction, with a minus sign.
+
+We can define a flow this way for any two variables, but it only has a physical interpretation in the kinds of cases we've discussed, like fluid flow, that is, in cases where the area form is preserved.
+
+#### Preservation of the Symplectic Area Form
+
+Let's now show a bit more rigorously that such a flow does in fact preserve the symplectic 2-form. In one degree of freedom, preserving $\omega$ means preserving the area of phase-space patches. A small quadrilateral may shear, stretch, or rotate, but its area must not change.
+
+`[INSERT ANIMATION LATER: a small phase-space patch carried by the flow, changing shape while keeping the same area.]`
+
+Let's first be precise in saying what $\omega$ is. It is a measure of the count of states. If we imagine phase space as a discrete lattice, it counts the number of nodes in a patch. If we were to "squeeze" that patch, the node count would stay the same, thus the 2-form would measure the same area. (If we think of the continuous case as a lattice with infinite node density, then "squeezing" becomes impossible, and our area measure becomes, in fact, a measure of area on a plot of phase space.) Thus the only way for an area patch to increase is for states to enter or exit it, that is, for there to be some source or sink of states, which in turn implies that the flow generated by $F$ has a non-zero divergence. But we can see that this flow has zero divergence. For the flow generated by $F$,
+
+```math
+\frac{\partial \dot q^i}{\partial q^i}
++
+\frac{\partial \dot p_i}{\partial p_i}
+=
+\frac{\partial}{\partial q^i}\left(\frac{\partial F}{\partial p_i}\right)
+-
+\frac{\partial}{\partial p_i}\left(\frac{\partial F}{\partial q^i}\right).
+```
+
+Since mixed partial derivatives agree,
+
+```math
+\frac{\partial^2 F}{\partial q^i \partial p_i}
+-
+\frac{\partial^2 F}{\partial p_i \partial q^i}
+=
+0.
+```
+
+The divergence vanishes:
+
+```math
+\frac{\partial \dot q^i}{\partial q^i}
++
+\frac{\partial \dot p_i}{\partial p_i}
+=
+0.
+```
+
+Thus, any smooth function on phase space preserves our area 2-form, which, as we have discussed, is the condition for maintaining the information structure of an ensemble.
+
+We should note that we have shown this by choosing a set of coordinates first, describing flows, then showing these preserve our 2-form. This is a bit unsatisfying for two reasons. First, logically, we would prefer to show that having a conserved 2-form defines Hamiltonian flows because our procedure for defining the flows tacitly presupposed symplectic geometry. Second, to demonstrate consistency of a flow with the preservation of the 2-form, we had to commit to a coordinate system, whereas one can show Hamiltonian flows arise from the 2-form without choosing coordinates. The approach of defining flows from the area form is readily doable, but makes the geometric intuition more opaque and requires learning some dedicated language from differential geometry.
+
+#### The Hamiltonian as Energy
+
+We have already seen the deep connection between energy and time in Relativity. In relativity, the action for a free particle is built from spacetime length:
+
+```math
+S = -m \int ds = -\int E\,dt + \int p_x\,dx + \int \cdots
+```
+
+In this picture, 4-momentum is the covector, or 1-form, that measures the contribution of a displacement in spactime to action. And energy is the component that measures the contribution of a time displacement. 
+
+We are attempting to find the function to generate the flow in phase space that represents time evolution. Since that evolution is dictated by an action extremization principle, we may suspect this function would be related to the form that measures the effect of a time displacement on action accumulation.
+
+In fact this is exactly right. Ignoring important exceptions that don't change the spirit of the structure, the Hamiltonian function we wish to find is the energy function. One may say somewhat poetically "energy generates time."
+
+#### Hamilton's Equations of Motion from the Legendre Transform
+Once the variables $(q,p)$ have been identified, the next task is to find the function on phase space that generates the physical time-evolution flow. The Lagrangian is not yet that function. It is written as
+
+```math
+L(q,\dot q),
+```
+
+so it still treats velocity as an independent variable. The function we want must instead be written on phase space:
+
+```math
+H(q,p).
+```
+
+The Legendre transform is the operation that performs this trade. It uses the momentum relation we have established:
+
+```math
+p_i = \frac{\partial L}{\partial \dot q^i}
+```
+
+to replace the velocity variables by their conjugate momenta, while carrying the position variables along. The transformed function is
+
+```math
+H(q,p) = p_i\dot q^i - L(q,\dot q),
+```
+
+with $\dot q$ understood, when possible, as a function of $(q,p,t)$ determined by the momentum equation above.
+
+We can do quick test that $H$ is indeed the total energy by looking at a free particle.
+
+For a non-relativistic free particle,
+
+```math
+L(q,\dot q) = \frac{1}{2}m\dot q^2.
+```
+
+The conjugate momentum is therefore
+
+```math
+p = \frac{\partial L}{\partial \dot q} = m\dot q,
+```
+
+so
+
+```math
+\dot q = \frac{p}{m}.
+```
+
+Substituting this into the Legendre transform gives
+
+```math
+H(q,p) = p\dot q - L(q,\dot q)
+= p\left(\frac{p}{m}\right) - \frac{1}{2}m\left(\frac{p}{m}\right)^2
+= \frac{p^2}{m} - \frac{p^2}{2m}
+= \frac{p^2}{2m}.
+```
+
+But this is exactly the kinetic energy of the particle. So in this simplest case, the Legendre transform gives the energy function directly.
+
+The importance of this construction is not only that it rewrites the function in the desired variables. In the earlier phase-space discussion, we saw what differential structure a function must have if it is to generate a flow. We now want to see that the Legendre-transformed function has exactly that structure. Taking the differential of $H$ gives
+
+```math
+dH
+=
+\dot q^i\,dp_i
++
+p_i\,d\dot q^i
+-
+\frac{\partial L}{\partial q^i}\,dq^i
+-
+\frac{\partial L}{\partial \dot q^i}\,d\dot q^i
+```
+
+Now use the definition
+
+```math
+p_i = \frac{\partial L}{\partial \dot q^i}.
+```
+
+The $d\dot q^i$ terms cancel. What remains is
+
+```math
+dH
+=
+\dot q^i\,dp_i
+-
+\frac{\partial L}{\partial q^i}\,dq^i
+```
+
+At this stage the transform has done its essential job. Velocity is no longer appearing as an independent differential. The theory has been rewritten in phase-space terms.
+
+To connect this with the original dynamics, use the Euler-Lagrange equations:
+
+```math
+\frac{d}{dt}\frac{\partial L}{\partial \dot q^i}
+=
+\frac{\partial L}{\partial q^i}.
+```
+
+Since $p_i = \partial L/\partial \dot q^i$, this becomes
+
+```math
+\dot p_i = \frac{\partial L}{\partial q^i}.
+```
+
+Substituting this into the expression for $dH$ gives
+
+```math
+dH
+=
+\dot q^i\,dp_i
+-
+\dot p_i\,dq^i
+```
+
+But because $H$ is now a function of $(q,p)$, its differential is also
+
+```math
+dH
+=
+\frac{\partial H}{\partial q^i}\,dq^i
++
+\frac{\partial H}{\partial p_i}\,dp_i
+```
+
+Matching coefficients then yields the actual point of Hamiltonian mechanics for solving classical physics problems, Hamilton's equations or motion:
+
+```math
+\dot q^i = \frac{\partial H}{\partial p_i},
+\qquad
+\dot p_i = -\frac{\partial H}{\partial q^i}.
+```
+
+We can check this works using the example of a simple harmonic oscillator.
+
+The total energy, and thus the Hamiltonian is:
+
+```math
+H(q,p) = T + V = \frac{p^2}{2m} + \frac{1}{2}kq^2.
+```
+
+Hamilton's equations then give:
+
+```math
+\dot q = \frac{\partial H}{\partial p} = \frac{p}{m},
+\qquad
+\dot p = -\frac{\partial H}{\partial q} = -kq.
+```
+
+Using $p = m\dot q$, this becomes:
+
+```math
+m\ddot q = -kq,
+```
+
+or
+
+```math
+\ddot q + \frac{k}{m}q = 0.
+```
+```
+
+## Mishmash of material that may be discarded or used in above section stubs
+Now write Legendre transform
+
+[codex:insert]
+
+The basic Legendre transformation has the form
+
+```math
+p = \frac{df}{dx},
+\qquad
+g(p) = px - f(x),
+```
+
+with $x$ then understood as a function of $p$ if the first relation can be inverted.
+
+In mechanics, the same move is made with respect to the velocity variables:
+
+```math
+p_i = \frac{\partial L}{\partial \dot q^i},
+\qquad
+H(q,p,t) = p_i\dot q^i - L(q,\dot q,t).
+```
+
+This is not yet the statement that $H$ is a function of $q$ and $p$ alone. It is the defining formula from which that statement will follow.
+
+Then, show H is a function of q,p
+
+[codex:insert]
+
+The definition of momentum,
+
+```math
+p_i = \frac{\partial L}{\partial \dot q^i},
+```
+
+is an equation relating $q$, $\dot q$, $p$, and possibly $t$. If this can be inverted, then it allows us to solve for velocity as a function of phase-space variables:
+
+```math
+\dot q^i = \dot q^i(q,p,t).
+```
+
+Substituting this into the defining expression for the Hamiltonian gives
+
+```math
+H(q,p,t)
+=
+p_i\,\dot q^i(q,p,t)
+-
+L\big(q,\dot q(q,p,t),t\big).
+```
+
+Now every visible occurrence of $\dot q$ has been replaced by a function of $q$, $p$, and $t$, so $H$ genuinely lives on phase space.
+
+Then define what a differential is
+
+[codex: insert]
+
+The differential of a function is its local first-order change rule. Geometrically, if a function is imagined as a surface, the differential is the infinitesimal tilt information at one point on that surface. It tells us how the function changes under a tiny displacement from that point.
+
+For a function of two variables, this local change rule is written
+
+```math
+dH
+=
+\frac{\partial H}{\partial q^i}\,dq^i
++
+\frac{\partial H}{\partial p_i}\,dp_i
++
+\frac{\partial H}{\partial t}\,dt.
+```
+
+So the differential is not the full surface, and it is not yet the motion. It is the local linear data from which nearby change is read off.
+
+Then analogize is to a gradient 
+
+Then show that dH from H preserves EL dynamics
+
+[codex: insert]
+
+Start from the defining expression
+
+```math
+H(q,p,t) = p_i\dot q^i - L(q,\dot q,t).
+```
+
+Differentiate it:
+
+```math
+dH
+=
+\dot q^i\,dp_i
++
+p_i\,d\dot q^i
+-
+\frac{\partial L}{\partial q^i}\,dq^i
+-
+\frac{\partial L}{\partial \dot q^i}\,d\dot q^i
+-
+\frac{\partial L}{\partial t}\,dt.
+```
+
+Now use the definition
+
+```math
+p_i = \frac{\partial L}{\partial \dot q^i}.
+```
+
+The $d\dot q^i$ terms cancel, leaving
+
+```math
+dH
+=
+\dot q^i\,dp_i
+-
+\frac{\partial L}{\partial q^i}\,dq^i
+-
+\frac{\partial L}{\partial t}\,dt.
+```
+
+Now use the Euler-Lagrange equations:
+
+```math
+\frac{d}{dt}\frac{\partial L}{\partial \dot q^i}
+=
+\frac{\partial L}{\partial q^i}.
+```
+
+Since $p_i=\partial L/\partial \dot q^i$, this becomes
+
+```math
+\dot p_i = \frac{\partial L}{\partial q^i}.
+```
+
+Substituting this into the expression for $dH$ gives
+
+```math
+dH
+=
+\dot q^i\,dp_i
+-
+\dot p_i\,dq^i
+-
+\frac{\partial L}{\partial t}\,dt.
+```
+
+But because $H$ is now a function of $q$, $p$, and $t$, its differential is also
+
+```math
+dH
+=
+\frac{\partial H}{\partial q^i}\,dq^i
++
+\frac{\partial H}{\partial p_i}\,dp_i
++
+\frac{\partial H}{\partial t}\,dt.
+```
+
+Matching coefficients of the independent differentials $dq^i$ and $dp_i$ gives Hamilton's equations:
+
+```math
+\dot q^i = \frac{\partial H}{\partial p_i},
+\qquad
+\dot p_i = -\frac{\partial H}{\partial q^i}.
+```
+
+ 
+
+
+## Showing Liouville
+
+## Lie Algebra perspective
+notes: function are generators, p <-> x, but p special b/c commutes with H
