@@ -1,5 +1,12 @@
 # Lie Algebra of Phase Space
 
+
+## some notes
+notes: function are generators, p <-> x, but p special \(\{f,H\}=0=\{H,f\}
+\) b/c commutes with H, 
+
+
+## bot generated
 Phase space does not come equipped with a canonical distance. One can impose a metric on it by hand, but Hamiltonian mechanics does not single one out. What phase space comes with intrinsically is a symplectic area form:
 
 ```math
