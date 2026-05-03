@@ -95,13 +95,183 @@ The divergence vanishes:
 Thus, any smooth function on phase space preserves our area 2-form, which, as we have discussed, is the condition for maintaining the information structure of an ensemble.
 
 We should note that we have shown this by choosing a set of coordinates first, describing flows, then showing these preserve our 2-form. This is a bit unsatisfying for two reasons. First, logically, we would prefer to show that having a conserved 2-form defines Hamiltonian flows because our procedure for defining the flows tacitly presupposed symplectic geometry. Second, to demonstrate consistency of a flow with the preservation of the 2-form, we had to commit to a coordinate system, whereas one can show Hamiltonian flows arise from the 2-form without choosing coordinates. The approach of defining flows from the area form is readily doable, but makes the geometric intuition more opaque and requires learning some dedicated language from differential geometry.
+
 ## The Hamiltonian as Energy
 
-## Hamilton's Equations of Motion
+We have already seen the deep connection between energy and time in Relativity. In relativity, the action for a free particle is built from spacetime length:
+
+```math
+S = -m \int ds = -\int E\,dt + \int p_x\,dx + \int \cdots
+```
+
+In this picture, 4-momentum is the covector, or 1-form, that measures the contribution of a displacement in spactime to action. And energy is the component that measures the contribution of a time displacement. 
+
+We are attempting to find the function to generate the flow in phase space that represents time evolution. Since that evolution is dictated by an action extremization principle, we may suspect this function would be related to the form that measures the effect of a time displacement on action accumulation.
+
+In fact this is exactly right. Ignoring important exceptions that don't change the spirit of the structure, the Hamiltonian function we wish to find is the energy function. One may say somewhat poetically "energy generates time."
+
+## Hamilton's Equations of Motion from the Legendre Transform
+Once the variables $(q,p)$ have been identified, the next task is to find the function on phase space that generates the physical time-evolution flow. The Lagrangian is not yet that function. It is written as
+
+```math
+L(q,\dot q),
+```
+
+so it still treats velocity as an independent variable. The function we want must instead be written on phase space:
+
+```math
+H(q,p).
+```
+
+The Legendre transform is the operation that performs this trade. It uses the momentum relation we have established:
+
+```math
+p_i = \frac{\partial L}{\partial \dot q^i}
+```
+
+to replace the velocity variables by their conjugate momenta, while carrying the position variables along. The transformed function is
+
+```math
+H(q,p) = p_i\dot q^i - L(q,\dot q),
+```
+
+with $\dot q$ understood, when possible, as a function of $(q,p,t)$ determined by the momentum equation above.
+
+We can do quick test that $H$ is indeed the total energy by looking at a free particle.
+
+For a non-relativistic free particle,
+
+```math
+L(q,\dot q) = \frac{1}{2}m\dot q^2.
+```
+
+The conjugate momentum is therefore
+
+```math
+p = \frac{\partial L}{\partial \dot q} = m\dot q,
+```
+
+so
+
+```math
+\dot q = \frac{p}{m}.
+```
+
+Substituting this into the Legendre transform gives
+
+```math
+H(q,p) = p\dot q - L(q,\dot q)
+= p\left(\frac{p}{m}\right) - \frac{1}{2}m\left(\frac{p}{m}\right)^2
+= \frac{p^2}{m} - \frac{p^2}{2m}
+= \frac{p^2}{2m}.
+```
+
+But this is exactly the kinetic energy of the particle. So in this simplest case, the Legendre transform gives the energy function directly.
+
+The importance of this construction is not only that it rewrites the function in the desired variables. In the earlier phase-space discussion, we saw what differential structure a function must have if it is to generate a flow. We now want to see that the Legendre-transformed function has exactly that structure. Taking the differential of $H$ gives
+
+```math
+dH
+=
+\dot q^i\,dp_i
++
+p_i\,d\dot q^i
+-
+\frac{\partial L}{\partial q^i}\,dq^i
+-
+\frac{\partial L}{\partial \dot q^i}\,d\dot q^i
+```
+
+Now use the definition
+
+```math
+p_i = \frac{\partial L}{\partial \dot q^i}.
+```
+
+The $d\dot q^i$ terms cancel. What remains is
+
+```math
+dH
+=
+\dot q^i\,dp_i
+-
+\frac{\partial L}{\partial q^i}\,dq^i
+```
+
+At this stage the transform has done its essential job. Velocity is no longer appearing as an independent differential. The theory has been rewritten in phase-space terms.
+
+To connect this with the original dynamics, use the Euler-Lagrange equations:
+
+```math
+\frac{d}{dt}\frac{\partial L}{\partial \dot q^i}
+=
+\frac{\partial L}{\partial q^i}.
+```
+
+Since $p_i = \partial L/\partial \dot q^i$, this becomes
+
+```math
+\dot p_i = \frac{\partial L}{\partial q^i}.
+```
+
+Substituting this into the expression for $dH$ gives
+
+```math
+dH
+=
+\dot q^i\,dp_i
+-
+\dot p_i\,dq^i
+```
+
+But because $H$ is now a function of $(q,p)$, its differential is also
+
+```math
+dH
+=
+\frac{\partial H}{\partial q^i}\,dq^i
++
+\frac{\partial H}{\partial p_i}\,dp_i
+```
+
+Matching coefficients then yields the actual point of Hamiltonian mechanics for solving classical physics problems, Hamilton's equations or motion:
+
+```math
+\dot q^i = \frac{\partial H}{\partial p_i},
+\qquad
+\dot p_i = -\frac{\partial H}{\partial q^i}.
+```
+
+We can check this works using the example of a simple harmonic oscillator.
+
+The total energy, and thus the Hamiltonian is:
+
+```math
+H(q,p) = T + V = \frac{p^2}{2m} + \frac{1}{2}kq^2.
+```
+
+Hamilton's equations then give:
+
+```math
+\dot q = \frac{\partial H}{\partial p} = \frac{p}{m},
+\qquad
+\dot p = -\frac{\partial H}{\partial q} = -kq.
+```
+
+Using $p = m\dot q$, this becomes:
+
+```math
+m\ddot q = -kq,
+```
+
+or
+
+```math
+\ddot q + \frac{k}{m}q = 0.
+```
+```
 
 ## Mishmash of material that may be discarded or used in above section stubs
-The vector field is the flow of time (one state to the next). from relativity, energy pairs with time to give action. so we may expect the function that encodes this flow is related to energy.
-
 Now write Legendre transform
 
 [codex:insert]
