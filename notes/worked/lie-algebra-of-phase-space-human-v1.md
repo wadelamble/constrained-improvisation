@@ -51,56 +51,6 @@ Algebras are "closed," meaning that when allowed objects are combined, the resul
 ### Poisson Algebra
 We can now turn from this general taxonomy to the specific algebra built from functions on phase space called Poisson algebra. In Hamiltonian mechanics, the objects will be smooth functions on phase space. These include the familiar physical quantities position, momentum, energy, and angular momentum, but also arbitrary smooth functions with no associated physical observable. At the same time, these functions define vector fields on phase space under which the variation of any other function can be found. Through the algebraic lens, one may study not only the motion of states through phase space, but also the relationships in the full space of functions defined on it. The \"Poisson\" algebra is the structure that organizes these functions.
 
-[Human] A Poisson algebra belongs to the broader class of Lie algebras that we mentioned when we discussed continuous symmetries. Lie algebra is built on the idea that while you cannot do an algebra on a curved space, you can do so on a flat tangent space to the curved space and then map the algebraic outputs to transformations on the curved space through an exponential map. In Poisson algebra, our group manifold is the space of canonical transformations (bot fill in there, what is a canonical transformation, example, notation) and our tangent space is the space of vector fields. in poisson algebra, there is one extra layer in addition to the tangent space and the group manifold, as the functions on phase space first generate the vector fields that are objects the tangent space using the procedure we have discussed. Note that "generate" is now used in two ways, somewhat sloppily -- functions generate vector fields, vector fields generate canoncial transformation. The lie algebra of the tangent space of vector fields is related to the lie algebra of functions by the identity  (bot: the [] = {} equation). This relation allows the algebraic relationships of the vector fields to persist in the relationships of the functions. In a standard Lie algebra, we would exponentiate generator matrices to generator parameterized flows. Here we integrate differential equations of the functions. these resolve to exponential maps as (bot: complete). Flows and canonical transformatin are related in that (bot: fill in). In a standard matrix generator / symmetry transformation lie algebra the canonical transformation analog would be (bot?) while the flow analog would be (bot) [End-human]
-
-A Poisson algebra belongs to the broader class of Lie algebras. In the
-usual symmetry setting, a Lie algebra is the tangent space at the
-identity of a Lie group. The finite objects are the transformations
-themselves. The infinitesimal objects are tangent vectors at the
-identity, and the exponential map turns those infinitesimal generators
-into one-parameter families of finite transformations.
-
-[great. Please give a simplest-possible-example]
-
-The Hamiltonian case has the same broad architecture, but with
-different objects. The finite objects are canonical transformations,
-that is, transformations of phase space that preserve the symplectic
-form. [either say it in the previous paragraph or here. in the 'usual' setting, the transformations preserve some (distance-ish) invariant.] A one-parameter family of canonical transformations is a flow. [please provide an example with the right notation.]
-The infinitesimal objects are vector fields on phase space. Integrating
-such a vector field gives the corresponding flow. In this setting,
-integration of a differential equation plays the same structural role
-that exponentiation plays in the matrix picture [you didn't talk about matrixes as infintesimal generators above, you need to do so]: it turns an
-infinitesimal generator into a finite transformation.
-
-Poisson algebra has one extra layer not usually visible in the standard
-matrix example. We do not usually write the infinitesimal generators
-directly as vector fields. Instead, we write functions on phase space.
-Each smooth function $f$ determines a vector field $X_f$, and that
-vector field in turn determines a flow of canonical transformations. So
-the chain of objects is
-
-```text
-function -> vector field -> flow -> canonical transformations.
-```
-
-This is the sense in which functions participate in a Lie algebra. They
-do so not as isolated scalar labels ['scalar labels' is unclear to me], but through the vector fields they
-generate. The bridge between the two levels is
-
-```math
-[X_f,X_g] = X_{\{f,g\}},
-```
-
-up to sign convention. The bracket on the left is the Lie bracket of
-vector fields. The bracket on the right is the Poisson bracket of
-functions. This identity says that the Lie algebra of infinitesimal
-canonical transformations persists when one passes from vector fields to
-the functions that generate them.
-
-
-[give me a quick stepping back reflection like: "because we can work in the flat space of vector fields and then map to transoformation space, we can work in an algebra with its attendant abilities to make establishing relationships and theorems workaday." (for the love of god don't quote me)]
-
-[Rewrite here]
 A Poisson algebra belongs to the broader class of Lie algebras. In the
 usual symmetry setting, the finite objects are transformations that
 preserve some invariant quantity. For example, planar rotations preserve
@@ -158,7 +108,6 @@ The payoff is that one can work in the flat space of infinitesimal
 generators rather than in the curved space of finite transformations.
 That is what makes an algebra possible here, and it is what makes
 relations and theorems available through algebraic manipulation.
-[End rewrite here]
 
 #### we'll get back to this
 The first operations on this space are the obvious ones. Two functions may be added. A function may be multiplied by a scalar. Two functions may also be multiplied together pointwise to produce a third function. These operations already make the space of smooth functions into a familiar algebraic object. Hamiltonian mechanics adds one more binary internal operation, the Poisson bracket. It is this operation that encodes the specifically dynamical and generator-theoretic structure.
