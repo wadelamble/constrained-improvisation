@@ -15,6 +15,13 @@ import scienceplots  # noqa: F401
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "content" / "drafts" / "animations"
+LABEL_BOX = {
+    "facecolor": "white",
+    "edgecolor": "#D0D0D0",
+    "linewidth": 0.6,
+    "alpha": 0.92,
+    "boxstyle": "round,pad=0.25",
+}
 
 
 def configure_style() -> None:
@@ -37,6 +44,21 @@ def configure_style() -> None:
 def save_animation(anim: FuncAnimation, path: Path, fps: int) -> None:
     writer = FFMpegWriter(fps=fps, bitrate=2400, codec="libx264", extra_args=["-pix_fmt", "yuv420p"])
     anim.save(path, writer=writer)
+
+
+def axes_label(ax: plt.Axes, text: str, x: float = 0.02, y: float = 0.96) -> None:
+    ax.text(
+        x,
+        y,
+        text,
+        transform=ax.transAxes,
+        ha="left",
+        va="top",
+        fontsize=9.5,
+        color="#333333",
+        bbox=LABEL_BOX,
+        zorder=10,
+    )
 
 
 def make_permutation_animation(path: Path) -> None:
@@ -109,29 +131,9 @@ def make_permutation_animation(path: Path) -> None:
                 color=mass["color"],
             )
 
-        shown_mapping = ", ".join(f"{s}\N{RIGHTWARDS ARROW}{perm[s]}" for s in ["ABC", "BAC", "CBA"])
-        ax.text(
-            0.0,
-            1.03,
-            f"Permutation step {step + 1} of {steps}:  move top card to bottom",
-            transform=ax.transAxes,
-            ha="left",
-            va="bottom",
-            fontsize=11,
-            color="#333333",
-        )
-        ax.text(
-            0.0,
-            0.97,
-            shown_mapping,
-            transform=ax.transAxes,
-            ha="left",
-            va="top",
-            fontsize=10,
-            color="#666666",
-        )
+        axes_label(ax, f"step {step + 1}", y=0.95)
 
-        ax.set_title("Three-card permutation: probability weights are preserved up to rearrangement", pad=18)
+        ax.set_title("Probability weights under a permutation", pad=10)
         ax.set_ylabel("Probability")
         ax.set_xticks(x_slots)
         ax.set_xticklabels(states)
@@ -224,28 +226,8 @@ def make_liouville_animation(path: Path) -> None:
         )
 
         t = frame * 0.12
-        ax.set_title("Liouville transport in a nonlinear oscillator", pad=14)
-        ax.text(
-            0.01,
-            1.02,
-            "A probability hill may deform, but it does not flatten by diffusion.",
-            transform=ax.transAxes,
-            ha="left",
-            va="bottom",
-            fontsize=10,
-            color="#333333",
-        )
-        ax.text(
-            0.01,
-            0.97,
-            f"quartic Hamiltonian  H = p²/2 + q⁴/4      t = {t:0.1f}",
-            transform=ax.transAxes,
-            ha="left",
-            va="top",
-            fontsize=9.5,
-            color="#555555",
-        )
-
+        ax.set_title("Liouville transport", pad=10)
+        axes_label(ax, rf"$H=p^2/2+q^4/4,\quad t={t:0.1f}$", y=0.96)
         ax.set_xlabel("Position  q")
         ax.set_ylabel("Momentum  p")
         ax.set_xlim(*q_range)

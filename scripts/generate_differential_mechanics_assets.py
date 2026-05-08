@@ -15,6 +15,13 @@ import scienceplots  # noqa: F401
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "content" / "drafts" / "animations"
+LABEL_BOX = {
+    "facecolor": "white",
+    "edgecolor": "#D0D0D0",
+    "linewidth": 0.6,
+    "alpha": 0.92,
+    "boxstyle": "round,pad=0.25",
+}
 
 
 def configure_style() -> None:
@@ -48,6 +55,21 @@ def save_animation(anim: FuncAnimation, path: Path, fps: int = 18) -> None:
 def save_figure(fig: plt.Figure, path: Path) -> None:
     fig.savefig(path, bbox_inches="tight", facecolor=fig.get_facecolor())
     plt.close(fig)
+
+
+def axes_label(ax: plt.Axes, text: str, x: float = 0.03, y: float = 0.97) -> None:
+    ax.text(
+        x,
+        y,
+        text,
+        transform=ax.transAxes,
+        ha="left",
+        va="top",
+        fontsize=9.5,
+        color="#333333",
+        bbox=LABEL_BOX,
+        zorder=10,
+    )
 
 
 def rk4_step(state: np.ndarray, dt: float) -> np.ndarray:
@@ -87,12 +109,12 @@ def make_bulk_boundary_diagram(path: Path) -> None:
     )
 
     ax.text(0.49, 0.72, "bulk variation", ha="center", color="#6D597A")
-    ax.text(0.98, y[-1] + 0.22, "boundary variation", ha="right", color="#BC4749")
-    ax.text(0.02, y[0] - 0.24, "boundary variation", ha="left", va="top", color="#BC4749")
+    ax.text(0.78, 0.37, "boundary variation", ha="left", color="#BC4749", bbox=LABEL_BOX)
+    ax.text(0.03, y[0] - 0.24, "boundary variation", ha="left", va="top", color="#BC4749", bbox=LABEL_BOX)
     ax.text(0.0, -0.42, "$t_1$", ha="center")
     ax.text(1.0, -0.42, "$t_2$", ha="center")
 
-    ax.set_title("Action variation separates into bulk and boundary pieces")
+    ax.set_title("Bulk term and boundary term", pad=10)
     ax.set_xlim(-0.03, 1.03)
     ax.set_ylim(-0.55, 0.95)
     ax.set_xticks([])
@@ -143,7 +165,7 @@ def make_one_form_two_form_diagram(path: Path) -> None:
     for spine in ax.spines.values():
         spine.set_visible(False)
 
-    fig.suptitle("From one displaced state to a phase-space area element", y=0.98)
+    fig.suptitle("From one displacement to an area element", y=0.98)
     save_figure(fig, path)
 
 
@@ -202,9 +224,8 @@ def make_function_to_flow_animation(path: Path) -> None:
         ax.plot(trail[:tracer_n, 0], trail[:tracer_n, 1], color="#BC4749", linewidth=2.2, alpha=0.85)
         ax.scatter([trail[tracer_n - 1, 0]], [trail[tracer_n - 1, 1]], color="#BC4749", s=34, zorder=4)
 
-        ax.set_title("A phase-space function induces a crossed flow field", pad=14)
-        ax.text(0.02, 1.02, r"$F(q,p)=p^2/2+q^4/4$", transform=ax.transAxes, ha="left", va="bottom", color="#555555")
-        ax.text(0.02, 0.97, r"$\dot q=\partial F/\partial p,\ \dot p=-\partial F/\partial q$", transform=ax.transAxes, ha="left", va="top", color="#333333")
+        ax.set_title("Function to flow", pad=10)
+        axes_label(ax, r"$F=p^2/2+q^4/4,\quad \dot q=\partial_p F,\quad \dot p=-\partial_q F$")
         ax.set_xlabel("q")
         ax.set_ylabel("p")
         ax.set_xlim(-1.7, 1.7)
@@ -239,9 +260,8 @@ def make_patch_shear_animation(path: Path) -> None:
         closed = np.vstack([current, current[0]])
         ax.plot(closed[:, 0], closed[:, 1], color="#2A9D8F", linewidth=2.2, zorder=3)
 
-        ax.text(0.02, 1.02, r"$H=p^2/2 \Rightarrow \dot q = p,\ \dot p = 0$", transform=ax.transAxes, ha="left", va="bottom", color="#555555")
-        ax.text(0.02, 0.97, "Patch shears while area stays fixed", transform=ax.transAxes, ha="left", va="top", color="#333333")
-        ax.set_title("A Hamiltonian flow can distort shape without compressing phase-space area", pad=14)
+        axes_label(ax, r"$H=p^2/2:\quad \dot q=p,\quad \dot p=0$")
+        ax.set_title("Area-preserving shear", pad=10)
         ax.set_xlabel("q")
         ax.set_ylabel("p")
         ax.set_xlim(-1.6, 1.8)
@@ -273,25 +293,8 @@ def make_spring_ensemble_animation(path: Path) -> None:
         pts = points0 @ rot.T
         ax.scatter(pts[:, 0], pts[:, 1], s=10, color="#355070", alpha=0.22, edgecolors="none")
         ax.scatter([pts[:, 0].mean()], [pts[:, 1].mean()], s=50, color="#BC4749", zorder=3)
-        ax.text(
-            0.02,
-            1.02,
-            r"$\dot q = v,\qquad \dot v = -q$",
-            transform=ax.transAxes,
-            ha="left",
-            va="bottom",
-            color="#555555",
-        )
-        ax.text(
-            0.02,
-            0.97,
-            "An ensemble is transported, not erased",
-            transform=ax.transAxes,
-            ha="left",
-            va="top",
-            color="#333333",
-        )
-        ax.set_title("A conservative spring law carries a cloud of initial conditions through state space", pad=14)
+        axes_label(ax, r"$\dot q=v,\quad \dot v=-q$")
+        ax.set_title("Ensemble transport", pad=10)
         ax.set_xlabel("position q")
         ax.set_ylabel("velocity v")
         ax.set_xlim(-1.8, 1.8)
@@ -353,9 +356,8 @@ def make_incompressible_fluid_animation(path: Path) -> None:
         ax.fill(poly[:, 0], poly[:, 1], color="#54A24B", alpha=0.22, zorder=2)
         ax.plot(closed[:, 0], closed[:, 1], color="#2A9D8F", linewidth=2.1, zorder=3)
 
-        ax.text(0.02, 1.02, r"$u=\partial \psi/\partial y,\qquad v=-\partial \psi/\partial x$", transform=ax.transAxes, ha="left", va="bottom", color="#555555")
-        ax.text(0.02, 0.97, "The material patch stretches and shears without losing area", transform=ax.transAxes, ha="left", va="top", color="#333333")
-        ax.set_title("An incompressible stream function induces crossed flow and preserves patch area", pad=14)
+        axes_label(ax, r"$u=\partial_y\psi,\quad v=-\partial_x\psi$")
+        ax.set_title("Incompressible patch transport", pad=10)
         ax.set_xlabel("x")
         ax.set_ylabel("y")
         ax.set_xlim(-1.7, 1.7)
@@ -386,7 +388,7 @@ def make_legendre_trade_diagram(path: Path) -> None:
     ax.text(4.95, 2.28, r"$p_i=\partial L/\partial \dot q^i$", ha="center", va="bottom", color="#BC4749")
     ax.text(4.95, 1.45, r"$H(q,p)=p_i\dot q^i-L$", ha="center", va="top", color="#333333")
 
-    ax.set_title("The Legendre transform trades velocity variables for conjugate momenta", pad=12)
+    ax.set_title("Legendre transform: velocities to momenta", pad=12)
     save_figure(fig, path)
 
 
@@ -414,7 +416,7 @@ def make_relativistic_boundary_pairing_diagram(path: Path) -> None:
     ax.text(8.3, 2.8, r"$p_i\,\delta q^i - E\,\delta t$", fontsize=16, ha="center", color="#333333")
     ax.annotate("", xy=(8.3, 3.95), xytext=(8.3, 3.15), arrowprops=dict(arrowstyle="->", linewidth=1.8, color="#6D597A"))
 
-    ax.set_title("The boundary pairing in spacetime splits into spatial momentum and energy pieces", pad=12)
+    ax.set_title("Boundary pairing under time slicing", pad=12)
     save_figure(fig, path)
 
 
@@ -427,7 +429,6 @@ def make_worldline_phase_space_bridge_diagram(path: Path) -> None:
     x = np.linspace(0.18, 0.84, 200)
     t = 0.18 + 0.7 * x + 0.06 * np.sin(8 * x)
     ax.plot(x, t, color="#355070", linewidth=2.2)
-    ax.text(0.5, 0.02, "spacetime history already drawn", ha="center", transform=ax.transAxes)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.set_xticks([])
@@ -440,7 +441,6 @@ def make_worldline_phase_space_bridge_diagram(path: Path) -> None:
     ax.annotate("", xy=(0.12, 0.92), xytext=(0.12, 0.12), arrowprops=dict(arrowstyle="-", linewidth=1.2, color="#999999"))
     ax.annotate("", xy=(0.92, 0.12), xytext=(0.12, 0.12), arrowprops=dict(arrowstyle="-", linewidth=1.2, color="#999999"))
     ax.scatter([0.58], [0.48], s=55, color="#BC4749")
-    ax.text(0.5, 0.02, "phase-space state awaiting a local law", ha="center", transform=ax.transAxes)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.set_xticks([])
@@ -449,7 +449,7 @@ def make_worldline_phase_space_bridge_diagram(path: Path) -> None:
         spine.set_visible(False)
     ax.set_title("Phase space")
 
-    fig.suptitle("Hamiltonian mechanics shifts attention from a full history to a state plus a differential rule", y=0.98)
+    fig.suptitle("From a full history to an instantaneous state", y=0.98)
     save_figure(fig, path)
 
 
@@ -472,7 +472,7 @@ def make_action_decomposition_diagram(path: Path) -> None:
 
     ax.text(7.45, 4.15, r"$\delta S = p_i\,\delta q^i - E\,\delta t$", fontsize=16, ha="center")
     ax.text(7.45, 2.75, r"$-\int E\,dt \quad + \quad \int p_x\,dx \quad + \cdots$", fontsize=15, ha="center", color="#333333")
-    ax.set_title("A spacetime displacement contributes to action through its temporal and spatial pieces", pad=12)
+    ax.set_title("Temporal and spatial action pieces", pad=12)
     save_figure(fig, path)
 
 
@@ -497,7 +497,7 @@ def make_poisson_compression_diagram(path: Path) -> None:
         ax.text(x, y, text, ha="center", va="center", fontsize=14)
         ax.text(x, y - 0.55, label, ha="center", va="top", color="#555555")
 
-    ax.set_title("Poisson algebra compresses the same mechanics into a smaller set of relations", pad=12)
+    ax.set_title("Poisson bracket compression", pad=12)
     save_figure(fig, path)
 
 
@@ -523,8 +523,7 @@ def make_function_flow_stack_diagram(path: Path) -> None:
     for upper, lower in zip(ys[:-1], ys[1:]):
         ax.annotate("", xy=(4.0, lower + 0.6), xytext=(4.0, upper - 0.8), arrowprops=dict(arrowstyle="->", linewidth=1.8, color="#666666"))
 
-    ax.text(4.0, 0.65, "The whole flow is a one-parameter family; each chosen parameter value gives one canonical transformation.", ha="center", va="center", color="#555555")
-    ax.set_title("The same Hamiltonian object can be read at four layers", pad=12)
+    ax.set_title("Function to canonical transformation", pad=12)
     save_figure(fig, path)
 
 
@@ -547,7 +546,7 @@ def make_quantum_bridge_diagram(path: Path) -> None:
 
     ax.text(6.0, 5.55, "what transports", ha="center", va="center", fontsize=11, color="#333333")
     ax.text(6.0, 0.85, "what changes", ha="center", va="center", fontsize=11, color="#333333")
-    ax.set_title("The algebraic skeleton carries across the classical-to-quantum transition", pad=12)
+    ax.set_title("Classical algebra to quantum algebra", pad=12)
     save_figure(fig, path)
 
 
