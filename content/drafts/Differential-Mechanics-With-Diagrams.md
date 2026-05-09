@@ -1,22 +1,22 @@
 # Differential Mechanics
 
-Lagrangian Mechanics already gives us a remarkably deep way to do physics. We write down an invariant quantity in a spacetime geometry, extremize it, and recover the physical path. The particle, we may say, has "learned" what the right trajectory is by solving an optimization problem. While this global perspective perhaps feels less orthodox in physics than the local differential-equation perspective, only it suggests an answer to the question of why dynamical laws exist. And indeed, the central objects of the differential formulation, momentum and energy roughly speaking, are derived from the global formulation. "Hamiltonian Mechanics" is the name we give to this modern version of the local, differential perspective. Instead of selecting a whole history at once, it treats motion as the flow in time of one instantaneous state to the next. 
+Lagrangian Mechanics gives us a remarkably deep way to formulate the laws of motion. We write down an invariant quantity in a spacetime geometry, extremize it, and recover the physical path. The particle, we may say, has "learned" what the right trajectory is by solving an optimization problem. The global formulation is conceptually prior to the local formulation in the strict sense that the central objects of the differential formulation, the quantities that will become momentum and energy in the local theory, are derived from the global formulation. 
 
-Hamiltonian mechanics is an elegant formulation of classical mechanics, but if all it provided were elegance, it would not belong here in our treatment of the conceptual foundations of physics. But it does more than recast Langrangian Mechanics in local form. It illuminates structure in physical systems that is opaque in Lagrangian Mechanics and is essential to formulating quantum mechanics. First, it reveals insight into the evolution of statisical ensembles as a whole beyond what can be said about individual trajectories. Second, by encoding laws about global trajectories into a flat geometry of infinesimal displacements, it allows those laws to be expressed in an algebra of generators. 
+"Hamiltonian Mechanics" is the name we give to the modern version of the local, differential perspective. Instead of selecting a whole history at once, it treats motion as the flow in time of one instantaneous state to the next. Hamiltonian mechanics is an elegant formulation of classical mechanics, but if elegance were all it provided, it would not belong here in our treatment of the conceptual foundations of physics. In fact, it does more than recast Lagrangian Mechanics in local form. It makes visible ensemble and algebraic structure that is difficult to see in Lagrangian form and that later becomes essential to quantum mechanics. First, it reveals how statistical ensembles evolve in ways not visible from individual trajectories. Second, by encoding laws of global trajectories into the local geometry of infinitesimal state changes, it allows those laws to be expressed in an algebra of generators.
 
 ## The Evolution of Ensembles in Physical Systems
 
-One might justifiably think that the content of our physical laws is limited to predicting individual future histories from initial conditions. Yet in conservative systems, where energy is not lost to a noisy environment, the laws guiding the evolution of single states additionally imply that the information encoded in a distribution of states is preserved. This is a categorically different kind of claim, not about one particle's initial conditions and its future, but about the collective behavior of an ensemble of initial conditions. As we will see, the key to this emergent structure of ensembles lies in the way the determinism and reversibility of the evolution of individual states affords establishing a measure of the amount of states that is invariant in time.
+One might justifiably think that the content of our physical laws is limited to predicting individual trajectories from initial conditions. Yet in conservative systems, where energy is not dissipated into inaccessible microscopic degrees of freedom, the laws guiding the evolution of single states additionally imply that the information encoded in a distribution of states is preserved. This is a categorically different kind of claim, not about one particle's initial conditions and its future, but about the collective behavior of an ensemble. The key to this emergent structure is that deterministic, reversible evolution keeps distinct initial states distinct. Once that is true, an ensemble can move through state space without losing the measure of how many states it contains.
 
-### Example -- Set Permutation
+### Example: Preserved Information in a Permutation
 
-We can get a feel for this kind of information structure in the example of permuting a set. Take a deck of three cards labeled `A`, `B`, and `C`. The exact possible states are the six deck orders
+We can get a feel for this kind of information-preserving evolution with a simple discrete example. Take a deck of three cards labeled `A`, `B`, and `C`. The exact possible states are the six deck orders
 
 ```text
 ABC, ACB, BAC, BCA, CAB, CBA.
 ```
 
-Now choose one specific permutation of these states, for example: move the top card to the bottom. Then
+Now choose one specific permutation of these states, for example, move the top card to the bottom. Then
 
 ```text
 ABC -> BCA
@@ -27,7 +27,7 @@ CBA -> BAC
 BAC -> ACB
 ```
 
-And assign a probability distribution on these six exact states. For example,
+Now assign a probability distribution on these six exact states. For example,
 
 ```text
 P(ABC) = 1/2
@@ -49,7 +49,7 @@ with all other states still assigned probability `0`. The same probability weigh
 
 [Open MP4: liouville-permutation-3card.mp4](animations/liouville-permutation-3card.mp4)
 
-Let's make a few observations about this example:
+A few structural facts are worth making explicit:
 1. An initial arrangement is unique.
 2. Under a given permutation rule, a new arrangement is dictated by the previous arrangement.
 3. We can run the permutation in reverse and recover the original arrangement.
@@ -57,46 +57,55 @@ Let's make a few observations about this example:
 
 These properties, which we will show exist in physical situations, are what we mean by "determinism" and "reversibility" and, following from these, by "distinguishability" of the ensemble under time evolution.
 
-We can map the elements of our card deck to Hamiltonian mechanics, in which "phase space" is position/momentum space for one body, or the product of such for multiple bodies.
+We can map the elements of the card deck to Hamiltonian mechanics. There, the relevant state space is the space of positions and momenta together. This is phase space. For one body, it is position/momentum space. For many bodies, it is the product of such spaces.
 
-1. An arrangement -> an $instantaneous$ state
+1. An arrangement -> an instantaneous state
 2. All possible arrangements -> phase space
 3. The count of distinct arrangements in a collection -> phase space area
 
-The last of these elements is what we call a "measure" on the space. A measure has a role analogous to a metric, though it does something different. A metric measures separation. A measure assigns size to regions or collections. In the present case, what matters is that when such a quantity is preserved under transformation, it encodes some regularity or structure in the space. Conservative systems bestow an "incompressibility" on phase space. In our card deck, the discrete analogue is already built in by the fact that the law is a permutation, so collections of arrangements are rearranged without losing or gaining members.
+The last of these elements is what we call a "measure" on the space. A measure has a role analogous to a metric, though it does something different. A metric measures separation. A measure assigns size to regions or collections. What matters here is whether that size is preserved as the system evolves. In the card deck, preservation is built in. The law is a permutation, so a collection of arrangements can be rearranged, but it cannot gain or lose members. Conservative physical systems have the continuous analogue of that property. We can visualize this as state space becoming "incompressible."
 
-The last of these elements is what we call a "measure" on the space. A measure has a role analogous to a metric, though it does something different. A metric measures separation. A measure assigns size to regions or collections. What matters here is whether that size is preserved as the system evolves. In the card deck, preservation is inherent. The law is a permutation, so a collection of arrangements can be rearranged, but it cannot gain or lose members. Conservative physical systems have the continuous analogue of that property. We can visualize this as phase space being "incompressible."
+### Example: Preserved Information in a Physical Ensemble
 
+We see this same structure in conservative physical systems such as the ideal pendulum. Prepare many runs with slightly different initial angles and momenta. At the initial time, measurements across the ensemble reveal a distribution in phase space. We then let each member of the ensemble evolve under the same conservative law, and at some later time we again measure position and momentum across the ensemble. Those later measurements reveal a new distribution. Again, the distribution is not flattened or sharpened by the dynamics. Rather, each exact initial state in the ensemble is carried to one exact later state, so the later distribution is the earlier one transported by the law of motion. In a dissipative system, nearby runs can truly be driven together, so distinctions among initial conditions are washed out. The extreme example of such a dissipative system is one in which all initial conditions end at rest. But in a conservative system, such distributions are not washed out. They are transported to new regions of state space.
 
-### Example -- Mass on a Spring
+![Pendulum regimes animation contact sheet](animations/differential-pendulum-regimes-contact-sheet.png)
 
-We see this same structure in physical systems. Consider the classic "mass on a spring." To speak experimentally about a probability distribution over initial conditions, we need an ensemble, that is, many runs of the same system, prepared by the same procedure, with initial position and momentum drawn from some distribution around an average starting state. At the initial time, measurements across the ensemble reveal that distribution. We then let each member of the ensemble evolve under the same conservative law, and at some later time we again measure position and momentum across the ensemble. Those later measurements reveal a new distribution. We observe, again, that the distribution is not flattened or sharpened by the dynamics. Rather, each exact initial state in the ensemble is carried to one exact later state, so the later distribution is the earlier one transported by the law of motion. In a dissipative system, nearby runs can truly be driven together, so distinctions among initial conditions are washed out. The extreme example of such a dissipative system is one in which all initial conditions end at rest. But in a conservative system, such distributions are not washed out. They are transported onto new ensembles.
+[Open MP4: differential-pendulum-regimes.mp4](animations/differential-pendulum-regimes.mp4)
 
-![Spring ensemble transport animation contact sheet](animations/differential-spring-ensemble-transport-contact-sheet.png)
+The two animations emphasize different features of the same example. One separates the pendulum's regimes; the other follows a small ensemble through the same state space.
 
-[Open MP4: differential-spring-ensemble-transport.mp4](animations/differential-spring-ensemble-transport.mp4)
+![Pendulum ensemble phase-space animation contact sheet](animations/differential-pendulum-ensemble-phase-space-contact-sheet.png)
 
-As promised, this is the direct analogue of the permutation example. There, the state space was a finite set, the natural measure was counting measure, and the law was a permutation. Here, the state space is continuous, the natural measure is phase-space measure, and the law is a Hamiltonian flow generated by conservative forces. A permutation rearranges exact states without merging them. A Hamiltonian flow does the same for a continuum of exact states, with phase-space measure playing the role that counting measure played before. In conservative physical systems, this behavior is known as Liouville's theorem.
+[Open MP4: differential-pendulum-ensemble-phase-space.mp4](animations/differential-pendulum-ensemble-phase-space.mp4)
+
+The pendulum is an analogue of the permutation example. There, the state space was a finite set, the natural measure was counting measure, and the law was a permutation. Here, the state space is continuous. Its points are instantaneous angle/momentum states, its natural measure is a measure of area on state space, and its law of motion is a Hamiltonian flow. A permutation rearranges exact states without merging them. A Hamiltonian flow does the same for a continuum of exact states. Area in state space plays the role that counting measure played before. In conservative physical systems, this behavior is known as Liouville's theorem. Formally, if $\Phi_t$ is the Hamiltonian time-evolution map and $A$ is any measurable region of phase space, then
+
+```math
+\mu(\Phi_t(A)) = \mu(A),
+```
+
+where $\mu$ is the natural measure on phase space.
 
 ### Information as an Incompressible Fluid
 
-In the set permutation and physical ensembles example, we looked at spaces of possible arrangements. We might imagine that these spaces behave like incompressible fluids, and indeed we can see this same structure in real fluid flows. Imagine marking out a connected patch of an ideal incompressible fluid and then simply tracking that same patch as the fluid moves. The patch may be stretched into a long filament, bent, folded, or sheared almost beyond recognition. But it does not tear, it does not split, and it does not lose its area. It remains the same material patch, carried along by the flow.
+In the examples above, we looked at spaces of possible arrangements. A useful analogy is a planar incompressible flow. Imagine marking out a connected patch in the plane and then tracking that same patch as it is carried by the flow. The patch may be stretched into a long filament, bent, folded, or sheared almost beyond recognition. But it does not tear, split, or change its area. It remains the same material patch, carried along by the flow.
 
-In our card example, exact states were permuted. In the ensemble example, exact initial conditions were carried by a Hamiltonian flow. Here, a material patch is carried by the velocity field of the fluid. In all three cases, the same structural fact is present. The dynamics transports an ensemble without changing the distinctions it encodes.
+In our card example, exact states were permuted. In the pendulum ensemble example, exact initial conditions were carried by a Hamiltonian flow. Here, a material patch is carried by the velocity field of the fluid. In all three cases, the law transports a structured object without erasing its structure. A distribution over states or a marked material patch may be rearranged or distorted, but it remains distinguishable from a different starting distribution or patch.
 
-Fluids make the geometric character of this structure easier to see. In an ordinary three-dimensional incompressible fluid, a material volume is transported without changing its volume. For the Hamiltonian analogy, the closest picture is the two-dimensional version in which a marked area patch is carried by a planar incompressible flow. The patch may stretch, shear, or bend, but its area is preserved.
+Fluids make the geometric character of this structure easier to see. A planar flow is described by a velocity field. If a point at position $(x,y)$ has velocity $(u(x,y),v(x,y))$, then its motion is governed by
 
 ```math
 \frac{dx}{dt} = u(x,y),\qquad \frac{dy}{dt} = v(x,y),
 ```
 
-then incompressibility means
+and incompressibility means
 
 ```math
 \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0.
 ```
 
-This condition says that a small material patch does not locally compress or expand. In two dimensions it has a powerful consequence. There exists a scalar function $\psi(x,y)$ such that
+The two terms measure the rate at which a small material patch carried by the flow expands or contracts along the two coordinate directions. If their sum is zero, any expansion in one direction is exactly balanced by contraction in the other, so a small material patch does not locally change area. In two dimensions this condition has a powerful consequence. There exists a scalar function $\psi(x,y)$ such that
 
 ```math
 u = \frac{\partial \psi}{\partial y},
@@ -104,15 +113,14 @@ u = \frac{\partial \psi}{\partial y},
 v = -\frac{\partial \psi}{\partial x}.
 ```
 
+In two dimensions, incompressibility lets the velocity field be generated from this single scalar function in a cross-coupled form. Motion in the $x$ direction is determined by how the scalar function $\psi$ varies in the $y$ direction, and motion in the $y$ direction is determined by how $\psi$ varies in the $x$ direction. Hamiltonian Mechanics shares this cross-coupled differential structure.
+
 ![Incompressible fluid patch animation contact sheet](animations/differential-incompressible-fluid-patch-contact-sheet.png)
 
 [Open MP4: differential-incompressible-fluid-patch.mp4](animations/differential-incompressible-fluid-patch.mp4)
 
-Incompressibility forces the motion into a form described by cross-coupled differential equations. Motion in the $x$ direction is determined by how the scalar function $\psi$ varies in the $y$ direction, and motion in the $y$ direction is determined by how $\psi$ varies in the $x$ direction. Hamiltonian Mechanics shares this cross-coupled differential structure.
-
-### Information Embodied in States
-
-We have talked about systems that preserve the structure of distributions. Let us now express this briefly in the language of information theory.
+### Embodied Information
+We have described systems as evolving "information." The term may sound metaphorical, as information feels like an abstract rather than a physical notion. But it is meant literally. Information cannot exist without some embodiment, be that in switches in a computer or molecules in a gas. To understand how physical systems embody information, we need to understand a bit about information theory itself.
 
 How much information does a penny showing heads contain? A good way to think about this is as a question about surprise. If a coin were weighted so that heads always appeared, seeing heads would contain no information at all. If it showed heads 90% of the time, seeing heads would confirm what I already expected, and would therefore contain only a small amount of information. But if it came up tails, it would force a revision of my expectations. That is the sense in which it would be informative. Let us call this quantity "surprisal." We want surprisal to go up as probability goes down.
 
@@ -130,7 +138,7 @@ I(HH) = -\log_2\big(P(H)P(H)\big) = -\log_2 P(H) - \log_2 P(H) = 2I(H).
 
 This quantity describes the information associated with one realized outcome. When we turn from one outcome to an ensemble, the natural scalar quantity is the average surprisal over the whole distribution. This is Shannon entropy.
 
-There is nothing essentially different between our coin example and an ensemble of initial conditions in a physical system. Rather than a discrete number of possibilities, there is a continuous set, so we must deal in probability densities rather than probabilities. With this change, the expression for the ensemble entropy becomes:
+The same basic idea applies to an ensemble of initial conditions in a physical system. Rather than a discrete number of possibilities, there is a continuous set, so we must deal in probability densities rather than probabilities. With this change, the expression for the ensemble entropy becomes:
 
 ```math
 H[\rho] = -\int \rho(x)\log_2 \rho(x)\,d\mu,
@@ -138,21 +146,15 @@ H[\rho] = -\int \rho(x)\log_2 \rho(x)\,d\mu,
 
 where $d\mu$ is the natural measure on the space of states. In this sense, an ensemble contains a quantifiable amount of information.
 
-Liouville's theorem implies entropy is preserved in ideal conservative evolution. That alone is not yet the full strength of the theorem. Different probability densities can have the same entropy while encoding different distinctions among possible states. The informational identity of an ensemble therefore lies not merely in the scalar $H[\rho]$, but in the full fine-grained arrangement of its density $\rho(x)$ over the state space. Hamiltonian Mechanics reflects the embodiment and preservation of information in physical systems.
+Liouville's theorem implies that this entropy is preserved in ideal conservative evolution. But entropy is only a scalar summary of a distribution. Different densities can have the same entropy while assigning probability to different regions of state space. The stronger statement is that Hamiltonian evolution transports the density itself. If $\rho_0$ is the initial density, then the later density is the same probability structure carried forward by the flow. The information is embodied not merely in the number $H[\rho]$, but in the full distribution over possible states.
 
-### The Importance of the Information Perspective
+The information-theoretic implications of conservative systems are central to statistical mechanics. There, the exact microscopic state of a system is not practically knowable. A gas, for example, has too many microscopic degrees of freedom to track directly, and even a finite partition of phase space would leave an unfathomably large number of possible microscopic arrangements. Statistical mechanics works by replacing exact microscopic knowledge with distributions over possible states, then asking how those distributions evolve. This is what lets macroscopic quantities such as temperature, pressure, volume, and particle number be connected to underlying mechanics. The role of distribution will be ontologically promoted to the state itself in quantum mechanics, where physics is no longer organized around definite classical states, but around probability distributions over possible measurement outcomes.
 
-Liouville's theorem and the information-theoretic implications of conservative systems are at the heart of statistical mechanics, in which the exact microscopic initial conditions of the constituent bodies are never knowable precisely, both because one cannot know the exact state of any one particle in a continuous phase space and because the number of combinations of microscopic states is unfathomably large, even if one were to divide phase space into a finite number of parcels. The laws of thermodynamics, expressing how temperature, volume, pressure, and number of particles relate, would be impossible without understanding this preservation of information. When we move to quantum mechanics and individual bodies give way to distributions over possible measurements, physics must be expressed as the evolution of distributions, for distributions are all there is.
-
-## From the Geometry of Phase Space to Hamilton's Equations of Motion
-
-The function that encodes flow in phase space, the flow of state through time is the formulation's eponymous function, the Hamiltonian. Let's see how we can arrive at its form and the equation.
-
-### Phase Space
+## Phase Space
 
 Phase space, or position/momentum space is the arena for Hamiltonian Mechanics. To appreciate the theory, we need to understand the nature of this space.
 
-#### From histories to states
+### From histories to states
 
 The objects in Hamiltonian Mechanics -- the state variables and the Hamiltonian function on those variables are obtained from Lagrangian Mechanics. We know that Lagrangian mechanics selects whole paths from path space by extremizing action. The task we thus need to perform is to somehow extract the essential objects of a local theory of instantaneous state from the Lagrangian global theory.
 
@@ -212,7 +214,7 @@ As advertised, we see that the variation separates into the bulk term, which gov
 
 ![Bulk and boundary variation diagram](animations/differential-bulk-boundary-variation.png)
 
-#### The Definition of Momentum
+### The Definition of Momentum
 
 The boundary term has the form $p_i\,\delta q^i$, with
 
@@ -262,7 +264,7 @@ up to sign convention. Holding endpoint time fixed leaves precisely the spatial 
 
 So far, however, this is still a statement about how the action responds when one state is infinitesimally displaced. Liouville's theorem concerns not one state, but patches of nearby states. For that we need an object that measures phase-space area rather than endpoint sensitivity.
 
-#### From the one-form to the two-form
+### From the one-form to the two-form
 
 Thus far, the action has identified $q$ and $p$ as the correct paired variables for specifying instantaneous state. But the pairing $p_i\,\delta q^i$ is a one-form statement: it acts on one infinitesimal displacement of one state and returns the first-order change in the action. Liouville's theorem and the information story ask a different question. They concern patches of nearby states in phase space, not one displaced state at a time.
 
@@ -330,17 +332,17 @@ d\theta
 \omega.
 ```
 
-#### What Phase Space Is
+### What Phase Space Is
 
 We are now able to define phase space. It is the space whose points are instantaneous states expressed in the paired, or conjugate, variables selected by the action. For one degree of freedom, a point is $(q,p)$. For many degrees of freedom, a point is $(q^1,\dots,q^n,p_1,\dots,p_n)$. Phase space is a reorganization of what counts as an instantaneous state with respect to action extremization. Once the boundary variation has told us what variable is paired with $q$, the state is no longer most naturally described by $(q,\dot q)$, but by $(q,p)$.
 
-### Hamiltonian Flows
+## Hamiltonian Flows
 
 Compare phase space plots to spacetime diagrams $Galilean or Minkowskian$. There, motion is baked into the shape of the worldline. The history is contained in a static plot. In phase space, there is no motion, no history, until a point or region begins to flow. Our next task, then, is to describe the flows that characterize conservative physical systems. The function that encodes flow in phase space, the flow of state through time, is the formulation's eponymous function, the Hamiltonian. Let's see how we can arrive at its form and the equation.
 
 ![Worldline to phase-space bridge diagram](animations/differential-worldline-phase-space-bridge.png)
 
-#### Functions on phase space
+### Functions on phase space
 
 We have already seen in our example of an incompressible fluid that any flow can be encoded by a generating function. Let's spell this out more carefully and put it in the arena of phase space.
 
@@ -398,7 +400,7 @@ Change of $F$ in the $p_i$ direction determines motion in the $q^i$ direction. C
 
 We can define a flow this way for any two variables, but it only has a physical interpretation in the kinds of cases we've discussed, like fluid flow, that is, in cases where the area form is preserved.
 
-#### Preservation of the Symplectic Area Form
+### Preservation of the Symplectic Area Form
 
 Let's now show a bit more rigorously that such a flow does in fact preserve the symplectic 2-form. In one degree of freedom, preserving $\omega$ means preserving the area of phase-space patches. A small quadrilateral may shear, stretch, or rotate, but its area must not change.
 
@@ -442,7 +444,7 @@ Thus, any smooth function on phase space preserves our area 2-form, which, as we
 
 We should note that we have shown this by choosing a set of coordinates first, describing flows, then showing these preserve our 2-form. This is a bit unsatisfying for two reasons. First, logically, we would prefer to show that having a conserved 2-form defines Hamiltonian flows because our procedure for defining the flows tacitly presupposed symplectic geometry. Second, to demonstrate consistency of a flow with the preservation of the 2-form, we had to commit to a coordinate system, whereas one can show Hamiltonian flows arise from the 2-form without choosing coordinates. The approach of defining flows from the area form is readily doable, but makes the geometric intuition more opaque and requires learning some dedicated language from differential geometry.
 
-#### The Hamiltonian as Energy
+### The Hamiltonian as Energy
 
 We have already seen the deep connection between energy and time in Relativity. In relativity, the action for a free particle is built from spacetime length:
 
@@ -458,7 +460,7 @@ We are attempting to find the function to generate the flow in phase space that 
 
 In fact this is exactly right. Ignoring important exceptions that don't change the spirit of the structure, the Hamiltonian function we wish to find is the energy function. One may say somewhat poetically "energy generates time."
 
-#### Hamilton's Equations of Motion from the Legendre Transform
+### Hamilton's Equations of Motion from the Legendre Transform
 
 Once the variables $(q,p)$ have been identified, the next task is to find the function on phase space that generates the physical time-evolution flow. The Lagrangian is not yet that function. It is written as
 

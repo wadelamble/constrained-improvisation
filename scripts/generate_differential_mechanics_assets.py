@@ -307,6 +307,257 @@ def make_spring_ensemble_animation(path: Path) -> None:
     plt.close(fig)
 
 
+def make_pendulum_phase_space_ensemble_animation(path: Path) -> None:
+    theta = np.linspace(-np.pi, np.pi, 360)
+    p = np.linspace(-2.6, 2.6, 320)
+    tt, pp = np.meshgrid(theta, p)
+    H = 0.5 * pp**2 + 1.0 - np.cos(tt)
+
+    tv = np.linspace(-np.pi, np.pi, 19)
+    pv = np.linspace(-2.35, 2.35, 15)
+    tvq, pvq = np.meshgrid(tv, pv)
+    u = pvq
+    v = -np.sin(tvq)
+    speed = np.hypot(u, v)
+    scale = np.maximum(speed, 1e-8)
+
+    rng = np.random.default_rng(23)
+    mean = np.array([1.92, 0.22])
+    cov = np.array([[0.0065, -0.0032], [-0.0032, 0.0075]])
+    points = rng.multivariate_normal(mean, cov, size=520)
+    patch0 = np.array([[1.78, 0.05], [2.05, -0.02], [2.12, 0.22], [1.85, 0.30]])
+    tracer = np.array([1.05, 0.0], dtype=float)
+
+    frames = 130
+    dt = 0.045
+
+    def wrap_angle(value: np.ndarray) -> np.ndarray:
+        return (value + np.pi) % (2.0 * np.pi) - np.pi
+
+    def vf(state: np.ndarray) -> np.ndarray:
+        angle = state[..., 0]
+        mom = state[..., 1]
+        return np.stack([mom, -np.sin(angle)], axis=-1)
+
+    def step(state: np.ndarray, h: float) -> np.ndarray:
+        k1 = vf(state)
+        k2 = vf(state + 0.5 * h * k1)
+        k3 = vf(state + 0.5 * h * k2)
+        k4 = vf(state + h * k3)
+        out = state + (h / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
+        out[..., 0] = wrap_angle(out[..., 0])
+        return out
+
+    point_frames = np.empty((frames, len(points), 2))
+    patch_frames = np.empty((frames, len(patch0), 2))
+    tracer_frames = np.empty((frames, 2))
+    current_points = points.copy()
+    current_patch = patch0.copy()
+    current_tracer = tracer.copy()
+    for i in range(frames):
+        point_frames[i] = current_points
+        patch_frames[i] = current_patch
+        tracer_frames[i] = current_tracer
+        for _ in range(2):
+            current_points = step(current_points, dt)
+            current_patch = step(current_patch, dt)
+            current_tracer = step(current_tracer, dt)
+
+    fig, axes = plt.subplots(1, 2, figsize=(10.2, 4.8), gridspec_kw={"width_ratios": [1.0, 2.15]})
+
+    def draw_frame(frame: int) -> None:
+        pend_ax, phase_ax = axes
+        pend_ax.clear()
+        phase_ax.clear()
+
+        selected = tracer_frames[frame]
+        angle = selected[0]
+        bob = np.array([np.sin(angle), -np.cos(angle)])
+
+        pend_ax.plot([0, bob[0]], [0, bob[1]], color="#355070", linewidth=2.4)
+        pend_ax.scatter([bob[0]], [bob[1]], s=130, color="#BC4749", zorder=3)
+        pend_ax.plot([-1.15, 1.15], [0, 0], color="#B8B8B8", linewidth=1.0)
+        pend_ax.scatter([0], [0], s=24, color="#333333", zorder=4)
+        pend_ax.set_title("one member", pad=9)
+        pend_ax.set_xlim(-1.25, 1.25)
+        pend_ax.set_ylim(-1.25, 0.35)
+        pend_ax.set_aspect("equal")
+        pend_ax.axis("off")
+
+        phase_ax.contour(theta, p, H, levels=[0.25, 0.65, 1.05, 1.45, 1.85, 2.0, 2.35, 2.8, 3.4, 4.2], colors="#777777", linewidths=0.8, alpha=0.56)
+        phase_ax.contour(theta, p, H, levels=[2.0], colors="#BC4749", linewidths=1.8, alpha=0.9)
+        phase_ax.quiver(tvq, pvq, u / scale, v / scale, color="#355070", alpha=0.35, pivot="mid", scale=28, width=0.0038)
+
+        pts = point_frames[frame]
+        phase_ax.scatter(pts[:, 0], pts[:, 1], s=9, color="#355070", alpha=0.18, edgecolors="none", zorder=2)
+        poly = patch_frames[frame]
+        phase_ax.fill(poly[:, 0], poly[:, 1], color="#54A24B", alpha=0.20, zorder=3)
+        closed = np.vstack([poly, poly[0]])
+        phase_ax.plot(closed[:, 0], closed[:, 1], color="#2A9D8F", linewidth=1.8, zorder=4)
+        phase_ax.scatter([selected[0]], [selected[1]], s=35, color="#BC4749", zorder=5)
+
+        phase_ax.text(
+            0.03,
+            0.96,
+            r"$H=p^2/2+1-\cos\theta$",
+            transform=phase_ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=9.5,
+            color="#333333",
+            bbox=LABEL_BOX,
+            zorder=10,
+        )
+        phase_ax.text(
+            0.97,
+            0.96,
+            "separatrix",
+            transform=phase_ax.transAxes,
+            ha="right",
+            va="top",
+            fontsize=9.0,
+            color="#BC4749",
+            zorder=10,
+        )
+        phase_ax.set_title("Pendulum ensemble in phase space", pad=9)
+        phase_ax.set_xlabel(r"angle $\theta$")
+        phase_ax.set_ylabel("momentum p")
+        phase_ax.set_xlim(-np.pi, np.pi)
+        phase_ax.set_ylim(-2.6, 2.6)
+        phase_ax.set_xticks([-np.pi, -np.pi / 2, 0, np.pi / 2, np.pi])
+        phase_ax.set_xticklabels([r"$-\pi$", r"$-\pi/2$", "0", r"$\pi/2$", r"$\pi$"])
+        phase_ax.grid(color="#E8E8E8", linewidth=0.6)
+
+    anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 20, blit=False)
+    save_animation(anim, path, fps=20)
+    plt.close(fig)
+
+
+def make_pendulum_regimes_animation(path: Path) -> None:
+    theta = np.linspace(-np.pi, np.pi, 360)
+    p = np.linspace(-2.7, 2.7, 320)
+    tt, pp = np.meshgrid(theta, p)
+    H = 0.5 * pp**2 + 1.0 - np.cos(tt)
+
+    frames = 140
+    dt = 0.04
+    states0 = {
+        "oscillation": np.array([1.05, 0.0], dtype=float),
+        "near boundary": np.array([2.45, 0.08], dtype=float),
+        "rotation": np.array([0.0, 2.18], dtype=float),
+    }
+    colors = {
+        "oscillation": "#355070",
+        "near boundary": "#BC4749",
+        "rotation": "#2A9D8F",
+    }
+
+    def wrap_angle(value: np.ndarray) -> np.ndarray:
+        return (value + np.pi) % (2.0 * np.pi) - np.pi
+
+    def vf(state: np.ndarray) -> np.ndarray:
+        angle = state[..., 0]
+        mom = state[..., 1]
+        return np.stack([mom, -np.sin(angle)], axis=-1)
+
+    def step(state: np.ndarray, h: float) -> np.ndarray:
+        k1 = vf(state)
+        k2 = vf(state + 0.5 * h * k1)
+        k3 = vf(state + 0.5 * h * k2)
+        k4 = vf(state + h * k3)
+        out = state + (h / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
+        out[..., 0] = wrap_angle(out[..., 0])
+        return out
+
+    histories: dict[str, np.ndarray] = {}
+    for name, state0 in states0.items():
+        current = state0.copy()
+        hist = np.empty((frames, 2))
+        for i in range(frames):
+            hist[i] = current
+            for _ in range(2):
+                current = step(current, dt)
+        histories[name] = hist
+
+    fig, axes = plt.subplots(1, 2, figsize=(10.2, 4.8), gridspec_kw={"width_ratios": [1.15, 1.85]})
+
+    def draw_pendulum(ax: plt.Axes, angle: float, x_offset: float, color: str, label: str) -> None:
+        pivot = np.array([x_offset, 0.0])
+        bob = pivot + np.array([0.68 * np.sin(angle), -0.68 * np.cos(angle)])
+        ax.plot([pivot[0], bob[0]], [pivot[1], bob[1]], color="#355070", linewidth=2.0)
+        ax.scatter([bob[0]], [bob[1]], s=82, color=color, zorder=3)
+        ax.scatter([pivot[0]], [pivot[1]], s=18, color="#333333", zorder=4)
+        ax.text(x_offset, -0.93, label, ha="center", va="top", fontsize=9.0, color=color)
+
+    def draw_frame(frame: int) -> None:
+        pend_ax, phase_ax = axes
+        pend_ax.clear()
+        phase_ax.clear()
+
+        pend_ax.plot([-1.55, 1.55], [0, 0], color="#B8B8B8", linewidth=1.0)
+        draw_pendulum(pend_ax, histories["oscillation"][frame, 0], -0.95, colors["oscillation"], "oscillates")
+        draw_pendulum(pend_ax, histories["near boundary"][frame, 0], 0.0, colors["near boundary"], "near boundary")
+        draw_pendulum(pend_ax, histories["rotation"][frame, 0], 0.95, colors["rotation"], "rotates")
+        pend_ax.set_title("same system, different regimes", pad=9)
+        pend_ax.set_xlim(-1.75, 1.75)
+        pend_ax.set_ylim(-1.15, 0.35)
+        pend_ax.set_aspect("equal")
+        pend_ax.axis("off")
+
+        phase_ax.contour(theta, p, H, levels=[0.25, 0.65, 1.05, 1.45, 1.85, 2.0, 2.35, 2.8, 3.4, 4.2], colors="#777777", linewidths=0.85, alpha=0.6)
+        phase_ax.contour(theta, p, H, levels=[2.0], colors="#BC4749", linewidths=1.8, alpha=0.9)
+        for name, hist in histories.items():
+            n = min(frame + 1, len(hist))
+            # Break wrapped paths so the trace does not draw across the periodic boundary.
+            trace = hist[:n].copy()
+            jumps = np.where(np.abs(np.diff(trace[:, 0])) > np.pi)[0]
+            start = 0
+            for jump in jumps:
+                segment = trace[start : jump + 1]
+                phase_ax.plot(segment[:, 0], segment[:, 1], color=colors[name], linewidth=1.7, alpha=0.85)
+                start = jump + 1
+            segment = trace[start:]
+            if len(segment) > 1:
+                phase_ax.plot(segment[:, 0], segment[:, 1], color=colors[name], linewidth=1.7, alpha=0.85)
+            phase_ax.scatter([hist[frame, 0]], [hist[frame, 1]], s=34, color=colors[name], zorder=5)
+
+        phase_ax.text(
+            0.03,
+            0.96,
+            r"$\dot\theta=p,\quad \dot p=-\sin\theta$",
+            transform=phase_ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=9.5,
+            color="#333333",
+            bbox=LABEL_BOX,
+            zorder=10,
+        )
+        phase_ax.text(
+            0.97,
+            0.96,
+            "separatrix",
+            transform=phase_ax.transAxes,
+            ha="right",
+            va="top",
+            fontsize=9.0,
+            color="#BC4749",
+            zorder=10,
+        )
+        phase_ax.set_title("Pendulum phase portrait", pad=9)
+        phase_ax.set_xlabel(r"angle $\theta$")
+        phase_ax.set_ylabel("momentum p")
+        phase_ax.set_xlim(-np.pi, np.pi)
+        phase_ax.set_ylim(-2.7, 2.7)
+        phase_ax.set_xticks([-np.pi, -np.pi / 2, 0, np.pi / 2, np.pi])
+        phase_ax.set_xticklabels([r"$-\pi$", r"$-\pi/2$", "0", r"$\pi/2$", r"$\pi$"])
+        phase_ax.grid(color="#E8E8E8", linewidth=0.6)
+
+    anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 20, blit=False)
+    save_animation(anim, path, fps=20)
+    plt.close(fig)
+
+
 def make_incompressible_fluid_animation(path: Path) -> None:
     x = np.linspace(-1.7, 1.7, 280)
     y = np.linspace(-1.6, 1.6, 260)
@@ -321,9 +572,15 @@ def make_incompressible_fluid_animation(path: Path) -> None:
     speed = np.hypot(u, v)
     scale = np.maximum(speed, 1e-8)
 
-    patch0 = np.array([[-0.95, -0.28], [-0.45, -0.28], [-0.45, 0.22], [-0.95, 0.22]])
-    dt = 0.04
-    frames = 102
+    angles = np.linspace(0.0, 2.0 * np.pi, 180, endpoint=False)
+    patch0 = np.column_stack(
+        [
+            -0.74 + 0.28 * np.cos(angles),
+            -0.05 + 0.20 * np.sin(angles),
+        ]
+    )
+    dt = 0.035
+    frames = 112
 
     def vf_xy(s: np.ndarray) -> np.ndarray:
         xpos = s[..., 0]
@@ -337,7 +594,7 @@ def make_incompressible_fluid_animation(path: Path) -> None:
         k4 = vf_xy(state + h * k3)
         return state + (h / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
 
-    patch_frames = np.empty((frames, 4, 2))
+    patch_frames = np.empty((frames, len(patch0), 2))
     current = patch0.copy()
     for i in range(frames):
         patch_frames[i] = current
@@ -554,6 +811,7 @@ def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     configure_style()
     make_spring_ensemble_animation(OUTPUT_DIR / "differential-spring-ensemble-transport.mp4")
+    make_pendulum_phase_space_ensemble_animation(OUTPUT_DIR / "differential-pendulum-ensemble-phase-space.mp4")
     make_incompressible_fluid_animation(OUTPUT_DIR / "differential-incompressible-fluid-patch.mp4")
     make_bulk_boundary_diagram(OUTPUT_DIR / "differential-bulk-boundary-variation.png")
     make_one_form_two_form_diagram(OUTPUT_DIR / "differential-one-form-to-two-form.png")

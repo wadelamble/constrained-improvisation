@@ -4,6 +4,7 @@ __pycache__/
 .venv/
 dist/
 build/
+site/
 Thumbs.db
 .tools/
 Git-*.exe
