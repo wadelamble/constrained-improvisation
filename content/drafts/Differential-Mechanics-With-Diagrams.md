@@ -152,13 +152,17 @@ The information-theoretic implications of conservative systems are central to st
 
 ## Phase Space
 
-Phase space, or position/momentum space is the arena for Hamiltonian Mechanics. To appreciate the theory, we need to understand the nature of this space.
+Phase space, or position/momentum space, is the arena for Hamiltonian Mechanics. To appreciate the theory, we need to understand the origin, geometry, and role of this space.
 
 ### From histories to states
 
-The objects in Hamiltonian Mechanics -- the state variables and the Hamiltonian function on those variables are obtained from Lagrangian Mechanics. We know that Lagrangian mechanics selects whole paths from path space by extremizing action. The task we thus need to perform is to somehow extract the essential objects of a local theory of instantaneous state from the Lagrangian global theory.
+The objects in Hamiltonian Mechanics -- the state variables and the Hamiltonian function on those variables are obtained from Lagrangian Mechanics. We know that Lagrangian mechanics selects whole paths from path space by extremizing action. The task we thus need to perform is to extract the essential objects of a local theory of instantaneous state from the Lagrangian global theory.
 
-The impact of instantaneous state displacements on action appears when the action is varied. After integrating by parts, the variation separates into a "bulk" term and a "boundary" term. The bulk term determines which paths satisfy the Euler-Lagrange equations. The boundary term, on the other hand, records how the action changes when the endpoint state is infinitesimally changed. Isolating the boundary term's contribution to the variation "factors out" the contribution of state displacements from that of the full path history.
+The impact of instantaneous state displacements on action appears when the action is varied. After integrating the Lagrangian by parts, the variation separates into a bulk term and a boundary term. The bulk term concerns what happens in the interior of the path. Since the interior is what the path does between its endpoints, requiring the bulk contribution to vanish for arbitrary interior variations gives the Euler-Lagrange equations. That is, the equations of motion must be consistent with the path taken once we know the endpoints. The boundary term in contrast concerns how a segment of history meets a time slice, that is, how an infinitesimal change to an instantaneous state affects the action. If we imagine chopping a path into smaller and smaller pieces, in a sense all that is left is a series of boundary terms, each corresponding to successive instantaneous states. The boundary term records how the action changes when that state is infinitesimally displaced, and its coefficient will become the momentum.
+
+![Bulk and boundary variation animation contact sheet](animations/differential-bulk-boundary-variation-contact-sheet.png)
+
+[Open MP4: differential-bulk-boundary-variation.mp4](animations/differential-bulk-boundary-variation.mp4)
 
 To see this explicitly, start with the expression for the action:
 
@@ -179,7 +183,7 @@ Now vary the path $q(t)\to q(t)+\delta q(t)$. Because the Lagrangian depends on 
 \right)dt.
 ```
 
-The second term contains $\delta \dot q^i$ rather than $\delta q^i$, so integrate it by parts:
+The second term contains $\delta \dot q^i$ rather than $\delta q^i$. But the velocity variation is not independent. It is the time derivative of the path variation, $\delta \dot q^i = \frac{d}{dt}\delta q^i$. Since the path displacement $\delta q^i$ is the arbitrary object, integrate by parts to move that time derivative off the variation.
 
 ```math
 \int_{t_1}^{t_2}
@@ -212,8 +216,6 @@ Substituting this back in gives
 
 As advertised, we see that the variation separates into the bulk term, which governs the equations of motion, and the boundary term, which governs the action's sensitivity to endpoint configuration displacement on a time slice.
 
-![Bulk and boundary variation diagram](animations/differential-bulk-boundary-variation.png)
-
 ### The Definition of Momentum
 
 The boundary term has the form $p_i\,\delta q^i$, with
@@ -222,9 +224,9 @@ The boundary term has the form $p_i\,\delta q^i$, with
 p_i := \frac{\partial L}{\partial \dot q^i}.
 ```
 
-This tells us what quantity is paired with an infinitesimal change in the state at a moment. That quantity is not, in general, the velocity. Velocity answers the question of how configuration changes along a path. The boundary variation answers a different question: if the endpoint state is nudged in the $q^i$ direction, what coefficient measures the first-order change in the action? The answer is $p_i$.
+This tells us what quantity pairs with an infinitesimal displacement of the state at a moment to measure its contribution to the change in action. 
 
-The functional form of the momentum is determined by the form of the Lagrangian function. In a free system, in which only the kinetic term appears in the Lagrangian, $p$ arises inevitably from the theory's kinematics. In the Newtonian free-particle theory, the kinetic term is proportional to the square of the velocity, a fact that can be shown to follow from Galilean symmetry, so
+The functional form of the momentum is determined by the functional form of the Lagrangian. In a free system, in which only the kinetic term appears in the Lagrangian, $p$ arises inevitably from the theory's kinematics. In the Newtonian free-particle theory, the kinetic term is proportional to the square of the velocity, a fact that can be shown, with some work we won't do here, to follow from Galilean symmetry.
 
 ```math
 L = \frac{1}{2}m\dot q^2,
@@ -238,35 +240,87 @@ In that setting the familiar formula $p=mv$ is inherited from the kinetic term. 
 E^2 = p^2 + m^2
 ```
 
-in units with $c=1$. The corresponding free Lagrangian then yields the relativistic momentum instead.
+in units with $c=1$. The corresponding free Lagrangian then yields the relativistic momentum.
 
-Relativity makes this same structure visible from another angle. For a free relativistic particle, the action is built from spacetime length,
+#### Momentum in Relativity
 
-```math
-S = -m\int ds.
-```
-
-Varying an endpoint of the worldline gives a boundary term of the form
+For a free relativistic particle, in which there is no potential and no preferred frame, the action should be built from the worldline itself. Action is the scalar functional whose stationary value selects the physical path, so in a relativistic theory it should not depend on the inertial frame used to describe that path. Unlike Galilean geometry, Minkowski geometry combines space and time into a single invariant interval. A worldline therefore has an invariant spacetime length, rather than separate spatial and temporal measures. For a free particle, that length is the only available Lorentz-invariant quantity that distinguishes one candidate worldline from another. This also has the right physical consequence: between fixed events, the free path is the straight worldline, the path of extremal path length. The free-particle action is therefore taken to be a constant multiple of spacetime length that,
 
 ```math
-\delta S_{\partial} = p_\mu\,\delta x^\mu.
+S = -\alpha\int ds.
 ```
 
-So four-momentum is already the covector paired with spacetime displacement in the variation of the action. If we choose a time coordinate, this pairing splits into spatial and temporal pieces,
+The constant $\alpha$ supplies the physical scale of the action. The geometry determines what is being measured along the worldline. The coefficient determines how that measurement enters the action.
+
+Let $s$ measure spacetime length along the worldline, and write the unit tangent as
+
+```math
+u^\mu = \frac{dx^\mu}{ds}.
+```
+
+Varying an endpoint of the worldline changes the length, to first order, by pairing the endpoint displacement with the tangent covector. Since the action is $-\alpha$ times that length, the boundary part of the variation has the form
+
+```math
+\delta S_{\partial} \sim -\alpha u_\mu\,\delta x^\mu.
+```
+
+where the subscript $\partial$ means "boundary," so $\delta S_{\partial}$ is the boundary part of $\delta S$. The coefficient of $\delta x^\mu$ is the boundary covector:
+
+```math
+p_\mu = -\alpha u_\mu.
+```
+
+The coefficient $\alpha$ is then identified internally. Since the four-velocity has invariant norm
+
+```math
+u_\mu u^\mu = 1
+```
+
+so the momentum covector satisfies
+
+```math
+p_\mu p^\mu = \alpha^2
+```
+
+Thus $\alpha$ is the invariant magnitude of four-momentum. That invariant magnitude is the definition relativity gives to mass, so we write $\alpha=m$.
+
+Choosing a time coordinate splits the spacetime displacement into temporal and spatial pieces. In that split,
 
 ```math
 p_\mu\,\delta x^\mu = p_i\,\delta q^i - E\,\delta t,
 ```
 
-up to sign convention. Holding endpoint time fixed leaves precisely the spatial boundary pairing $p_i\,\delta q^i$. Thus the Hamiltonian pairing is not a new structure invented after Lagrangian mechanics. It is the time-sliced form of a relation that relativistic mechanics displays directly among action, displacement, and momentum.
+If the endpoint time is held fixed, then $\delta t=0$, and the spatial part remains:
 
-![Relativistic boundary pairing diagram](animations/differential-relativistic-boundary-pairing.png)
+```math
+p_i\,\delta q^i.
+```
 
-So far, however, this is still a statement about how the action responds when one state is infinitesimally displaced. Liouville's theorem concerns not one state, but patches of nearby states. For that we need an object that measures phase-space area rather than endpoint sensitivity.
+This is the same boundary pairing that appeared in the Lagrangian derivation of ordinary momentum. The relativistic free-particle action shows the larger spacetime form of that pairing before a time coordinate is chosen.
+
+The mass-shell relation is the same statement written after the coefficient has been named:
+
+```math
+p_\mu p^\mu = m^2,
+```
+
+In the familiar energy-momentum split this becomes
+
+```math
+E^2 = \mathbf p^2 + m^2
+```
+
+in units with $c=1$.
+
+By shifting to a unified spacetime, relativity ties action to worldline length, with the consequence that momentum can then be defined as the covector paired with displacement along the worldline.
+
+![Endpoint covector measurement animation contact sheet](animations/differential-endpoint-covector-measurement-contact-sheet.png)
+
+[Open MP4: differential-endpoint-covector-measurement.mp4](animations/differential-endpoint-covector-measurement.mp4)
 
 ### From the one-form to the two-form
 
-Thus far, the action has identified $q$ and $p$ as the correct paired variables for specifying instantaneous state. But the pairing $p_i\,\delta q^i$ is a one-form statement: it acts on one infinitesimal displacement of one state and returns the first-order change in the action. Liouville's theorem and the information story ask a different question. They concern patches of nearby states in phase space, not one displaced state at a time.
+Thus far, the action has identified $q$ and $p$ as the correct paired variables for specifying instantaneous state. But the pairing $p_i\,\delta q^i$ is a one-form statement. It acts on one infinitesimal displacement of one state and returns the first-order change in the action. The information perspective requires a different type of mathematical object, one that measures an “amount of states,” not the to action of a single state.       
 
 Once the action has identified $q^i$ and $p_i$ as conjugate variables, the natural oriented area element on their space is the two-form
 
@@ -274,9 +328,11 @@ Once the action has identified $q^i$ and $p_i$ as conjugate variables, the natur
 dq^i \wedge dp_i.
 ```
 
-It takes in two tangent directions and returns an oriented area. Integrating it over a region of phase space measures the "count," or "amount" of states in the region. Once we have the 2-form, we can see the job of Hamiltonian mechanics as finding flows under which the area measured by the 2-form is invariant.
+It takes in two tangent directions and returns an oriented area. Integrating it over a region of phase space measures the amount of states in the region. Once we have the 2-form, we can see the job of Hamiltonian mechanics as finding flows under which the area measured by the 2-form is invariant. This is the geometric form of information preservation. Remarkably, the “overlap” of two vectors and the “area” the same two vectors span lead to descriptions of entirely different categories of behavior.
 
-![One-form to two-form diagram](animations/differential-one-form-to-two-form.png)
+![One-form to two-form animation contact sheet](animations/differential-one-form-to-two-form-contact-sheet.png)
+
+[Open MP4: differential-one-form-to-two-form.mp4](animations/differential-one-form-to-two-form.mp4)
 
 There is also a deeper reason this two-form, rather than the boundary one-form itself, is the intrinsic object. The equations of motion are determined by the bulk term in the action and are unchanged if the Lagrangian is modified by an endpoint-only term. Such a modification shifts the boundary one-form, but leaves the two-form unchanged. This matches the physics: Hamiltonian flows will preserve area in phase space, not any notion of length or absolute endpoint accounting.
 

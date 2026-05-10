@@ -17,6 +17,9 @@ SCRATCH_DIR = ANIMATION_DIR / "_contact_sheet_frames"
 CONTACT_SHEET_FILES = [
     "liouville-permutation-3card.mp4",
     "liouville-contours-quartic.mp4",
+    "differential-bulk-boundary-variation.mp4",
+    "differential-endpoint-covector-measurement.mp4",
+    "differential-one-form-to-two-form.mp4",
     "differential-spring-ensemble-transport.mp4",
     "differential-incompressible-fluid-patch.mp4",
     "differential-function-to-flow.mp4",

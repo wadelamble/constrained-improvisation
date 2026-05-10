@@ -125,19 +125,140 @@ def make_bulk_boundary_diagram(path: Path) -> None:
     save_figure(fig, path)
 
 
+def make_bulk_boundary_animation(path: Path) -> None:
+    t = np.linspace(0.0, 1.0, 520)
+    q = 0.06 + 0.42 * t + 0.18 * np.sin(np.pi * t) - 0.055 * np.sin(2 * np.pi * t)
+    qdot = 0.42 + 0.18 * np.pi * np.cos(np.pi * t) - 0.11 * np.pi * np.cos(2 * np.pi * t)
+    qddot = -0.18 * np.pi**2 * np.sin(np.pi * t) + 0.22 * np.pi**2 * np.sin(2 * np.pi * t)
+
+    # Concrete toy Lagrangian, used only to make the action readouts honest.
+    def action(path: np.ndarray, velocity: np.ndarray) -> float:
+        lagrangian = 0.5 * velocity**2 - 0.5 * path**2
+        return float(np.trapezoid(lagrangian, t))
+
+    base_action = action(q, qdot)
+    bulk_coefficient = -q - qddot
+
+    frames = 106
+    bump_width = 0.18
+    bump_height = 0.05
+
+    fig, (ax_path, ax_terms) = plt.subplots(
+        1,
+        2,
+        figsize=(10.8, 4.8),
+        gridspec_kw={"width_ratios": [1.78, 1.02]},
+    )
+
+    def smoothstep(value: float) -> float:
+        value = min(1.0, max(0.0, value))
+        return value * value * (3.0 - 2.0 * value)
+
+    def eta_at(center: float) -> tuple[np.ndarray, np.ndarray]:
+        shifted = (t - center) / bump_width
+        active = np.abs(shifted) < 1.0
+        eta = np.zeros_like(t)
+        etadot = np.zeros_like(t)
+        eta[active] = 0.5 * bump_height * (1.0 + np.cos(np.pi * shifted[active]))
+        etadot[active] = -0.5 * bump_height * (np.pi / bump_width) * np.sin(np.pi * shifted[active])
+        return eta, etadot
+
+    def draw_row(y: float, label: str, value: float, color: str = "#333333") -> None:
+        if abs(value) < 0.00005:
+            value = 0.0
+        ax_terms.text(0.10, y, label, ha="left", va="center", fontsize=8.8, color="#333333")
+        ax_terms.text(0.92, y, f"{value:+.4f}", ha="right", va="center", fontsize=8.8, color=color)
+
+    def draw_frame(frame: int) -> None:
+        ax_path.clear()
+        ax_terms.clear()
+
+        phase = smoothstep(frame / (frames - 1))
+        center = 0.18 + 0.82 * phase
+        eta, etadot = eta_at(center)
+        varied = q + eta
+        varied_dot = qdot + etadot
+        varied_action = action(varied, varied_dot)
+        delta_action = varied_action - base_action
+        bulk_value = float(np.trapezoid(bulk_coefficient * eta, t))
+        boundary_value = float(qdot[-1] * eta[-1] - qdot[0] * eta[0])
+
+        ax_path.plot(t, q, color="#355070", linewidth=2.4, zorder=3)
+        ax_path.plot(t, varied, color="#BC4749", linewidth=2.0, linestyle="--", zorder=4)
+        active = eta > 0.006
+        ax_path.fill_between(t[active], q[active], varied[active], color="#BC4749", alpha=0.13, zorder=1)
+
+        ax_path.scatter([t[0], t[-1]], [q[0], q[-1]], s=34, color="#355070", zorder=5)
+        if eta[-1] > 0.018:
+            ax_path.scatter([t[-1]], [varied[-1]], s=38, color="#BC4749", zorder=6)
+
+        ax_path.text(0.04, 0.92, r"moving local variation $\eta(t)$", transform=ax_path.transAxes, ha="left", va="center", color="#6D597A", fontsize=9.2, bbox=LABEL_BOX)
+
+        ax_path.text(0.0, -0.13, r"$t_1$", ha="center", va="top", fontsize=10)
+        ax_path.text(1.0, -0.13, r"$t_2$", ha="center", va="top", fontsize=10)
+        ax_path.set_title("A variation of the history", pad=10)
+        ax_path.set_xlabel("time t")
+        ax_path.set_ylabel("configuration q")
+        ax_path.set_xlim(-0.05, 1.05)
+        ax_path.set_ylim(-0.16, 0.98)
+        ax_path.set_xticks([])
+        ax_path.set_yticks([])
+        ax_path.grid(color="#E8E8E8", linewidth=0.7)
+
+        ax_terms.axis("off")
+        ax_terms.set_xlim(0, 1)
+        ax_terms.set_ylim(0, 1)
+        panel = plt.Rectangle((0.04, 0.06), 0.92, 0.88, facecolor="#F9F7F1", edgecolor="#CFCAC0", linewidth=1.0)
+        ax_terms.add_patch(panel)
+        ax_terms.text(0.5, 0.88, "action meter", ha="center", va="center", fontsize=10.2, color="#333333")
+        ax_terms.text(0.5, 0.80, r"toy $L=(\dot q^2-q^2)/2$", ha="center", va="center", fontsize=9.2, color="#555555")
+        ax_terms.plot([0.10, 0.92], [0.735, 0.735], color="#CFCAC0", linewidth=0.8)
+        draw_row(0.66, r"$S[q]$", base_action, "#555555")
+        draw_row(0.56, r"$S[q+\eta]$", varied_action, "#555555")
+        draw_row(0.46, r"$\Delta S$", delta_action, "#333333")
+        ax_terms.plot([0.10, 0.92], [0.395, 0.395], color="#CFCAC0", linewidth=0.8)
+        ax_terms.text(0.5, 0.34, "first-order split", ha="center", va="center", fontsize=9.0, color="#333333")
+        draw_row(0.265, "interior term", bulk_value, "#6D597A")
+        draw_row(0.18, "endpoint term", boundary_value, "#BC4749")
+
+    anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
+    save_animation(anim, path, fps=18)
+    plt.close(fig)
+
+
 def make_one_form_two_form_diagram(path: Path) -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(9.2, 4.2))
+    fig, axes = plt.subplots(1, 2, figsize=(10.2, 4.5))
 
     ax = axes[0]
-    ax.scatter([0], [0], s=55, color="#355070", zorder=3)
-    ax.annotate("", xy=(1.25, 0.35), xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.2, color="#BC4749"))
-    ax.text(1.32, 0.38, r"$\delta q$", color="#BC4749", va="center")
-    ax.text(0.0, -1.05, r"one state", ha="center", fontsize=10)
+    origin = np.array([0.0, 0.0])
+    p_dir = np.array([1.0, 0.46])
+    p_unit = p_dir / np.linalg.norm(p_dir)
+    normal = np.array([-p_unit[1], p_unit[0]])
+    dq = np.array([1.22, -0.34])
+    projection = np.dot(dq, p_unit) * p_unit
+
+    for level in np.linspace(-0.7, 0.85, 6):
+        center = level * p_unit
+        start = center - 1.5 * normal
+        end = center + 1.5 * normal
+        ax.plot([start[0], end[0]], [start[1], end[1]], color="#D7E2E8", linewidth=1.0, zorder=1)
+
+    ax.scatter([0], [0], s=46, color="#333333", zorder=5)
+    ax.annotate("", xy=1.18 * p_unit, xytext=origin, arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#4C78A8"), zorder=6)
+    ax.annotate("", xy=dq, xytext=origin, arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#BC4749"), zorder=7)
+    ax.plot([dq[0], projection[0]], [dq[1], projection[1]], color="#8A8A8A", linestyle=":", linewidth=1.2, zorder=4)
+    ax.plot([0, projection[0]], [0, projection[1]], color="#D49A3A", linewidth=4.0, alpha=0.8, solid_capstyle="round", zorder=5)
+    ax.scatter([projection[0]], [projection[1]], s=24, color="#D49A3A", zorder=8)
+
+    ax.text(*(1.18 * p_unit + np.array([0.08, 0.02])), r"$p_i$", color="#4C78A8", va="center")
+    ax.text(*(dq + np.array([0.08, -0.02])), r"$\delta q^i$", color="#BC4749", va="center")
+    ax.text(*(0.52 * projection + np.array([0.02, 0.10])), '"overlap"', color="#9A6A1F", ha="center", va="bottom", fontsize=9.2, bbox=LABEL_BOX)
+    ax.text(0.0, -1.05, r"one displaced state", ha="center", fontsize=10)
     ax.text(0.0, -1.33, r"$p_i\,\delta q^i$", ha="center", fontsize=12)
-    ax.set_title("One-form")
+    ax.set_title("One-form: pairing")
     ax.set_aspect("equal")
-    ax.set_xlim(-1.5, 1.8)
-    ax.set_ylim(-1.5, 1.5)
+    ax.set_xlim(-1.45, 1.75)
+    ax.set_ylim(-1.5, 1.42)
     ax.set_xticks([])
     ax.set_yticks([])
     for spine in ax.spines.values():
@@ -145,8 +266,8 @@ def make_one_form_two_form_diagram(path: Path) -> None:
 
     ax = axes[1]
     origin = np.array([0.0, 0.0])
-    dq = np.array([1.15, 0.18])
-    dp = np.array([0.28, 1.0])
+    dq = np.array([1.18, -0.12])
+    dp = np.array([0.35, 1.02])
     patch = np.array([origin, origin + dq, origin + dq + dp, origin + dp])
     poly = Polygon(patch, closed=True, facecolor="#54A24B", alpha=0.25, edgecolor="#2A9D8F", linewidth=2.0)
     ax.add_patch(poly)
@@ -154,9 +275,10 @@ def make_one_form_two_form_diagram(path: Path) -> None:
     ax.annotate("", xy=origin + dp, xytext=origin, arrowprops=dict(arrowstyle="->", linewidth=2.2, color="#4C78A8"))
     ax.text(*(origin + dq + np.array([0.1, -0.1])), r"$dq$", color="#BC4749")
     ax.text(*(origin + dp + np.array([0.06, 0.06])), r"$dp$", color="#4C78A8")
+    ax.text(*(origin + 0.58 * (dq + dp) + np.array([0.02, 0.02])), "area", color="#2A9D8F", ha="center", va="center", fontsize=10.2, bbox=LABEL_BOX)
     ax.text(0.75, -1.05, r"patch of nearby states", ha="center", fontsize=10)
     ax.text(0.75, -1.33, r"$dq^i \wedge dp_i$", ha="center", fontsize=12)
-    ax.set_title("Two-form")
+    ax.set_title("Two-form: oriented area")
     ax.set_aspect("equal")
     ax.set_xlim(-0.6, 2.0)
     ax.set_ylim(-1.5, 1.7)
@@ -165,8 +287,67 @@ def make_one_form_two_form_diagram(path: Path) -> None:
     for spine in ax.spines.values():
         spine.set_visible(False)
 
-    fig.suptitle("From one displacement to an area element", y=0.98)
+    fig.suptitle("From pairing to oriented area", y=0.98)
     save_figure(fig, path)
+
+
+def make_one_form_two_form_animation(path: Path) -> None:
+    frames = 126
+    fixed = np.array([1.0, 0.0])
+    radius = 1.0
+
+    fig, axes = plt.subplots(1, 2, figsize=(10.8, 4.8))
+
+    def draw_reference_axes(ax: plt.Axes) -> None:
+        ax.set_aspect("equal", adjustable="box")
+        ax.set_xlim(-1.25, 1.35)
+        ax.set_ylim(-1.25, 1.35)
+        ax.axhline(0, color="#AAAAAA", linewidth=0.9, zorder=0)
+        ax.axvline(0, color="#AAAAAA", linewidth=0.9, zorder=0)
+        ax.grid(color="#ECECEC", linewidth=0.7)
+        ax.set_xticks([])
+        ax.set_yticks([])
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+
+    def draw_frame(frame: int) -> None:
+        theta = 2.0 * np.pi * frame / frames
+        moving = radius * np.array([np.cos(theta), np.sin(theta)])
+        overlap = float(np.dot(fixed, moving))
+        area = float(fixed[0] * moving[1] - fixed[1] * moving[0])
+
+        ax = axes[0]
+        ax.clear()
+        draw_reference_axes(ax)
+        ax.set_title("One-form: overlap")
+        ax.annotate("", xy=fixed, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#4C78A8"), zorder=4)
+        ax.annotate("", xy=moving, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#BC4749"), zorder=5)
+        ax.plot([moving[0], overlap], [moving[1], 0], color="#8A8A8A", linestyle=":", linewidth=1.2, zorder=3)
+        ax.plot([0, overlap], [0, 0], color="#D49A3A", linewidth=4.0, alpha=0.85, solid_capstyle="round", zorder=6)
+        ax.scatter([0], [0], s=32, color="#333333", zorder=7)
+        ax.text(0.95, 0.12, r"$p_i$", color="#4C78A8", ha="center", va="bottom", fontsize=11.5)
+        ax.text(-1.10, 1.12, r"$p_i\,\delta q^i$", color="#333333", ha="left", va="top", fontsize=12.5, bbox=LABEL_BOX)
+        ax.text(-1.10, -1.08, f'"overlap" = {overlap:+.2f}', color="#9A6A1F", ha="left", va="center", fontsize=10.0, bbox=LABEL_BOX)
+
+        ax = axes[1]
+        ax.clear()
+        draw_reference_axes(ax)
+        ax.set_title("Two-form: oriented area")
+        patch = np.array([[0, 0], fixed, fixed + moving, moving])
+        poly = Polygon(patch, closed=True, facecolor="#54A24B", alpha=0.24, edgecolor="#2A9D8F", linewidth=2.0, zorder=2)
+        ax.add_patch(poly)
+        ax.annotate("", xy=fixed, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#4C78A8"), zorder=4)
+        ax.annotate("", xy=moving, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#BC4749"), zorder=5)
+        ax.scatter([0], [0], s=32, color="#333333", zorder=7)
+        ax.text(0.95, 0.12, r"$dq$", color="#4C78A8", ha="center", va="bottom", fontsize=11.5)
+        ax.text(-1.10, 1.12, r"$dq^i \wedge dp_i$", color="#333333", ha="left", va="top", fontsize=12.5, bbox=LABEL_BOX)
+        ax.text(-1.10, -1.08, f"area = {area:+.2f}", color="#2A9D8F", ha="left", va="center", fontsize=10.0, bbox=LABEL_BOX)
+
+        fig.suptitle("Same directions, different measurements", y=0.98)
+
+    anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
+    save_animation(anim, path, fps=18)
+    plt.close(fig)
 
 
 def make_function_to_flow_animation(path: Path) -> None:
@@ -677,6 +858,89 @@ def make_relativistic_boundary_pairing_diagram(path: Path) -> None:
     save_figure(fig, path)
 
 
+def make_endpoint_covector_animation(path: Path) -> None:
+    frames = 126
+    radius = 0.82
+    p_vec = np.array([0.74, -1.0], dtype=float)
+    p_unit = p_vec / np.linalg.norm(p_vec)
+    contour_dir = np.array([-p_unit[1], p_unit[0]])
+    levels = np.linspace(-0.9, 0.9, 7)
+    max_value = radius
+
+    fig, (ax_plane, ax_meter) = plt.subplots(
+        1,
+        2,
+        figsize=(10.8, 5.0),
+        gridspec_kw={"width_ratios": [1.45, 1.0]},
+    )
+
+    def draw_meter(value: float) -> None:
+        ax_meter.axis("off")
+        ax_meter.set_xlim(0, 1)
+        ax_meter.set_ylim(0, 1)
+        panel = plt.Rectangle((0.06, 0.08), 0.88, 0.84, facecolor="#F9F7F1", edgecolor="#CFCAC0", linewidth=1.0)
+        ax_meter.add_patch(panel)
+
+        ax_meter.text(0.5, 0.82, "boundary scalar", ha="center", va="center", fontsize=10.4, color="#333333")
+        ax_meter.text(0.5, 0.69, r"$\delta S_{\partial}\approx p_\mu\,\delta x^\mu$", ha="center", va="center", fontsize=14.0, color="#333333")
+        ax_meter.text(0.5, 0.55, f"{value:+.3f}", ha="center", va="center", fontsize=15.5, color="#BC4749")
+
+        x0, x1, y = 0.18, 0.82, 0.39
+        ax_meter.plot([x0, x1], [y, y], color="#C9C4BA", linewidth=2.0, solid_capstyle="round")
+        ax_meter.plot([0.5, 0.5], [y - 0.045, y + 0.045], color="#777777", linewidth=1.1)
+        marker_x = 0.5 + 0.31 * float(np.clip(value / max_value, -1.0, 1.0))
+        ax_meter.plot([0.5, marker_x], [y, y], color="#BC4749", linewidth=4.0, solid_capstyle="round")
+        ax_meter.scatter([marker_x], [y], s=70, color="#BC4749", edgecolor="white", linewidth=0.8, zorder=4)
+        ax_meter.text(x0, y - 0.09, "-", ha="center", va="center", fontsize=11, color="#666666")
+        ax_meter.text(x1, y - 0.09, "+", ha="center", va="center", fontsize=11, color="#666666")
+
+        ax_meter.text(0.5, 0.22, "parallel to a contour, the first-order change vanishes", ha="center", va="center", fontsize=8.8, color="#555555")
+
+    def draw_frame(frame: int) -> None:
+        ax_plane.clear()
+        ax_meter.clear()
+
+        theta = 2.0 * np.pi * frame / frames
+        displacement = radius * np.array([np.cos(theta), 0.82 * np.sin(theta)])
+        value = float(np.dot(p_unit, displacement))
+
+        ax_plane.set_aspect("equal", adjustable="box")
+        ax_plane.set_xlim(-1.18, 1.18)
+        ax_plane.set_ylim(-1.18, 1.18)
+        ax_plane.set_facecolor("#FBFBFB")
+        ax_plane.grid(color="#ECECEC", linewidth=0.7)
+        ax_plane.axhline(0, color="#AAAAAA", linewidth=1.0)
+        ax_plane.axvline(0, color="#AAAAAA", linewidth=1.0)
+
+        for level in levels:
+            center = level * p_unit
+            start = center - 1.9 * contour_dir
+            end = center + 1.9 * contour_dir
+            ax_plane.plot([start[0], end[0]], [start[1], end[1]], color="#C7D5DD", linewidth=1.1, alpha=0.85, zorder=1)
+
+        ax_plane.scatter([0], [0], s=42, color="#333333", zorder=5)
+        ax_plane.annotate("", xy=0.55 * p_unit, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.5, color="#BC4749"), zorder=6)
+        ax_plane.annotate("", xy=displacement, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.3, color="#355070"), zorder=7)
+        ax_plane.scatter([displacement[0]], [displacement[1]], s=32, color="#355070", edgecolor="white", linewidth=0.7, zorder=8)
+
+        ax_plane.text(0.08, 0.94, "equal boundary-action contours", transform=ax_plane.transAxes, ha="left", va="center", fontsize=9.0, color="#4F6F7B", bbox=LABEL_BOX)
+        ax_plane.text(0.63, 0.65, r"$p_\mu$", transform=ax_plane.transAxes, ha="left", va="center", fontsize=12.0, color="#BC4749")
+        ax_plane.text(0.74, 0.18, r"$\delta x^\mu$", transform=ax_plane.transAxes, ha="left", va="center", fontsize=12.0, color="#355070")
+        ax_plane.set_title("A covector measures endpoint displacement", pad=10)
+        ax_plane.set_xlabel(r"spatial displacement $\delta x$")
+        ax_plane.set_ylabel(r"time displacement $\delta t$")
+        ax_plane.set_xticks([])
+        ax_plane.set_yticks([])
+        for spine in ax_plane.spines.values():
+            spine.set_visible(False)
+
+        draw_meter(value)
+
+    anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
+    save_animation(anim, path, fps=18)
+    plt.close(fig)
+
+
 def make_worldline_phase_space_bridge_diagram(path: Path) -> None:
     fig, axes = plt.subplots(1, 2, figsize=(9.4, 4.2))
 
@@ -814,11 +1078,14 @@ def main() -> None:
     make_pendulum_phase_space_ensemble_animation(OUTPUT_DIR / "differential-pendulum-ensemble-phase-space.mp4")
     make_incompressible_fluid_animation(OUTPUT_DIR / "differential-incompressible-fluid-patch.mp4")
     make_bulk_boundary_diagram(OUTPUT_DIR / "differential-bulk-boundary-variation.png")
+    make_bulk_boundary_animation(OUTPUT_DIR / "differential-bulk-boundary-variation.mp4")
     make_one_form_two_form_diagram(OUTPUT_DIR / "differential-one-form-to-two-form.png")
+    make_one_form_two_form_animation(OUTPUT_DIR / "differential-one-form-to-two-form.mp4")
     make_function_to_flow_animation(OUTPUT_DIR / "differential-function-to-flow.mp4")
     make_patch_shear_animation(OUTPUT_DIR / "differential-symplectic-patch-preservation.mp4")
     make_legendre_trade_diagram(OUTPUT_DIR / "differential-legendre-transform-trade.png")
     make_relativistic_boundary_pairing_diagram(OUTPUT_DIR / "differential-relativistic-boundary-pairing.png")
+    make_endpoint_covector_animation(OUTPUT_DIR / "differential-endpoint-covector-measurement.mp4")
     make_worldline_phase_space_bridge_diagram(OUTPUT_DIR / "differential-worldline-phase-space-bridge.png")
     make_action_decomposition_diagram(OUTPUT_DIR / "differential-action-decomposition.png")
     make_poisson_compression_diagram(OUTPUT_DIR / "differential-poisson-compression.png")
