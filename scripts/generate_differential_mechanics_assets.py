@@ -293,57 +293,80 @@ def make_one_form_two_form_diagram(path: Path) -> None:
 
 def make_one_form_two_form_animation(path: Path) -> None:
     frames = 126
-    fixed = np.array([1.0, 0.0])
-    radius = 1.0
+    radius = 0.95
+    p_vec = np.array([0.78, 0.52], dtype=float)
+    p_unit = p_vec / np.linalg.norm(p_vec)
+    contour_dir = np.array([-p_unit[1], p_unit[0]])
+    levels = np.linspace(-0.92, 0.92, 8)
+    square = np.array([[-0.46, -0.32], [0.46, -0.32], [0.46, 0.32], [-0.46, 0.32]])
 
-    fig, axes = plt.subplots(1, 2, figsize=(10.8, 4.8))
+    fig, axes = plt.subplots(1, 2, figsize=(11.0, 4.9))
 
     def draw_reference_axes(ax: plt.Axes) -> None:
         ax.set_aspect("equal", adjustable="box")
-        ax.set_xlim(-1.25, 1.35)
-        ax.set_ylim(-1.25, 1.35)
+        ax.set_xlim(-1.32, 1.36)
+        ax.set_ylim(-1.26, 1.34)
         ax.axhline(0, color="#AAAAAA", linewidth=0.9, zorder=0)
         ax.axvline(0, color="#AAAAAA", linewidth=0.9, zorder=0)
-        ax.grid(color="#ECECEC", linewidth=0.7)
         ax.set_xticks([])
         ax.set_yticks([])
         for spine in ax.spines.values():
             spine.set_visible(False)
 
+    def shear(points: np.ndarray, amount: float) -> np.ndarray:
+        matrix = np.array([[1.0, amount], [0.0, 1.0]])
+        return points @ matrix.T
+
     def draw_frame(frame: int) -> None:
         theta = 2.0 * np.pi * frame / frames
-        moving = radius * np.array([np.cos(theta), np.sin(theta)])
-        overlap = float(np.dot(fixed, moving))
-        area = float(fixed[0] * moving[1] - fixed[1] * moving[0])
+        displacement = radius * np.array([np.cos(theta), 0.85 * np.sin(theta)])
+        action_change = float(np.dot(p_unit, displacement))
+        shear_amount = 0.78 * np.sin(theta)
 
         ax = axes[0]
         ax.clear()
         draw_reference_axes(ax)
-        ax.set_title("One-form: overlap")
-        ax.annotate("", xy=fixed, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#4C78A8"), zorder=4)
-        ax.annotate("", xy=moving, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#BC4749"), zorder=5)
-        ax.plot([moving[0], overlap], [moving[1], 0], color="#8A8A8A", linestyle=":", linewidth=1.2, zorder=3)
-        ax.plot([0, overlap], [0, 0], color="#D49A3A", linewidth=4.0, alpha=0.85, solid_capstyle="round", zorder=6)
-        ax.scatter([0], [0], s=32, color="#333333", zorder=7)
-        ax.text(0.95, 0.12, r"$p_i$", color="#4C78A8", ha="center", va="bottom", fontsize=11.5)
-        ax.text(-1.10, 1.12, r"$p_i\,\delta q^i$", color="#333333", ha="left", va="top", fontsize=12.5, bbox=LABEL_BOX)
-        ax.text(-1.10, -1.08, f'"overlap" = {overlap:+.2f}', color="#9A6A1F", ha="left", va="center", fontsize=10.0, bbox=LABEL_BOX)
+        ax.set_title("One-form: action gradient")
+        for level in levels:
+            center = level * p_unit
+            start = center - 1.9 * contour_dir
+            end = center + 1.9 * contour_dir
+            ax.plot([start[0], end[0]], [start[1], end[1]], color="#D7E2E8", linewidth=1.0, zorder=1)
+        projection = action_change * p_unit
+        ax.plot([displacement[0], projection[0]], [displacement[1], projection[1]], color="#8A8A8A", linestyle=":", linewidth=1.2, zorder=3)
+        ax.plot([0, projection[0]], [0, projection[1]], color="#D49A3A", linewidth=4.0, alpha=0.85, solid_capstyle="round", zorder=4)
+        ax.annotate("", xy=0.68 * p_unit, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.5, color="#4C78A8"), zorder=5)
+        ax.annotate("", xy=displacement, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.3, color="#BC4749"), zorder=6)
+        ax.scatter([0], [0], s=34, color="#333333", zorder=7)
+        ax.text(-1.16, 1.13, "action level sets", color="#4F6F7B", ha="left", va="top", fontsize=9.2, bbox=LABEL_BOX)
+        ax.text(0.48, 0.55, r"$p_i$", color="#4C78A8", ha="left", va="bottom", fontsize=11.5)
+        ax.text(-1.16, -1.05, rf"$\delta S_\partial = {action_change:+.2f}$", color="#9A6A1F", ha="left", va="center", fontsize=10.4, bbox=LABEL_BOX)
 
         ax = axes[1]
         ax.clear()
         draw_reference_axes(ax)
-        ax.set_title("Two-form: oriented area")
-        patch = np.array([[0, 0], fixed, fixed + moving, moving])
-        poly = Polygon(patch, closed=True, facecolor="#54A24B", alpha=0.24, edgecolor="#2A9D8F", linewidth=2.0, zorder=2)
+        ax.set_title("Two-form: state-area measure")
+        grid = np.linspace(-1.15, 1.15, 25)
+        for value in grid:
+            vertical = np.column_stack([np.full(60, value), np.linspace(-1.15, 1.15, 60)])
+            horizontal = np.column_stack([np.linspace(-1.15, 1.15, 60), np.full(60, value)])
+            vertical_sheared = shear(vertical, shear_amount)
+            horizontal_sheared = shear(horizontal, shear_amount)
+            ax.plot(vertical_sheared[:, 0], vertical_sheared[:, 1], color="#D7E2E8", linewidth=0.55, zorder=1)
+            ax.plot(horizontal_sheared[:, 0], horizontal_sheared[:, 1], color="#D7E2E8", linewidth=0.55, zorder=1)
+        gx, gy = np.meshgrid(grid, grid)
+        dots = np.column_stack([gx.ravel(), gy.ravel()])
+        dots_sheared = shear(dots, shear_amount)
+        ax.scatter(dots_sheared[:, 0], dots_sheared[:, 1], s=5.0, color="#8CB8C8", alpha=0.5, linewidth=0, zorder=2)
+        patch = shear(square, shear_amount)
+        poly = Polygon(patch, closed=True, facecolor="#54A24B", alpha=0.25, edgecolor="#2A9D8F", linewidth=2.2, zorder=3)
         ax.add_patch(poly)
-        ax.annotate("", xy=fixed, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#4C78A8"), zorder=4)
-        ax.annotate("", xy=moving, xytext=(0, 0), arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#BC4749"), zorder=5)
-        ax.scatter([0], [0], s=32, color="#333333", zorder=7)
-        ax.text(0.95, 0.12, r"$dq$", color="#4C78A8", ha="center", va="bottom", fontsize=11.5)
-        ax.text(-1.10, 1.12, r"$dq^i \wedge dp_i$", color="#333333", ha="left", va="top", fontsize=12.5, bbox=LABEL_BOX)
-        ax.text(-1.10, -1.08, f"area = {area:+.2f}", color="#2A9D8F", ha="left", va="center", fontsize=10.0, bbox=LABEL_BOX)
+        center = patch.mean(axis=0)
+        ax.scatter([center[0]], [center[1]], s=28, color="#2A9D8F", zorder=4)
+        ax.text(-1.16, 1.13, r"$dq^i \wedge dp_i$", color="#333333", ha="left", va="top", fontsize=12.0, bbox=LABEL_BOX)
+        ax.text(-1.16, -1.05, "measured area stays fixed", color="#2A9D8F", ha="left", va="center", fontsize=10.0, bbox=LABEL_BOX)
 
-        fig.suptitle("Same directions, different measurements", y=0.98)
+        fig.suptitle("Action sensitivity and state-area measure", y=0.98)
 
     anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
     save_animation(anim, path, fps=18)

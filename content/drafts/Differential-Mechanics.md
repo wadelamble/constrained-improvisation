@@ -500,35 +500,45 @@ sensitivity.
 
 Thus far, the action has identified $q$ and $p$ as the correct paired
 variables for specifying instantaneous state. But the pairing
-$p_i\,\delta q^i$ is a one-form statement: it acts on one
-infinitesimal displacement of one state and returns the first-order
-change in the action. Liouville's theorem and the information story ask
-a different question. They concern patches of nearby states in phase
-space, not one displaced state at a time.
+$p_i\,\delta q^i$ is a one-form statement. It acts on one infinitesimal
+displacement of one state and returns the first-order change in the
+action. The information perspective requires a different type of
+mathematical object, one that measures an "amount of states," not the
+action of a single history.
 
 Once the action has identified $q^i$ and $p_i$ as conjugate variables,
-the natural oriented area element on their space is the two-form
+the natural oriented area element on their space is the two-form. Let us
+call it $\omega$:
 
 ```math
-dq^i \wedge dp_i.
+\omega := dq^i \wedge dp_i.
 ```
 
-It takes in two tangent directions and returns an oriented area.
-Integrating it over a region of phase space measures the
-"count," or "amount" of states in the region. Once we have the 2-form,
-we can see the job of Hamiltonian mechanics as finding flows under which
-the area measured by the 2-form is invariant.
+It takes in two tangent directions and returns an oriented area. This
+area is the continuous analogue of counting states. If phase space were
+replaced by a fine lattice, a patch would contain some number of lattice
+points. Making the lattice finer turns that count into a measure. In
+continuous phase space, the "amount of states" in a patch is measured by
+its phase-space area. With more degrees of freedom, the corresponding
+volume measure is built from repeated products of $\omega$.
 
-There is also a deeper reason this two-form, rather than the boundary
-one-form itself, is the intrinsic object. The equations of motion are
-determined by the bulk term in the action and are unchanged if the
-Lagrangian is modified by an endpoint-only term. Such a modification
-shifts the boundary one-form, but leaves the two-form unchanged. This
-matches the physics: Hamiltonian flows will preserve area in phase
-space, not any notion of length or absolute endpoint accounting.
+Once we have $\omega$, we can see the job of Hamiltonian mechanics as
+finding flows under which the area measured by the two-form is invariant.
+This is the geometric form of information preservation. Remarkably, the
+"overlap" of two vectors and the "area" the same two vectors span lead
+to descriptions of entirely different categories of behavior.
 
-We derive this below, though this can be skipped if desired. Add a total
-time derivative to the Lagrangian:
+There is a second reason the two-form is a candidate invariant structure
+on phase space. The one-form is not uniquely determined by the physics.
+Different Lagrangians can describe the same physical system when their
+actions differ only by a term that depends on the endpoints. That freedom
+can shift the boundary one-form, since the one-form records endpoint
+sensitivity. The two-form, however, is unchanged by this redundancy.
+
+To see this more concretely, we have to work through a bit of math. This
+can be skipped if desired without losing the main thread. Formally, such
+an endpoint-only change is produced by adding a total time derivative to
+the Lagrangian:
 
 ```math
 L' = L + \frac{dF(q,t)}{dt}.
@@ -562,11 +572,11 @@ Here
 \theta = p_i\,dq^i.
 ```
 
-But the two-form is built by taking the exterior derivative of the
-one-form:
+But the two-form is built, with the orientation chosen above, by taking
+the negative exterior derivative of the one-form:
 
 ```math
-\omega = d\theta.
+\omega = -d\theta.
 ```
 
 So after the shift,
@@ -574,28 +584,38 @@ So after the shift,
 ```math
 \omega'
 =
-d\theta'
+-d\theta'
 =
-d(\theta + dF)
+-d(\theta + dF)
 =
-d\theta + d(dF)
+-d\theta - d(dF)
 =
-d\theta
+-d\theta
 =
 \omega.
 ```
 
-#### What Phase Space Is
+The two-form therefore keeps the part of the boundary structure that is
+independent of this Lagrangian redundancy.
 
-We are now able to define phase space. It is the space whose points are
-instantaneous states expressed in the paired, or conjugate, variables
-selected by the action. For one degree of freedom, a point is $(q,p)$.
-For many degrees of freedom, a point is
-$(q^1,\dots,q^n,p_1,\dots,p_n)$. Phase space is a reorganization of
-what counts as an instantaneous state with respect to action
-extremization. Once the boundary variation has told us what variable is
-paired with $q$, the state is no longer most naturally described by
-$(q,\dot q)$, but by $(q,p)$.
+#### Defining Phase Space
+
+Phase space is the set of possible instantaneous states of a system
+described by generalized position coordinates and their conjugate
+momenta, as selected by the action. For one degree of freedom, a point in
+phase space is $(q,p)$. For many degrees of freedom, a point is
+$(q^1,\dots,q^n,p_1,\dots,p_n)$.
+
+The space is equipped with the two-form
+
+```math
+\omega = dq^i \wedge dp_i,
+```
+
+which measures the local amount of states and gives phase space its
+invariant symplectic structure. Phase space is therefore the
+instantaneous state space organized by conjugate variables and the area
+structure they determine.
 
 ### Hamiltonian Flows
 
