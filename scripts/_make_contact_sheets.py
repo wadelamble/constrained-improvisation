@@ -23,7 +23,9 @@ CONTACT_SHEET_FILES = [
     "differential-spring-ensemble-transport.mp4",
     "differential-incompressible-fluid-patch.mp4",
     "differential-function-to-flow.mp4",
+    "differential-legendre-transform-tangent.mp4",
     "differential-symplectic-patch-preservation.mp4",
+    "differential-worldline-phase-space-bridge.mp4",
 ]
 
 

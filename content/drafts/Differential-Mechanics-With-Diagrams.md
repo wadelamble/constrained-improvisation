@@ -244,7 +244,7 @@ in units with $c=1$. The corresponding free Lagrangian then yields the relativis
 
 #### Momentum in Relativity
 
-For a free relativistic particle, in which there is no potential and no preferred frame, the action should be built from the worldline itself. Action is the scalar functional whose stationary value selects the physical path, so in a relativistic theory it should not depend on the inertial frame used to describe that path. Unlike Galilean geometry, Minkowski geometry combines space and time into a single invariant interval. A worldline therefore has an invariant spacetime length, rather than separate spatial and temporal measures. For a free particle, that length is the only available Lorentz-invariant quantity that distinguishes one candidate worldline from another. This also has the right physical consequence: between fixed events, the free path is the straight worldline, the path of extremal path length. The free-particle action is therefore taken to be a constant multiple of spacetime length that,
+For a free relativistic particle, in which there is no potential and no preferred frame, the action should be built from the worldline itself. Action is the scalar functional whose stationary value selects the physical path, so in a relativistic theory it should not depend on the inertial frame used to describe that path. Unlike Galilean geometry, Minkowski geometry combines space and time into a single invariant interval. A worldline therefore has an invariant spacetime length, rather than separate spatial and temporal measures. For a free particle, that length is the only available Lorentz-invariant quantity that distinguishes one candidate worldline from another. This also has the right physical consequence: between fixed events, the free path is the straight worldline, the path of extremal path length. The free-particle action is therefore taken to be a constant multiple of spacetime length:
 
 ```math
 S = -\alpha\int ds.
@@ -270,7 +270,7 @@ where the subscript $\partial$ means "boundary," so $\delta S_{\partial}$ is the
 p_\mu = -\alpha u_\mu.
 ```
 
-The coefficient $\alpha$ is then identified internally. Since the four-velocity has invariant norm
+The coefficient $\alpha$ is then identified internally. The four-velocity has invariant norm
 
 ```math
 u_\mu u^\mu = 1
@@ -312,7 +312,7 @@ E^2 = \mathbf p^2 + m^2
 
 in units with $c=1$.
 
-By shifting to a unified spacetime, relativity ties action to worldline length, with the consequence that momentum can then be defined as the covector paired with displacement along the worldline.
+By shifting to a unified spacetime, relativity ties action to worldline length, with the consequence that momentum appears as the covector paired with displacement along the worldline.
 
 ![Endpoint covector measurement animation contact sheet](animations/differential-endpoint-covector-measurement-contact-sheet.png)
 
@@ -406,21 +406,25 @@ which measures the local amount of states and gives phase space its invariant sy
 
 ## Hamiltonian Flows
 
-Compare phase space plots to spacetime diagrams $Galilean or Minkowskian$. There, motion is baked into the shape of the worldline. The history is contained in a static plot. In phase space, there is no motion, no history, until a point or region begins to flow. Our next task, then, is to describe the flows that characterize conservative physical systems. The function that encodes flow in phase space, the flow of state through time, is the formulation's eponymous function, the Hamiltonian. Let's see how we can arrive at its form and the equation.
+Compare phase space plots to spacetime diagrams. In a spacetime diagram, motion is baked into the shape of the worldline. The history is contained in a static plot. In the phase space picture, there is no physical motion, no history, until a point or region of phase space begins to flow. Our next task, then, is to describe the flows that characterize conservative physical systems. In such systems, the function that generates time evolution on phase space is the Hamiltonian.
 
-![Worldline to phase-space bridge diagram](animations/differential-worldline-phase-space-bridge.png)
+![Worldline to phase-space bridge animation contact sheet](animations/differential-worldline-phase-space-bridge-contact-sheet.png)
+
+[Open MP4: differential-worldline-phase-space-bridge.mp4](animations/differential-worldline-phase-space-bridge.mp4)
 
 ### Functions on phase space
 
 We have already seen in our example of an incompressible fluid that any flow can be encoded by a generating function. Let's spell this out more carefully and put it in the arena of phase space.
 
-Picture a contour map on the $q,p$ plane. The value of a function, $F(q(t),p(t))$, assigns a height to each point. This 3-dimensional "hilly" picture can, as with topographic maps, be represented in 2 dimensions with contours, or level sets. Now, we have a rule that the denser the level sets are, equivalently, the steeper the surface is, the faster the flow along that contour. This flow can then be represented as a vector field, that is, a phase-space velocity arrow at every point.
+Picture a contour map on the $q,p$ plane. The value of a function, $F(q,p)$, assigns a height to each point. This 3-dimensional "hilly" picture can, as with topographic maps, be represented in 2 dimensions with contours, or level sets. Now, we have a rule that the denser the level sets are, or equivalently, the steeper the surface is, the faster the flow along that contour. This flow can then be represented as a vector field, that is, a phase-space velocity arrow at every point.
+
+![Level-set density to vector length diagram](animations/differential-level-set-density-vector.png)
 
 ![Function-to-flow animation contact sheet](animations/differential-function-to-flow-contact-sheet.png)
 
 [Open MP4: differential-function-to-flow.mp4](animations/differential-function-to-flow.mp4)
 
-The way to turn $F$'s level set density into such a vector field is:
+The way to turn $F$'s level-set structure into a vector field is:
 
 ```math
 \dot q^i = \frac{\partial F}{\partial p_i},
@@ -428,19 +432,7 @@ The way to turn $F$'s level set density into such a vector field is:
 \dot p_i = -\frac{\partial F}{\partial q^i}.
 ```
 
-These cross-coupled equations are the dynamical face of the same pairing that appeared geometrically as $dq^i \wedge dp_i$. What there showed up as an oriented area form here shows up as motion in one direction driven by variation in the other.
-
-One can work through this visually step by step to convince themselves it works, but the way it works can be thought of simply as taking the function gradient vector and turning it 90 degrees to create the flow.
-
-In phase space with one degree of freedom, if the vector field is
-
-```math
-\dot q = \frac{\partial F}{\partial p},
-\qquad
-\dot p = -\frac{\partial F}{\partial q},
-```
-
-then we can solve these differential equations for $q(t)$ and $p(t)$ to find the flow.
+These cross-coupled equations are the dynamical face of the geometric coupling that preserves the area form. Solving them for $q(t)$ and $p(t)$ gives the flow.
 
 A trivial example is $F=p$. Then
 
@@ -458,25 +450,25 @@ q(t) = q_0 + t,
 p(t) = p_0.
 ```
 
-We see in these cross-coupled differential equations the shadow of symplectic area preservation:
+We can define a flow this way for any two variables. In mechanics, however, the variables are conjugate state variables selected by the action, so the resulting flow acts on physical state space.
 
-```math
-\omega = dq^i \wedge dp_i
-```
+#### Preservation of the Symplectic Area
 
-Change of $F$ in the $p_i$ direction determines motion in the $q^i$ direction. Change of $F$ in the $q^i$ direction determines motion in the $p_i$ direction, with a minus sign.
+Let's now show, efficiently, that such a flow preserves the symplectic 2-form. 
+<Let's now show, efficiently, that such a flow preserves the symplectic 2-form. 
+>Now the we have establish a procedure for generating a flow from a function, let's check that such a smooth function does, in fact, preserves the area form. 
 
-We can define a flow this way for any two variables, but it only has a physical interpretation in the kinds of cases we've discussed, like fluid flow, that is, in cases where the area form is preserved.
+In one degree of freedom, preserving $\omega$ means preserving the area of phase-space patches. A small quadrilateral may shear, stretch, or rotate, but its area must not change.
 
-### Preservation of the Symplectic Area Form
+<In one degree of freedom, preserving $\omega$ means preserving the area of phase-space patches. A small quadrilateral may shear, stretch, or rotate, but its area must not change.
+>[cut]
 
-Let's now show a bit more rigorously that such a flow does in fact preserve the symplectic 2-form. In one degree of freedom, preserving $\omega$ means preserving the area of phase-space patches. A small quadrilateral may shear, stretch, or rotate, but its area must not change.
 
 ![Symplectic patch preservation animation contact sheet](animations/differential-symplectic-patch-preservation-contact-sheet.png)
 
 [Open MP4: differential-symplectic-patch-preservation.mp4](animations/differential-symplectic-patch-preservation.mp4)
 
-Let's first be precise in saying what $\omega$ is. It is a measure of the count of states. If we imagine phase space as a discrete lattice, it counts the number of nodes in a patch. If we were to "squeeze" that patch, the node count would stay the same, thus the 2-form would measure the same area. (If we think of the continuous case as a lattice with infinite node density, then "squeezing" becomes impossible, and our area measure becomes, in fact, a measure of area on a plot of phase space.) Thus the only way for an area patch to increase is for states to enter or exit it, that is, for there to be some source or sink of states, which in turn implies that the flow generated by $F$ has a non-zero divergence. But we can see that this flow has zero divergence. For the flow generated by $F$,
+The quickest way to see the preservation is to ask what would have to happen for a patch of phase space to gain or lose area. States would have to flow into or out of the patch through a source or sink. In vector-field language, local sources and sinks are measured by divergence. Thus, in one degree of freedom, it is enough to compute the divergence of the flow generated by $F$.
 
 ```math
 \frac{\partial \dot q^i}{\partial q^i}
@@ -508,29 +500,27 @@ The divergence vanishes:
 0.
 ```
 
-Thus, any smooth function on phase space preserves our area 2-form, which, as we have discussed, is the condition for maintaining the information structure of an ensemble.
-
-We should note that we have shown this by choosing a set of coordinates first, describing flows, then showing these preserve our 2-form. This is a bit unsatisfying for two reasons. First, logically, we would prefer to show that having a conserved 2-form defines Hamiltonian flows because our procedure for defining the flows tacitly presupposed symplectic geometry. Second, to demonstrate consistency of a flow with the preservation of the 2-form, we had to commit to a coordinate system, whereas one can show Hamiltonian flows arise from the 2-form without choosing coordinates. The approach of defining flows from the area form is readily doable, but makes the geometric intuition more opaque and requires learning some dedicated language from differential geometry.
+Thus, any smooth function on phase space preserves our area 2-form, which is the condition for preserving the information structure of an ensemble.
 
 ### The Hamiltonian as Energy
 
-We have already seen the deep connection between energy and time in Relativity. In relativity, the action for a free particle is built from spacetime length:
+We have already seen the pairing of energy and time in relativity. The action for a free particle is proportional to the spacetime length of the worldline, and its terms pair energy with time and momentum with position:
 
 ```math
 S = -m \int ds = -\int E\,dt + \int p_x\,dx + \int \cdots
 ```
 
-In this picture, 4-momentum is the covector, or 1-form, that measures the contribution of a displacement in spacetime to action. And energy is the component that measures the contribution of a time displacement.
+4-momentum is the covector that measures the contribution of a displacement in spacetime to action. Energy is the component that measures the contribution of a time displacement.
 
 ![Action decomposition diagram](animations/differential-action-decomposition.png)
 
-We are attempting to find the function to generate the flow in phase space that represents time evolution. Since that evolution is dictated by an action extremization principle, we may suspect this function would be related to the form that measures the effect of a time displacement on action accumulation.
+Hamiltonian mechanics now asks for the function that generates time evolution on phase space. The relativistic decomposition suggests what that function should be. If energy is the coefficient paired with time displacement in the action, then the generator of time evolution should be energy.
 
-In fact this is exactly right. Ignoring important exceptions that don't change the spirit of the structure, the Hamiltonian function we wish to find is the energy function. One may say somewhat poetically "energy generates time."
+And indeed, for conservative systems, the Hamiltonian is the energy. Energy generates time.
 
 ### Hamilton's Equations of Motion from the Legendre Transform
 
-Once the variables $(q,p)$ have been identified, the next task is to find the function on phase space that generates the physical time-evolution flow. The Lagrangian is not yet that function. It is written as
+We now know the geometry of phase space, we know we are looking for a function on it, and we know that function should be energy, in the sense suggested by relativity. What remains is to derive that function from the Lagrangian. This requires a change of variables, because the Lagrangian is written as
 
 ```math
 L(q,\dot q),
@@ -542,23 +532,24 @@ so it still treats velocity as an independent variable. The function we want mus
 H(q,p).
 ```
 
-The Legendre transform is the operation that performs this trade. It uses the momentum relation we have established:
+![Legendre transform tangent animation contact sheet](animations/differential-legendre-transform-tangent-contact-sheet.png)
+
+[Open MP4: differential-legendre-transform-tangent.mp4](animations/differential-legendre-transform-tangent.mp4)
+
+The Legendre transform performs this trade by rewriting a function in terms of tangent-line data. Holding $q$ fixed, regard $L$ as a function of the velocity $\dot q$. Its slope in the velocity direction is
 
 ```math
 p_i = \frac{\partial L}{\partial \dot q^i}
 ```
 
-to replace the velocity variables by their conjugate momenta, while carrying the position variables along. The transformed function is
+which is precisely the conjugate momentum. Trading velocity for this slope does not discard the rest of the tangent-line information. The remaining vertical information is encoded by $p_i\dot q^i-L$. The transformed function is
 
 ```math
 H(q,p) = p_i\dot q^i - L(q,\dot q),
 ```
 
-with $\dot q$ understood, when possible, as a function of $(q,p,t)$ determined by the momentum equation above.
 
-![Legendre transform trade diagram](animations/differential-legendre-transform-trade.png)
-
-We can do a quick test that $H$ is indeed the total energy by looking at a free particle.
+with $\dot q$ understood as the function of $(q,p)$ determined by the momentum equation above. We can do a quick test that $H$ is indeed the total energy by looking at a free particle.
 
 For a non-relativistic free particle,
 
@@ -589,7 +580,7 @@ H(q,p) = p\dot q - L(q,\dot q)
 
 But this is exactly the kinetic energy of the particle. So in this simplest case, the Legendre transform gives the energy function directly.
 
-The importance of this construction is not only that it rewrites the function in the desired variables. In the earlier phase-space discussion, we saw what differential structure a function must have if it is to generate a flow. We now want to see that the Legendre-transformed function has exactly that structure. Taking the differential of $H$ gives
+The Legendre transform does more than rewrite energy in the desired variables. It produces the specific phase-space function whose generated flow reproduces the Euler-Lagrange motion. To see this, take the differential of $H$:
 
 ```math
 dH
@@ -694,6 +685,8 @@ or
 At this point we have the local differential formulation of mechanics in hand. The next step is not to change that mechanics, but to rewrite the same structure in a new language. The flow picture we have just developed can also be expressed as an algebra of functions on phase space, and that repackaging will make further structure visible.
 
 ## Lie Algebra of Phase Space
+
+<!-- NOTE: generator symmetry: p is the inertia, x is the incline. -->
 
 ### What we mean by an algebra
 

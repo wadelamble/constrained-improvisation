@@ -374,72 +374,198 @@ def make_one_form_two_form_animation(path: Path) -> None:
 
 
 def make_function_to_flow_animation(path: Path) -> None:
-    q = np.linspace(-1.7, 1.7, 280)
-    p = np.linspace(-1.6, 1.6, 260)
+    q = np.linspace(-1.75, 1.75, 260)
+    p = np.linspace(-1.65, 1.65, 240)
     qq, pp = np.meshgrid(q, p)
     F = 0.5 * pp**2 + 0.25 * qq**4
+    contour_levels = [0.10, 0.24, 0.42, 0.68, 1.02, 1.46, 2.05]
 
-    qv = np.linspace(-1.5, 1.5, 14)
-    pv = np.linspace(-1.35, 1.35, 12)
+    qv = np.linspace(-1.52, 1.52, 15)
+    pv = np.linspace(-1.35, 1.35, 13)
     qvq, pvq = np.meshgrid(qv, pv)
     uq = pvq
     vp = -(qvq**3)
     speed = np.hypot(uq, vp)
     scale = np.maximum(speed, 1e-8)
 
-    state = np.array([1.05, 0.0], dtype=float)
-    dt = 0.045
-    n_frames = 110
-    trail = np.empty((n_frames, 2))
+    angles = np.linspace(0.0, 2.0 * np.pi, 110, endpoint=False)
+    patch0 = np.column_stack(
+        [
+            0.96 + 0.16 * np.cos(angles),
+            0.18 + 0.09 * np.sin(angles),
+        ]
+    )
+    state = np.array([0.96, 0.18], dtype=float)
+    dt = 0.04
+    n_frames = 166
+    patch_frames = np.empty((n_frames, len(patch0), 2))
+    state_frames = np.empty((n_frames, 2))
+    patch = patch0.copy()
+    current = state.copy()
     for i in range(n_frames):
-        trail[i] = state
-        state = rk4_step(state, dt)
+        patch_frames[i] = patch
+        state_frames[i] = current
+        patch = rk4_step(patch, dt)
+        current = rk4_step(current, dt)
 
-    fig, ax = plt.subplots(figsize=(6.8, 6.0))
+    fig, ax = plt.subplots(figsize=(6.9, 6.0))
+
+    def smooth(value: float) -> float:
+        value = float(np.clip(value, 0.0, 1.0))
+        return value * value * (3.0 - 2.0 * value)
+
+    def setup_axes() -> None:
+        ax.set_title("Function to flow", pad=10)
+        ax.set_xlabel("q")
+        ax.set_ylabel("p")
+        ax.set_xlim(-1.75, 1.75)
+        ax.set_ylim(-1.65, 1.65)
+        ax.set_aspect("equal", adjustable="box")
+        ax.grid(color="#E6E6E6", linewidth=0.7)
+        ax.axhline(0, color="#B8B8B8", linewidth=0.8)
+        ax.axvline(0, color="#B8B8B8", linewidth=0.8)
+
+    def draw_patch(points: np.ndarray, alpha: float = 0.24) -> None:
+        ax.fill(points[:, 0], points[:, 1], color="#54A24B", alpha=alpha, zorder=4)
+        closed = np.vstack([points, points[0]])
+        ax.plot(closed[:, 0], closed[:, 1], color="#2A9D8F", linewidth=2.0, zorder=5)
+
+    def draw_stage_label(text: str) -> None:
+        ax.text(
+            0.03,
+            0.96,
+            text,
+            transform=ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=9.4,
+            color="#333333",
+            bbox=LABEL_BOX,
+            zorder=20,
+        )
 
     def draw_frame(frame: int) -> None:
         ax.clear()
-        phase_a = min(frame / 24.0, 1.0)
-        phase_b = min(max(frame - 18, 0) / 26.0, 1.0)
-        tracer_n = min(frame + 1, n_frames)
+        setup_axes()
+        contour_alpha = 0.78 * smooth(frame / 26.0)
+        vector_alpha = 0.52 * smooth((frame - 32) / 28.0)
+        flow_progress = smooth((frame - 62) / 44.0)
+        idx = min(int(flow_progress * (n_frames - 1)), n_frames - 1)
 
-        ax.contour(
-            qq,
-            pp,
-            F,
-            levels=[0.12, 0.28, 0.52, 0.85, 1.28, 1.82],
-            colors="#7A7A7A",
-            linewidths=1.0,
-            alpha=0.65 + 0.35 * phase_a,
-        )
+        if frame < 62:
+            draw_patch(patch0, 0.12 + 0.10 * smooth(frame / 20.0))
+        if contour_alpha > 0.01:
+            ax.contour(qq, pp, F, levels=contour_levels, colors="#777777", linewidths=1.0, alpha=contour_alpha)
+        if vector_alpha > 0.01:
+            ax.quiver(
+                qvq,
+                pvq,
+                uq / scale,
+                vp / scale,
+                color="#355070",
+                alpha=vector_alpha,
+                pivot="mid",
+                scale=25,
+                width=0.0042,
+            )
+        if frame < 32:
+            draw_stage_label(r"$F(q,p)$ gives height over this plane")
+        elif frame < 62:
+            draw_stage_label("level sets show the function from above")
+        else:
+            draw_stage_label(r"$\dot q=\partial_pF,\quad \dot p=-\partial_qF$")
 
-        ax.quiver(
-            qvq,
-            pvq,
-            uq / scale,
-            vp / scale,
-            color="#355070",
-            alpha=0.08 + 0.72 * phase_b,
-            pivot="mid",
-            scale=24,
-            width=0.0045,
-        )
-
-        ax.plot(trail[:tracer_n, 0], trail[:tracer_n, 1], color="#BC4749", linewidth=2.2, alpha=0.85)
-        ax.scatter([trail[tracer_n - 1, 0]], [trail[tracer_n - 1, 1]], color="#BC4749", s=34, zorder=4)
-
-        ax.set_title("Function to flow", pad=10)
-        axes_label(ax, r"$F=p^2/2+q^4/4,\quad \dot q=\partial_p F,\quad \dot p=-\partial_q F$")
-        ax.set_xlabel("q")
-        ax.set_ylabel("p")
-        ax.set_xlim(-1.7, 1.7)
-        ax.set_ylim(-1.6, 1.6)
-        ax.set_aspect("equal")
-        ax.grid(color="#E8E8E8", linewidth=0.7)
+        if frame >= 62:
+            trail = state_frames[: idx + 1]
+            if len(trail) > 1:
+                ax.plot(trail[:, 0], trail[:, 1], color="#BC4749", linewidth=1.8, alpha=0.75, zorder=6)
+            draw_patch(patch_frames[idx], 0.23)
+            ax.scatter([state_frames[idx, 0]], [state_frames[idx, 1]], s=36, color="#BC4749", edgecolor="white", linewidth=0.7, zorder=7)
 
     anim = FuncAnimation(fig, draw_frame, frames=n_frames, interval=1000 / 18, blit=False)
     save_animation(anim, path, fps=18)
     plt.close(fig)
+
+
+def make_level_set_density_vector_diagram(path: Path) -> None:
+    q = np.linspace(-1.75, 1.75, 320)
+    p = np.linspace(-1.65, 1.65, 300)
+    qq, pp = np.meshgrid(q, p)
+    F = 0.5 * pp**2 + 0.25 * qq**4
+
+    fig, ax = plt.subplots(figsize=(7.2, 5.6))
+    ax.contour(
+        qq,
+        pp,
+        F,
+        levels=[0.10, 0.24, 0.42, 0.68, 1.02, 1.46, 2.05, 2.80],
+        colors="#777777",
+        linewidths=1.0,
+        alpha=0.76,
+    )
+
+    points = [
+        (np.array([0.25, 0.76]), "sparser level sets", "shorter vector", (-0.95, 1.25)),
+        (np.array([1.23, 0.76]), "denser level sets", "longer vector", (0.86, -1.08)),
+    ]
+    arrow_scale = 0.28
+    for point, density_label, vector_label, label_pos in points:
+        flow = np.array([point[1], -(point[0] ** 3)])
+        arrow = arrow_scale * flow
+        ax.scatter([point[0]], [point[1]], s=42, color="#333333", zorder=4)
+        ax.annotate(
+            "",
+            xy=point + arrow,
+            xytext=point,
+            arrowprops=dict(arrowstyle="->", color="#355070", linewidth=2.5),
+            zorder=5,
+        )
+        ax.text(
+            label_pos[0],
+            label_pos[1],
+            f"{density_label}\n{vector_label}",
+            ha="left",
+            va="center",
+            fontsize=9.6,
+            color="#333333",
+            bbox=LABEL_BOX,
+            zorder=6,
+        )
+
+    ax.text(
+        0.03,
+        0.96,
+        "level-set density becomes vector length",
+        transform=ax.transAxes,
+        ha="left",
+        va="top",
+        fontsize=10.0,
+        color="#333333",
+        bbox=LABEL_BOX,
+        zorder=8,
+    )
+    ax.text(
+        0.03,
+        0.07,
+        r"$X_F=(\partial_pF,\,-\partial_qF)$",
+        transform=ax.transAxes,
+        ha="left",
+        va="bottom",
+        fontsize=11.5,
+        color="#355070",
+        bbox=LABEL_BOX,
+        zorder=8,
+    )
+    ax.set_title("From level sets to vector field", pad=10)
+    ax.set_xlabel("q")
+    ax.set_ylabel("p")
+    ax.set_xlim(-1.75, 1.75)
+    ax.set_ylim(-1.65, 1.65)
+    ax.set_aspect("equal", adjustable="box")
+    ax.grid(color="#E6E6E6", linewidth=0.7)
+    ax.axhline(0, color="#B8B8B8", linewidth=0.8)
+    ax.axvline(0, color="#B8B8B8", linewidth=0.8)
+    save_figure(fig, path)
 
 
 def make_patch_shear_animation(path: Path) -> None:
@@ -853,6 +979,74 @@ def make_legendre_trade_diagram(path: Path) -> None:
     save_figure(fig, path)
 
 
+def make_legendre_tangent_animation(path: Path) -> None:
+    velocity = np.linspace(0.0, 2.45, 360)
+    lagrangian = 0.5 * velocity**2
+    momentum = np.linspace(0.0, 2.45, 360)
+    hamiltonian = 0.5 * momentum**2
+
+    frames = 132
+    fig, (ax_l, ax_h) = plt.subplots(1, 2, figsize=(10.8, 5.2), gridspec_kw={"width_ratios": [1.15, 1.0]})
+    fig.subplots_adjust(left=0.08, right=0.98, bottom=0.18, top=0.84, wspace=0.24)
+
+    def draw_frame(frame: int) -> None:
+        ax_l.clear()
+        ax_h.clear()
+
+        phase = 2.0 * np.pi * frame / frames
+        v0 = 1.38 + 0.62 * np.sin(phase)
+        p0 = v0
+        l0 = 0.5 * v0**2
+        h0 = p0 * v0 - l0
+        tangent = l0 + p0 * (velocity - v0)
+
+        ax_l.plot(velocity, lagrangian, color="#355070", linewidth=2.2)
+        ax_l.plot(velocity, tangent, color="#BC4749", linewidth=1.8, alpha=0.88)
+        ax_l.scatter([v0], [l0], s=44, color="#BC4749", zorder=5)
+        ax_l.plot([v0, v0], [0, l0], color="#999999", linestyle="--", linewidth=1.0)
+        ax_l.plot([0, v0], [l0, l0], color="#999999", linestyle="--", linewidth=1.0)
+        ax_l.scatter([0], [-h0], s=30, color="#2A9D8F", zorder=5)
+        ax_l.annotate(
+            "",
+            xy=(0, 0),
+            xytext=(0, -h0),
+            arrowprops=dict(arrowstyle="<->", color="#2A9D8F", linewidth=2.0),
+            zorder=6,
+        )
+        ax_l.text(0.08, -0.52 * h0, r"$H=p\dot q-L$", color="#2A9D8F", ha="left", va="center", fontsize=10.5, bbox=LABEL_BOX)
+        ax_l.text(v0 + 0.06, l0 + 0.14, r"$p=\partial L/\partial \dot q$", color="#BC4749", ha="left", va="bottom", fontsize=10.0, bbox=LABEL_BOX)
+        ax_l.text(v0, -0.28, r"$\dot q$", color="#333333", ha="center", va="top", fontsize=10.0)
+        ax_l.text(0.04, 0.95, "tangent data", transform=ax_l.transAxes, ha="left", va="top", fontsize=10.0, color="#333333", bbox=LABEL_BOX)
+        ax_l.set_title(r"Start with $L(\dot q)$")
+        ax_l.set_xlabel(r"velocity $\dot q$")
+        ax_l.set_ylabel("L")
+        ax_l.set_xlim(-0.08, 2.45)
+        ax_l.set_ylim(-2.35, 3.05)
+        ax_l.grid(color="#E8E8E8", linewidth=0.7)
+        ax_l.spines["bottom"].set_linewidth(1.1)
+
+        ax_h.plot(momentum, hamiltonian, color="#355070", linewidth=2.2)
+        ax_h.scatter([p0], [h0], s=44, color="#2A9D8F", zorder=5)
+        ax_h.plot([p0, p0], [0, h0], color="#999999", linestyle="--", linewidth=1.0)
+        ax_h.plot([0, p0], [h0, h0], color="#999999", linestyle="--", linewidth=1.0)
+        ax_h.text(p0, -0.18, r"$p$", color="#333333", ha="center", va="top", fontsize=10.0)
+        ax_h.text(0.08, h0 + 0.08, r"$H(p)$", color="#2A9D8F", ha="left", va="bottom", fontsize=10.5, bbox=LABEL_BOX)
+        ax_h.text(0.04, 0.95, "slope becomes coordinate", transform=ax_h.transAxes, ha="left", va="top", fontsize=10.0, color="#333333", bbox=LABEL_BOX)
+        ax_h.set_title("Rewrite by momentum")
+        ax_h.set_xlabel("momentum p")
+        ax_h.set_ylabel("H")
+        ax_h.set_xlim(-0.08, 2.45)
+        ax_h.set_ylim(-0.28, 3.05)
+        ax_h.grid(color="#E8E8E8", linewidth=0.7)
+        ax_h.spines["bottom"].set_linewidth(1.1)
+
+        fig.suptitle("Legendre transform: velocity traded for tangent slope", y=0.98)
+
+    anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
+    save_animation(anim, path, fps=18)
+    plt.close(fig)
+
+
 def make_relativistic_boundary_pairing_diagram(path: Path) -> None:
     fig, ax = plt.subplots(figsize=(9.2, 4.6))
     ax.axis("off")
@@ -997,26 +1191,173 @@ def make_worldline_phase_space_bridge_diagram(path: Path) -> None:
     save_figure(fig, path)
 
 
+def make_worldline_phase_space_bridge_animation(path: Path) -> None:
+    frames = 126
+    t = np.linspace(0.0, 1.0, 260)
+    x = 0.62 * np.cos(1.7 * np.pi * t) + 0.18 * t
+    y = 0.42 * np.sin(1.35 * np.pi * t) - 0.08 * t
+
+    qv = np.linspace(-1.35, 1.35, 13)
+    pv = np.linspace(-1.35, 1.35, 13)
+    qq, pp = np.meshgrid(qv, pv)
+    uq = pp
+    vp = -qq
+    speed = np.hypot(uq, vp)
+    scale = np.maximum(speed, 1e-8)
+
+    contour_axis = np.linspace(-1.55, 1.55, 240)
+    cq, cp = np.meshgrid(contour_axis, contour_axis)
+    H = 0.5 * (cq**2 + cp**2)
+
+    def orbit_points(progress: np.ndarray) -> np.ndarray:
+        angle = 0.16 + 2.25 * np.pi * progress
+        radius = 1.08
+        return np.column_stack([radius * np.cos(angle), -radius * np.sin(angle)])
+
+    path_points = orbit_points(np.linspace(0.0, 1.0, frames))
+    guide_points = orbit_points(np.linspace(0.0, 1.0, 420))
+    ellipse_theta = np.linspace(0, 2 * np.pi, 80)
+
+    fig = plt.figure(figsize=(11.2, 5.0))
+    ax_world = fig.add_subplot(1, 2, 1, projection="3d")
+    ax_phase = fig.add_subplot(1, 2, 2)
+    fig.subplots_adjust(left=0.06, right=0.97, bottom=0.13, top=0.84, wspace=0.22)
+    fig.suptitle("Static worldline, moving phase-space state", y=0.96)
+
+    def draw_worldline() -> None:
+        ax_world.clear()
+        ax_world.plot(x, y, t, color="#355070", linewidth=2.4)
+        ax_world.scatter([x[0]], [y[0]], [t[0]], s=28, color="#355070")
+        ax_world.scatter([x[-1]], [y[-1]], [t[-1]], s=32, color="#BC4749")
+        ax_world.text(x[0] - 0.1, y[0] - 0.04, t[0] - 0.05, r"$t_1$", color="#355070", fontsize=9)
+        ax_world.text(x[-1] + 0.04, y[-1] + 0.03, t[-1] + 0.04, r"$t_2$", color="#BC4749", fontsize=9)
+        ax_world.set_title("Spacetime diagram: history as shape", pad=10)
+        ax_world.set_xlabel("x")
+        ax_world.set_ylabel("y")
+        ax_world.set_zlabel("t")
+        ax_world.set_xlim(-0.78, 0.88)
+        ax_world.set_ylim(-0.64, 0.58)
+        ax_world.set_zlim(0, 1)
+        ax_world.set_xticks([])
+        ax_world.set_yticks([])
+        ax_world.set_zticks([])
+        ax_world.view_init(elev=24, azim=-58)
+        ax_world.grid(color="#E8E8E8")
+        ax_world.xaxis.pane.set_facecolor((0.98, 0.98, 0.98, 1.0))
+        ax_world.yaxis.pane.set_facecolor((0.98, 0.98, 0.98, 1.0))
+        ax_world.zaxis.pane.set_facecolor((0.98, 0.98, 0.98, 1.0))
+
+    def state_patch(center: np.ndarray) -> np.ndarray:
+        flow = np.array([center[1], -center[0]])
+        tangent = flow / np.maximum(np.linalg.norm(flow), 1e-8)
+        normal = np.array([-tangent[1], tangent[0]])
+        return (
+            center
+            + 0.18 * np.cos(ellipse_theta)[:, None] * tangent
+            + 0.075 * np.sin(ellipse_theta)[:, None] * normal
+        )
+
+    def draw_recent_tail(points: np.ndarray) -> None:
+        if len(points) < 2:
+            return
+
+        weights = np.linspace(0.0, 1.0, len(points) - 1)
+        for index, weight in enumerate(weights):
+            segment = points[index : index + 2]
+            ax_phase.plot(
+                segment[:, 0],
+                segment[:, 1],
+                color="#BC4749",
+                linewidth=0.8 + 1.3 * weight,
+                alpha=0.14 + 0.56 * weight,
+                solid_capstyle="round",
+                zorder=4,
+            )
+
+    def draw_frame(frame: int) -> None:
+        draw_worldline()
+        ax_phase.clear()
+
+        state = path_points[frame]
+        patch = state_patch(state)
+        tail = path_points[max(0, frame - 28) : frame + 1]
+
+        ax_phase.contour(cq, cp, H, levels=[0.18, 0.38, 0.68, 1.05], colors="#B8B8B8", linewidths=0.9, alpha=0.68)
+        ax_phase.quiver(
+            qq,
+            pp,
+            uq / scale,
+            vp / scale,
+            color="#355070",
+            alpha=0.34,
+            pivot="mid",
+            scale=24,
+            width=0.0042,
+            zorder=2,
+        )
+        ax_phase.plot(guide_points[:, 0], guide_points[:, 1], color="#BC4749", linewidth=1.1, alpha=0.16, zorder=3)
+        draw_recent_tail(tail)
+        ax_phase.fill(patch[:, 0], patch[:, 1], color="#2A9D8F", alpha=0.18, zorder=5)
+        ax_phase.plot(patch[:, 0], patch[:, 1], color="#2A9D8F", linewidth=2.0, zorder=6)
+        ax_phase.scatter([state[0]], [state[1]], s=44, color="#BC4749", edgecolor="white", linewidth=0.7, zorder=6)
+        ax_phase.set_title("Phase space: state carried by flow", pad=10)
+        ax_phase.set_xlabel("q")
+        ax_phase.set_ylabel("p")
+        ax_phase.set_xlim(-1.55, 1.55)
+        ax_phase.set_ylim(-1.55, 1.55)
+        ax_phase.set_aspect("equal", adjustable="box")
+        ax_phase.set_xticks([])
+        ax_phase.set_yticks([])
+        ax_phase.grid(color="#ECECEC", linewidth=0.7)
+
+    anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
+    save_animation(anim, path, fps=18)
+    plt.close(fig)
+
+
 def make_action_decomposition_diagram(path: Path) -> None:
-    fig, ax = plt.subplots(figsize=(9.2, 4.4))
+    fig, ax = plt.subplots(figsize=(9.4, 4.9))
     ax.axis("off")
-    ax.set_xlim(0, 10)
+    ax.set_xlim(0, 12)
     ax.set_ylim(0, 6)
 
-    origin = np.array([1.4, 1.2])
-    dx = np.array([4.0, 0.0])
-    dt = np.array([0.0, 3.2])
-    disp = dx + 0.72 * dt
-    ax.annotate("", xy=origin + dx, xytext=origin, arrowprops=dict(arrowstyle="->", linewidth=2.0, color="#BC4749"))
-    ax.annotate("", xy=origin + 0.72 * dt, xytext=origin, arrowprops=dict(arrowstyle="->", linewidth=2.0, color="#4C78A8"))
-    ax.annotate("", xy=origin + disp, xytext=origin, arrowprops=dict(arrowstyle="->", linewidth=2.4, color="#355070"))
-    ax.text(*(origin + dx / 2 + np.array([0.0, -0.35])), r"$\delta q$", color="#BC4749", ha="center")
-    ax.text(*(origin + 0.72 * dt / 2 + np.array([-0.3, 0.0])), r"$\delta t$", color="#4C78A8", va="center")
-    ax.text(*(origin + disp + np.array([0.15, 0.08])), r"$\delta x^\mu$", color="#355070")
+    origin = np.array([1.0, 0.95])
+    dx = np.array([3.65, 0.0])
+    dt = np.array([0.0, 3.15])
+    disp = dx + dt
+    end = origin + disp
 
-    ax.text(7.45, 4.15, r"$\delta S = p_i\,\delta q^i - E\,\delta t$", fontsize=16, ha="center")
-    ax.text(7.45, 2.75, r"$-\int E\,dt \quad + \quad \int p_x\,dx \quad + \cdots$", fontsize=15, ha="center", color="#333333")
-    ax.set_title("Temporal and spatial action pieces", pad=12)
+    ax.annotate("", xy=(5.25, origin[1]), xytext=(0.65, origin[1]), arrowprops=dict(arrowstyle="-", linewidth=1.2, color="#999999"))
+    ax.annotate("", xy=(origin[0], 4.65), xytext=(origin[0], 0.55), arrowprops=dict(arrowstyle="-", linewidth=1.2, color="#999999"))
+    ax.text(5.35, origin[1] - 0.18, "space", ha="left", va="top", fontsize=9.5, color="#555555")
+    ax.text(origin[0] - 0.18, 4.72, "time", ha="right", va="bottom", fontsize=9.5, color="#555555")
+
+    ax.plot([origin[0], end[0]], [origin[1], end[1]], color="#355070", linewidth=2.4, zorder=3)
+    ax.scatter([origin[0], end[0]], [origin[1], end[1]], s=[28, 34], color=["#355070", "#BC4749"], zorder=4)
+    ax.plot([end[0], end[0]], [origin[1], end[1]], color="#4C78A8", linewidth=2.0, linestyle="--")
+    ax.plot([origin[0], end[0]], [origin[1], origin[1]], color="#BC4749", linewidth=2.0, linestyle="--")
+
+    ax.annotate("", xy=origin + dx, xytext=origin, arrowprops=dict(arrowstyle="->", linewidth=2.2, color="#BC4749"))
+    ax.annotate("", xy=end, xytext=origin + dx, arrowprops=dict(arrowstyle="->", linewidth=2.2, color="#4C78A8"))
+    ax.annotate("", xy=end, xytext=origin, arrowprops=dict(arrowstyle="->", linewidth=2.3, color="#355070"))
+
+    ax.text(*(origin + dx / 2 + np.array([0.0, -0.33])), r"$dx$", color="#BC4749", ha="center", va="top", fontsize=12)
+    ax.text(*(origin + dx + dt / 2 + np.array([0.2, 0.0])), r"$dt$", color="#4C78A8", ha="left", va="center", fontsize=12)
+    ax.text(*(origin + 0.55 * disp + np.array([-0.12, 0.22])), r"$dx^\mu$", color="#355070", ha="right", va="bottom", fontsize=12)
+
+    left_panel = plt.Rectangle((6.4, 0.9), 4.7, 3.8, facecolor="#F9F7F1", edgecolor="#D8D0C4", linewidth=1.0)
+    ax.add_patch(left_panel)
+    ax.text(8.75, 4.25, "covector pairing", ha="center", va="center", fontsize=10.5, color="#333333")
+    ax.text(8.75, 3.45, r"$p_\mu\,dx^\mu$", ha="center", va="center", fontsize=17, color="#333333")
+    ax.text(8.75, 2.65, r"$=$", ha="center", va="center", fontsize=16, color="#777777")
+    ax.text(8.75, 2.0, r"$p_x\,dx\;-\;E\,dt$", ha="center", va="center", fontsize=17, color="#333333")
+
+    ax.text(6.95, 1.35, r"space piece", ha="left", va="center", fontsize=9.5, color="#BC4749")
+    ax.plot([7.95, 8.55], [1.35, 1.35], color="#BC4749", linewidth=2.0)
+    ax.text(9.0, 1.35, r"time piece", ha="left", va="center", fontsize=9.5, color="#4C78A8")
+    ax.plot([9.88, 10.48], [1.35, 1.35], color="#4C78A8", linewidth=2.0)
+
+    ax.set_title("Decomposing a spacetime displacement", pad=12)
     save_figure(fig, path)
 
 
@@ -1104,12 +1445,15 @@ def main() -> None:
     make_bulk_boundary_animation(OUTPUT_DIR / "differential-bulk-boundary-variation.mp4")
     make_one_form_two_form_diagram(OUTPUT_DIR / "differential-one-form-to-two-form.png")
     make_one_form_two_form_animation(OUTPUT_DIR / "differential-one-form-to-two-form.mp4")
+    make_level_set_density_vector_diagram(OUTPUT_DIR / "differential-level-set-density-vector.png")
     make_function_to_flow_animation(OUTPUT_DIR / "differential-function-to-flow.mp4")
     make_patch_shear_animation(OUTPUT_DIR / "differential-symplectic-patch-preservation.mp4")
     make_legendre_trade_diagram(OUTPUT_DIR / "differential-legendre-transform-trade.png")
+    make_legendre_tangent_animation(OUTPUT_DIR / "differential-legendre-transform-tangent.mp4")
     make_relativistic_boundary_pairing_diagram(OUTPUT_DIR / "differential-relativistic-boundary-pairing.png")
     make_endpoint_covector_animation(OUTPUT_DIR / "differential-endpoint-covector-measurement.mp4")
     make_worldline_phase_space_bridge_diagram(OUTPUT_DIR / "differential-worldline-phase-space-bridge.png")
+    make_worldline_phase_space_bridge_animation(OUTPUT_DIR / "differential-worldline-phase-space-bridge.mp4")
     make_action_decomposition_diagram(OUTPUT_DIR / "differential-action-decomposition.png")
     make_poisson_compression_diagram(OUTPUT_DIR / "differential-poisson-compression.png")
     make_function_flow_stack_diagram(OUTPUT_DIR / "differential-function-flow-stack.png")
