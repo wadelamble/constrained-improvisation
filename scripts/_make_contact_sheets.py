@@ -26,6 +26,16 @@ CONTACT_SHEET_FILES = [
     "differential-legendre-transform-tangent.mp4",
     "differential-symplectic-patch-preservation.mp4",
     "differential-worldline-phase-space-bridge.mp4",
+    "differential-poisson-antisymmetry-area.mp4",
+    "differential-poisson-jacobi-identity.mp4",
+    "differential-poisson-product-rule.mp4",
+    "differential-poisson-bidirectional-flow.mp4",
+    "differential-poisson-bracket-vectorfield-identity.mp4",
+    "differential-fourier-momentum-shift-phase.mp4",
+    "differential-weyl-order-phase.mp4",
+    "differential-lie-generator-tangent-flow.mp4",
+    "differential-exponential-map-accumulation.mp4",
+    "differential-generator-vector-field-contrast.mp4",
 ]
 
 
