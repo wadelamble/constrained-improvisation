@@ -188,7 +188,7 @@ def render_home() -> str:
 
     body = f"""<main class="home">
   <h1 class="home-title">{html.escape(TITLE)}</h1>
-  <p class="home-intro">A work in progress on the picture of waves that emerges from principles that constrain physical possibility.</p>
+  <p class="home-intro">A work in progress on the wave description that emerges from the principles and seminal observations that constrain physical possibility.</p>
   <p class="home-note">For reasons, the site is beginning in the middle and will work its way out.</p>
   <h2 class="contents-heading">Contents</h2>
   <ol class="section-list">
