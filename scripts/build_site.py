@@ -40,19 +40,19 @@ SECTIONS = [
     Section(
         "Principles",
         "principles",
-        "Starting assumptions and the order of explanation.",
+        "A priori principles and seminal observations.",
         outline=["Invariant structure", "State, law, and observation"],
     ),
     Section(
         "Symmetry",
         "symmetry",
-        "How transformations organize physical law.",
+        "A primer on symmetry from simple shapes to physical behavior.",
         outline=["Transformation groups", "Conserved quantities"],
     ),
     Section(
         "Spacetime",
         "spacetime",
-        "The arena in which motion and causal structure are stated.",
+        "The geometry of events and causality.",
         outline=["Galilean structure", "Relativistic structure"],
     ),
     Section(
@@ -188,7 +188,7 @@ def render_home() -> str:
 
     body = f"""<main class="home">
   <h1 class="home-title">{html.escape(TITLE)}</h1>
-  <p class="home-intro">A work in progress on the principles that constrain physical possibility and the wave-like picture that emerges.</p>
+  <p class="home-intro">A work in progress on the picture of waves that emerges from principles that constrain physical possibility.</p>
   <p class="home-note">For reasons, the site is beginning in the middle and will work its way out.</p>
   <h2 class="contents-heading">Contents</h2>
   <ol class="section-list">
