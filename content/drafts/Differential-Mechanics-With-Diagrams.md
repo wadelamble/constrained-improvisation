@@ -884,7 +884,7 @@ It does not say that different nestings are equal. It says that the cyclic sum c
 
 ![Poisson Jacobi identity animation contact sheet](animations/differential-poisson-jacobi-identity-contact-sheet.png)
 
-*The cyclic terms are named on the left and shown closing to zero on the right.*
+*Associativity is shown as common endpoint on a line; Jacobi is shown as cyclic closure in a plane.*
 
 [Open MP4: differential-poisson-jacobi-identity.mp4](animations/differential-poisson-jacobi-identity.mp4)
 

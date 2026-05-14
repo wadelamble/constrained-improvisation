@@ -1555,164 +1555,206 @@ def make_poisson_antisymmetry_area_diagram(path: Path) -> None:
 
 
 def make_poisson_jacobi_identity_animation(path: Path) -> None:
-    frames = 132
-    fig, (ax_left, ax_right) = plt.subplots(1, 2, figsize=(11.2, 5.6))
+    frames = 120
+    fig, (ax_left, ax_right) = plt.subplots(1, 2, figsize=(12.6, 5.4))
 
     colors = ["#BC4749", "#2A9D8F", "#4C78A8"]
-    node_angles = np.deg2rad([90, 210, 330])
-    nodes = np.column_stack([np.cos(node_angles), np.sin(node_angles)])
-    node_labels = ["$f$", "$g$", "$h$"]
+    line_labels = [r"$a$", r"$b$", r"$c$"]
+    line_x = np.array([0.0, 1.15, 2.48, 3.75])
     cyclic_labels = [
         r"$\{f,\{g,h\}\}$",
         r"$\{g,\{h,f\}\}$",
         r"$\{h,\{f,g\}\}$",
     ]
     cyclic_vectors = [
-        np.array([0.92, 0.00]),
-        np.array([-0.42, 0.72]),
-        np.array([-0.50, -0.72]),
+        np.array([1.04, 0.00]),
+        np.array([-0.47, 0.78]),
+        np.array([-0.57, -0.78]),
     ]
 
     def smooth(value: float) -> float:
         value = float(np.clip(value, 0.0, 1.0))
         return value * value * (3.0 - 2.0 * value)
 
-    def setup_axis(ax: plt.Axes, title: str) -> None:
+    def setup_axis(ax: plt.Axes, title: str, xlim: tuple[float, float], ylim: tuple[float, float]) -> None:
         ax.set_title(title, pad=10)
-        ax.set_xlim(-1.42, 1.42)
-        ax.set_ylim(-1.22, 1.30)
+        ax.set_xlim(*xlim)
+        ax.set_ylim(*ylim)
         ax.set_aspect("equal", adjustable="box")
         ax.axis("off")
 
-    def draw_permutation_panel(progress: float) -> None:
-        setup_axis(ax_left, "Cyclic permutations")
-        triangle = np.vstack([nodes, nodes[0]])
-        ax_left.plot(triangle[:, 0], triangle[:, 1], color="#D0D0D0", linewidth=1.8, zorder=1)
+    def partial_arrow(ax: plt.Axes, start: np.ndarray, end: np.ndarray, progress: float, color: str, linewidth: float) -> None:
+        visible = smooth(progress)
+        if visible <= 0.025:
+            return
+        tip = start + visible * (end - start)
+        ax.annotate(
+            "",
+            xy=(tip[0], tip[1]),
+            xytext=(start[0], start[1]),
+            arrowprops=dict(arrowstyle="->", color=color, linewidth=linewidth, shrinkA=0, shrinkB=0),
+            zorder=5,
+        )
 
-        for node, label, color in zip(nodes, node_labels, colors):
-            ax_left.scatter([node[0]], [node[1]], s=250, facecolor="white", edgecolor=color, linewidth=2.0, zorder=4)
-            ax_left.text(node[0], node[1], label, ha="center", va="center", fontsize=15, color=color, zorder=5)
+    def draw_bracket(ax: plt.Axes, x0: float, x1: float, y: float, label: str, alpha: float) -> None:
+        if alpha <= 0:
+            return
+        height = 0.08
+        ax.plot([x0, x0, x1, x1], [y - height, y, y, y - height], color="#555555", linewidth=1.2, alpha=alpha)
+        ax.text(
+            (x0 + x1) / 2,
+            y + 0.09,
+            label,
+            ha="center",
+            va="bottom",
+            fontsize=11.5,
+            color="#333333",
+            alpha=alpha,
+            bbox=LABEL_BOX,
+        )
 
-        for index in range(3):
-            visible = smooth((progress - 0.16 * index) / 0.26)
-            if visible <= 0:
-                continue
-            start = nodes[index]
-            end = nodes[(index + 1) % 3]
-            mid = start + visible * (end - start)
-            ax_left.annotate(
-                "",
-                xy=(mid[0], mid[1]),
-                xytext=(start[0], start[1]),
-                arrowprops=dict(arrowstyle="->", color=colors[index], linewidth=2.7, alpha=0.92),
-                zorder=3,
-            )
-            label_pos = 0.58 * start + 0.42 * end
+    def draw_line_panel(progress: float) -> None:
+        setup_axis(ax_left, "Associativity on a line", (-0.42, 4.28), (-1.08, 1.12))
+        y_top = 0.42
+        y_bottom = -0.46
+
+        for y, row_label in [(y_top, r"$(a\cdot b)\cdot c$"), (y_bottom, r"$a\cdot(b\cdot c)$")]:
+            ax_left.plot([-0.04, 4.02], [y, y], color="#D8D8D8", linewidth=1.5, zorder=1)
+            ax_left.scatter([line_x[0]], [y], s=38, color="#333333", zorder=4)
             ax_left.text(
-                label_pos[0],
-                label_pos[1],
-                cyclic_labels[index],
+                -0.30,
+                y,
+                row_label,
+                ha="right",
+                va="center",
+                fontsize=11.0,
+                color="#333333",
+                bbox=LABEL_BOX,
+            )
+
+        for index, label in enumerate(line_labels):
+            visible = (progress - 0.10 - 0.12 * index) / 0.18
+            for y in [y_top, y_bottom]:
+                start = np.array([line_x[index], y])
+                end = np.array([line_x[index + 1], y])
+                partial_arrow(ax_left, start, end, visible, colors[index], linewidth=3.0)
+            label_alpha = smooth((visible - 0.35) / 0.45)
+            if label_alpha > 0:
+                for y in [y_top, y_bottom]:
+                    ax_left.text(
+                        (line_x[index] + line_x[index + 1]) / 2,
+                        y + 0.15,
+                        label,
+                        ha="center",
+                        va="bottom",
+                        fontsize=12.0,
+                        color=colors[index],
+                        alpha=label_alpha,
+                    )
+
+        bracket_alpha = smooth((progress - 0.48) / 0.20)
+        draw_bracket(ax_left, line_x[0], line_x[2], y_top + 0.33, "a then b", bracket_alpha)
+        draw_bracket(ax_left, line_x[1], line_x[3], y_bottom - 0.23, "b then c", bracket_alpha)
+
+        end_alpha = smooth((progress - 0.64) / 0.18)
+        if end_alpha > 0:
+            ax_left.axvline(line_x[-1], ymin=0.23, ymax=0.74, color="#333333", linewidth=1.4, alpha=end_alpha, zorder=2)
+            ax_left.scatter([line_x[-1], line_x[-1]], [y_top, y_bottom], s=56, color="#333333", edgecolor="white", linewidth=0.7, alpha=end_alpha, zorder=7)
+            ax_left.text(
+                line_x[-1] + 0.10,
+                -0.02,
+                "same endpoint",
+                ha="left",
+                va="center",
+                fontsize=10.5,
+                color="#333333",
+                bbox=LABEL_BOX,
+                alpha=end_alpha,
+            )
+
+        formula_alpha = smooth((progress - 0.78) / 0.16)
+        if formula_alpha > 0:
+            ax_left.text(
+                0.50,
+                0.04,
+                r"$(a\cdot b)\cdot c = a\cdot(b\cdot c)$",
+                transform=ax_left.transAxes,
                 ha="center",
                 va="center",
-                fontsize=9.4,
+                fontsize=11.2,
                 color="#333333",
                 bbox=LABEL_BOX,
-                alpha=visible,
-                zorder=6,
+                alpha=formula_alpha,
             )
-
-        alpha = smooth((progress - 0.66) / 0.18)
-        if alpha > 0:
-            ax_left.text(
-                0.02,
-                0.08,
-                "only the cyclic order enters",
-                transform=ax_left.transAxes,
-                ha="left",
-                va="bottom",
-                fontsize=9.4,
-                color="#333333",
-                bbox=LABEL_BOX,
-                alpha=alpha,
-            )
-
-    def draw_vector_path(origin: np.ndarray, progress: float) -> np.ndarray:
-        current = origin.copy()
-        for index, vector in enumerate(cyclic_vectors):
-            visible = smooth((progress - 0.18 * index) / 0.26)
-            if visible <= 0:
-                break
-            end = current + visible * vector
-            ax_right.annotate(
-                "",
-                xy=(end[0], end[1]),
-                xytext=(current[0], current[1]),
-                arrowprops=dict(
-                    arrowstyle="->",
-                    color=colors[index],
-                    linewidth=3.0,
-                    alpha=0.95,
-                ),
-                zorder=5,
-            )
-            if visible > 0.65:
-                label_offset = np.array([0.03, 0.08 if vector[1] >= 0 else -0.10])
-                ax_right.text(
-                    end[0] + label_offset[0],
-                    end[1] + label_offset[1],
-                    cyclic_labels[index],
-                    ha="left",
-                    va="center",
-                    fontsize=9.0,
-                    color="#333333",
-                    bbox=LABEL_BOX,
-                    alpha=0.92,
-                    zorder=6,
-                )
-            if visible < 0.999:
-                return end
-            current = current + vector
-        return current
 
     def draw_closure_panel(progress: float) -> None:
-        setup_axis(ax_right, "Cyclic sum closes")
-        origin = np.array([-0.42, -0.34])
+        setup_axis(ax_right, "Jacobi as cyclic closure", (-0.92, 1.18), (-1.00, 1.06))
+        origin = np.array([-0.48, -0.38])
         cyclic_points = [origin]
         for vector in cyclic_vectors:
             cyclic_points.append(cyclic_points[-1] + vector)
-        cyclic_outline = np.vstack(cyclic_points)
-        ax_right.plot(cyclic_outline[:, 0], cyclic_outline[:, 1], color="#D0D0D0", linewidth=1.5, zorder=1)
-        ax_right.scatter([origin[0]], [origin[1]], s=48, color="#333333", edgecolor="white", linewidth=0.6, zorder=7)
+        cyclic_outline = np.vstack(cyclic_points + [origin])
+        ax_right.fill(cyclic_outline[:, 0], cyclic_outline[:, 1], color="#EDEDED", alpha=0.35, zorder=0)
+        ax_right.plot(cyclic_outline[:, 0], cyclic_outline[:, 1], color="#D0D0D0", linewidth=1.6, zorder=1)
+        ax_right.scatter([origin[0]], [origin[1]], s=54, color="#333333", edgecolor="white", linewidth=0.6, zorder=7)
 
-        draw_vector_path(origin, progress)
+        current = origin.copy()
+        for index, vector in enumerate(cyclic_vectors):
+            visible = (progress - 0.10 - 0.15 * index) / 0.22
+            start = current.copy()
+            end = current + vector
+            partial_arrow(ax_right, start, end, visible, colors[index], linewidth=3.3)
+            label_alpha = smooth((visible - 0.55) / 0.35)
+            if label_alpha > 0:
+                midpoint = start + 0.55 * vector
+                normal = np.array([-vector[1], vector[0]])
+                norm = np.linalg.norm(normal)
+                if norm:
+                    normal = normal / norm
+                label_pos = midpoint + 0.12 * normal
+                ax_right.text(
+                    label_pos[0],
+                    label_pos[1],
+                    cyclic_labels[index],
+                    ha="center",
+                    va="center",
+                    fontsize=9.3,
+                    color="#333333",
+                    bbox=LABEL_BOX,
+                    alpha=label_alpha,
+                    zorder=8,
+                )
+            if visible < 1:
+                break
+            current = end
 
-        close_alpha = smooth((progress - 0.72) / 0.14)
+        close_alpha = smooth((progress - 0.63) / 0.16)
         if close_alpha > 0:
             ax_right.scatter([origin[0]], [origin[1]], s=78, color="#333333", edgecolor="white", linewidth=0.7, alpha=close_alpha, zorder=8)
             ax_right.text(
-                0.03,
-                0.08,
-                "cyclic permutations return to the start",
+                0.50,
+                0.18,
+                "the cyclic sum returns to zero",
                 transform=ax_right.transAxes,
-                ha="left",
-                va="bottom",
-                fontsize=9.4,
+                ha="center",
+                va="center",
+                fontsize=10.6,
                 color="#333333",
                 bbox=LABEL_BOX,
                 alpha=close_alpha,
                 zorder=8,
             )
 
-        formula_alpha = smooth((progress - 0.80) / 0.16)
+        formula_alpha = smooth((progress - 0.78) / 0.16)
         if formula_alpha > 0:
             ax_right.text(
                 0.50,
-                -0.06,
+                0.04,
                 r"$\{f,\{g,h\}\}+\{g,\{h,f\}\}+\{h,\{f,g\}\}=0$",
                 transform=ax_right.transAxes,
                 ha="center",
-                va="top",
-                fontsize=9.6,
+                va="center",
+                fontsize=10.2,
                 color="#333333",
                 bbox=LABEL_BOX,
                 alpha=formula_alpha,
@@ -1723,9 +1765,9 @@ def make_poisson_jacobi_identity_animation(path: Path) -> None:
         ax_left.clear()
         ax_right.clear()
         progress = frame / (frames - 1)
-        draw_permutation_panel(progress)
+        draw_line_panel(progress)
         draw_closure_panel(progress)
-        fig.suptitle("Jacobi identity as cyclic closure", y=0.98)
+        fig.suptitle("Linear associativity and cyclic closure", y=0.98)
 
     anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
     save_animation(anim, path, fps=18)
