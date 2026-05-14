@@ -14,7 +14,7 @@ OUT_DIR = ROOT / "site"
 DRAFT = ROOT / "content" / "drafts" / "Differential-Mechanics-With-Diagrams.md"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 
-TITLE = "Nature's Improvisation on the Structure of Symmetry"
+TITLE = "Nature's Principled Improvisation"
 BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
 
 
@@ -170,14 +170,16 @@ def render_home() -> str:
     items = []
     for section in SECTIONS:
         status = f'<span class="status">{html.escape(section.status)}</span>' if section.status else ""
+        new_badge = '<span class="new-splatter">NEW</span>' if section.href else ""
+        card_class = "section-card" if section.href else "section-card section-card--disabled"
         label = html.escape(section.title)
-        title = f'<a href="{site_path(section.href)}">{label}</a>{status}' if section.href else f"<span>{label}</span>{status}"
+        title = f'<a href="{site_path(section.href)}">{label}</a>{status}{new_badge}' if section.href else f"<span>{label}</span>{status}"
         outline = ""
         if section.outline:
             outline_items = "\n".join(f"<li>{html.escape(item)}</li>" for item in section.outline)
             outline = f"<details><summary>Outline</summary><ol>{outline_items}</ol></details>"
         items.append(
-            f"""<li class="section-card">
+            f"""<li class="{card_class}">
   {title}
   <p>{html.escape(section.description)}</p>
   {outline}

@@ -32,7 +32,7 @@ jobs:
 
       - name: Build site
         env:
-          SITE_BASE_PATH: /modern-physics-writing-agent
+          SITE_BASE_PATH: /constrained-improvisation
         run: python scripts/build_site.py
 
       - name: Upload site artifact
