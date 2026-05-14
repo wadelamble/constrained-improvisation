@@ -220,13 +220,14 @@ def copy_asset(path: str) -> None:
         shutil.copy2(source, dest)
 
 
-def figure_for_image(alt: str, path: str) -> str:
+def figure_for_image(alt: str, path: str, caption: str | None = None) -> str:
     copy_asset(path)
     src = rewrite_asset_path(path)
     safe_alt = html.escape(alt, quote=True)
+    caption_text = caption or alt
     return f"""<figure class="media-figure">
   <img src="{html.escape(src, quote=True)}" alt="{safe_alt}">
-  <figcaption>{html.escape(alt)}</figcaption>
+  <figcaption>{inline(caption_text)}</figcaption>
   <div class="media-actions">
     <button type="button" data-popout data-kind="image" data-src="{html.escape(src, quote=True)}" data-alt="{safe_alt}">Enlarge</button>
     <a href="{html.escape(src, quote=True)}" target="_blank" rel="noreferrer">Open file</a>
@@ -234,17 +235,18 @@ def figure_for_image(alt: str, path: str) -> str:
 </figure>"""
 
 
-def figure_for_video(alt: str, poster_path: str, video_path: str) -> str:
+def figure_for_video(alt: str, poster_path: str, video_path: str, caption: str | None = None) -> str:
     copy_asset(poster_path)
     copy_asset(video_path)
     poster = rewrite_asset_path(poster_path)
     video = rewrite_asset_path(video_path)
     safe_alt = html.escape(alt, quote=True)
+    caption_text = caption or alt
     return f"""<figure class="media-figure">
   <video controls preload="metadata" poster="{html.escape(poster, quote=True)}">
     <source src="{html.escape(video, quote=True)}" type="video/mp4">
   </video>
-  <figcaption>{html.escape(alt)}</figcaption>
+  <figcaption>{inline(caption_text)}</figcaption>
   <div class="media-actions">
     <button type="button" data-popout data-kind="video" data-src="{html.escape(video, quote=True)}" data-alt="{safe_alt}">Pop out video</button>
     <a href="{html.escape(video, quote=True)}" target="_blank" rel="noreferrer">Open MP4</a>
@@ -291,20 +293,28 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
         image_match = re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)", stripped)
         if image_match:
             alt, image_path = image_match.groups()
+            caption = None
             next_line = ""
             next_index = i + 1
             while next_index < len(lines) and not lines[next_index].strip():
                 next_index += 1
             if next_index < len(lines):
                 next_line = lines[next_index].strip()
+            caption_match = re.fullmatch(r"\*(.+)\*", next_line)
+            if caption_match:
+                caption = caption_match.group(1).strip()
+                next_index += 1
+                while next_index < len(lines) and not lines[next_index].strip():
+                    next_index += 1
+                next_line = lines[next_index].strip() if next_index < len(lines) else ""
             mp4_match = re.fullmatch(r"\[Open MP4: ([^\]]+)\]\(([^)]+)\)", next_line)
             if mp4_match:
                 _, video_path = mp4_match.groups()
-                html_blocks.append(figure_for_video(alt, image_path, video_path))
+                html_blocks.append(figure_for_video(alt, image_path, video_path, caption))
                 i = next_index + 1
             else:
-                html_blocks.append(figure_for_image(alt, image_path))
-                i += 1
+                html_blocks.append(figure_for_image(alt, image_path, caption))
+                i = next_index if caption is not None else i + 1
             continue
 
         open_mp4_match = re.fullmatch(r"\[Open MP4: ([^\]]+)\]\(([^)]+)\)", stripped)
@@ -346,6 +356,7 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
                 or candidate.startswith("#")
                 or candidate.startswith("```")
                 or re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)", candidate)
+                or re.fullmatch(r"\[Open MP4: ([^\]]+)\]\(([^)]+)\)", candidate)
                 or re.fullmatch(r"\d+\.\s+.+", candidate)
             ):
                 break

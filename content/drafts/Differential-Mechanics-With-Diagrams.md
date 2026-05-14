@@ -1,8 +1,8 @@
 # Differential Mechanics
 
-Lagrangian Mechanics gives us a remarkably deep way to formulate the laws of motion. We write down an invariant quantity in a spacetime geometry, extremize it, and recover the physical path. The particle, we may say, has "learned" what the right trajectory is by solving an optimization problem. The global formulation is conceptually prior to the local formulation in the strict sense that the central objects of the differential formulation, the quantities that will become momentum and energy in the local theory, are derived from the global formulation. 
+Lagrangian Mechanics gives us a foundational way to formulate the laws of motion. We write down an invariant quantity in a spacetime geometry, extremize it, and recover the physical path. The particle, we may say, has "learned" what the right trajectory is by solving an optimization problem. The global formulation is conceptually prior to the local formulation in the strict sense that the central objects of the differential formulation, the quantities that will become momentum and energy in the local theory, are derived from the global formulation. 
 
-"Hamiltonian Mechanics" is the name we give to the modern version of the local, differential perspective. Instead of selecting a whole history at once, it treats motion as the flow in time of one instantaneous state to the next. Hamiltonian mechanics is an elegant formulation of classical mechanics, but if elegance were all it provided, it would not belong here in our treatment of the conceptual foundations of physics. In fact, it does more than recast Lagrangian Mechanics in local form. It makes visible ensemble and algebraic structure that is difficult to see in Lagrangian form and that later becomes essential to quantum mechanics. First, it reveals how statistical ensembles evolve in ways not visible from individual trajectories. Second, by encoding laws of global trajectories into the local geometry of infinitesimal state changes, it allows those laws to be expressed in an algebra of generators.
+"Hamiltonian Mechanics" is the name we give to the modern version of the local, differential perspective. Instead of selecting a whole history at once, it treats motion as the flow in time of one instantaneous state to the next. Hamiltonian mechanics is an elegant formulation of classical mechanics, but if elegance were all it provided, it would not belong here in our treatment of the conceptual foundations of physics. In fact, it does more than recast Lagrangian Mechanics in local form. It makes visible statistical and algebraic structure that is difficult to see in Lagrangian form and that later becomes essential to quantum mechanics. First, it reveals how statistical ensembles evolve in ways not visible from individual trajectories. Second, by encoding laws of global trajectories into the local geometry of infinitesimal state changes, it allows those laws to be expressed in an algebra of generators.
 
 ## The Evolution of Ensembles in Physical Systems
 
@@ -47,6 +47,8 @@ with all other states still assigned probability `0`. The same probability weigh
 
 ![Three-card permutation animation contact sheet](animations/liouville-permutation-3card-contact-sheet.png)
 
+*The law changes which arrangement carries each probability weight, but the weights themselves are only rearranged.*
+
 [Open MP4: liouville-permutation-3card.mp4](animations/liouville-permutation-3card.mp4)
 
 A few structural facts are worth making explicit:
@@ -71,11 +73,15 @@ We see this same structure in conservative physical systems such as the ideal pe
 
 ![Pendulum regimes animation contact sheet](animations/differential-pendulum-regimes-contact-sheet.png)
 
+*Small changes in initial state can carry the pendulum into different regimes while the motion remains deterministic.*
+
 [Open MP4: differential-pendulum-regimes.mp4](animations/differential-pendulum-regimes.mp4)
 
 The two animations emphasize different features of the same example. One separates the pendulum's regimes; the other follows a small ensemble through the same state space.
 
 ![Pendulum ensemble phase-space animation contact sheet](animations/differential-pendulum-ensemble-phase-space-contact-sheet.png)
+
+*A small cloud of nearby initial conditions is stretched and transported without being collapsed into a single state.*
 
 [Open MP4: differential-pendulum-ensemble-phase-space.mp4](animations/differential-pendulum-ensemble-phase-space.mp4)
 
@@ -117,6 +123,8 @@ In two dimensions, incompressibility lets the velocity field be generated from t
 
 ![Incompressible fluid patch animation contact sheet](animations/differential-incompressible-fluid-patch-contact-sheet.png)
 
+*The marked patch changes shape under the planar flow while preserving its area.*
+
 [Open MP4: differential-incompressible-fluid-patch.mp4](animations/differential-incompressible-fluid-patch.mp4)
 
 ### Embodied Information
@@ -154,13 +162,15 @@ The information-theoretic implications of conservative systems are central to st
 
 Phase space, or position/momentum space, is the arena for Hamiltonian Mechanics. To appreciate the theory, we need to understand the origin, geometry, and role of this space.
 
-### From histories to states
+### From Histories to States
 
 The objects in Hamiltonian Mechanics -- the state variables and the Hamiltonian function on those variables are obtained from Lagrangian Mechanics. We know that Lagrangian mechanics selects whole paths from path space by extremizing action. The task we thus need to perform is to extract the essential objects of a local theory of instantaneous state from the Lagrangian global theory.
 
 The impact of instantaneous state displacements on action appears when the action is varied. After integrating the Lagrangian by parts, the variation separates into a bulk term and a boundary term. The bulk term concerns what happens in the interior of the path. Since the interior is what the path does between its endpoints, requiring the bulk contribution to vanish for arbitrary interior variations gives the Euler-Lagrange equations. That is, the equations of motion must be consistent with the path taken once we know the endpoints. The boundary term in contrast concerns how a segment of history meets a time slice, that is, how an infinitesimal change to an instantaneous state affects the action. If we imagine chopping a path into smaller and smaller pieces, in a sense all that is left is a series of boundary terms, each corresponding to successive instantaneous states. The boundary term records how the action changes when that state is infinitesimally displaced, and its coefficient will become the momentum.
 
 ![Bulk and boundary variation animation contact sheet](animations/differential-bulk-boundary-variation-contact-sheet.png)
+
+*A path variation separates into an interior condition on the path and a boundary contribution at the time slice.*
 
 [Open MP4: differential-bulk-boundary-variation.mp4](animations/differential-bulk-boundary-variation.mp4)
 
@@ -316,9 +326,11 @@ By shifting to a unified spacetime, relativity ties action to worldline length, 
 
 ![Endpoint covector measurement animation contact sheet](animations/differential-endpoint-covector-measurement-contact-sheet.png)
 
+*Momentum measures how an endpoint displacement changes the action to first order.*
+
 [Open MP4: differential-endpoint-covector-measurement.mp4](animations/differential-endpoint-covector-measurement.mp4)
 
-### From the one-form to the two-form
+### From the One-Form to the Two-Form
 
 Thus far, the action has identified $q$ and $p$ as the correct paired variables for specifying instantaneous state. But the pairing $p_i\,\delta q^i$ is a one-form statement. It acts on one infinitesimal displacement of one state and returns the first-order change in the action. The information perspective requires a different type of mathematical object, one that measures an "amount of states," not the action of a single history.
 
@@ -333,6 +345,8 @@ It takes in two tangent directions and returns an oriented area. This area is th
 Once we have $\omega$, we can see the job of Hamiltonian mechanics as finding flows under which the area measured by the two-form is invariant. This is the geometric form of information preservation. Remarkably, the "overlap" of two vectors and the "area" the same two vectors span lead to descriptions of entirely different categories of behavior.
 
 ![One-form to two-form animation contact sheet](animations/differential-one-form-to-two-form-contact-sheet.png)
+
+*The one-form measures one displacement against action; the two-form measures oriented area spanned by paired phase-space directions.*
 
 [Open MP4: differential-one-form-to-two-form.mp4](animations/differential-one-form-to-two-form.mp4)
 
@@ -410,6 +424,8 @@ Compare phase-space plots to spacetime diagrams. In a spacetime diagram, motion 
 
 ![Worldline to phase-space bridge animation contact sheet](animations/differential-worldline-phase-space-bridge-contact-sheet.png)
 
+*A spacetime history is static until phase-space time evolution turns instantaneous states into a flow.*
+
 [Open MP4: differential-worldline-phase-space-bridge.mp4](animations/differential-worldline-phase-space-bridge.mp4)
 
 ### Generating Flows on Phase Space
@@ -420,7 +436,11 @@ Picture a contour map on the $q,p$ plane. The value of a function, $F(q,p)$, ass
 
 ![Level-set density to vector length diagram](animations/differential-level-set-density-vector.png)
 
+*Closer level sets mean a steeper function, and therefore a longer phase-space velocity arrow.*
+
 ![Function-to-flow animation contact sheet](animations/differential-function-to-flow-contact-sheet.png)
+
+*A function on phase space determines level sets, a vector field, and then a flow along those level sets.*
 
 [Open MP4: differential-function-to-flow.mp4](animations/differential-function-to-flow.mp4)
 
@@ -457,6 +477,8 @@ This construction can be written down for any two variables. In mechanics, howev
 Now that we have a procedure for generating a flow from a function, we can check that the flow generated by any smooth function preserves the area form.
 
 ![Symplectic patch preservation animation contact sheet](animations/differential-symplectic-patch-preservation-contact-sheet.png)
+
+*Hamiltonian flow can stretch and shear a patch, but it preserves the area measured by the symplectic form.*
 
 [Open MP4: differential-symplectic-patch-preservation.mp4](animations/differential-symplectic-patch-preservation.mp4)
 
@@ -506,6 +528,8 @@ S = -m \int ds = -\int E\,dt + \int p_x\,dx + \int \cdots
 
 ![Action decomposition diagram](animations/differential-action-decomposition.png)
 
+*The spacetime action pairing splits into spatial momentum terms and a temporal energy term.*
+
 Hamiltonian mechanics now asks for the function that generates time evolution on phase space. The relativistic decomposition suggests what that function should be. If energy is the coefficient paired with time displacement in the action, then the generator of time evolution should be energy.
 
 And indeed, for conservative systems, the Hamiltonian is the energy. Energy generates time.
@@ -541,6 +565,8 @@ H(q,p) = p_i\dot q^i - L(q,\dot q),
 with $\dot q$ understood as the function of $(q,p)$ determined by the momentum equation above. 
 
 ![Legendre transform tangent animation contact sheet](animations/differential-legendre-transform-tangent-contact-sheet.png)
+
+*The Legendre transform trades velocity for momentum while keeping the tangent information needed to recover the dynamics.*
 
 [Open MP4: differential-legendre-transform-tangent.mp4](animations/differential-legendre-transform-tangent.mp4)
 
@@ -683,19 +709,21 @@ or
 At this point we have the local differential formulation of mechanics in hand. The next step is not to change that mechanics, but to rewrite the same structure in a new language. The flow picture we have just developed can also be expressed as an algebra of functions on phase space, and that repackaging will make further structure visible.
 
 ## The Algebra of Hamiltonian Mechanics
-Given two functions $f$ and $g$ on phase space, we can ask how $f$ changes along the flow generated by $g$, or, just as well, how $g$ changes along the flow generated by $f$.
+Given two functions $f$ and $g$ on phase space, we can ask how $f$ changes along the flow generated by $g$ or how $g$ changes along the flow generated by $f$.
 
 ![Poisson bidirectional flow animation contact sheet](animations/differential-poisson-bidirectional-flow-contact-sheet.png)
+
+*Either function can be read along the flow generated by the other.*
 
 [Open MP4: differential-poisson-bidirectional-flow.mp4](animations/differential-poisson-bidirectional-flow.mp4)
 
 As any two numbers can be combined via addition or multiplication to produce a new number, so any two functions on phase space can be combined to produce a new function when the rule for combining them reflects this flow/evolution relationship. We call such a system of rules for combining objects an algebra. In the algebra of Hamiltonian mechanics, called Poisson algebra, Hamilton's equations, conservation laws, and other structural relationships become visible as algebraic identities.
 
-### What we mean by an algebra
+### What We Mean by an Algebra
 
 Before exploring Poisson algebra specifically, let's remind ourselves what an "algebra" is. It begins with some class of objects and then specifies what operations may be performed on those objects and what properties those operations satisfy. Numbers with addition and multiplication and associativity and commutativity are the familiar example. Different algebras may involve different objects, operations, and properties, but these differences fall into a common taxonomy. 
 
-#### Taxonsomy of operations
+#### Taxonomy of Operations
 
 | Category | Meaning | Example |
 |---|---|---|
@@ -720,21 +748,19 @@ Algebras are "closed," meaning that when allowed objects are combined, the resul
 
 With this framing in mind, we can now turn to Poisson algebra. Before discussing the specific operations and properties that form the Poisson algebra notation, let's first look at its geometric interpretation. A Poisson algebra belongs to the broader class of Lie algebras, in which we represent a finite transformation on a manifold by an infinitesimal displacement tangent to the transformation.
 
-![Lie generator tangent flow animation contact sheet](animations/differential-lie-generator-tangent-flow-contact-sheet.png)
-
-[Open MP4: differential-lie-generator-tangent-flow.mp4](animations/differential-lie-generator-tangent-flow.mp4)
-
 This picture is captured schematically as a differential equation that represents the action of an infinitesimal generator on a finite transformation:
 
-```math f
+```math
 \frac{d}{dt}G(t) = X\,G(t).
 ```
 
 Here $G(t)$ is a one-parameter family of finite transformations, and $X$ is the infinitesimal generator, an element of the Lie algebra. The equation says that the finite transformation changes at each instant according to the infinitesimal generator. Thus, repeated application of the generator to the transformation generates the next step of the transformation, that is, there is an exponential map from the generator to the transformation.
 
-![Exponential map accumulation animation contact sheet](animations/differential-exponential-map-accumulation-contact-sheet.png)
+![Lie generator tangent flow animation contact sheet](animations/differential-lie-generator-tangent-flow-contact-sheet.png)
 
-[Open MP4: differential-exponential-map-accumulation.mp4](animations/differential-exponential-map-accumulation.mp4)
+*The fixed generator $X$ at the identity induces the tangent $XG(t)$ at each finite transformation.*
+
+[Open MP4: differential-lie-generator-tangent-flow.mp4](animations/differential-lie-generator-tangent-flow.mp4)
 
 For matrix groups, this becomes
 
@@ -763,6 +789,8 @@ where $z_0$ is the initial phase-space point and $\phi_t$ is the finite transfor
 \frac{d}{dt}z(t)=X_f(z(t)).
 ```
 
+where $X_f$ is the vector field generated by the function $f$.
+
 Its solution is the flow
 
 ```math
@@ -771,9 +799,11 @@ z(t)=\phi_t(z_0).
 
 In words, the phase-space point moves at each instant in the direction assigned by the generator vector field $X_f$ at the point's current location.
 
-The contrast is worth pausing over. In the matrix case, the infinitesimal generator gives a single rule acting across the vector space. In the Hamiltonian case, the generator must determine a vector field on phase space. It assigns an infinitesimal direction to each point, with the whole field constrained by the symplectic form. The object that encodes this field is a function on phase space. Each smooth function $f$ determines a vector field $X_f$, and that vector field determines a flow of canonical transformations.
+In the matrix case, the infinitesimal generator gives a single rule acting across the vector space. In the Hamiltonian case, the generator must determine a vector field on phase space. It assigns an infinitesimal direction to each point, with the whole field constrained by the symplectic form. The object that encodes this field is a function on phase space. Each smooth function $f$ determines a vector field $X_f$, and that vector field determines a flow of canonical transformations.
 
 ![Generator vector field contrast animation contact sheet](animations/differential-generator-vector-field-contrast-contact-sheet.png)
+
+*A matrix generator acts by one rule across a vector space, a Hamiltonian generator encodes a local vector field on phase space.*
 
 [Open MP4: differential-generator-vector-field-contrast.mp4](animations/differential-generator-vector-field-contrast.mp4)
 
@@ -791,11 +821,17 @@ One may refer somewhat ambiguously to either the functions or the vector fields 
 
 This identity says that the Lie algebra of infinitesimal canonical transformations persists when one passes from vector fields to the functions that encode them.
 
-The payoff is that one can work in the Lie algebra of infinitesimal generating functions rather than directly in the Lie group of finite transformations. Finite transformations form a generally curved group manifold, where composition is the native operation. Infinitesimal generators live in a linear space tangent to the group at the identity, where objects can be added, scaled, and bracketed. That is what makes an algebra possible here, and it is what makes insights and theorems available through algebraic manipulation.
+![Poisson bracket vector-field identity animation contact sheet](animations/differential-poisson-bracket-vectorfield-identity-contact-sheet.png)
 
-#### The operations of the algebra
+*The commutator of Hamiltonian vector fields is mirrored by the Poisson bracket of their generating functions.*
 
-The objects of Poisson algebra are smooth functions on phase space. The first operations on this space are the obvious ones:
+[Open MP4: differential-poisson-bracket-vectorfield-identity.mp4](animations/differential-poisson-bracket-vectorfield-identity.mp4)
+
+The payoff is that one can work in the Lie algebra of infinitesimal generating functions rather than directly in the Lie group of finite transformations. Finite transformations form a generally curved group manifold, where composition is the native operation. Infinitesimal generators live in a linear space tangent to the group at the identity, where objects can be added, scaled, and bracketed. That is what makes an algebra possible here, and it is what makes insights and theorems visible in algebraic identities.
+
+#### The Operations of the Algebra
+
+The objects of Poisson algebra are smooth functions on phase space. The more elementary operations on this space are:
 
 | Operation | Type | Specific operation | Result |
 |---|---|---|---|
@@ -803,7 +839,7 @@ The objects of Poisson algebra are smooth functions on phase space. The first op
 | $cf$ | Binary, external | Scalar multiplication | Another smooth function |
 | $fg$ | Binary, internal | Pointwise multiplication of functions | Another smooth function |
 
-These operations already make smooth functions into a familiar algebraic object. Hamiltonian mechanics adds one more binary internal operation, the Poisson bracket:
+Hamiltonian mechanics adds an additional operation, the Poisson bracket:
 
 ```math
 \{f,g\}
@@ -813,11 +849,13 @@ These operations already make smooth functions into a familiar algebraic object.
 \frac{\partial f}{\partial p_i}\frac{\partial g}{\partial q^i}.
 ```
 
-With $g$ held fixed, $\{f,g\}$ is the infinitesimal change of $f$ when the state is moved along the phase-space vector field determined by $g$. The result is again a smooth function on phase space, so the function space is closed under the bracket.
+With $g$ held fixed, $\{f,g\}$ is the change of $f$ when the state is moved along the vector field determined by $g$. The result is another smooth function on phase space that goes to zero as the original two function's flows align.
 
 #### The Properties of Poisson Algebra
 
-The Poisson bracket is an operation that satisfies the properties that make the function space into a Lie algebra:
+The Poisson bracket is an operation that satisfies the properties that make the function space into a Lie algebra.
+
+Bilinearity:
 
 ```math
 \{af_1 + bf_2,g\}
@@ -825,9 +863,9 @@ The Poisson bracket is an operation that satisfies the properties that make the 
 a\{f_1,g\}+b\{f_2,g\},
 ```
 
-and likewise in the second slot, so the bracket is bilinear.
+and likewise in the second slot.
 
-It is antisymmetric:
+Antisymmetry:
 
 ```math
 \{f,g\} = -\{g,f\}.
@@ -835,31 +873,38 @@ It is antisymmetric:
 
 This sign flip is the algebraic form of oriented area. Swapping the inputs reverses the orientation.
 
-![Poisson antisymmetry oriented area animation contact sheet](animations/differential-poisson-antisymmetry-area-contact-sheet.png)
+![Poisson antisymmetry oriented area diagram](animations/differential-poisson-antisymmetry-area.png)
 
-[Open MP4: differential-poisson-antisymmetry-area.mp4](animations/differential-poisson-antisymmetry-area.mp4)
+*Swapping the order reverses the oriented area, giving the sign flip in the bracket.*
 
-And it satisfies the Jacobi identity:
+Jacobi Identity:
+
+The remaining coherence condition is cyclic. The three bracket nestings obtained by cycling $f$, $g$, and $h$ cancel:
 
 ```math
 \{f,\{g,h\}\}+\{g,\{h,f\}\}+\{h,\{f,g\}\}=0.
 ```
 
+It does not say that different nestings are equal. It says that the cyclic sum closes to zero.
+
 ![Poisson Jacobi identity animation contact sheet](animations/differential-poisson-jacobi-identity-contact-sheet.png)
+
+*The cyclic terms are named on the left and shown closing to zero on the right.*
 
 [Open MP4: differential-poisson-jacobi-identity.mp4](animations/differential-poisson-jacobi-identity.mp4)
 
-This is the Lie-bracket analogue of the kind of coherence that associativity gives in ordinary multiplication. It does not say that different nestings are equal. It says instead that the failure of the bracket to associate is controlled in a consistent way.
 
-In addition, because the objects are still ordinary functions, the bracket is compatible with function multiplication through the Leibniz, or product, rule:
+Product Rule:
+
+Poisson brackets act on products of functions as derivatives do in calculus. This is expected because, with one input held fixed, the Poisson bracket differentiates the other input along the corresponding Hamiltonian flow:
 
 ```math
 \{f,gh\}=\{f,g\}h+g\{f,h\}.
 ```
 
-This is the familiar product rule from calculus in a new setting. With $f$ held fixed, the operation $g \mapsto \{f,g\}$ behaves like a derivative acting on functions. 
-
 ![Poisson product rule animation contact sheet](animations/differential-poisson-product-rule-contact-sheet.png)
+
+*Holding one input fixed, the bracket differentiates a product one factor at a time.*
 
 [Open MP4: differential-poisson-product-rule.mp4](animations/differential-poisson-product-rule.mp4)
 
@@ -867,7 +912,7 @@ This is the familiar product rule from calculus in a new setting. With $f$ held 
 
 Once the Poisson bracket is in hand, physical relationships that previously had to be written as separate differential statements can be compressed into algebraic ones. 
 
-##### Canonical Pairing of Postion and Momentum
+##### The Canonical Pairing of Position and Momentum
 
 ```math
 \{q,p\}=1,
@@ -875,15 +920,21 @@ Once the Poisson bracket is in hand, physical relationships that previously had 
 \{p,q\}=-1.
 ```
 
-We can read these equations in shorthand as "momentum generates position translations" and "position generates momentum translations." At this point the attentive reader may scratch their head and say "wait, I expect from Relativity and Noether's theorem that momentum generates position, but what could it possibly mean for position to generate momentum. Conserved position? Momentum symmetry? That's crazy talk.
+We can read these equations in shorthand as "momentum generates position translations" and "position generates momentum translations." 
 
-The key to resolving this confusion is that momentum and position are reciprocally paired in the case of generating canonical transformations, not in the sense of generating symmetry transformations. Momentum is not a symmetry of the physics. However, there is nonetheless a way to understand the physics that is encoded into the pairing. 
+At this point the attentive reader may scratch their head. From relativity and Noether’s theorem, we expect momentum to be paired with position displacement, and in Hamiltonian language we expect momentum to generate position translations. But what could it mean for position to generate momentum? Momentum symmetry? Conserved position? Not quite. The answer is that position and momentum are reciprocally paired as generators of canonical transformations, not as generators of physical symmetries. A shift in position may be a symmetry of the physical system. A shift in momentum usually is not. The reciprocal generator relation is instead part of the phase-space structure that preserves information density. There is nonetheless a physical intuition behind it.
 
 Imagine a downhill skier. The mountain's incline determines how their momentum changes, and that incline is a function of position. So $\dot p$ is determined by position. This example is illustrative because it realizes the idea of a potential gradient as an actual hill. Whatever the details of the system, if we choose $p$ and $q$ so that $H = K(p) + V(q)$, then the more $H$ changes with respect to $q$, the greater the rate of change of momentum. This is what is meant, dynamically, by saying that $q$ generates $p$.
 
+![Skier position generates momentum animation contact sheet](animations/differential-skier-position-generates-momentum-contact-sheet.png)
+
+*Position selects the local slope of the potential; that slope changes momentum.*
+
+[Open MP4: differential-skier-position-generates-momentum.mp4](animations/differential-skier-position-generates-momentum.mp4)
+
 While position/momentum pairing does not belong to the symmetries of classical physics, it does appear in the symmetry space of wavefunctions \(if we associate wave number with momentum.\) The Fourier transform exchanges the two. Shifting in $x$ corresponds to multiplying by a $k$-phase, while multiplying by an $x$-phase shifts $k$. In that setting, $k$ generates translations in $x$, and $x$ generates translations in $k$. Quantum mechanics will turn this reciprocal Fourier symmetry into the canonical commutation relation, which underlies many aspects of quantum theory, including the structure of the Schrödinger equation and the Heisenberg uncertainty principle.
 
-The similarity to wave function symmetry to symplectic geometry is not conincidental. In classical phase space, a position displacement and a momentum displacement can be represented by vectors such as $(a,0)$ and $(0,b)$. As we have seen, the symplectic form measures their oriented phase-space area:
+The similarity of wave function symmetry to symplectic geometry is not conincidental. In classical phase space, a position displacement and a momentum displacement can be represented by vectors such as $(a,0)$ and $(0,b)$. As we have seen, the symplectic form measures their oriented phase-space area:
 
 ```math
 \omega((a,0),(0,b)) = ab.
@@ -901,7 +952,7 @@ In wave-number space, a momentum shift is just a translation of the Fourier prof
 \hat\psi(k) \mapsto \hat\psi(k-b).
 ```
 
-In position space, the same operation appears as multiplication by a phase:
+But in position space, the same operation appears as multiplication by a position-dependent phase:
 
 ```math
 (M_b\psi)(x)=e^{ibx}\psi(x).
@@ -915,6 +966,12 @@ e^{ikx}
 e^{i(k+b)x}.
 ```
 
+![Fourier phase shift mechanism animation contact sheet](animations/differential-fourier-phase-shift-mechanism-contact-sheet.png)
+
+*Multiplying by a position-dependent phase shifts the wave number of each Fourier component.*
+
+[Open MP4: differential-fourier-phase-shift-mechanism.mp4](animations/differential-fourier-phase-shift-mechanism.mp4)
+
 Applying them in opposite orders gives
 
 ```math
@@ -926,6 +983,12 @@ while
 ```math
 T_aM_b\psi(x)=e^{ib(x-a)}\psi(x-a).
 ```
+
+![Weyl order phase animation contact sheet](animations/differential-weyl-order-phase-contact-sheet.png)
+
+*Applying position and momentum shifts in opposite orders leaves a residual phase.*
+
+[Open MP4: differential-weyl-order-phase.mp4](animations/differential-weyl-order-phase.mp4)
 
 Thus
 
@@ -945,11 +1008,15 @@ With physical units restored, this becomes
 e^{\frac{i}{\hbar}\omega(v,w)}.
 ```
 
-Thus the classical area pairing becomes, in wave mechanics, a phase relation. The symplectic form measures the failure of the corresponding wave transformations to commute. This is the Weyl-Heisenberg structure behind the canonical commutation relation. The Poisson bracket tells us classically that $q$ and $p$ are conjugate, while Fourier duality shows how that conjugacy acts on waves. Quantum mechanics then  turns it into the operator identity:
+Thus the classical area pairing becomes, in wave mechanics, a phase relation. The symplectic form measures the failure of the corresponding wave transformations to commute. This is the Weyl-Heisenberg structure behind the canonical commutation relation. The Poisson bracket tells us classically that $q$ and $p$ are conjugate, while Fourier duality shows how that conjugacy acts on waves. Quantum mechanics then, as we will see, turns it into the operator identity:
 
 ```math
 [\hat q,\hat p]=i\hbar.
 ```
+
+![Canonical commutation chain diagram](animations/differential-canonical-commutation-chain.png)
+
+*The classical canonical pairing becomes a Fourier phase relation and then the quantum commutator.*
 
 ##### Hamiltonian Dynamics
 The master dynamical statement is that, for any smooth function $f$ on phase space,
@@ -968,7 +1035,9 @@ assuming $f$ has no explicit time dependence. In this form, time evolution itsel
 
 ![Poisson algebra compression diagram](animations/differential-poisson-compression.png)
 
-##### Conservation and Noether's Theorem (forward and backward)
+*The Poisson bracket packages Hamilton's equations, canonical pairing, and conservation into one algebraic operation.*
+
+##### Conservation and Noether's Theorem (Forward and Backward)
 
 Conservation laws also become algebraic statements. If
 
@@ -994,6 +1063,6 @@ Because the bracket is antisymmetric, the same vanishing relation may be read in
 
 This is the compact meeting point of the two Noether directions. Read one way, it says that $f$ is conserved under the time evolution generated by $H$. Read the other way, it says that the transformation generated by $f$ leaves $H$ unchanged. Conservation and symmetry thus appear as two readings of the same algebraic relation.
 
-#### Look Ahead to Quantum Mechanics
+#### Looking Ahead to Quantum Mechanics
 
 This algebraic viewpoint provides a bridge from Hamiltonian mechanics into quantum mechanics. There, the classical geometry of states as points moving through phase space no longer carries over in the same direct form, and much of the new theory remains to be understood on its own terms. What does carry over cleanly is the algebraic structure of observables, generators, and their bracket relations. By replacing functions with operators and Poisson brackets with commutators, one can lift a large part of Hamiltonian structure forward before learning the geometry native to the quantum theory. The geometry changes, but the algebra transports.

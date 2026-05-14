@@ -1479,21 +1479,99 @@ def make_poisson_antisymmetry_area_animation(path: Path) -> None:
     plt.close(fig)
 
 
-def make_poisson_jacobi_identity_animation(path: Path) -> None:
-    frames = 108
-    fig, (ax_left, ax_right) = plt.subplots(1, 2, figsize=(10.8, 5.4))
+def make_poisson_antisymmetry_area_diagram(path: Path) -> None:
+    origin = np.array([-0.18, -0.28])
+    u = np.array([0.92, 0.26])
+    v = np.array([-0.28, 0.82])
+    positive = np.vstack([origin, origin + u, origin + u + v, origin + v])
+    negative = np.vstack([origin, origin + v, origin + u + v, origin + u])
 
+    fig, (ax_left, ax_right) = plt.subplots(1, 2, figsize=(10.8, 5.0))
+
+    def setup_axis(ax: plt.Axes, title: str) -> None:
+        ax.set_title(title, pad=10)
+        ax.set_xlim(-1.05, 1.45)
+        ax.set_ylim(-1.0, 1.25)
+        ax.set_aspect("equal", adjustable="box")
+        ax.set_xlabel("q")
+        ax.set_ylabel("p")
+        ax.grid(color="#E8E8E8", linewidth=0.7)
+        ax.axhline(0, color="#B8B8B8", linewidth=0.8)
+        ax.axvline(0, color="#B8B8B8", linewidth=0.8)
+
+    def draw_area(ax: plt.Axes, order: str) -> None:
+        first, second = (u, v) if order == "fg" else (v, u)
+        polygon = positive if order == "fg" else negative
+        fill = "#4C78A8" if order == "fg" else "#D08C2D"
+        sign = "+" if order == "fg" else "-"
+        first_color = "#BC4749" if order == "fg" else "#2A9D8F"
+        second_color = "#2A9D8F" if order == "fg" else "#BC4749"
+        first_label = r"$f$ input" if order == "fg" else r"$g$ input"
+        second_label = r"$g$ input" if order == "fg" else r"$f$ input"
+
+        ax.fill(polygon[:, 0], polygon[:, 1], color=fill, alpha=0.24, zorder=1)
+        closed = np.vstack([polygon, polygon[0]])
+        ax.plot(closed[:, 0], closed[:, 1], color=fill, linewidth=2.0, alpha=0.80, zorder=2)
+
+        first_end = origin + first
+        ax.annotate(
+            "",
+            xy=(first_end[0], first_end[1]),
+            xytext=(origin[0], origin[1]),
+            arrowprops=dict(arrowstyle="->", color=first_color, linewidth=2.8),
+            zorder=4,
+        )
+        ax.text(first_end[0] + 0.04, first_end[1], first_label, color=first_color, ha="left", va="center", fontsize=10, bbox=LABEL_BOX)
+
+        second_start = first_end
+        second_end = second_start + second
+        ax.annotate(
+            "",
+            xy=(second_end[0], second_end[1]),
+            xytext=(second_start[0], second_start[1]),
+            arrowprops=dict(arrowstyle="->", color=second_color, linewidth=2.8),
+            zorder=5,
+        )
+        ax.text(second_end[0] + 0.04, second_end[1], second_label, color=second_color, ha="left", va="center", fontsize=10, bbox=LABEL_BOX)
+        ax.text(
+            0.03,
+            0.08,
+            rf"${sign}$ same area, opposite orientation",
+            transform=ax.transAxes,
+            ha="left",
+            va="bottom",
+            fontsize=10.0,
+            color="#333333",
+            bbox=LABEL_BOX,
+            zorder=10,
+        )
+
+    setup_axis(ax_left, r"$\{f,g\}$")
+    setup_axis(ax_right, r"$\{g,f\}$")
+    draw_area(ax_left, "fg")
+    draw_area(ax_right, "gf")
+    fig.suptitle("Swapping the inputs reverses the oriented area", y=0.98)
+    save_figure(fig, path)
+
+
+def make_poisson_jacobi_identity_animation(path: Path) -> None:
+    frames = 132
+    fig, (ax_left, ax_right) = plt.subplots(1, 2, figsize=(11.2, 5.6))
+
+    colors = ["#BC4749", "#2A9D8F", "#4C78A8"]
     node_angles = np.deg2rad([90, 210, 330])
     nodes = np.column_stack([np.cos(node_angles), np.sin(node_angles)])
-    labels = ["$f$", "$g$", "$h$"]
-    colors = ["#BC4749", "#2A9D8F", "#4C78A8"]
-    terms = [
+    node_labels = ["$f$", "$g$", "$h$"]
+    cyclic_labels = [
         r"$\{f,\{g,h\}\}$",
         r"$\{g,\{h,f\}\}$",
         r"$\{h,\{f,g\}\}$",
     ]
-    vector_angles = np.deg2rad([90, 210, 330])
-    term_vectors = np.column_stack([np.cos(vector_angles), np.sin(vector_angles)])
+    cyclic_vectors = [
+        np.array([0.92, 0.00]),
+        np.array([-0.42, 0.72]),
+        np.array([-0.50, -0.72]),
+    ]
 
     def smooth(value: float) -> float:
         value = float(np.clip(value, 0.0, 1.0))
@@ -1501,123 +1579,309 @@ def make_poisson_jacobi_identity_animation(path: Path) -> None:
 
     def setup_axis(ax: plt.Axes, title: str) -> None:
         ax.set_title(title, pad=10)
-        ax.set_xlim(-1.55, 1.55)
-        ax.set_ylim(-1.35, 1.35)
+        ax.set_xlim(-1.42, 1.42)
+        ax.set_ylim(-1.22, 1.30)
         ax.set_aspect("equal", adjustable="box")
         ax.axis("off")
 
-    def draw_frame(frame: int) -> None:
-        ax_left.clear()
-        ax_right.clear()
-        progress = frame / (frames - 1)
-        setup_axis(ax_left, "Three cyclic nested actions")
-        setup_axis(ax_right, "The cyclic sum cancels")
-
+    def draw_permutation_panel(progress: float) -> None:
+        setup_axis(ax_left, "Cyclic permutations")
         triangle = np.vstack([nodes, nodes[0]])
-        ax_left.plot(triangle[:, 0], triangle[:, 1], color="#D0D0D0", linewidth=2.0)
-        for index, (node, label, color) in enumerate(zip(nodes, labels, colors)):
-            ax_left.scatter([node[0]], [node[1]], s=260, color="white", edgecolor=color, linewidth=2.2, zorder=4)
+        ax_left.plot(triangle[:, 0], triangle[:, 1], color="#D0D0D0", linewidth=1.8, zorder=1)
+
+        for node, label, color in zip(nodes, node_labels, colors):
+            ax_left.scatter([node[0]], [node[1]], s=250, facecolor="white", edgecolor=color, linewidth=2.0, zorder=4)
             ax_left.text(node[0], node[1], label, ha="center", va="center", fontsize=15, color=color, zorder=5)
 
         for index in range(3):
-            start = nodes[index]
-            end = nodes[(index + 1) % 3]
-            visible = smooth((progress - 0.14 * index) / 0.34)
+            visible = smooth((progress - 0.16 * index) / 0.26)
             if visible <= 0:
                 continue
+            start = nodes[index]
+            end = nodes[(index + 1) % 3]
             mid = start + visible * (end - start)
             ax_left.annotate(
                 "",
                 xy=(mid[0], mid[1]),
                 xytext=(start[0], start[1]),
-                arrowprops=dict(arrowstyle="->", color=colors[index], linewidth=2.2, alpha=0.35 + 0.55 * visible),
+                arrowprops=dict(arrowstyle="->", color=colors[index], linewidth=2.7, alpha=0.92),
                 zorder=3,
             )
-            label_pos = 0.60 * start + 0.40 * end
+            label_pos = 0.58 * start + 0.42 * end
             ax_left.text(
                 label_pos[0],
                 label_pos[1],
-                terms[index],
+                cyclic_labels[index],
                 ha="center",
                 va="center",
-                fontsize=10.0,
+                fontsize=9.4,
                 color="#333333",
                 bbox=LABEL_BOX,
                 alpha=visible,
                 zorder=6,
             )
 
-        ax_left.text(
-            0.02,
-            0.08,
-            "each generator acts on the bracket of the other two",
-            transform=ax_left.transAxes,
-            ha="left",
-            va="bottom",
-            fontsize=9.2,
-            color="#333333",
-            bbox=LABEL_BOX,
-        )
+        alpha = smooth((progress - 0.66) / 0.18)
+        if alpha > 0:
+            ax_left.text(
+                0.02,
+                0.08,
+                "only the cyclic order enters",
+                transform=ax_left.transAxes,
+                ha="left",
+                va="bottom",
+                fontsize=9.4,
+                color="#333333",
+                bbox=LABEL_BOX,
+                alpha=alpha,
+            )
 
-        partial_sum = np.array([0.0, 0.0])
-        for index, vector in enumerate(term_vectors):
-            visible = smooth((progress - 0.18 * index) / 0.30)
+    def draw_vector_path(origin: np.ndarray, progress: float) -> np.ndarray:
+        current = origin.copy()
+        for index, vector in enumerate(cyclic_vectors):
+            visible = smooth((progress - 0.18 * index) / 0.26)
             if visible <= 0:
-                continue
-            start = partial_sum.copy()
-            end = start + visible * vector
+                break
+            end = current + visible * vector
             ax_right.annotate(
                 "",
                 xy=(end[0], end[1]),
-                xytext=(start[0], start[1]),
-                arrowprops=dict(arrowstyle="->", color=colors[index], linewidth=2.6),
-                zorder=4,
-            )
-            ax_right.text(
-                end[0] + 0.05,
-                end[1],
-                terms[index],
-                ha="left",
-                va="center",
-                fontsize=9.2,
-                color="#333333",
-                bbox=LABEL_BOX,
-                alpha=visible,
+                xytext=(current[0], current[1]),
+                arrowprops=dict(
+                    arrowstyle="->",
+                    color=colors[index],
+                    linewidth=3.0,
+                    alpha=0.95,
+                ),
                 zorder=5,
             )
-            if visible >= 0.999:
-                partial_sum = partial_sum + vector
+            if visible > 0.65:
+                label_offset = np.array([0.03, 0.08 if vector[1] >= 0 else -0.10])
+                ax_right.text(
+                    end[0] + label_offset[0],
+                    end[1] + label_offset[1],
+                    cyclic_labels[index],
+                    ha="left",
+                    va="center",
+                    fontsize=9.0,
+                    color="#333333",
+                    bbox=LABEL_BOX,
+                    alpha=0.92,
+                    zorder=6,
+                )
+            if visible < 0.999:
+                return end
+            current = current + vector
+        return current
 
-        if progress > 0.76:
-            fade = smooth((progress - 0.76) / 0.18)
-            ax_right.scatter([0], [0], s=72, color="#333333", edgecolor="white", linewidth=0.8, zorder=6, alpha=fade)
+    def draw_closure_panel(progress: float) -> None:
+        setup_axis(ax_right, "Cyclic sum closes")
+        origin = np.array([-0.42, -0.34])
+        cyclic_points = [origin]
+        for vector in cyclic_vectors:
+            cyclic_points.append(cyclic_points[-1] + vector)
+        cyclic_outline = np.vstack(cyclic_points)
+        ax_right.plot(cyclic_outline[:, 0], cyclic_outline[:, 1], color="#D0D0D0", linewidth=1.5, zorder=1)
+        ax_right.scatter([origin[0]], [origin[1]], s=48, color="#333333", edgecolor="white", linewidth=0.6, zorder=7)
+
+        draw_vector_path(origin, progress)
+
+        close_alpha = smooth((progress - 0.72) / 0.14)
+        if close_alpha > 0:
+            ax_right.scatter([origin[0]], [origin[1]], s=78, color="#333333", edgecolor="white", linewidth=0.7, alpha=close_alpha, zorder=8)
             ax_right.text(
-                0.0,
-                -1.02,
-                r"$\{f,\{g,h\}\}+\{g,\{h,f\}\}+\{h,\{f,g\}\}=0$",
-                ha="center",
-                va="center",
-                fontsize=10.8,
-                color="#333333",
-                bbox=LABEL_BOX,
-                alpha=fade,
-                zorder=8,
-            )
-            ax_right.text(
-                0.02,
+                0.03,
                 0.08,
-                "the three cyclic nestings balance out",
+                "cyclic permutations return to the start",
                 transform=ax_right.transAxes,
                 ha="left",
                 va="bottom",
-                fontsize=9.2,
+                fontsize=9.4,
                 color="#333333",
                 bbox=LABEL_BOX,
-                alpha=fade,
-                zorder=9,
+                alpha=close_alpha,
+                zorder=8,
             )
 
-        fig.suptitle("Jacobi identity as cyclic balance", y=0.98)
+        formula_alpha = smooth((progress - 0.80) / 0.16)
+        if formula_alpha > 0:
+            ax_right.text(
+                0.50,
+                -0.06,
+                r"$\{f,\{g,h\}\}+\{g,\{h,f\}\}+\{h,\{f,g\}\}=0$",
+                transform=ax_right.transAxes,
+                ha="center",
+                va="top",
+                fontsize=9.6,
+                color="#333333",
+                bbox=LABEL_BOX,
+                alpha=formula_alpha,
+                zorder=8,
+            )
+
+    def draw_frame(frame: int) -> None:
+        ax_left.clear()
+        ax_right.clear()
+        progress = frame / (frames - 1)
+        draw_permutation_panel(progress)
+        draw_closure_panel(progress)
+        fig.suptitle("Jacobi identity as cyclic closure", y=0.98)
+
+    anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
+    save_animation(anim, path, fps=18)
+    plt.close(fig)
+
+
+def make_skier_position_generates_momentum_animation(path: Path) -> None:
+    frames = 132
+    dt = 0.055
+
+    def potential(q: np.ndarray) -> np.ndarray:
+        return 0.50 * np.sin(1.15 * q) + 0.11 * q
+
+    def dpotential(q: np.ndarray) -> np.ndarray:
+        return 0.575 * np.cos(1.15 * q) + 0.11
+
+    def vf(state: np.ndarray) -> np.ndarray:
+        q, p = state
+        return np.array([p, -dpotential(q)])
+
+    states = np.zeros((frames, 2))
+    state = np.array([-2.70, 0.42])
+    for index in range(frames):
+        states[index] = state
+        k1 = vf(state)
+        k2 = vf(state + 0.5 * dt * k1)
+        k3 = vf(state + 0.5 * dt * k2)
+        k4 = vf(state + dt * k3)
+        state = state + (dt / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
+
+    q_hill = np.linspace(-3.25, 0.20, 500)
+    y_hill = potential(q_hill)
+    q_grid = np.linspace(-3.15, 0.10, 15)
+    p_grid = np.linspace(-1.10, 1.10, 11)
+    qq, pp = np.meshgrid(q_grid, p_grid)
+    uq = pp
+    vp = -dpotential(qq)
+
+    fig, (ax_hill, ax_phase) = plt.subplots(1, 2, figsize=(11.2, 5.4))
+
+    def smooth(value: float) -> float:
+        value = float(np.clip(value, 0.0, 1.0))
+        return value * value * (3.0 - 2.0 * value)
+
+    def meter(ax: plt.Axes, label: str, value: float, max_abs: float, color: str, y: float) -> None:
+        x0 = 0.69
+        width = 0.24
+        center = x0 + width / 2
+        ax.text(
+            x0,
+            y + 0.055,
+            label,
+            transform=ax.transAxes,
+            ha="left",
+            va="bottom",
+            fontsize=9.0,
+            color="#333333",
+            bbox=LABEL_BOX,
+            zorder=10,
+        )
+        ax.plot([x0, x0 + width], [y, y], transform=ax.transAxes, color="#C8C8C8", linewidth=4.0, solid_capstyle="round", zorder=9)
+        ax.plot([center, center], [y - 0.035, y + 0.035], transform=ax.transAxes, color="#777777", linewidth=0.9, zorder=10)
+        end = center + (width / 2) * np.clip(value / max_abs, -1.0, 1.0)
+        ax.plot([center, end], [y, y], transform=ax.transAxes, color=color, linewidth=4.8, solid_capstyle="round", zorder=11)
+
+    def draw_frame(frame: int) -> None:
+        ax_hill.clear()
+        ax_phase.clear()
+
+        q, p = states[frame]
+        y = potential(q)
+        slope = dpotential(q)
+        pdot = -slope
+
+        ax_hill.plot(q_hill, y_hill, color="#6B7F5A", linewidth=2.3)
+        ax_hill.fill_between(q_hill, y_hill, y_hill.min() - 0.35, color="#E7E8D8", alpha=0.80)
+        ax_hill.scatter([q], [y + 0.055], s=95, color="#BC4749", edgecolor="white", linewidth=0.9, zorder=6)
+        ax_hill.plot(states[: frame + 1, 0], potential(states[: frame + 1, 0]) + 0.055, color="#BC4749", linewidth=1.7, alpha=0.55)
+
+        tangent = np.array([1.0, slope])
+        tangent = tangent / np.linalg.norm(tangent)
+        tangent_len = 0.45
+        ax_hill.plot(
+            [q - tangent_len * tangent[0], q + tangent_len * tangent[0]],
+            [y - tangent_len * tangent[1], y + tangent_len * tangent[1]],
+            color="#355070",
+            linewidth=2.0,
+            alpha=0.75,
+            zorder=5,
+        )
+        force_dir = np.sign(pdot) if abs(pdot) > 0.04 else 0.0
+        downhill = force_dir * tangent
+        if np.linalg.norm(downhill) > 0:
+            ax_hill.annotate(
+                "",
+                xy=(q + 0.52 * downhill[0], y + 0.055 + 0.52 * downhill[1]),
+                xytext=(q, y + 0.055),
+                arrowprops=dict(arrowstyle="->", color="#BC4749", linewidth=2.4),
+                zorder=7,
+            )
+        momentum_dir = np.sign(p) if abs(p) > 0.04 else 0.0
+        if momentum_dir:
+            ax_hill.annotate(
+                "",
+                xy=(q + 0.45 * momentum_dir, y + 0.26),
+                xytext=(q, y + 0.26),
+                arrowprops=dict(arrowstyle="->", color="#2A9D8F", linewidth=2.2),
+                zorder=7,
+            )
+            ax_hill.text(q + 0.48 * momentum_dir, y + 0.26, r"$p$", ha="left" if momentum_dir > 0 else "right", va="center", fontsize=10, color="#2A9D8F", bbox=LABEL_BOX)
+
+        ax_hill.text(
+            0.03,
+            0.94,
+            r"position selects slope",
+            transform=ax_hill.transAxes,
+            ha="left",
+            va="top",
+            fontsize=10.0,
+            color="#333333",
+            bbox=LABEL_BOX,
+        )
+        ax_hill.text(
+            0.03,
+            0.08,
+            r"slope changes momentum: $\dot p=-V'(q)$",
+            transform=ax_hill.transAxes,
+            ha="left",
+            va="bottom",
+            fontsize=10.0,
+            color="#333333",
+            bbox=LABEL_BOX,
+        )
+        ax_hill.set_title("A potential gradient as an actual hill", pad=10)
+        ax_hill.set_xlim(q_hill.min(), q_hill.max())
+        ax_hill.set_ylim(y_hill.min() - 0.35, y_hill.max() + 0.42)
+        ax_hill.set_xlabel("position $q$")
+        ax_hill.set_ylabel("height / potential")
+        ax_hill.grid(color="#E8E8E8", linewidth=0.7)
+
+        ax_phase.quiver(qq, pp, uq, vp, color="#6D7F95", alpha=0.32, pivot="mid", scale=27, width=0.0035)
+        ax_phase.plot(states[: frame + 1, 0], states[: frame + 1, 1], color="#BC4749", linewidth=2.0, alpha=0.72)
+        ax_phase.scatter([q], [p], s=62, color="#BC4749", edgecolor="white", linewidth=0.8, zorder=7)
+        ax_phase.axhline(0, color="#B8B8B8", linewidth=0.8)
+        ax_phase.axvline(0, color="#B8B8B8", linewidth=0.8)
+        ax_phase.set_title("The same relation in phase space", pad=10)
+        ax_phase.set_xlabel("$q$")
+        ax_phase.set_ylabel("$p$")
+        ax_phase.set_xlim(q_hill.min(), q_hill.max())
+        ax_phase.set_ylim(-1.18, 1.18)
+        ax_phase.grid(color="#E8E8E8", linewidth=0.7)
+        axes_label(ax_phase, r"$\dot q=p,\quad \dot p=-V'(q)$")
+        meter(ax_phase, r"$\dot q$ from $p$", p, 1.05, "#2A9D8F", 0.18)
+        meter(ax_phase, r"$\dot p$ from slope", pdot, 0.72, "#BC4749", 0.08)
+
+        fig.suptitle(r"Position generates momentum through the slope of $H$", y=0.985)
 
     anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
     save_animation(anim, path, fps=18)
@@ -1747,15 +2011,19 @@ def make_fourier_momentum_shift_phase_animation(path: Path) -> None:
     sigma_k = 0.38
     envelope = np.exp(-(x / 5.4) ** 2)
 
-    fig, (ax_k, ax_x) = plt.subplots(1, 2, figsize=(11.2, 5.0))
+    fig, axes = plt.subplots(2, 2, figsize=(11.2, 6.8))
+    ax_k = axes[0, 0]
+    ax_phase = axes[0, 1]
+    ax_original = axes[1, 0]
+    ax_product = axes[1, 1]
 
     def smooth(value: float) -> float:
         value = float(np.clip(value, 0.0, 1.0))
         return value * value * (3.0 - 2.0 * value)
 
     def draw_frame(frame: int) -> None:
-        ax_k.clear()
-        ax_x.clear()
+        for ax in axes.ravel():
+            ax.clear()
         progress = smooth(frame / (frames - 1))
         b = b_final * progress
         profile_initial = np.exp(-0.5 * ((k - k0) / sigma_k) ** 2)
@@ -1790,41 +2058,180 @@ def make_fourier_momentum_shift_phase_animation(path: Path) -> None:
         ax_k.grid(color="#E8E8E8", linewidth=0.7)
 
         wave_initial = envelope * np.cos(k0 * x)
+        phase_factor = np.cos(b * x)
         wave_shifted = envelope * np.cos((k0 + b) * x)
-        ax_x.plot(x, wave_initial, color="#A8B5C6", linewidth=1.3, alpha=0.48, linestyle="--")
-        ax_x.plot(x, wave_shifted, color="#355070", linewidth=2.0)
-        ax_x.plot(x, envelope, color="#D0D0D0", linewidth=0.9, alpha=0.75)
-        ax_x.plot(x, -envelope, color="#D0D0D0", linewidth=0.9, alpha=0.75)
-        ax_x.text(
+
+        ax_phase.plot(x, phase_factor, color="#BC4749", linewidth=1.8)
+        ax_phase.text(
+            0.03,
+            0.90,
+            r"phase factor $e^{ibx}$",
+            transform=ax_phase.transAxes,
+            ha="left",
+            va="top",
+            fontsize=10.5,
+            color="#333333",
+            bbox=LABEL_BOX,
+        )
+        ax_phase.set_title("Position-dependent phase", pad=10)
+        ax_phase.set_xlim(-8.0, 8.0)
+        ax_phase.set_ylim(-1.12, 1.12)
+        ax_phase.grid(color="#E8E8E8", linewidth=0.7)
+        ax_phase.axhline(0, color="#B8B8B8", linewidth=0.8)
+        ax_phase.set_xlabel("x")
+        ax_phase.set_ylabel("real part")
+
+        ax_original.plot(x, wave_initial, color="#A8B5C6", linewidth=1.8)
+        ax_original.plot(x, envelope, color="#D0D0D0", linewidth=0.8, alpha=0.65)
+        ax_original.plot(x, -envelope, color="#D0D0D0", linewidth=0.8, alpha=0.65)
+        ax_original.text(
+            0.03,
+            0.90,
+            r"original $\psi(x)$",
+            transform=ax_original.transAxes,
+            ha="left",
+            va="top",
+            fontsize=10.5,
+            color="#333333",
+            bbox=LABEL_BOX,
+        )
+        ax_original.set_title("Original wave", pad=10)
+        ax_original.set_xlim(-8.0, 8.0)
+        ax_original.set_ylim(-1.12, 1.12)
+        ax_original.grid(color="#E8E8E8", linewidth=0.7)
+        ax_original.axhline(0, color="#B8B8B8", linewidth=0.8)
+        ax_original.set_xlabel("x")
+        ax_original.set_ylabel("real part")
+
+        ax_product.plot(x, wave_initial, color="#A8B5C6", linewidth=1.1, alpha=0.42, linestyle="--")
+        ax_product.plot(x, wave_shifted, color="#355070", linewidth=2.0)
+        ax_product.plot(x, envelope, color="#D0D0D0", linewidth=0.8, alpha=0.65)
+        ax_product.plot(x, -envelope, color="#D0D0D0", linewidth=0.8, alpha=0.65)
+        ax_product.text(
             0.03,
             0.95,
             r"$(M_b\psi)(x)=e^{ibx}\psi(x)$",
-            transform=ax_x.transAxes,
+            transform=ax_product.transAxes,
             ha="left",
             va="top",
             fontsize=11.0,
             color="#333333",
             bbox=LABEL_BOX,
         )
-        ax_x.text(
+        ax_product.text(
             0.03,
             0.08,
             r"$e^{ikx}\mapsto e^{i(k+b)x}$",
-            transform=ax_x.transAxes,
+            transform=ax_product.transAxes,
             ha="left",
             va="bottom",
             fontsize=11.0,
             color="#333333",
             bbox=LABEL_BOX,
         )
-        ax_x.set_title("The same operation in position space", pad=10)
-        ax_x.set_xlabel("x")
-        ax_x.set_ylabel(r"real part")
-        ax_x.set_xlim(-8.0, 8.0)
-        ax_x.set_ylim(-1.1, 1.1)
-        ax_x.grid(color="#E8E8E8", linewidth=0.7)
+        ax_product.set_title("Product: phase times wave", pad=10)
+        ax_product.set_xlabel("x")
+        ax_product.set_ylabel("real part")
+        ax_product.set_xlim(-8.0, 8.0)
+        ax_product.set_ylim(-1.12, 1.12)
+        ax_product.grid(color="#E8E8E8", linewidth=0.7)
+        ax_product.axhline(0, color="#B8B8B8", linewidth=0.8)
 
         fig.suptitle("A shift in wave number appears as phase modulation", y=0.98)
+
+    anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
+    save_animation(anim, path, fps=18)
+    plt.close(fig)
+
+
+def make_fourier_phase_shift_mechanism_animation(path: Path) -> None:
+    frames = 108
+    x = np.linspace(-2.0 * np.pi, 2.0 * np.pi, 650)
+    k = np.linspace(-0.3, 4.6, 500)
+    k0 = 1.0
+    b_final = 1.45
+    sigma = 0.075
+
+    fig, (ax_wave, ax_k) = plt.subplots(1, 2, figsize=(11.2, 5.0))
+
+    def smooth(value: float) -> float:
+        value = float(np.clip(value, 0.0, 1.0))
+        return value * value * (3.0 - 2.0 * value)
+
+    def draw_frame(frame: int) -> None:
+        ax_wave.clear()
+        ax_k.clear()
+        progress = smooth(frame / (frames - 1))
+        b = b_final * progress
+        wave_before = np.cos(k0 * x)
+        phase = np.cos(b * x)
+        wave_after = np.cos((k0 + b) * x)
+
+        ax_wave.plot(x, wave_before, color="#A8B5C6", linewidth=1.2, linestyle="--", alpha=0.62, label=r"$e^{ikx}$")
+        ax_wave.plot(x, phase, color="#BC4749", linewidth=1.3, alpha=0.56, label=r"$e^{ibx}$")
+        ax_wave.plot(x, wave_after, color="#355070", linewidth=2.2, label=r"$e^{i(k+b)x}$")
+        ax_wave.axhline(0, color="#B8B8B8", linewidth=0.8)
+        ax_wave.set_xlim(x.min(), x.max())
+        ax_wave.set_ylim(-1.18, 1.18)
+        ax_wave.set_xlabel("x")
+        ax_wave.set_ylabel("real part")
+        ax_wave.grid(color="#E8E8E8", linewidth=0.7)
+        ax_wave.set_title("Phase multiplication adds wave number", pad=10)
+        ax_wave.text(
+            0.03,
+            0.94,
+            r"$e^{ibx}\,e^{ikx}=e^{i(k+b)x}$",
+            transform=ax_wave.transAxes,
+            ha="left",
+            va="top",
+            fontsize=12.0,
+            color="#333333",
+            bbox=LABEL_BOX,
+        )
+        ax_wave.text(
+            0.03,
+            0.08,
+            rf"$k=1.00,\quad b={b:0.2f},\quad k+b={k0 + b:0.2f}$",
+            transform=ax_wave.transAxes,
+            ha="left",
+            va="bottom",
+            fontsize=10.2,
+            color="#333333",
+            bbox=LABEL_BOX,
+        )
+        ax_wave.legend(loc="upper right", frameon=True, fontsize=8.8)
+
+        before = np.exp(-0.5 * ((k - k0) / sigma) ** 2)
+        after = np.exp(-0.5 * ((k - (k0 + b)) / sigma) ** 2)
+        ax_k.plot(k, before, color="#A8B5C6", linewidth=1.4, linestyle="--", alpha=0.65)
+        ax_k.plot(k, after, color="#355070", linewidth=2.2)
+        ax_k.axvline(k0, color="#A8B5C6", linewidth=1.0, linestyle="--", alpha=0.75)
+        ax_k.axvline(k0 + b, color="#355070", linewidth=1.2, alpha=0.85)
+        ax_k.annotate(
+            "",
+            xy=(k0 + b, 0.82),
+            xytext=(k0, 0.82),
+            arrowprops=dict(arrowstyle="->", color="#BC4749", linewidth=2.0),
+            zorder=6,
+        )
+        ax_k.text(
+            (2 * k0 + b) / 2,
+            0.91,
+            r"shift by $b$",
+            ha="center",
+            va="bottom",
+            fontsize=10.0,
+            color="#BC4749",
+            bbox=LABEL_BOX,
+        )
+        ax_k.set_xlim(k.min(), k.max())
+        ax_k.set_ylim(-0.05, 1.12)
+        ax_k.set_xlabel("wave number k")
+        ax_k.set_ylabel("amplitude")
+        ax_k.grid(color="#E8E8E8", linewidth=0.7)
+        ax_k.set_title("The same operation in wave-number space", pad=10)
+
+        fig.suptitle("Multiplying by a phase shifts Fourier components", y=0.985)
 
     anim = FuncAnimation(fig, draw_frame, frames=frames, interval=1000 / 18, blit=False)
     save_animation(anim, path, fps=18)
@@ -2040,18 +2447,20 @@ def make_poisson_bidirectional_flow_animation(path: Path) -> None:
         setup_axis(ax_left, r"$\{f,g\}$: read $f$ along the flow of $g$")
         setup_axis(ax_right, r"$\{g,f\}$: read $g$ along the flow of $f$")
 
-        ax_left.contour(qq, pp, f_grid, levels=f_levels, colors="#777777", linewidths=0.95, alpha=0.62)
-        ax_left.quiver(qvq, pvq, xg_u, xg_v, color="#355070", alpha=0.42, pivot="mid", scale=23, width=0.0038)
-        ax_right.contour(qq, pp, g_grid, levels=g_levels, colors="#777777", linewidths=0.95, alpha=0.62)
-        ax_right.quiver(qvq, pvq, xf_u, xf_v, color="#355070", alpha=0.42, pivot="mid", scale=23, width=0.0038)
+        ax_left.contour(qq, pp, g_grid, levels=g_levels, colors="#777777", linewidths=0.95, alpha=0.62)
+        ax_left.streamplot(q, p, pp, -(qq**3 + 0.16), color=(0.19, 0.31, 0.44, 0.36), density=1.0, linewidth=0.75, arrowsize=0.8)
+        ax_left.quiver(qvq, pvq, xg_u, xg_v, color="#355070", alpha=0.34, pivot="mid", scale=23, width=0.0035)
+        ax_right.contour(qq, pp, f_grid, levels=f_levels, colors="#777777", linewidths=0.95, alpha=0.62)
+        ax_right.streamplot(q, p, pp, -qq, color=(0.19, 0.31, 0.44, 0.36), density=1.0, linewidth=0.75, arrowsize=0.8)
+        ax_right.quiver(qvq, pvq, xf_u, xf_v, color="#355070", alpha=0.34, pivot="mid", scale=23, width=0.0035)
 
         for ax, states, color in [(ax_left, left_states, "#BC4749"), (ax_right, right_states, "#2A9D8F")]:
             trail = states[: frame + 1]
             ax.plot(trail[:, 0], trail[:, 1], color=color, linewidth=2.0, alpha=0.74, zorder=6)
             ax.scatter([states[frame, 0]], [states[frame, 1]], s=44, color=color, edgecolor="white", linewidth=0.8, zorder=7)
 
-        axes_label(ax_left, r"$g$ generates the motion")
-        axes_label(ax_right, r"$f$ generates the motion")
+        axes_label(ax_left, r"$g$ generates the motion; measure $f$")
+        axes_label(ax_right, r"$f$ generates the motion; measure $g$")
         meter(ax_left, r"value of $f$", float(left_values[frame]), left_min, left_max, "#BC4749")
         meter(ax_right, r"value of $g$", float(right_values[frame]), right_min, right_max, "#2A9D8F")
         fig.suptitle("Either function can be measured along the flow generated by the other", y=0.985)
@@ -2063,8 +2472,8 @@ def make_poisson_bidirectional_flow_animation(path: Path) -> None:
 
 def make_poisson_bracket_vectorfield_identity_animation(path: Path) -> None:
     frames = 96
-    eps = 0.46
-    start = np.array([0.78, 0.52])
+    eps = 0.62
+    start = np.array([0.62, 0.56])
 
     def flow_f(point: np.ndarray, amount: float) -> np.ndarray:
         q0, p0 = point
@@ -2117,6 +2526,41 @@ def make_poisson_bracket_vectorfield_identity_animation(path: Path) -> None:
             path_points = path_points + [current]
         return np.vstack(path_points)
 
+    def draw_segmented_route(
+        ax: plt.Axes,
+        points: list[np.ndarray],
+        progress: float,
+        colors: tuple[str, str],
+    ) -> np.ndarray:
+        progress = float(np.clip(progress, 0.0, 1.0))
+        first_progress = min(progress * 2.0, 1.0)
+        second_progress = min(max(progress * 2.0 - 1.0, 0.0), 1.0)
+        first_end = points[0] + first_progress * (points[1] - points[0])
+        ax.plot(
+            [points[0][0], first_end[0]],
+            [points[0][1], first_end[1]],
+            color=colors[0],
+            linewidth=3.8,
+            alpha=0.88,
+            solid_capstyle="round",
+            zorder=5,
+        )
+        current = first_end
+        if progress > 0.5:
+            second_end = points[1] + second_progress * (points[2] - points[1])
+            ax.plot(
+                [points[1][0], second_end[0]],
+                [points[1][1], second_end[1]],
+                color=colors[1],
+                linewidth=3.8,
+                alpha=0.88,
+                solid_capstyle="round",
+                zorder=5,
+            )
+            current = second_end
+        ax.scatter([current[0]], [current[1]], s=46, color=colors[1 if progress > 0.5 else 0], edgecolor="white", linewidth=0.7, zorder=7)
+        return current
+
     def draw_frame(frame: int) -> None:
         ax_left.clear()
         ax_right.clear()
@@ -2129,12 +2573,8 @@ def make_poisson_bracket_vectorfield_identity_animation(path: Path) -> None:
 
         phase_a = min(progress / 0.72, 1.0)
         phase_b = min(max((progress - 0.10) / 0.72, 0.0), 1.0)
-        path_a = interpolate_path([start, after_f, fg_end], phase_a)
-        path_b = interpolate_path([start, after_g, gf_end], phase_b)
-        ax_left.plot(path_a[:, 0], path_a[:, 1], color="#BC4749", linewidth=2.4, zorder=5)
-        ax_left.plot(path_b[:, 0], path_b[:, 1], color="#2A9D8F", linewidth=2.4, zorder=5)
-        ax_left.scatter([path_a[-1, 0]], [path_a[-1, 1]], s=32, color="#BC4749", edgecolor="white", linewidth=0.6, zorder=6)
-        ax_left.scatter([path_b[-1, 0]], [path_b[-1, 1]], s=32, color="#2A9D8F", edgecolor="white", linewidth=0.6, zorder=6)
+        current_a = draw_segmented_route(ax_left, [start, after_f, fg_end], phase_a, ("#BC4749", "#2A9D8F"))
+        current_b = draw_segmented_route(ax_left, [start, after_g, gf_end], phase_b, ("#2A9D8F", "#BC4749"))
 
         if progress > 0.78:
             fade = min((progress - 0.78) / 0.18, 1.0)
@@ -2148,7 +2588,7 @@ def make_poisson_bracket_vectorfield_identity_animation(path: Path) -> None:
             ax_left.text(
                 0.03,
                 0.08,
-                "endpoint difference",
+                r"endpoint difference: $[X_f,X_g]$",
                 transform=ax_left.transAxes,
                 ha="left",
                 va="bottom",
@@ -2220,8 +2660,18 @@ def make_lie_generator_tangent_flow_animation(path: Path) -> None:
             arc_theta = np.linspace(0.0, theta, max(4, frame + 2))
             ax.plot(np.cos(arc_theta), np.sin(arc_theta), color="#BC4749", linewidth=3.0, alpha=0.78)
 
+        ax.plot([1.0, 1.0], [-0.42, 0.50], color="#9AA3AF", linewidth=1.5, alpha=0.75)
         ax.scatter([1.0], [0.0], s=46, color="#355070", zorder=4)
         ax.text(1.08, -0.08, r"$e$", ha="left", va="top", fontsize=12, color="#355070")
+        ax.annotate(
+            "",
+            xy=(1.0, 0.42),
+            xytext=(1.0, 0.02),
+            arrowprops=dict(arrowstyle="->", color="#355070", linewidth=2.2),
+            zorder=6,
+        )
+        ax.text(1.08, 0.45, r"$X$", ha="left", va="bottom", fontsize=13, color="#355070")
+
         ax.scatter([point[0]], [point[1]], s=58, color="#BC4749", edgecolor="white", linewidth=0.8, zorder=5)
         ax.text(point[0] + 0.07, point[1] + 0.07, r"$G(t)$", ha="left", va="bottom", fontsize=12, color="#BC4749")
         ax.annotate(
@@ -2231,11 +2681,19 @@ def make_lie_generator_tangent_flow_animation(path: Path) -> None:
             arrowprops=dict(arrowstyle="->", color="#2A9D8F", linewidth=2.4),
             zorder=6,
         )
-        ax.text(arrow_end[0] + 0.05, arrow_end[1], r"$X$", ha="left", va="center", fontsize=13, color="#2A9D8F")
+        ax.text(
+            arrow_end[0] + 0.05,
+            arrow_end[1],
+            r"$XG(t)$",
+            ha="left",
+            va="center",
+            fontsize=12.5,
+            color="#2A9D8F",
+            bbox=LABEL_BOX,
+        )
 
-        small_start_theta = min(theta, theta_final * 0.42)
-        for offset in [0.10, 0.20, 0.30]:
-            t0 = max(0.0, small_start_theta - offset)
+        step_thetas = np.linspace(0.0, theta, 6)[1:-1] if theta > 0.35 else []
+        for t0 in step_thetas:
             p0 = np.array([np.cos(t0), np.sin(t0)])
             v0 = np.array([-np.sin(t0), np.cos(t0)])
             ax.annotate(
@@ -2248,7 +2706,18 @@ def make_lie_generator_tangent_flow_animation(path: Path) -> None:
         ax.text(
             0.03,
             0.95,
-            "finite transformation traced by tangent infinitesimals",
+            "fixed generator at the identity",
+            transform=ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=10,
+            color="#333333",
+            bbox=LABEL_BOX,
+        )
+        ax.text(
+            0.03,
+            0.84,
+            r"the current tangent is $XG(t)$",
             transform=ax.transAxes,
             ha="left",
             va="top",
@@ -2259,15 +2728,15 @@ def make_lie_generator_tangent_flow_animation(path: Path) -> None:
         ax.text(
             0.03,
             0.08,
-            r"$X$ is tangent to the transformation curve",
+            r"$\frac{d}{dt}G(t)=XG(t)$",
             transform=ax.transAxes,
             ha="left",
             va="bottom",
-            fontsize=10,
+            fontsize=14,
             color="#333333",
             bbox=LABEL_BOX,
         )
-        ax.set_title("From infinitesimal generator to finite transformation", pad=10)
+        ax.set_title("A fixed generator induces the moving tangent", pad=10)
         ax.set_xlim(-1.55, 1.75)
         ax.set_ylim(-1.35, 1.35)
         ax.set_aspect("equal", adjustable="box")
@@ -2559,6 +3028,38 @@ def make_quantum_bridge_diagram(path: Path) -> None:
     save_figure(fig, path)
 
 
+def make_canonical_commutation_chain_diagram(path: Path) -> None:
+    fig, ax = plt.subplots(figsize=(10.2, 3.2))
+    ax.axis("off")
+    ax.set_xlim(0, 12)
+    ax.set_ylim(0, 4)
+
+    xs = [2.0, 6.0, 10.0]
+    equations = [
+        r"$\{q,p\}=1$",
+        r"$[\hat x,\hat k]=i$",
+        r"$[\hat x,\hat p]=i\hbar$",
+    ]
+    captions = [
+        "classical canonical pairing",
+        "Fourier generator pairing",
+        "quantum commutation relation",
+    ]
+    colors = ["#355070", "#6D597A", "#BC4749"]
+
+    for x, equation, caption, color in zip(xs, equations, captions, colors):
+        rect = plt.Rectangle((x - 1.35, 1.55), 2.7, 1.05, facecolor="#F8F8F8", edgecolor=color, linewidth=1.7)
+        ax.add_patch(rect)
+        ax.text(x, 2.12, equation, ha="center", va="center", fontsize=18, color="#333333")
+        ax.text(x, 1.03, caption, ha="center", va="center", fontsize=9.8, color="#555555")
+
+    for left, right in zip(xs[:-1], xs[1:]):
+        ax.annotate("", xy=(right - 1.55, 2.08), xytext=(left + 1.55, 2.08), arrowprops=dict(arrowstyle="->", linewidth=1.9, color="#777777"))
+
+    ax.set_title("Canonical pairing becomes canonical commutation", pad=10)
+    save_figure(fig, path)
+
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     configure_style()
@@ -2581,17 +3082,21 @@ def main() -> None:
     make_action_decomposition_diagram(OUTPUT_DIR / "differential-action-decomposition.png")
     make_poisson_compression_diagram(OUTPUT_DIR / "differential-poisson-compression.png")
     make_poisson_antisymmetry_area_animation(OUTPUT_DIR / "differential-poisson-antisymmetry-area.mp4")
+    make_poisson_antisymmetry_area_diagram(OUTPUT_DIR / "differential-poisson-antisymmetry-area.png")
     make_poisson_jacobi_identity_animation(OUTPUT_DIR / "differential-poisson-jacobi-identity.mp4")
+    make_skier_position_generates_momentum_animation(OUTPUT_DIR / "differential-skier-position-generates-momentum.mp4")
     make_poisson_product_rule_animation(OUTPUT_DIR / "differential-poisson-product-rule.mp4")
     make_poisson_bidirectional_flow_animation(OUTPUT_DIR / "differential-poisson-bidirectional-flow.mp4")
     make_poisson_bracket_vectorfield_identity_animation(OUTPUT_DIR / "differential-poisson-bracket-vectorfield-identity.mp4")
     make_fourier_momentum_shift_phase_animation(OUTPUT_DIR / "differential-fourier-momentum-shift-phase.mp4")
+    make_fourier_phase_shift_mechanism_animation(OUTPUT_DIR / "differential-fourier-phase-shift-mechanism.mp4")
     make_weyl_order_phase_animation(OUTPUT_DIR / "differential-weyl-order-phase.mp4")
     make_lie_generator_tangent_flow_animation(OUTPUT_DIR / "differential-lie-generator-tangent-flow.mp4")
     make_exponential_map_accumulation_animation(OUTPUT_DIR / "differential-exponential-map-accumulation.mp4")
     make_generator_vector_field_contrast_animation(OUTPUT_DIR / "differential-generator-vector-field-contrast.mp4")
     make_function_flow_stack_diagram(OUTPUT_DIR / "differential-function-flow-stack.png")
     make_quantum_bridge_diagram(OUTPUT_DIR / "differential-quantum-bridge.png")
+    make_canonical_commutation_chain_diagram(OUTPUT_DIR / "differential-canonical-commutation-chain.png")
 
 
 if __name__ == "__main__":
