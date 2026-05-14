@@ -721,7 +721,7 @@ As any two numbers can be combined via addition or multiplication to produce a n
 
 ### What We Mean by an Algebra
 
-Before exploring Poisson algebra specifically, let's remind ourselves what an "algebra" is. It begins with some class of objects and then specifies what operations may be performed on those objects and what properties those operations satisfy. Numbers with addition and multiplication and associativity and commutativity are the familiar example. Different algebras may involve different objects, operations, and properties, but these differences fall into a common taxonomy. 
+Before exploring Poisson algebra specifically, we all know algebra, but it is worth reminding ourselves what that word actually means. An algebra begins with some class of objects and then specifies what operations may be performed on those objects and what properties those operations satisfy. Numbers with addition and multiplication and associativity and commutativity are the familiar example. Different algebras may involve different objects, operations, and properties, but these differences fall into a common taxonomy. 
 
 #### Taxonomy of Operations
 
@@ -748,7 +748,7 @@ Algebras are "closed," meaning that when allowed objects are combined, the resul
 
 With this framing in mind, we can now turn to Poisson algebra. Before discussing the specific operations and properties that form the Poisson algebra notation, let's first look at its geometric interpretation. A Poisson algebra belongs to the broader class of Lie algebras, in which we represent a finite transformation on a manifold by an infinitesimal displacement tangent to the transformation.
 
-This picture is captured schematically as a differential equation that represents the action of an infinitesimal generator on a finite transformation:
+This picture is captured schematically as a differential equation that represents the action of an infinitesimal generator on a finite transformation. In rough visual terms, the generator acts on the current transformation to produce its next infinitesimal change.
 
 ```math
 \frac{d}{dt}G(t) = X\,G(t).
@@ -816,7 +816,7 @@ function -> vector field -> flow -> canonical transformations.
 One may refer somewhat ambiguously to either the functions or the vector fields as the generator of the flow. Before writing the Poisson bracket in coordinates, we can say what it has to do geometrically. If $f$ and $g$ determine vector fields $X_f$ and $X_g$, those vector fields have their own Lie bracket, $[X_f,X_g]$. The Poisson bracket $\{f,g\}$ is the function whose vector field corresponds to that vector-field bracket:
 
 ```math
-[X_f,X_g] = X_{\{f,g\}},
+[X_f,X_g] = -X_{\{f,g\}},
 ```
 
 This identity says that the Lie algebra of infinitesimal canonical transformations persists when one passes from vector fields to the functions that encode them.
@@ -827,7 +827,7 @@ This identity says that the Lie algebra of infinitesimal canonical transformatio
 
 [Open MP4: differential-poisson-bracket-vectorfield-identity.mp4](animations/differential-poisson-bracket-vectorfield-identity.mp4)
 
-The payoff is that one can work in the Lie algebra of infinitesimal generating functions rather than directly in the Lie group of finite transformations. Finite transformations form a generally curved group manifold, where composition is the native operation. Infinitesimal generators live in a linear space tangent to the group at the identity, where objects can be added, scaled, and bracketed. That is what makes an algebra possible here, and it is what makes insights and theorems visible in algebraic identities.
+The payoff is that one can work in the Lie algebra of infinitesimal generating functions rather than directly in the Lie group of finite transformations. The space of finite transformations can be pictured as a curved surface of transformations, where composition is the native operation. Infinitesimal generators live in a linear space tangent to the group at the identity, where objects can be added, scaled, and bracketed. That is what makes an algebra possible here, and it is what makes insights and theorems visible in algebraic identities.
 
 #### The Operations of the Algebra
 
@@ -849,7 +849,7 @@ Hamiltonian mechanics adds an additional operation, the Poisson bracket:
 \frac{\partial f}{\partial p_i}\frac{\partial g}{\partial q^i}.
 ```
 
-With $g$ held fixed, $\{f,g\}$ is the change of $f$ when the state is moved along the vector field determined by $g$. The result is another smooth function on phase space that goes to zero as the original two function's flows align.
+With $g$ held fixed, $\{f,g\}$ is the change of $f$ when the state is moved along the vector field determined by $g$. The result is another smooth function on phase space that goes to zero as the original two functions' flows align.
 
 #### The Properties of Poisson Algebra
 
@@ -879,7 +879,7 @@ This sign flip is the algebraic form of oriented area. Swapping the inputs rever
 
 Jacobi Identity:
 
-The remaining coherence condition is cyclic. The three bracket nestings obtained by cycling $f$, $g$, and $h$ cancel:
+For ordinary multiplication, associativity says that regrouping operations along a line does not change the final product. The Poisson bracket is an oriented planar operation, so its corresponding coherence rule is cyclic rather than linear. The three bracket nestings obtained by cycling $f$, $g$, and $h$ cancel:
 
 ```math
 \{f,\{g,h\}\}+\{g,\{h,f\}\}+\{h,\{f,g\}\}=0.
@@ -922,7 +922,7 @@ Once the Poisson bracket is in hand, physical relationships that previously had 
 
 We can read these equations in shorthand as "momentum generates position translations" and "position generates momentum translations." 
 
-At this point the attentive reader may scratch their head. From relativity and Noether’s theorem, we expect momentum to be paired with position displacement, and in Hamiltonian language we expect momentum to generate position translations. But what could it mean for position to generate momentum? Momentum symmetry? Conserved position? Not quite. The answer is that position and momentum are reciprocally paired as generators of canonical transformations, not as generators of physical symmetries. A shift in position may be a symmetry of the physical system. A shift in momentum usually is not. The reciprocal generator relation is instead part of the phase-space structure that preserves information density. There is nonetheless a physical intuition behind it.
+At this point the questioning reader may scratch their head. From relativity and Noether’s theorem, we expect momentum to be paired with position displacement, and in Hamiltonian language we expect momentum to generate position translations. But what could it mean for position to generate momentum? Momentum symmetry? Conserved position? Not quite. The answer is that position and momentum are reciprocally paired as generators of canonical transformations, not as generators of physical symmetries. A shift in position may be a symmetry of the physical system. A shift in momentum usually is not. The reciprocal generator relation is instead part of the phase-space structure that preserves information density. There is nonetheless a physical intuition behind it.
 
 Imagine a downhill skier. The mountain's incline determines how their momentum changes, and that incline is a function of position. So $\dot p$ is determined by position. This example is illustrative because it realizes the idea of a potential gradient as an actual hill. Whatever the details of the system, if we choose $p$ and $q$ so that $H = K(p) + V(q)$, then the more $H$ changes with respect to $q$, the greater the rate of change of momentum. This is what is meant, dynamically, by saying that $q$ generates $p$.
 
@@ -932,9 +932,14 @@ Imagine a downhill skier. The mountain's incline determines how their momentum c
 
 [Open MP4: differential-skier-position-generates-momentum.mp4](animations/differential-skier-position-generates-momentum.mp4)
 
-While position/momentum pairing does not belong to the symmetries of classical physics, it does appear in the symmetry space of wavefunctions \(if we associate wave number with momentum.\) The Fourier transform exchanges the two. Shifting in $x$ corresponds to multiplying by a $k$-phase, while multiplying by an $x$-phase shifts $k$. In that setting, $k$ generates translations in $x$, and $x$ generates translations in $k$. Quantum mechanics will turn this reciprocal Fourier symmetry into the canonical commutation relation, which underlies many aspects of quantum theory, including the structure of the Schrödinger equation and the Heisenberg uncertainty principle.
+That distinction will matter later. Quantum mechanics realizes the position/momentum pairing in the representation of translations on waves. There, the classical relation $\{q,p\}=1$ becomes the commutator relation $[\hat q,\hat p]=i\hbar$.
 
-The similarity of wave function symmetry to symplectic geometry is not conincidental. In classical phase space, a position displacement and a momentum displacement can be represented by vectors such as $(a,0)$ and $(0,b)$. As we have seen, the symplectic form measures their oriented phase-space area:
+::: sidebar
+#### Fourier Phase and the Quantum Lift
+
+While position/momentum pairing does not belong to the symmetries of classical physics, it does appear in the symmetry space of wavefunctions (if we associate wave number with momentum). The Fourier transform exchanges the two. Shifting in $x$ corresponds to multiplying by a $k$-phase, while multiplying by an $x$-phase shifts $k$. In that setting, $k$ generates translations in $x$, and $x$ generates translations in $k$. Quantum mechanics will turn this reciprocal Fourier symmetry into the canonical commutation relation, which underlies many aspects of quantum theory, including the structure of the Schrödinger equation and the Heisenberg uncertainty principle.
+
+The similarity of wave function symmetry to symplectic geometry is not coincidental. In classical phase space, a position displacement and a momentum displacement can be represented by vectors such as $(a,0)$ and $(0,b)$. As we have seen, the symplectic form measures their oriented phase-space area:
 
 ```math
 \omega((a,0),(0,b)) = ab.
@@ -996,7 +1001,7 @@ Thus
 M_bT_a = e^{iab}T_aM_b,
 ```
 
-up to sign convention. The phase factor is controlled by the same product $ab$ measured by the symplectic form:
+The phase factor is controlled by the same product $ab$ measured by the symplectic form:
 
 ```math
 e^{iab}=e^{i\omega((a,0),(0,b))}.
@@ -1017,6 +1022,7 @@ Thus the classical area pairing becomes, in wave mechanics, a phase relation. Th
 ![Canonical commutation chain diagram](animations/differential-canonical-commutation-chain.png)
 
 *The classical canonical pairing becomes a Fourier phase relation and then the quantum commutator.*
+:::
 
 ##### Hamiltonian Dynamics
 The master dynamical statement is that, for any smooth function $f$ on phase space,

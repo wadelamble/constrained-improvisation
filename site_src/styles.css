@@ -298,6 +298,33 @@ a:hover {
   border-color: #a9a293;
 }
 
+.manuscript-sidebar {
+  margin: 1.7rem 0 1.9rem;
+  padding: 0.95rem 1rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+}
+
+.manuscript-sidebar::before {
+  content: "Sidebar";
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--accent);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.manuscript-sidebar h4 {
+  margin-top: 0;
+}
+
+.manuscript-sidebar .media-figure {
+  background: #fffdf8;
+}
+
 .page-toc {
   position: sticky;
   top: 1.2rem;

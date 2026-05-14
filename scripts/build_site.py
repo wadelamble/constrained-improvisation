@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import os
 import re
 import shutil
 from dataclasses import dataclass, field
@@ -14,6 +15,15 @@ DRAFT = ROOT / "content" / "drafts" / "Differential-Mechanics-With-Diagrams.md"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 
 TITLE = "Nature's Improvisation on the Structure of Symmetry"
+BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
+
+
+def site_path(path: str) -> str:
+    if path.startswith("http://") or path.startswith("https://"):
+        return path
+    if not path.startswith("/"):
+        path = f"/{path}"
+    return f"{BASE_PATH}{path}" if BASE_PATH else path
 
 
 @dataclass
@@ -116,7 +126,7 @@ def page_shell(title: str, body: str, toc: str = "") -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{html.escape(title)} | {html.escape(TITLE)}</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="{site_path('/styles.css')}">
   <script>
   window.MathJax = {{
     tex: {{
@@ -127,16 +137,16 @@ def page_shell(title: str, body: str, toc: str = "") -> str:
   }};
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer src="/main.js"></script>
+  <script defer src="{site_path('/main.js')}"></script>
 </head>
 <body>
   <div class="site-shell">
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="site-mark" href="/">{html.escape(TITLE)}</a>
+        <a class="site-mark" href="{site_path('/')}">{html.escape(TITLE)}</a>
         <nav class="site-nav" aria-label="Site">
-          <a href="/">Contents</a>
-          <a href="/differential-mechanics/">Differential Mechanics</a>
+          <a href="{site_path('/')}">Contents</a>
+          <a href="{site_path('/differential-mechanics/')}">Differential Mechanics</a>
         </nav>
       </div>
     </header>
@@ -161,7 +171,7 @@ def render_home() -> str:
     for section in SECTIONS:
         status = f'<span class="status">{html.escape(section.status)}</span>' if section.status else ""
         label = html.escape(section.title)
-        title = f'<a href="{section.href}">{label}</a>{status}' if section.href else f"<span>{label}</span>{status}"
+        title = f'<a href="{site_path(section.href)}">{label}</a>{status}' if section.href else f"<span>{label}</span>{status}"
         outline = ""
         if section.outline:
             outline_items = "\n".join(f"<li>{html.escape(item)}</li>" for item in section.outline)
@@ -206,7 +216,7 @@ def inline(text: str) -> str:
 
 def rewrite_asset_path(path: str) -> str:
     if path.startswith("animations/"):
-        return f"/assets/{path}"
+        return site_path(f"/assets/{path}")
     return path
 
 
@@ -290,6 +300,18 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
                 html_blocks.append(f"<pre><code>{html.escape(code)}</code></pre>")
             continue
 
+        if stripped == "::: sidebar":
+            i += 1
+            sidebar_lines = []
+            while i < len(lines) and lines[i].strip() != ":::":
+                sidebar_lines.append(lines[i])
+                i += 1
+            if i < len(lines):
+                i += 1
+            sidebar_html, _ = render_markdown("\n".join(sidebar_lines))
+            html_blocks.append(f'<aside class="manuscript-sidebar">{sidebar_html}</aside>')
+            continue
+
         image_match = re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)", stripped)
         if image_match:
             alt, image_path = image_match.groups()
@@ -355,6 +377,7 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
                 not candidate
                 or candidate.startswith("#")
                 or candidate.startswith("```")
+                or candidate.startswith(":::")
                 or re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)", candidate)
                 or re.fullmatch(r"\[Open MP4: ([^\]]+)\]\(([^)]+)\)", candidate)
                 or re.fullmatch(r"\d+\.\s+.+", candidate)
