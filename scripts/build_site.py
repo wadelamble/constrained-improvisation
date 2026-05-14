@@ -14,7 +14,7 @@ OUT_DIR = ROOT / "site"
 DRAFT = ROOT / "content" / "drafts" / "Differential-Mechanics-With-Diagrams.md"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 
-TITLE = "Nature's Principled Improvisation"
+TITLE = "Nature's Improvisation on Form"
 BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
 
 
