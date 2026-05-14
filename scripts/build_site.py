@@ -71,7 +71,7 @@ SECTIONS = [
         "Differential Mechanics",
         "differential-mechanics",
         "Hamiltonian mechanics, ensembles, phase space, and Poisson structure.",
-        status="live draft",
+        status="",
         href="/differential-mechanics/",
         outline=["Evolution of ensembles", "Phase-space geometry", "Hamiltonian flows", "Poisson algebra"],
     ),
