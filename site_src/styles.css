@@ -242,6 +242,33 @@ a:hover {
   margin: 0.2rem 0;
 }
 
+.table-wrap {
+  overflow-x: auto;
+  margin: 1.2rem 0 1.35rem;
+}
+
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.42;
+}
+
+.article th,
+.article td {
+  padding: 0.45rem 0.55rem;
+  border-bottom: 1px solid var(--faint);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article th {
+  border-bottom-color: var(--line);
+  color: #3f3d38;
+  font-weight: 650;
+}
+
 .article code {
   font-family: "Cascadia Mono", "Consolas", monospace;
   font-size: 0.86em;

@@ -278,6 +278,18 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
         used_ids[base] = count + 1
         return base if count == 0 else f"{base}-{count + 1}"
 
+    def is_table_row(text: str) -> bool:
+        return text.startswith("|") and text.endswith("|") and text.count("|") >= 2
+
+    def is_table_separator(text: str) -> bool:
+        if not is_table_row(text):
+            return False
+        cells = [cell.strip() for cell in text.strip("|").split("|")]
+        return bool(cells) and all(re.fullmatch(r":?-{3,}:?", cell) for cell in cells)
+
+    def table_cells(text: str) -> list[str]:
+        return [cell.strip() for cell in text.strip("|").split("|")]
+
     i = 0
     while i < len(lines):
         line = lines[i]
@@ -359,6 +371,29 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
             i += 1
             continue
 
+        if (
+            is_table_row(stripped)
+            and i + 1 < len(lines)
+            and is_table_separator(lines[i + 1].strip())
+        ):
+            headers = table_cells(stripped)
+            i += 2
+            rows = []
+            while i < len(lines) and is_table_row(lines[i].strip()):
+                rows.append(table_cells(lines[i].strip()))
+                i += 1
+            header_html = "".join(f"<th>{inline(cell)}</th>" for cell in headers)
+            body_rows = []
+            for row in rows:
+                padded = row + [""] * max(0, len(headers) - len(row))
+                cells = "".join(f"<td>{inline(cell)}</td>" for cell in padded[: len(headers)])
+                body_rows.append(f"<tr>{cells}</tr>")
+            html_blocks.append(
+                f'<div class="table-wrap"><table><thead><tr>{header_html}</tr></thead>'
+                f"<tbody>{''.join(body_rows)}</tbody></table></div>"
+            )
+            continue
+
         list_match = re.fullmatch(r"\d+\.\s+(.+)", stripped)
         if list_match:
             items = []
@@ -383,6 +418,11 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
                 or re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)", candidate)
                 or re.fullmatch(r"\[Open MP4: ([^\]]+)\]\(([^)]+)\)", candidate)
                 or re.fullmatch(r"\d+\.\s+.+", candidate)
+                or (
+                    is_table_row(candidate)
+                    and i + 1 < len(lines)
+                    and is_table_separator(lines[i + 1].strip())
+                )
             ):
                 break
             paragraph_lines.append(candidate)
