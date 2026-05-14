@@ -62,7 +62,7 @@ SECTIONS = [
         outline=["Parallel transport", "Curved manifolds"],
     ),
     Section(
-        "Action and Extremal Paths",
+        "Action Optimization",
         "action-extremal-paths",
         "The global formulation of mechanics through stationary action.",
         outline=["Action", "Euler-Lagrange equations", "Boundary terms"],
@@ -88,13 +88,13 @@ SECTIONS = [
         outline=["State and measurement", "Operators", "Commutators"],
     ),
     Section(
-        "Free Fall",
+        "Gravitation",
         "free-fall",
         "Motion under gravity as a statement about geometry.",
         outline=["Equivalence principle", "Geodesic motion"],
     ),
     Section(
-        "Connection Coupling",
+        "Gauge Coupling",
         "connection-coupling",
         "How fields enter through local comparison rules.",
         outline=["Connections", "Gauge structure"],
