@@ -34,6 +34,7 @@ class Section:
     status: str = "Coming soon"
     href: str | None = None
     outline: list[str] = field(default_factory=list)
+    disabled: bool = True
 
 
 SECTIONS = [
@@ -56,16 +57,20 @@ SECTIONS = [
         outline=["Galilean structure", "Relativistic structure"],
     ),
     Section(
-        "Curvature",
-        "curvature",
-        "Intrinsic curvature and geodesics.",
-        outline=["Parallel transport", "Curved manifolds"],
-    ),
-    Section(
-        "Action Optimization",
-        "action-extremal-paths",
-        "Mechanics as action optimization.",
-        outline=["Action", "Euler-Lagrange equations", "Boundary terms"],
+        "Geometric Mechanics",
+        "geometric-mechanics",
+        "Forces as geometry, fields, and constrained paths.",
+        outline=[
+            "Loop mismatch",
+            "Action optimization",
+            "Straightest paths",
+            "Frozen potentials",
+            "Physical fields",
+            "Metric curvature",
+            "Connection curvature",
+            "Differential handoff",
+        ],
+        disabled=False,
     ),
     Section(
         "Differential Mechanics",
@@ -74,6 +79,7 @@ SECTIONS = [
         status="",
         href="/differential-mechanics/",
         outline=["Evolution of ensembles", "Phase-space geometry", "Hamiltonian flows", "Poisson algebra"],
+        disabled=False,
     ),
     Section(
         "Unitarity",
@@ -86,18 +92,6 @@ SECTIONS = [
         "quantum-mechanics",
         "From objects to patterns.",
         outline=["State and measurement", "Operators", "Commutators"],
-    ),
-    Section(
-        "Gravitation",
-        "free-fall",
-        "Gravity as spacetime curvature.",
-        outline=["Equivalence principle", "Geodesic motion"],
-    ),
-    Section(
-        "Gauge Coupling",
-        "connection-coupling",
-        "Coupling fields through local symmetry.",
-        outline=["Connections", "Gauge structure"],
     ),
     Section(
         "Quantum Field Theory",
@@ -171,7 +165,7 @@ def render_home() -> str:
     for section in SECTIONS:
         status = f'<span class="status">{html.escape(section.status)}</span>' if section.status else ""
         new_badge = '<span class="new-splatter">NEW</span>' if section.href else ""
-        card_class = "section-card" if section.href else "section-card section-card--disabled"
+        card_class = "section-card" if not section.disabled else "section-card section-card--disabled"
         label = html.escape(section.title)
         title = f'<a href="{site_path(section.href)}">{label}</a>{status}{new_badge}' if section.href else f"<span>{label}</span>{status}"
         outline = ""
