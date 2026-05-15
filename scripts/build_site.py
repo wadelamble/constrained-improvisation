@@ -70,7 +70,6 @@ SECTIONS = [
             "Connection curvature",
             "Differential handoff",
         ],
-        disabled=False,
     ),
     Section(
         "Differential Mechanics",
