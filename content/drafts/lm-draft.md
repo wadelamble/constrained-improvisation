@@ -10,11 +10,46 @@ In a generalized sense, fundamental constituents of matter, particles like elect
 This is nothing more in essence than the idea that following lines of longitude on earth, or more generally "great circles," or geodesics, on the surface of a sphere. We want to call such a path "straight" because it is the shortest possible path between two points. This informal definition of "straightest possible" contains two elements that we can use to rigorously define *parallel transport*. The first element is that the space has an invariant structure derived from symmetry that allows an agreed upon definition local definition of length. The second element is that what we intuitively see as "straightest" or "simplest" arises from *extremizing* (often "minimizing") the integral of the invariant length over a path. We will make the bridge from geometry to physics by taking care to build our invariant structure from physical symmetry. Before we do that, let's "do a little geometry" to make sure these ideas are well grounded. We will show how minimizing length in flat space defines a straight line and how doing the same on a sphere defines a geodesic.]
 
 ## The Spacetime Path
-A worldline and its mass shell specify a particle's history. For a given mass, to assign the history a number is to assign its path length as it is the only invariant scalar associated with a line segment. Force is the curvature of the worldline. The more force acting over the history, the longer the pathlength. the pathlength wants to be short, so when a force acts, the pathlength only bends "as much as is necessary" to embed the action of the force. 
+
+1. The path and the mass is all there is.
+2. The mass is also geometric, so geometry is all there is. this isn't hand-wavy, its literal, we will say it in a literal way.
+3. Therefore, if we know the path, we can say everything that can be said abou the "dynamics" (we need to define the term)
+4. But that requires we already have a history, our job is to figure out a future history.
+5. for a free particle, we just pick a straight line, that's telling us a lot
+5.1 it leads us to guess we pick the shortest path using some weighted length measure which goes to 1 for a free path.
+5.2 it tells us that the weighting reflects the dynamics, the forces acting. worldline curvature  is equated to force, and weighting maps to a "virtual" straight path"
+5.a Action (or higher)
+6. this is in a sense the most "relaxed path" under the circumstance, easy to see for free particle, and easy to see in fixed case like catenary.
+6.1 This gives LM an architectural vs a dynamic feel.
+7. weighting is L = T + V, define what these terms mean intuitively
+8. The weighting is the "potential landscape". 
+8.1 A skier going up and down hills is a clean expample.
+8.2 if the skier take the same time on more hilly terrain, she has more action. changiness of the potential manifests as changiness of the worldline.
+9. But where does the potential come from?
+9.1 Answer -- deeper in the geometry
+9.2 While LM feels more global, the need to L(x,v) makes it feel local all over again. When it's origin is found deeper in the geometry, this sleight of hand is unsleighted and the idea of "relaxation" is equated with following a geodesic or of the full geometry."
+9.2 Gravity: spacetime curvature.
+9.3 EM: curvature of fiber bundle that only makes sense once we define state in QM.
+9.4 But all this weill be discussed in subsequent sections.
+extra: action definition, centrality of action, lagrangian needs dynamic origin. inevitible architectural
+
+A worldline and its mass shell specify a particle's history completely. The mass is read from the geometry. It is an expression of how the spacetime interval is apportioned over time and space separations under changes of velocity. [equation wtih ds, v, dx and dt, plus animation]. If we know the worldline and the mass, then, we can read off all "the physics," all the "forces" that acted on the particle during its history. But this only tells us the physics of a history that has already happened. Our job is to find a future history not characterize a past history. We can pick out the worldline of a free particle geometrically. It is a straight line as curvature in spacetime is acceleration and "free" means non-accelerating. A straight line is the minimization of pathlength, suggesting that the correct choice of worldline is some "extremization" of pathlength: [eq. S = mass*integra(ds)] The action, as a measure of path curvature, is a measure of the "dynamics" of the history, of all the forces that acted during it. The fact that a free particle travels a straight line in spacetime also suggests that, whatever the actual path is, it shoud be inevitible in the right geometry.  In fact, we can construct spaces in which the actual path in spacetime is the shortest path. The map to these spaces is encoded in the Lagrangian function, which tells us how find the action of a history: [eq: S = hmm, i want Ldt, but in proper spacetime geometry/notation]. One then extremizes the action to find the the correct path [eq: functional [] equation]. If someone hands us a Lagrangian, we can then hnad them back a future history. 
+
+This begs the question where the Langranian came from. We will say it should fill two requirements. First, it should be mediated by proper spacetime objects. Second, it should part of deeper geometric considerations of the spaces a physical theory provides. This will be the topic of the "Gravitation" and "Gauge theory" sections.  
+
+
+also what goes in it? invariat terms, t and v, something that encodes the presence of inertia and acceleration. 
+
+We can guess, correctly it turns out, that the condition of being "free" is equivalent to a uniform "weighting" of the spacetime interval such that, under this weighting, the shortest weighted path is simply the shortest path. And we can go on then to guess that whatever the actual path is, the it is the shortest incorparing the weights. [equation. just path length and weigthing function and integral, nothing here about L or S or even the minkowski interval, just showing integrating a function over a path.] Whatever the actual path is, finding the "shortest" path under the weighting has an evocative meaning along the lines that the path is "as relaxed as possible." We can see this intuively in the static case of a catenary, the shape a rope assumes when dangled from two fix points. [diagram (not animation) of catenary.] In a sense, this path-based approach to mechanics  seems to pick out architectural elements used in nature rather than focusing on local details. The weight we give to the path length is the Lagrangian, in its most typical from [schematic: Lagrangian = Kinetic Energy - Potential energy]. This is a measure of the inertia a system has and the variability of the energy landscape, of how fast how massive an object moves through how "hilly" a landcape.  For the same wordline endpoints, the longer the worldline is, the more massive the object and the more "ups and downs" getting from endpoint to endpoint, the more longer the pathlength. d
+
+
+
+
+For a given mass, to assign the history a number is to assign its path length as it is the only invariant scalar associated with a line segment. Force is the curvature of the worldline. The more force acting over the history, the longer the pathlength. the pathlength wants to be short, so when a force acts, the pathlength only bends "as much as is necessary" to embed the action of the force. 
 
 If we are looking back at our worldline, we would not ask "where will we go next?" but "why did we choose this path?". In answering that, because paths are lawful, we will also supply the answer to "where will we go next" for the same function on configuration space.
 
-
+lagrangian(q,q-dot) is problematic. It is static throughout spacetime. The origin replaces it with mediators that move through spacetime. This gives a physicality to the potential. Otherwise influence would be mediated w/o abiding c.
 ### Using Extremization to Find Geodesics 
 
 Let's start with a straight line in flat space.
