@@ -1,56 +1,11 @@
 # LM Draft
+Now that we know the geometry of spacetime in which motion takes place, we can move to describing how objects move and influence one another.  
 
-Cleaned copy of `lm-proto-draft.md`, originally copied from `content/manuscript-markdown/hum-non-drm.md`, from `## Symmetry, Parallel Transport, and Extremization` through the free-particle worldline derivation, stopping before `## Gravity and General Relativity`.
-
-[move to lm-reusable-material:
-## Symmetry, Parallel Transport, and Extremization
-
-In a generalized sense, fundamental constituents of matter, particles like electrons and photons, always travel is in a "straight" line in full space constructed from the symmetry they represent.Particles travel in a straight line in the full spacetime bundle to which their species belongs. also, this is talking about fiber bundles which is post-quantum. we need to remove it and save in lm-reusable-material. To make sense of "felt forces," we have to be very careful about what spaces we are talking about. If an object is traversing a geodesic in spacetime, it will feel no force. However, if, in following a geodesic through a fiber bundle, it deviates from a spacetime geodesic, it will experience a "felt force."We will unpack this as we get deeper into this chapter. As alluded to already, we will generalize the idea of "straight" in "flat space" to "straightest possible," or geodesical, in "curved space."
-
-This is nothing more in essence than the idea that following lines of longitude on earth, or more generally "great circles," or geodesics, on the surface of a sphere. We want to call such a path "straight" because it is the shortest possible path between two points. This informal definition of "straightest possible" contains two elements that we can use to rigorously define *parallel transport*. The first element is that the space has an invariant structure derived from symmetry that allows an agreed upon definition local definition of length. The second element is that what we intuitively see as "straightest" or "simplest" arises from *extremizing* (often "minimizing") the integral of the invariant length over a path. We will make the bridge from geometry to physics by taking care to build our invariant structure from physical symmetry. Before we do that, let's "do a little geometry" to make sure these ideas are well grounded. We will show how minimizing length in flat space defines a straight line and how doing the same on a sphere defines a geodesic.]
-
-## The Spacetime Path
-
-1. The path and the mass is all there is.
-2. The mass is also geometric, so geometry is all there is. this isn't hand-wavy, its literal, we will say it in a literal way.
-3. Therefore, if we know the path, we can say everything that can be said abou the "dynamics" (we need to define the term)
-4. But that requires we already have a history, our job is to figure out a future history.
-5. for a free particle, we just pick a straight line, that's telling us a lot
-5.1 it leads us to guess we pick the shortest path using some weighted length measure which goes to 1 for a free path.
-5.2 it tells us that the weighting reflects the dynamics, the forces acting. worldline curvature  is equated to force, and weighting maps to a "virtual" straight path"
-5.a Action (or higher)
-6. this is in a sense the most "relaxed path" under the circumstance, easy to see for free particle, and easy to see in fixed case like catenary.
-6.1 This gives LM an architectural vs a dynamic feel.
-7. weighting is L = T + V, define what these terms mean intuitively
-8. The weighting is the "potential landscape". 
-8.1 A skier going up and down hills is a clean expample.
-8.2 if the skier take the same time on more hilly terrain, she has more action. changiness of the potential manifests as changiness of the worldline.
-9. But where does the potential come from?
-9.1 Answer -- deeper in the geometry
-9.2 While LM feels more global, the need to L(x,v) makes it feel local all over again. When it's origin is found deeper in the geometry, this sleight of hand is unsleighted and the idea of "relaxation" is equated with following a geodesic or of the full geometry."
-9.2 Gravity: spacetime curvature.
-9.3 EM: curvature of fiber bundle that only makes sense once we define state in QM.
-9.4 But all this weill be discussed in subsequent sections.
-extra: action definition, centrality of action, lagrangian needs dynamic origin. inevitible architectural
-
-A worldline and its mass shell specify a particle's history completely. The mass is read from the geometry. It is an expression of how the spacetime interval is apportioned over time and space separations under changes of velocity. [equation wtih ds, v, dx and dt, plus animation]. If we know the worldline and the mass, then, we can read off all "the physics," all the "forces" that acted on the particle during its history. But this only tells us the physics of a history that has already happened. Our job is to find a future history not characterize a past history. We can pick out the worldline of a free particle geometrically. It is a straight line as curvature in spacetime is acceleration and "free" means non-accelerating. A straight line is the minimization of pathlength, suggesting that the correct choice of worldline is some "extremization" of pathlength: [eq. S = mass*integra(ds)] The action, as a measure of path curvature, is a measure of the "dynamics" of the history, of all the forces that acted during it. The fact that a free particle travels a straight line in spacetime also suggests that, whatever the actual path is, it shoud be inevitible in the right geometry.  In fact, we can construct spaces in which the actual path in spacetime is the shortest path. The map to these spaces is encoded in the Lagrangian function, which tells us how find the action of a history: [eq: S = hmm, i want Ldt, but in proper spacetime geometry/notation]. One then extremizes the action to find the the correct path [eq: functional [] equation]. If someone hands us a Lagrangian, we can then hnad them back a future history. 
-
-This begs the question where the Langranian came from. We will say it should fill two requirements. First, it should be mediated by proper spacetime objects. Second, it should part of deeper geometric considerations of the spaces a physical theory provides. This will be the topic of the "Gravitation" and "Gauge theory" sections.  
+## Paths
+imagine path between fixed points. ask: could we assign a number to the path. what conditions would need to be met. (diagram of path alternatives). paths would have to belong to a set, which they clearly do. knowing that, we can map each member of the set to a number. Now, the path (let's say our physical a system is a single particle moving about) *is* the physics, for the path in spacetime tells us where the particle will be at any time in the past or future. thus (between fixed endpoints), we can assign a number to all "possible physics." All observers agree on "the physics." This is the essence of physical symmetries. Everyone agrees how pool balls move on the table. Therefore, the number we associate with the path has to be a spactime invariant. There is only one such invariant for us to work with given only that path, and that is proper time (dtau) or proper path length (ds). Therefore our "path number" will have to be proper time up to some scale factor. So we could figure out "the physics" if we could pick from among these numbers. How might we do so? Note that we now have a function: f[path] = <value>. Since a path is itself a function, we call this a "functional" rather than "function." Something we know about functions from high school calculus is that they have certain special points where they are  minimum, maximum, or on a saddle. (diagram). We also know from high school calculus how to find these points for functions, but not for functionals. If we -could- find the functional minimum (technically "stationary point"), would that be the right number to represent the physics? The answer is a tautology (something that isn't a new idea but just an equivalent statement) -- we are free to choose any function we like (as long as it is build from a spacetime invariant), therefore, we are free to find just the right function so that when we minimize it, the corresponding path is the physical one.
 
 
-also what goes in it? invariat terms, t and v, something that encodes the presence of inertia and acceleration. 
-
-We can guess, correctly it turns out, that the condition of being "free" is equivalent to a uniform "weighting" of the spacetime interval such that, under this weighting, the shortest weighted path is simply the shortest path. And we can go on then to guess that whatever the actual path is, the it is the shortest incorparing the weights. [equation. just path length and weigthing function and integral, nothing here about L or S or even the minkowski interval, just showing integrating a function over a path.] Whatever the actual path is, finding the "shortest" path under the weighting has an evocative meaning along the lines that the path is "as relaxed as possible." We can see this intuively in the static case of a catenary, the shape a rope assumes when dangled from two fix points. [diagram (not animation) of catenary.] In a sense, this path-based approach to mechanics  seems to pick out architectural elements used in nature rather than focusing on local details. The weight we give to the path length is the Lagrangian, in its most typical from [schematic: Lagrangian = Kinetic Energy - Potential energy]. This is a measure of the inertia a system has and the variability of the energy landscape, of how fast how massive an object moves through how "hilly" a landcape.  For the same wordline endpoints, the longer the worldline is, the more massive the object and the more "ups and downs" getting from endpoint to endpoint, the more longer the pathlength. d
-
-
-
-
-For a given mass, to assign the history a number is to assign its path length as it is the only invariant scalar associated with a line segment. Force is the curvature of the worldline. The more force acting over the history, the longer the pathlength. the pathlength wants to be short, so when a force acts, the pathlength only bends "as much as is necessary" to embed the action of the force. 
-
-If we are looking back at our worldline, we would not ask "where will we go next?" but "why did we choose this path?". In answering that, because paths are lawful, we will also supply the answer to "where will we go next" for the same function on configuration space.
-
-lagrangian(q,q-dot) is problematic. It is static throughout spacetime. The origin replaces it with mediators that move through spacetime. This gives a physicality to the potential. Otherwise influence would be mediated w/o abiding c.
-### Using Extremization to Find Geodesics 
+### Using Extremization to Find Geodesics
 
 Let's start with a straight line in flat space.
 
@@ -59,7 +14,7 @@ Let's start with a straight line in flat space.
 \
 \
 
-![](C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image439.png)![](C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image440.png)![](C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image441.png)
+![Minimizing a curve in the plane](animations/lm-plane-path-length-variation.png)
 
 Figure 53 - Minimizing a curve in the plane
 
@@ -154,7 +109,7 @@ Similarly for $`y`$. Therefore the stationarity condition becomes
 \int_{\lambda_{1}}^{\lambda_{2}}\left\lbrack - \frac{d}{d\lambda}\left( \frac{\dot{x}}{R} \right)\eta - \frac{d}{d\lambda}\left( \frac{\dot{y}}{R} \right)\xi \right\rbrack d\lambda = 0.
 ```
 
-Because $`\eta\`$and $`\xi`$can be any functions that vanish at the endpoints, the only way the integral can be zero for all such choices is for the coefficients of $`\eta`$and $`\xi`$to vanish pointwise. $`\frac{d}{d\lambda}\left( \frac{\dot{x}}{R} \right) = 0,\ \ \ \ \frac{d}{d\lambda}\left( \frac{\dot{y}}{R} \right) = 0.`$*\*
+Because $`\eta`$ and $`\xi`$ can be any functions that vanish at the endpoints, the only way the integral can be zero for all such choices is for the coefficients of $`\eta`$ and $`\xi`$ to vanish pointwise. $`\frac{d}{d\lambda}\left( \frac{\dot{x}}{R} \right) = 0,\ \ \ \ \frac{d}{d\lambda}\left( \frac{\dot{y}}{R} \right) = 0.`$*\*
 
 Define $`A,B`$:
 
@@ -180,7 +135,7 @@ This implies that the ratio $`\dot{y}/\dot{x}`$ is constant. Indeed,
 \frac{\dot{y}}{\dot{x}} = \frac{B}{A} = \text{constant}.
 ```
 
-Therefore both $`\dot{x}`$and $`\dot{y}`$ are constant up to an overall multiplicative factor. Integrating,
+Therefore both $`\dot{x}`$ and $`\dot{y}`$ are constant up to an overall multiplicative factor. Integrating,
 
 ``` math
 x(\lambda) = a\lambda + b,\ \ \ \ \ \ \ y(\lambda) = c\lambda + d,
@@ -200,16 +155,16 @@ which are straight lines.
 
 Let's sketch how we would modify the procedure above to show that geodesics on a sphere are the shortest possible paths in that space.
 
-![](C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image442.png)![](C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image443.png)
-
-![](C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image444.png)![](C:\Users\wadela\Documents\Codex\2026-04-18-i-want-to-set-up-a\content\manuscript-markdown\hum-non-drm-media/media/image445.png)
+![Geodesics on a sphere](animations/lm-sphere-geodesic-sketch.png)
 
 Figure 54 - Geodesics on a sphere
 
-The procedure proceeds just as for a line in flat space except that our invariant metric change from:*\*
-$`ds^{2} = dx^{2} + dy^{2}`$
+The procedure proceeds just as for a line in flat space except that our invariant metric change from:
+```math
+ds^{2} = dx^{2} + dy^{2}
+```
 
-to:\
+to:
 ``` math
 ds^{2} = R^{2}\left( d\theta^{2}+{\sin}^{2}\theta\,d\phi^{2} \right)
 ```

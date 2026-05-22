@@ -1,0 +1,100 @@
+
+[cut]A particle's history is specified by its worldline and mass. That is, if the worldline are known, the forces that acted on the particle at each point during that history can be inferred. But this only tells us the physics of a history that has already happened. The job of physics is to find a future path. In high school physics, one learns that how to predict the path from knowledge of the forces acting on an object. In path-based, or Lagrangian, mechanics, we turn this on its head and seek to find the path first and infer the differential equations that integrate to the path. [endcut]
+
+In high school, one is taught that job of physics is to find the path of an object from knowledge of the forces that act on it. These forces lead to a differential equation which is then integrated to find the path. Lagrangian mechanics turns this on its head and seeks to find the full path directly and, once it is known, infer the forces that acted on the object. But how do we find the right path?
+
+If we could somehow assign a single number every possible path going from a starting point to an ending point in spacetime, then maybe the value of this number would tell us the right path. [insert schematic equation: S = some invariant scalar associated with a path]. Since all observers witness the body acting in accordance to same physical laws, the number must be agreed up by all observers. Spacetime geometry only gives us one such number, the path length, or proper time, of the worldline. We also know that the length of the worldline between fixed endpoints is a measure of how much the worldline "wiggles" getting from start to finish, and this in turn represents the body's acceleration. Proper time, then, seems to be the starting point for a number we can use to compare paths. 
+
+Once we have a number associated with each path, how do we choose the right number. The answer is familiar in machine learning. There you ask, if I knew some function that was minimized (or maximized, or on a saddle point, etc.), when the model matched the data, then I could just minimize that function. The situation here is similar. We want the action to be a function (of paths) that we can extremize to find the correct path. We don't need to know why we should expect to be extremized, but we will see that we do expect this.
+
+The worldline proper time gives us a spacetime invariant to work with, but it alone doesn't encode the physical laws acting on a body. For that, we must also know the body's mass. We can see this easily. A body with a large mass will accelerate less when acted upon by the same force. We can ensure spacetime invariance and use our minimization procedure if we simply scale the path length by the mass: [equation: S = integral(m*dtau)]. This is, in fact, the action for a free particle, and minimizing it says that the free particle travels in straight line in spacetime, that is, at constant velocity, as expected. 
+
+But how do we define action for particles that don't follow a straight worldline? We still need some scale factor, let's call it $L$, and name it the Lagrangian. We then have: [equation: S = integral(L(x,x-dot)ds)]. 
+
+The attentive reader now protests, wait a second, I see where you are going. L(x,x-dot) is a scalar function whose gradient is force. It may be easier to to use this action-minimization procedure than to add to add up force at every point, but the procedure is essentially still building the path from local forces. This is true if we think of L as being nothing but a map from a force field to a scalar field. However, if we think or forces as arising from the necessity of geometry, then L encodes not local forces which have no global structure, but a space with some curvature. An analogy is that on a sphere, the shortest path between two points is a geodesic not a straight-line path between points [diagram/animation]. The function we minimize to find the geodesic is determined by the geometry of the sphere. 
+
+another way to think --- effective mass
+
+
+
+
+
+[save-caveat]This sounds to good to be true. Surely we most know something about the environment at every point to find the path. scalar field. geometry[endsave]]
+
+[note: slippery business local information is give, but that goes away]
+
+We can derive the worldline of a free particle geometrically. It is a straight line, for curvature of the worldline is proper acceleration and "free" means not accelerating. A straight line is the minimization of path length, suggesting that the correct choice of worldline is some "extremization" over the path. Combining mass and path length for a free particle, we can write the quantity to be extremized, or the action:
+
+``` math
+S_{\mathrm{free}}=-m\int d\tau.
+```
+
+For a particle that is not free, we allow for a more flexible local action-measure than mass: the Lagrangian. In proper-time form, the action can be written
+
+``` math
+S=\int L_{\tau}(x,u)\,d\tau,\qquad u=\frac{dx}{d\tau}.
+```
+
+For a scalar potential coupled to proper time, we can write
+
+``` math
+S=-\int (m+V(x))\,d\tau.
+```
+
+This offers a tidy interpretation of this version of the Lagrangian. Up to the sign, it is the local effective rest energy; the action is the local effective rest energy accumulated over proper time. In the rest frame, being at higher scalar potential adds to rest energy. While this interpretation is tidy, the Lagrangian is normally written in coordinate time. Since
+
+``` math
+d\tau=dt\sqrt{1-v^{2}},
+```
+
+the same scalar-coupled action becomes
+
+``` math
+S=-\int (m+V(x))\sqrt{1-v^{2}}\,dt.
+```
+
+In the more familiar coordinate-time potential form,
+
+``` math
+L_{t}=-m\sqrt{1-v^{2}}-V(x),
+```
+
+and in the low-speed limit,
+
+``` math
+L_{t}\approx -m+\frac12 mv^{2}-V(x).
+```
+
+Dropping the constant $`-m`$ leaves
+
+``` math
+L_{t}\approx T-V.
+```
+
+The fact that a free particle travels a straight line in spacetime also hints that, whatever the actual path is, it should be inevitable in the right geometry. In fact, we can construct spaces in which the actual path in spacetime is the projection of a geodesic in a richer geometry. The Lagrangian is not itself the projection map. Rather, the Lagrangian compactly encodes the geometry or machinery that makes that lifted path geodesic. In general notation, the Lagrangian lives on velocity phase space, technically the tangent bundle of configuration space: the space of positions and velocities.
+
+``` math
+S[\gamma]=\int_{\gamma} L(q,\dot q,t)\,dt.
+```
+
+The path is selected by requiring the action to be stationary,
+
+``` math
+\delta S=0,
+```
+
+which in coordinates gives the Euler-Lagrange equation
+
+``` math
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^{i}}\right)-\frac{\partial L}{\partial q^{i}}=0.
+```
+
+If someone hands us a Lagrangian, we can then hand them back a future history.
+
+But where does the Lagrangian come from? Satisfyingly, it becomes inevitable in the structure of the more complete geometry the theory postulates, and it is mediated by covariant spacetime objects. This will be the topic of the "Gravitation" and "Gauge Theory" sections.
+
+If we do not know the origin of the Lagrangian, what should we put in it? First, it should be a combination of terms that encode inertia and interaction: rate-dependent terms encode how hard the system is to change, while position- or field-dependent terms encode what redirects that change. Second, the terms, or their combination, should be invariant scalars, because the action itself must be invariant.
+
+---------------------------------------
+
+We know the symmetries 
