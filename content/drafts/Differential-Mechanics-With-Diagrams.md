@@ -6,11 +6,11 @@ Lagrangian Mechanics gives us a foundational way to formulate the laws of motion
 
 ## The Evolution of Ensembles in Physical Systems
 
-At face value, the role of physical laws appears to be to predict individual trajectories from initial conditions. Yet in conservative systems, where energy is not dissipated into inaccessible microscopic degrees of freedom, the laws guiding the evolution of single states additionally imply that the information encoded in a distribution of states is preserved. This is a categorically different kind of claim, not about one particle's initial conditions and its future, but about the collective behavior of an ensemble. The key to this emergent structure is that deterministic, reversible evolution keeps distinct initial states distinct. Once that is true, an ensemble can move through state space without losing the measure of how many states it contains.
+At face value, the role of physical laws appears to be to predict individual trajectories from initial conditions. Yet in conservative systems, where energy is not dissipated into inaccessible microscopic degrees of freedom, the laws that govern the evolution of single states imply that the information encoded in a *distribution* of states is preserved. This is a categorically different kind of claim, not about one particle's initial conditions and its future, but about the collective behavior of an ensemble. The key to this emergent structure is that deterministic, reversible evolution keeps distinct initial states distinct. Once that is true, an ensemble can move through state space without losing the measure of how many states it contains.
 
 ### Example: Preserved Information in a Permutation
 
-We can get a feel for this kind of information-preserving evolution with a simple discrete example. Take a deck of three cards labeled `A`, `B`, and `C`. The exact possible states are the six deck orders
+We can get a feel for this kind of information-preserving evolution with a simple example of a system with a finite number of states. Take a deck of three cards labeled `A`, `B`, and `C`. The exact possible states are the six deck orders
 
 ```text
 ABC, ACB, BAC, BCA, CAB, CBA.
@@ -59,19 +59,19 @@ A few structural facts are worth making explicit:
 
 These properties, which we will show exist in physical situations, are what we mean by "determinism" and "reversibility" and, following from these, by "distinguishability" of the ensemble under time evolution.
 
-We can map the elements of the card deck to Hamiltonian mechanics. There, the relevant state space is the space of positions and momenta together. This is phase space. For one body, it is position/momentum space. For many bodies, it is the product of such spaces.
+We can map the elements of the card deck to Hamiltonian mechanics. There, the relevant state space is the space of positions and momenta, or phase space. For many bodies, phase space is the product of each individual body's position/momentum space.
 
-1. An arrangement -> an instantaneous state
-2. All possible arrangements -> phase space
+1. An arrangement of cards -> an instantaneous state
+2. All possible such arrangements -> phase space
 3. The count of distinct arrangements in a collection -> phase space area
 
-The last of these elements is what we call a "measure" on the space. A measure has a role analogous to a metric, though it does something different. A metric measures separation. A measure assigns size to regions or collections. What matters here is whether that size is preserved as the system evolves. In the card deck, preservation is built in. The law is a permutation, so a collection of arrangements can be rearranged, but it cannot gain or lose members.
+The last of these elements is what we call a "measure" on the space. A measure has a role analogous to a metric. Where a metric measures separation, a measure assigns size to regions or collections. What matters here is whether that size is preserved as the system evolves. In the card deck, preservation is built in. The law is a permutation, so a collection of arrangements can be rearranged, but it cannot gain or lose members.
 
 ### Example: Preserved Information in a Physical Ensemble
 
 We see this same structure in conservative physical systems such as the ideal pendulum. Prepare many runs with slightly different initial angles and momenta. At the initial time, measurements across the ensemble reveal a distribution in phase space. We then let each member of the ensemble evolve under the same conservative law, and at some later time we again measure position and momentum across the ensemble. Those later measurements reveal a new distribution that has the same features as the original. Each exact initial state in the ensemble is carried to one exact later state, so the later distribution is the earlier one transported by a deterministic, reversible rule. In a dissipative system, nearby runs can truly be driven together, so distinctions among initial conditions are washed out, the extreme case being when all initial conditions end at rest. But in a conservative system, such distributions are not washed out. They are transported to new regions of state space.
 
-The first animation below shows how nearby initial conditions can end in different regimes of motion. The second animation shows that even as an area patch is deformed to follow states in these different regimes, the area is preserved.
+The first animation below shows how nearby initial conditions can end in different regimes of motion. The second shows that even as an area patch is deformed to follow states in these different regimes, the area is preserved.
 
 ![Pendulum regimes animation contact sheet](animations/differential-pendulum-regimes-contact-sheet.png)
 
@@ -86,7 +86,7 @@ The first animation below shows how nearby initial conditions can end in differe
 
 [Open MP4: differential-pendulum-ensemble-phase-space.mp4](animations/differential-pendulum-ensemble-phase-space.mp4)
 
-The pendulum is an analogue of the permutation example. There, the state space was a finite set, the natural measure was counting measure, and the law was a permutation. Here, the state space is continuous. Its points are instantaneous angle/momentum states, its natural measure is a measure of area on state space, and its law of motion is a Hamiltonian flow. A permutation rearranges exact states without merging them. A Hamiltonian flow does the same for a continuum of exact states. Area in state space plays the role that counting measure played before. In conservative physical systems, this behavior is known as Liouville's theorem. Formally, if $\Phi_t$ is the Hamiltonian time-evolution map and $A$ is any measurable region of phase space, then
+The pendulum is an analogue of the permutation example. There, the state space was a finite set, the natural measure was simply the count of arrangements, and the law was a permutation. Here, the state space is continuous. Its points are instantaneous angle/momentum states, its natural measure is area on state space, and its law of motion is a Hamiltonian flow. A permutation rearranges exact states without merging them. A Hamiltonian flow does the same for a continuum of exact states, and area in state space plays the role that counting measure played before. In conservative physical systems, this behavior is known as Liouville's theorem. Formally, if $\Phi_t$ is the Hamiltonian time-evolution map and $A$ is any measurable region of phase space, then
 
 ```math
 \mu(\Phi_t(A)) = \mu(A),
@@ -96,11 +96,9 @@ where $\mu$ is the natural measure on phase space.
 
 ### Information as an Incompressible Fluid
 
-In the examples above, we looked at spaces of possible arrangements. A useful analogy is a planar incompressible flow. Imagine marking out a connected patch in the plane and then tracking that same patch as it is carried by the flow. The patch may be stretched, folded, or sheared, but it does not split or change its area. It remains the same material patch, carried along by the flow.
+In the examples above, we looked at spaces in which the invariance of a measure of arrangements was ensured by determinism and reversibility. A tactile example of this situation is incompressible fluid flow. Imagine marking out a connected patch on the surface and then tracking that same patch as it is carried by the flow. The patch may be stretched, folded, or sheared, but its area remains constant.
 
-In the card example, exact states were permuted. In the pendulum ensemble example, exact initial conditions were carried by a Hamiltonian flow. Here, a material patch is carried by the velocity field of the fluid. In all three cases, a rule transports a structured object without erasing its structure.
-
-Fluids make the geometric character of this structure easier to see. A planar flow is described by a velocity field. If a point at position $(x,y)$ has velocity $(u(x,y),v(x,y))$, then its motion is governed by
+A planar flow is described by a velocity field. If a point at position $(x,y)$ has velocity $(u(x,y),v(x,y))$, then its motion is governed by
 
 ```math
 \frac{dx}{dt} = u(x,y),\qquad \frac{dy}{dt} = v(x,y),
@@ -120,7 +118,7 @@ u = \frac{\partial \psi}{\partial y},
 v = -\frac{\partial \psi}{\partial x}.
 ```
 
-In two dimensions, incompressibility lets the velocity field be generated from this single scalar function in a cross-coupled form. Motion in the $x$ direction is determined by how the scalar function $\psi$ varies in the $y$ direction, and motion in the $y$ direction is determined by how $\psi$ varies in the $x$ direction. Hamiltonian Mechanics shares this cross-coupled differential structure.
+In two dimensions, incompressibility lets the velocity field be generated from this single scalar function in a cross-coupled form. Motion in the $x$ direction is determined by how the scalar function $\psi$ varies in the $y$ direction, and vice versa. Hamiltonian Mechanics shares this cross-coupled differential structure.
 
 ![Incompressible fluid patch animation contact sheet](animations/differential-incompressible-fluid-patch-contact-sheet.png)
 
@@ -131,9 +129,11 @@ In two dimensions, incompressibility lets the velocity field be generated from t
 ### Embodied Information
 We have described how systems preserve information as they evolve. Information cannot exist without some embodiment, be that in switches in a computer or molecules in a gas. To appreciate how physical systems embody information, we need to understand a bit about information theory itself.
 
-How much information does a penny showing heads contain? A good way to think about this is as a question about surprise. If a coin were weighted so that heads always appeared, seeing heads would contain no information at all. If it showed heads 90% of the time, seeing heads would largely confirm expectations, and would therefore contain only a small amount of information. But if it came up tails, it would force a revision of expectations. Let us call this quantity "surprisal." We want surprisal to go up as probability goes down.
+How much information does a penny showing heads contain? A good way to think about this is as a question about surprise. If a coin were weighted so that heads always appeared, seeing heads would be completely unsurprising. If it showed heads 90% of the time, seeing heads would largely confirm expectations, and would therefore contain only a small amount of information. But if it came up tails, it would force a revision of expectations. This quantity is called "surprisal." 
 
-We also want information to count independent distinctions additively. If one fair coin toss resolves one binary uncertainty, then two independent fair coin tosses resolve two such uncertainties. We do not want to say that the second coin makes the information four times larger simply because the joint probability of two heads is $1/4$. The number of possible outcomes multiplies, but the number of independent binary distinctions adds. An 8-bit register is said to hold 8 bits, even though it can realize $2^8$ possible bit strings. These two requirements are met by defining the information content of an outcome using a base-2 logarithm:
+We also want information to count independent members of a distribution additively. If one fair coin toss resolves one binary uncertainty, then two independent fair coin tosses resolve two such uncertainties. We do not want to say that the second coin makes the information four times larger simply because the joint probability of two heads is $1/4$. This idea is second nature in computer engineering where the number of possible outcomes multiplies, but the number of independent binary distinctions adds. A register is "8-bit" even though it can realize $2^8$ possible bit strings. 
+
+These two requirements are met by defining the information content of an outcome using a base-2 logarithm:
 
 ```math
 I(H) = -\log_2 P(H),
@@ -145,7 +145,7 @@ When the probability of heads is 50%, this is exactly 1 bit. If the probability 
 I(HH) = -\log_2\big(P(H)P(H)\big) = -\log_2 P(H) - \log_2 P(H) = 2I(H).
 ```
 
-This quantity describes the information associated with one realized outcome. When we turn from one outcome to an ensemble, the natural scalar quantity is the average surprisal over the whole distribution. This is Shannon entropy.
+This quantity describes the information associated with one realized outcome. When we turn from one outcome to an ensemble, the natural scalar quantity is the average surprisal over the whole distribution. This is the entropy (or, more specifically, the Shannon entropy).
 
 This same idea applies to an ensemble of initial conditions in a physical system. Rather than a discrete number of possibilities, there is a continuous set, so we must deal in probability densities rather than probabilities. With this change, the expression for the ensemble entropy becomes:
 
@@ -155,11 +155,11 @@ H[\rho] = -\int \rho(x)\log_2 \rho(x)\,d\mu,
 
 where $d\mu$ is the natural measure on the space of states. In this sense, a physical ensemble contains a quantifiable amount of information.
 
-Liouville's theorem implies that this entropy is preserved in ideal conservative evolution. But entropy is only a scalar summary of a distribution. Different densities can have the same entropy while assigning probability to different regions of state space. The stronger statement is that Hamiltonian evolution transports the density itself. If $\rho_0$ is the initial density, then the later density is the same probability structure carried forward by the flow. The information is embodied not merely in the number $H[\rho]$, but in the full distribution over possible states.
+Liouville's theorem implies that this entropy is preserved in conservative evolution. But entropy is only a scalar summary of a distribution. Different densities can have the same entropy while assigning probability to different regions of state space. The stronger statement is that Hamiltonian evolution transports the density itself. If $\rho_0$ is the initial density, then the later density is the same probability structure carried forward by the flow. The information is embodied not merely in the number $H[\rho]$, but in the full distribution over possible states.
 
-The information-theoretic implications of conservative systems are central to statistical mechanics. There, the exact microscopic state of a system is not practically knowable. A gas, for example, has too many microscopic degrees of freedom to track directly, and even a finite partition of phase space would leave an unfathomably large number of possible microscopic arrangements. Statistical mechanics works by replacing exact microscopic knowledge with distributions over possible states, and then asking how those distributions evolve. Macroscopic quantities such as temperature, pressure, volume, and particle density are then understood statistically without requiring knowledge of specific states.
+The information-theoretic implications of conservative systems are central to statistical mechanics. There, the exact microscopic state of a system is not practically knowable. A gas, for example, has too many microscopic degrees of freedom to track directly, and even a finite partition of phase space would leave an unfathomably large number of possible microscopic arrangements. Statistical mechanics works by replacing exact microscopic knowledge with distributions over possible states, and then asking how those distributions evolve. Macroscopic, thermodynamic quantities such as temperature, pressure, volume, and particle density are then understood statistically without requiring knowledge of specific states.
 
-More fundamentally, the role of distribution will be promoted to the state itself in quantum mechanics, where physics is no longer organized around definite classical states, but around probability distributions over possible measurement outcomes.
+Yet the importance of the evolution of distributions in thermodynamics was but a harbinger of one of the handful of most paradigm-shifting theoretical advances in the history of science. In quantum mechanics, the state is itself a distribution, which encodes possible measurement outcomes. There is provably no definite state, the ignorance of which comprises the distribution, but only the distribution itself. We will return to this.
 
 ## Phase Space
 
