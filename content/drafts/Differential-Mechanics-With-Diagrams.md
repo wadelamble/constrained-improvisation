@@ -227,7 +227,7 @@ Substituting this back in gives
 \right|_{t_1}^{t_2}.
 ```
 
-The variation separates into the bulk term, which governs the equations of motion, and the boundary term, which governs the action's sensitivity to endpoint configuration displacement on a time slice.
+As advertised, the variation separates into the bulk term, which governs the equations of motion, and the boundary term, which governs the action's sensitivity to endpoint configuration displacement on a time slice.
 
 ### The Definition of Momentum
 
@@ -239,93 +239,9 @@ p_i := \frac{\partial L}{\partial \dot q^i}.
 
 This tells us what quantity pairs with an infinitesimal displacement of the state to measure its contribution to the change in action. That is, momentum, or more precisely conjugate momentum, is the gradient of the action with respect to configuration displacement at the boundary.
 
-The functional form of the momentum is determined by the functional form of the Lagrangian. In a free system, in which only the kinetic term appears in the Lagrangian, $p$ arises inevitably from the theory's kinematics. In the Newtonian free-particle theory, the kinetic term is proportional to the square of the velocity, a fact that can be shown, with some work we won't do here, to follow from Galilean symmetry.
-
 ```math
-L = \frac{1}{2}m\dot q^2,
-\qquad
-p = \frac{\partial L}{\partial \dot q} = m\dot q.
+p_i = \frac{\partial S}{\partial q^i_{\text{boundary}}}
 ```
-
-In that setting the familiar formula $p=mv$ is inherited from the kinetic term. In a relativistic theory, by contrast, the free kinematics is constrained by Minkowski structure and the mass-shell relation
-
-```math
-E^2 = p^2 + m^2
-```
-
-in units with $c=1$. The corresponding free Lagrangian then yields the relativistic momentum.
-
-#### Momentum in Relativity
-
-For a free relativistic particle, in which there is no potential and no preferred frame, the action should be built from the worldline itself. Action is the scalar functional whose stationary value selects the physical path, so in a relativistic theory it should not depend on the inertial frame used to describe that path. Unlike Galilean geometry, Minkowski geometry combines space and time into a single invariant interval. A worldline therefore has an invariant spacetime length, rather than separate spatial and temporal measures. For a free particle, that length is the only available Lorentz-invariant quantity that distinguishes one candidate worldline from another. This also has the right physical consequence: between fixed events, the free path is the straight worldline, the path of extremal path length. The free-particle action is therefore taken to be a constant multiple of spacetime length:
-
-```math
-S = -\alpha\int ds.
-```
-
-The constant $\alpha$ supplies the physical scale of the action. The geometry determines what is being measured along the worldline. The coefficient determines how that measurement enters the action.
-
-Let $s$ measure spacetime length along the worldline, and write the unit tangent as
-
-```math
-u^\mu = \frac{dx^\mu}{ds}.
-```
-
-Varying an endpoint of the worldline changes the length, to first order, by pairing the endpoint displacement with the tangent covector. Since the action is $-\alpha$ times that length, the boundary part of the variation has the form
-
-```math
-\delta S_{\partial} \sim -\alpha u_\mu\,\delta x^\mu.
-```
-
-where the subscript $\partial$ means "boundary," so $\delta S_{\partial}$ is the boundary part of $\delta S$. The coefficient of $\delta x^\mu$ is the boundary covector:
-
-```math
-p_\mu = -\alpha u_\mu.
-```
-
-The coefficient $\alpha$ is then identified internally. The four-velocity has invariant norm
-
-```math
-u_\mu u^\mu = 1
-```
-
-so the momentum covector satisfies
-
-```math
-p_\mu p^\mu = \alpha^2
-```
-
-Thus $\alpha$ is the invariant magnitude of four-momentum. That invariant magnitude is the definition relativity gives to mass, so we write $\alpha=m$.
-
-Choosing a time coordinate splits the spacetime displacement into temporal and spatial pieces. In that split,
-
-```math
-p_\mu\,\delta x^\mu = p_i\,\delta q^i - E\,\delta t,
-```
-
-If the endpoint time is held fixed, then $\delta t=0$, and the spatial part remains:
-
-```math
-p_i\,\delta q^i.
-```
-
-This is the same boundary pairing that appeared in the Lagrangian derivation of ordinary momentum. The relativistic free-particle action shows the larger spacetime form of that pairing before a time coordinate is chosen.
-
-The mass-shell relation is the same statement written after the coefficient has been named:
-
-```math
-p_\mu p^\mu = m^2,
-```
-
-In the familiar energy-momentum split this becomes
-
-```math
-E^2 = \mathbf p^2 + m^2
-```
-
-in units with $c=1$.
-
-By shifting to a unified spacetime, relativity ties action to worldline length, with the consequence that momentum appears as the covector paired with displacement along the worldline.
 
 ![Endpoint covector measurement animation contact sheet](animations/differential-endpoint-covector-measurement-contact-sheet.png)
 
@@ -333,19 +249,67 @@ By shifting to a unified spacetime, relativity ties action to worldline length, 
 
 [Open MP4: differential-endpoint-covector-measurement.mp4](animations/differential-endpoint-covector-measurement.mp4)
 
-### From the One-Form to the Two-Form
-
-Thus far, the action has identified $q$ and $p$ as the correct paired variables for specifying instantaneous state. But the pairing $p_i\,\delta q^i$ is a one-form statement. It acts on one infinitesimal displacement of one state and returns the first-order change in the action. The information perspective requires a different type of mathematical object, one that measures an "amount of states," not the action of a single history.
-
-Once the action has identified $q^i$ and $p_i$ as conjugate variables, the natural oriented area element on their space is the two-form. Let us call it $\omega$:
+The functional form of the momentum is determined by the functional form of the Lagrangian. In a free system, in which only the kinetic term appears in the Lagrangian, $p$ arises inevitably from the theory's kinematics. In the Newtonian free-particle theory, the kinetic term is proportional to the square of the velocity, a fact that can be shown with some work we won't do here, to follow from Galilean symmetry.
 
 ```math
-\omega := dq^i \wedge dp_i.
+L = \frac{1}{2}m\dot q^2,
+\qquad
+p = \frac{\partial L}{\partial \dot q} = m\dot q.
 ```
 
-It takes in two tangent directions and returns an oriented area. This area is the continuous analogue of counting states. If phase space were replaced by a fine lattice, a patch would contain some number of lattice points. Making the lattice finer turns that count into a measure. In continuous phase space, the "amount of states" in a patch is measured by its phase-space area. With more degrees of freedom, the corresponding volume measure is built from repeated products of $\omega$.
+In that setting the familiar formula $p=mv$ is inherited from the kinetic term. In a relativistic theory, by contrast, the free Lagrangian is constrained by Minkowski geometry. For a free particle, the action is proportional to proper time,
 
-Once we have $\omega$, we can see the job of Hamiltonian mechanics as finding flows under which the area measured by the two-form is invariant. This is the geometric form of information preservation. Remarkably, the "overlap" of two vectors and the "area" the same two vectors span lead to descriptions of entirely different categories of behavior.
+```math
+S=-m\int d\tau
+```
+
+Writing this action in terms of coordinate time $t$, with $c=1$, gives
+
+```math
+d\tau=\sqrt{1-v^2}\,dt
+```
+
+and therefore
+
+```math
+L=-m\sqrt{1-v^2}
+```
+
+The corresponding conjugate momentum is
+
+```math
+p=\frac{\partial L}{\partial v}=\frac{mv}{\sqrt{1-v^2}}
+```
+
+### From Momentum to the Symplectic Form
+
+Thus far, the action has identified $q$ and $p$ as the correct paired variables for specifying instantaneous state.
+
+This gives us what mathematicians call a one-form:
+
+```math
+\theta(v)=p_i\,dq^i(v)
+```
+
+If we pass in the displacement $\delta q$,
+
+```math
+\theta(\delta q)=p_i\,dq^i(\delta q)=p_i\,\delta q^i
+```
+
+We obtain the first-order change in the action.
+
+The salient feature of Hamiltonian flows, their "incompressibility," requires a different type of mathematical object, one that measures an "amount of states," or an "area" on phase space. 
+
+Once the action has identified $q^i$ and $p_i$ as conjugate variables, the natural oriented area element on their space is the symplectic two-form. A two-form takes in two vectors and returns a number. The symplectic form is given the label $\omega$:
+
+```math
+\omega(w,v):=(dq^i \wedge dp_i)(w,v) = dq^i(w)\,dp_i(v)-dq^i(v)\,dp_i(w)
+```
+
+This area is the continuous analogue of counting states. One can see this by imagining phase space as a fine lattice. In that case, the count of lattice points is obviously proportional to the area enclosing them. In the continuous case, the area becomes the preserved measure without a discrete count of points. With more degrees of freedom, the corresponding volume measure is built from repeated products of $\omega$.
+
+Once we have the symplectic form $\omega$, we can see the job of Hamiltonian mechanics as finding flows under which the area measured by the form is invariant. This is the geometric form of information preservation. 
 
 ![One-form to two-form animation contact sheet](animations/differential-one-form-to-two-form-contact-sheet.png)
 
@@ -353,9 +317,9 @@ Once we have $\omega$, we can see the job of Hamiltonian mechanics as finding fl
 
 [Open MP4: differential-one-form-to-two-form.mp4](animations/differential-one-form-to-two-form.mp4)
 
-There is a second reason the two-form is a candidate invariant structure on phase space. The one-form is not uniquely determined by the physics. Different Lagrangians can describe the same physical system when their actions differ only by a term that depends on the endpoints. That freedom can shift the boundary one-form, since the one-form records endpoint sensitivity. The two-form, however, is unchanged by this redundancy.
+::: details Optional: why the two-form is the invariant object
 
-To see this more concretely, we have to work through a bit of math. This can be skipped if desired without losing the main thread. Formally, such an endpoint-only change is produced by adding a total time derivative to the Lagrangian:
+The momentum-position one-form is demonstrably not a phase-space invariant due to redundancy in its value. Different Lagrangians can describe the same physical system when their actions differ only by a term that depends on the endpoints. That freedom can shift the boundary one-form, since the one-form records endpoint sensitivity. The symplectic form, in contrast, is unchanged by this redundancy. Such an endpoint-only change is produced by adding a total time derivative to the Lagrangian:
 
 ```math
 L' = L + \frac{dF(q,t)}{dt}.
@@ -409,9 +373,11 @@ So after the shift,
 
 The two-form therefore keeps the part of the boundary structure that is independent of this Lagrangian redundancy. A geometry equipped with such a form is called symplectic geometry.
 
+:::
+
 ### Defining Phase Space
 
-Phase space is the set of possible instantaneous states of a system described by generalized position coordinates and their conjugate momenta, as selected by the action. For one degree of freedom, a point in phase space is $(q,p)$. For many degrees of freedom, a point is $(q^1,\dots,q^n,p_1,\dots,p_n)$.
+We are now in a position to define phase space. It is the set of possible instantaneous states of a system described by generalized position coordinates and their conjugate momenta, as selected by the action. For one degree of freedom, a point in phase space is $(q,p)$. For many degrees of freedom, a point is $(q^1,\dots,q^n,p_1,\dots,p_n)$.
 
 The space is equipped with the two-form
 
@@ -419,11 +385,11 @@ The space is equipped with the two-form
 \omega = dq^i \wedge dp_i,
 ```
 
-which measures the local amount of states and gives phase space its invariant symplectic structure. Phase space is therefore the instantaneous state space organized by conjugate variables and the area structure they determine.
+which measures the local amount of states and gives phase space its invariant symplectic structure.
 
 ## Generating Time Evolution
 
-Compare phase-space plots to spacetime diagrams. In a spacetime diagram, motion is baked into the shape of the worldline. The history is contained in a static plot. In the phase-space picture, there is no physical motion, no history, until a point or region of phase space begins to flow. Our next task, then, is to describe the flows that characterize conservative physical systems. In such systems, the Hamiltonian is the function that generates the physical time-evolution flow on phase space.
+Consider the contrast between phase-space animations and spacetime diagrams. In a spacetime diagram, time is an axis, motion is encoded into the worldline, and the history is contained in a static plot. In the phase-space picture, there is no physical motion, no history, until a point or region of phase space begins to flow. Our next task, then, if we wish to describe motion using phase space, is to characterize the flows of conservative systems. The Hamiltonian is the function that generates the physical evolution flow on phase space.
 
 ![Worldline to phase-space bridge animation contact sheet](animations/differential-worldline-phase-space-bridge-contact-sheet.png)
 
@@ -447,7 +413,7 @@ Picture a contour map on the $q,p$ plane. The value of a function, $F(q,p)$, ass
 
 [Open MP4: differential-function-to-flow.mp4](animations/differential-function-to-flow.mp4)
 
-The way to turn $F$'s level-set structure into a vector field is:
+We can convert $F$'s level sets into a vector field as follows:
 
 ```math
 \dot q^i = \frac{\partial F}{\partial p_i},
@@ -455,7 +421,7 @@ The way to turn $F$'s level-set structure into a vector field is:
 \dot p_i = -\frac{\partial F}{\partial q^i}.
 ```
 
-These cross-coupled equations are the dynamical face of the geometric coupling that preserves the area form. Solving them for $q(t)$ and $p(t)$ gives the flow. Flows generated by functions in this way are called Hamiltonian flows.
+These cross-coupled equations are the dynamical face of the geometric coupling that preserves the symplectic area form. Solving them for $q(t)$ and $p(t)$ gives the Hamiltonian flow.
 
 A trivial example is $F=p$. Then
 
@@ -473,53 +439,69 @@ q(t) = q_0 + t,
 p(t) = p_0.
 ```
 
-This construction can be written down for any two variables. In mechanics, however, the variables are conjugate state variables selected by the action, so the resulting flow acts on physical state space.
+That is, the flow generated by constant momentum is spatial translation.
+
+Once $q$ and $p$ have been selected as conjugate variables, any smooth function $H(q,p)$ generates a flow on phase space. The special role of the Hamiltonian is that its flow is the physical time evolution of the system.
 
 #### Preservation of the Symplectic Area
 
-Now that we have a procedure for generating a flow from a function, we can check that the flow generated by any smooth function preserves the area form.
+Now that we have a procedure for generating a flow from a smooth function, we can check that such a flow preserves the area form.
 
-![Symplectic patch preservation animation contact sheet](animations/differential-symplectic-patch-preservation-contact-sheet.png)
+To see the preservation, ask what would have to happen for a small patch of phase space to gain or lose area. States would have to flow into the patch from a source or flow out of the patch through a sink. In vector-field language, local sources and sinks are measured by divergence.
 
-*Hamiltonian flow can stretch and shear a patch, but it preserves the area measured by the symplectic form.*
+In one dimension, if the velocity $\dot q$ gets larger as $q$ increases, then points slightly farther to the right move even farther right, so the flow spreads in the $q$-direction. The rate of that spreading is $\partial \dot q/\partial q$. Likewise, $\partial \dot p/\partial p$ measures spreading in the $p$-direction. Divergence adds these directional spreading rates.
 
-[Open MP4: differential-symplectic-patch-preservation.mp4](animations/differential-symplectic-patch-preservation.mp4)
-
-To see the preservation, we ask what would have to happen for a patch of phase space to gain or lose area. States would have to flow into or out of the patch through a source or sink. In vector-field language, local sources and sinks are measured by divergence. Thus, in one degree of freedom, it is enough to compute the divergence of the flow generated by $F$.
+For one degree of freedom, the phase-space velocity has two components, $\dot q$ and $\dot p$. Its divergence is
 
 ```math
-\frac{\partial \dot q^i}{\partial q^i}
+\frac{\partial \dot q}{\partial q}
 +
-\frac{\partial \dot p_i}{\partial p_i}
-=
-\frac{\partial}{\partial q^i}\left(\frac{\partial F}{\partial p_i}\right)
--
-\frac{\partial}{\partial p_i}\left(\frac{\partial F}{\partial q^i}\right).
+\frac{\partial \dot p}{\partial p}.
 ```
 
-Since mixed partial derivatives agree,
+The first term asks whether nearby points separate in the $q$-direction as they move. The second asks whether nearby points separate in the $p$-direction. If the sum is zero, any stretching in one direction is balanced by squeezing in the other.
+
+Now use the flow generated by $F$:
 
 ```math
-\frac{\partial^2 F}{\partial q^i \partial p_i}
+\dot q=\frac{\partial F}{\partial p},
+\qquad
+\dot p=-\frac{\partial F}{\partial q}.
+```
+
+Substituting these into the divergence gives
+
+```math
+\frac{\partial}{\partial q}\left(\frac{\partial F}{\partial p}\right)
 -
-\frac{\partial^2 F}{\partial p_i \partial q^i}
+\frac{\partial}{\partial p}\left(\frac{\partial F}{\partial q}\right).
+```
+
+For a smooth function, the order of these two derivatives does not matter:
+
+```math
+\frac{\partial^2 F}{\partial q\,\partial p}
+=
+\frac{\partial^2 F}{\partial p\,\partial q}.
+```
+
+So the two terms cancel, and the divergence vanishes:
+
+```math
+\frac{\partial \dot q}{\partial q}
++
+\frac{\partial \dot p}{\partial p}
 =
 0.
 ```
 
-The divergence vanishes:
+![Source and sink versus symplectic flow animation contact sheet](animations/differential-source-sink-vs-symplectic-contact-sheet.png)
 
-```math
-\frac{\partial \dot q^i}{\partial q^i}
-+
-\frac{\partial \dot p_i}{\partial p_i}
-=
-0.
-```
+*Sources and sinks change phase-space area; Hamiltonian flow stretches and squeezes without changing it.*
 
-Thus, the flow generated by any smooth function on phase space preserves the area 2-form, which is the condition for preserving the information structure of an ensemble.
+[Open MP4: differential-source-sink-vs-symplectic.mp4](animations/differential-source-sink-vs-symplectic.mp4)
 
-### Energy Generates Time
+### Energy as the Hamiltonian
 
 We have already seen the pairing of energy and time in relativity. The action for a free particle is proportional to the spacetime length of the worldline, and its terms pair energy with time and momentum with position:
 
@@ -527,19 +509,75 @@ We have already seen the pairing of energy and time in relativity. The action fo
 S = -m \int ds = -\int E\,dt + \int p_x\,dx + \int \cdots
 ```
 
-4-momentum is the covector that measures the contribution of a displacement in spacetime to action. Energy is the component that measures the contribution of a time displacement.
+Four-momentum is the covector that measures the contribution of a displacement in spacetime to action, and energy is the component that measures the contribution of a time displacement.
 
 ![Action decomposition diagram](animations/differential-action-decomposition.png)
 
 *The spacetime action pairing splits into spatial momentum terms and a temporal energy term.*
 
-Hamiltonian mechanics now asks for the function that generates time evolution on phase space. The relativistic decomposition suggests what that function should be. If energy is the coefficient paired with time displacement in the action, then the generator of time evolution should be energy.
+Given that we are seeking a function to generate the flow of time, and that we know that time pairs with energy in spacetime, it is not unreasonable to guess that the Hamiltonian function is the energy of the system. Indeed, for conservative systems, this is exactly the case, as we now show.
 
-And indeed, for conservative systems, the Hamiltonian is the energy. Energy generates time.
+For a relativistic free particle, the action is
+
+```math
+S=-m\int d\tau.
+```
+
+In coordinate time,
+
+```math
+d\tau=\sqrt{1-v^2}\,dt,
+```
+
+so
+
+```math
+S=\int L\,dt
+```
+
+with
+
+```math
+L=-m\sqrt{1-v^2}.
+```
+
+The conjugate momentum is
+
+```math
+p=\frac{\partial L}{\partial v}
+=
+\frac{mv}{\sqrt{1-v^2}}.
+```
+
+The Hamiltonian is the Legendre transform:
+
+```math
+H=pv-L.
+```
+
+Substituting gives
+
+```math
+H
+=
+\frac{mv^2}{\sqrt{1-v^2}}
++
+m\sqrt{1-v^2}
+=
+\frac{m}{\sqrt{1-v^2}}.
+```
+
+That is exactly the relativistic energy:
+
+```math
+E=\gamma m.
+```
+
+We may then say "energy generates time," a hard result, and a rich metaphor.
 
 ### Hamiltonian Mechanics
 
-We now know the geometry of phase space, we know we are looking for a function on it, and we know that function should be energy in the sense suggested by relativity. What remains is to derive that function from the Lagrangian. This requires a change of variables, because the Lagrangian is written as
+We now know the geometry of phase space, we know we are looking for a function on it, and we know that function should be energy in accordance with relativity. What remains is to derive that function from the Lagrangian. This requires a change of variables, because the Lagrangian is written as
 
 ```math
 L(q,\dot q),
@@ -553,7 +591,7 @@ H(q,p).
 
 #### The Legendre Transform
 
-The Legendre transform performs this trade by rewriting a function in terms of tangent-line data. Holding $q$ fixed, regard $L$ as a function of the velocity $\dot q$. Its slope in the velocity direction is
+The Legendre transform performs this change of variables by rewriting a function in terms of tangent-line data. Holding $q$ fixed, regard $L$ as a function of the velocity $\dot q$. Its slope in the velocity direction is
 
 ```math
 p_i = \frac{\partial L}{\partial \dot q^i}
@@ -709,7 +747,7 @@ or
 \ddot q + \frac{k}{m}q = 0.
 ```
 
-At this point we have the local differential formulation of mechanics in hand. The next step is not to change that mechanics, but to rewrite the same structure in a new language. The flow picture we have just developed can also be expressed as an algebra of functions on phase space, and that repackaging will make further structure visible.
+At this point we have the local differential formulation of mechanics in hand. The flow picture we have just developed can also be expressed as an algebra of functions on phase space, and that repackaging will make further structure visible.
 
 ## The Algebra of Hamiltonian Mechanics
 Given two functions $f$ and $g$ on phase space, we can ask how $f$ changes along the flow generated by $g$ or how $g$ changes along the flow generated by $f$.

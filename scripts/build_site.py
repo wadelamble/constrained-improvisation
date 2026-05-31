@@ -334,6 +334,24 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
             html_blocks.append(f'<aside class="manuscript-sidebar">{sidebar_html}</aside>')
             continue
 
+        if stripped.startswith("::: details"):
+            summary = stripped.removeprefix("::: details").strip() or "Optional"
+            i += 1
+            detail_lines = []
+            while i < len(lines) and lines[i].strip() != ":::":
+                detail_lines.append(lines[i])
+                i += 1
+            if i < len(lines):
+                i += 1
+            detail_html, _ = render_markdown("\n".join(detail_lines))
+            html_blocks.append(
+                '<details class="manuscript-details">'
+                f"<summary>{inline(summary)}</summary>"
+                f'<div class="manuscript-details__body">{detail_html}</div>'
+                "</details>"
+            )
+            continue
+
         image_match = re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)", stripped)
         if image_match:
             alt, image_path = image_match.groups()
