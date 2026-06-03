@@ -891,7 +891,7 @@ The result is another smooth function on phase space. It goes to zero when $f$ d
 
 #### The Properties of Poisson Algebra
 
-The Poisson bracket is the algebraic formulation of the way in which Hamiltonian flows compose on phase space. 
+The Poisson bracket is the algebraic formulation of the way Hamiltonian flows compose on phase space. 
 
 Bilinearity:
 
@@ -927,14 +927,14 @@ Rather than saying that different nestings are equal, it says that the cyclic su
 
 ![Poisson Jacobi identity animation contact sheet](animations/differential-poisson-jacobi-identity-contact-sheet.png)
 
-*Associativity is shown as common endpoint on a line; Jacobi is shown as cyclic closure in a plane.*
+*Number-line groupings reach the same endpoint; non-cyclic bracket sums miss closure; the Jacobi cyclic sum closes.*
 
 [Open MP4: differential-poisson-jacobi-identity.mp4](animations/differential-poisson-jacobi-identity.mp4)
 
 
 Product Rule:
 
-Poisson brackets act on products of functions as derivatives do in calculus. This is expected because, with one input held fixed, the Poisson bracket differentiates the other input along the corresponding Hamiltonian flow:
+Poisson brackets act on products of functions as derivatives do in calculus. This is expected because the Poisson bracket differentiates one input along the flow of the other:
 
 ```math
 \{f,gh\}=\{f,g\}h+g\{f,h\}.
@@ -953,16 +953,14 @@ Once the Poisson bracket is in hand, physical relationships that previously had 
 ##### The Canonical Pairing of Position and Momentum
 
 ```math
-\{q,p\}=1,
-\qquad
-\{p,q\}=-1.
+\frac{dq}{ds}=\{q,p\}=1=-\{p,q\}=-\frac{dp}{ds}.
 ```
 
-We can read these equations in shorthand as "momentum generates position translations" and "position generates momentum translations." 
+The are the identities that are meant when saying "momentum generates position translations" and "position generates momentum translations." 
 
-At this point the questioning reader may scratch their head. From relativity and Noether’s theorem, we expect momentum to be paired with position displacement, and in Hamiltonian language we expect momentum to generate position translations. But what could it mean for position to generate momentum? Momentum symmetry? Conserved position? Not quite. The answer is that position and momentum are reciprocally paired as generators of canonical transformations, not as generators of physical symmetries. A shift in position may be a symmetry of the physical system. A shift in momentum usually is not. The reciprocal generator relation is instead part of the phase-space structure that preserves information density. There is nonetheless a physical intuition behind it.
+At this point the questioning reader may scratch their head. From relativity we expect momentum to be paired with position displacement, and from Noether’s theorem, we expect conserved momentum to follow from position symmetry. But what could it mean for position to generate momentum? Momentum symmetry? Conserved position? This is nonsense. The answer is that position and momentum are reciprocally paired as generators of canonical transformations, or phase space flows, not as generators of physical symmetries. A shift in position is a symmetry of a free physical system, a shift in momentum is not. The reciprocal generator relation is instead part of the phase-space structure that preserves information density. There is, nonetheless, a physical intuition behind it.
 
-Imagine a downhill skier. The mountain's incline determines how their momentum changes, and that incline is a function of position. So $\dot p$ is determined by position. This example is illustrative because it realizes the idea of a potential gradient as an actual hill. Whatever the details of the system, if we choose $p$ and $q$ so that $H = K(p) + V(q)$, then the more $H$ changes with respect to $q$, the greater the rate of change of momentum. This is what is meant, dynamically, by saying that $q$ generates $p$.
+Imagine a downhill skier. The mountain's incline determines how their momentum changes, and that incline is a function of position. So $\dot p$ is determined by position. This example is illustrative because it realizes the idea of a potential "hill" as an actual hill. Whatever the details of the system, if we choose $p$ and $q$ so that $H = K(p) + V(q)$, then the more $H$ changes with respect to $q$, the greater the rate of change of momentum. This is what is meant, dynamically, by saying that $q$ generates $p$.
 
 ![Skier position generates momentum animation contact sheet](animations/differential-skier-position-generates-momentum-contact-sheet.png)
 
@@ -972,8 +970,7 @@ Imagine a downhill skier. The mountain's incline determines how their momentum c
 
 That distinction will matter later. Quantum mechanics realizes the position/momentum pairing in the representation of translations on waves. There, the classical relation $\{q,p\}=1$ becomes the commutator relation $[\hat q,\hat p]=i\hbar$.
 
-::: sidebar
-#### Fourier Phase and the Quantum Lift
+::: details Optional: Fourier phase and the quantum lift
 
 While position/momentum pairing does not belong to the symmetries of classical physics, it does appear in the symmetry space of wavefunctions (if we associate wave number with momentum). The Fourier transform exchanges the two. Shifting in $x$ corresponds to multiplying by a $k$-phase, while multiplying by an $x$-phase shifts $k$. In that setting, $k$ generates translations in $x$, and $x$ generates translations in $k$. Quantum mechanics will turn this reciprocal Fourier symmetry into the canonical commutation relation, which underlies many aspects of quantum theory, including the structure of the Schrödinger equation and the Heisenberg uncertainty principle.
 
@@ -1077,10 +1074,6 @@ assuming $f$ has no explicit time dependence. In this form, time evolution itsel
 \dot p = \{p,H\} = -\frac{\partial H}{\partial q}.
 ```
 
-![Poisson algebra compression diagram](animations/differential-poisson-compression.png)
-
-*The Poisson bracket packages Hamilton's equations, canonical pairing, and conservation into one algebraic operation.*
-
 ##### Conservation and Noether's Theorem (Forward and Backward)
 
 Conservation laws also become algebraic statements. If
@@ -1100,13 +1093,15 @@ then the quantity $f$ is conserved in time.
 Because the bracket is antisymmetric, the same vanishing relation may be read in reverse:
 
 ```math
-\{f,H\}=0
-\qquad \Longleftrightarrow \qquad
-\{H,f\}=0.
+\{f,H\} = 0 = \{H,f\}
 ```
+
+![Noether conservation and symmetry two-readings diagram](animations/differential-noether-two-readings.png)
+
+*The same zero bracket reads as conservation from the $H$-flow side and symmetry from the $f$-flow side.*
 
 This is the compact meeting point of the two Noether directions. Read one way, it says that $f$ is conserved under the time evolution generated by $H$. Read the other way, it says that the transformation generated by $f$ leaves $H$ unchanged. Conservation and symmetry thus appear as two readings of the same algebraic relation.
 
 #### Looking Ahead to Quantum Mechanics
 
-This algebraic viewpoint provides a bridge from Hamiltonian mechanics into quantum mechanics. There, the classical geometry of states as points moving through phase space no longer carries over in the same direct form, and much of the new theory remains to be understood on its own terms. What does carry over cleanly is the algebraic structure of observables, generators, and their bracket relations. By replacing functions with operators and Poisson brackets with commutators, one can lift a large part of Hamiltonian structure forward before learning the geometry native to the quantum theory. The geometry changes, but the algebra transports.
+This algebraic viewpoint provides a bridge from Hamiltonian mechanics into quantum mechanics. There, the classical geometry of states as points moving through phase space no longer carries over in the same direct form, and much of the new theory remains to be understood on its own terms. What does carry over cleanly is the algebraic structure of observables, generators, and their bracket relations. By replacing functions with operators and Poisson brackets with commutators, one can lift a large part of Hamiltonian structure before learning the geometry quantum theory requires.
