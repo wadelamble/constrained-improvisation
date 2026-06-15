@@ -37,6 +37,7 @@ CONTACT_SHEET_FILES = [
     "differential-lie-generator-tangent-flow.mp4",
     "differential-exponential-map-accumulation.mp4",
     "differential-generator-vector-field-contrast.mp4",
+    "lm-fermat-snell-huygens.mp4",
 ]
 
 
