@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f3ec"/>
+  <rect x="70" y="70" width="820" height="400" fill="#fbf8f0" stroke="#c9bca8" stroke-width="2"/>
+  <rect x="70" y="270" width="820" height="200" fill="#ddeef2"/>
+  <line x1="70" y1="270" x2="890" y2="270" stroke="#7d8d91" stroke-width="3"/>
+  <text x="95" y="115" font-family="Arial, sans-serif" font-size="22" fill="#4b463f">fast medium</text>
+  <text x="95" y="445" font-family="Arial, sans-serif" font-size="22" fill="#4b463f">slow medium</text>
+  <text x="755" y="252" font-family="Arial, sans-serif" font-size="18" fill="#687679">interface</text>
+
+  <line x1="135" y1="95" x2="595" y2="270" stroke="#9f9890" stroke-width="4" stroke-dasharray="10 10" opacity="0.75"/>
+  <line x1="595" y1="270" x2="825" y2="425" stroke="#9f9890" stroke-width="4" stroke-dasharray="10 10" opacity="0.75"/>
+
+  <line x1="135" y1="95" x2="505" y2="270" stroke="#2e5f91" stroke-width="7" stroke-linecap="round"/>
+  <line x1="505" y1="270" x2="825" y2="425" stroke="#b85c38" stroke-width="7" stroke-linecap="round"/>
+
+  <line x1="505" y1="175" x2="505" y2="365" stroke="#8f887f" stroke-width="2" stroke-dasharray="5 7"/>
+  <text x="520" y="190" font-family="Arial, sans-serif" font-size="18" fill="#6c655d">normal</text>
+
+  <circle cx="135" cy="95" r="12" fill="#2f2f2f" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="505" cy="270" r="12" fill="#2f2f2f" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="825" cy="425" r="12" fill="#2f2f2f" stroke="#ffffff" stroke-width="3"/>
+  <text x="110" y="75" font-family="Arial, sans-serif" font-size="24" fill="#2f2f2f" font-weight="700">A</text>
+  <text x="515" y="255" font-family="Arial, sans-serif" font-size="24" fill="#2f2f2f" font-weight="700">B</text>
+  <text x="840" y="432" font-family="Arial, sans-serif" font-size="24" fill="#2f2f2f" font-weight="700">C</text>
+
+  <path d="M 505 215 A 55 55 0 0 0 455 247" fill="none" stroke="#2e5f91" stroke-width="3"/>
+  <path d="M 505 325 A 55 55 0 0 0 555 300" fill="none" stroke="#b85c38" stroke-width="3"/>
+  <text x="420" y="230" font-family="Arial, sans-serif" font-size="18" fill="#2e5f91">theta_incidence</text>
+  <text x="545" y="330" font-family="Arial, sans-serif" font-size="18" fill="#b85c38">theta_refraction</text>
+
+  <text x="240" y="145" font-family="Arial, sans-serif" font-size="20" fill="#2e5f91">v_incident</text>
+  <text x="650" y="385" font-family="Arial, sans-serif" font-size="20" fill="#b85c38">v_refracted</text>
+  <text x="480" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#4b463f">Fermat path: stationary travel time</text>
+</svg>

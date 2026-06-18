@@ -624,7 +624,10 @@ def make_fermat_snell_huygens_animation(path: Path) -> None:
         for index in range(-3, 6):
             p = phase - index * spacing1
             if -2.4 < p < 2.6:
-                draw_clipped_wavefront(ax_wave, d1, w1, p, True, "#355070", 1.15, 0.42)
+                if index == 0:
+                    draw_clipped_wavefront(ax_wave, d1, w1, p, True, "#355070", 2.0, 0.82)
+                else:
+                    draw_clipped_wavefront(ax_wave, d1, w1, p, True, "#355070", 1.15, 0.36)
 
         if phase > -0.05:
             for index in range(0, 8):
@@ -638,6 +641,9 @@ def make_fermat_snell_huygens_animation(path: Path) -> None:
         for xb in boundary_points:
             age = phase - d1[0] * xb
             if 0.0 < age < 1.95:
+                xs_fast = xb + age * np.cos(phi)
+                ys_fast = age * np.sin(phi)
+                ax_wave.plot(xs_fast, ys_fast, color="#355070", linewidth=1.1, alpha=0.28)
                 radius = age / n2
                 xs = xb + radius * np.cos(phi)
                 ys = -radius * np.sin(phi)
