@@ -1,5 +1,5 @@
-# Path Mechanics
-We have discussed the symmetries that characterize the world we live in, the geometry defined by invariants of these symmetry transformations, the objects that inhabit this geometry, and the constraints this structure places on causality. We can now turn our attention to how physical systems, under these constraints, evolve.
+# Variational Mechanics
+We have discussed the symmetries that characterize the world we live in, the geometry defined by these symmetry transformations, the objects that inhabit this geometry, and the implications this structure has on causality. We can now turn our attention to how, under these constraints, physical systems evolve in reality.
 
 ## The Principle of Least Action
 Imagine the possible paths between some endpoints in a time vs position plot. [diagram].
@@ -278,20 +278,21 @@ L=T-V.
 This is the familiar starting point for non-relativistic Lagrangian mechanics some readers may have seen. One can try to puzzle out why $\int (T-V)dt$ should be the quantity the physical path minimizes. Working through examples one can convince themselves of the intuition that the path is "trading off" potential for kinetic "as economically as possible." To minimize the action, a falling ball gradually gains speed, it doesn't levitate then race to the ground.
 
 ### Fermat's Theorem
-Some readers may have heard of "Fermat's theorem" that light always takes the path between two points which consumes the least time, even as it passes through media in which it has different velocities.
+Light takes the path between two points that takes the least time, even when it has to bend to account for passing through media with different propagation speeds. This is Fermat's theorem.
 
 ![Fermat path through a medium band](animations/lm-fermat-medium-band.png)
 
-This result leads to "Snell's law" that expresses how light needs to bend when it enters a new medium to abide by Fermat's theorem:
+This requirement fixes the bending angle through Snell's law:
 
 ```math
 \frac{\sin\theta_{\text{incidence}}}{v_{\text{incident}}}
 =
 \frac{\sin\theta_{\text{refraction}}}{v_{\text{refracted}}}
 ```
-This situation is exactly analogous to any time-optimized route-finding. Say a person were running a race that required swimming across a body of water. To optimize their time, they would balance taking the most direct path across the water with taking the most direct path from the overall starting point to the overall ending point. In the case of running a race, we would say that the racer calculated all this beforehand and chose the optimal route. But how does light do this? Does it "peek ahead"? It certainly can't see the future, but is there some way it can effectively "peek ahead" without actually seeing the future?
 
-Before we continue, we should say that the problem of light optimizing time of travel is itself an action extremization problem, but setting up that problem requires familiarity with concepts we have not gotten to yet. That needn't bother us here, as our immediate concern isn't solving the foundational variational problem for light, but understanding the mechanism by which light "figures out" the optimal path. Any variational problem entails the same seeming paradox, for it is the entirety of the integrated path that is extremized. One could argue that the method for extremizing the path is to follow the equations of motion, but there are reasons not to adopt this view. First, we derive the equations of motion from the path extremization. Second, there are many cases in which we do physics using implications, such as identifying conserved quantities, without ever knowing the equations of motion. One could reject both these objections on the grounds that the fact that we don't know the equations of motion does not tell us that they are not the cause of the path optimization. But there are yet more objections. Third, the equations of motion are not a cause, they are description. They provide no actual mechanism for their existence. Fourth, and most importantly, the mechanism that allows light to "find" the optimal path presages the wave/particle duality that we will see is at the heart of quantum mechanics.
+We will skip the proof, but the intuition is exactly that of any time-optimized route-finding. Say a person were running a race that required swimming across a body of water. To optimize their time, they would balance taking the shortest swim against taking the shortest total route. In the case of running a race, we would say that the racer calculated all this beforehand and chose the optimal route. But how does light do this? Does it "peek ahead"? It certainly can't see the future, but is there some way it can effectively "peek ahead" without actually seeing the future?
+
+Light's optimization of travel time is a specific case of action extremization. While showing this requires material we have not yet covered, what we care about here is not solving the underlying variational problem but exploring the mechanism by which path optimization seems somehow to "look ahead." Any variational problem entails the same seeming paradox, for it is the entirety of the integrated path that is extremized. One could argue that there is no mystery here for the full path is generated from the local equations of motion, but those equations provide a description of the local rules that give rise to the next step of the path, not a reason for those rules. 
 
 The solution to light's ability to find the optimal path was given by Huygens' principle in the late 1600s. The principle states that every point on a wavefront emits spherical wavelets whose envelope is the next wavefront, where the wavelets interfere constructively. Elsewhere, they are out of phase and the wavelets interfere destructively.
 
@@ -336,4 +337,8 @@ Therefore,
 
 This is Snell's law, or equivalently Fermat's theorem that light optimizes its travel time.
 
-What has happened here? If we think of light as a particle travelling along a ray, in a sense it has "peeked ahead," or more accurately "tried every possibility," and the possibilities that did not optimize travel time "cancelled out" by interfering destructively. If we abstract away the literal wave picture and leave just the idea that paths that are out of phase cancel out by interfering destructively, we can formulate a variational principle for particles that can take all possible paths. In the quantum world, what we observe as particles in fact do take all possible paths with varying degrees of probability. Noting that these infinitely branching path possibilities, each with an associated phase, are mathematically identical to Huygens' infinitely many wavelet sources is exactly Feynman's path integral formulation.
+What has happened here? If we focus on the light ray rather than the wave, it seems to have "peeked ahead" and found the optimal path. If we focus on the wave instead, the mystery changes. The wave does not choose a path in advance, it sends contributions through the available possibilities, and the contributions away from the travel-time optimum cancel by destructive interference. Would we ever see those interfering contributions before the cancellation has narrowed into a clean ray? Yes, when the wavelength is long compared to the region over which the wavefront is being reflected or refracted. A long-wavelength radio wave reflecting from a narrow mirror, for example, would not produce a sharp reflected ray. The cancellation would be incomplete, and the reflected signal would spread into a diffraction pattern. As we will see, in quantum mechanics, the wavefunction carries the phase information whose interference determines the probabilities of particle observations. In the macroscopic limit, where the wavelength of the quantum wavefunction is very small compared to the scale over which the path is varied, contributions away from the classical path cancel by destructive interference. Thus, in the quantum context, Huygens' principle provides a mechanism by which "nature solves" the variational problem to find the optimal path.
+
+We can then lift the mathematical idea of phase cancellation out of the specific wave picture and assign a phase to every possible path. Paths whose phases fail to line up contribute little to the final amplitude, while paths near the stationary path reinforce. This is, as we will discuss later, Feynman's path integral formulation of quantum mechanics.
+
+
