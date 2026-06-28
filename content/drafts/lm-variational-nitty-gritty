@@ -1,0 +1,425 @@
+#### Straight Line in Flat Space
+
+We want to find the path that minimizes distance between two points in the plane. We do this by considering all possible paths and finding the one where the variation of the length vanishes to first order. 
+
+
+![Minimizing a curve in the plane](animations/lm-plane-path-length-variation.png)
+
+Figure 53 - Minimizing a curve in the plane
+
+##### Parameterize the Path
+
+In order to compare paths, we write them in the $(x,y)$ plane in parametric form
+
+```math
+\gamma:\lambda\mapsto (x(\lambda),y(\lambda)).
+```
+
+with fixed endpoints
+
+```math
+(x(\lambda_1),y(\lambda_1))=(x_1,y_1),
+\qquad
+(x(\lambda_2),y(\lambda_2))=(x_2,y_2).
+```
+
+In the Euclidean plane, the infinitesimal distance between nearby points is
+
+```math
+ds^2=dx^2+dy^2.
+```
+
+Along the parameterized curve,
+
+```math
+dx=\frac{dx}{d\lambda}\,d\lambda,
+\qquad
+dy=\frac{dy}{d\lambda}\,d\lambda.
+```
+
+Substituting into the Euclidean distance formula gives
+
+```math
+ds
+=
+\sqrt{
+\left(\frac{dx}{d\lambda}\right)^2
++
+\left(\frac{dy}{d\lambda}\right)^2
+}\,d\lambda.
+```
+
+The length of such a curve is
+
+```math
+\ell[\gamma]
+=
+\int_\gamma ds
+=
+\int_{\lambda_1}^{\lambda_2}
+\sqrt{
+\left(\frac{dx}{d\lambda}\right)^2
++
+\left(\frac{dy}{d\lambda}\right)^2
+}\,d\lambda .
+```
+
+
+Define
+
+```math
+x'=\frac{dx}{d\lambda},
+\qquad
+y'=\frac{dy}{d\lambda},
+\qquad
+R=\sqrt{{x'}^2+{y'}^2}=\frac{ds}{d\lambda}.
+```
+
+This cleans up some long expressions to follow. $R$ is the rate of change of length with respect to the parameter $\lambda$.
+
+Then
+
+```math
+\ell[\gamma]
+=
+\int_{\lambda_1}^{\lambda_2}R\,d\lambda .
+```
+
+##### Apply the Variational Procedure to Extremize Length 
+
+This completes the setup for expressing parameterized paths. Now, we come to the pivotal clever move in the variational procedure. Require that this functional be stationary under small variations of the curve that keep the endpoints fixed.
+
+Let
+
+```math
+x(\lambda)\rightarrow x(\lambda)+\varepsilon\eta(\lambda),
+\qquad
+y(\lambda)\rightarrow y(\lambda)+\varepsilon\xi(\lambda).
+```
+
+Here $\eta(\lambda)$ and $\xi(\lambda)$ are arbitrary test functions that vanish at the endpoints, so the endpoints stay fixed.
+
+```math
+\eta(\lambda_1)=\eta(\lambda_2)=0,
+\qquad
+\xi(\lambda_1)=\xi(\lambda_2)=0.
+```
+
+The number $\varepsilon$ controls the size of the change.
+
+Then
+
+```math
+x'\rightarrow x'+\varepsilon\eta',
+\qquad
+y'\rightarrow y'+\varepsilon\xi'.
+```
+
+The varied length is
+
+```math
+\ell(\varepsilon)
+=
+\int_{\lambda_1}^{\lambda_2}
+\sqrt{
+(x'+\varepsilon\eta')^2
++
+(y'+\varepsilon\xi')^2
+}\,d\lambda .
+```
+
+![Fixed endpoint length variation contact sheet](animations/lm-fixed-endpoint-length-variation-contact-sheet.png)
+
+[Open MP4: lm-fixed-endpoint-length-variation.mp4](animations/lm-fixed-endpoint-length-variation.mp4)
+
+Differentiate with respect to $\varepsilon$ and evaluate at $\varepsilon=0$.
+
+```math
+\left.\frac{d\ell}{d\varepsilon}\right|_{\varepsilon=0}
+=
+\int_{\lambda_1}^{\lambda_2}
+\frac{x'\eta'+y'\xi'}{R}\,d\lambda .
+```
+
+Stationarity requires
+
+```math
+\left.\frac{d\ell}{d\varepsilon}\right|_{\varepsilon=0}=0.
+```
+
+For a chosen test curve and endpoint-fixed variation, $\ell(\varepsilon)$ is now an ordinary function of $\varepsilon$. The original curve corresponds to $\varepsilon=0$. If the original curve is stationary, this derivative must vanish for every allowed endpoint-fixed variation.
+
+Now integrate this by parts, leading to an integrand containing only $\eta$ and $\xi$, not their derivatives.
+
+```math
+\int_{\lambda_1}^{\lambda_2}\frac{x'\eta'}{R}\,d\lambda
+=
+\left[\frac{x'}{R}\eta\right]_{\lambda_1}^{\lambda_2}
+-
+\int_{\lambda_1}^{\lambda_2}
+\frac{d}{d\lambda}\left(\frac{x'}{R}\right)\eta\,d\lambda .
+```
+
+The boundary term vanishes because $\eta(\lambda_1)=\eta(\lambda_2)=0$.
+
+And similarly for $y$. 
+
+Therefore the stationarity condition becomes
+
+```math
+\int_{\lambda_1}^{\lambda_2}
+\left[
+-
+\frac{d}{d\lambda}\left(\frac{x'}{R}\right)\eta
+-
+\frac{d}{d\lambda}\left(\frac{y'}{R}\right)\xi
+\right]d\lambda
+=
+0.
+```
+
+Because $\eta$ and $\xi$ can be any functions that vanish at the endpoints, the only way the integral can be zero for all such choices is for the coefficients of $\eta$ and $\xi$ to vanish pointwise.
+
+```math
+\frac{d}{d\lambda}\left(\frac{x'}{R}\right)=0,
+\qquad
+\frac{d}{d\lambda}\left(\frac{y'}{R}\right)=0.
+```
+
+Since $R=ds/d\lambda$,
+
+```math
+\frac{x'}{R}
+=
+\frac{dx/d\lambda}{ds/d\lambda}
+=
+\frac{dx}{ds},
+\qquad
+\frac{y'}{R}
+=
+\frac{dy/d\lambda}{ds/d\lambda}
+=
+\frac{dy}{ds}.
+```
+
+Now define dots with respect to arc length.
+
+```math
+\dot{x}:=\frac{dx}{ds},
+\qquad
+\dot{y}:=\frac{dy}{ds}.
+```
+
+The equations above therefore say
+
+```math
+\dot{x}=A,
+\qquad
+\dot{y}=B,
+```
+
+where $A$ and $B$ are constants. The tangent vector has constant components, so the path that minimizes the length is straight.
+
+
+##### Euler-Lagrange Equation
+In the example above, our functional $\ell[\gamma]$ only depended on $x'$ and $y'$. In general, a functional may depend on the coordinate itself as well as its derivative. Doing this for a single variable $q$, write
+
+```math
+I[q]=\int_{\lambda_1}^{\lambda_2}L(q,q')\,d\lambda.
+```
+
+Vary $q$ by an endpoint-fixed test function.
+
+```math
+q\rightarrow q+\varepsilon\eta,
+\qquad
+\eta(\lambda_1)=\eta(\lambda_2)=0.
+```
+
+Then
+
+```math
+\left.\frac{dI}{d\varepsilon}\right|_{\varepsilon=0}
+=
+\int_{\lambda_1}^{\lambda_2}
+\left(
+\frac{\partial L}{\partial q}\eta
++
+\frac{\partial L}{\partial q'}\eta'
+\right)d\lambda.
+```
+
+Integrate the second term by parts.
+
+```math
+\int_{\lambda_1}^{\lambda_2}
+\frac{\partial L}{\partial q'}\eta'\,d\lambda
+=
+\left[
+\frac{\partial L}{\partial q'}\eta
+\right]_{\lambda_1}^{\lambda_2}
+-
+\int_{\lambda_1}^{\lambda_2}
+\frac{d}{d\lambda}
+\left(
+\frac{\partial L}{\partial q'}
+\right)\eta\,d\lambda.
+```
+
+The boundary term vanishes, so stationarity gives
+
+```math
+\int_{\lambda_1}^{\lambda_2}
+\left[
+\frac{\partial L}{\partial q}
+-
+\frac{d}{d\lambda}
+\left(
+\frac{\partial L}{\partial q'}
+\right)
+\right]\eta\,d\lambda
+=
+0.
+```
+
+Since $\eta$ is arbitrary, the coefficient of $\eta$ must vanish.
+
+```math
+\frac{\partial L}{\partial q}
+-
+\frac{d}{d\lambda}
+\left(
+\frac{\partial L}{\partial q'}
+\right)
+=0.
+```
+
+#### From Path Length to Action
+
+The calculation above used a length functional for a curve in the Euclidean plane. The free relativistic particle uses the same structure with a different geometric interval and a constant scale factor.
+
+For the plane curve, the functional was
+
+```math
+\ell[\gamma]
+=
+\int_\gamma ds.
+```
+
+For a free relativistic particle, the path is a worldline,
+
+```math
+\gamma:\lambda\mapsto x^\mu(\lambda),
+```
+
+and the invariant interval along that worldline is
+
+```math
+c\,d\tau
+=
+\sqrt{-\eta_{\mu\nu}dx^\mu dx^\nu}.
+```
+
+Here $\eta_{\mu\nu}$ is the Minkowski metric. Using the arbitrary parameter $\lambda$,
+
+```math
+c\,d\tau
+=
+\sqrt{
+-\eta_{\mu\nu}{x'}^\mu{x'}^\nu
+}\,d\lambda.
+```
+
+Thus the action for a free relativistic particle, following the procedure above for the path in a plane, is
+
+```math
+S[\gamma]
+=
+-mc^2\int_\gamma d\tau
+=
+-mc
+\int_{\lambda_1}^{\lambda_2}
+\sqrt{
+-\eta_{\mu\nu}{x'}^\mu{x'}^\nu
+}\,d\lambda.
+```
+
+This is the same variational pattern as the plane example. The replacements are
+
+```math
+\ell[\gamma]\longrightarrow S[\gamma],
+\qquad
+ds\longrightarrow c\,d\tau,
+\qquad
+(x,y)\longrightarrow x^\mu,
+\qquad
+dx^2+dy^2\longrightarrow -\eta_{\mu\nu}dx^\mu dx^\nu.
+```
+
+The constant factor $-mc$ does not change which path is stationary. It only changes the scale and sign of the functional.
+
+Repeating the variational procedure with these substitutions gives
+
+```math
+\frac{d}{d\lambda}
+\left(
+\frac{\eta_{\mu\nu}{x'}^\nu}
+{\sqrt{-\eta_{\alpha\beta}{x'}^\alpha{x'}^\beta}}
+\right)
+=0.
+```
+
+This is the spacetime version of the plane result that the tangent direction is constant. If we use proper time as the path parameter, this becomes
+
+```math
+\frac{dx^\mu}{d\tau}=u^\mu=\text{constant}.
+```
+
+So the free relativistic particle follows a straight worldline,
+
+```math
+x^\mu(\tau)=x_0^\mu+u^\mu\tau.
+```
+
+The plane example showed how extremizing accumulated distance selects a straight path. The relativistic action repeats the same idea with accumulated proper time.
+
+#### Minimizing Length on Sphere
+
+Let's sketch how we would modify the procedure above to show that geodesics on a sphere are the shortest possible paths on that surface.
+
+![Geodesics on a sphere](animations/lm-sphere-geodesic-sketch.png)
+
+Figure 54 - Geodesics on a sphere
+
+The calculation is the same as for paths in flat space, except that the invariant distance changes from
+
+```math
+ds^{2} = dx^{2} + dy^{2}
+```
+
+to
+
+```math
+ds^{2} = \mathcal R^{2}\left( d\theta^{2}+\sin^2\theta\,d\phi^{2} \right)
+```
+
+After carrying out the variational procedure, with dots denoting derivatives with respect to the path parameter, we find
+
+```math
+\ddot{\theta}
+-
+\sin\theta\cos\theta\,\dot{\phi}^{2}
+=
+0,
+\qquad
+\ddot{\phi}
++
+2\cot\theta\,\dot{\theta}\dot{\phi}
+=
+0.
+```
+
+These are the equations for a geodesic on a sphere.
+
+#### From Geodesics on a Sphere to Dynamics
+From this example, we see that a shortest path in a curved space, a geodesic, is specified by differential equations involving second derivatives of the coordinates along the path. Thus, what appears as acceleration in flat space can be represented as free motion along a geodesic in an appropriately curved space. This may be the curvature of the base space itself, as in gravity, or it may require a more complicated geometry in which field degrees of freedom live over the base space.

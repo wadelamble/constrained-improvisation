@@ -1,20 +1,23 @@
-# Variational Mechanics
-We have discussed the symmetries that characterize the world we live in, the geometry defined by these symmetry transformations, the objects that inhabit this geometry, and the implications this structure has on causality. We can now turn our attention to how, under these constraints, physical systems evolve in reality.
+# The Principle of Least Action
+Relativity builds the geometry of spacetime from transformations that preserve the symmetry nature exhibits, specifies the objects that inhabit this geometry, and articulates the implications this structure has on causality. We can now turn our attention to how, under these constraints, physical systems evolve in practice.
 
-## The Principle of Least Action
 Imagine the possible paths between some endpoints in a time vs position plot. [diagram].
 
 ![Possible spacetime paths](animations/lm-possible-spacetime-paths.png)
 
-Without any training in physics, could we guess which path is the physical one? Einstein is purported to have said that "the difference between genius and stupidity is that genius has its limits." If we think nature has a certain genius, and notice that simple or elegant paths are the rarest among all possible paths, we might suspect that nature chooses the most elegant. We cannot take this too literally. In complicated systems, physical paths can be complicated. But the intuition is essentially on target. Whatever the physical path is for a given system, it is the one that, when all constraints are taken into account, is the most "something." We don't need to characterize this ineffable "something" -- simple, elegant, short, lazy, relaxed, efficient, obvious -- but only define it as a function such that the physical history corresponds to a unique feature of the function. This is the "principle of least action." Action is the quantity assigned to possible paths, and the physical path is the one whose action is "stationary," or unchanged under first-order perturbations, typically a minimum or maximum.
+Without any training in physics, could we guess which path is the physical one? Einstein is purported to have said that "the difference between genius and stupidity is that genius has its limits." If we think nature has a certain genius, and notice that simple or elegant paths are the rarest among all possible paths, we might suspect that nature chooses the most elegant. We cannot take this too literally. In complicated systems, physical paths can be complicated. But the intuition is essentially on target. Whatever the physical path is for a given system, it is the one that, when all constraints are taken into account, is the most "something." We don't need to characterize this ineffable "something" -- simple, elegant, short, lazy, relaxed, efficient, obvious -- but only define it as a function such that the physical history corresponds to a characteristic feature of the function. This is the "principle of least action." Action is the quantity assigned to possible paths, and the physical path is the one whose action is "stationary," or unchanged under first-order perturbations, typically where it is a minimum or maximum.
 
 The simplest example of the principle is that of a free particle that moves at constant velocity so that its path in a spacetime diagram is a straight line. A slightly more interesting case is that of an object falling in uniform gravity which traces a parabola in spacetime. We can see the pattern that the complexity of the path scales to the complexity of the constraints.
 
 ![Free particle and uniform force spacetime paths](animations/lm-free-vs-uniform-force-spacetime.png)
 
 
-### The Lagrangian Function
-How would we go about putting these ideas on a mathematical footing? We can map paths, just as we could the members of any set, to numbers.  [diagram] We call this map a "functional" (a map from functions to numbers, as opposed to a "function," which is a map from numbers to numbers). Now, we could map a path to a number as follows.
+## The Lagrangian Function
+How would we go about putting these ideas on a mathematical footing? We can map paths, just as we could the members of any set, to numbers.
+
+![A functional maps paths to numbers](animations/lm-functional-paths-to-numbers.png)
+
+We call this map a "functional" (a map from functions to numbers, as opposed to a "function," which is a map from numbers to numbers). Now, we could map a path to a number as follows.
 
 ```math
 F[x]=x(t_2)-x(t_1).
@@ -24,11 +27,11 @@ This is a perfectly valid functional, but it won't do for physics. Why? Because 
 
 $S[\gamma]=\int_\gamma dS$
 
-Once we use $t$ to parameterize the path, each infinitesimal contribution can be written as some function times $dt$.
+When we use $t$ to parameterize the path, each infinitesimal contribution can be written as some function times $dt$.
 
 $dS=L\,dt$
 
-That function is the Lagrangian. Since the action is built locally along a path, the local weighting must be able to see the infinitesimal piece of path being added. The minimal geometric data for that infinitesimal piece are the point $\gamma(t)$, the tangent $\dot{\gamma}(t)$, and the parameter value $t$. Thus we write
+$L$ is called the Lagrangian. Since the action is built locally along a path, the local weighting must be able to see the infinitesimal piece of path being added. The minimal geometric data to specify state of that infinitesimal piece are the point $\gamma(t)$, the tangent $\dot{\gamma}(t)$, and the parameter value $t$. Thus we write
 
 $L=L(\gamma(t),\dot{\gamma}(t),t)$
 
@@ -36,19 +39,19 @@ and therefore
 
 $dS=L(\gamma(t),\dot{\gamma}(t),t)\,dt$
 
-Adding all those little contributions from $t_1$ to $t_2$ gives
+Integrating these contributions from $t_1$ to $t_2$ gives
 
 $S[\gamma]=\int_{t_1}^{t_2}L(\gamma(t),\dot{\gamma}(t),t)\,dt$
 
-### Action Stationary Points
+### Stationary Points
 
-This behaves like a smooth function when the local function $L$ is smooth. If we choose one allowed wiggle shape $\eta(t)$ and scale it by a number $\epsilon$, then
+The action functional behaves like a smooth function when the local function $L$ is smooth. If we choose one allowed wiggle shape $\eta(t)$ and scale it by a number $\epsilon$, then
 
 ```math
 \gamma_\epsilon(t)=\gamma_0(t)+\epsilon\,\eta(t)
 ```
 
-turns the action into an ordinary one-variable function.
+turns the action into an ordinary one-variable function. This is a subtle move worth pausing over. We are free to choose $\eta(t)$ to be any allowed function. Once we choose it, the shape of the variation is fixed, and we can test its impact on the action with the single parameter $\epsilon$.
 
 ```math
 S(\epsilon)=S[\gamma_\epsilon].
@@ -64,10 +67,43 @@ The original path $\gamma_0$ is stationary along this chosen wiggle when $dS/d\e
 
 
 ### Spacetime Invariance
-If the action encodes the physical path, the action must be spacetime invariant. That is, if all observers agree on the same physical behavior, and if that behavior extremizes the action for all observers, then all observers must agree on the action. We typically write the action, as we have above, in terms of coordinate time since that is what observers directly measure. But we are free to compute the action in any frame, including the local rest frame along the path, where we can integrate over proper time, $S=\int_{\tau_1}^{\tau_2}L\,d\tau$. When we do so, since the proper time differential is a Lorentz invariant, the Lagrangian must be as well so that the entire integral is invariant. In the simplest case without any cancellation between terms, the Lagrangian's individual terms must be invariant as well. Candidate invariants are $x^\mu x_\mu$ and $u^\mu u_\mu$. The former cannot be physically relevant since empty spacetime has no preferred origin, and the latter reduces to $c^2$ (or 1 in natural units). We can scale an invariant, certainly when it is just $1$, as it is here. Thus the action for a free particle in spacetime is $S=-\alpha\int_{\tau_1}^{\tau_2}d\tau$. We define mass as being precisely this scale factor. $S=-m\int_{\tau_1}^{\tau_2}d\tau$. We may now ask what happens to "non-free" particles, those that are acted upon by some "force." At this level, a "force" seems to require some additional fact about position, some way for one location to differ physically from another; in typical non-relativistic systems, we represent this "force field" with a position-dependent "potential energy" term in the Lagrangian. But in the fundamental relativistic formulation for a single particle, we cannot have such a term, because spatial position by itself is not a Lorentz invariant. This leads to a deep conclusion. In the single-particle picture, the only relativistically valid Lagrangian we can build is the free one. We can introduce potentials for convenience, but in this single-particle picture there is no invariant object for them to depend on. However, when we move from particles to fields, we will have a new, rich set of invariants to work with, and we will have interactions between different fields. When we cross that bridge, we will be able to build richer Lagrangians that are Lorentz invariant, and potentials will be seen to arise from interacting fields.
+If the action encodes the physical path, the action must be spacetime invariant. That is, if all observers agree on the same physical behavior, and if that behavior extremizes the action for all observers, then all observers must agree on the action. We typically write the action, as we have above, in terms of coordinate time since that is what observers directly measure. But we are free to compute the action in any frame, including the local rest frame along the path, where we can integrate over proper time.
 
-### Curvature
-If the only single-particle path we can build from spacetime invariance alone is a straight line, how does an object ever curve in spacetime, that is, accelerate? One answer is that, if spacetime itself were curved, objects would accelerate toward one another.
+```math
+S=\int_{\tau_1}^{\tau_2}L\,d\tau
+```
+
+When we do so, since the proper time differential is a Lorentz invariant, the Lagrangian must be as well so that the entire integral is invariant. In the simplest case without any cancellation between terms, the Lagrangian's individual terms must be invariant as well. Candidate invariants are
+
+```math
+x^\mu x_\mu,\qquad u^\mu u_\mu .
+```
+
+The former cannot be physically relevant since empty spacetime has no preferred origin, and the latter reduces to $c^2$ (or 1 in natural units). We can scale an invariant, certainly when it is just $1$, as it is here. Thus the action for a free particle in spacetime is
+
+```math
+S=-\alpha\int_{\tau_1}^{\tau_2}d\tau .
+```
+
+We define mass as being precisely this scale factor.
+
+```math
+S=-m\int_{\tau_1}^{\tau_2}d\tau .
+```
+## Curvature and the Relativistic Source of Acceleration
+We may now ask what happens to "non-free" particles, those that undergo acceleration or are acted upon by some "force." We typically think of a force as the position-dependent gradient of a potential field. But this immediately runs into trouble with relativity, as it implies a shared time coordinate at different spatial coordinates. That is:
+
+```math
+V(\Delta\mathbf{x})
+=
+V(\mathbf{x}_2(t)-\mathbf{x}_1(t)).
+```
+
+But $\Delta\mathbf{x}$ is defined by comparing positions at the same coordinate time $t$, and there is no frame-independent shared $t$ for separated events.
+
+If an instantaneous, separation-dependent potential is not the source of acceleration, what is? The answer that current physical theory gives to this question is that the geometry of the setting itself determines the system's dynamics and is itself dynamically changing. More specifically, dynamics -- acceleration, force, compulsion -- arises from some curvature in the complete geometry describing the system. We highlight "complete geometry" here because, when we allow new degrees of freedom in the field values, systems live in a composite geometry of spacetime and the way the basis for internal degrees of freedom varies over spacetime. We can most easily see how geometry manifests as dynamics by allowing spacetime itself to be curved such that it bends toward massive objects. Bodies then only need to follow a geodesic in spacetime to appear in every way to be attracted by gravitational force.
+
+Thus curvature is the modern replacement for imposing a force by hand, but the relevant curvature need not always be curvature of spacetime itself. In gravity, acceleration is accounted for by the curvature of spacetime. In other field theories, the curvature may belong to the additional field or internal-space structure that lives over spacetime. The shared idea is that acceleration is not inserted as an external command. It arises from the geometry of the full system.
 
 ![Geodesic convergence animation contact sheet](animations/lm-geodesic-convergence-contact-sheet.png)
 
@@ -75,9 +111,458 @@ If the only single-particle path we can build from spacetime invariance alone is
 
 [Open MP4: lm-geodesic-convergence.mp4](animations/lm-geodesic-convergence.mp4)
 
-Likewise, any accelerated motion can be viewed as the projection of motion in an enlarged geometric setting, where a curved or straight path in the larger structure appears as acceleration in spacetime. At one level, this is nothing more than a shift in perspective from a force imposed against a flat background to constrained motion on a curved background. This shift puts the principle of least action in the geometric setting where the Lagrangian can be constructed to be Lorentz invariant from geometric considerations. This in turn allows curvature itself to evolve dynamically, in accordance with relativity. This idea -- that curvature evolves as fields on spacetime -- is the essence of how force is conceived in modern physics.
 
-### From Action to Momentum and Energy
+## Using Variational Calculus to Find Geodesics
+We have argued that the Lagrangian for a free particle is made from scaling the spacetime path length and suggested that more complicated systems can be similarly viewed as following geodesics in an appropriate generalized space. We can then see how the variational method works, and model physical problems, by working through two geometric examples -- finding the shortest path between points on a flat surface and doing the same for points on a spherical surface. What follows is admittedly mathematically detailed, but to build on the ideas of path-variation method, we need a hands-on appreciation of results that requires working through these details. 
+
+### Straight Line in Flat Space
+
+We want to find the path that minimizes distance between two points in the plane. We do this by considering all possible paths and finding the one where the variation of the length vanishes to first order. 
+
+![Minimizing a curve in the plane](animations/lm-plane-path-length-variation.png)
+
+Figure 53 - Minimizing a curve in the plane
+
+#### Parameterize the Path
+
+In order to compare paths, we write them in the $(x,y)$ plane in parametric form
+
+```math
+\gamma:\lambda\mapsto (x(\lambda),y(\lambda)).
+```
+
+with fixed endpoints
+
+```math
+(x(\lambda_1),y(\lambda_1))=(x_1,y_1),
+\qquad
+(x(\lambda_2),y(\lambda_2))=(x_2,y_2).
+```
+
+In the Euclidean plane, the infinitesimal distance between nearby points is
+
+```math
+ds^2=dx^2+dy^2.
+```
+
+Along the parameterized curve,
+
+```math
+dx=\frac{dx}{d\lambda}\,d\lambda,
+\qquad
+dy=\frac{dy}{d\lambda}\,d\lambda.
+```
+
+Substituting into the Euclidean distance formula gives
+
+```math
+ds
+=
+\sqrt{
+\left(\frac{dx}{d\lambda}\right)^2
++
+\left(\frac{dy}{d\lambda}\right)^2
+}\,d\lambda.
+```
+
+The length of such a curve is
+
+```math
+\ell[\gamma]
+=
+\int_\gamma ds
+=
+\int_{\lambda_1}^{\lambda_2}
+\sqrt{
+\left(\frac{dx}{d\lambda}\right)^2
++
+\left(\frac{dy}{d\lambda}\right)^2
+}\,d\lambda .
+```
+
+
+Defining
+
+```math
+x'=\frac{dx}{d\lambda},
+\qquad
+y'=\frac{dy}{d\lambda},
+\qquad
+R=\sqrt{{x'}^2+{y'}^2}=\frac{ds}{d\lambda}.
+```
+
+where $R$ is the rate of change of length with respect to the parameter $\lambda$, we have: 
+
+```math
+\ell[\gamma]
+=
+\int_{\lambda_1}^{\lambda_2}R\,d\lambda .
+```
+
+#### Apply the Variational Procedure to Extremize Length 
+
+With the parameterized path integral set up, we now come to the clever move in the variational procedure. We require that this functional be stationary under small variations of the curve that keep the endpoints fixed.
+
+Let
+
+```math
+x(\lambda)\rightarrow x(\lambda)+\varepsilon\eta(\lambda),
+\qquad
+y(\lambda)\rightarrow y(\lambda)+\varepsilon\xi(\lambda).
+```
+
+Here $\eta(\lambda)$ and $\xi(\lambda)$ are arbitrary test functions that vanish at the endpoints, so the endpoints stay fixed.
+
+```math
+\eta(\lambda_1)=\eta(\lambda_2)=0,
+\qquad
+\xi(\lambda_1)=\xi(\lambda_2)=0.
+```
+
+The number $\varepsilon$ controls the size of the change.
+
+Then
+
+```math
+x'\rightarrow x'+\varepsilon\eta',
+\qquad
+y'\rightarrow y'+\varepsilon\xi'.
+```
+
+The varied length is
+
+```math
+\ell(\varepsilon)
+=
+\int_{\lambda_1}^{\lambda_2}
+\sqrt{
+(x'+\varepsilon\eta')^2
++
+(y'+\varepsilon\xi')^2
+}\,d\lambda .
+```
+
+![Fixed endpoint length variation contact sheet](animations/lm-fixed-endpoint-length-variation-contact-sheet.png)
+
+[Open MP4: lm-fixed-endpoint-length-variation.mp4](animations/lm-fixed-endpoint-length-variation.mp4)
+
+Differentiate with respect to $\varepsilon$ and evaluate at $\varepsilon=0$.
+
+```math
+\left.\frac{d\ell}{d\varepsilon}\right|_{\varepsilon=0}
+=
+\int_{\lambda_1}^{\lambda_2}
+\frac{x'\eta'+y'\xi'}{R}\,d\lambda .
+```
+
+Stationarity requires
+
+```math
+\left.\frac{d\ell}{d\varepsilon}\right|_{\varepsilon=0}=0.
+```
+
+For a chosen test curve and endpoint-fixed variation, $\ell(\varepsilon)$ is now an ordinary function of $\varepsilon$. The original curve corresponds to $\varepsilon=0$. If the original curve is stationary, this derivative must vanish for every allowed endpoint-fixed variation.
+
+Now integrate this by parts, leading to an integrand containing only $\eta$ and $\xi$, not their derivatives.
+
+```math
+\int_{\lambda_1}^{\lambda_2}\frac{x'\eta'}{R}\,d\lambda
+=
+\left[\frac{x'}{R}\eta\right]_{\lambda_1}^{\lambda_2}
+-
+\int_{\lambda_1}^{\lambda_2}
+\frac{d}{d\lambda}\left(\frac{x'}{R}\right)\eta\,d\lambda .
+```
+
+The boundary term vanishes because $\eta(\lambda_1)=\eta(\lambda_2)=0$.
+
+And similarly for $y$. 
+
+Therefore the stationarity condition becomes
+
+```math
+\int_{\lambda_1}^{\lambda_2}
+\left[
+-
+\frac{d}{d\lambda}\left(\frac{x'}{R}\right)\eta
+-
+\frac{d}{d\lambda}\left(\frac{y'}{R}\right)\xi
+\right]d\lambda
+=
+0.
+```
+
+Because $\eta$ and $\xi$ can be any functions that vanish at the endpoints, the only way the integral can be zero for all such choices is for the coefficients of $\eta$ and $\xi$ to vanish pointwise.
+
+```math
+\frac{d}{d\lambda}\left(\frac{x'}{R}\right)=0,
+\qquad
+\frac{d}{d\lambda}\left(\frac{y'}{R}\right)=0.
+```
+
+Since $R=ds/d\lambda$,
+
+```math
+\frac{x'}{R}
+=
+\frac{dx/d\lambda}{ds/d\lambda}
+=
+\frac{dx}{ds},
+\qquad
+\frac{y'}{R}
+=
+\frac{dy/d\lambda}{ds/d\lambda}
+=
+\frac{dy}{ds}.
+```
+
+Now define dots with respect to arc length.
+
+```math
+\dot{x}:=\frac{dx}{ds},
+\qquad
+\dot{y}:=\frac{dy}{ds}.
+```
+
+The equations above therefore say
+
+```math
+\dot{x}=A,
+\qquad
+\dot{y}=B,
+```
+
+where $A$ and $B$ are constants. The tangent vector has constant components, so the path that minimizes the length is straight.
+
+### From Path Length to Action
+
+The calculation above used a length functional for a curve in the Euclidean plane. The free relativistic particle uses the same structure with a different geometric interval and a constant scale factor.
+
+For the plane curve, the functional was
+
+```math
+\ell[\gamma]
+=
+\int_\gamma ds.
+```
+
+For a free relativistic particle, the path is a worldline,
+
+```math
+\gamma:\lambda\mapsto x^\mu(\lambda),
+```
+
+and the invariant interval along that worldline is
+
+```math
+c\,d\tau
+=
+\sqrt{-\eta_{\mu\nu}dx^\mu dx^\nu}.
+```
+
+Here $\eta_{\mu\nu}$ is the Minkowski metric. Using the arbitrary parameter $\lambda$,
+
+```math
+c\,d\tau
+=
+\sqrt{
+-\eta_{\mu\nu}{x'}^\mu{x'}^\nu
+}\,d\lambda.
+```
+
+Thus the action for a free relativistic particle, following the procedure above for the path in a plane, is
+
+```math
+S[\gamma]
+=
+-mc^2\int_\gamma d\tau
+=
+-mc
+\int_{\lambda_1}^{\lambda_2}
+\sqrt{
+-\eta_{\mu\nu}{x'}^\mu{x'}^\nu
+}\,d\lambda.
+```
+
+This is the same variational pattern as the plane example. The replacements are
+
+```math
+\ell[\gamma]\longrightarrow S[\gamma],
+\qquad
+ds\longrightarrow c\,d\tau,
+\qquad
+(x,y)\longrightarrow x^\mu,
+\qquad
+dx^2+dy^2\longrightarrow -\eta_{\mu\nu}dx^\mu dx^\nu.
+```
+
+The constant factor $-mc$ does not change which path is stationary. It only changes the scale and sign of the functional.
+
+Repeating the variational procedure with these substitutions gives
+
+```math
+\frac{d}{d\lambda}
+\left(
+\frac{\eta_{\mu\nu}{x'}^\nu}
+{\sqrt{-\eta_{\alpha\beta}{x'}^\alpha{x'}^\beta}}
+\right)
+=0.
+```
+
+This is the spacetime version of the plane result that the tangent direction is constant. If we use proper time as the path parameter, this becomes
+
+```math
+\frac{dx^\mu}{d\tau}=u^\mu=\text{constant}.
+```
+
+So the free relativistic particle follows a straight worldline,
+
+```math
+x^\mu(\tau)=x_0^\mu+u^\mu\tau.
+```
+
+The plane example showed how extremizing accumulated distance selects a straight path. The relativistic action repeats the same idea with accumulated proper time.
+
+
+### Minimizing Length on Sphere
+
+Let's sketch how we would modify the procedure above to show that geodesics on a sphere are the shortest possible paths on that surface.
+
+![Geodesics on a sphere](animations/lm-sphere-geodesic-sketch.png)
+
+Figure 54 - Geodesics on a sphere
+
+The calculation is the same as for paths in flat space, except that the invariant distance changes from
+
+```math
+ds^{2} = dx^{2} + dy^{2}
+```
+
+to
+
+```math
+ds^{2} = \mathcal R^{2}\left( d\theta^{2}+\sin^2\theta\,d\phi^{2} \right)
+```
+
+After carrying out the variational procedure, with dots denoting derivatives with respect to the path parameter, we find
+
+```math
+\ddot{\theta}
+-
+\sin\theta\cos\theta\,\dot{\phi}^{2}
+=
+0,
+\qquad
+\ddot{\phi}
++
+2\cot\theta\,\dot{\theta}\dot{\phi}
+=
+0.
+```
+
+These are the equations for a geodesic on a sphere.
+
+From this example, we see that a shortest path in a curved space, a geodesic, is specified by differential equations involving second derivatives of the coordinates along the path. Thus, we see the mathematical bridge between what appears as acceleration in flat space and motion along a geodesic in an appropriately curved space. 
+
+
+### Euler-Lagrange Equations
+In the examples above, the functional $\ell[\gamma]$ only depended on $x'$ and $y'$. In general, a functional may depend on the coordinate itself as well as its derivative. Doing this for a single variable $q$, write
+
+```math
+I[q]=\int_{\lambda_1}^{\lambda_2}L(q,q')\,d\lambda.
+```
+
+Vary $q$ by an endpoint-fixed test function.
+
+```math
+q\rightarrow q+\varepsilon\eta,
+\qquad
+\eta(\lambda_1)=\eta(\lambda_2)=0.
+```
+
+Then
+
+```math
+\left.\frac{dI}{d\varepsilon}\right|_{\varepsilon=0}
+=
+\int_{\lambda_1}^{\lambda_2}
+\left(
+\frac{\partial L}{\partial q}\eta
++
+\frac{\partial L}{\partial q'}\eta'
+\right)d\lambda.
+```
+
+Integrate the second term by parts.
+
+```math
+\int_{\lambda_1}^{\lambda_2}
+\frac{\partial L}{\partial q'}\eta'\,d\lambda
+=
+\left[
+\frac{\partial L}{\partial q'}\eta
+\right]_{\lambda_1}^{\lambda_2}
+-
+\int_{\lambda_1}^{\lambda_2}
+\frac{d}{d\lambda}
+\left(
+\frac{\partial L}{\partial q'}
+\right)\eta\,d\lambda.
+```
+
+Schematically,
+
+```math
+\delta I
+=
+\underbrace{
+\left[
+\frac{\partial L}{\partial q'}\eta
+\right]_{\lambda_1}^{\lambda_2}
+}_{\text{boundary term - endpoint response}}
+-
+\underbrace{
+\int_{\lambda_1}^{\lambda_2}
+\frac{d}{d\lambda}
+\left(
+\frac{\partial L}{\partial q'}
+\right)\eta\,d\lambda
+}_{\text{bulk term - equations of motion}}.
+```
+
+The boundary term vanishes, so stationarity gives
+
+```math
+\int_{\lambda_1}^{\lambda_2}
+\left[
+\frac{\partial L}{\partial q}
+-
+\frac{d}{d\lambda}
+\left(
+\frac{\partial L}{\partial q'}
+\right)
+\right]\eta\,d\lambda
+=
+0.
+```
+
+Since $\eta$ is arbitrary, the coefficient of $\eta$ must vanish.
+
+```math
+\frac{\partial L}{\partial q}
+-
+\frac{d}{d\lambda}
+\left(
+\frac{\partial L}{\partial q'}
+\right)
+=0.
+```
+
+These are the Euler-Lagrange equations. They are differential equations of motion that play the same role as Newton's famous $F=ma$. 
+
+## From Action to Momentum and Energy
+Thus far, we have shown how to pick a path by varying the action, and we have avoided definining the action other than operationally as "the thing that is stationary on physical paths." We have gotten this far with no mention of momentum or energy, which we can now define in terms of action.
+
 We know from the Lie algebra that translations have a generator, and in relativity we call this generator momentum:
 
 ```math
@@ -115,7 +600,7 @@ Here $\mathbf{P}$ denotes the spatial momentum.
 
 This gives us the abstract structure. Momentum is the translation generator, and its invariant norm defines the mass shell. What Poincare symmetry does not give us is the actual momentum value carried by a particular physical path. For that, we need the action.
 
-#### Action Variation at the Endpoints
+### Action Variation at the Endpoints
 The action evaluated along the physically valid path ending at $x$ is a function on spacetime. We write it as $S_{\text{phys}}(x)$. This is the function the momentum operator acts on to return the momentum function:
 
 ```math
@@ -159,7 +644,7 @@ Thus, the abstract generator supplied by Poincare symmetry is filled in by the g
 \text{endpoint gradient of physical action}.
 ```
 
-#### Momentum as Worldline Tangent
+### Momentum as Worldline Tangent
 Now we may ask whether this definition of momentum matches our intuitive expectation that momentum "points" in the direction of the next step along the path in spacetime. Let's examine this by considering the free particle, whose action is proportional to proper time:
 
 ```math
@@ -186,11 +671,11 @@ This is equivalent to introducing a position-dependent effective mass, or a scal
 \partial_\mu S=-\alpha(x)u_\mu.
 ```
 
-The action is no longer pure proper time, but weighted proper time. The physical path therefore does not simply maximize proper time. It extremizes the weighted proper time supplied by the action. That is, an accelerating body ages more slowly than a non-accelerating one. We already saw this from purely geometric reasoning in the twin paradox. Now we see that the form of the action that causes acceleration leads to the same conclusion.
+The action is no longer pure proper time, but weighted proper time. The physical path therefore does not simply maximize proper time. It extremizes the weighted proper time supplied by the action. That is, an accelerating body ages more slowly than a non-accelerating one. We already saw this from purely geometric reasoning in the twin paradox. Now we see that the the action associated with an accelerated path leads to the same conclusion.
 
 There are cases, most famously that of a magnetic force acting on a moving charge, in which the force has a velocity dependence and momentum is *not* simply tangent to the worldline. Instead, momentum balances the existing velocity with the effect of the velocity-dependent force. We will see that these cases arise when the Lagrangian includes terms from different fields. Thus the definition of momentum in terms of the action remains intact, while the interpretation of momentum as tangent to the worldline is generalized.
 
-#### Rest Energy
+### Rest Energy
 As we have seen, for a free particle, the proper-time action is
 
 ```math
@@ -209,7 +694,7 @@ Giving the Promethean result:
 E=mc^2
 ```
 
-#### The Non-relativistic Lagrangian
+### The Non-relativistic Lagrangian
 Consider the case in which the proper-time scale depends on position:
 
 ```math
@@ -277,8 +762,436 @@ L=T-V.
 ```
 This is the familiar starting point for non-relativistic Lagrangian mechanics some readers may have seen. One can try to puzzle out why $\int (T-V)dt$ should be the quantity the physical path minimizes. Working through examples one can convince themselves of the intuition that the path is "trading off" potential for kinetic "as economically as possible." To minimize the action, a falling ball gradually gains speed, it doesn't levitate then race to the ground.
 
-### Fermat's Theorem
-Light takes the path between two points that takes the least time, even when it has to bend to account for passing through media with different propagation speeds. This is Fermat's theorem.
+#### An Example
+
+In practice, especially with classical systems, one bypasses the variational procedure and simply uses the Euler-Lagrange equations. For the simple harmonic oscillator we have
+
+```math
+L=T-V.
+```
+
+The kinetic energy is
+
+```math
+T=\frac12m\dot{x}^2.
+```
+
+This term measures the energy associated with motion. The potential energy is
+
+```math
+V=\frac12kx^2.
+```
+
+This term measures the energy stored in the spring when the mass is displaced from equilibrium. Therefore
+
+```math
+L
+=
+\frac12m\dot{x}^2
+-
+\frac12kx^2.
+```
+
+The Euler-Lagrange equation is
+
+```math
+\frac{\partial L}{\partial x}
+-
+\frac{d}{dt}
+\left(
+\frac{\partial L}{\partial \dot{x}}
+\right)
+=
+0.
+```
+
+For this Lagrangian,
+
+```math
+\frac{\partial L}{\partial x}
+=
+-kx,
+\qquad
+\frac{\partial L}{\partial \dot{x}}
+=
+m\dot{x}.
+```
+
+Substituting gives
+
+```math
+-kx
+-
+\frac{d}{dt}(m\dot{x})
+=
+0,
+```
+
+or
+
+```math
+m\ddot{x}+kx=0.
+```
+
+Writing
+
+```math
+\omega=\sqrt{\frac{k}{m}},
+```
+
+the equation becomes
+
+```math
+\ddot{x}+\omega^2x=0.
+```
+
+The path is therefore
+
+```math
+x(t)=A\cos(\omega t)+B\sin(\omega t),
+```
+
+where $A$ and $B$ are fixed by the initial position and velocity.
+
+### Noether's Theorem in which Symmetry Implies Conservation
+
+The Euler-Lagrange equations do more than let us solve for paths. They also reveal when a quantity must be conserved. This is the content of Noether's theorem in its simplest mechanical form.
+
+For a single coordinate $q(t)$, the action is
+
+```math
+S[q]=\int_{t_1}^{t_2}L(q,\dot q,t)\,dt .
+```
+
+The Euler-Lagrange equation is
+
+```math
+\frac{\partial L}{\partial q}
+-
+\frac{d}{dt}
+\left(
+\frac{\partial L}{\partial \dot q}
+\right)
+=
+0.
+```
+
+Define the momentum conjugate to $q$ by
+
+```math
+p_q:=\frac{\partial L}{\partial \dot q}.
+```
+
+Then the Euler-Lagrange equation becomes
+
+```math
+\frac{dp_q}{dt}
+=
+\frac{\partial L}{\partial q}.
+```
+
+This is already Noether's theorem in miniature. If the Lagrangian does not depend on $q$, then
+
+```math
+\frac{\partial L}{\partial q}=0,
+```
+
+and therefore
+
+```math
+\frac{dp_q}{dt}=0.
+```
+
+So if shifting $q$ leaves the Lagrangian unchanged, the momentum conjugate to $q$ is conserved. Symmetry under translation in a coordinate gives conservation of the generator of that translation. In the case where momentum is proportional to velocity, this result confirms our intuition that if the the system is symmetric in position translations, there is no reason for the velocity to change.  
+
+The same idea applies to time. If the Lagrangian has no explicit time dependence, then the conserved quantity is
+
+```math
+E
+=
+\dot q\frac{\partial L}{\partial\dot q}
+-
+L.
+```
+
+Indeed,
+
+```math
+\frac{dE}{dt}
+=
+-
+\frac{\partial L}{\partial t}.
+```
+
+So if $L$ does not depend explicitly on $t$,
+
+```math
+\frac{dE}{dt}=0.
+```
+
+Time-translation symmetry gives conservation of energy.
+
+The lesson generalizes immediately. If a coordinate is absent from the Lagrangian, the conjugate momentum is conserved. Such a coordinate is often called cyclic. This gives the familiar conservation laws from familiar symmetries.
+
+```math
+\text{spatial translation symmetry}
+\quad\Rightarrow\quad
+\text{momentum conservation},
+```
+
+```math
+\text{time translation symmetry}
+\quad\Rightarrow\quad
+\text{energy conservation},
+```
+
+```math
+\text{rotational symmetry}
+\quad\Rightarrow\quad
+\text{angular momentum conservation}.
+```
+
+For example, a particle moving in a radial potential has
+
+```math
+L
+=
+\frac12m\left(\dot r^2+r^2\dot\theta^2\right)
+-
+V(r).
+```
+
+The angle $\theta$ does not appear in $L$, so
+
+```math
+p_\theta
+=
+\frac{\partial L}{\partial\dot\theta}
+=
+mr^2\dot\theta
+```
+
+is conserved. This is angular momentum. The potential may be completely non-free, but because it is radial it preserves rotational symmetry, and Noether's theorem identifies the conserved quantity.
+
+#### The General Proof of Noether's Theorem
+
+The examples above all fit a common pattern. Suppose the system has coordinates $q^i(t)$ and Lagrangian
+
+```math
+L(q^i,\dot q^i).
+```
+
+A continuous symmetry is a family of transformations labeled by a parameter $\epsilon$:
+
+```math
+q^i\rightarrow \Phi_\epsilon^i(q).
+```
+
+When $\epsilon=0$, this transformation does nothing:
+
+```math
+\Phi_0^i(q)=q^i.
+```
+
+For small $\epsilon$, Taylor expand the transformed coordinate around $\epsilon=0$:
+
+```math
+\Phi_\epsilon^i(q)
+=
+\Phi_0^i(q)
++
+\epsilon
+\left.
+\frac{\partial \Phi_\epsilon^i}{\partial\epsilon}
+\right|_{\epsilon=0}
++
+O(\epsilon^2).
+```
+
+Since $\Phi_0^i(q)=q^i$, this becomes
+
+```math
+\Phi_\epsilon^i(q)
+=
+q^i+\epsilon R^i(q)+O(\epsilon^2),
+```
+
+where
+
+```math
+R^i(q)
+:=
+\left.
+\frac{\partial \Phi_\epsilon^i}{\partial\epsilon}
+\right|_{\epsilon=0}.
+```
+
+Thus the infinitesimal change in the coordinate is
+
+```math
+\delta q^i=\epsilon R^i(q).
+```
+
+The velocity changes accordingly:
+
+```math
+\delta\dot q^i
+=
+\frac{d}{dt}(\delta q^i)
+=
+\epsilon\frac{dR^i}{dt}.
+```
+
+Now vary the Lagrangian:
+
+```math
+\delta L
+=
+\frac{\partial L}{\partial q^i}\delta q^i
++
+\frac{\partial L}{\partial\dot q^i}\delta\dot q^i.
+```
+
+Substituting the infinitesimal symmetry gives
+
+```math
+\delta L
+=
+\epsilon
+\left(
+\frac{\partial L}{\partial q^i}R^i
++
+\frac{\partial L}{\partial\dot q^i}
+\frac{dR^i}{dt}
+\right).
+```
+
+Define the conjugate momenta
+
+```math
+p_i:=\frac{\partial L}{\partial\dot q^i}.
+```
+
+Then
+
+```math
+\delta L
+=
+\epsilon
+\left(
+\frac{\partial L}{\partial q^i}R^i
++
+p_i\frac{dR^i}{dt}
+\right).
+```
+
+On a physical path, the Euler-Lagrange equations say
+
+```math
+\frac{dp_i}{dt}
+=
+\frac{\partial L}{\partial q^i}.
+```
+
+Therefore
+
+```math
+\delta L
+=
+\epsilon
+\left(
+\frac{dp_i}{dt}R^i
++
+p_i\frac{dR^i}{dt}
+\right)
+=
+\epsilon
+\frac{d}{dt}(p_iR^i).
+```
+
+If the transformation is a symmetry, the Lagrangian is unchanged:
+
+```math
+\delta L=0.
+```
+
+Comparing the two expressions for $\delta L$ gives
+
+```math
+\frac{d}{dt}(p_iR^i)
+=
+0.
+```
+
+The conserved Noether quantity is therefore
+
+```math
+Q=p_iR^i.
+```
+
+For example, consider a particle in the plane moving under a radial potential:
+
+```math
+L
+=
+\frac12m(\dot x^2+\dot y^2)
+-
+V\!\left(\sqrt{x^2+y^2}\right).
+```
+
+This Lagrangian is unchanged by rotations. A small rotation by $\epsilon$ gives
+
+```math
+x\rightarrow x-\epsilon y,
+\qquad
+y\rightarrow y+\epsilon x.
+```
+
+So the infinitesimal changes are
+
+```math
+\delta x=-\epsilon y,
+\qquad
+\delta y=\epsilon x,
+```
+
+which means
+
+```math
+R^x=-y,
+\qquad
+R^y=x.
+```
+
+The conjugate momenta are
+
+```math
+p_x=m\dot x,
+\qquad
+p_y=m\dot y.
+```
+
+Therefore Noether's formula gives
+
+```math
+Q
+=
+p_xR^x+p_yR^y
+=
+-yp_x+xp_y
+=
+xp_y-yp_x.
+```
+
+This is the angular momentum about the origin. The cyclic-coordinate case above is the still simpler case $R=1$, so the conserved quantity is just $Q=p_q$.
+
+There are two complementary ways to read this. In the classroom view, someone hands us a Lagrangian, possibly with a useful but unexplained potential, and we inspect its symmetries to find conserved quantities. In the more fundamental view we have been emphasizing, we begin with the symmetries we believe nature has and build the Lagrangian from their invariants. Noether's theorem then returns the conserved quantities associated with those same symmetries. For a completely free relativistic particle, this gives back the primitive spacetime generators we expected: energy, momentum, and angular momentum.
+
+This also ties back to generator language. A continuous symmetry is a one-parameter family of transformations. In Hamiltonian language, the infinitesimal generator is the single quantity whose flow exponentiates into the finite transformation. Noether's theorem says that if the action is unchanged by such a transformation, the corresponding generator is conserved along the physical path. Thus the Lagrangian does not merely produce equations of motion. It also tells us which generator-values remain fixed as the system evolves.
+
+## Fermat's Theorem
+
+Long before the invention of Lagrangian mechanics, Fermat proposed a different variational result which states that light takes the path between two points that minimizes the travel time, even when it has to bend to account for passing through media with different propagation speeds. 
 
 ![Fermat path through a medium band](animations/lm-fermat-medium-band.png)
 
@@ -290,11 +1203,11 @@ This requirement fixes the bending angle through Snell's law:
 \frac{\sin\theta_{\text{refraction}}}{v_{\text{refracted}}}
 ```
 
-We will skip the proof, but the intuition is exactly that of any time-optimized route-finding. Say a person were running a race that required swimming across a body of water. To optimize their time, they would balance taking the shortest swim against taking the shortest total route. In the case of running a race, we would say that the racer calculated all this beforehand and chose the optimal route. But how does light do this? Does it "peek ahead"? It certainly can't see the future, but is there some way it can effectively "peek ahead" without actually seeing the future?
+We will skip the proof, but the intuition is exactly that of any time-optimized route-finding. Say a person were running a race that required swimming slowly across a body of water. To optimize their time, they would balance taking the shortest swim against taking the shortest total route. In the case of running a race, we would say that the racer calculated all this beforehand and chose the optimal route. But how does light do this? Does it "peek ahead"? It certainly can't see the future.
 
-Light's optimization of travel time is a specific case of action extremization. While showing this requires material we have not yet covered, what we care about here is not solving the underlying variational problem but exploring the mechanism by which path optimization seems somehow to "look ahead." Any variational problem entails the same seeming paradox, for it is the entirety of the integrated path that is extremized. One could argue that there is no mystery here for the full path is generated from the local equations of motion, but those equations provide a description of the local rules that give rise to the next step of the path, not a reason for those rules. 
+Light's optimization of travel time is a specific case of action extremization. While showing this requires material we have not yet covered, what we care about here is not solving the specific variational problem but exploring the mechanism by which path optimization seems somehow to "look ahead." Any variational problem entails the same seeming paradox, for it is the entirety of the integrated path that is extremized. One could argue that there is no mystery here for the full path is generated from the local equations of motion, but those equations provide a description of the local rules that give rise to the next step of the path, not a reason for those rules, not to mention that, in the Lagrangian formulation, the local equations of motions follow from the variational procecure.
 
-The solution to light's ability to find the optimal path was given by Huygens' principle in the late 1600s. The principle states that every point on a wavefront emits spherical wavelets whose envelope is the next wavefront, where the wavelets interfere constructively. Elsewhere, they are out of phase and the wavelets interfere destructively.
+The solution to light's ability to find the optimal path was given by Huygens' principle from the 1600s. The principle states that every point on a wavefront emits spherical wavelets whose envelope is the next wavefront, where the wavelets interfere constructively. Elsewhere, they are out of phase and the wavelets interfere destructively.
 
 ![Huygens transverse interference cascade contact sheet](animations/lm-huygens-transverse-interference-cascade-contact-sheet.png)
 
@@ -341,4 +1254,230 @@ What has happened here? If we focus on the light ray rather than the wave, it se
 
 We can then lift the mathematical idea of phase cancellation out of the specific wave picture and assign a phase to every possible path. Paths whose phases fail to line up contribute little to the final amplitude, while paths near the stationary path reinforce. This is, as we will discuss later, Feynman's path integral formulation of quantum mechanics.
 
+## Lagrangians of Fields
+We have focused on using the variational approach to find paths, or worldlines. However, modern fundamental physical theories, in accordance with the idea of local causality, are built from fields, which place some object, be it a real- or complex-valued scalar, vector, or spinor at each point on spacetime. We can then talk about "histories" of "configurations" rather than "paths" of "bodies." Making this shift, we write the action as:
 
+```math
+S[\phi]
+=
+\int_{\Omega}
+\mathcal L\left(\phi(x),\partial_\mu\phi(x)\right)\,d^4x .
+```
+
+Here $\mathcal L$ is now the Lagrangian density, and we integrate over a spacetime volume $d^4x$.
+
+To see what kind of dynamics this produces, consider the simplest case of a single real scalar field $\phi(x)$. Locality says that the Lagrangian density at a point should be built from the field and its derivatives at that same point. Lorentz invariance says that spacetime indices must be contracted. The simplest derivative term is therefore
+
+```math
+\partial_\mu\phi\,\partial^\mu\phi .
+```
+
+$\phi^2$ is the simplest term to track "displacement" of the field value away from its equilibrium value. Thus a reasonable first free-field Lagrangian density is
+
+```math
+\mathcal L
+=
+-\frac12\,\partial_\mu\phi\,\partial^\mu\phi
+-\frac12\,\kappa^2\phi^2 .
+```
+
+We will justify this field Lagrangian more concretely with a spring lattice model later. For now, we will say only that it is reasonable and Lorentz invariant.
+
+The field version of the Euler-Lagrange equation is
+
+```math
+\frac{\partial\mathcal L}{\partial\phi}
+-
+\partial_\mu
+\left(
+\frac{\partial\mathcal L}{\partial(\partial_\mu\phi)}
+\right)
+=
+0.
+```
+
+For the Lagrangian density above, this gives
+
+```math
+\frac{1}{c^2}\frac{\partial^2\phi}{\partial t^2}
+-
+\nabla^2\phi
++
+\kappa^2\phi
+=
+0.
+```
+
+When $\kappa=0$, this is the ordinary wave equation.
+
+```math
+\frac{1}{c^2}\frac{\partial^2\phi}{\partial t^2}
+-
+\nabla^2\phi
+=
+0.
+```
+This leads to the insight that relativistic field evolution manifests as waves propagating through spacetime. Such waves are the fundamental "stuff" of modern physical theories, in which the building blocks are not blocks, but field excitations.
+
+### Noether Currents and Charges
+
+For a single particle, Noether's theorem gives conserved quantities along a path. For fields, the same idea becomes richer because the conserved quantity can be distributed across space and can flow from one region to another. The result is not only a conserved quantity, but a conserved current.
+
+Let the action for fields $\phi^A(x)$ be
+
+```math
+S[\phi]
+=
+\int_\Omega
+\mathcal L(\phi^A,\partial_\mu\phi^A)\,d^4x.
+```
+
+Here $A$ labels the fields or field components. Under an arbitrary variation,
+
+```math
+\phi^A\rightarrow \phi^A+\delta\phi^A,
+```
+
+the first-order variation of the action is
+
+```math
+\delta S
+=
+\int_\Omega
+\left[
+\frac{\partial\mathcal L}{\partial\phi^A}\delta\phi^A
++
+\frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+\partial_\mu(\delta\phi^A)
+\right]d^4x.
+```
+
+The second term contains a derivative of the variation. Integrating it by parts gives
+
+```math
+\delta S
+=
+\int_\Omega
+\left[
+\frac{\partial\mathcal L}{\partial\phi^A}
+-
+\partial_\mu
+\left(
+\frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+\right)
+\right]\delta\phi^A\,d^4x
++
+\int_{\partial\Omega}
+\frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+\delta\phi^A\,d\Sigma_\mu.
+```
+
+Here $d\Sigma_\mu$ is the oriented surface element of the boundary $\partial\Omega$. It is the spacetime version of the outward-pointing area element $d\mathbf A$ in ordinary flux integrals. Thus a term like $j^\mu d\Sigma_\mu$ measures the amount of current flowing through a small piece of the boundary.
+
+The first term is the bulk term. It gives the field Euler-Lagrange equations:
+
+```math
+\frac{\partial\mathcal L}{\partial\phi^A}
+-
+\partial_\mu
+\left(
+\frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+\right)
+=
+0.
+```
+
+The second term is the boundary term. This is where currents enter.
+
+Suppose the theory has a continuous global symmetry. This means there is a transformation with a constant parameter $\epsilon$ such that
+
+```math
+\delta\phi^A=\epsilon R^A(\phi),
+```
+
+and the action is unchanged. For example, a complex field may have a global phase symmetry,
+
+```math
+\psi(x)\rightarrow e^{i\epsilon}\psi(x),
+```
+
+so for small $\epsilon$,
+
+```math
+\delta\psi=i\epsilon\psi.
+```
+
+For the symmetry variation, and on physical field configurations, the bulk term vanishes because the field equations hold. The variation of the action is therefore reduced to the boundary term:
+
+```math
+0
+=
+\epsilon
+\int_{\partial\Omega}
+\frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+R^A\,d\Sigma_\mu.
+```
+
+This identifies the Noether current:
+
+```math
+j^\mu
+=
+\frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+R^A.
+```
+
+Since the boundary flux of this current vanishes for any spacetime region $\Omega$,
+
+```math
+\int_{\partial\Omega}j^\mu\,d\Sigma_\mu=0.
+```
+
+By the divergence theorem,
+
+```math
+\int_\Omega \partial_\mu j^\mu\,d^4x=0.
+```
+
+Since this holds for arbitrary $\Omega$, the current obeys the local continuity equation:
+
+```math
+\partial_\mu j^\mu=0.
+```
+
+In time-plus-space language this is
+
+```math
+\frac{\partial j^0}{\partial t}
++
+\nabla\cdot\mathbf j
+=
+0.
+```
+
+The time component $j^0$ is the charge density, and the spatial components $\mathbf j$ describe the flow of that charge. The total charge is
+
+```math
+Q=\int j^0\,d^3x.
+```
+
+The continuity equation says that $Q$ can change in a region only if current flows through the boundary of that region. If no current flows out through the boundary, then
+
+```math
+\frac{dQ}{dt}=0.
+```
+
+Thus, global symmetry gives local current conservation, and local current conservation gives a globally conserved charge.
+
+For spacetime translations, the Noether current is the stress-energy tensor $T^{\mu\nu}$. The conserved charges are the total energy and momentum:
+
+```math
+P^\nu
+=
+\int T^{0\nu}\,d^3x.
+```
+
+Thus field theory upgrades the particle result. In particle mechanics, translation symmetry gives a conserved momentum along one path. In field theory, translation symmetry gives an energy-momentum current through spacetime. This is why Noether's theorem is more than a trick for solving examples. It is the bridge from symmetry to the conserved quantities and currents that organize modern physical theories.
+
+## The Lagrangian Procedure
+In practice, modern physical theories often proceed as follows. Identify the system's symmetry. Using the invariants of the symmetry, make an educated guess of a candidate Lagrangian. From the Lagrangian, infer conserved quantities. Test the predicted conserved quantities experimentally.  

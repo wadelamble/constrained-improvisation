@@ -374,53 +374,105 @@ def make_plane_path_length_variation(path: Path) -> None:
 
 
 def make_sphere_geodesic_sketch(path: Path) -> None:
-    fig, axes = plt.subplots(1, 3, figsize=(12.0, 3.4), gridspec_kw={"wspace": 0.16})
+    fig, ax = plt.subplots(figsize=(7.2, 5.2))
     fig.patch.set_facecolor("#F7F3EC")
 
-    def draw_sphere(ax: plt.Axes) -> None:
-        style_axes(ax)
-        ax.set_aspect("equal", adjustable="box")
-        ax.set_xlim(-1.22, 1.22)
-        ax.set_ylim(-1.12, 1.12)
-        ax.set_xticks([])
-        ax.set_yticks([])
-        for spine in ax.spines.values():
-            spine.set_visible(False)
-        ax.add_patch(Circle((0, 0), 1.0, fill=False, edgecolor="#2F2F2F", linewidth=1.8))
-        ax.add_patch(Arc((0, 0), 2.0, 0.42, angle=0, theta1=0, theta2=360, color="#BDB4A7", linewidth=1.1))
-        ax.add_patch(Arc((0, 0), 0.55, 2.0, angle=0, theta1=0, theta2=360, color="#BDB4A7", linewidth=1.1))
-        ax.add_patch(Arc((0, 0), 1.35, 2.0, angle=0, theta1=82, theta2=278, color="#D6CEC2", linewidth=0.9))
+    style_axes(ax)
+    ax.set_aspect("equal", adjustable="box")
+    ax.set_xlim(-1.12, 1.12)
+    ax.set_ylim(-1.02, 1.08)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    for spine in ax.spines.values():
+        spine.set_visible(False)
 
-    theta = np.linspace(-0.86, 0.82, 200)
-    great_x = 0.58 * np.sin(theta)
-    great_y = np.cos(theta) * 0.92 - 0.05
-    detour_x = great_x + 0.25 * np.sin(np.linspace(0, np.pi, theta.size))
-    detour_y = great_y - 0.16 * np.sin(np.linspace(0, np.pi, theta.size))
-    points_x = [great_x[0], great_x[-1]]
-    points_y = [great_y[0], great_y[-1]]
+    ax.add_patch(Circle((0, 0), 1.0, fill=False, edgecolor="#2F2F2F", linewidth=2.0))
+    ax.add_patch(Arc((0, 0), 2.0, 0.42, angle=0, theta1=0, theta2=360, color="#BDB4A7", linewidth=1.2))
+    ax.add_patch(Arc((0, 0), 0.62, 2.0, angle=0, theta1=0, theta2=360, color="#C7BDAE", linewidth=1.0))
+    ax.add_patch(Arc((0, 0), 1.32, 2.0, angle=0, theta1=78, theta2=282, color="#D8D0C5", linewidth=0.9))
+    ax.add_patch(Arc((0, 0), 2.0, 0.78, angle=0, theta1=0, theta2=360, color="#D8D0C5", linewidth=0.9))
 
-    panel_data = [
-        ("curved surface", []),
-        ("candidate path", [(detour_x, detour_y, BEAD_COLOR, 2.7, "-")]),
-        (
-            "great-circle geodesic",
-            [
-                (detour_x, detour_y, "#BDB4A7", 1.5, "-"),
-                (great_x, great_y, "#2F2F2F", 2.8, "-"),
-            ],
-        ),
-    ]
+    def normalize(points: np.ndarray) -> np.ndarray:
+        return points / np.linalg.norm(points, axis=1)[:, None]
 
-    for ax, (title, curves) in zip(axes, panel_data):
-        draw_sphere(ax)
-        ax.set_title(title, fontsize=11.5, color="#2F2F2F")
-        for x_values, y_values, color, linewidth, linestyle in curves:
-            ax.plot(x_values, y_values, color=color, linewidth=linewidth, linestyle=linestyle)
-        if curves:
-            ax.scatter(points_x, points_y, s=58, color="#2F2F2F", edgecolor="white", linewidth=1.0, zorder=5)
-        if title == "curved surface":
-            ax.plot(great_x, great_y, color="#2F2F2F", linewidth=1.6, alpha=0.65)
-            ax.text(-0.88, -0.9, "length is measured\ninside the surface", fontsize=9.2, color="#4B463F")
+    def slerp(a: np.ndarray, b: np.ndarray, t: np.ndarray) -> np.ndarray:
+        omega = np.arccos(np.clip(np.dot(a, b), -1.0, 1.0))
+        return (
+            np.sin((1 - t) * omega)[:, None] * a
+            + np.sin(t * omega)[:, None] * b
+        ) / np.sin(omega)
+
+    def surface_path(a: np.ndarray, b: np.ndarray, t: np.ndarray, bump: np.ndarray, amount: float) -> np.ndarray:
+        base = slerp(a, b, t)
+        shaped = base + amount * np.sin(np.pi * t)[:, None] * bump
+        return normalize(shaped)
+
+    def wavy_surface_path(
+        a: np.ndarray,
+        b: np.ndarray,
+        t: np.ndarray,
+        bump: np.ndarray,
+        amount: float,
+        wave: np.ndarray,
+        wave_amount: float,
+        cycles: float,
+    ) -> np.ndarray:
+        base = slerp(a, b, t)
+        envelope = np.sin(np.pi * t)[:, None]
+        ripple = np.sin(cycles * 2 * np.pi * t)[:, None]
+        shaped = base + amount * envelope * bump + wave_amount * envelope * ripple * wave
+        return normalize(shaped)
+
+    def project(points: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        return points[:, 0], points[:, 2]
+
+    start = np.array([-0.66, 0.70, 0.26])
+    end = np.array([0.66, 0.70, 0.26])
+    start = start / np.linalg.norm(start)
+    end = end / np.linalg.norm(end)
+    t = np.linspace(0, 1, 260)
+
+    great = slerp(start, end, t)
+    base_x = great[:, 0]
+    base_y = great[:, 2]
+    envelope = np.sin(np.pi * t)
+    high_detour = np.column_stack(
+        [
+            base_x + 0.090 * envelope * np.sin(2 * np.pi * t),
+            base_y + 0.52 * envelope + 0.045 * envelope * np.sin(4 * np.pi * t),
+        ]
+    )
+    nearby_detour = np.column_stack(
+        [
+            base_x - 0.070 * envelope * np.sin(2 * np.pi * t),
+            base_y + 0.28 * envelope - 0.040 * envelope * np.sin(4 * np.pi * t),
+        ]
+    )
+    low_detour = np.column_stack(
+        [
+            base_x + 0.085 * envelope * np.sin(2 * np.pi * t),
+            base_y - 0.42 * envelope + 0.055 * envelope * np.sin(4 * np.pi * t),
+        ]
+    )
+    great = np.column_stack([base_x, base_y])
+
+    for points, color, linewidth, linestyle, alpha in [
+        (low_detour, "#BDB4A7", 1.9, "-", 0.92),
+        (nearby_detour, TRAIL_COLOR, 2.0, "-", 0.9),
+        (high_detour, BEAD_COLOR, 3.0, "-", 0.96),
+        (great, "#2F2F2F", 3.2, "-", 1.0),
+    ]:
+        x_values, y_values = points[:, 0], points[:, 1]
+        ax.plot(x_values, y_values, color=color, linewidth=linewidth, linestyle=linestyle, alpha=alpha)
+
+    start_x, start_y = start[0], start[2]
+    end_x, end_y = end[0], end[2]
+    ax.scatter([start_x, end_x], [start_y, end_y], s=76, color="#2F2F2F", edgecolor="white", linewidth=1.1, zorder=7)
+    ax.text(start_x - 0.16, start_y - 0.12, "fixed start", fontsize=9.8, color="#4B463F")
+    ax.text(end_x - 0.04, end_y - 0.12, "fixed end", fontsize=9.8, color="#4B463F")
+    ax.text(0.0, 0.98, "candidate paths on a sphere", fontsize=13, color="#2F2F2F", ha="center")
+    ax.text(0.70, 0.56, "longer paths", fontsize=10, color="#4B463F")
+    ax.text(0.53, -0.38, "great circle", fontsize=10, color="#2F2F2F")
 
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=180, bbox_inches="tight")
