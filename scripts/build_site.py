@@ -11,7 +11,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SITE_SRC = ROOT / "site_src"
 OUT_DIR = ROOT / "site"
-DRAFT = ROOT / "content" / "drafts" / "Differential-Mechanics-With-Diagrams.md"
+PATH_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "lm-draft-polished.md"
+DIFFERENTIAL_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "Differential-Mechanics-With-Diagrams.md"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 
 TITLE = "Nature's Improvisation on Form"
@@ -37,6 +38,19 @@ class Section:
     disabled: bool = True
 
 
+@dataclass(frozen=True)
+class Article:
+    title: str
+    slug: str
+    draft: Path
+
+
+ARTICLES = [
+    Article("Path Mechanics", "path-mechanics", PATH_MECHANICS_DRAFT),
+    Article("Differential Mechanics", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
+]
+
+
 SECTIONS = [
     Section(
         "Principles",
@@ -60,6 +74,8 @@ SECTIONS = [
         "Path Mechanics",
         "path-mechanics",
         "Motion as straightness in the appropriate geometry.",
+        status="",
+        href="/path-mechanics/",
         outline=[
             "Worldlines",
             "Invariant length",
@@ -68,6 +84,7 @@ SECTIONS = [
             "Geometric lifts",
             "Differential handoff",
         ],
+        disabled=False,
     ),
     Section(
         "Gravitation",
@@ -128,6 +145,10 @@ def slugify(text: str) -> str:
 
 
 def page_shell(title: str, body: str, toc: str = "") -> str:
+    nav_links = "\n".join(
+        f'          <a href="{site_path("/" + article.slug + "/")}">{html.escape(article.title)}</a>'
+        for article in ARTICLES
+    )
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -154,7 +175,7 @@ def page_shell(title: str, body: str, toc: str = "") -> str:
         <a class="site-mark" href="{site_path('/')}">{html.escape(TITLE)}</a>
         <nav class="site-nav" aria-label="Site">
           <a href="{site_path('/')}">Contents</a>
-          <a href="{site_path('/differential-mechanics/')}">Differential Mechanics</a>
+{nav_links}
         </nav>
       </div>
     </header>
@@ -458,8 +479,8 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
     return "\n".join(html_blocks), toc
 
 
-def render_article() -> str:
-    markdown = DRAFT.read_text(encoding="utf-8")
+def render_article(article: Article) -> str:
+    markdown = article.draft.read_text(encoding="utf-8")
     article_html, toc_items = render_markdown(markdown)
     toc_links = "\n".join(
         f'<a class="depth-{depth}" href="#{hid}">{html.escape(text)}</a>'
@@ -475,7 +496,7 @@ def render_article() -> str:
     {toc_links}
   </aside>
 </main>"""
-    return page_shell("Differential Mechanics", body)
+    return page_shell(article.title, body)
 
 
 def build() -> None:
@@ -483,9 +504,10 @@ def build() -> None:
     shutil.copy2(SITE_SRC / "styles.css", OUT_DIR / "styles.css")
     shutil.copy2(SITE_SRC / "main.js", OUT_DIR / "main.js")
     (OUT_DIR / "index.html").write_text(render_home(), encoding="utf-8")
-    article_dir = OUT_DIR / "differential-mechanics"
-    article_dir.mkdir(parents=True, exist_ok=True)
-    (article_dir / "index.html").write_text(render_article(), encoding="utf-8")
+    for article in ARTICLES:
+        article_dir = OUT_DIR / article.slug
+        article_dir.mkdir(parents=True, exist_ok=True)
+        (article_dir / "index.html").write_text(render_article(article), encoding="utf-8")
 
 
 if __name__ == "__main__":
