@@ -460,10 +460,7 @@ Use path length $s$ as the parameter along the curve, so dots denote derivatives
 0.
 ```
 
-These are the equations for a geodesic on a sphere. Their importance here is not the algebra used to obtain them, but their structure. In the flat case, stationarity said that the tangent direction stays constant. On the sphere, the tangent still stays as straight as the surface permits, but the coordinates must change in a way that accounts for the curvature of the surface. That curvature appears in the extra terms involving $\sin\theta\cos\theta$ and $\cot\theta$.
-
-From this example, we see that a shortest path in a curved space, a geodesic, is specified by differential equations involving second derivatives of the coordinates along the path. Thus, we see the mathematical bridge between what appears as acceleration in flat space and motion along a geodesic in an appropriately curved space. 
-
+These are the equations for a geodesic on a sphere. What can we see in their structure? In the flat case, stationarity said that the tangent direction stays constant. On the sphere, the tangent still stays as straight as the surface permits, but the coordinates must change in a way that accounts for the curvature of the surface. That curvature appears in the extra terms involving $\sin\theta\cos\theta$ and $\cot\theta$. In particular, the geodesic is specified by differential equations involving second derivatives of the coordinates along the path. Thus, we see the mathematical bridge between what appears as acceleration in flat space and motion along a geodesic in an appropriately curved space. 
 
 ### Euler-Lagrange Equations
 In the examples above, the functional $\ell[\gamma]$ only depended on $x'$ and $y'$. In general, a functional may depend on the coordinate itself as well as its derivative. Doing this for a single variable $q$, write
@@ -657,7 +654,7 @@ Since proper time accumulates along a physical history, the action accumulates a
 \partial_\mu S=-\alpha u_\mu.
 ```
 
-Thus the endpoint-gradient of the action is the tangent to the worldline, scaled by $\alpha$. This is the sense in which momentum points in the direction of the next step through spacetime.
+Thus, in the free proper-time case, the endpoint-gradient of the action carries the same directional information as the tangent to the worldline, scaled by $\alpha$. This is the precise sense in which momentum points in the direction of the next step through spacetime.
 
 We can loosen the free-particle assumption by allowing the scale that converts proper time into action to depend on position:
 
@@ -665,7 +662,7 @@ We can loosen the free-particle assumption by allowing the scale that converts p
 S=-\int \alpha(x)\,d\tau .
 ```
 
-This is equivalent to introducing a position-dependent effective mass, or a scalar background whose gradient acts like a force. The local relation becomes
+This is equivalent to introducing a position-dependent effective mass, or a scalar background whose gradient acts like a force. As long as the action remains a position-dependent scale times $d\tau$, the same directional relation holds locally:
 
 ```math
 \partial_\mu S=-\alpha(x)u_\mu.
@@ -673,7 +670,7 @@ This is equivalent to introducing a position-dependent effective mass, or a scal
 
 The action is no longer pure proper time, but weighted proper time. The physical path therefore does not simply maximize proper time. It extremizes the weighted proper time supplied by the action. That is, an accelerating body ages more slowly than a non-accelerating one. We already saw this from purely geometric reasoning in the twin paradox. Now we see that the action associated with an accelerated path leads to the same conclusion.
 
-There are cases, most famously that of a magnetic force acting on a moving charge, in which the force has a velocity dependence and momentum is *not* simply tangent to the worldline. Instead, momentum balances the existing velocity with the effect of the velocity-dependent force. We will see that these cases arise when the Lagrangian includes terms from different fields. Thus the definition of momentum in terms of the action remains intact, while the interpretation of momentum as tangent to the worldline is generalized.
+There are cases, most famously that of a magnetic force acting on a moving charge, in which the force has a velocity dependence and momentum is *not* simply tangent to the worldline. In those cases, the action-gradient still defines momentum, but the gradient now includes more than the proper-time contribution. It also includes the way the additional field changes the action under endpoint displacement. Thus the definition of momentum in terms of the action remains intact, while the interpretation of momentum as tangent to the worldline is generalized.
 
 ### Rest Energy
 As we have seen, for a free particle, the proper-time action is
