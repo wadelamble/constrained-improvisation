@@ -73,7 +73,7 @@ SECTIONS = [
     Section(
         "The Principle of Least Action",
         "path-mechanics",
-        "Motion as straightness in the appropriate geometry.",
+        "Physical motion as geometric simplicity.",
         status="",
         href="/path-mechanics/",
         disabled=False,
