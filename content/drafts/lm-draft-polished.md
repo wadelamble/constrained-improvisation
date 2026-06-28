@@ -85,7 +85,7 @@ The former cannot be physically relevant since empty spacetime has no preferred 
 S=-\alpha\int_{\tau_1}^{\tau_2}d\tau .
 ```
 
-We define mass as being precisely this scale factor.
+From here until stated otherwise, we use natural units where $c=1$, so mass and rest energy are measured in the same units. We define mass as this scale factor.
 
 ```math
 S=-m\int_{\tau_1}^{\tau_2}d\tau .
@@ -1364,7 +1364,7 @@ Q
 ```
 
 
-$\int_\Omega \partial_\mu j^\mu\,d^4x=0$ is the "continuity equation" for Noether current, which says that the flux across time must match the flux across space, or, in more ordinary terms, that charge can't simply disappear and reappear in a different position, but must flow smoothly. This is a stronger conservation statement than simply "charge is conserved."
+The local equation $\partial_\mu j^\mu=0$ is the continuity equation for Noether current. In time-plus-space form, it says that a change in the local inventory $j^0$ must be accounted for by a flow $\mathbf j$ into or out of the neighboring region. Charge conservation is the integrated version of this local statement.
 
 
 ::: details Derivation of the Noether current
@@ -1525,6 +1525,6 @@ P^\nu
 \int T^{0\nu}\,d^3x.
 ```
 
-The additional rank here comes from the fact that the current must specify not only a flow through spacetime, but also which component of energy-momentum is flowing.
+The additional rank here comes from the fact that energy-momentum already has components. The first index tells which spacetime direction the current crosses, and the second tells which component of energy-momentum is being carried. Thus $T^{00}$ is energy density, $T^{0i}$ is momentum density, and $T^{i\nu}$ is the flux of the $\nu$ component of energy-momentum through an $i$-directed surface.
 
 In particle mechanics, translation symmetry gives a conserved momentum along one path, while in field theory, translation symmetry gives an energy-momentum current through spacetime. In practice, modern physical theories often proceed as follows. Identify the system's symmetry. Using the invariants of the symmetry, make an educated guess of a candidate Lagrangian. From the Lagrangian, infer currents. Test the predicted currents experimentally.  
