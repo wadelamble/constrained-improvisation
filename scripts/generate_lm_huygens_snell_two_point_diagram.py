@@ -1,225 +1,276 @@
 from __future__ import annotations
 
+import math
 from pathlib import Path
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import numpy as np
-from matplotlib.patches import Arc
+from PIL import Image, ImageDraw, ImageFont
 
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "content" / "drafts" / "animations"
 
-PAPER = "#FFFDF8"
-INK = "#2F2F2F"
-BLUE = "#245E91"
-ORANGE = "#B85C38"
-GREEN = "#5B7F72"
-MUTED = "#8B8278"
+SCALE = 3
+W, H = 1400, 900
+
+BG = "#fbfaf7"
+PANEL = "#ffffff"
+INK = "#2f2f2f"
+MUTED = "#6f675e"
+BORDER = "#d6cec1"
+BLUE_BG = "#e8f3fa"
+ORANGE_BG = "#f8eadc"
+BLUE = "#245e91"
+ORANGE = "#b85c38"
+GRAY = "#8b8278"
 
 
-def line_segment_through(point: np.ndarray, direction: np.ndarray, half_length: float) -> tuple[np.ndarray, np.ndarray]:
-    direction = direction / np.linalg.norm(direction)
-    return point - half_length * direction, point + half_length * direction
+def s(value: float) -> int:
+    return int(round(value * SCALE))
 
 
-def draw_angle_arc(ax, center, radius, start_deg, end_deg, color, label, label_angle_deg, label_radius):
-    arc = Arc(
-        center,
-        2 * radius,
-        2 * radius,
-        angle=0,
-        theta1=start_deg,
-        theta2=end_deg,
-        color=color,
-        lw=1.8,
-        zorder=8,
-    )
-    ax.add_patch(arc)
-    angle = np.deg2rad(label_angle_deg)
-    ax.text(
-        center[0] + label_radius * np.cos(angle),
-        center[1] + label_radius * np.sin(angle),
+def xy(point: tuple[float, float]) -> tuple[int, int]:
+    return (s(point[0]), s(point[1]))
+
+
+def load_font(name: str, size: int) -> ImageFont.FreeTypeFont:
+    font_dir = Path("C:/Windows/Fonts")
+    candidates = [
+        font_dir / name,
+        font_dir / "segoeui.ttf",
+        font_dir / "arial.ttf",
+        Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return ImageFont.truetype(str(candidate), s(size))
+    return ImageFont.load_default()
+
+
+FONT = load_font("segoeui.ttf", 27)
+FONT_SMALL = load_font("segoeui.ttf", 23)
+FONT_TINY = load_font("segoeui.ttf", 20)
+FONT_BOLD = load_font("segoeuib.ttf", 42)
+FONT_LABEL = load_font("segoeuib.ttf", 36)
+FONT_EQ = load_font("segoeui.ttf", 32)
+
+
+def draw_text(
+    draw: ImageDraw.ImageDraw,
+    point: tuple[float, float],
+    text: str,
+    font: ImageFont.FreeTypeFont,
+    fill: str = INK,
+    anchor: str | None = None,
+) -> None:
+    draw.text(xy(point), text, font=font, fill=fill, anchor=anchor)
+
+
+def draw_line(
+    draw: ImageDraw.ImageDraw,
+    points: list[tuple[float, float]],
+    fill: str,
+    width: int = 4,
+) -> None:
+    draw.line([xy(p) for p in points], fill=fill, width=s(width), joint="curve")
+
+
+def draw_dashed_line(
+    draw: ImageDraw.ImageDraw,
+    p1: tuple[float, float],
+    p2: tuple[float, float],
+    fill: str,
+    width: int = 3,
+    dash: float = 16,
+    gap: float = 11,
+) -> None:
+    x1, y1 = p1
+    x2, y2 = p2
+    dx, dy = x2 - x1, y2 - y1
+    length = math.hypot(dx, dy)
+    if length == 0:
+        return
+    ux, uy = dx / length, dy / length
+    t = 0.0
+    while t < length:
+        end = min(t + dash, length)
+        draw_line(
+            draw,
+            [(x1 + ux * t, y1 + uy * t), (x1 + ux * end, y1 + uy * end)],
+            fill,
+            width,
+        )
+        t += dash + gap
+
+
+def draw_arrow(
+    draw: ImageDraw.ImageDraw,
+    p1: tuple[float, float],
+    p2: tuple[float, float],
+    fill: str,
+    width: int = 4,
+    head: float = 18,
+) -> None:
+    draw_line(draw, [p1, p2], fill, width)
+    vx, vy = p2[0] - p1[0], p2[1] - p1[1]
+    length = math.hypot(vx, vy)
+    if length == 0:
+        return
+    ux, uy = vx / length, vy / length
+    px, py = -uy, ux
+    base = (p2[0] - ux * head, p2[1] - uy * head)
+    left = (base[0] + px * head * 0.45, base[1] + py * head * 0.45)
+    right = (base[0] - px * head * 0.45, base[1] - py * head * 0.45)
+    draw.polygon([xy(p2), xy(left), xy(right)], fill=fill)
+
+
+def draw_double_arrow(
+    draw: ImageDraw.ImageDraw,
+    p1: tuple[float, float],
+    p2: tuple[float, float],
+    fill: str,
+    width: int = 3,
+) -> None:
+    draw_arrow(draw, p1, p2, fill, width, head=14)
+    draw_arrow(draw, p2, p1, fill, width, head=14)
+
+
+def draw_point(draw: ImageDraw.ImageDraw, point: tuple[float, float], label: str, label_pos: tuple[float, float]) -> None:
+    r = 13
+    draw.ellipse([s(point[0] - r - 3), s(point[1] - r - 3), s(point[0] + r + 3), s(point[1] + r + 3)], fill="#ffffff")
+    draw.ellipse([s(point[0] - r), s(point[1] - r), s(point[0] + r), s(point[1] + r)], fill=INK)
+    draw_text(draw, label_pos, label, FONT_LABEL, INK, "mm")
+
+
+def draw_angle_arc(
+    draw: ImageDraw.ImageDraw,
+    center: tuple[float, float],
+    start: float,
+    end: float,
+    radius: float,
+    label: str,
+    label_angle: float,
+    label_radius: float,
+    color: str,
+) -> None:
+    steps = 36
+    points = []
+    for i in range(steps + 1):
+        a = start + (end - start) * i / steps
+        points.append((center[0] + radius * math.cos(a), center[1] + radius * math.sin(a)))
+    draw_line(draw, points, color, 4)
+    draw_text(
+        draw,
+        (
+            center[0] + label_radius * math.cos(label_angle),
+            center[1] + label_radius * math.sin(label_angle),
+        ),
         label,
-        fontsize=16,
-        color=color,
-        ha="center",
-        va="center",
-        zorder=9,
+        FONT,
+        color,
+        "mm",
     )
 
 
-def make_diagram(path: Path) -> None:
-    theta1 = np.deg2rad(50.0)
-    speed_ratio = 0.58
-    theta2 = np.arcsin(speed_ratio * np.sin(theta1))
+def right_angle_marker(
+    draw: ImageDraw.ImageDraw,
+    corner: tuple[float, float],
+    u: tuple[float, float],
+    v: tuple[float, float],
+    color: str,
+    size: float = 28,
+) -> None:
+    p1 = (corner[0] + u[0] * size, corner[1] + u[1] * size)
+    p2 = (p1[0] + v[0] * size, p1[1] + v[1] * size)
+    p3 = (corner[0] + v[0] * size, corner[1] + v[1] * size)
+    draw_line(draw, [p1, p2, p3], color, 3)
 
-    A = np.array([0.0, 0.0])
-    d_boundary = 4.25
-    B = np.array([d_boundary, 0.0])
 
-    incoming_ray = np.array([np.sin(theta1), -np.cos(theta1)])
-    incoming_front_dir = np.array([np.cos(theta1), np.sin(theta1)])
-    refracted_ray = np.array([np.sin(theta2), -np.cos(theta2)])
-    refracted_front_dir = np.array([np.cos(theta2), np.sin(theta2)])
+def render(path: Path) -> None:
+    img = Image.new("RGB", (s(W), s(H)), BG)
+    draw = ImageDraw.Draw(img)
 
-    upper_advance = d_boundary * np.sin(theta1)
-    lower_radius = d_boundary * np.sin(theta2)
-    tangent_point = lower_radius * refracted_ray
-
-    fig, ax = plt.subplots(figsize=(12, 7), dpi=160)
-    fig.patch.set_facecolor("#F7F3EC")
-    ax.set_facecolor(PAPER)
-    ax.set_xlim(-1.2, 6.3)
-    ax.set_ylim(-3.35, 3.3)
-    ax.set_aspect("equal", adjustable="box")
-    ax.axis("off")
-
-    ax.axhspan(0, 3.4, color="#D8E8F7", alpha=0.34, zorder=0)
-    ax.axhspan(-3.4, 0, color="#F7DFC9", alpha=0.36, zorder=0)
-    ax.plot([-1.2, 6.3], [0, 0], color="#59524A", lw=2.0, zorder=4)
-    ax.text(-1.05, 2.92, "medium 1, speed $v_1$", fontsize=13, color=BLUE)
-    ax.text(-1.05, -3.08, "medium 2, speed $v_2$", fontsize=13, color=ORANGE)
-
-    ax.text(
-        0.5,
-        1.03,
-        "Huygens construction gives Snell's law",
-        transform=ax.transAxes,
-        ha="center",
-        va="bottom",
-        fontsize=17,
-        color=INK,
-        weight="bold",
+    panel = (90, 105, 1310, 745)
+    boundary_y = 410
+    draw.rounded_rectangle(
+        [s(panel[0]), s(panel[1]), s(panel[2]), s(panel[3])],
+        radius=s(5),
+        fill=PANEL,
+        outline=BORDER,
+        width=s(2),
     )
+    draw.rectangle([s(panel[0]), s(panel[1]), s(panel[2]), s(boundary_y)], fill=BLUE_BG)
+    draw.rectangle([s(panel[0]), s(boundary_y), s(panel[2]), s(panel[3])], fill=ORANGE_BG)
+    draw_line(draw, [(panel[0], boundary_y), (panel[2], boundary_y)], INK, 4)
 
-    # Incoming wavefront at A and the later incoming wavefront at B.
-    old_p0, old_p1 = line_segment_through(A, incoming_front_dir, 2.9)
-    new_p0, new_p1 = line_segment_through(B, incoming_front_dir, 2.65)
-    ax.plot([old_p0[0], old_p1[0]], [old_p0[1], old_p1[1]], color=BLUE, lw=2.4, alpha=0.48, zorder=3)
-    ax.plot([new_p0[0], new_p1[0]], [new_p0[1], new_p1[1]], color=BLUE, lw=3.0, alpha=0.78, zorder=3)
-    ax.text(-0.63, 1.28, "incoming front\nhits A first", fontsize=11.5, color=BLUE, ha="left")
-    ax.text(4.23, 1.54, "same front\nat $T=t_A+\\Delta t$", fontsize=11.5, color=BLUE, ha="left")
+    draw_text(draw, (700, 55), "Huygens construction gives Snell's law", FONT_BOLD, INK, "mm")
+    draw_text(draw, (210, 165), "medium 1, speed v\u2081", FONT_SMALL, BLUE, "mm")
+    draw_text(draw, (210, 700), "medium 2, speed v\u2082", FONT_SMALL, ORANGE, "mm")
 
-    # Incoming ray and normal.
-    ray_start = A - 2.4 * incoming_ray
-    ax.annotate(
-        "",
-        xy=A,
-        xytext=ray_start,
-        arrowprops={"arrowstyle": "->", "color": GREEN, "lw": 2.4},
-        zorder=7,
-    )
-    ax.plot([A[0], A[0]], [-2.95, 2.95], ls="--", color="#6B625A", lw=1.2, alpha=0.75, zorder=2)
-    ax.text(0.08, 2.72, "normal", fontsize=11.5, color="#6B625A")
+    a = (390, boundary_y)
+    b = (850, boundary_y)
+    theta1 = math.radians(36)
+    theta2 = math.radians(21)
+    ab = b[0] - a[0]
 
-    # Show the upper-medium advance between the two incoming fronts.
-    measure_start = A + 3.85 * incoming_front_dir
-    measure_end = measure_start + upper_advance * incoming_ray
-    ax.annotate(
-        "",
-        xy=measure_end,
-        xytext=measure_start,
-        arrowprops={"arrowstyle": "<->", "color": BLUE, "lw": 1.8},
-        zorder=7,
-    )
-    mid = 0.5 * (measure_start + measure_end)
-    ax.text(mid[0] + 0.08, mid[1] + 0.18, "$v_1\\Delta t$", fontsize=14, color=BLUE)
+    # Incoming front at the later time, and the perpendicular advance from A.
+    # Image coordinates have y increasing downward, so the upper triangle uses
+    # a negative y component.
+    f1 = (-math.cos(theta1), -math.sin(theta1))
+    c1 = (b[0] + ab * math.cos(theta1) * f1[0], b[1] + ab * math.cos(theta1) * f1[1])
+    f1_start = (b[0] + f1[0] * 320, b[1] + f1[1] * 320)
+    f1_end = (b[0] - f1[0] * 155, b[1] - f1[1] * 155)
+    draw_line(draw, [f1_start, f1_end], BLUE, 6)
+    draw_text(draw, (780, 225), "incoming front\nafter \u0394t", FONT_SMALL, BLUE, "mm")
+    draw_arrow(draw, a, c1, BLUE, 4)
+    draw_text(draw, ((a[0] + c1[0]) / 2 - 50, (a[1] + c1[1]) / 2 - 20), "v\u2081\u0394t", FONT, BLUE, "mm")
+    right_angle_marker(draw, c1, (math.sin(theta1), -math.cos(theta1)), f1, BLUE, size=20)
 
-    # Huygens wavelet in the second medium and refracted tangent front.
-    wavelet = Arc(
-        A,
-        2 * lower_radius,
-        2 * lower_radius,
-        angle=0,
-        theta1=180,
-        theta2=360,
-        edgecolor=ORANGE,
-        lw=2.4,
-        alpha=0.82,
-        zorder=5,
+    # Huygens wavelet and refracted front tangent to it.
+    f2 = (-math.cos(theta2), math.sin(theta2))
+    t = (b[0] + ab * math.cos(theta2) * f2[0], b[1] + ab * math.cos(theta2) * f2[1])
+    radius = math.hypot(t[0] - a[0], t[1] - a[1])
+    draw.arc(
+        [s(a[0] - radius), s(a[1] - radius), s(a[0] + radius), s(a[1] + radius)],
+        start=0,
+        end=180,
+        fill=ORANGE,
+        width=s(5),
     )
-    ax.add_patch(wavelet)
-    tangent_p0, tangent_p1 = line_segment_through(B, refracted_front_dir, 3.2)
-    ax.plot(
-        [tangent_p0[0], tangent_p1[0]],
-        [tangent_p0[1], tangent_p1[1]],
-        color=ORANGE,
-        lw=3.0,
-        alpha=0.88,
-        zorder=6,
-    )
-    ax.scatter([tangent_point[0]], [tangent_point[1]], s=38, color=ORANGE, zorder=9)
-    ax.plot([A[0], tangent_point[0]], [A[1], tangent_point[1]], color=ORANGE, lw=2.0, alpha=0.88, zorder=7)
-    ax.text(tangent_point[0] + 0.18, tangent_point[1] - 0.34, "$v_2\\Delta t$", fontsize=14, color=ORANGE)
-    ax.text(3.08, -1.72, "refracted front:\ntangent to the wavelet", fontsize=11.5, color=ORANGE, ha="left")
+    f2_start = (b[0] + f2[0] * 435, b[1] + f2[1] * 435)
+    f2_end = (b[0] - f2[0] * 160, b[1] - f2[1] * 160)
+    draw_line(draw, [f2_start, f2_end], ORANGE, 6)
+    draw_text(draw, (825, 595), "refracted front\ntangent to wavelet", FONT_SMALL, ORANGE, "mm")
+    draw_arrow(draw, a, t, ORANGE, 4)
+    draw_text(draw, ((a[0] + t[0]) / 2 - 18, (a[1] + t[1]) / 2 + 28), "v\u2082\u0394t", FONT, ORANGE, "mm")
+    right_angle_marker(draw, t, (math.sin(theta2), math.cos(theta2)), f2, ORANGE, size=20)
 
-    ax.annotate(
-        "",
-        xy=tangent_point + 0.85 * refracted_ray,
-        xytext=A,
-        arrowprops={"arrowstyle": "->", "color": GREEN, "lw": 2.4},
-        zorder=8,
-    )
+    # Boundary distance and points.
+    draw_double_arrow(draw, (a[0], boundary_y - 36), (b[0], boundary_y - 36), GRAY, 3)
+    draw_text(draw, ((a[0] + b[0]) / 2, boundary_y - 72), "AB", FONT, GRAY, "mm")
+    draw_point(draw, a, "A", (a[0] - 38, a[1] + 43))
+    draw_point(draw, b, "B", (b[0] + 38, b[1] + 43))
+    draw_text(draw, (a[0], boundary_y + 72), "first point hit", FONT_TINY, MUTED, "mm")
+    draw_text(draw, (b[0] + 8, boundary_y + 72), "point hit after \u0394t", FONT_TINY, MUTED, "mm")
 
-    # Boundary points and shared distance.
-    ax.scatter([A[0], B[0]], [A[1], B[1]], s=48, color=INK, zorder=10)
-    ax.text(A[0] - 0.19, A[1] + 0.17, "A", fontsize=15, color=INK, weight="bold")
-    ax.text(B[0] + 0.08, B[1] + 0.17, "B", fontsize=15, color=INK, weight="bold")
-    ax.annotate(
-        "",
-        xy=(B[0], 0.20),
-        xytext=(A[0], 0.20),
-        arrowprops={"arrowstyle": "<->", "color": MUTED, "lw": 1.6},
-        zorder=8,
-    )
-    ax.text(0.5 * d_boundary, 0.34, "$AB$", fontsize=14, color=MUTED, ha="center")
+    # Angle arcs. The front angle with the boundary equals the ray angle with the normal.
+    draw_angle_arc(draw, b, math.pi, math.pi + theta1, 82, "\u03b8\u2081", math.pi + theta1 / 2, 118, BLUE)
+    draw_angle_arc(draw, b, math.pi - theta2, math.pi, 102, "\u03b8\u2082", math.pi - theta2 / 2, 140, ORANGE)
 
-    # Angle arcs.
-    draw_angle_arc(
-        ax,
-        A,
-        0.70,
-        90,
-        90 + np.rad2deg(theta1),
-        BLUE,
-        "$\\theta_1$",
-        90 + 0.52 * np.rad2deg(theta1),
-        0.96,
-    )
-    draw_angle_arc(
-        ax,
-        A,
-        0.86,
-        270,
-        270 + np.rad2deg(theta2),
-        ORANGE,
-        "$\\theta_2$",
-        270 + 0.58 * np.rad2deg(theta2),
-        1.14,
-    )
+    # Formula callout.
+    box = (910, 130, 1270, 285)
+    draw.rounded_rectangle([s(box[0]), s(box[1]), s(box[2]), s(box[3])], radius=s(12), fill="#fffdf8", outline=BORDER, width=s(2))
+    draw_text(draw, (1090, 175), "sin \u03b8\u2081 = v\u2081\u0394t / AB", FONT_EQ, INK, "mm")
+    draw_text(draw, (1090, 240), "sin \u03b8\u2082 = v\u2082\u0394t / AB", FONT_EQ, INK, "mm")
 
-    # Small formula callout.
-    ax.text(
-        5.04,
-        0.78,
-        "$\\sin\\theta_1=\\dfrac{v_1\\Delta t}{AB}$\n\n"
-        "$\\sin\\theta_2=\\dfrac{v_2\\Delta t}{AB}$",
-        fontsize=14,
-        color=INK,
-        ha="left",
-        va="top",
-        bbox={"boxstyle": "round,pad=0.35", "fc": "#FFFDF8", "ec": "#D0C5B9", "lw": 1.0},
-        zorder=12,
-    )
-
+    img = img.resize((W, H), Image.Resampling.LANCZOS)
     path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(path, facecolor=fig.get_facecolor(), bbox_inches="tight", pad_inches=0.18)
-    plt.close(fig)
+    img.save(path)
+
+
+def main() -> None:
+    render(OUT / "lm-huygens-snell-two-point-construction.png")
+    render(OUT / "lm-huygens-snell-two-point-construction-review.png")
 
 
 if __name__ == "__main__":
-    make_diagram(OUT / "lm-huygens-snell-two-point-construction-review.png")
+    main()

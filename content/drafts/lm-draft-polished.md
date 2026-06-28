@@ -890,7 +890,7 @@ Then the Euler-Lagrange equation becomes
 \frac{\partial L}{\partial q}.
 ```
 
-This is already Noether's theorem in miniature. If the Lagrangian does not depend on $q$, then
+This is a concrete instance of Noether's theorem. If the Lagrangian does not depend on $q$, then
 
 ```math
 \frac{\partial L}{\partial q}=0,
@@ -931,7 +931,7 @@ So if $L$ does not depend explicitly on $t$,
 
 Time-translation symmetry gives conservation of energy.
 
-The lesson generalizes immediately. If a coordinate is absent from the Lagrangian, the conjugate momentum is conserved. Such a coordinate is often called cyclic. This gives the familiar conservation laws from familiar symmetries.
+The lesson generalizes immediately. If a coordinate is absent from the Lagrangian, the conjugate momentum is conserved. This gives the familiar conservation laws from familiar symmetries.
 
 ```math
 \text{spatial translation symmetry}
@@ -971,7 +971,9 @@ p_\theta
 mr^2\dot\theta
 ```
 
-is conserved. This is angular momentum. The potential may be completely non-free, but because it is radial it preserves rotational symmetry, and Noether's theorem identifies the conserved quantity.
+is conserved. This is angular momentum. The potential breaks full spacetime symmetry, but because it is radial it preserves rotational symmetry, and Noether's theorem identifies the corresponding conserved quantity.
+
+These example presume the coordinates have been chosen such that the system's symmetry can be reflected in the absense of certain coordinates. In general, however, a symmetry may be present and have an associated conserved quantity, whether or not the coordinates were not chosen reflect the symmetry.
 
 #### The General Proof of Noether's Theorem
 
@@ -1129,7 +1131,7 @@ The conserved Noether quantity is therefore
 Q=p_iR^i.
 ```
 
-For example, consider a particle in the plane moving under a radial potential:
+In the examples above, because the coordinates were chosen so that a symmetry removed them from the Lagrangian, $R=1$, and the conserved quantity was simply the conjugate momentum $p_i$. Consider again a particle in the plane moving under a radial potential, but now work in cartesian coordinates where the symmetry does not manifest as missing coordinate:
 
 ```math
 L
@@ -1183,11 +1185,7 @@ p_xR^x+p_yR^y
 xp_y-yp_x.
 ```
 
-This is the angular momentum about the origin. The cyclic-coordinate case above is the still simpler case $R=1$, so the conserved quantity is just $Q=p_q$.
-
-There are two complementary ways to read this. In the classroom view, someone hands us a Lagrangian, possibly with a useful but unexplained potential, and we inspect its symmetries to find conserved quantities. In the more fundamental view we have been emphasizing, we begin with the symmetries we believe nature has and build the Lagrangian from their invariants. Noether's theorem then returns the conserved quantities associated with those same symmetries. For a completely free relativistic particle, this gives back the primitive spacetime generators we expected: energy, momentum, and angular momentum.
-
-This also ties back to generator language. A continuous symmetry is a one-parameter family of transformations. In Hamiltonian language, the infinitesimal generator is the single quantity whose flow exponentiates into the finite transformation. Noether's theorem says that if the action is unchanged by such a transformation, the corresponding generator is conserved along the physical path. Thus the Lagrangian does not merely produce equations of motion. It also tells us which generator-values remain fixed as the system evolves.
+Noether's theorem has practical applicability, in that, if one chooses the coordinates wisely, they can read off conserved quantities, which can then be used to solve many real-world problems. But at the fundamental level in which spacetime symmetry is frames allowed motion, Noether seems to just tell us what we already know, matching symmetries to their generators. However, when we move from paths of rigid bodies to histories of field configuration, the same Noether procedure, as we will see, gives rise to a new structure of currents.
 
 ## Fermat's Theorem
 
@@ -1213,20 +1211,25 @@ The solution to light's ability to find the optimal path was given by Huygens' p
 
 [Open MP4: lm-huygens-transverse-interference-cascade.mp4](animations/lm-huygens-transverse-interference-cascade.mp4)
 
-What happens when we apply this to a light ray impinging on a medium?
+Now, when we apply this to a light ray impinging on a new medium, the wave front pivots due to the difference in propagation speed in the new medium.
 
 ![Huygens Snell symmetric reference animation contact sheet](animations/lm-huygens-snell-symmetric-reference-contact-sheet.png)
 
 [Open MP4: lm-huygens-snell-symmetric-reference.mp4](animations/lm-huygens-snell-symmetric-reference.mp4)
 
-The key fact is that each secondary wavelet expands at the wave speed of the medium it enters. After the same elapsed time,
+The secondary wavelet expands at the wave speed of the medium it enters. After the same elapsed time,
 
 ```math
 \text{wavelet radius}=v_{\text{medium}}\Delta t .
 ```
-After a time $\Delta t$, the incoming wavefront reaches B. During that same time, the incoming wavefront has advanced a distance $v_1\Delta t$ in the first medium. Also during that same time, the wavelet from A has expanded to radius $v_2\Delta t$ in the second medium.
+
+::: details Visual proof of Snell's law
+
+From this we can construct a visual proof of Snell's law.
 
 ![Huygens two-point Snell construction](animations/lm-huygens-snell-two-point-construction.png)
+
+Point A is hit first. After a time $\Delta t$, the incoming wavefront reaches B. During that same time, the incoming wavefront has advanced a distance $v_1\Delta t$ in the first medium. Also during that same time, the wavelet from A has expanded to radius $v_2\Delta t$ in the second medium.
 
 Now both pieces use the same boundary distance $AB$. For the incoming side,
 
@@ -1248,9 +1251,11 @@ Therefore,
 \frac{\sin\theta_2}{v_2}.
 ```
 
+:::
+
 This is Snell's law, or equivalently Fermat's theorem that light optimizes its travel time.
 
-What has happened here? If we focus on the light ray rather than the wave, it seems to have "peeked ahead" and found the optimal path. If we focus on the wave instead, the mystery changes. The wave does not choose a path in advance, it sends contributions through the available possibilities, and the contributions away from the travel-time optimum cancel by destructive interference. Would we ever see those interfering contributions before the cancellation has narrowed into a clean ray? Yes, when the wavelength is long compared to the region over which the wavefront is being reflected or refracted. A long-wavelength radio wave reflecting from a narrow mirror, for example, would not produce a sharp reflected ray. The cancellation would be incomplete, and the reflected signal would spread into a diffraction pattern. As we will see, in quantum mechanics, the wavefunction carries the phase information whose interference determines the probabilities of particle observations. In the macroscopic limit, where the wavelength of the quantum wavefunction is very small compared to the scale over which the path is varied, contributions away from the classical path cancel by destructive interference. Thus, in the quantum context, Huygens' principle provides a mechanism by which "nature solves" the variational problem to find the optimal path.
+What has happened here? If we focus on the light ray rather than the wave, it seems to have "peeked ahead" and found the optimal path. If we focus on the wave instead, the mystery changes. The wave does not choose a path in advance, it sends contributions through the available possibilities, and the contributions away from the travel-time optimum cancel by destructive interference. Would we ever see those interfering contributions before the cancellation has narrowed into a clean ray? Yes, when the wavelength is long compared to the region over which the wavefront is being reflected or refracted. A long-wavelength radio wave reflecting from a narrow mirror, for example, would not produce a sharp reflected ray. The cancellation would be incomplete, and the reflected signal would spread into a diffraction pattern. As we will see, in quantum mechanics, the wavefunction carries the phase information whose interference determines the probabilities of particle observations. In the macroscopic limit, where the wavelength of the quantum wavefunction is very small compared to the scale over which the path is varied, contributions away from the classical path cancel by destructive interference. Huygens' principle provides a mechanism by which, so to speak, "nature solves" the variational problem to find the optimal path. 
 
 We can then lift the mathematical idea of phase cancellation out of the specific wave picture and assign a phase to every possible path. Paths whose phases fail to line up contribute little to the final amplitude, while paths near the stationary path reinforce. This is, as we will discuss later, Feynman's path integral formulation of quantum mechanics.
 
@@ -1266,7 +1271,7 @@ S[\phi]
 
 Here $\mathcal L$ is now the Lagrangian density, and we integrate over a spacetime volume $d^4x$.
 
-To see what kind of dynamics this produces, consider the simplest case of a single real scalar field $\phi(x)$. Locality says that the Lagrangian density at a point should be built from the field and its derivatives at that same point. Lorentz invariance says that spacetime indices must be contracted. The simplest derivative term is therefore
+To see what kind of dynamics this produces, consider the simplest case of a single real scalar field $\phi(x)$. Locality says that the Lagrangian density at a point should be built from the field and its derivatives at that same point. Lorentz invariance says that spacetime indices must be contracted in accordance with the Minkowski metric. The simplest derivative term is therefore
 
 ```math
 \partial_\mu\phi\,\partial^\mu\phi .
@@ -1317,11 +1322,52 @@ When $\kappa=0$, this is the ordinary wave equation.
 =
 0.
 ```
-This leads to the insight that relativistic field evolution manifests as waves propagating through spacetime. Such waves are the fundamental "stuff" of modern physical theories, in which the building blocks are not blocks, but field excitations.
+This leads to the insight that relativistic field evolution manifests as waves propagating through spacetime. Such waves are the fundamental "stuff" of modern physical theories, in which the building blocks are not blocks but excitations.
 
 ### Noether Currents and Charges
 
 For a single particle, Noether's theorem gives conserved quantities along a path. For fields, the same idea becomes richer because the conserved quantity can be distributed across space and can flow from one region to another. The result is not only a conserved quantity, but a conserved current.
+
+The complete derivation is below, but we can work through the gist of argument without working through the details. As we have seen, conservation comes from the boundary term after integrating the action variation by parts. This term must vanish for the variation to vanish, therefore the boundary term, which is a simple number, has to be the same at the endpoints, and so that number is conserved. When switching from bodies to fields, the Lagrangian density is integrated over a spacetime region. The boundary of *that region* is a hypersurface surrounding the region, not two points. A boundary term must therefore be integrated over that whole hypersurface, and so the integral over that hypersurface must vanish:
+
+```math
+\int_{\partial\Omega}j^\mu\,d\Sigma_\mu=0.
+```
+
+The boundary term over a hypersurface represents flux through the boundary. Since this is a spacetime hypersurface, flux through it, $j^\mu$, is a current.
+
+The divergence theorem equates the flux over a boundary to the divergence in a region. Using this, we have:
+
+```math
+\int_{\partial\Omega} j^\mu\,d\Sigma_\mu
+=
+\int_\Omega \partial_\mu j^\mu\,d^4x
+=
+0
+\quad\Rightarrow\quad
+\partial_\mu j^\mu=0
+\quad\Rightarrow\quad
+\frac{\partial j^0}{\partial t}
+=
+-
+\nabla\cdot\mathbf j.
+```
+
+Charge is then defined as the total inventory of this current on a spatial slice:
+
+```math
+Q
+=
+\int_\Sigma j^\mu\,d\Sigma_\mu
+=
+\int j^0\,d^3x.
+```
+
+
+$\int_\Omega \partial_\mu j^\mu\,d^4x=0$ is the "continuity equation" for Noether current, which says that the flux accross time must match the flux across space, or, in more ordinary terms, that charge can't simply disappear and reappear in a different position, but must flow smoothly. This is a stronger conservation statement than simply "charge is conserved."
+
+
+::: details Derivation of the Noether current
 
 Let the action for fields $\phi^A(x)$ be
 
@@ -1372,7 +1418,7 @@ The second term contains a derivative of the variation. Integrating it by parts 
 \delta\phi^A\,d\Sigma_\mu.
 ```
 
-Here $d\Sigma_\mu$ is the oriented surface element of the boundary $\partial\Omega$. It is the spacetime version of the outward-pointing area element $d\mathbf A$ in ordinary flux integrals. Thus a term like $j^\mu d\Sigma_\mu$ measures the amount of current flowing through a small piece of the boundary.
+Here $d\Sigma_\mu$ is the oriented surface element of the boundary $\partial\Omega$. It is the spacetime version of the outward-pointing area element $d\mathbf A$ in ordinary flux integrals. Thus a term like $j^\mu d\Sigma_\mu$ measures the amount of current flowing through a small piece of the boundary. 
 
 The first term is the bulk term. It gives the field Euler-Lagrange equations:
 
@@ -1469,6 +1515,8 @@ The continuity equation says that $Q$ can change in a region only if current flo
 
 Thus, global symmetry gives local current conservation, and local current conservation gives a globally conserved charge.
 
+:::
+
 For spacetime translations, the Noether current is the stress-energy tensor $T^{\mu\nu}$. The conserved charges are the total energy and momentum:
 
 ```math
@@ -1477,7 +1525,6 @@ P^\nu
 \int T^{0\nu}\,d^3x.
 ```
 
-Thus field theory upgrades the particle result. In particle mechanics, translation symmetry gives a conserved momentum along one path. In field theory, translation symmetry gives an energy-momentum current through spacetime. This is why Noether's theorem is more than a trick for solving examples. It is the bridge from symmetry to the conserved quantities and currents that organize modern physical theories.
+The additional rank here comes from the fact that rather than specifiying only a current through a fixed spacetime background, the momenum current, as momentum is the generated of spacetime symmetry, but also move 4-vector components of spacetime itself through a reference background.
 
-## The Lagrangian Procedure
-In practice, modern physical theories often proceed as follows. Identify the system's symmetry. Using the invariants of the symmetry, make an educated guess of a candidate Lagrangian. From the Lagrangian, infer conserved quantities. Test the predicted conserved quantities experimentally.  
+In particle mechanics, translation symmetry gives a conserved momentum along one path, while in field theory, translation symmetry gives an energy-momentum current through spacetime. In practice, modern physical theories often proceed as follows. Identify the system's symmetry. Using the invariants of the symmetry, make an educated guess of a candidate Lagrangian. From the Lagrangian, infer currents. Test the predicted currents experimentally.  
