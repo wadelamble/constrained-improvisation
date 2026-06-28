@@ -1258,7 +1258,7 @@ Would we ever see those interfering contributions before the cancellation has na
 
 As we will see, quantum mechanics keeps this wave mathematics but changes what the wave means. The wavefunction carries the phase information whose interference determines the probabilities of particle observations. In the macroscopic limit, where the wavelength of the quantum wavefunction is very small compared to the scale over which the path is varied, contributions away from the classical path cancel by destructive interference.
 
-Feynman's path integral formulation then pushes the same phase-cancellation idea one step further. Rather than evolving a wavefront directly, it assigns a phase to every possible path. Paths whose phases fail to line up contribute little to the final amplitude, while paths near the stationary path reinforce.
+Feynman's path integral formulation then pushes the same phase-cancellation idea one step further. Rather than evolving a wavefront directly, it assigns a phase to every possible path. This is natural in quantum mechanics because, as we will see, phase is proportional to action. Paths whose phases fail to line up contribute little to the final amplitude, while paths near the stationary path reinforce.
 
 ## Lagrangians of Fields
 We have focused on using the variational approach to find paths, or worldlines. However, modern fundamental physical theories, in accordance with the idea of local causality, are built from fields, which place some object, be it a real- or complex-valued scalar, vector, or spinor at each point on spacetime. We can then talk about "histories" of "configurations" rather than "paths" of "bodies." Making this shift, we write the action as:
