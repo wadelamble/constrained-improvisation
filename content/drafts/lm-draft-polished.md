@@ -25,6 +25,8 @@ F[x]=x(t_2)-x(t_1).
 
 This is a perfectly valid functional, but it won't do for physics. Why? Because it ignores everything that happens between the endpoints, and that is exactly where the physics happens! We need a functional that accounts for each infinitesimal step. A path integral does this by assigning a contribution to each segment of the path and adding those contributions into one number.
 
+There are three layers here: the path $\gamma$, the local rule $L$, and the total number $S[\gamma]$.
+
 $S[\gamma]=\int_\gamma dS$
 
 When we use $t$ to parameterize the path, each infinitesimal contribution can be written as some function times $dt$.
@@ -273,6 +275,8 @@ Now integrate this by parts, leading to an integrand containing only $\eta$ and 
 ```
 
 The boundary term vanishes because $\eta(\lambda_1)=\eta(\lambda_2)=0$.
+
+This is the structural split we will keep using: the interior term determines the path, while the boundary term measures the endpoint response.
 
 And similarly for $y$. 
 
