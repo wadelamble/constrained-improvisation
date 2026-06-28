@@ -1,7 +1,7 @@
 # The Principle of Least Action
 Relativity builds the geometry of spacetime from transformations that preserve the symmetry nature exhibits, specifies the objects that inhabit this geometry, and articulates the implications this structure has on causality. We can now turn our attention to how, under these constraints, physical systems evolve in practice.
 
-Imagine the possible paths between some endpoints in a time vs position plot. [diagram].
+Imagine the possible paths between some endpoints in a time vs position plot.
 
 ![Possible spacetime paths](animations/lm-possible-spacetime-paths.png)
 
@@ -31,7 +31,7 @@ When we use $t$ to parameterize the path, each infinitesimal contribution can be
 
 $dS=L\,dt$
 
-$L$ is called the Lagrangian. Since the action is built locally along a path, the local weighting must be able to see the infinitesimal piece of path being added. The minimal geometric data to specify state of that infinitesimal piece are the point $\gamma(t)$, the tangent $\dot{\gamma}(t)$, and the parameter value $t$. Thus we write
+$L$ is called the Lagrangian. Since the action is built locally along a path, the local weighting must be able to see the infinitesimal piece of path being added. The minimal geometric data to specify the state of that infinitesimal piece are the point $\gamma(t)$, the tangent $\dot{\gamma}(t)$, and the parameter value $t$. Thus we write
 
 $L=L(\gamma(t),\dot{\gamma}(t),t)$
 
@@ -113,7 +113,7 @@ Thus curvature is the modern replacement for imposing a force by hand, but the r
 
 
 ## Using Variational Calculus to Find Geodesics
-We have argued that the Lagrangian for a free particle is made from scaling the spacetime path length and suggested that more complicated systems can be similarly viewed as following geodesics in an appropriate generalized space. We can then see how the variational method works, and model physical problems, by working through two geometric examples -- finding the shortest path between points on a flat surface and doing the same for points on a spherical surface. What follows is admittedly mathematically detailed, but to build on the ideas of path-variation method, we need a hands-on appreciation of results that requires working through these details. 
+We have argued that the Lagrangian for a free particle is made from scaling the spacetime path length and suggested that more complicated systems can be similarly viewed as following geodesics in an appropriate generalized space. We can then see how the variational method works, and model physical problems, by working through two geometric examples -- finding the shortest path between points on a flat surface and doing the same for points on a spherical surface. What follows is admittedly mathematically detailed, but to build on the ideas of the path-variation method, we need a hands-on appreciation of results that require working through these details.
 
 ### Straight Line in Flat Space
 
@@ -561,7 +561,7 @@ Since $\eta$ is arbitrary, the coefficient of $\eta$ must vanish.
 These are the Euler-Lagrange equations. They are differential equations of motion that play the same role as Newton's famous $F=ma$. 
 
 ## From Action to Momentum and Energy
-Thus far, we have shown how to pick a path by varying the action, and we have avoided definining the action other than operationally as "the thing that is stationary on physical paths." We have gotten this far with no mention of momentum or energy, which we can now define in terms of action.
+Thus far, we have shown how to pick a path by varying the action, and we have avoided defining the action other than operationally as "the thing that is stationary on physical paths." We have gotten this far with no mention of momentum or energy, which we can now define in terms of action.
 
 We know from the Lie algebra that translations have a generator, and in relativity we call this generator momentum:
 
@@ -671,7 +671,7 @@ This is equivalent to introducing a position-dependent effective mass, or a scal
 \partial_\mu S=-\alpha(x)u_\mu.
 ```
 
-The action is no longer pure proper time, but weighted proper time. The physical path therefore does not simply maximize proper time. It extremizes the weighted proper time supplied by the action. That is, an accelerating body ages more slowly than a non-accelerating one. We already saw this from purely geometric reasoning in the twin paradox. Now we see that the the action associated with an accelerated path leads to the same conclusion.
+The action is no longer pure proper time, but weighted proper time. The physical path therefore does not simply maximize proper time. It extremizes the weighted proper time supplied by the action. That is, an accelerating body ages more slowly than a non-accelerating one. We already saw this from purely geometric reasoning in the twin paradox. Now we see that the action associated with an accelerated path leads to the same conclusion.
 
 There are cases, most famously that of a magnetic force acting on a moving charge, in which the force has a velocity dependence and momentum is *not* simply tangent to the worldline. Instead, momentum balances the existing velocity with the effect of the velocity-dependent force. We will see that these cases arise when the Lagrangian includes terms from different fields. Thus the definition of momentum in terms of the action remains intact, while the interpretation of momentum as tangent to the worldline is generalized.
 
@@ -688,7 +688,7 @@ Since energy is the generator conjugate to time translation,
 E_{\text{rest}}=-\frac{\partial S}{\partial t_{\text{rest}}}.
 ```
 
-Giving the Promethean result:
+This gives the Promethean result:
 
 ```math
 E=mc^2
@@ -902,7 +902,7 @@ and therefore
 \frac{dp_q}{dt}=0.
 ```
 
-So if shifting $q$ leaves the Lagrangian unchanged, the momentum conjugate to $q$ is conserved. Symmetry under translation in a coordinate gives conservation of the generator of that translation. In the case where momentum is proportional to velocity, this result confirms our intuition that if the the system is symmetric in position translations, there is no reason for the velocity to change.  
+So if shifting $q$ leaves the Lagrangian unchanged, the momentum conjugate to $q$ is conserved. Symmetry under translation in a coordinate gives conservation of the generator of that translation. In the case where momentum is proportional to velocity, this result confirms our intuition that if the system is symmetric in position translations, there is no reason for the velocity to change.
 
 The same idea applies to time. If the Lagrangian has no explicit time dependence, then the conserved quantity is
 
@@ -973,7 +973,7 @@ mr^2\dot\theta
 
 is conserved. This is angular momentum. The potential breaks full spacetime symmetry, but because it is radial it preserves rotational symmetry, and Noether's theorem identifies the corresponding conserved quantity.
 
-These example presume the coordinates have been chosen such that the system's symmetry can be reflected in the absense of certain coordinates. In general, however, a symmetry may be present and have an associated conserved quantity, whether or not the coordinates were not chosen reflect the symmetry.
+These examples presume the coordinates have been chosen such that the system's symmetry can be reflected in the absence of certain coordinates. In general, however, a symmetry may be present and have an associated conserved quantity, whether or not the coordinates were chosen to reflect the symmetry.
 
 #### The General Proof of Noether's Theorem
 
@@ -1131,7 +1131,7 @@ The conserved Noether quantity is therefore
 Q=p_iR^i.
 ```
 
-In the examples above, because the coordinates were chosen so that a symmetry removed them from the Lagrangian, $R=1$, and the conserved quantity was simply the conjugate momentum $p_i$. Consider again a particle in the plane moving under a radial potential, but now work in cartesian coordinates where the symmetry does not manifest as missing coordinate:
+In the examples above, because the coordinates were chosen so that a symmetry removed them from the Lagrangian, $R=1$, and the conserved quantity was simply the conjugate momentum $p_i$. Consider again a particle in the plane moving under a radial potential, but now work in Cartesian coordinates where the symmetry does not manifest as a missing coordinate:
 
 ```math
 L
@@ -1185,11 +1185,11 @@ p_xR^x+p_yR^y
 xp_y-yp_x.
 ```
 
-Noether's theorem has practical applicability, in that, if one chooses the coordinates wisely, they can read off conserved quantities, which can then be used to solve many real-world problems. But at the fundamental level in which spacetime symmetry is frames allowed motion, Noether seems to just tell us what we already know, matching symmetries to their generators. However, when we move from paths of rigid bodies to histories of field configuration, the same Noether procedure, as we will see, gives rise to a new structure of currents.
+Noether's theorem has practical applicability, in that, if one chooses the coordinates wisely, they can read off conserved quantities, which can then be used to solve many real-world problems. But at the fundamental level in which spacetime symmetry frames allowed motion, Noether seems to just tell us what we already know, matching symmetries to their generators. However, when we move from paths of rigid bodies to histories of field configurations, the same Noether procedure, as we will see, gives rise to a new structure of currents.
 
 ## Fermat's Theorem
 
-Long before the invention of Lagrangian mechanics, Fermat proposed a different variational result which states that light takes the path between two points that minimizes the travel time, even when it has to bend to account for passing through media with different propagation speeds. 
+Long before the invention of Lagrangian mechanics, Fermat proposed a different variational result that states that light takes the path between two points that minimizes the travel time, even when it has to bend to account for passing through media with different propagation speeds.
 
 ![Fermat path through a medium band](animations/lm-fermat-medium-band.png)
 
@@ -1203,15 +1203,15 @@ This requirement fixes the bending angle through Snell's law:
 
 We will skip the proof, but the intuition is exactly that of any time-optimized route-finding. Say a person were running a race that required swimming slowly across a body of water. To optimize their time, they would balance taking the shortest swim against taking the shortest total route. In the case of running a race, we would say that the racer calculated all this beforehand and chose the optimal route. But how does light do this? Does it "peek ahead"? It certainly can't see the future.
 
-Light's optimization of travel time is a specific case of action extremization. While showing this requires material we have not yet covered, what we care about here is not solving the specific variational problem but exploring the mechanism by which path optimization seems somehow to "look ahead." Any variational problem entails the same seeming paradox, for it is the entirety of the integrated path that is extremized. One could argue that there is no mystery here for the full path is generated from the local equations of motion, but those equations provide a description of the local rules that give rise to the next step of the path, not a reason for those rules, not to mention that, in the Lagrangian formulation, the local equations of motions follow from the variational procecure.
+Light's optimization of travel time is a specific case of action extremization. While showing this requires material we have not yet covered, what we care about here is not solving the specific variational problem but exploring the mechanism by which path optimization seems somehow to "look ahead." Any variational problem entails the same seeming paradox, for it is the entirety of the integrated path that is extremized. One could argue that there is no mystery here for the full path is generated from the local equations of motion, but those equations provide a description of the local rules that give rise to the next step of the path, not a reason for those rules, not to mention that, in the Lagrangian formulation, the local equations of motion follow from the variational procedure.
 
-The solution to light's ability to find the optimal path was given by Huygens' principle from the 1600s. The principle states that every point on a wavefront emits spherical wavelets whose envelope is the next wavefront, where the wavelets interfere constructively. Elsewhere, they are out of phase and the wavelets interfere destructively.
+The solution to light's ability to find the optimal path was given by Huygens' principle in the 1600s. The principle states that every point on a wavefront emits spherical wavelets whose envelope is the next wavefront, where the wavelets interfere constructively. Elsewhere, they are out of phase and the wavelets interfere destructively.
 
 ![Huygens transverse interference cascade contact sheet](animations/lm-huygens-transverse-interference-cascade-contact-sheet.png)
 
 [Open MP4: lm-huygens-transverse-interference-cascade.mp4](animations/lm-huygens-transverse-interference-cascade.mp4)
 
-Now, when we apply this to a light ray impinging on a new medium, the wave front pivots due to the difference in propagation speed in the new medium.
+Now, when we apply this to a light ray impinging on a new medium, the wavefront pivots due to the difference in propagation speed in the new medium.
 
 ![Huygens Snell symmetric reference animation contact sheet](animations/lm-huygens-snell-symmetric-reference-contact-sheet.png)
 
@@ -1328,7 +1328,7 @@ This leads to the insight that relativistic field evolution manifests as waves p
 
 For a single particle, Noether's theorem gives conserved quantities along a path. For fields, the same idea becomes richer because the conserved quantity can be distributed across space and can flow from one region to another. The result is not only a conserved quantity, but a conserved current.
 
-The complete derivation is below, but we can work through the gist of argument without working through the details. As we have seen, conservation comes from the boundary term after integrating the action variation by parts. This term must vanish for the variation to vanish, therefore the boundary term, which is a simple number, has to be the same at the endpoints, and so that number is conserved. When switching from bodies to fields, the Lagrangian density is integrated over a spacetime region. The boundary of *that region* is a hypersurface surrounding the region, not two points. A boundary term must therefore be integrated over that whole hypersurface, and so the integral over that hypersurface must vanish:
+The complete derivation is below, but we can work through the gist of the argument without working through the details. As we have seen, conservation comes from the boundary term after integrating the action variation by parts. This term must vanish for the variation to vanish. Therefore the boundary term, which is a simple number, has to be the same at the endpoints, and so that number is conserved. When switching from bodies to fields, the Lagrangian density is integrated over a spacetime region. The boundary of *that region* is a hypersurface surrounding the region, not two points. A boundary term must therefore be integrated over that whole hypersurface, and so the integral over that hypersurface must vanish:
 
 ```math
 \int_{\partial\Omega}j^\mu\,d\Sigma_\mu=0.
@@ -1364,7 +1364,7 @@ Q
 ```
 
 
-$\int_\Omega \partial_\mu j^\mu\,d^4x=0$ is the "continuity equation" for Noether current, which says that the flux accross time must match the flux across space, or, in more ordinary terms, that charge can't simply disappear and reappear in a different position, but must flow smoothly. This is a stronger conservation statement than simply "charge is conserved."
+$\int_\Omega \partial_\mu j^\mu\,d^4x=0$ is the "continuity equation" for Noether current, which says that the flux across time must match the flux across space, or, in more ordinary terms, that charge can't simply disappear and reappear in a different position, but must flow smoothly. This is a stronger conservation statement than simply "charge is conserved."
 
 
 ::: details Derivation of the Noether current
@@ -1525,6 +1525,6 @@ P^\nu
 \int T^{0\nu}\,d^3x.
 ```
 
-The additional rank here comes from the fact that rather than specifiying only a current through a fixed spacetime background, the momenum current, as momentum is the generated of spacetime symmetry, but also move 4-vector components of spacetime itself through a reference background.
+The additional rank here comes from the fact that the current must specify not only a flow through spacetime, but also which component of energy-momentum is flowing.
 
 In particle mechanics, translation symmetry gives a conserved momentum along one path, while in field theory, translation symmetry gives an energy-momentum current through spacetime. In practice, modern physical theories often proceed as follows. Identify the system's symmetry. Using the invariants of the symmetry, make an educated guess of a candidate Lagrangian. From the Lagrangian, infer currents. Test the predicted currents experimentally.  
