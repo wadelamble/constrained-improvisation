@@ -668,7 +668,7 @@ This is equivalent to introducing a position-dependent effective mass, or a scal
 \partial_\mu S=-\alpha(x)u_\mu.
 ```
 
-The action is no longer pure proper time, but weighted proper time. The physical path therefore does not simply maximize proper time. It extremizes the weighted proper time supplied by the action. That is, an accelerating body ages more slowly than a non-accelerating one. We already saw this from purely geometric reasoning in the twin paradox. Now we see that the action associated with an accelerated path leads to the same conclusion.
+The action is no longer pure proper time, but weighted proper time. The physical path therefore does not simply maximize proper time. It extremizes the weighted proper time supplied by the action. Once that path departs from the free inertial path between the same endpoints, the unweighted proper time along it is smaller than along the free path. This is the same geometric fact behind the twin paradox, now appearing inside the action language.
 
 There are cases, most famously that of a magnetic force acting on a moving charge, in which the force has a velocity dependence and momentum is *not* simply tangent to the worldline. In those cases, the action-gradient still defines momentum, but the gradient now includes more than the proper-time contribution. It also includes the way the additional field changes the action under endpoint displacement. Thus the definition of momentum in terms of the action remains intact, while the interpretation of momentum as tangent to the worldline is generalized.
 
