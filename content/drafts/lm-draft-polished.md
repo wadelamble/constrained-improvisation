@@ -668,7 +668,7 @@ This is equivalent to introducing a position-dependent effective mass, or a scal
 \partial_\mu S=-\alpha(x)u_\mu.
 ```
 
-The action is no longer pure proper time, but weighted proper time. The physical path therefore does not simply maximize proper time. It extremizes the weighted proper time supplied by the action. Once that path departs from the free inertial path between the same endpoints, the unweighted proper time along it is smaller than along the free path. This is the same geometric fact behind the twin paradox, now appearing inside the action language.
+The action is no longer pure proper time, but weighted proper time. The physical path therefore does not simply maximize proper time. It extremizes the weighted proper time supplied by the action. Once that path departs from the free inertial path between the same endpoints, the unweighted proper time along it is smaller than along the free path. This is the same geometric fact behind the twin paradox, now appearing through the action.
 
 There are cases, most famously that of a magnetic force acting on a moving charge, in which the force has a velocity dependence and momentum is *not* simply tangent to the worldline. In those cases, the action-gradient still defines momentum, but the gradient now includes more than the proper-time contribution. It also includes the way the additional field changes the action under endpoint displacement. Thus the definition of momentum in terms of the action remains intact, while the interpretation of momentum as tangent to the worldline is generalized.
 
@@ -1325,15 +1325,17 @@ This leads to the insight that relativistic field evolution manifests as waves p
 
 For a single particle, Noether's theorem gives conserved quantities along a path. For fields, the same idea becomes richer because the conserved quantity can be distributed across space and can flow from one region to another. The result is not only a conserved quantity, but a conserved current.
 
-The complete derivation is below, but we can work through the gist of the argument without working through the details. As we have seen, conservation comes from the boundary term after integrating the action variation by parts. This term must vanish for the variation to vanish. Therefore the boundary term, which is a simple number, has to be the same at the endpoints, and so that number is conserved. When switching from bodies to fields, the Lagrangian density is integrated over a spacetime region. The boundary of *that region* is a hypersurface surrounding the region, not two points. A boundary term must therefore be integrated over that whole hypersurface, and so the integral over that hypersurface must vanish:
+The complete derivation is below, but we can work through the gist of the argument without working through the details. As we have seen, conservation comes from the boundary term after integrating the action variation by parts. For a symmetry variation on a physical path, the action does not change and the bulk term vanishes. What remains is the boundary contribution. Since the boundary of a path consists of two endpoints, the boundary contribution at the final endpoint must cancel the boundary contribution at the initial endpoint. That is conservation.
+
+For fields, the Lagrangian density is integrated over a spacetime region. The boundary of *that region* is not two endpoints, but a hypersurface surrounding the region. The same boundary-cancellation statement therefore becomes a flux statement through that hypersurface:
 
 ```math
 \int_{\partial\Omega}j^\mu\,d\Sigma_\mu=0.
 ```
 
-The boundary term over a hypersurface represents flux through the boundary. Since this is a spacetime hypersurface, flux through it, $j^\mu$, is a current.
+The object $j^\mu$ is called a current because it is the local object whose flux through the boundary is being added up by this surface integral.
 
-The divergence theorem equates the flux over a boundary to the divergence in a region. Using this, we have:
+If the total flux through the boundary of every spacetime region is zero, then the current has no local source or sink. The divergence theorem expresses this as
 
 ```math
 \int_{\partial\Omega} j^\mu\,d\Sigma_\mu
@@ -1359,8 +1361,6 @@ Q
 =
 \int j^0\,d^3x.
 ```
-
-
 The local equation $\partial_\mu j^\mu=0$ is the continuity equation for Noether current. In time-plus-space form, it says that a change in the local inventory $j^0$ must be accounted for by a flow $\mathbf j$ into or out of the neighboring region. Charge conservation is the integrated version of this local statement.
 
 
