@@ -444,7 +444,7 @@ to
 ds^{2} = \mathcal R^{2}\left( d\theta^{2}+\sin^2\theta\,d\phi^{2} \right)
 ```
 
-After carrying out the variational procedure, with dots denoting derivatives with respect to the path parameter, we find
+Use path length $s$ as the parameter along the curve, so dots denote derivatives with respect to $s$. Carrying out the same variational procedure on the spherical length functional gives
 
 ```math
 \ddot{\theta}
@@ -460,7 +460,7 @@ After carrying out the variational procedure, with dots denoting derivatives wit
 0.
 ```
 
-These are the equations for a geodesic on a sphere.
+These are the equations for a geodesic on a sphere. Their importance here is not the algebra used to obtain them, but their structure. In the flat case, stationarity said that the tangent direction stays constant. On the sphere, the tangent still stays as straight as the surface permits, but the coordinates must change in a way that accounts for the curvature of the surface. That curvature appears in the extra terms involving $\sin\theta\cos\theta$ and $\cot\theta$.
 
 From this example, we see that a shortest path in a curved space, a geodesic, is specified by differential equations involving second derivatives of the coordinates along the path. Thus, we see the mathematical bridge between what appears as acceleration in flat space and motion along a geodesic in an appropriately curved space. 
 
