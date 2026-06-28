@@ -1029,6 +1029,8 @@ Thus the infinitesimal change in the coordinate is
 \delta q^i=\epsilon R^i(q).
 ```
 
+This to say that R is the symmetry generator for whatever the Lagrangian's symmetry is. 
+
 The velocity changes accordingly:
 
 ```math
@@ -1126,7 +1128,7 @@ The conserved Noether quantity is therefore
 Q=p_iR^i.
 ```
 
-In the examples above, because the coordinates were chosen so that a symmetry removed them from the Lagrangian, $R=1$, and the conserved quantity was simply the conjugate momentum $p_i$. Consider again a particle in the plane moving under a radial potential, but now work in Cartesian coordinates where the symmetry does not manifest as a missing coordinate:
+In the examples above, because the coordinates were chosen so that a symmetry removed them from the Lagrangian, $R=1$, and the conserved quantity was simply the conjugate momentum $p_i$. But this need not be the case. Consider again a particle in the plane moving under a radial potential, but now work in Cartesian coordinates where the symmetry does not manifest as a missing coordinate:
 
 ```math
 L
@@ -1353,6 +1355,10 @@ If the total flux through the boundary of every spacetime region is zero, then t
 -
 \nabla\cdot\mathbf j.
 ```
+
+![Continuity equation and divergence animation contact sheet](animations/lm-noether-flux-continuity-contact-sheet.png)
+
+[Open MP4: lm-noether-flux-continuity.mp4](animations/lm-noether-flux-continuity.mp4)
 
 Charge is then defined as the total inventory of this current on a spatial slice:
 
