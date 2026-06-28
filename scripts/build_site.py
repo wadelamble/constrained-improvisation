@@ -46,7 +46,7 @@ class Article:
 
 
 ARTICLES = [
-    Article("Path Mechanics", "path-mechanics", PATH_MECHANICS_DRAFT),
+    Article("The Principle of Least Action", "path-mechanics", PATH_MECHANICS_DRAFT),
     Article("Differential Mechanics", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
 ]
 
@@ -71,19 +71,11 @@ SECTIONS = [
         outline=["Galilean structure", "Relativistic structure"],
     ),
     Section(
-        "Path Mechanics",
+        "The Principle of Least Action",
         "path-mechanics",
         "Motion as straightness in the appropriate geometry.",
         status="",
         href="/path-mechanics/",
-        outline=[
-            "Worldlines",
-            "Invariant length",
-            "Velocity phase space",
-            "Lagrangians",
-            "Geometric lifts",
-            "Differential handoff",
-        ],
         disabled=False,
     ),
     Section(
