@@ -79,15 +79,9 @@ SECTIONS = [
         disabled=False,
     ),
     Section(
-        "Gravitation",
-        "gravitation",
-        "Spacetime curvature as the geometry of free fall.",
-        outline=[
-            "Equivalence principle",
-            "Metric curvature",
-            "Geodesic motion",
-            "Einstein equation",
-        ],
+        "Field Theories",
+        "field-theories",
+        "General Relativity and Gauge Fields.",
     ),
     Section(
         "Differential Mechanics",
@@ -109,12 +103,6 @@ SECTIONS = [
         "quantum-mechanics",
         "From objects to patterns.",
         outline=["State and measurement", "Operators", "Commutators"],
-    ),
-    Section(
-        "Gauge Theory",
-        "gauge-theory",
-        "Local symmetry, connections, and force.",
-        outline=["Internal spaces", "Connection fields", "Curvature", "Gauge coupling"],
     ),
     Section(
         "Quantum Field Theory",
