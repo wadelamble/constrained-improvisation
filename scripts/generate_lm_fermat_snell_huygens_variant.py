@@ -439,9 +439,9 @@ def make_possible_spacetime_paths(path: Path) -> None:
     baseline = x0 + (x1 - x0) * s
 
     nice = baseline + 0.95 * s * (1 - s)
-    high_detour = baseline + 2.55 * np.sin(np.pi * s) ** 1.1 + 0.82 * np.sin(2 * np.pi * s)
-    low_detour = baseline - 2.35 * np.sin(np.pi * s) - 0.72 * np.sin(2 * np.pi * s) + 0.36 * np.sin(3 * np.pi * s)
-    wild = baseline + 1.26 * np.sin(np.pi * s) * np.sin(5.4 * np.pi * s) + 0.54 * np.sin(np.pi * s) * np.sin(2 * np.pi * s)
+    high_detour = baseline + 1.95 * np.sin(np.pi * s) ** 1.1 + 0.58 * np.sin(2 * np.pi * s)
+    low_detour = baseline - 1.35 * np.sin(np.pi * s) - 0.28 * np.sin(2 * np.pi * s) + 0.18 * np.sin(3 * np.pi * s)
+    wild = baseline + 0.95 * np.sin(np.pi * s) * np.sin(5.4 * np.pi * s) + 0.44 * np.sin(np.pi * s) * np.sin(2 * np.pi * s)
 
     candidates = [
         (low_detour, "#BDB4A7", 1.8),

@@ -265,7 +265,8 @@ def figure_for_image(alt: str, path: str, caption: str | None = None) -> str:
     src = rewrite_asset_path(path)
     safe_alt = html.escape(alt, quote=True)
     caption_text = caption or alt
-    return f"""<figure class="media-figure">
+    figure_class = f"media-figure media-figure--{slugify(Path(path).stem)}"
+    return f"""<figure class="{figure_class}">
   <img src="{html.escape(src, quote=True)}" alt="{safe_alt}">
   <figcaption>{inline(caption_text)}</figcaption>
   <div class="media-actions">

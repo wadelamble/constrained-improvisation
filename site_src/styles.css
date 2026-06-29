@@ -313,6 +313,12 @@ a:hover {
   background: white;
 }
 
+.media-figure--lm-possible-spacetime-paths {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .media-figure figcaption {
   margin-top: 0.55rem;
   color: var(--muted);

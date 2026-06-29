@@ -49,9 +49,9 @@ def sampled_path(start: tuple[float, float], end: tuple[float, float], offset, s
 
 def data_to_px(point: tuple[float, float]) -> tuple[int, int]:
     x, t = point
-    x_min, x_max = -3.35, 4.45
+    x_min, x_max = -3.0, 3.8
     t_min, t_max = -0.05, 5.05
-    left, top, right, bottom = 52, 80, 1056, 1162
+    left, top, right, bottom = 58, 70, 860, 700
     px = left + (x - x_min) / (x_max - x_min) * (right - left)
     py = bottom - (t - t_min) / (t_max - t_min) * (bottom - top)
     return round(px), round(py)
@@ -62,7 +62,7 @@ def draw_path(draw: ImageDraw.ImageDraw, points: list[tuple[float, float]], colo
 
 
 def main() -> None:
-    width, height = 1080, 1227
+    width, height = 900, 760
     im = Image.new("RGB", (width * SCALE, height * SCALE), "#F7F3EC")
     draw = ImageDraw.Draw(im)
 
@@ -72,12 +72,12 @@ def main() -> None:
     def srect(rect):
         return tuple(v * SCALE for v in rect)
 
-    title_font = font(38 * SCALE)
-    label_font = font(28 * SCALE)
-    small_font = font(26 * SCALE)
-    italic_font = font(30 * SCALE, italic=True)
+    title_font = font(31 * SCALE)
+    label_font = font(22 * SCALE)
+    small_font = font(21 * SCALE)
+    italic_font = font(24 * SCALE, italic=True)
 
-    plot = (52, 80, 1056, 1162)
+    plot = (52, 70, 860, 700)
     draw.rectangle(srect(plot), outline="#BBA88F", width=2 * SCALE)
 
     title = "Possible paths between fixed spacetime events"
@@ -85,33 +85,33 @@ def main() -> None:
     draw.text(sxy((width - (title_box[2] - title_box[0]) // SCALE) // 2, 12), title, fill="#2F2F2F", font=title_font)
 
     arrow = "#7E7468"
-    draw.line([sxy(70, 1150), sxy(1042, 1150)], fill=arrow, width=3 * SCALE)
-    draw.polygon([sxy(1042, 1150), sxy(1029, 1142), sxy(1029, 1158)], fill=arrow)
-    draw.line([sxy(90, 1145), sxy(90, 105)], fill=arrow, width=3 * SCALE)
-    draw.polygon([sxy(90, 105), sxy(82, 118), sxy(98, 118)], fill=arrow)
+    draw.line([sxy(70, 690), sxy(846, 690)], fill=arrow, width=3 * SCALE)
+    draw.polygon([sxy(846, 690), sxy(834, 682), sxy(834, 698)], fill=arrow)
+    draw.line([sxy(86, 686), sxy(86, 100)], fill=arrow, width=3 * SCALE)
+    draw.polygon([sxy(86, 100), sxy(78, 113), sxy(94, 113)], fill=arrow)
 
-    draw.text(sxy(1034, 1173), "x", fill="#4B463F", font=italic_font)
-    draw.text(sxy(58, 99), "t", fill="#4B463F", font=italic_font)
-    draw.text(sxy(518, 1175), "space", fill="#000000", font=label_font)
-    draw.text(sxy(17, 598), "time", fill="#000000", font=label_font)
+    draw.text(sxy(836, 710), "x", fill="#4B463F", font=italic_font)
+    draw.text(sxy(58, 102), "t", fill="#4B463F", font=italic_font)
+    draw.text(sxy(432, 712), "space", fill="#000000", font=label_font)
+    draw.text(sxy(17, 378), "time", fill="#000000", font=label_font)
 
-    start = (-1.75, 0.35)
-    end = (1.65, 4.45)
+    start = (-1.55, 0.35)
+    end = (1.45, 4.45)
 
     left_overshoot = sampled_path(
         start,
         end,
-        lambda s: -2.35 * sin(pi * s) - 0.72 * sin(2 * pi * s) + 0.36 * sin(3 * pi * s),
+        lambda s: -1.35 * sin(pi * s) - 0.28 * sin(2 * pi * s) + 0.18 * sin(3 * pi * s),
     )
     right_overshoot = sampled_path(
         start,
         end,
-        lambda s: 2.55 * sin(pi * s) ** 1.1 + 0.82 * sin(2 * pi * s),
+        lambda s: 1.95 * sin(pi * s) ** 1.1 + 0.58 * sin(2 * pi * s),
     )
     wild = sampled_path(
         start,
         end,
-        lambda s: 1.26 * sin(pi * s) * sin(5.4 * pi * s) + 0.54 * sin(pi * s) * sin(2 * pi * s),
+        lambda s: 0.95 * sin(pi * s) * sin(5.4 * pi * s) + 0.44 * sin(pi * s) * sin(2 * pi * s),
     )
     smooth = cubic(start, (-1.02, 1.26), (0.78, 3.45), end, 180)
 
@@ -124,8 +124,8 @@ def main() -> None:
         x, y = data_to_px(point)
         draw.ellipse(srect((x - 11, y - 11, x + 11, y + 11)), fill="#2F2F2F", outline="#FFFFFF", width=2 * SCALE)
 
-    draw.text(sxy(235, 1122), "fixed start", fill="#4B463F", font=small_font)
-    draw.text(sxy(652, 150), "fixed end", fill="#4B463F", font=small_font)
+    draw.text(sxy(120, 612), "fixed start", fill="#4B463F", font=small_font)
+    draw.text(sxy(612, 125), "fixed end", fill="#4B463F", font=small_font)
 
     im = im.resize((width, height), Image.Resampling.LANCZOS)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
