@@ -50,6 +50,8 @@ ARTICLES = [
     Article("Differential Mechanics", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
 ]
 
+ARTICLE_BY_SLUG = {article.slug: article for article in ARTICLES}
+
 
 SECTIONS = [
     Section(
@@ -124,6 +126,22 @@ def slugify(text: str) -> str:
     return slug or "section"
 
 
+def article_outline(article: Article) -> list[str]:
+    markdown = article.draft.read_text(encoding="utf-8")
+    return [
+        line.removeprefix("## ").strip()
+        for line in markdown.splitlines()
+        if line.startswith("## ") and not line.startswith("### ")
+    ]
+
+
+def outline_for_section(section: Section) -> list[str]:
+    article = ARTICLE_BY_SLUG.get(section.slug)
+    if article is not None:
+        return article_outline(article)
+    return section.outline
+
+
 def page_shell(title: str, body: str, toc: str = "") -> str:
     nav_links = "\n".join(
         f'          <a href="{site_path("/" + article.slug + "/")}">{html.escape(article.title)}</a>'
@@ -184,8 +202,9 @@ def render_home() -> str:
         label = html.escape(section.title)
         title = f'<a href="{site_path(section.href)}">{label}</a>{status}{new_badge}' if section.href else f"<span>{label}</span>{status}"
         outline = ""
-        if section.outline:
-            outline_items = "\n".join(f"<li>{html.escape(item)}</li>" for item in section.outline)
+        section_outline = outline_for_section(section)
+        if section_outline:
+            outline_items = "\n".join(f"<li>{html.escape(item)}</li>" for item in section_outline)
             outline = f"<details><summary>Outline</summary><ol>{outline_items}</ol></details>"
         items.append(
             f"""<li class="{card_class}">

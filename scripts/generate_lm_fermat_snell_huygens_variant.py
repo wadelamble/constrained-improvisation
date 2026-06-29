@@ -444,14 +444,14 @@ def make_possible_spacetime_paths(path: Path) -> None:
     wild = baseline + 1.05 * np.sin(5.0 * np.pi * s) * np.sin(np.pi * s)
 
     candidates = [
-        (low_detour, "#BDB4A7", 1.8, "long detour"),
-        (high_detour, "#BDB4A7", 1.8, "way out of the way"),
-        (wild, "#A8B5C6", 1.8, "wild path"),
-        (nice, "#B85C38", 3.2, "smooth candidate"),
+        (low_detour, "#BDB4A7", 1.8),
+        (high_detour, "#BDB4A7", 1.8),
+        (wild, "#A8B5C6", 1.8),
+        (nice, "#B85C38", 3.2),
     ]
 
-    for x, color, linewidth, label in candidates:
-        ax.plot(x, t, color=color, linewidth=linewidth, alpha=0.95, label=label)
+    for x, color, linewidth in candidates:
+        ax.plot(x, t, color=color, linewidth=linewidth, alpha=0.95)
 
     ax.scatter([x0, x1], [t0, t1], s=92, color="#2F2F2F", edgecolor="white", linewidth=1.2, zorder=6)
     ax.text(x0 - 0.18, t0 - 0.30, "fixed start", fontsize=10, color="#4B463F", ha="left")
@@ -463,18 +463,6 @@ def make_possible_spacetime_paths(path: Path) -> None:
     ax.text(-3.32, 4.86, "$t$", fontsize=12, color="#4B463F")
 
     ax.set_title("Possible paths between fixed spacetime events", fontsize=14, color="#2F2F2F", pad=14)
-    ax.text(
-        0.97,
-        0.06,
-        "one path is smooth;\nothers wander",
-        transform=ax.transAxes,
-        ha="right",
-        va="bottom",
-        fontsize=10.5,
-        color="#4B463F",
-        bbox={"boxstyle": "round,pad=0.28", "fc": "#F1E6D2", "ec": "#D7C6AA"},
-    )
-
     ax.set_xlim(-3.35, 4.45)
     ax.set_ylim(-0.05, 5.05)
     ax.set_aspect("auto")
@@ -482,7 +470,6 @@ def make_possible_spacetime_paths(path: Path) -> None:
     ax.set_ylabel("time")
     ax.set_xticks([])
     ax.set_yticks([])
-    ax.legend(loc="center left", bbox_to_anchor=(1.02, 0.56), frameon=True, fontsize=9.5)
 
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=180, bbox_inches="tight")
