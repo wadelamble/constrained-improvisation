@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <rect width="900" height="300" fill="white"/>
+
+  <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 180 55 L 80 225 L 280 225 Z"/>
+  </g>
+
+  <g fill="#111" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600">
+    <text x="180" y="34" text-anchor="middle">A</text>
+    <text x="56" y="242" text-anchor="middle">B</text>
+    <text x="304" y="242" text-anchor="middle">C</text>
+  </g>
+
+  <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 390 150 L 540 150"/>
+    <path d="M 520 128 L 542 150 L 520 172"/>
+  </g>
+
+  <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 625 65 L 610 65 L 610 235 L 625 235"/>
+    <path d="M 725 65 L 740 65 L 740 235 L 725 235"/>
+  </g>
+
+  <g fill="#111" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="500">
+    <text x="675" y="88" text-anchor="middle" dominant-baseline="middle">A</text>
+    <text x="675" y="150" text-anchor="middle" dominant-baseline="middle">B</text>
+    <text x="675" y="212" text-anchor="middle" dominant-baseline="middle">C</text>
+  </g>
+</svg>

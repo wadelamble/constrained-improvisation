@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="260" viewBox="0 0 360 260" role="img" aria-labelledby="title">
+  <title>A triangle.</title>
+  <rect width="360" height="260" fill="#ffffff"/>
+  <path d="M180 35 L50 225 L310 225 Z" fill="none" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
+</svg>

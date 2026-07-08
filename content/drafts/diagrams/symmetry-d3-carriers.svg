@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <rect width="900" height="300" fill="white"/>
+  <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(150 145)">
+      <circle cx="0" cy="-58" r="38"/>
+      <circle cx="50.2" cy="29" r="38"/>
+      <circle cx="-50.2" cy="29" r="38"/>
+    </g>
+
+    <g transform="translate(450 145)">
+      <path d="M 0 -24 C 34 -58 48 -104 0 -130 C -48 -104 -34 -58 0 -24 Z"/>
+      <path d="M 0 -24 C 34 -58 48 -104 0 -130 C -48 -104 -34 -58 0 -24 Z" transform="rotate(120)"/>
+      <path d="M 0 -24 C 34 -58 48 -104 0 -130 C -48 -104 -34 -58 0 -24 Z" transform="rotate(240)"/>
+      <circle cx="0" cy="0" r="18"/>
+    </g>
+
+    <g transform="translate(750 145)">
+      <g transform="rotate(0)">
+        <rect x="-56" y="-92" width="112" height="28" rx="14"/>
+      </g>
+      <g transform="rotate(120)">
+        <rect x="-56" y="-92" width="112" height="28" rx="14"/>
+      </g>
+      <g transform="rotate(240)">
+        <rect x="-56" y="-92" width="112" height="28" rx="14"/>
+      </g>
+      <circle cx="0" cy="0" r="18"/>
+    </g>
+  </g>
+</svg>
