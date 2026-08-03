@@ -379,13 +379,7 @@ The expression $xT_y-yT_x$ generates rotation within the $x$-$y$ plane—the sam
 
 #### Lie Algebra
 
-If we have chosen a representation and found operators, the content of the commutators is redundant. We can calculate them by putting the generators into the formula:
-
-```math
-[X,Y]=XY-YX.
-```
-
-However, given just the dimension of the symmetry group and the commutators, we fully specify a **Lie algebra** that contains the structure of the symmetry group, up to global topological features—such as a symmetry group wrapping around onto itself—that are invisible to local structure. This algebra consists of two operations involving generators: vector addition and the Lie bracket, or, more specifically, the commutator. If we know these, we know the set of identities any candidate representation must have:
+Given just the dimension of the symmetry group and the commutators, we fully specify a **Lie algebra** that contains the structure of the symmetry group, up to global topological features—such as a symmetry group wrapping around onto itself—that are invisible to local structure. This algebra consists of the vector-space operations and the Lie bracket, or, more specifically, the commutator. If we know these, we know the set of identities any candidate representation must have:
 
 ```math
 D([X,Y])=[D(X),D(Y)].
@@ -393,7 +387,7 @@ D([X,Y])=[D(X),D(Y)].
 
 #### Invariants and Casimir operators
 
-If we can construct an operator from the generators that commutes with all the generators, we know that operator is an invariant under the symmetry. As an illustration, in 3-dimensional rotation we can see that the square of the rotation generators is invariant:
+Using the commutators, if we can construct an operator from the generators that commutes with all the generators, we know that operator is an invariant under the symmetry. As an illustration, in 3-dimensional rotation, with generators denoted $L_i$ for angular momentum, we can see that the square of the rotation generators is invariant:
 
 ```math
 [L_x,L_y]=L_z
@@ -419,7 +413,7 @@ By the same calculation,
 [L^2,L_y]=[L^2,L_z]=0.
 ```
 
-This is common sense: the size of the angular momentum, that is, the rate of rotation, is independent of the direction of the axis.
+This is common sense: the magnitude of angular momentum is independent of the direction of the axis.
 
 An invariant constructed this way is a **Casimir operator**, and Casimir eigenvalues are crucial in physics because their combined values classify representations of a symmetry. For example, as we will see later, the invariant mass of a particle is the eigenvalue of a Casimir operator built from the generators of time and space translations. In fact, the particles familiar from the Standard Model are classified by combinations of Casimir eigenvalues of the symmetries they represent. To say this again, in the **Standard Model**, particles are modeled using representations of symmetry, and the Casimir eigenvalues identify the representation to which a particle state belongs.
 
