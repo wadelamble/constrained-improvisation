@@ -1,3 +1,4 @@
+
 # Symmetry
 Strike a pool ball with a cue, and the balls move in an expected way. Move the table over a few feet, and the balls move in recognizably the same way. Wait a few minutes, and the balls move in the same way. Turn the pool table a few degrees, and the balls still move the same way. Put the pool table on a train, and, again, the balls move in the same way. These are the manifest symmetries of the space we live in -- position and time translation, rotation, and velocity "boosts."
 
@@ -33,13 +34,7 @@ We tend to think of a "triangles's symmetry" not the "symmetry of two rotations 
 ### Representations
 We can plainly "see" the symmetry of the triangle, but what if we want to write it down symbolically? Specifically, what if we want to track how a sequence of symmetry group actions transform an object? For example, suppose we label our triangle's vertices \(A, B, C\) and ask, if we rotate twice, flip once, then rotate again, where is vertex \(A\) sent? Recognizing that the triangle's state has three ordered components, we might guess that we could represent the triangle as a vector with 3 components. We coud then represent 120° rotations as **transformations** that permute the vertices in accordance with the symmetry group actions. 
 
-There is nothing special about the vertices here, we could just as easily have chosen the midpoint of the edges or any other triplet of points on the triangle, and the same matrix the permutes the vertices would permute those vectors. That is, the group actions are represented as **linear** transformations. A **representation** of a symmetry group is a vector space and set of the linear transformations that compose in the same way as the group actions:
-
-$$
-D(g_1g_2)=D(g_1)D(g_2).
-$$
-
-where $g_1$ and $g_2$ are group actions, such as a rotation and a flip, and $D(g_n)$ is the matrix representing the $g_n$ action, and $D$ itself is the map from symmetry actions to matrices in the representation. This says that the matrix for the composed action \($g_2$ followed by $g_1$\) is the product the matrices for the separate actions.
+There is nothing special about the vertices here, we could just as easily have chosen the midpoint of the edges or any other triplet of points on the triangle, and the same matrix the permutes the vertices would permute those vectors. That is, the group actions are represented as **linear** transformations. A **representation** of a symmetry group is a vector space and set of the linear transformations that compose in the same way as the group actions.
 
 To construct a 3-dimensional representation of $D_3$, we map the 3 vertices to component of a vector.
 
@@ -285,7 +280,7 @@ We can think of a symmetry transform as a "uniform looking" vector field, as ill
 
 [Open MP4: symmetry-so2-vector-field-flow.mp4](animations/symmetry-so2-vector-field-flow.mp4)
 
-Here we ask not what happens when the transformation is applied to a single set of starting conditions, but what the transformation does to all starting conditions. This view lends itself to seeing the structure in collections of histories. 
+Here we ask not what happens when the transformation is applied to a single set of starting conditions, but what the transformation does to all starting conditions. This view lendss itself to studying collections of histories. 
 
 #### Invariants and Metrics
 What is the invariant of rotation in this representation? It is the length of vectors and the angles between them.
@@ -308,250 +303,8 @@ An invariant of this sort, that fixes some notion of placing reliable rulers on 
 
 [Open MP4: symmetry-hyperbolic-rotation.mp4](animations/symmetry-hyperbolic-rotation.mp4)
 
-### Commutators
-In the case of a single continuous symmetry transformation, the generator combined with a parameter, like angle in the case of rotation, specifies an arbitrary transformation. However, when there are multiple independent transformations that can be composed, the order of the composition must also be taken into account because it produces different resultant states. For example, in the 3-dimensional rotation group, called $SO(3)$, rotating about the $x$-axis then the $y$-axis leaves a sphere in a different state than applying the same actions in the opposite order.
-
-![Noncommuting 90-degree rotations in three dimensions](animations/symmetry-so3-rotation-order-contact-sheet.png)
-
-[Open MP4: symmetry-so3-rotation-order.mp4](animations/symmetry-so3-rotation-order.mp4)
-
-This dependency on order is encoded in terms of the generators by the **commutator**:
-
-```math
-[X,Y]
-=
-XY-YX.
-```
-
-For example, for $\mathfrak{so}(3)$, the commutators are:
-
-```math
-[J_x,J_y]=J_z,
-\qquad
-[J_y,J_z]=J_x,
-\qquad
-[J_z,J_x]=J_y.
-```
-
-When we set out to map a global symmetry group to a local tangent vector space at the identity, simply identifying the generators in the space does not capture the full structure of the symmetry group. For example, in $SO(3)$ we know that rotating about $x$ rotates the $y$ axis into $z$. This structure becomes evident when we compose rotations about $x$ and $y$. In terms of generators, we would write such a composite action as a product of exponential maps:
-
-```math
-e^{aJ_x}e^{bJ_y}.
-```
-
-How then do we write this as a single exponential in terms of $J_x$ and $J_y$? For ordinary numbers, and for commuting operators:
-
-```math
-e^Ae^B=e^{A+B}.
-```
-
-But this identity does *not* hold for noncommuting generators.
-
-```math
-e^{aJ_x+bJ_y}
-```
-
-generates a rotation about a single axis in the $x$-$y$ plane, which is not the same as performing the two rotations sequentially.
-
-How can we correct the exponent so that the product can again be written as a single exponential? To the lowest nontrivial order:
-
-```math
-e^{aJ_x}e^{bJ_y}
-=
-\exp\!\left(
-aJ_x+bJ_y+\frac12ab[J_x,J_y]+\cdots
-\right)
-=
-\exp\!\left(
-aJ_x+bJ_y+\frac12abJ_z+\cdots
-\right).
-```
-
-Another way to think about the commutator is as a measure of curvature. On a flat plane, the $x$- and $y$-translation generators commute: moving in $x$, then $y$, then undoing each movement returns us exactly to where we began. On a sphere of radius $R$, the corresponding sequence leaves a small rotational gap:
-
-```math
-[T_x,T_y]
-=
-\frac{1}{R^2}\left(xT_y-yT_x\right).
-```
-
-The expression $xT_y-yT_x$ generates rotation within the $x$-$y$ plane—the same rotation that an embedding-space description would call rotation about $z$. The factor $1/R^2$ is the curvature, so the gap vanishes as the sphere flattens.
-
-#### Lie Algebra
-
-If we have chosen a representation and found operators, the content of the commutators is redundant. We can calculate them by putting the generators into the formula:
-
-```math
-[X,Y]=XY-YX.
-```
-
-However, given just the dimension of the symmetry group and the commutators, we fully specify a **Lie algebra** that contains the structure of the symmetry group, up to global topological features—such as a symmetry group wrapping around onto itself—that are invisible to local structure. This algebra consists of two operations involving generators: vector addition and the Lie bracket, or, more specifically, the commutator. If we know these, we know the set of identities any candidate representation must have:
-
-```math
-D([X,Y])=[D(X),D(Y)].
-```
-
-#### Invariants and Casimir operators
-
-If we can construct an operator from the generators that commutes with all the generators, we know that operator is an invariant under the symmetry. As an illustration, in 3-dimensional rotation we can see that the square of the rotation generators is invariant:
-
-```math
-[L_x,L_y]=L_z
-\quad\text{(cyclically)},
-\qquad
-L^2=L_x^2+L_y^2+L_z^2.
-```
-
-```math
-\begin{aligned}
-[L^2,L_x]
-&=[L_y^2,L_x]+[L_z^2,L_x]\\
-&=L_y[L_y,L_x]+[L_y,L_x]L_y
-+L_z[L_z,L_x]+[L_z,L_x]L_z\\
-&=-L_yL_z-L_zL_y+L_zL_y+L_yL_z\\
-&=0.
-\end{aligned}
-```
-
-By the same calculation,
-
-```math
-[L^2,L_y]=[L^2,L_z]=0.
-```
-
-This is common sense: the size of the angular momentum, that is, the rate of rotation, is independent of the direction of the axis.
-
-An invariant constructed this way is a **Casimir operator**, and Casimir eigenvalues are crucial in physics because their combined values classify representations of a symmetry. For example, as we will see later, the invariant mass of a particle is the eigenvalue of a Casimir operator built from the generators of time and space translations. In fact, the particles familiar from the Standard Model are classified by combinations of Casimir eigenvalues of the symmetries they represent. To say this again, in the **Standard Model**, particles are modeled using representations of symmetry, and the Casimir eigenvalues identify the representation to which a particle state belongs.
-
 
 ### Translations and Function Representation
-
-#### Generators and Conserved Quantities
-[move to function rep section - find a home...]
-A generator is an operator. In a representation, it acts on a vector as a linear transformation. In the finite case, it is a matrix. However, in physics we associate generators with numerical quantities, and, in particular, with conserved quantities. For example, the operator $P_x$ generates translations in $x$, and it is associated with the conserved quanity $p_x$ in a system with translation symmetry in the $x$ direction. This relationship is best understood as an eigenvalue problem....
-
-The clean bridge is to treat the possible positions of a point particle exactly as you treated the possible arrangements of cards or vertices of a triangle.
-
-For every possible position $x$, introduce a formal basis vector
-
-```math
-|x\rangle.
-```
-
-A translation acts by permuting these definite-position vectors:
-
-```math
-T(a)|x\rangle=|x+a\rangle.
-```
-
-This is already a linear representation: define its action on linear combinations by linearity. Because there is now one coefficient for every possible value of $x$, a general vector has the form
-
-```math
-|\psi\rangle
-=
-\int dx\,\psi(x)|x\rangle.
-```
-
-The function $\psi(x)$ is simply the continuous coordinate list of that vector. Nothing quantum has been assumed. We have linearized the action of translations on the set of possible particle positions, just as a permutation representation linearizes the action on a finite set of vertices.
-
-In the function coordinates, translation acts as
-
-```math
-(T(a)\psi)(x)=\psi(x-a).
-```
-
-Write
-
-```math
-T(a)=e^{-iaP}.
-```
-
-Differentiating at $a=0$ gives
-
-```math
-P=-i\frac{\partial}{\partial x}.
-```
-
-Now solve the eigenvalue problem:
-
-```math
-P\psi_p=p\psi_p.
-```
-
-Its solutions are
-
-```math
-\psi_p(x)=e^{ipx}.
-```
-
-Under a finite translation,
-
-```math
-T(a)\psi_p
-=
-e^{-iap}\psi_p.
-```
-
-So lowercase $p$ has a precise meaning:
-
-> $p$ is the number measuring how a translation eigenvector responds to translation.
-
-That explains why the generator and quantity use the same letter:
-
-```math
-P=\text{translation operator},
-\qquad
-p=\text{its eigenvalue}.
-```
-
-Now suppose the law of evolution respects translation symmetry. If $U(t)$ denotes evolution, then
-
-```math
-U(t)T(a)=T(a)U(t).
-```
-
-It therefore also commutes with the generator $P$. Starting with a $P$-eigenvector,
-
-```math
-P\psi_p=p\psi_p,
-```
-
-we obtain
-
-```math
-\begin{aligned}
-P\,U(t)\psi_p
-&=
-U(t)P\psi_p\\
-&=
-p\,U(t)\psi_p.
-\end{aligned}
-```
-
-Thus evolution may change the vector, but it cannot change its translation eigenvalue $p$. The number $p$ is conserved.
-
-This gives the complete bridge using only the mathematics already available:
-
-```math
-\text{definite particle positions}
-\longrightarrow
-\text{basis vectors }|x\rangle
-\longrightarrow
-\text{function representation}
-\longrightarrow
-\text{translation operator }P
-\longrightarrow
-\text{eigenvalue }p
-\longrightarrow
-\text{conserved translation label}.
-```
-
-Physics calls that conserved translation label **momentum**.
-
-One limitation should remain explicit: a definite-position vector $|x\rangle$ is not a momentum eigenvector. It decomposes into all the Fourier modes $\psi_p$. So this construction explains momentum as the conserved eigenvalue of translation, but it does not assign a definite momentum to an instantaneous point using its position alone. Motion or additional physical structure is needed for that.
-[move to function rep section]
-
-
 Like rotation, translation plainly does not change the distance between points. It is, in a sense, the simplest possible symmetry. It would be natural to think the ideal representation space for a translation is simply a one dimensional vector space. But there is a problem. If an operation is to move $x$ by some amount $a$
 
 ```math
@@ -1110,6 +863,92 @@ In the function representation of translation symmetry, which is called a **Hilb
 =
 \langle f,g\rangle.
 ```
+
+### Commutators
+In the case of a single continuous symmetry transformation, knowing the generator specifies any transformation, but in the case where there are multiple independent transformations that can be composed, the order of the composition must also be taken into account because it produces different resultant states. For example, in the 3-dimensional rotation group, or $SO(3)$, rotating about the $x$-axis then the $y$-axis leaves a sphere in a different state than applying the same actions in the opposite order.
+
+![Noncommuting 90-degree rotations in three dimensions](animations/symmetry-so3-rotation-order-contact-sheet.png)
+
+[Open MP4: symmetry-so3-rotation-order.mp4](animations/symmetry-so3-rotation-order.mp4)
+
+This dependency on order is encoded in terms of the generators by the **commutator**:
+
+```math
+[X,Y]
+=
+XY-YX.
+```
+
+For example, for $\mathfrak{so}(3)$, the commutators are:
+
+```math
+[J_x,J_y]=J_z,
+\qquad
+[J_y,J_z]=J_x,
+\qquad
+[J_z,J_x]=J_y.
+```
+
+The generators and commutators together determine any transformation in the complete symmetry group.
+
+We should say that there is some global structure, the **topology**, that remains invisible to the local generators and commutators. For example, translation in $x$ and $y$ commute (moving in $x$ then $y$ is the same as $y$ then $x$), but this is true both on the surface of a plane and a cylinder, which have different global behavior: on a cylinder, a translation may return a point back to its starting point. This is familiar to anyone who has played Asteroids.
+
+![A cylinder unrolls into an arcade-style wraparound plane](animations/symmetry-cylinder-topology-wrap-contact-sheet.png)
+
+[Open MP4: symmetry-cylinder-topology-wrap.mp4](animations/symmetry-cylinder-topology-wrap.mp4)
+
+Using the commutator we can generate composed actions.
+
+```math
+e^{aX}e^{bY}
+=
+e^{aX+bY+\frac12ab[X,Y]+\cdots}.
+```
+
+This identity comes from using the definition of the commutator and Taylor expanding the exponentials. We will spare the reader the algebra.
+
+#### Why Generators and Commutators?
+Up to this point, we have said that if we know a transformation matrix, we can find the generators by finding the tangent at the identity, that is, where the transformation parameter equals zero. Then we've said we can exponentiate the generators along with their commutators to find the transformation. But wait, this is just going in a circle, what have we gained from identifying the generators and their commutation relations? 
+
+Because the generators live in a tangent plane rather than on a a curved space, they can be linearly combined. For example, if we can write the generator of 3-dimensional rotation about an arbitrary axis as a linear compbination of rotation about the $x$, $y$, and $z$ axes:
+
+```math
+L_{\hat{\mathbf n}}
+=
+n_xL_x+n_yL_y+n_zL_z,
+\qquad
+\hat{\mathbf n}=(n_x,n_y,n_z).
+```
+
+We can then find a finite rotation about this axis by exponentiating $L_{\hat{\mathbf n}}$. By comparison, if we only new the matrices for finite rotations about each axis, we would have to multiply those matrices. While this is computationally advantageous, it is essential for finding identities that would otherwise be opaque in matrix multiplication. For example, if we can construct an operator from the generators that commutes with all the generators, we know that operator is an invariant under the symmetry. As an illustration, in 3-dimensional rotation we can see that the square of the rotation generators is invariant:
+
+```math
+[L_x,L_y]=L_z
+\quad\text{(cyclically)},
+\qquad
+L^2=L_x^2+L_y^2+L_z^2,
+```
+
+```math
+\begin{aligned}
+[L^2,L_x]
+&=[L_y^2,L_x]+[L_z^2,L_x]\\
+&=L_y[L_y,L_x]+[L_y,L_x]L_y
++L_z[L_z,L_x]+[L_z,L_x]L_z\\
+&=-L_yL_z-L_zL_y+L_zL_y+L_yL_z\\
+&=0.
+\end{aligned}
+```
+
+By the same calculation,
+
+```math
+[L^2,L_y]=[L^2,L_z]=0.
+```
+
+An invariant constructed this way is a **Casimir operator**, and Casimir eigenvalues are crucial in physics because their combined values classify representations of a symmetry. For example, as we will see later, the invariant mass of a particle is the eigenvalue of a Casimir operator built from the generators of time and space translations. In fact, the particles familiar from the Standard Model are classified by combinations of Casimir eigenvalues of the symmetries they represent. To say this again, in the **Standard Model**, particles are modeled using representations of symmetry, and the Casimir eigenvalues identify the representation to which a particle state belongs.
+
+Generators have a clear physical interpretation. They are the familiar conserved quantities associated with free motion. For example, momentum generates translation, and if a system's translational symmetry is unbroken, **momentum** is conserved. Similarly, angular momentum generates rotation, and if a system posseses rotational symmetry, angular momentum is conserved. The momentum component that generates time translation has a name that is as common as its meaning is rich  -- **energy**.
 
 #### The Symmetry Generators of Physics
 As we have said nature includes translation symmetry in time and position, rotational symmetry, and velocity boost symmetry. This group is lives in a complex function representation. In addition, in quantum theory, the complex phase of function representations will be seen to be an extra symmetry as it will be not appear in observables, which are encoded into the complex norm of the representing function, where phase cancels. This extra symmetry is not one of time and space, but rather lives in its own fiber on each point in time and space. Such a construction is called a **fiber bundle**. 
