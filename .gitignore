@@ -9,3 +9,5 @@ Thumbs.db
 .tools/
 Git-*.exe
 ~$*.docx
+.codex-flight-debug/
+.codex-flight-profile/

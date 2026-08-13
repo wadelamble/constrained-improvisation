@@ -16,17 +16,14 @@ WIDTH = 1280
 HEIGHT = 720
 SCALE = 2
 FPS = 24
-FRAMES = 168
+FRAMES = 360
 
 BG = (255, 252, 246)
-PANEL = (250, 246, 238)
-PANEL_EDGE = (224, 216, 204)
 INK = (35, 36, 38)
 MUTED = (174, 168, 158)
 BLUE = (57, 103, 157)
 RED = (184, 72, 48)
 GOLD = (196, 132, 42)
-GREEN = (71, 130, 101)
 
 
 def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -45,7 +42,7 @@ def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.Im
 
 TITLE = font(25, True)
 LABEL = font(18)
-SMALL = font(14)
+SMALL = font(15)
 
 
 def s(value: float) -> int:
@@ -59,6 +56,10 @@ def ease(t: float) -> float:
 
 def lerp(a: float, b: float, t: float) -> float:
     return a + (b - a) * t
+
+
+def log_lerp(a: float, b: float, t: float) -> float:
+    return a * ((b / a) ** t)
 
 
 def rgba(color: tuple[int, int, int], alpha: float) -> tuple[int, int, int, int]:
@@ -76,27 +77,23 @@ def draw_text(
     draw.text((s(xy[0]), s(xy[1])), text, fill=fill, font=font_obj, anchor=anchor)
 
 
-def draw_arrow(
-    draw: ImageDraw.ImageDraw,
-    start: tuple[float, float],
-    end: tuple[float, float],
-    color: tuple[int, int, int] | tuple[int, int, int, int],
-    width: int = 4,
-    head: float = 14,
-) -> None:
-    draw.line((s(start[0]), s(start[1]), s(end[0]), s(end[1])), fill=color, width=s(width))
-    angle = math.atan2(end[1] - start[1], end[0] - start[0])
-    left = (end[0] - head * math.cos(angle - math.pi / 7), end[1] - head * math.sin(angle - math.pi / 7))
-    right = (end[0] - head * math.cos(angle + math.pi / 7), end[1] - head * math.sin(angle + math.pi / 7))
-    draw.polygon([(s(end[0]), s(end[1])), (s(left[0]), s(left[1])), (s(right[0]), s(right[1]))], fill=color)
-
-
 def f(x: float) -> float:
-    return 0.48 + 0.20 * x + 0.22 * x * x - 0.035 * x * x * x
+    """A deliberately irregular but smooth function."""
+    return (
+        0.46 * math.sin(0.72 * x + 0.35)
+        + 0.24 * math.sin(1.65 * x - 0.60)
+        + 0.13 * math.sin(3.35 * x + 1.10)
+        + 0.04 * x
+    )
 
 
 def fp(x: float) -> float:
-    return 0.20 + 0.44 * x - 0.105 * x * x
+    return (
+        0.46 * 0.72 * math.cos(0.72 * x + 0.35)
+        + 0.24 * 1.65 * math.cos(1.65 * x - 0.60)
+        + 0.13 * 3.35 * math.cos(3.35 * x + 1.10)
+        + 0.04
+    )
 
 
 def tangent(x: float, x0: float) -> float:
@@ -104,7 +101,7 @@ def tangent(x: float, x0: float) -> float:
 
 
 def make_mapper(x_min: float, x_max: float, y_min: float, y_max: float):
-    left, top, right, bottom = 92, 106, 914, 610
+    left, top, right, bottom = 66, 104, 1214, 650
 
     def to_screen(x: float, y: float) -> tuple[float, float]:
         px = left + (x - x_min) / (x_max - x_min) * (right - left)
@@ -119,79 +116,101 @@ def draw_frame(frame: int) -> Image.Image:
     draw = ImageDraw.Draw(image, "RGBA")
 
     t = frame / (FRAMES - 1)
-    zoom = ease((t - 0.22) / 0.70)
-    span = lerp(4.8, 0.72, zoom)
-    x0 = 0.0
-    x_min = x0 - 0.52 * span
-    x_max = x0 + 0.48 * span
-    y_center = f(x0)
-    y_span = lerp(2.50, 0.46, zoom)
-    y_min = y_center - 0.43 * y_span
-    y_max = y_center + 0.57 * y_span
+    zoom = ease(ease((t - 0.14) / 0.68))
+
+    # The two marked arguments are genuinely close on the original graph. The
+    # camera closes in on that fixed pair, making their local segment readable.
+    x_ref = 1.92
+    displacement = 0.035
+    x_shift = x_ref - displacement
+    x_center = 0.5 * (x_ref + x_shift)
+    y_center = 0.5 * (f(x_ref) + f(x_shift))
+
+    x_span = log_lerp(10.5, 0.105, zoom)
+    y_span = log_lerp(2.40, 0.070, zoom)
+    x_min = x_center - 0.5 * x_span
+    x_max = x_center + 0.5 * x_span
+    y_min = y_center - 0.5 * y_span
+    y_max = y_center + 0.5 * y_span
     to_screen = make_mapper(x_min, x_max, y_min, y_max)
 
-    draw_text(draw, (58, 42), "A tangent is a local copy of the function", font_obj=TITLE)
+    draw_text(draw, (64, 42), "Every smooth curve looks straight up close", font_obj=TITLE)
 
-    # Axes.
-    axis_y = to_screen(0, 0)[1]
-    axis_x = to_screen(0, 0)[0]
-    draw.line((s(72), s(axis_y), s(934), s(axis_y)), fill=rgba(MUTED, 0.75), width=s(2))
-    draw.line((s(axis_x), s(92), s(axis_x), s(630)), fill=rgba(MUTED, 0.45), width=s(2))
+    # A restrained camera-frame cue expands with the zoom and then disappears.
+    # It is the final field of view expressed in the current camera coordinates.
+    final_x_span = 0.105
+    final_y_span = 0.070
+    view_left, view_top = to_screen(x_center - final_x_span / 2, y_center + final_y_span / 2)
+    view_right, view_bottom = to_screen(x_center + final_x_span / 2, y_center - final_y_span / 2)
+    frame_alpha = 0.46 * (1.0 - ease((zoom - 0.66) / 0.30))
+    corner = min(28.0, 0.22 * (view_right - view_left), 0.22 * (view_bottom - view_top))
+    frame_color = rgba(MUTED, frame_alpha)
+    if frame_alpha > 0.01:
+        for x1, y1, x2, y2 in [
+            (view_left, view_top, view_left + corner, view_top),
+            (view_left, view_top, view_left, view_top + corner),
+            (view_right - corner, view_top, view_right, view_top),
+            (view_right, view_top, view_right, view_top + corner),
+            (view_left, view_bottom, view_left + corner, view_bottom),
+            (view_left, view_bottom - corner, view_left, view_bottom),
+            (view_right - corner, view_bottom, view_right, view_bottom),
+            (view_right, view_bottom - corner, view_right, view_bottom),
+        ]:
+            draw.line((s(x1), s(y1), s(x2), s(y2)), fill=frame_color, width=s(2))
 
-    # Function and tangent.
+    # The wiggly global function simplifies naturally as the camera closes in.
     curve = []
-    tan_line = []
-    samples = 360
+    samples = 520
     for i in range(samples):
         x = x_min + (x_max - x_min) * i / (samples - 1)
         curve.append(tuple(s(v) for v in to_screen(x, f(x))))
-        tan_line.append(tuple(s(v) for v in to_screen(x, tangent(x, x0))))
-    draw.line(tan_line, fill=GOLD, width=s(5))
-    draw.line(curve, fill=BLUE, width=s(5))
+    draw.line(curve, fill=BLUE, width=s(5), joint="curve")
 
-    # The represented translation shrinks as the view becomes local.
-    a = 0.34 * span
-    x_shift = x0 - a
-    p0 = to_screen(x0, f(x0))
-    p_actual = to_screen(x_shift, f(x_shift))
-    p_tan = to_screen(x_shift, tangent(x_shift, x0))
+    # The actual tangent arrives only after the curve has nearly become it.
+    tangent_alpha = ease((zoom - 0.68) / 0.27)
+    if tangent_alpha > 0:
+        tan_line = []
+        for i in range(samples):
+            x = x_min + (x_max - x_min) * i / (samples - 1)
+            tan_line.append(tuple(s(v) for v in to_screen(x, tangent(x, x_ref))))
+        draw.line(tan_line, fill=rgba(GOLD, 0.82 * tangent_alpha), width=s(3))
 
-    bracket_y = min(598, max(p0[1], p_actual[1], p_tan[1]) + 58)
-    draw.line((s(p0[0]), s(p0[1]), s(p0[0]), s(bracket_y)), fill=rgba(BLUE, 0.45), width=s(2))
-    draw.line((s(p_actual[0]), s(min(p_actual[1], p_tan[1])), s(p_actual[0]), s(bracket_y)), fill=rgba(RED, 0.45), width=s(2))
-    draw.ellipse((s(p0[0] - 7), s(p0[1] - 7), s(p0[0] + 7), s(p0[1] + 7)), fill=BLUE)
-    draw.ellipse((s(p_actual[0] - 7), s(p_actual[1] - 7), s(p_actual[0] + 7), s(p_actual[1] + 7)), fill=RED)
-    draw.ellipse((s(p_tan[0] - 6), s(p_tan[1] - 6), s(p_tan[0] + 6), s(p_tan[1] + 6)), fill=GOLD)
+    # Two fixed, nearby points become visibly separated only because of zoom.
+    p_shift = to_screen(x_shift, f(x_shift))
+    p_ref = to_screen(x_ref, f(x_ref))
+    dot_radius = 2
+    for px, py in (p_shift, p_ref):
+        draw.ellipse(
+            (s(px - dot_radius), s(py - dot_radius), s(px + dot_radius), s(py + dot_radius)),
+            fill=RED,
+            outline=BG,
+            width=s(1),
+        )
 
-    if abs(p_tan[1] - p_actual[1]) > 12:
-        draw.line((s(p_actual[0]), s(p_actual[1]), s(p_tan[0]), s(p_tan[1])), fill=GREEN, width=s(4))
-        draw_text(draw, (p_actual[0] - 16, (p_actual[1] + p_tan[1]) / 2), "error", fill=GREEN, font_obj=SMALL, anchor="rm")
-
-    draw_arrow(draw, (p0[0] - 8, bracket_y - 22), (p_actual[0] + 8, bracket_y - 22), RED, width=3)
-    draw_text(draw, ((p0[0] + p_actual[0]) / 2, bracket_y - 50), "a", fill=RED, font_obj=SMALL, anchor="mm")
-    draw_text(draw, (p0[0] + 12, p0[1] - 28), "x", fill=BLUE, font_obj=SMALL)
-    draw_text(draw, (p_actual[0], bracket_y + 22), "x-a", fill=RED, font_obj=SMALL, anchor="mm")
-
-    # Equation panel.
-    draw.rounded_rectangle((s(970), s(170), s(1198), s(392)), radius=s(12), fill=PANEL, outline=PANEL_EDGE, width=s(2))
-    draw_text(draw, (994, 202), "near x", font_obj=LABEL)
-    draw_text(draw, (994, 252), "f(x-a)", fill=RED, font_obj=LABEL)
-    draw_text(draw, (994, 294), "\u2248 f(x) - a f'(x)", fill=INK, font_obj=LABEL)
-    draw_text(draw, (994, 348), "zoom makes", fill=(91, 87, 81), font_obj=SMALL)
-    draw_text(draw, (994, 374), "near become true", fill=(91, 87, 81), font_obj=SMALL)
-
-    # Small zoom indicator.
-    bar_x, bar_y, bar_w = 970, 456, 218
-    draw.line((s(bar_x), s(bar_y), s(bar_x + bar_w), s(bar_y)), fill=rgba(MUTED, 0.8), width=s(4))
-    knob_x = bar_x + bar_w * zoom
-    draw.ellipse((s(knob_x - 8), s(bar_y - 8), s(knob_x + 8), s(bar_y + 8)), fill=BLUE)
-    draw_text(draw, (bar_x, bar_y - 32), "local zoom", fill=(91, 87, 81), font_obj=SMALL)
+    label_alpha = ease((zoom - 0.52) / 0.26)
+    if label_alpha > 0:
+        draw_text(
+            draw,
+            (p_shift[0], p_shift[1] + 34),
+            "x-a",
+            fill=rgba(INK, label_alpha),
+            font_obj=SMALL,
+            anchor="mm",
+        )
+        draw_text(
+            draw,
+            (p_ref[0], p_ref[1] + 34),
+            "x",
+            fill=rgba(INK, label_alpha),
+            font_obj=SMALL,
+            anchor="mm",
+        )
 
     return image.convert("RGB").resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
 
 
 def make_contact_sheet(name: str) -> Path:
-    samples = [0, 28, 56, 84, 112, 140]
+    samples = [0, 56, 120, 184, 256, 340]
     thumb_w = 400
     thumb_h = 225
     label_h = 28

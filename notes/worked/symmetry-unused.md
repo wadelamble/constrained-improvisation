@@ -973,3 +973,336 @@ e^{aX+bY+\frac12ab[X,Y]+\cdots}.
 
 This identity comes from using the definition of the commutator and Taylor expanding the exponentials. We will spare the reader the algebra.
 
+#### Eigenfunctions of Translation
+Imagine a rubber sheet. You pull on the corners of the sheet. What does this do to the \(x\)- and \(y\)-axes? It rotates them. Now, instead choose \(x\) and \(y\) to be diagonal axes. Now, when you stretch, the "long" axis is stretched but not rotated and the "short" axis is compressed but not rotated. The action of this stretching "operator" on these axes is now obviously simpler -- it is just scalar (single number) multiplication of the original vector. But what about any random direction....
+
+Write an arbitrary vector in the horizontal/vertical basis:
+
+```math
+\mathbf r
+=
+x\hat{\mathbf x}
++
+y\hat{\mathbf y}.
+```
+
+Now stretch by a factor of $2$ along the $45^\circ$ direction and compress by a factor of $1/2$ along the perpendicular $45^\circ$ direction. In the horizontal/vertical basis, the transformed components are
+
+```math
+x'
+=
+\frac54x+\frac34y,
+\qquad
+y'
+=
+\frac34x+\frac54y.
+```
+
+So
+
+```math
+\mathbf r'
+=
+\left(\frac54x+\frac34y\right)\hat{\mathbf x}
++
+\left(\frac34x+\frac54y\right)\hat{\mathbf y}.
+```
+
+The components mix. The new $x$ component depends on both the old $x$ and the old $y$, and likewise for the new $y$ component.
+
+Now choose the $45^\circ$ basis:
+
+```math
+\hat{\mathbf u}
+=
+\frac{1}{\sqrt2}
+\left(
+\hat{\mathbf x}
++
+\hat{\mathbf y}
+\right),
+\qquad
+\hat{\mathbf v}
+=
+\frac{1}{\sqrt2}
+\left(
+\hat{\mathbf x}
+-
+\hat{\mathbf y}
+\right).
+```
+
+In that basis,
+
+```math
+\mathbf r
+=
+u\hat{\mathbf u}
++
+v\hat{\mathbf v}.
+```
+
+The same transformation is now
+
+```math
+u'=2u,
+\qquad
+v'=\frac12v.
+```
+
+So
+
+```math
+\mathbf r'
+=
+2u\hat{\mathbf u}
++
+\frac12v\hat{\mathbf v}.
+```
+
+The components do not mix. Each component only gets scaled.
+
+![Stretching in ordinary and eigenvector bases](animations/symmetry-eigenbasis-stretch-contact-sheet.png)
+
+[Open MP4: symmetry-eigenbasis-stretch.mp4](animations/symmetry-eigenbasis-stretch.mp4)
+
+We call the vectors that are scaled by an operation the **eigenvectors**. If the vectors are functions, we say **eigenfunctions**. If those functions are associated with physical states, we say **eigenstate**, and if we have a **basis**, or coordinate axes, made from eigenvectors, we call this an **eigenbasis**.
+
+We can treat the stretching as a matrix operator. In the original basis, the matrix would be:
+
+```math
+\begin{pmatrix}
+\frac54 & \frac34\\
+\frac34 & \frac54
+\end{pmatrix}.
+```
+
+While in the eigenbasis it would be:
+
+```math
+\begin{pmatrix}
+2 & 0\\
+0 & \frac12
+\end{pmatrix}.
+```
+
+We can see the operator matrix in the eigenbasis is diagonal, so we often call finding the eigenbasis **diagonalizing** the operator.
+
+We can now find the factor by which this stretching operator scales its eigenvectors, or its **eigenvalues**.
+
+The eigenvalue equation is
+
+```math
+A\mathbf r
+=
+\lambda\mathbf r.
+```
+
+Using the original-basis matrix,
+
+```math
+\begin{pmatrix}
+\frac54 & \frac34\\
+\frac34 & \frac54
+\end{pmatrix}
+\begin{pmatrix}
+x\\
+y
+\end{pmatrix}
+=
+\lambda
+\begin{pmatrix}
+x\\
+y
+\end{pmatrix}.
+```
+
+To find the allowed values of $\lambda$, subtract $\lambda\mathbf r$ from both sides:
+
+```math
+\begin{pmatrix}
+\frac54-\lambda & \frac34\\
+\frac34 & \frac54-\lambda
+\end{pmatrix}
+\begin{pmatrix}
+x\\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\
+0
+\end{pmatrix}.
+```
+
+This has a nonzero solution only when the determinant vanishes:
+
+```math
+\left(\frac54-\lambda\right)^2
+-
+\left(\frac34\right)^2
+=
+0.
+```
+
+So
+
+```math
+\frac54-\lambda
+=
+\pm\frac34.
+```
+
+Therefore
+
+```math
+\lambda=2,
+\qquad
+\lambda=\frac12.
+```
+
+These are exactly the stretch factors in the $45^\circ$ basis.
+
+
+
+#### Unitarity - Waves in Physics
+...relate L2 functions to unitarity (don't blow up)...
+...relative phase...
+...identity...
+
+...1. say we need identity 2. say waves give us this. 3. talk about what would happen to a wave packet in molasses and compare to a packet in an ideal medium. 4. talk about deterministic particle trajectories, and about incompressible fluid 5. unitarity 4 ways -- metrics and forms -- intuitive waves -- relative phase -- sine and cos components...
+
+In the function representation of translation symmetry, which is called a **Hilbert space**, the symmetry transformation is carried out by a **unitary** operator, which is to say an operator that preserves the inner product (a generalized dot product) of functions.
+
+```math
+\langle Uf,Ug\rangle
+=
+\langle f,g\rangle.
+```
+
+
+#### Generators and Conserved Quantities
+[move to function rep section - find a home...]
+A generator is an operator. In a representation, it acts on a vector as a linear transformation. In the finite case, it is a matrix. However, in physics we associate generators with numerical quantities, and, in particular, with conserved quantities. For example, the operator $P_x$ generates translations in $x$, and it is associated with the conserved quanity $p_x$ in a system with translation symmetry in the $x$ direction. This relationship is best understood as an eigenvalue problem....
+
+The clean bridge is to treat the possible positions of a point particle exactly as you treated the possible arrangements of cards or vertices of a triangle.
+
+For every possible position $x$, introduce a formal basis vector
+
+```math
+|x\rangle.
+```
+
+A translation acts by permuting these definite-position vectors:
+
+```math
+T(a)|x\rangle=|x+a\rangle.
+```
+
+This is already a linear representation: define its action on linear combinations by linearity. Because there is now one coefficient for every possible value of $x$, a general vector has the form
+
+```math
+|\psi\rangle
+=
+\int dx\,\psi(x)|x\rangle.
+```
+
+The function $\psi(x)$ is simply the continuous coordinate list of that vector. Nothing quantum has been assumed. We have linearized the action of translations on the set of possible particle positions, just as a permutation representation linearizes the action on a finite set of vertices.
+
+In the function coordinates, translation acts as
+
+```math
+(T(a)\psi)(x)=\psi(x-a).
+```
+
+Write
+
+```math
+T(a)=e^{-iaP}.
+```
+
+Differentiating at $a=0$ gives
+
+```math
+P=-i\frac{\partial}{\partial x}.
+```
+
+Now solve the eigenvalue problem:
+
+```math
+P\psi_p=p\psi_p.
+```
+
+Its solutions are
+
+```math
+\psi_p(x)=e^{ipx}.
+```
+
+Under a finite translation,
+
+```math
+T(a)\psi_p
+=
+e^{-iap}\psi_p.
+```
+
+So lowercase $p$ has a precise meaning:
+
+> $p$ is the number measuring how a translation eigenvector responds to translation.
+
+That explains why the generator and quantity use the same letter:
+
+```math
+P=\text{translation operator},
+\qquad
+p=\text{its eigenvalue}.
+```
+
+Now suppose the law of evolution respects translation symmetry. If $U(t)$ denotes evolution, then
+
+```math
+U(t)T(a)=T(a)U(t).
+```
+
+It therefore also commutes with the generator $P$. Starting with a $P$-eigenvector,
+
+```math
+P\psi_p=p\psi_p,
+```
+
+we obtain
+
+```math
+\begin{aligned}
+P\,U(t)\psi_p
+&=
+U(t)P\psi_p\\
+&=
+p\,U(t)\psi_p.
+\end{aligned}
+```
+
+Thus evolution may change the vector, but it cannot change its translation eigenvalue $p$. The number $p$ is conserved.
+
+This gives the complete bridge using only the mathematics already available:
+
+```math
+\text{definite particle positions}
+\longrightarrow
+\text{basis vectors }|x\rangle
+\longrightarrow
+\text{function representation}
+\longrightarrow
+\text{translation operator }P
+\longrightarrow
+\text{eigenvalue }p
+\longrightarrow
+\text{conserved translation label}.
+```
+
+Physics calls that conserved translation label **momentum**.
+
+One limitation should remain explicit: a definite-position vector $|x\rangle$ is not a momentum eigenvector. It decomposes into all the Fourier modes $\psi_p$. So this construction explains momentum as the conserved eigenvalue of translation, but it does not assign a definite momentum to an instantaneous point using its position alone. Motion or additional physical structure is needed for that.
+[move to function rep section]
+

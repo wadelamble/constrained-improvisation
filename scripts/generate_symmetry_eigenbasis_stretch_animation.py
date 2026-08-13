@@ -16,7 +16,21 @@ WIDTH = 1280
 HEIGHT = 720
 SCALE = 2
 FPS = 24
-FRAMES = 144
+FIRST_ACT_FRAMES = 144
+FIRST_HOLD_FRAMES = 18
+TRANSITION_FRAMES = 30
+SECOND_SETUP_FRAMES = 36
+SECOND_MOVE_FRAMES = 72
+SECOND_HOLD_FRAMES = 48
+STRETCH_PARAMETER = 2.0
+FRAMES = (
+    FIRST_ACT_FRAMES
+    + FIRST_HOLD_FRAMES
+    + TRANSITION_FRAMES
+    + SECOND_SETUP_FRAMES
+    + SECOND_MOVE_FRAMES
+    + SECOND_HOLD_FRAMES
+)
 
 BG = (255, 252, 246)
 INK = (35, 36, 38)
@@ -121,10 +135,10 @@ def draw_diagonal_guides(draw: ImageDraw.ImageDraw, origin: tuple[float, float],
         )
 
 
-def draw_frame(frame: int) -> Image.Image:
+def draw_comparison_scene(progress: float) -> Image.Image:
     image = Image.new("RGBA", (WIDTH * SCALE, HEIGHT * SCALE), BG + (255,))
     draw = ImageDraw.Draw(image, "RGBA")
-    t = ease(frame / (FRAMES - 1))
+    t = ease(progress)
 
     draw_text(draw, (58, 44), "A stretch looks different in different bases", font_obj=TITLE)
 
@@ -140,8 +154,10 @@ def draw_frame(frame: int) -> Image.Image:
     draw_basis_grid(draw, right_origin, scale)
     draw_diagonal_guides(draw, right_origin, scale)
 
-    ex_final = (1.25, 0.75)
-    ey_final = (0.75, 1.25)
+    diagonal_entry = 0.5 * (STRETCH_PARAMETER + 1.0 / STRETCH_PARAMETER)
+    off_diagonal_entry = 0.5 * (STRETCH_PARAMETER - 1.0 / STRETCH_PARAMETER)
+    ex_final = (diagonal_entry, off_diagonal_entry)
+    ey_final = (off_diagonal_entry, diagonal_entry)
     ex_now = (lerp(1.0, ex_final[0], t), lerp(0.0, ex_final[1], t))
     ey_now = (lerp(0.0, ey_final[0], t), lerp(1.0, ey_final[1], t))
 
@@ -152,8 +168,14 @@ def draw_frame(frame: int) -> Image.Image:
 
     u = (1 / root2, 1 / root2)
     v = (1 / root2, -1 / root2)
-    u_now = (lerp(u[0], 2.0 * u[0], t), lerp(u[1], 2.0 * u[1], t))
-    v_now = (lerp(v[0], 0.5 * v[0], t), lerp(v[1], 0.5 * v[1], t))
+    u_now = (
+        lerp(u[0], STRETCH_PARAMETER * u[0], t),
+        lerp(u[1], STRETCH_PARAMETER * u[1], t),
+    )
+    v_now = (
+        lerp(v[0], v[0] / STRETCH_PARAMETER, t),
+        lerp(v[1], v[1] / STRETCH_PARAMETER, t),
+    )
 
     draw_arrow(draw, right_origin, u_now, GREEN, scale)
     draw_arrow(draw, right_origin, v_now, GOLD, scale)
@@ -172,8 +194,189 @@ def draw_frame(frame: int) -> Image.Image:
     return image.convert("RGB").resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
 
 
+def draw_matrix(
+    draw: ImageDraw.ImageDraw,
+    origin: tuple[float, float],
+    alpha: float,
+) -> None:
+    x, y = origin
+    color = rgba(INK, alpha)
+    muted = rgba((91, 87, 81), alpha)
+
+    draw_text(draw, (x, y + 57), "r =", fill=color, font_obj=LABEL, anchor="lm")
+    left = x + 78
+    right = x + 260
+    top = y
+    bottom = y + 132
+    tick = 16
+    width = 3
+
+    draw.line((s(left), s(top), s(left), s(bottom)), fill=color, width=s(width))
+    draw.line((s(left), s(top), s(left + tick), s(top)), fill=color, width=s(width))
+    draw.line((s(left), s(bottom), s(left + tick), s(bottom)), fill=color, width=s(width))
+    draw.line((s(right), s(top), s(right), s(bottom)), fill=color, width=s(width))
+    draw.line((s(right - tick), s(top), s(right), s(top)), fill=color, width=s(width))
+    draw.line((s(right - tick), s(bottom), s(right), s(bottom)), fill=color, width=s(width))
+
+    draw_text(draw, (left + 58, top + 35), "s", fill=color, font_obj=LABEL, anchor="mm")
+    draw_text(draw, (left + 138, top + 35), "0", fill=color, font_obj=LABEL, anchor="mm")
+    draw_text(draw, (left + 58, top + 98), "0", fill=color, font_obj=LABEL, anchor="mm")
+    draw_text(draw, (left + 138, top + 98), "1/s", fill=color, font_obj=LABEL, anchor="mm")
+    draw_text(draw, (right + 24, y + 57), "r_in", fill=color, font_obj=LABEL, anchor="lm")
+    draw_text(draw, (x, bottom + 48), "diagonal matrix: no mixing", fill=muted, font_obj=SMALL)
+
+
+def draw_combination_scene(progress: float, matrix_alpha: float) -> Image.Image:
+    image = Image.new("RGBA", (WIDTH * SCALE, HEIGHT * SCALE), BG + (255,))
+    draw = ImageDraw.Draw(image, "RGBA")
+
+    draw_text(draw, (58, 44), "An arbitrary vector is a sum of eigen-components", font_obj=TITLE)
+
+    origin = (405, 390)
+    scale = 155
+    root2 = math.sqrt(2)
+    u_hat = (1 / root2, 1 / root2)
+    v_hat = (1 / root2, -1 / root2)
+
+    draw_diagonal_guides(draw, origin, scale)
+    draw.ellipse(
+        (s(origin[0] - 4), s(origin[1] - 4), s(origin[0] + 4), s(origin[1] + 4)),
+        fill=INK,
+    )
+
+    draw_text(draw, (origin[0] + 232, origin[1] - 232), "u", fill=GREEN, font_obj=LABEL)
+    draw_text(draw, (origin[0] + 232, origin[1] + 214), "v", fill=GOLD, font_obj=LABEL)
+
+    u_coefficient = lerp(1.0, STRETCH_PARAMETER, progress)
+    v_coefficient = lerp(0.75, 0.75 / STRETCH_PARAMETER, progress)
+
+    initial_u = (u_hat[0], u_hat[1])
+    initial_v = (0.75 * v_hat[0], 0.75 * v_hat[1])
+    initial_u_end = (
+        origin[0] + initial_u[0] * scale,
+        origin[1] - initial_u[1] * scale,
+    )
+    initial_end = (
+        initial_u_end[0] + initial_v[0] * scale,
+        initial_u_end[1] - initial_v[1] * scale,
+    )
+
+    current_u = (u_coefficient * u_hat[0], u_coefficient * u_hat[1])
+    current_v = (v_coefficient * v_hat[0], v_coefficient * v_hat[1])
+    current_u_end = (
+        origin[0] + current_u[0] * scale,
+        origin[1] - current_u[1] * scale,
+    )
+    current_end = (
+        current_u_end[0] + current_v[0] * scale,
+        current_u_end[1] - current_v[1] * scale,
+    )
+
+    # Keep only the original vector as a quiet reference; the colored
+    # components appear once, head-to-tail, rather than as a parallelogram.
+    if progress > 0.001:
+        draw_arrow(
+            draw,
+            origin,
+            ((initial_end[0] - origin[0]) / scale, (origin[1] - initial_end[1]) / scale),
+            rgba(INK, 0.17),
+            scale,
+            width=3,
+            head=11,
+        )
+        draw_text(
+            draw,
+            (initial_end[0] + 18, initial_end[1] + 14),
+            "r_in",
+            fill=rgba((91, 87, 81), 0.72),
+            font_obj=SMALL,
+        )
+
+    # The result vector and its two independently changing components.
+    draw_arrow(
+        draw,
+        origin,
+        ((current_end[0] - origin[0]) / scale, (origin[1] - current_end[1]) / scale),
+        BLUE,
+        scale,
+        width=5,
+        head=16,
+    )
+    draw_arrow(draw, origin, current_u, GREEN, scale, width=6, head=16)
+    draw_arrow(draw, current_u_end, current_v, GOLD, scale, width=6, head=16)
+
+    result_label = "r_in" if progress <= 0.001 else "r"
+    draw_text(draw, (current_end[0] + 18, current_end[1] - 12), result_label, fill=BLUE, font_obj=LABEL)
+    draw_text(
+        draw,
+        ((origin[0] + current_u_end[0]) / 2 - 38, (origin[1] + current_u_end[1]) / 2 - 12),
+        "u component",
+        fill=GREEN,
+        font_obj=SMALL,
+    )
+    draw_text(
+        draw,
+        ((current_u_end[0] + current_end[0]) / 2 + 14, (current_u_end[1] + current_end[1]) / 2),
+        "v component",
+        fill=GOLD,
+        font_obj=SMALL,
+    )
+
+    draw_text(draw, (795, 132), "s > 1: stretch parameter", fill=(91, 87, 81), font_obj=SMALL)
+    draw_text(draw, (795, 176), "r_in = u û + v v̂", font_obj=LABEL)
+    final_equation_alpha = ease((progress - 0.08) / 0.45)
+    if final_equation_alpha > 0.01:
+        draw_text(
+            draw,
+            (795, 228),
+            "r = s u û + (1/s) v v̂",
+            fill=rgba(INK, final_equation_alpha),
+            font_obj=LABEL,
+        )
+    draw_text(
+        draw,
+        (795, 276),
+        "each coefficient changes independently",
+        fill=(91, 87, 81),
+        font_obj=SMALL,
+    )
+
+    if matrix_alpha > 0:
+        draw_matrix(draw, (810, 348), matrix_alpha)
+
+    return image.convert("RGB").resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
+
+
+def draw_frame(frame: int) -> Image.Image:
+    first_motion_end = FIRST_ACT_FRAMES
+    first_hold_end = first_motion_end + FIRST_HOLD_FRAMES
+    transition_end = first_hold_end + TRANSITION_FRAMES
+    second_setup_end = transition_end + SECOND_SETUP_FRAMES
+    second_move_end = second_setup_end + SECOND_MOVE_FRAMES
+
+    if frame < first_motion_end:
+        return draw_comparison_scene(frame / (FIRST_ACT_FRAMES - 1))
+
+    if frame < first_hold_end:
+        return draw_comparison_scene(1.0)
+
+    if frame < transition_end:
+        blend = ease((frame - first_hold_end) / (TRANSITION_FRAMES - 1))
+        return Image.blend(draw_comparison_scene(1.0), draw_combination_scene(0.0, 0.0), blend)
+
+    if frame < second_setup_end:
+        return draw_combination_scene(0.0, 0.0)
+
+    if frame < second_move_end:
+        progress = ease((frame - second_setup_end) / (SECOND_MOVE_FRAMES - 1))
+        return draw_combination_scene(progress, 0.0)
+
+    matrix_alpha = ease((frame - second_move_end) / max(1, SECOND_HOLD_FRAMES // 2))
+    return draw_combination_scene(1.0, matrix_alpha)
+
+
 def make_contact_sheet(name: str) -> Path:
-    samples = [0, 24, 48, 72, 104, 143]
+    samples = [0, 72, 143, 210, 272, FRAMES - 1]
     thumb_w = 400
     thumb_h = 225
     label_h = 28
