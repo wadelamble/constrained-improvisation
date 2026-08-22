@@ -1306,3 +1306,13 @@ Physics calls that conserved translation label **momentum**.
 One limitation should remain explicit: a definite-position vector $|x\rangle$ is not a momentum eigenvector. It decomposes into all the Fourier modes $\psi_p$. So this construction explains momentum as the conserved eigenvalue of translation, but it does not assign a definite momentum to an instantaneous point using its position alone. Motion or additional physical structure is needed for that.
 [move to function rep section]
 
+
+
+#### The Symmetry Generators of Physics
+[this is all messed up. probably remove. at best try to understand -- we're trying to use complex functions to represent the symmetry, how can that then be an additional symmetry??]
+As we have said nature includes translation symmetry in time and position, rotational symmetry, and velocity boost symmetry. This group lives in a complex function representation. In addition, in quantum theory, the complex phase of function representations will be seen to be an extra symmetry as it will be not appear in observables, which are encoded into the complex norm of the representing function, where phase cancels. This extra symmetry is not one of time and space, but rather lives in its own fiber on each point in time and space. Such a construction is called a **fiber bundle**. 
+
+[insert fiber bundle diagram] 
+
+In the full Standard Model, each fiber may have several indepenpendent components.
+
