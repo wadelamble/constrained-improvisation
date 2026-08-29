@@ -393,9 +393,23 @@ def scene_global_packet(progress: float) -> Image.Image:
     return image.convert("RGB").resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
 
 
-def loop_state(progress: float) -> tuple[float, float, float, str]:
+def loop_state(progress: float, orientation: float = 1.0) -> tuple[float, float, float, str]:
     a = 1.25
     b = 0.90
+    if orientation < 0.0:
+        if progress < 0.20:
+            u = smoothstep(progress / 0.20)
+            return 0.0, b * u, 0.0, "shift in k"
+        if progress < 0.40:
+            u = smoothstep((progress - 0.20) / 0.20)
+            return a * u, b, -a * b * u, "shift in x"
+        if progress < 0.60:
+            u = smoothstep((progress - 0.40) / 0.20)
+            return a, b * (1 - u), -a * b, "undo the k shift"
+        if progress < 0.80:
+            u = smoothstep((progress - 0.60) / 0.20)
+            return a * (1 - u), 0.0, -a * b, "undo the x shift"
+        return 0.0, 0.0, -a * b, "loop closed"
     if progress < 0.20:
         u = smoothstep(progress / 0.20)
         return a * u, 0.0, 0.0, "shift in x"
@@ -411,7 +425,14 @@ def loop_state(progress: float) -> tuple[float, float, float, str]:
     return 0.0, 0.0, a * b, "loop closed"
 
 
-def draw_loop_panel(draw: ImageDraw.ImageDraw, a_now: float, b_now: float, gamma: float, leg: str) -> None:
+def draw_loop_panel(
+    draw: ImageDraw.ImageDraw,
+    a_now: float,
+    b_now: float,
+    gamma: float,
+    leg: str,
+    phase_symbol: str = "β",
+) -> None:
     panel(draw, (42, 112, 344, 382))
     draw_text(draw, (61, 133), "Closed loop of operators", font_obj=PANE_TITLE)
     left, right = 99.0, 288.0
@@ -429,9 +450,9 @@ def draw_loop_panel(draw: ImageDraw.ImageDraw, a_now: float, b_now: float, gamma
     panel(draw, (42, 397, 344, 638))
     draw_text(draw, (61, 417), "Phase left after closing", font_obj=PANE_TITLE)
     draw_phasor(draw, (154, 523), 61, gamma, PURPLE)
-    draw_text(draw, (247, 493), "β = oriented", fill=MUTED, font_obj=SMALL, anchor="mm")
+    draw_text(draw, (247, 493), f"{phase_symbol} = oriented", fill=MUTED, font_obj=SMALL, anchor="mm")
     draw_text(draw, (247, 512), "loop area", fill=MUTED, font_obj=SMALL, anchor="mm")
-    draw_text(draw, (247, 548), f"β = {gamma:.2f}", fill=PURPLE, font_obj=LABEL_BOLD, anchor="mm")
+    draw_text(draw, (247, 548), f"{phase_symbol} = {gamma:.2f}", fill=PURPLE, font_obj=LABEL_BOLD, anchor="mm")
     draw_text(draw, (193, 609), "not time evolution", fill=RED, font_obj=LABEL_BOLD, anchor="mm")
 
 
@@ -448,6 +469,7 @@ def draw_loop_state_panel(draw: ImageDraw.ImageDraw, a_now: float, b_now: float,
     imag_points: list[tuple[int, int]] = []
     upper: list[tuple[int, int]] = []
     lower: list[tuple[int, int]] = []
+    initial_real: list[tuple[int, int]] = []
     initial_upper: list[tuple[int, int]] = []
     initial_lower: list[tuple[int, int]] = []
     for sample in range(X_SAMPLES):
@@ -459,15 +481,18 @@ def draw_loop_state_panel(draw: ImageDraw.ImageDraw, a_now: float, b_now: float,
         imag_points.append((px, s(baseline - packet_scale * value.imag)))
         upper.append((px, s(baseline - packet_scale * abs(value))))
         lower.append((px, s(baseline + packet_scale * abs(value))))
+        initial_real.append((px, s(baseline - packet_scale * initial.real)))
         initial_upper.append((px, s(baseline - packet_scale * abs(initial))))
         initial_lower.append((px, s(baseline + packet_scale * abs(initial))))
     dashed_line(draw, initial_upper, rgba(MUTED, 0.50), width=2)
     dashed_line(draw, initial_lower, rgba(MUTED, 0.50), width=2)
     draw.line(upper, fill=rgba(LIGHT_BLUE, 0.82), width=s(3), joint="curve")
     draw.line(lower, fill=rgba(LIGHT_BLUE, 0.82), width=s(3), joint="curve")
+    dashed_line(draw, initial_real, rgba(MUTED, 0.78), width=2, dash=8, gap=6)
     dashed_line(draw, imag_points, RED, width=2)
     draw.line(real_points, fill=BLUE, width=s(3), joint="curve")
     draw_text(draw, (left, 222), "x-space packet", fill=INK, font_obj=LABEL_BOLD)
+    draw_text(draw, (right, 222), "gray dashed: starting Re ψ", fill=MUTED, font_obj=SMALL, anchor="ra")
     draw_text(draw, (right, 435), "x", fill=MUTED, font_obj=SMALL, anchor="ra")
 
     spectrum_y = 574.0
@@ -489,103 +514,124 @@ def draw_loop_state_panel(draw: ImageDraw.ImageDraw, a_now: float, b_now: float,
         draw_text(draw, (1100, 181), "same final angle", fill=PURPLE, font_obj=LABEL_BOLD, anchor="mm")
 
 
-def draw_phase_before_after(
+def draw_loop_final_reveal(
     draw: ImageDraw.ImageDraw,
-    center: tuple[float, float],
-    radius: float,
-    phase: float,
-    color,
-    label: str,
+    reveal: float,
+    orientation: float = 1.0,
+    phase_symbol: str = "β",
 ) -> None:
-    cx, cy = center
-    draw.ellipse((s(cx - radius), s(cy - radius), s(cx + radius), s(cy + radius)), outline=rgba(MUTED, 0.45), width=s(2))
-    draw.line((s(cx - radius), s(cy), s(cx + radius), s(cy)), fill=rgba(MUTED, 0.22), width=s(1))
-    draw.line((s(cx), s(cy - radius), s(cx), s(cy + radius)), fill=rgba(MUTED, 0.22), width=s(1))
-    ghost_tip = (cx + radius * 0.80, cy)
-    arrow(draw, (cx, cy), ghost_tip, rgba(MUTED, 0.58), width=2, head=7)
-    current_tip = (cx + radius * 0.80 * math.cos(phase), cy - radius * 0.80 * math.sin(phase))
-    arrow(draw, (cx, cy), current_tip, color, width=4, head=9)
-    arc_points: list[tuple[int, int]] = []
-    for index in range(41):
-        theta = phase * index / 40
-        arc_points.append((s(cx + radius * 1.10 * math.cos(theta)), s(cy - radius * 1.10 * math.sin(theta))))
-    draw.line(arc_points, fill=PURPLE, width=s(3), joint="curve")
-    arc_tip = (arc_points[-1][0] / SCALE, arc_points[-1][1] / SCALE)
-    previous = (arc_points[-3][0] / SCALE, arc_points[-3][1] / SCALE)
-    arrow(draw, previous, arc_tip, PURPLE, width=2, head=7)
-    draw_text(draw, (cx, cy - radius - 25), "+β", fill=PURPLE, font_obj=LABEL_BOLD, anchor="mm")
-    draw_text(draw, (cx, cy + radius + 19), label, fill=color, font_obj=LABEL_BOLD, anchor="mm")
-
-
-def draw_packet_comparison_row(
-    draw: ImageDraw.ImageDraw,
-    left: float,
-    right: float,
-    baseline: float,
-    phase: float,
-    label: str,
-) -> None:
-    scale = 42.0 / sum(AMPS)
-    real_points: list[tuple[int, int]] = []
-    imag_points: list[tuple[int, int]] = []
-    upper: list[tuple[int, int]] = []
-    lower: list[tuple[int, int]] = []
-    for sample in range(X_SAMPLES):
-        x = X_MIN + (X_MAX - X_MIN) * sample / (X_SAMPLES - 1)
-        _, value = packet_values(x, (phase, phase, phase))
-        px = s(plot_x(left, right, x))
-        real_points.append((px, s(baseline - scale * value.real)))
-        imag_points.append((px, s(baseline - scale * value.imag)))
-        upper.append((px, s(baseline - scale * abs(value))))
-        lower.append((px, s(baseline + scale * abs(value))))
-    draw.line((s(left), s(baseline), s(right), s(baseline)), fill=rgba(MUTED, 0.24), width=s(1))
-    draw.line(upper, fill=rgba(LIGHT_BLUE, 0.78), width=s(3), joint="curve")
-    draw.line(lower, fill=rgba(LIGHT_BLUE, 0.78), width=s(3), joint="curve")
-    dashed_line(draw, imag_points, RED, width=2, dash=8, gap=6)
-    draw.line(real_points, fill=BLUE, width=s(3), joint="curve")
-    draw_text(draw, (left - 18, baseline), label, fill=INK, font_obj=LABEL_BOLD, anchor="rm")
-
-
-def draw_loop_final_reveal(draw: ImageDraw.ImageDraw, reveal: float) -> None:
-    beta = 1.25 * 0.90 * reveal
+    beta = orientation * 1.25 * 0.90 * reveal
     panel(draw, (42, 112, 349, 638))
-    draw_text(draw, (61, 133), "The packet at one fixed x", font_obj=PANE_TITLE)
-    draw_text(draw, (195, 166), "x* = 0", fill=MUTED, font_obj=LABEL_BOLD, anchor="mm")
-    draw_phase_before_after(draw, (195, 270), 73.0, beta, PURPLE, "")
-    draw_text(draw, (195, 372), "gray: ψ before(x*)", fill=MUTED, font_obj=LABEL_BOLD, anchor="mm")
-    draw_text(draw, (195, 398), "purple: ψ after(x*)", fill=PURPLE, font_obj=LABEL_BOLD, anchor="mm")
-    draw_text(draw, (195, 444), "ψ_after(x)", fill=INK, font_obj=PANE_TITLE, anchor="mm")
-    draw_text(draw, (195, 480), "= exp(iβ) ψ_before(x)", fill=PURPLE, font_obj=PANE_TITLE, anchor="mm")
-    draw_text(draw, (195, 523), f"β = ab = {1.25 * 0.90:.2f} rad", fill=PURPLE, font_obj=LABEL_BOLD, anchor="mm")
-    draw_text(draw, (195, 566), "same arrow length = same magnitude", fill=GREEN, font_obj=SMALL, anchor="mm")
-    draw_text(draw, (195, 596), "different direction = global phase", fill=RED, font_obj=SMALL, anchor="mm")
+    draw_text(draw, (61, 133), "The closed loop", font_obj=PANE_TITLE)
+
+    loop_left, loop_top = 102.0, 190.0
+    loop_right, loop_bottom = 287.0, 340.0
+    draw.line((s(loop_left - 22), s(loop_bottom), s(loop_right + 17), s(loop_bottom)), fill=rgba(MUTED, 0.52), width=s(2))
+    draw.line((s(loop_left), s(loop_bottom + 19), s(loop_left), s(loop_top - 17)), fill=rgba(MUTED, 0.52), width=s(2))
+    draw_text(draw, (loop_right + 18, loop_bottom + 1), "x", fill=MUTED, font_obj=SMALL, anchor="lm")
+    draw_text(draw, (loop_left - 2, loop_top - 22), "k", fill=MUTED, font_obj=SMALL, anchor="ms")
+    if orientation < 0.0:
+        arrow(draw, (loop_left, loop_bottom), (loop_left, loop_top), GOLD, width=4, head=10)
+        arrow(draw, (loop_left, loop_top), (loop_right, loop_top), BLUE, width=4, head=10)
+        arrow(draw, (loop_right, loop_top), (loop_right, loop_bottom), GOLD, width=4, head=10)
+        arrow(draw, (loop_right, loop_bottom), (loop_left, loop_bottom), BLUE, width=4, head=10)
+    else:
+        arrow(draw, (loop_left, loop_bottom), (loop_right, loop_bottom), BLUE, width=4, head=10)
+        arrow(draw, (loop_right, loop_bottom), (loop_right, loop_top), GOLD, width=4, head=10)
+        arrow(draw, (loop_right, loop_top), (loop_left, loop_top), BLUE, width=4, head=10)
+        arrow(draw, (loop_left, loop_top), (loop_left, loop_bottom), GOLD, width=4, head=10)
+    draw.ellipse((s(loop_left - 5), s(loop_bottom - 5), s(loop_left + 5), s(loop_bottom + 5)), fill=PURPLE)
+    draw_text(draw, (195, 371), "same x and k", fill=GREEN, font_obj=LABEL_BOLD, anchor="mm")
+    draw_text(
+        draw,
+        (195, 411),
+        f"ψafter(x) = exp(i{phase_symbol}) ψbefore(x)",
+        fill=INK,
+        font_obj=LABEL_BOLD,
+        anchor="mm",
+    )
+    area_text = "-ab" if orientation < 0.0 else "ab"
+    draw_text(
+        draw,
+        (195, 447),
+        f"{phase_symbol} = {area_text} = {orientation * 1.25 * 0.90:.2f} rad",
+        fill=PURPLE,
+        font_obj=LABEL_BOLD,
+        anchor="mm",
+    )
+
+    dashed_line(draw, [(s(77), s(507)), (s(137), s(507))], MUTED, width=2, dash=8, gap=6)
+    draw_text(draw, (151, 507), "starting wave", fill=MUTED, font_obj=SMALL, anchor="lm")
+    draw.line((s(77), s(545), s(137), s(545)), fill=BLUE, width=s(3))
+    draw_text(draw, (151, 545), "wave after loop", fill=INK, font_obj=SMALL, anchor="lm")
+    draw.line((s(77), s(583), s(137), s(583)), fill=LIGHT_BLUE, width=s(3))
+    draw_text(draw, (151, 583), "unchanged envelope", fill=GREEN, font_obj=SMALL, anchor="lm")
 
     panel(draw, (367, 112, 1238, 638))
-    draw_text(draw, (389, 133), "Every component receives the same phase shift", font_obj=PANE_TITLE)
-    for center, color, label in zip(((565.0, 238.0), (805.0, 238.0), (1045.0, 238.0)), MODE_COLORS, ("k1", "k2", "k3")):
-        draw_phase_before_after(draw, center, 48.0, beta, color, label)
-    draw_text(draw, (805, 334), "gray arrow: before     colored arrow: after", fill=MUTED, font_obj=SMALL, anchor="mm")
+    draw_text(draw, (389, 133), "The final waves do not fall back onto their starting traces", font_obj=PANE_TITLE)
+    left, right = 435.0, 1203.0
+    row_y = (205.0, 277.0, 349.0)
+    for index, (baseline, color, k) in enumerate(zip(row_y, MODE_COLORS, KS)):
+        draw.line((s(left), s(baseline), s(right), s(baseline)), fill=rgba(MUTED, 0.20), width=s(1))
+        draw_text(draw, (left - 15, baseline), f"k{index + 1}", fill=color, font_obj=LABEL_BOLD, anchor="rm")
+        initial_points: list[tuple[int, int]] = []
+        final_points: list[tuple[int, int]] = []
+        for sample in range(X_SAMPLES):
+            x = X_MIN + (X_MAX - X_MIN) * sample / (X_SAMPLES - 1)
+            px = s(plot_x(left, right, x))
+            initial_points.append((px, s(baseline - 22.0 * math.cos(k * x))))
+            final_points.append((px, s(baseline - 22.0 * math.cos(k * x + beta))))
+        dashed_line(draw, initial_points, rgba(MUTED, 0.72), width=2, dash=8, gap=6)
+        draw.line(final_points, fill=color, width=s(3), joint="curve")
 
-    draw_packet_comparison_row(draw, 435.0, 1203.0, 433.0, 0.0, "before")
-    draw_packet_comparison_row(draw, 435.0, 1203.0, 553.0, beta, "after")
-    draw_text(draw, (816, 610), "same |ψ| envelope; Re ψ and Im ψ rotate inside it", fill=GREEN, font_obj=LABEL_BOLD, anchor="mm")
+    packet_y = 512.0
+    packet_scale = 63.0 / sum(AMPS)
+    draw.line((s(left), s(packet_y), s(right), s(packet_y)), fill=rgba(MUTED, 0.28), width=s(1))
+    draw_text(draw, (left - 15, packet_y), "sum", fill=INK, font_obj=LABEL_BOLD, anchor="rm")
+    initial_real: list[tuple[int, int]] = []
+    final_real: list[tuple[int, int]] = []
+    envelope_upper: list[tuple[int, int]] = []
+    envelope_lower: list[tuple[int, int]] = []
+    for sample in range(X_SAMPLES):
+        x = X_MIN + (X_MAX - X_MIN) * sample / (X_SAMPLES - 1)
+        _, initial = packet_values(x, (0.0, 0.0, 0.0))
+        final = cmath.exp(1j * beta) * initial
+        px = s(plot_x(left, right, x))
+        initial_real.append((px, s(packet_y - packet_scale * initial.real)))
+        final_real.append((px, s(packet_y - packet_scale * final.real)))
+        envelope_upper.append((px, s(packet_y - packet_scale * abs(initial))))
+        envelope_lower.append((px, s(packet_y + packet_scale * abs(initial))))
+    draw.line(envelope_upper, fill=LIGHT_BLUE, width=s(3), joint="curve")
+    draw.line(envelope_lower, fill=LIGHT_BLUE, width=s(3), joint="curve")
+    dashed_line(draw, initial_real, rgba(MUTED, 0.72), width=2, dash=8, gap=6)
+    draw.line(final_real, fill=BLUE, width=s(3), joint="curve")
+    draw_text(draw, (819, 603), "same envelope; every solid wave has the same phase offset from its dashed trace", fill=GREEN, font_obj=LABEL_BOLD, anchor="mm")
 
 
-def scene_xk_loop(progress: float) -> Image.Image:
+def scene_xk_loop(
+    progress: float,
+    orientation: float = 1.0,
+    phase_symbol: str = "β",
+) -> Image.Image:
     image = Image.new("RGBA", (WIDTH * SCALE, HEIGHT * SCALE), BG + (255,))
     draw = ImageDraw.Draw(image, "RGBA")
     if progress < 0.68:
         loop_progress = min(1.0, max(0.0, (progress - 0.03) / 0.60))
-        a_now, b_now, gamma, leg = loop_state(loop_progress)
+        a_now, b_now, gamma, leg = loop_state(loop_progress, orientation)
         header(draw, 3, "The x-k loop temporarily shifts the packet and spectrum", "The net transformation is read only after all four operations close the loop.")
-        draw_loop_panel(draw, a_now, b_now, gamma, leg)
+        draw_loop_panel(draw, a_now, b_now, gamma, leg, phase_symbol)
         draw_loop_state_panel(draw, a_now, b_now, gamma)
         footer(draw, "These are intermediate changes. The loop's net effect appears only after it closes.")
     else:
         reveal = smoothstep(min(1.0, max(0.0, (progress - 0.68) / 0.14)))
-        header(draw, 3, "After the x-k loop closes, only a global phase remains", "The packet returns exactly; every component retains the same added phase β.")
-        draw_loop_final_reveal(draw, reveal)
-        footer(draw, "The final state differs from the initial state only by one common phase factor exp(iβ).")
+        header(
+            draw,
+            3,
+            "After the x-k loop closes, only a global phase remains",
+            f"The x- and k-distributions return; every component retains the same added phase {phase_symbol}.",
+        )
+        draw_loop_final_reveal(draw, reveal, orientation, phase_symbol)
+        footer(draw, f"The final state differs from the initial state only by one common phase factor exp(i{phase_symbol}).")
     return image.convert("RGB").resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
 
 
@@ -743,7 +789,7 @@ def verify_video(video: Path) -> str:
 
 
 def render() -> tuple[Path, Path]:
-    name = "symmetry-phase-advance-three-component-packet-v2"
+    name = "symmetry-phase-advance-three-component-packet-v4"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     scratch = OUTPUT_DIR / f"_{name}_frames"
     if scratch.exists():

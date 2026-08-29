@@ -1,16 +1,54 @@
-Once we have a wavefunction representation of symmetry, we may note that we can move vectors (functions) in this space with operators that shift x, as we constructed, but also that shift k.  We thus recognize that our representation is also reprepresents a larger symmetry group, that of shifts in x and k. But unlike shifts in x, where mutliple dimensions commute, shifts in x and k do not commute.
+#### Canonical commutator
+Once we have a \(wave\) function representation of translational symmetry, we may note that we can translate a function not only in the direction we set out to represent, $x$, but also in the wave number, $k$.
 
-Let
+![A wave packet translated first in $x$ and then in $k$](../../content/drafts/animations/symmetry-ccr-x-k-translations-contact-sheet.png)
+
+[Open MP4: symmetry-ccr-x-k-translations.mp4](../../content/drafts/animations/symmetry-ccr-x-k-translations.mp4)
+
+Our representation reprepresents a larger symmetry group that includes translation in $k$. However, unlike independent translation directions, $x$ and $k$ translation do *not* commute. To see this, consider the action of traversing a finite loop in $x$-$k$ space. First, write a single mode in the $x$ representation:
 
 ```math
-\psi_k(x)=e^{ikx},
-\qquad
-(T_x(a)\psi)(x)=\psi(x-a),
-\qquad
-(T_k(b)\psi)(x)=e^{ibx}\psi(x),
+\psi_{k_0}(x)
+=
+e^{ik_0x}.
 ```
 
-where $T_x(a)$ shifts $x$ by $a$, while $T_k(b)$ shifts $k$ by $b$. Acting in the two possible orders,
+The same mode in the $k$ representation is:
+
+```math
+\widetilde\psi_{k_0}(k)
+=
+\sqrt{2\pi}\,\delta(k-k_0),
+```
+
+where $\delta$ means a unit-integral spike at $k_0$.
+
+Define the $x$ translation operator in the $x$ representation:
+
+```math
+(T_x(a)\psi_{k_0})(x)
+=
+\psi_{k_0}(x-a).
+```
+
+Define the $k$ translation operator in the $k$ representation:
+
+```math
+(T_k(b)\widetilde\psi_{k_0})(k)
+=
+\widetilde\psi_{k_0}(k-b).
+```
+
+In order to carry out the translations, we have to choose either the position or wave number basis. Let's choose position:
+
+```math
+(T_k(b)\psi)(x)
+=
+\left(e^{ib\hat X}\psi\right)(x)
+=
+e^{ibx}\psi(x).
+```
+Here $T_x(a)$ shifts $x$ by $a$, while $T_k(b)$ shifts $k$ by $b$. Acting in the two possible orders,
 
 ```math
 (T_x(a)T_k(b)\psi_k)(x)
@@ -34,60 +72,71 @@ T_x(a)T_k(b)\psi_k
 e^{-iab}T_k(b)T_x(a)\psi_k,
 ```
 
-so the two shifts fail to commute by the phase factor $e^{-iab}$.
+so the two shifts fail to commute by the phase factor $e^{-iab}$, or simply, $e^{i\phi}$. Here $\phi$ is the phase angle, the parameter of phase transformations. 
 
-But if the commutator is non-zero, this new, broader group, has an extra consitiuent-symmetry as well as we know know that the commutator is also a generator.  this constituent is the **phase** of the wave.
+![An $x$-$k$ loop returns the packet and spectrum while leaving a global phase](../../content/drafts/animations/symmetry-ccr-loop-global-phase-contact-sheet.png)
 
-Indeed, completing the corresponding loop gives
+[Open MP4: symmetry-ccr-loop-global-phase.mp4](../../content/drafts/animations/symmetry-ccr-loop-global-phase.mp4)
+
+The phase transformation $e^{i\phi}I$ is obtained by exponentiating the generator $iI$. Therefore, the commutator is
 
 ```math
-T_x(a)T_k(b)T_x(-a)T_k(-b)\psi
+[\hat X,\hat K]
 =
-e^{-iab}\psi.
+iI.
 ```
 
-The wave returns to the same point in $(x,k)$, but with a changed phase. Infinitesimally, with
+This is the $x$-$k$ **canonical commutator**. 
+
+
+#### Phase advance and stationarity
+The **action principle** provides a method for finding paths, or histories, a system will take in reality by considering all possible paths and finding the one for which some quantity -- we call it action, and it is constructed from elements of physical symmetry -- is **staionary**, that is, is some extreme, typically a minimum. Specifically, a stationary path is the one for which neighboring paths do not vary action to first order. In quantum mechanics we will associate wave with phase as:
 
 ```math
-\hat X\psi(x)=x\psi(x),
+\Phi[\gamma]
+=
+\frac{S[\gamma]}{\hbar},
 \qquad
-\hat K\psi(x)=-i\frac{d\psi}{dx},
+\mathcal A[\gamma]
+\propto
+e^{iS[\gamma]/\hbar}.
 ```
 
-this becomes
+But before we justify that association, waves provide a ready-made method for finding the stationary path. We can find the phase accumulation along a path, and for the path that is stationary, the waves phases interfere constructively, whereas away from the stationary they tend to cancel out. Every possible path is taken, but those that cancel contribute less to overall "ray" describing the wave propagation. If we take the wave to be complex valued, and assign each possible path some complex value, we see that ray that persists is precisely the stationary path, as illustrated in the by plotting the complex contributions from each candidate path:
+
+![Candidate paths and their tip-to-tail complex contributions](../../content/drafts/animations/symmetry-step11-stationary-phase-neighborhood-contact-sheet.png)
+
+[Open MP4: candidate paths and their tip-to-tail complex contributions](../../content/drafts/animations/symmetry-step11-stationary-phase-neighborhood.mp4)
+
+This insight is the basis Huyghen's principle formulated in the 1600s and for ray optics. But it's real importance emerges in quantum mechanics in Feynmans "path integral formulation" where every possible path, even for what behaves as a particle, has some probability of being obeserved, and the most likely path is the stationary one. The fact that macroscopic objects only appear to take one physically allowable path is then seen merely as the limit when:
 
 ```math
-[\hat X,\hat K]=iI.
+\frac{S_{\mathrm{characteristic}}}{\hbar}
+\sim
+\frac{mvL}{\hbar}
+\gg
+1.
 ```
 
-The operator $iI$ generates the additional central symmetry
+
+If we transform one state into another under a unitary transformation, we may deform $x$-$k$ space so as to preclude a distance metric, but the canonical commutator remains remains the *area* invariant that describles all **canonical transformations**. This concept of an invariant area appears in classical mechanics when describing the evolution of ensembles of states.
+
+In quantum mechanics, where the wave function is not a familiar wave in a medium that can have any amplitude but is an encoding of the probability of measuring a particle-like entity, we make the association that the action a particle would have along a given path is related to the wave function phase by:
+
+[S = hphi] 
+
+from which it follows that:
+
+[P-hat = hK-hat]
+
+the canonical commutation relation becomes:
 
 ```math
-\psi\longmapsto e^{i\phi}\psi,
-```
-
-which is a uniform change of phase.
-
-For a complex plane wave,
-
-```math
-\psi(x)
+[\hat X,\hat P]
 =
-e^{i(kx+\phi)}
-=
-\cos(kx+\phi)+i\sin(kx+\phi).
+i\hbar I.
 ```
 
-At every $x$, its value is an arrow in the complex plane. Its phase is simply the angle $kx+\phi$ that this arrow makes with the positive real axis. As $x$ increases the arrow turns; changing $\phi$ rotates every arrow by the same amount.
+This encodes both the form of Schroedinger's equation for the time evolution of a state and the Heisenberg uncertainty principle that forbids perfect resolution of position and momentum simultaneously. 
 
-Why do we bother to bring this esoteric seeming point up? The reason is that this [x,k] commutator that encodes phase change under a x,k space loop, and the phase change maps to physical **action** via a scale constant when we take the function representation seriously in quantum mechanics. Action, as we will see is the function that we "optimize" in a manner of speaking to find physically allowable paths, and from which physical generators -- momentum/position and time/energy -- gain their definitions.
-
-
-The path a system takes in time is the one for which some function on the path is **extremized**, that is, that it is minimized, maximized, or otherwise has a vanishing first derivative. To find the actual, physical path, we consider alternate paths between the same endpoints and ask how much they vary from alternate "wrong" paths. For a wave, as we will see later, this function is precisely the phase advance, and we can see how how rapidly the phase advance changes between candidate path by tiling the area they enclose with infinitesimal loops that contribute the value of the coummator. 
-
-![A path variation tiled by local commutator loops](animations/symmetry-ccr-action-variation-contact-sheet.png)
-
-[Open MP4: symmetry-ccr-action-variation.mp4](animations/symmetry-ccr-action-variation.mp4)
-
-What have we said? That for travelling wave packets, the commutator encodes the actual, physical evolution of the packet. Once we have this, we can find the differential **equations of motion** which can be integrated to find the physical path, thus providing an alternate way to arrive at the real path. However, given the position and wave number generators and their commutator, we can directly derive the equations of motion without working out the **variational** procedure, as they are, precisely, the local measure of phase variation.
-
+These are applications of the CCR that we will dive into in much greater depth. The essential point at the moment is that, because waves are the natural representation of translational symmetry, the canonical commutator that relates the full translation/wave-number/phase symmetry group constitutes a geometric structure that pervades theories of mechanics.
