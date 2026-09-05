@@ -8,9 +8,7 @@ The basic insight is already visible before doing any operator algebra. A pure p
 \psi_{k_0}(x)=Ae^{ik_0x}
 \quad\Longleftrightarrow\quad
 \widetilde\psi(k)\propto\delta(k-k_0),
-```
-
-while
+`
 
 ```math
 \psi_{x_0}(x)=\delta(x-x_0)

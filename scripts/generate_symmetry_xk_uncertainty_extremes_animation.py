@@ -164,7 +164,8 @@ GRAPH_MAX = 4.8
 SAMPLES = 760
 BALANCED_WIDTH = 1.0 / math.sqrt(2.0)
 EXTREME_LOG_WIDTH = 2.42
-CARRIER_K = 4.6
+POSITION_X0 = 1.8
+CARRIER_K = 4.2
 
 
 def graph_x(value: float, graph: tuple[float, float, float, float]) -> float:
@@ -183,37 +184,48 @@ def gaussian_points(
     baseline: float,
     height: float,
     sign: float = 1.0,
+    center: float = 0.0,
 ) -> list[tuple[int, int]]:
     points: list[tuple[int, int]] = []
     for index in range(SAMPLES):
         value = GRAPH_MIN + (GRAPH_MAX - GRAPH_MIN) * index / (SAMPLES - 1)
-        amplitude = gaussian_amplitude(value, width)
+        amplitude = gaussian_amplitude(value - center, width)
         points.append((s(graph_x(value, graph)), s(baseline - sign * height * amplitude)))
     return points
 
 
-def carrier_points(
+def complex_wave_points(
+    graph: tuple[float, float, float, float],
     width: float,
+    center: float,
+    phase_rate: float,
+    phase_origin: float,
     baseline: float,
     height: float,
 ) -> list[tuple[int, int]]:
     points: list[tuple[int, int]] = []
     for index in range(SAMPLES):
         value = GRAPH_MIN + (GRAPH_MAX - GRAPH_MIN) * index / (SAMPLES - 1)
-        amplitude = gaussian_amplitude(value, width)
-        real_value = amplitude * math.cos(CARRIER_K * value)
-        points.append((s(graph_x(value, LEFT_GRAPH)), s(baseline - height * real_value)))
+        amplitude = gaussian_amplitude(value - center, width)
+        real_value = amplitude * math.cos(phase_rate * (value - phase_origin))
+        points.append((s(graph_x(value, graph)), s(baseline - height * real_value)))
     return points
 
 
-def plane_wave_points(baseline: float, height: float) -> list[tuple[int, int]]:
+def plane_wave_points(
+    graph: tuple[float, float, float, float],
+    phase_rate: float,
+    phase_origin: float,
+    baseline: float,
+    height: float,
+) -> list[tuple[int, int]]:
     points: list[tuple[int, int]] = []
     for index in range(SAMPLES):
         value = GRAPH_MIN + (GRAPH_MAX - GRAPH_MIN) * index / (SAMPLES - 1)
         points.append(
             (
-                s(graph_x(value, LEFT_GRAPH)),
-                s(baseline - height * math.cos(CARRIER_K * value)),
+                s(graph_x(value, graph)),
+                s(baseline - height * math.cos(phase_rate * (value - phase_origin))),
             )
         )
     return points
@@ -265,26 +277,61 @@ def draw_delta(
     graph: tuple[float, float, float, float],
     color,
     alpha: float,
+    value: float = 0.0,
 ) -> None:
-    center = graph_x(0.0, graph)
+    center = graph_x(value, graph)
     top = 221.0
     spike_color = rgba(color, alpha)
     draw.line((s(center), s(AXIS_Y), s(center), s(top)), fill=spike_color, width=s(5))
     arrow_head(draw, (center, top), -math.pi / 2, spike_color, size=9.0)
 
 
-def draw_constant(
+def draw_uniform_wave(
     draw: ImageDraw.ImageDraw,
     graph: tuple[float, float, float, float],
-    color,
+    phase_rate: float,
+    phase_origin: float,
+    carrier_color,
     alpha: float,
 ) -> None:
-    y = 286.0
-    draw.line(
-        (s(graph[0]), s(y), s(graph[2]), s(y)),
-        fill=rgba(color, alpha),
-        width=s(4),
+    upper_y = AXIS_Y - 112.0
+    lower_y = AXIS_Y + 112.0
+    draw.rectangle(
+        (s(graph[0]), s(upper_y), s(graph[2]), s(lower_y)),
+        fill=rgba(LIGHT_BLUE, 0.08 * alpha),
     )
+    draw.line(
+        (s(graph[0]), s(upper_y), s(graph[2]), s(upper_y)),
+        fill=rgba(GOLD, 0.84 * alpha),
+        width=s(3),
+    )
+    draw.line(
+        (s(graph[0]), s(lower_y), s(graph[2]), s(lower_y)),
+        fill=rgba(GOLD, 0.84 * alpha),
+        width=s(3),
+    )
+    draw.line(
+        plane_wave_points(graph, phase_rate, phase_origin, AXIS_Y, 112.0),
+        fill=rgba(carrier_color, 0.96 * alpha),
+        width=s(3),
+        joint="curve",
+    )
+
+
+def draw_reference_tick(
+    draw: ImageDraw.ImageDraw,
+    graph: tuple[float, float, float, float],
+    value: float,
+    label: str,
+    color,
+) -> None:
+    position = graph_x(value, graph)
+    draw.line(
+        (s(position), s(AXIS_Y - 8), s(position), s(AXIS_Y + 10)),
+        fill=rgba(color, 0.76),
+        width=s(2),
+    )
+    draw_text(draw, (position, AXIS_Y + 24), label, fill=color, font_obj=SMALL, anchor="ma")
 
 
 def draw_width_marker(
@@ -365,23 +412,24 @@ def scene_state(seconds: float) -> tuple[float, float, float, str, str]:
             "Exact position",
             "one x; every wave number contributes equally",
         )
-    if seconds < 9.7:
-        amount = interval_progress(seconds, 6.3, 9.7)
-        log_width = -EXTREME_LOG_WIDTH * (1.0 - amount)
+    if seconds < 10.1:
+        amount = interval_progress(seconds, 6.3, 10.1)
+        log_width = -EXTREME_LOG_WIDTH * (1.0 - 2.0 * amount)
         exact_x = 1.0 - interval_progress(seconds, 6.3, 6.78)
+        exact_k = interval_progress(seconds, 9.62, 10.1)
         return (
             log_width,
-            0.0,
+            exact_k,
             exact_x,
-            "Return from the exact-position limit",
-            "the two envelopes approach balance",
+            "Reverse the Fourier transform",
+            "the same localization trade runs backward",
         )
     return (
+        EXTREME_LOG_WIDTH,
+        1.0,
         0.0,
-        0.0,
-        0.0,
-        "Balanced Gaussian envelopes",
-        "matching shapes on reciprocal display scales",
+        "Exact wave number recovered",
+        "reversibility restores the original Fourier partner",
     )
 
 
@@ -394,46 +442,50 @@ def draw_finite_state(
     if alpha <= 0.0:
         return
 
-    x_upper = gaussian_points(LEFT_GRAPH, delta_x, AXIS_Y, 112.0, 1.0)
-    x_lower = gaussian_points(LEFT_GRAPH, delta_x, AXIS_Y, 112.0, -1.0)
-    x_carrier = carrier_points(delta_x, AXIS_Y, 112.0)
-    k_curve = gaussian_points(RIGHT_GRAPH, delta_k, AXIS_Y, 145.0, 1.0)
+    x_upper = gaussian_points(LEFT_GRAPH, delta_x, AXIS_Y, 112.0, 1.0, POSITION_X0)
+    x_lower = gaussian_points(LEFT_GRAPH, delta_x, AXIS_Y, 112.0, -1.0, POSITION_X0)
+    x_carrier = complex_wave_points(
+        LEFT_GRAPH,
+        delta_x,
+        POSITION_X0,
+        CARRIER_K,
+        POSITION_X0,
+        AXIS_Y,
+        112.0,
+    )
+    k_upper = gaussian_points(RIGHT_GRAPH, delta_k, AXIS_Y, 112.0, 1.0)
+    k_lower = gaussian_points(RIGHT_GRAPH, delta_k, AXIS_Y, 112.0, -1.0)
+    k_carrier = complex_wave_points(
+        RIGHT_GRAPH,
+        delta_k,
+        0.0,
+        -POSITION_X0,
+        0.0,
+        AXIS_Y,
+        112.0,
+    )
 
     fill_between(draw, x_upper, x_lower, rgba(LIGHT_BLUE, 0.10 * alpha))
-    fill_to_axis(draw, k_curve, RIGHT_GRAPH, AXIS_Y, rgba(GREEN, 0.12 * alpha))
+    fill_between(draw, k_upper, k_lower, rgba(GREEN, 0.08 * alpha))
     draw.line(x_upper, fill=rgba(GOLD, 0.88 * alpha), width=s(3), joint="curve")
     draw.line(x_lower, fill=rgba(GOLD, 0.88 * alpha), width=s(3), joint="curve")
     draw.line(x_carrier, fill=rgba(BLUE, 0.96 * alpha), width=s(3), joint="curve")
-    draw.line(k_curve, fill=rgba(GREEN, 0.96 * alpha), width=s(4), joint="curve")
+    draw.line(k_upper, fill=rgba(GOLD, 0.88 * alpha), width=s(3), joint="curve")
+    draw.line(k_lower, fill=rgba(GOLD, 0.88 * alpha), width=s(3), joint="curve")
+    draw.line(k_carrier, fill=rgba(GREEN, 0.96 * alpha), width=s(3), joint="curve")
 
 def draw_exact_k_state(draw: ImageDraw.ImageDraw, alpha: float) -> None:
     if alpha <= 0.0:
         return
-    upper_y = AXIS_Y - 112.0
-    lower_y = AXIS_Y + 112.0
-    draw.rectangle(
-        (s(LEFT_GRAPH[0]), s(upper_y), s(LEFT_GRAPH[2]), s(lower_y)),
-        fill=rgba(LIGHT_BLUE, 0.08 * alpha),
-    )
-    draw.line(
-        (s(LEFT_GRAPH[0]), s(upper_y), s(LEFT_GRAPH[2]), s(upper_y)),
-        fill=rgba(GOLD, 0.84 * alpha),
-        width=s(3),
-    )
-    draw.line(
-        (s(LEFT_GRAPH[0]), s(lower_y), s(LEFT_GRAPH[2]), s(lower_y)),
-        fill=rgba(GOLD, 0.84 * alpha),
-        width=s(3),
-    )
-    draw.line(plane_wave_points(AXIS_Y, 112.0), fill=rgba(BLUE, 0.96 * alpha), width=s(3), joint="curve")
+    draw_uniform_wave(draw, LEFT_GRAPH, CARRIER_K, POSITION_X0, BLUE, alpha)
     draw_delta(draw, RIGHT_GRAPH, GREEN, alpha)
 
 
 def draw_exact_x_state(draw: ImageDraw.ImageDraw, alpha: float) -> None:
     if alpha <= 0.0:
         return
-    draw_delta(draw, LEFT_GRAPH, BLUE, alpha)
-    draw_constant(draw, RIGHT_GRAPH, GREEN, alpha)
+    draw_delta(draw, LEFT_GRAPH, BLUE, alpha, POSITION_X0)
+    draw_uniform_wave(draw, RIGHT_GRAPH, -POSITION_X0, 0.0, GREEN, alpha)
 
 
 def draw_frame(frame: int) -> Image.Image:
@@ -446,13 +498,13 @@ def draw_frame(frame: int) -> Image.Image:
     image = Image.new("RGB", (WIDTH * SCALE, HEIGHT * SCALE), BG)
     draw = ImageDraw.Draw(image, "RGBA")
 
-    draw_text(draw, (44, 28), "Fourier partners trade localization", font_obj=TITLE)
+    draw_text(draw, (44, 28), "Fourier duality works in both directions", font_obj=TITLE)
     draw_text(draw, (44, 65), heading, fill=PURPLE, font_obj=SUBTITLE)
     draw_text(draw, (44, 91), caption, fill=MUTED, font_obj=SMALL)
     draw_text(
         draw,
         (1236, 69),
-        "shape vertically rescaled · not physical time",
+        "real part shown inside each magnitude envelope",
         fill=MUTED,
         font_obj=SMALL,
         anchor="ra",
@@ -468,27 +520,28 @@ def draw_frame(frame: int) -> Image.Image:
     draw_text(draw, (66, 139), "Position representation", font_obj=PANEL_TITLE)
     draw_text(draw, (604, 141), "Re ψ(x) with ±|ψ(x)|", fill=BLUE, font_obj=SMALL, anchor="ra")
     draw_text(draw, (676, 139), "Wave-number representation", font_obj=PANEL_TITLE)
-    draw_text(draw, (1214, 141), "|ψ̃(k)|", fill=GREEN, font_obj=SMALL, anchor="ra")
+    draw_text(draw, (1214, 141), "Re ψ̃(k) with ±|ψ̃(k)|", fill=GREEN, font_obj=SMALL, anchor="ra")
 
     draw_axis(draw, LEFT_GRAPH, "x", "0")
     draw_axis(draw, RIGHT_GRAPH, "k", "k₀")
+    draw_reference_tick(draw, LEFT_GRAPH, POSITION_X0, "x₀", BLUE)
 
     draw_finite_state(draw, delta_x, delta_k, finite_alpha)
     draw_exact_k_state(draw, exact_k)
     draw_exact_x_state(draw, exact_x)
 
     if exact_k > 0.55:
-        draw_text(draw, (341, 570), "plane wave: uniform magnitude", fill=BLUE, font_obj=LABEL_BOLD, anchor="mm")
+        draw_text(draw, (341, 570), "ψ(x) = C eⁱᵏ⁰⁽ˣ⁻ˣ⁰⁾", fill=BLUE, font_obj=LABEL_BOLD, anchor="mm")
         draw_text(draw, (945, 570), "ψ̃(k) = C δ(k − k₀)", fill=GREEN, font_obj=LABEL_BOLD, anchor="mm")
     elif exact_x > 0.55:
-        draw_text(draw, (341, 570), "ψ(x) = C δ(x)", fill=BLUE, font_obj=LABEL_BOLD, anchor="mm")
-        draw_text(draw, (945, 570), "|ψ̃(k)| = constant", fill=GREEN, font_obj=LABEL_BOLD, anchor="mm")
-    elif seconds >= 9.7:
-        draw_text(draw, (341, 570), "Gaussian position envelope", fill=BLUE, font_obj=LABEL_BOLD, anchor="mm")
-        draw_text(draw, (945, 570), "matching Gaussian spectrum", fill=GREEN, font_obj=LABEL_BOLD, anchor="mm")
+        draw_text(draw, (341, 570), "ψ(x) = C δ(x − x₀)", fill=BLUE, font_obj=LABEL_BOLD, anchor="mm")
+        draw_text(draw, (945, 570), "ψ̃(k) = C e⁻ⁱ⁽ᵏ⁻ᵏ⁰⁾ˣ⁰", fill=GREEN, font_obj=LABEL_BOLD, anchor="mm")
+    elif 6.3 <= seconds < 10.1:
+        draw_text(draw, (341, 570), "position distribution broadens", fill=BLUE, font_obj=LABEL_BOLD, anchor="mm")
+        draw_text(draw, (945, 570), "wave-number distribution narrows", fill=GREEN, font_obj=LABEL_BOLD, anchor="mm")
     else:
-        draw_text(draw, (341, 570), "narrower in x", fill=BLUE, font_obj=LABEL_BOLD, anchor="mm")
-        draw_text(draw, (945, 570), "broader in k", fill=GREEN, font_obj=LABEL_BOLD, anchor="mm")
+        draw_text(draw, (341, 570), "position distribution narrows", fill=BLUE, font_obj=LABEL_BOLD, anchor="mm")
+        draw_text(draw, (945, 570), "wave-number distribution broadens", fill=GREEN, font_obj=LABEL_BOLD, anchor="mm")
 
     image = image.convert("RGB").resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
     return image
@@ -497,10 +550,10 @@ def draw_frame(frame: int) -> Image.Image:
 def make_contact_sheet() -> Path:
     samples = [
         (0.7, "exact wave number"),
-        (3.2, "reciprocal widths cross"),
+        (3.2, "localization moving into x"),
         (5.6, "exact position"),
-        (7.9, "returning from the extreme"),
-        (10.7, "balanced Gaussians"),
+        (8.2, "reverse transform"),
+        (10.7, "exact wave number recovered"),
     ]
     thumb_w = 400
     thumb_h = 225
