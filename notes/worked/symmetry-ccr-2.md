@@ -184,7 +184,7 @@ We have an intuitive sense that a travelling wave can be can be thought of as a 
 
 [Open MP4: symmetry-rays-and-double-slit.mp4](../../content/drafts/animations/symmetry-rays-and-double-slit.mp4)
 
-We are going to dive into how these different behaviors are related, not out of specific interest in real-world waves in media, but because, remarkably, the reasoning we use to show that wave propagation tends toward ray-like behavior is precisely the same reasoning we will use later to derive the laws of motion for any body.
+We are going to dive into how these different behaviors are related, not out of specific interest in real-world waves in media, but because, remarkably, the reasoning we use to show that free wave propagation tends toward ray-like behavior is precisely the same reasoning we will use later to derive the laws of motion for any body.
 
 Thus far we have described a wave as having a single translation direction $x$ and wave number, $k$. If the wave is to travel, though, we also require the wave to represent time translation. Time translation must commute with spatial translation, for otherwise, it would change the mode composition over time, and spatial translation would then not be a symmetry of nature. It's worth pointing out here that there are two different ways to picture time parameterization. We can picture a "movie" a wave travelling down a 1-dimensional string, or we can imagine a still diagram in $x$-$t$ space. The former is closer to our experience, but the formalism maps to the latter. With that in mind, we can see that a travelling, sigle-mode wave is given by:
 
@@ -194,19 +194,29 @@ e^{i\left[kx-\omega t\right]}.
 
 $\omega$ is commonly called angular **frequency**, even though structurally it is wave number in a different translation direction.
 
-Now, let's think about what it means to say that a wave travels from one point A to another point B. For simple free waves, the answer is so obvious as to wonder why we would even ask the question. We draw a line (our "ray") perpendicular to the level sets of phase. In the case of a plane wave, the ray through A continues in one direction; in the case of a spherical wave, rays from A extend in every radial direction.
+We need to be a bit careful here to remember that we are thinking here of complex waves. As a free plane wave mode travels, unlike a sinusoidal wave, the magnitude is constant and the change in value comes from the change in phase:
+
+```math
+\Psi=M_0 e^{i\phi}
+```
+
+![A fixed-magnitude complex amplitude changing through phase](../../content/drafts/animations/symmetry-complex-phasor-rotation-contact-sheet.png)
+
+[Open MP4: symmetry-complex-phasor-rotation.mp4](../../content/drafts/animations/symmetry-complex-phasor-rotation.mp4)
+
+Now, let us ask the question what it means for a wave to travel from one point A to another point B. For simple free waves, the answer is obvious -- it is simply the rays we illustrated above that are perpendicular to the level sets of phase. In the case of a plane wave, the ray through A continues in one direction. In the case of a spherical wave, rays from A extend in every radial direction.
 
 ![Plane and spherical waves with their rays](../../content/drafts/animations/symmetry-plane-and-spherical-wave-rays-contact-sheet.png)
 
 [Open MP4: symmetry-plane-and-spherical-wave-rays.mp4](../../content/drafts/animations/symmetry-plane-and-spherical-wave-rays.mp4)
 
-But what if we were to put a screen with two narrow slits in front of our wave. Treating each slit as a single opening, our wave would take two paths from A to B.
+We place a source at A. When the single-wave-number wave emitted from it reaches the screen the only rays emanating from A that can pass through are at C and D. We therefore have two candidate paths from A to B, ACB and ADB.
 
 ![Two candidate paths through a double slit](../../content/drafts/animations/symmetry-double-slit-candidate-paths-contact-sheet.png)
 
 [Open MP4: symmetry-double-slit-candidate-paths.mp4](../../content/drafts/animations/symmetry-double-slit-candidate-paths.mp4)
 
-This gives us a new idea that a wave in the regime of an appropriately sized apparatus can take multiple "paths" to the same point. We can then ask a different question. If a wave takes multiple paths from A to B, how do we calculate its value, or amplitude, at B given its source amplitude at A? For a free mode, with a corresponding straight ray, we know that:
+The wave at a point can receive contributions along multiple paths. Knowing the possible paths, how do we calculate the wave's value at B given its source value at A? Along any radial segment, the phase advances as:
 
 ```math
 \Delta\phi
@@ -216,19 +226,7 @@ k\,\Delta\ell
 \omega\,\Delta t,
 ```
 
-where $\Delta\ell$ is distance along the ray. For the slit calculation, we compare both contributions at the same observation time. Their time-dependent phase is therefore the same, and we need only track their path-dependent spatial phases.
-
-However, at the screen, the single-ray picture breaks down, and we must consider contributions from 4 segments, AC, CB, AD, and DB as shown below:
-
-![Two routes from A through C and D to B](../../content/drafts/diagrams/symmetry-double-slit-two-path-diamond.png)
-
-We need to be a bit careful here to remember that we are concerned with complex waves. In our phase-only example, a contribution of fixed magnitude $M$ has complex amplitude $\Psi=M e^{i\phi}$, so its changing value is determined entirely by $\phi$.
-
-![A fixed-magnitude complex amplitude changing through phase](../../content/drafts/animations/symmetry-complex-phasor-rotation-contact-sheet.png)
-
-[Open MP4: symmetry-complex-phasor-rotation.mp4](../../content/drafts/animations/symmetry-complex-phasor-rotation.mp4)
-
-With this in mind, we can calculate the phase advance for each segment AC, AD, CB, DB. Let $\ell_{PQ}$ be the length of the segment from $P$ to $Q$:
+where $\Delta\ell$ is distance along the ray. We can use this relationship to calculate the phase accumulation along any one segment. In the arrangement we are considering, the segments combine into two candidate paths from A to B: AC followed by CB, and AD followed by DB. Because we compare their contributions at B at the same observation time, their time-dependent phase is the same, so we need only track their path-dependent spatial phases. Let $\ell_{AC}$ be the length of segment AC, and likewise for the other segments. The phase advances are:
 
 ```math
 \begin{aligned}
@@ -262,19 +260,19 @@ But what, then is the amplitude at B? Let $\phi_0$ include the original phase at
 \end{aligned}
 ```
 
-What have we computed? It is the phase of the wave contribution arriving at B along each path. What then is the total amplitude at B? It is just the sum of the two contributions arriving there. This is the principle of superposition, which is just the very intuitive idea that wave values add. For this phase-only example, assign each path the same magnitude, $M_0/2$. We can now calculate the value of $\Psi$ at B from its value at A:
+What have we computed? It is the phase of the wave contribution arriving at B along each path. What then is the total amplitude at B? It is just the sum of the two contributions arriving there. This is the principle of superposition, which is just the very intuitive idea that wave values add. Let $M_{ACB}$ and $M_{ADB}$ denote the magnitudes of the two path contributions. We can now calculate the value of $\Psi$ at B from its value at A:
 
 ```math
 \Psi_{ACB}(B)
 =
-\frac{M_0}{2}
+M_{ACB}
 e^{i(\phi_0+\phi_{AC}+\phi_{CB})}.
 ```
 
 ```math
 \Psi_{ADB}(B)
 =
-\frac{M_0}{2}
+M_{ADB}
 e^{i(\phi_0+\phi_{AD}+\phi_{DB})}.
 ```
 
@@ -283,20 +281,26 @@ The two contributions add at \(B\):
 ```math
 \Psi_B
 =
-\frac{M_0}{2}
-\left[
+M_{ACB}
 e^{i(\phi_0+\phi_{AC}+\phi_{CB})}
 +
-e^{i(\phi_0+\phi_{AD}+\phi_{DB})}
-\right].
+M_{ADB}
+e^{i(\phi_0+\phi_{AD}+\phi_{DB})}.
 ```
 
 We can plot the contribution from each path ACB and ADB in the complex plane, showing their sum by drawing them tip-to-tail. The vector from the beginning of the first arrow to the end of the second is the amplitude at B, that is its length is the magnitude at B and its angle is the phase at B.
 
 ![The two path contributions added tip-to-tail](../../content/drafts/diagrams/symmetry-double-slit-two-path-phasor-sum.png)
 
+Now let's play a game and start adding more slits.
 
-Now what if we put a second screen with two slits? What if we add two more slits to both screens?
+![Many paths, their complex sum, and the resulting interference pattern](../../content/drafts/animations/symmetry-many-slit-paths-phasors-interference-contact-sheet.png)
+
+[Open MP4: symmetry-many-slit-paths-phasors-interference.mp4](../../content/drafts/animations/symmetry-many-slit-paths-phasors-interference.mp4)
+
+As the path deviates more from a straight, minimum length path, it has a greater first-order change in phase. \(This is the common result from calculus that near a function's minimum, there is no change to the value of the function in the first order of the argument\). Thus, as we can see from the tip-to-tail diagram, the change in value from A to B is dominated by paths near the minimum length path. This results in the interfeence pattern (this is wrong revisit.)
+...........
+Now what if we add another screen with two slits? What if we add two more slits to each of the two downstream screens?
 
 [animation with candidate paths drawn]
 

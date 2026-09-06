@@ -16,13 +16,14 @@ DIAGRAMS = ROOT / "content" / "drafts" / "diagrams"
 PLANE_SPHERICAL_NAME = "symmetry-plane-and-spherical-wave-rays"
 DOUBLE_SLIT_NAME = "symmetry-double-slit-candidate-paths"
 PHASOR_NAME = "symmetry-complex-phasor-rotation"
+POINT_LABEL = wave.base.font(22, True)
 
 # A single geometry is shared by the moving two-slit scene, the clean path
 # diagram, and the corresponding tip-to-tail phasor diagram. Coordinates are
 # diagram units, not pixels.
 WORLD_X = (-5.0, 6.0)
 WORLD_Y = (-2.55, 2.55)
-A = (-4.2, 0.0)
+A = (-3.2, 0.0)
 C = (0.0, 1.0)
 D = (0.0, -1.0)
 B = (5.2, 0.55)
@@ -184,15 +185,105 @@ def double_slit_field(phase: float, width: int = 800, height: int = 370) -> Imag
     xx, yy = np.meshgrid(xs, ys)
 
     incident = 0.72 * np.cos(WAVE_NUMBER * xx - phase)
+    r_a = np.hypot(xx - A[0], yy - A[1])
+    phase_at_a = WAVE_NUMBER * A[0] - phase
+    from_a = (
+        0.72
+        * np.cos(WAVE_NUMBER * r_a + phase_at_a)
+        / np.sqrt(0.70 + 0.45 * r_a)
+    )
     r_c = np.hypot(xx - C[0], yy - C[1])
     r_d = np.hypot(xx - D[0], yy - D[1])
-    outgoing = (
-        np.cos(WAVE_NUMBER * r_c - phase) / np.sqrt(0.34 + r_c)
-        + np.cos(WAVE_NUMBER * r_d - phase) / np.sqrt(0.34 + r_d)
+    # Shade the instantaneous signed wave height, not intensity. A common
+    # falloff keeps this phase-only two-path example visually symmetric.
+    r_mean = 0.5 * (r_c + r_d)
+    phase_at_slits = phase_at_a + WAVE_NUMBER * L_AC
+    outgoing = 0.82 * (
+        np.cos(WAVE_NUMBER * r_c + phase_at_slits)
+        + np.cos(WAVE_NUMBER * r_d + phase_at_slits)
+    ) / np.sqrt(0.34 + r_mean)
+    field = np.where(xx <= A[0], incident, np.where(xx <= 0.0, from_a, outgoing))
+    return field_to_image(field, 1.65)
+
+
+def draw_radial_phase_fronts(
+    draw: ImageDraw.ImageDraw,
+    bounds: tuple[float, float, float, float],
+    source: tuple[float, float],
+    source_phase: float,
+    color,
+    x_min: float,
+    x_max: float,
+    alpha: float,
+) -> None:
+    """Draw right-going equal-phase fronts from one aperture."""
+    phase_offset = ((-source_phase) % (2.0 * math.pi)) / WAVE_NUMBER
+    max_radius = math.hypot(x_max - source[0], WORLD_Y[1] - WORLD_Y[0]) + WAVELENGTH
+    for n in range(12):
+        radius = phase_offset + n * WAVELENGTH
+        if radius < 0.05 or radius > max_radius:
+            continue
+        points = []
+        for angle in np.linspace(-math.pi / 2.0, math.pi / 2.0, 150):
+            point = (
+                source[0] + radius * math.cos(angle),
+                source[1] + radius * math.sin(angle),
+            )
+            if (
+                x_min <= point[0] <= x_max
+                and WORLD_Y[0] <= point[1] <= WORLD_Y[1]
+            ):
+                points.append(tuple(wave.s(v) for v in world_to_canvas(point, bounds)))
+        if len(points) > 1:
+            draw.line(points, fill=wave.rgba(color, alpha), width=wave.s(2))
+
+
+def draw_source_phase_fronts(
+    draw: ImageDraw.ImageDraw,
+    bounds: tuple[float, float, float, float],
+    phase: float,
+) -> None:
+    """Overlay the moving circular fronts emitted by the slit at A."""
+    draw_radial_phase_fronts(
+        draw,
+        bounds,
+        A,
+        WAVE_NUMBER * A[0] - phase,
+        wave.INK,
+        A[0],
+        C[0],
+        0.34,
     )
-    outgoing *= 0.82
-    field = np.where(xx <= 0.0, incident, outgoing)
-    return field_to_image(field, 1.32)
+
+
+def draw_outgoing_phase_fronts(
+    draw: ImageDraw.ImageDraw,
+    bounds: tuple[float, float, float, float],
+    phase: float,
+) -> None:
+    """Overlay equal-phase fronts of the two slit contributions."""
+    phase_at_slits = WAVE_NUMBER * (A[0] + L_AC) - phase
+    for source, color in ((C, wave.BLUE), (D, wave.GOLD)):
+        draw_radial_phase_fronts(
+            draw,
+            bounds,
+            source,
+            phase_at_slits,
+            color,
+            C[0],
+            WORLD_X[1],
+            0.46,
+        )
+
+
+def draw_source_screen(draw: ImageDraw.ImageDraw, bounds: tuple[float, float, float, float]) -> None:
+    screen_x, _ = world_to_canvas(A, bounds)
+    a = world_to_canvas(A, bounds)
+    half_gap = 18.0
+    top, bottom = bounds[1] + 2.0, bounds[3] - 2.0
+    for y0, y1 in ((top, a[1] - half_gap), (a[1] + half_gap, bottom)):
+        draw.line((wave.s(screen_x), wave.s(y0), wave.s(screen_x), wave.s(y1)), fill=wave.INK, width=wave.s(8))
+    wave.circle(draw, a, 6.0, wave.INK)
 
 
 def draw_slit_screen(draw: ImageDraw.ImageDraw, bounds: tuple[float, float, float, float]) -> None:
@@ -222,13 +313,13 @@ def draw_shared_routes(
     for point, color in ((a, wave.INK), (c, wave.BLUE), (d, wave.GOLD), (b, wave.INK)):
         wave.circle(draw, point, 7.0, color)
     if labels:
-        wave.draw_text(draw, (a[0] - 2, a[1] + 29), "A", font_obj=wave.LABEL_BOLD, anchor="ma")
-        wave.draw_text(draw, (c[0] + 15, c[1] - 11), "C", fill=wave.BLUE, font_obj=wave.LABEL_BOLD)
-        wave.draw_text(draw, (d[0] + 15, d[1] + 7), "D", fill=wave.GOLD, font_obj=wave.LABEL_BOLD)
-        wave.draw_text(draw, (b[0], b[1] + 29), "B", font_obj=wave.LABEL_BOLD, anchor="ma")
-        wave.draw_text(draw, (262, 188), "plane wave", fill=wave.INK, font_obj=wave.LABEL_BOLD, anchor="ma")
-        wave.draw_text(draw, (905, 188), "outgoing waves interfere", fill=wave.INK, font_obj=wave.LABEL_BOLD, anchor="ma")
-        wave.draw_text(draw, (790, 630), "dashed lines: two contributions to the field at B", fill=wave.MUTED, font_obj=wave.SMALL, anchor="ma")
+        wave.draw_text(draw, (a[0] - 16, a[1] - 29), "A", fill=wave.INK, font_obj=POINT_LABEL, anchor="rm")
+        wave.draw_text(draw, (c[0] + 20, c[1] - 30), "C", fill=wave.INK, font_obj=POINT_LABEL, anchor="lm")
+        wave.draw_text(draw, (d[0] + 20, d[1] + 30), "D", fill=wave.INK, font_obj=POINT_LABEL, anchor="lm")
+        wave.draw_text(draw, (b[0] + 22, b[1]), "B", fill=wave.INK, font_obj=POINT_LABEL, anchor="lm")
+        wave.draw_text(draw, (132, 188), "incident plane wave", fill=wave.INK, font_obj=wave.PANE_TITLE, anchor="ma")
+        wave.draw_text(draw, (410, 188), "circular wave from A", fill=wave.INK, font_obj=wave.PANE_TITLE, anchor="ma")
+        wave.draw_text(draw, (905, 188), "outgoing waves interfere", fill=wave.INK, font_obj=wave.PANE_TITLE, anchor="ma")
 
 
 def draw_double_slit(frame: int) -> Image.Image:
@@ -236,17 +327,20 @@ def draw_double_slit(frame: int) -> Image.Image:
     phase = 2.0 * math.pi * 2.0 * seconds / DOUBLE_SLIT_DURATION
     image = Image.new("RGBA", (wave.WIDTH * wave.SCALE, wave.HEIGHT * wave.SCALE), wave.BG + (255,))
     draw = ImageDraw.Draw(image, "RGBA")
-    wave.draw_text(draw, (42, 28), "Two slits create two simultaneous contributions at B", font_obj=wave.TITLE)
+    wave.draw_text(draw, (42, 28), "A circular wave reaches B along two paths", font_obj=wave.TITLE)
     wave.draw_text(
         draw,
         (42, 69),
-        "The field propagates through both openings; the dashed routes label the two terms being added.",
+        "The slit at A emits circular fronts. The openings C and D send two contributions to B.",
         fill=wave.MUTED,
         font_obj=wave.SUBTITLE,
     )
     paste_rounded_field(image, double_slit_field(phase), DOUBLE_SLIT_BOUNDS)
     draw = ImageDraw.Draw(image, "RGBA")
+    draw_source_phase_fronts(draw, DOUBLE_SLIT_BOUNDS, phase)
+    draw_outgoing_phase_fronts(draw, DOUBLE_SLIT_BOUNDS, phase)
     draw_panel_border(draw, DOUBLE_SLIT_BOUNDS)
+    draw_source_screen(draw, DOUBLE_SLIT_BOUNDS)
     draw_slit_screen(draw, DOUBLE_SLIT_BOUNDS)
     draw_shared_routes(draw, DOUBLE_SLIT_BOUNDS)
     return finish_frame(image)
@@ -290,15 +384,16 @@ def draw_diamond_diagram() -> Image.Image:
     center_left = world_to_canvas((WORLD_X[0], 0.0), bounds)
     center_right = world_to_canvas((WORLD_X[1], 0.0), bounds)
     wave.dashed_line(draw, center_left, center_right, wave.rgba(wave.MUTED, 0.32), width=2, dash=10, gap=8)
+    draw_source_screen(draw, bounds)
     draw_slit_screen(draw, bounds)
     for p0, p1, color in ((a, c, wave.BLUE), (c, b, wave.BLUE), (a, d, wave.GOLD), (d, b, wave.GOLD)):
         draw.line((wave.s(p0[0]), wave.s(p0[1]), wave.s(p1[0]), wave.s(p1[1])), fill=color, width=wave.s(5))
     for point, color in ((a, wave.INK), (c, wave.BLUE), (d, wave.GOLD), (b, wave.INK)):
         wave.circle(draw, point, 8.0, color)
-    wave.draw_text(draw, (a[0], a[1] + 31), "A", font_obj=wave.LABEL_BOLD, anchor="ma")
-    wave.draw_text(draw, (c[0] + 16, c[1] - 13), "C", fill=wave.BLUE, font_obj=wave.LABEL_BOLD)
-    wave.draw_text(draw, (d[0] + 16, d[1] + 8), "D", fill=wave.GOLD, font_obj=wave.LABEL_BOLD)
-    wave.draw_text(draw, (b[0], b[1] + 31), "B", font_obj=wave.LABEL_BOLD, anchor="ma")
+    wave.draw_text(draw, (a[0] - 15, a[1] - 28), "A", fill=wave.INK, font_obj=POINT_LABEL, anchor="rm")
+    wave.draw_text(draw, (c[0] + 17, c[1] - 22), "C", fill=wave.INK, font_obj=POINT_LABEL)
+    wave.draw_text(draw, (d[0] + 17, d[1] + 12), "D", fill=wave.INK, font_obj=POINT_LABEL)
+    wave.draw_text(draw, (b[0] + 17, b[1] + 27), "B", fill=wave.INK, font_obj=POINT_LABEL, anchor="ma")
     wave.draw_text(draw, (b[0] + 15, b[1] - 24), "off center", fill=wave.MUTED, font_obj=wave.SMALL)
 
     labels = (
@@ -359,13 +454,13 @@ def draw_rotating_phasor(frame: int) -> Image.Image:
     )
     draw.arc(arc_box, start=-math.degrees(angle), end=0, fill=wave.GOLD, width=wave.s(4))
     label_point = phasor_endpoint(origin, 105.0, angle / 2.0)
-    wave.draw_text(draw, label_point, "phi", fill=wave.GOLD, font_obj=wave.LABEL_BOLD, anchor="mm")
+    wave.draw_text(draw, label_point, "φ", fill=wave.GOLD, font_obj=wave.LABEL_BOLD, anchor="mm")
     wave.draw_text(draw, (origin[0] + radius + 20, origin[1] + 10), "Re", fill=wave.MUTED, font_obj=wave.LABEL_BOLD)
     wave.draw_text(draw, (origin[0] + 12, origin[1] - radius - 22), "Im", fill=wave.MUTED, font_obj=wave.LABEL_BOLD)
 
-    wave.draw_text(draw, (870, 265), "z(phi) = exp(i phi)", font_obj=wave.FINAL, anchor="ma")
+    wave.draw_text(draw, (870, 265), "z(φ) = exp(iφ)", font_obj=wave.FINAL, anchor="ma")
     wave.draw_text(draw, (870, 342), "magnitude:  |z| = 1", fill=wave.GREEN, font_obj=wave.LABEL_BOLD, anchor="ma")
-    wave.draw_text(draw, (870, 399), "phase:  phi", fill=wave.GOLD, font_obj=wave.LABEL_BOLD, anchor="ma")
+    wave.draw_text(draw, (870, 399), "phase angle:  φ", fill=wave.GOLD, font_obj=wave.LABEL_BOLD, anchor="ma")
     wave.draw_text(draw, (870, 479), "the arrow turns", fill=wave.MUTED, font_obj=wave.LABEL, anchor="ma")
     wave.draw_text(draw, (870, 510), "without changing length", fill=wave.MUTED, font_obj=wave.LABEL, anchor="ma")
     return finish_frame(image)
@@ -385,7 +480,7 @@ def draw_phasor_sum_diagram() -> Image.Image:
     wave.draw_text(
         draw,
         (42, 69),
-        "Their angle difference comes from the path-length difference in the preceding diagram.",
+        "The longer path produces a different angle and a smaller magnitude.",
         fill=wave.MUTED,
         font_obj=wave.SUBTITLE,
     )
@@ -398,6 +493,7 @@ def draw_phasor_sum_diagram() -> Image.Image:
     c = world_to_canvas(C, mini_bounds)
     d = world_to_canvas(D, mini_bounds)
     b = world_to_canvas(B, mini_bounds)
+    draw_source_screen(draw, mini_bounds)
     screen_x, _ = world_to_canvas((0.0, 0.0), mini_bounds)
     for y0, y1 in ((mini_bounds[1], c[1] - 8), (c[1] + 8, d[1] - 8), (d[1] + 8, mini_bounds[3])):
         draw.line((wave.s(screen_x), wave.s(y0), wave.s(screen_x), wave.s(y1)), fill=wave.INK, width=wave.s(5))
@@ -405,10 +501,10 @@ def draw_phasor_sum_diagram() -> Image.Image:
         draw.line((wave.s(p0[0]), wave.s(p0[1]), wave.s(p1[0]), wave.s(p1[1])), fill=color, width=wave.s(4))
     for point, color in ((a, wave.INK), (c, wave.BLUE), (d, wave.GOLD), (b, wave.INK)):
         wave.circle(draw, point, 5.5, color)
-    wave.draw_text(draw, (a[0], a[1] + 22), "A", font_obj=wave.SMALL, anchor="ma")
-    wave.draw_text(draw, (c[0] + 9, c[1] - 14), "C", fill=wave.BLUE, font_obj=wave.SMALL)
-    wave.draw_text(draw, (d[0] + 9, d[1] + 3), "D", fill=wave.GOLD, font_obj=wave.SMALL)
-    wave.draw_text(draw, (b[0], b[1] + 22), "B", font_obj=wave.SMALL, anchor="ma")
+    wave.draw_text(draw, (a[0] - 8, a[1] - 15), "A", fill=wave.INK, font_obj=wave.SMALL, anchor="rm")
+    wave.draw_text(draw, (c[0] + 9, c[1] - 14), "C", fill=wave.INK, font_obj=wave.SMALL)
+    wave.draw_text(draw, (d[0] + 9, d[1] + 3), "D", fill=wave.INK, font_obj=wave.SMALL)
+    wave.draw_text(draw, (b[0], b[1] + 22), "B", fill=wave.INK, font_obj=wave.SMALL, anchor="ma")
 
     wave.draw_text(draw, (272, 480), f"L(ACB) = {L_ACB:.2f}", fill=wave.BLUE, font_obj=wave.LABEL_BOLD, anchor="ma")
     wave.draw_text(draw, (272, 517), f"L(ADB) = {L_ADB:.2f}", fill=wave.GOLD, font_obj=wave.LABEL_BOLD, anchor="ma")
@@ -417,13 +513,14 @@ def draw_phasor_sum_diagram() -> Image.Image:
 
     wave.draw_text(draw, (890, 142), "complex contributions at B", font_obj=wave.PANE_TITLE, anchor="ma")
     origin = (650.0, 402.0)
-    step = 235.0
-    # A common phase reference is chosen so equal contributions at +/- Delta
-    # phi / 2 have a horizontal resultant. Only their difference is physical.
+    step_acb = 235.0
+    step_adb = 205.0
+    # A common phase reference places the two contributions at +/- Delta
+    # phi / 2. The longer ADB path has the smaller magnitude.
     phi_acb = -DELTA_PHASE / 2.0
     phi_adb = DELTA_PHASE / 2.0
-    first_tip = phasor_endpoint(origin, step, phi_acb)
-    final_tip = phasor_endpoint(first_tip, step, phi_adb)
+    first_tip = phasor_endpoint(origin, step_acb, phi_acb)
+    final_tip = phasor_endpoint(first_tip, step_adb, phi_adb)
     draw.line((wave.s(610), wave.s(origin[1]), wave.s(1200), wave.s(origin[1])), fill=wave.rgba(wave.MUTED, 0.35), width=wave.s(2))
     wave.circle(draw, origin, 4.0, wave.INK)
     wave.draw_arrow(draw, origin, first_tip, wave.BLUE, 7)

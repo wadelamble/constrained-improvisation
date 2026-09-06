@@ -24,7 +24,7 @@ PANEL = "#FFFDF8"
 INK = "#2F2F2F"
 MUTED = "#675F56"
 BORDER = "#C9BCAA"
-RAY = "#A66B2B"
+RAY = "#87531F"
 SOURCE = "#7E4B3A"
 
 WAVE_CMAP = LinearSegmentedColormap.from_list(
@@ -102,12 +102,18 @@ def slit_field(xx: np.ndarray, yy: np.ndarray, phase: float) -> np.ndarray:
 
     incident = 0.82 * np.cos(wave_number * (xx - barrier_x) - phase)
 
-    transmitted = np.zeros_like(xx)
+    transmitted = np.zeros_like(xx, dtype=np.complex128)
+    available_amplitude = np.zeros_like(xx)
     for y0 in slit_y:
         radius = np.hypot(xx - barrier_x, yy - y0)
         attenuation = 0.78 / np.sqrt(radius + 0.34)
-        transmitted += attenuation * np.cos(wave_number * radius - phase)
-    transmitted *= 0.72
+        transmitted += attenuation * np.exp(1j * (wave_number * radius - phase))
+        available_amplitude += attenuation
+
+    # Normalize by the amplitude the two openings could supply locally. This
+    # keeps the moving fronts legible across the pane while preserving the
+    # cancellation bands of their actual complex sum.
+    transmitted = np.real(transmitted) / np.maximum(available_amplitude, 1e-9)
 
     field = np.where(xx <= barrier_x, incident, transmitted)
     return field
@@ -130,8 +136,8 @@ def draw_radial_rays(ax: plt.Axes) -> None:
             arrowprops={
                 "arrowstyle": "->",
                 "color": RAY,
-                "linewidth": 1.35,
-                "alpha": 0.78,
+                "linewidth": 2.05,
+                "alpha": 0.94,
                 "shrinkA": 0,
                 "shrinkB": 0,
             },
@@ -140,7 +146,25 @@ def draw_radial_rays(ax: plt.Axes) -> None:
     ax.scatter([-0.75], [0.0], s=54, color=SOURCE, edgecolor=BG, linewidth=1.0, zorder=20)
 
 
-def draw_barrier_and_wavelets(ax: plt.Axes, phase: float) -> None:
+def draw_plane_rays(ax: plt.Axes) -> None:
+    for y0 in (-1.65, -0.55, 0.55, 1.65):
+        ax.annotate(
+            "",
+            xy=(-1.04, y0),
+            xytext=(-3.55, y0),
+            arrowprops={
+                "arrowstyle": "->",
+                "color": RAY,
+                "linewidth": 2.05,
+                "alpha": 0.94,
+                "shrinkA": 0,
+                "shrinkB": 0,
+            },
+            zorder=20,
+        )
+
+
+def draw_barrier(ax: plt.Axes) -> None:
     barrier_x = -0.82
     slit_centers = (-0.72, 0.72)
     half_gap = 0.18
@@ -161,27 +185,6 @@ def draw_barrier_and_wavelets(ax: plt.Axes, phase: float) -> None:
         linewidth=0.7,
         zorder=26,
     )
-
-    wavelength = 0.58
-    phase_distance = (phase / (2.0 * np.pi)) * wavelength
-    theta = np.linspace(-0.5 * np.pi, 0.5 * np.pi, 220)
-    for slit_y in slit_centers:
-        for index in range(1, 8):
-            radius = phase_distance + index * wavelength
-            while radius > 4.3:
-                radius -= wavelength
-            arc_x = barrier_x + radius * np.cos(theta)
-            arc_y = slit_y + radius * np.sin(theta)
-            mask = (arc_x <= 4.0) & (arc_y >= -3.0) & (arc_y <= 3.0)
-            ax.plot(
-                arc_x[mask],
-                arc_y[mask],
-                color=BG,
-                linewidth=0.75,
-                alpha=0.35,
-                zorder=12,
-            )
-
 
 def make_animation() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -231,12 +234,13 @@ def make_animation() -> None:
             extent=(-4.0, 4.0, -3.0, 3.0),
             origin="lower",
             cmap=WAVE_CMAP,
-            vmin=-1.45,
-            vmax=1.45,
+            vmin=-1.0,
+            vmax=1.0,
             interpolation="bilinear",
             zorder=1,
         )
-        draw_barrier_and_wavelets(axes[1], phase)
+        draw_plane_rays(axes[1])
+        draw_barrier(axes[1])
         add_panel_title(
             axes[1],
             "Diffraction and interference",
