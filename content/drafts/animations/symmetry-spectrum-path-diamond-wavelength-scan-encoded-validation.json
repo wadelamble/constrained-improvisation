@@ -1,0 +1,165 @@
+{
+  "decoded_frames": 2160,
+  "duration_seconds": 36.0,
+  "resolution": [
+    1440,
+    1080
+  ],
+  "fps": 60.0,
+  "checks": [
+    {
+      "frame": 0,
+      "count": 0,
+      "mean_absolute_rgb_error": 1.7163996056241426,
+      "matching_active_path_pixels": null,
+      "gold_tip_pixels": null
+    },
+    {
+      "frame": 191,
+      "count": 5000,
+      "mean_absolute_rgb_error": 1.7924245541838135,
+      "matching_active_path_pixels": 68,
+      "gold_tip_pixels": 34
+    },
+    {
+      "frame": 330,
+      "count": 9826,
+      "mean_absolute_rgb_error": 1.8265037722908093,
+      "matching_active_path_pixels": 66,
+      "gold_tip_pixels": 41
+    },
+    {
+      "frame": 335,
+      "count": 10000,
+      "mean_absolute_rgb_error": 1.8351804698216736,
+      "matching_active_path_pixels": 66,
+      "gold_tip_pixels": 41
+    },
+    {
+      "frame": 341,
+      "count": 10208,
+      "mean_absolute_rgb_error": 1.8288370198902606,
+      "matching_active_path_pixels": 66,
+      "gold_tip_pixels": 39
+    },
+    {
+      "frame": 480,
+      "count": 15035,
+      "mean_absolute_rgb_error": 1.8588938185871056,
+      "matching_active_path_pixels": 66,
+      "gold_tip_pixels": 35
+    },
+    {
+      "frame": 623,
+      "count": 20001,
+      "mean_absolute_rgb_error": 1.8750617283950617,
+      "matching_active_path_pixels": null,
+      "gold_tip_pixels": 41
+    },
+    {
+      "frame": 720,
+      "count": 0,
+      "mean_absolute_rgb_error": 1.7050165037722909,
+      "matching_active_path_pixels": null,
+      "gold_tip_pixels": null
+    },
+    {
+      "frame": 911,
+      "count": 5000,
+      "mean_absolute_rgb_error": 1.7610669581618656,
+      "matching_active_path_pixels": 69,
+      "gold_tip_pixels": 36
+    },
+    {
+      "frame": 1050,
+      "count": 9826,
+      "mean_absolute_rgb_error": 1.8474211248285322,
+      "matching_active_path_pixels": 65,
+      "gold_tip_pixels": 38
+    },
+    {
+      "frame": 1055,
+      "count": 10000,
+      "mean_absolute_rgb_error": 1.8587427126200273,
+      "matching_active_path_pixels": 66,
+      "gold_tip_pixels": 39
+    },
+    {
+      "frame": 1061,
+      "count": 10208,
+      "mean_absolute_rgb_error": 1.858573816872428,
+      "matching_active_path_pixels": 68,
+      "gold_tip_pixels": 41
+    },
+    {
+      "frame": 1200,
+      "count": 15035,
+      "mean_absolute_rgb_error": 1.9337512860082304,
+      "matching_active_path_pixels": 65,
+      "gold_tip_pixels": 67
+    },
+    {
+      "frame": 1343,
+      "count": 20001,
+      "mean_absolute_rgb_error": 1.9251463906035666,
+      "matching_active_path_pixels": null,
+      "gold_tip_pixels": 40
+    },
+    {
+      "frame": 1440,
+      "count": 0,
+      "mean_absolute_rgb_error": 1.709241898148148,
+      "matching_active_path_pixels": null,
+      "gold_tip_pixels": null
+    },
+    {
+      "frame": 1631,
+      "count": 5000,
+      "mean_absolute_rgb_error": 1.7558661265432098,
+      "matching_active_path_pixels": 68,
+      "gold_tip_pixels": 38
+    },
+    {
+      "frame": 1770,
+      "count": 9826,
+      "mean_absolute_rgb_error": 1.832582518861454,
+      "matching_active_path_pixels": 69,
+      "gold_tip_pixels": 41
+    },
+    {
+      "frame": 1775,
+      "count": 10000,
+      "mean_absolute_rgb_error": 1.8533541237997258,
+      "matching_active_path_pixels": 66,
+      "gold_tip_pixels": 42
+    },
+    {
+      "frame": 1781,
+      "count": 10208,
+      "mean_absolute_rgb_error": 1.8708091135116598,
+      "matching_active_path_pixels": 67,
+      "gold_tip_pixels": 44
+    },
+    {
+      "frame": 1920,
+      "count": 15035,
+      "mean_absolute_rgb_error": 1.9244032921810699,
+      "matching_active_path_pixels": 68,
+      "gold_tip_pixels": 87
+    },
+    {
+      "frame": 2063,
+      "count": 20001,
+      "mean_absolute_rgb_error": 1.915767103909465,
+      "matching_active_path_pixels": null,
+      "gold_tip_pixels": 47
+    },
+    {
+      "frame": 2159,
+      "count": 20001,
+      "mean_absolute_rgb_error": 1.915434456447188,
+      "matching_active_path_pixels": null,
+      "gold_tip_pixels": 47
+    }
+  ]
+}

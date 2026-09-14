@@ -1,0 +1,64 @@
+{
+  "description": "Ordered cumulative Fresnel sum linked to physical aperture position",
+  "stages": [
+    {
+      "F": 2.0,
+      "lambda_over_initial_lambda": 1.0,
+      "scan_start_seconds": 1.0,
+      "scan_stop_seconds": 11.0,
+      "phase_scale_half_width_over_a": 0.7071067811865475,
+      "phase_scale_crossing_seconds": 7.071067811865475,
+      "phase_scale_crossing_frames": 424.2640687119285,
+      "curve_samples": 4087,
+      "endpoint": [
+        0.831669084439039,
+        -0.1448377277116425
+      ],
+      "quadrature_error_all_scan_frames": 9.000523778413571e-16
+    },
+    {
+      "F": 32.0,
+      "lambda_over_initial_lambda": 0.0625,
+      "scan_start_seconds": 13.0,
+      "scan_stop_seconds": 23.0,
+      "phase_scale_half_width_over_a": 0.17677669529663687,
+      "phase_scale_crossing_seconds": 1.7677669529663687,
+      "phase_scale_crossing_frames": 106.06601717798212,
+      "curve_samples": 16344,
+      "endpoint": [
+        0.9600163947702116,
+        -0.03958796598418268
+      ],
+      "quadrature_error_all_scan_frames": 1.5598935989314924e-15
+    },
+    {
+      "F": 512.0,
+      "lambda_over_initial_lambda": 0.00390625,
+      "scan_start_seconds": 25.0,
+      "scan_stop_seconds": 35.0,
+      "phase_scale_half_width_over_a": 0.044194173824159216,
+      "phase_scale_crossing_seconds": 0.44194173824159216,
+      "phase_scale_crossing_frames": 26.51650429449553,
+      "curve_samples": 65370,
+      "endpoint": [
+        0.9900497268676027,
+        -0.009944088987085486
+      ],
+      "quadrature_error_all_scan_frames": 4.389035203518301e-14
+    }
+  ],
+  "same_linear_scan_speed": 0.2,
+  "duration_seconds": 36.0,
+  "fps": 60,
+  "resolution": [
+    1440,
+    960
+  ],
+  "pixels_per_amplitude_unit": 650.0,
+  "phase_reference": "U / exp(ikz); normalized 1D Fresnel kernel retained",
+  "grouped": false,
+  "endpoint_rotation_or_rescaling": false,
+  "geometry_z_over_a": 1000.0,
+  "max_omitted_quartic_phase_radians": 0.00040212385965949355,
+  "max_independent_quadrature_error": 4.389035203518301e-14
+}

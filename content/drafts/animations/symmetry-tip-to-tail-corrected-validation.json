@@ -1,0 +1,62 @@
+{
+  "physics": {
+    "status": "passed",
+    "quadrature_12_vs_24_max_absolute_error": 5.958162778904058e-16,
+    "independent_aperture_integral_error": 3.469446951953614e-15,
+    "kernel_vs_angular_spectrum_max_relative_error": 1.5485256514431798e-14,
+    "open_plane_repropagation_relative_errors_extent_2048": [
+      6.037080292199731e-07,
+      3.6222636749581686e-07,
+      1.2074238447813853e-07,
+      2.647619091116904e-07,
+      3.0188013295657025e-07
+    ],
+    "spectral_1_2_7_63_steps_max_error": 2.1299217127873555e-14,
+    "plane_wave_1_2_7_63_steps_error": 1.5546449822360914e-15,
+    "symmetric_detector_error": 1.4432899320127035e-15,
+    "center_finite_aperture_phase_degrees": -5.057997625773197,
+    "center_intensity_relative_to_free_center": 1.097853449151701,
+    "center_element_magnitudes_min_max": [
+      0.0714522566071573,
+      0.10774815250527807
+    ],
+    "phase_reference": "unobstructed field from A at central B; fixed for all frames",
+    "source": "outgoing cylindrical wave, H0^(1)(kr), in a 2D scalar model",
+    "aperture": "one open interval [-2.8,2.8], partitioned into 49 finite elements",
+    "limitations": "Scalar thin-mask diffraction, not a full electromagnetic material-screen calculation. Open-plane spatial checks truncate at |y|=2048; spectral composition is untruncated."
+  },
+  "layout": {
+    "minimum_plot_margin_pixels": 28.26377040912746,
+    "same_scale_all_frames": true
+  },
+  "videos": [
+    {
+      "file": "symmetry-tip-to-tail-corrected.mp4",
+      "frames": 444,
+      "seconds": 18.5,
+      "bytes": 632172,
+      "full_decode": "passed"
+    },
+    {
+      "file": "symmetry-many-slit-corrected.mp4",
+      "frames": 444,
+      "seconds": 18.5,
+      "bytes": 954913,
+      "full_decode": "passed"
+    }
+  ],
+  "encoded_frame_comparisons": [
+    {
+      "video": "symmetry-tip-to-tail-corrected",
+      "decoded_frames": 444,
+      "selected_frames": 9,
+      "max_mean_pixel_error_vs_preview": 1.694566798941799
+    },
+    {
+      "video": "symmetry-many-slit-corrected",
+      "decoded_frames": 444,
+      "selected_frames": 9,
+      "max_mean_pixel_error_vs_preview": 1.4632118055555556
+    }
+  ]
+}

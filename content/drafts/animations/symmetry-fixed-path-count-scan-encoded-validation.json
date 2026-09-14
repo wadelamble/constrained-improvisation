@@ -1,0 +1,187 @@
+{
+  "decoded_frames": 2175,
+  "fps": 60.0,
+  "resolution": [
+    1440,
+    960
+  ],
+  "duration_seconds": 36.25,
+  "representative_checks": [
+    {
+      "frame": 30,
+      "stage": 1,
+      "added_vectors": 0,
+      "mean_absolute_rgb_error": 1.7404926215277778,
+      "active_marker_blue_pixels": null
+    },
+    {
+      "frame": 62,
+      "stage": 1,
+      "added_vectors": 1,
+      "mean_absolute_rgb_error": 1.7555198688271605,
+      "active_marker_blue_pixels": 50
+    },
+    {
+      "frame": 257,
+      "stage": 1,
+      "added_vectors": 40,
+      "mean_absolute_rgb_error": 1.7625728202160493,
+      "active_marker_blue_pixels": 52
+    },
+    {
+      "frame": 357,
+      "stage": 1,
+      "added_vectors": 60,
+      "mean_absolute_rgb_error": 1.7743824749228394,
+      "active_marker_blue_pixels": 49
+    },
+    {
+      "frame": 362,
+      "stage": 1,
+      "added_vectors": 61,
+      "mean_absolute_rgb_error": 1.774406105324074,
+      "active_marker_blue_pixels": 49
+    },
+    {
+      "frame": 367,
+      "stage": 1,
+      "added_vectors": 62,
+      "mean_absolute_rgb_error": 1.7738175154320988,
+      "active_marker_blue_pixels": 50
+    },
+    {
+      "frame": 467,
+      "stage": 1,
+      "added_vectors": 82,
+      "mean_absolute_rgb_error": 1.794473620756173,
+      "active_marker_blue_pixels": 52
+    },
+    {
+      "frame": 662,
+      "stage": 1,
+      "added_vectors": 121,
+      "mean_absolute_rgb_error": 1.8247882908950617,
+      "active_marker_blue_pixels": 53
+    },
+    {
+      "frame": 755,
+      "stage": 2,
+      "added_vectors": 0,
+      "mean_absolute_rgb_error": 1.7312109375,
+      "active_marker_blue_pixels": null
+    },
+    {
+      "frame": 787,
+      "stage": 2,
+      "added_vectors": 1,
+      "mean_absolute_rgb_error": 1.7478067129629629,
+      "active_marker_blue_pixels": 49
+    },
+    {
+      "frame": 982,
+      "stage": 2,
+      "added_vectors": 40,
+      "mean_absolute_rgb_error": 1.7785886863425926,
+      "active_marker_blue_pixels": 52
+    },
+    {
+      "frame": 1082,
+      "stage": 2,
+      "added_vectors": 60,
+      "mean_absolute_rgb_error": 1.78640625,
+      "active_marker_blue_pixels": 50
+    },
+    {
+      "frame": 1087,
+      "stage": 2,
+      "added_vectors": 61,
+      "mean_absolute_rgb_error": 1.7879735725308643,
+      "active_marker_blue_pixels": 50
+    },
+    {
+      "frame": 1092,
+      "stage": 2,
+      "added_vectors": 62,
+      "mean_absolute_rgb_error": 1.788904079861111,
+      "active_marker_blue_pixels": 49
+    },
+    {
+      "frame": 1192,
+      "stage": 2,
+      "added_vectors": 82,
+      "mean_absolute_rgb_error": 1.8254494598765432,
+      "active_marker_blue_pixels": 52
+    },
+    {
+      "frame": 1387,
+      "stage": 2,
+      "added_vectors": 121,
+      "mean_absolute_rgb_error": 1.8470351080246914,
+      "active_marker_blue_pixels": 50
+    },
+    {
+      "frame": 1480,
+      "stage": 3,
+      "added_vectors": 0,
+      "mean_absolute_rgb_error": 1.7303872492283952,
+      "active_marker_blue_pixels": null
+    },
+    {
+      "frame": 1512,
+      "stage": 3,
+      "added_vectors": 1,
+      "mean_absolute_rgb_error": 1.7481679205246914,
+      "active_marker_blue_pixels": 49
+    },
+    {
+      "frame": 1707,
+      "stage": 3,
+      "added_vectors": 40,
+      "mean_absolute_rgb_error": 1.7857626832561728,
+      "active_marker_blue_pixels": 51
+    },
+    {
+      "frame": 1807,
+      "stage": 3,
+      "added_vectors": 60,
+      "mean_absolute_rgb_error": 1.806456886574074,
+      "active_marker_blue_pixels": 51
+    },
+    {
+      "frame": 1812,
+      "stage": 3,
+      "added_vectors": 61,
+      "mean_absolute_rgb_error": 1.8085211709104938,
+      "active_marker_blue_pixels": 50
+    },
+    {
+      "frame": 1817,
+      "stage": 3,
+      "added_vectors": 62,
+      "mean_absolute_rgb_error": 1.8097709297839506,
+      "active_marker_blue_pixels": 51
+    },
+    {
+      "frame": 1917,
+      "stage": 3,
+      "added_vectors": 82,
+      "mean_absolute_rgb_error": 1.8480432581018518,
+      "active_marker_blue_pixels": 50
+    },
+    {
+      "frame": 2112,
+      "stage": 3,
+      "added_vectors": 121,
+      "mean_absolute_rgb_error": 1.884341483410494,
+      "active_marker_blue_pixels": 51
+    },
+    {
+      "frame": 2174,
+      "stage": 3,
+      "added_vectors": 121,
+      "mean_absolute_rgb_error": 1.8836390817901234,
+      "active_marker_blue_pixels": 51
+    }
+  ],
+  "maximum_frame_mean_absolute_rgb_error": 1.884341483410494
+}

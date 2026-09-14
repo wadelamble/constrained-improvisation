@@ -1,0 +1,22 @@
+{
+  "full_complex_overlap": 0.48675225595997185,
+  "angle_degrees": 60.87266063019981,
+  "max_norm_error": 2.220446049250313e-16,
+  "max_complex_overlap_error": 7.269830713873503e-17,
+  "max_fourier_pair_error": 1.716587549445839e-16,
+  "max_geometry_error": 1.6653345369377348e-16,
+  "max_probability_mass_outside_plot": 1.4277795612471778e-09,
+  "initial_states": "q_j=p_j in {1.1,2.3}; normalized unit-width coherent Gaussians",
+  "translation": "direct argument shift; full phases retained",
+  "columns": "independent translations of the same initial pair, each in its own representation",
+  "geometry": "schematic real-positive overlap; face-on great circle, orthographic projection; not a Bloch sphere",
+  "duration": 17.0,
+  "fps": 30,
+  "size": [
+    1440,
+    1040
+  ],
+  "frames": 510,
+  "content_bottom": 929,
+  "controls_safe_top": 940
+}

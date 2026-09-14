@@ -1,0 +1,187 @@
+{
+  "decoded_frames": 2124,
+  "duration_seconds": 35.4,
+  "fps": 60.0,
+  "resolution": [
+    1440,
+    960
+  ],
+  "representative_checks": [
+    {
+      "frame": 30,
+      "stage": 1,
+      "added_vectors": 0,
+      "mean_absolute_rgb_error": 1.7571245659722223,
+      "active_opening_blue_pixels": null
+    },
+    {
+      "frame": 65,
+      "stage": 1,
+      "added_vectors": 1,
+      "mean_absolute_rgb_error": 1.7778501157407407,
+      "active_opening_blue_pixels": 50
+    },
+    {
+      "frame": 245,
+      "stage": 1,
+      "added_vectors": 16,
+      "mean_absolute_rgb_error": 1.7912719425154322,
+      "active_opening_blue_pixels": 48
+    },
+    {
+      "frame": 341,
+      "stage": 1,
+      "added_vectors": 24,
+      "mean_absolute_rgb_error": 1.7709522087191358,
+      "active_opening_blue_pixels": 50
+    },
+    {
+      "frame": 353,
+      "stage": 1,
+      "added_vectors": 25,
+      "mean_absolute_rgb_error": 1.772743537808642,
+      "active_opening_blue_pixels": 49
+    },
+    {
+      "frame": 365,
+      "stage": 1,
+      "added_vectors": 26,
+      "mean_absolute_rgb_error": 1.773033130787037,
+      "active_opening_blue_pixels": 51
+    },
+    {
+      "frame": 461,
+      "stage": 1,
+      "added_vectors": 34,
+      "mean_absolute_rgb_error": 1.7848734085648148,
+      "active_opening_blue_pixels": 50
+    },
+    {
+      "frame": 641,
+      "stage": 1,
+      "added_vectors": 49,
+      "mean_absolute_rgb_error": 1.809557773919753,
+      "active_opening_blue_pixels": 47
+    },
+    {
+      "frame": 738,
+      "stage": 2,
+      "added_vectors": 0,
+      "mean_absolute_rgb_error": 1.7382795621141975,
+      "active_opening_blue_pixels": null
+    },
+    {
+      "frame": 773,
+      "stage": 2,
+      "added_vectors": 1,
+      "mean_absolute_rgb_error": 1.7543846450617284,
+      "active_opening_blue_pixels": 49
+    },
+    {
+      "frame": 953,
+      "stage": 2,
+      "added_vectors": 16,
+      "mean_absolute_rgb_error": 1.7667021122685185,
+      "active_opening_blue_pixels": 49
+    },
+    {
+      "frame": 1049,
+      "stage": 2,
+      "added_vectors": 24,
+      "mean_absolute_rgb_error": 1.7612839988425926,
+      "active_opening_blue_pixels": 50
+    },
+    {
+      "frame": 1061,
+      "stage": 2,
+      "added_vectors": 25,
+      "mean_absolute_rgb_error": 1.7639472415123456,
+      "active_opening_blue_pixels": 49
+    },
+    {
+      "frame": 1073,
+      "stage": 2,
+      "added_vectors": 26,
+      "mean_absolute_rgb_error": 1.7639040798611112,
+      "active_opening_blue_pixels": 50
+    },
+    {
+      "frame": 1169,
+      "stage": 2,
+      "added_vectors": 34,
+      "mean_absolute_rgb_error": 1.774595630787037,
+      "active_opening_blue_pixels": 49
+    },
+    {
+      "frame": 1349,
+      "stage": 2,
+      "added_vectors": 49,
+      "mean_absolute_rgb_error": 1.796819782021605,
+      "active_opening_blue_pixels": 49
+    },
+    {
+      "frame": 1446,
+      "stage": 3,
+      "added_vectors": 0,
+      "mean_absolute_rgb_error": 1.7369451678240742,
+      "active_opening_blue_pixels": null
+    },
+    {
+      "frame": 1481,
+      "stage": 3,
+      "added_vectors": 1,
+      "mean_absolute_rgb_error": 1.7572350019290124,
+      "active_opening_blue_pixels": 49
+    },
+    {
+      "frame": 1661,
+      "stage": 3,
+      "added_vectors": 16,
+      "mean_absolute_rgb_error": 1.7620114776234568,
+      "active_opening_blue_pixels": 48
+    },
+    {
+      "frame": 1757,
+      "stage": 3,
+      "added_vectors": 24,
+      "mean_absolute_rgb_error": 1.759208622685185,
+      "active_opening_blue_pixels": 49
+    },
+    {
+      "frame": 1769,
+      "stage": 3,
+      "added_vectors": 25,
+      "mean_absolute_rgb_error": 1.7614342206790123,
+      "active_opening_blue_pixels": 49
+    },
+    {
+      "frame": 1781,
+      "stage": 3,
+      "added_vectors": 26,
+      "mean_absolute_rgb_error": 1.761183449074074,
+      "active_opening_blue_pixels": 51
+    },
+    {
+      "frame": 1877,
+      "stage": 3,
+      "added_vectors": 34,
+      "mean_absolute_rgb_error": 1.7733586516203703,
+      "active_opening_blue_pixels": 50
+    },
+    {
+      "frame": 2057,
+      "stage": 3,
+      "added_vectors": 49,
+      "mean_absolute_rgb_error": 1.786423369984568,
+      "active_opening_blue_pixels": 47
+    },
+    {
+      "frame": 2123,
+      "stage": 3,
+      "added_vectors": 49,
+      "mean_absolute_rgb_error": 1.7864436246141975,
+      "active_opening_blue_pixels": 47
+    }
+  ],
+  "max_frame_mean_absolute_rgb_error": 1.809557773919753
+}

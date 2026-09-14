@@ -1,30 +1,46 @@
-####  Canonical Commutation Relation
-Once we have a function representation of translational symmetry, we may note that we can translate a function not only in the direction we set out to represent, $x$, but also in the wave number, $k$. While shifting the wave number isn't a translation in the space we live in, from a mathematical perspective, translation in $k$-space is no different than translation in position space.
+####  Wave Symmetry
+Once we have a function representation of translational symmetry, we might be clever and notice that we can translate a function in wave number, $k$ just as well as we can in position, $x$. While shifting the wave number isn't a translation in the familiar physical space we live in, from a mathematical perspective, $k$-space is the dual, or equivalent up to role reversal, of $x$-space. If we want to understand the full symmetry group the wave function represents and the implications it has, we would be wise to take this observation seriously.
 
-The $x$- and $k$-translation operators both act unitarily, preserving the overlap of wave functions.
+![Separate translations in position and wave number, each shown in its own representation](../../content/drafts/animations/symmetry-ccr-x-k-translations-symmetric-poster.png)
 
-Translation by $a$ in $x$ preserves the inner product:
+[Open MP4: symmetry-ccr-x-k-translations-symmetric.mp4](../../content/drafts/animations/symmetry-ccr-x-k-translations-symmetric.mp4)
 
-
-```math
-\langle T_x(a)\psi,T_x(a)\chi\rangle
-=
-\langle\psi,\chi\rangle.
-```
-
-Translation by $b$ in $k$ does as well:
+By now, we know that a symmetry is defined by what it leaves invariant. We've seen that translations in $x$ leave the inner product of complex wave functions -- intuitively, their "overlap" -- unchanged. We noted that mathematicians call this invariance "unitarity." Translation in $k$-space shares this invariant.
 
 ```math
-\langle T_k(b)\psi,T_k(b)\chi\rangle
-=
-\langle\psi,\chi\rangle.
+\begin{gathered}
+\text{Translation by }a\text{ in }x\\[0.5em]
+\langle T_x(a)\psi,T_x(a)\chi\rangle\\
+=\langle\psi,\chi\rangle
+\end{gathered}
+\qquad
+\begin{gathered}
+\text{Translation by }b\text{ in }k\\[0.5em]
+\langle T_k(b)\psi,T_k(b)\chi\rangle\\
+=\langle\psi,\chi\rangle
+\end{gathered}
 ```
 
-![A wave packet translated first in x and then in k](../../content/drafts/animations/symmetry-ccr-x-k-translations-contact-sheet.png)
+![Four panes show two wave functions translating in x or k while their overlap is preserved, with schematic state-space projections for a real, positive overlap](../../content/drafts/animations/symmetry-ccr-unitarity-poster.png)
 
-[Open MP4: symmetry-ccr-x-k-translations.mp4](../../content/drafts/animations/symmetry-ccr-x-k-translations.mp4)
+[Open MP4: symmetry-ccr-unitarity.mp4](../../content/drafts/animations/symmetry-ccr-unitarity.mp4)
 
-The additional structure of the group appears when the two transformations are composed: $x$ and $k$ translations do *not* commute. To see this, consider the action of traversing a finite loop in $x$-$k$ space. First, write a single mode in the $x$ representation:
+
+In addition to position and wave number, waves have a third independent way of changing. A wave's  **phase**, $\phi$, refers to where it is in its cyclic pattern. For example, a phase shift of $2\pi$, or one full "cycle," returns the wave to its exact initial state. We need to be a bit careful here. For a pure mode, shifting its position is indisguishable from shifting its phase, somewhat in the way the turning of a barbershop sign appears as though its stripes are moving up and down. We might, then, be tempted to think there is no difference between position and phase shifts. But the single mode is an idealization. In the general case, in which the wave function is a composition of modes, position translation shifts the entire function. Phase translation shifts each mode by the same fraction of its cycle, changing the function while leaving its magnitude envelope unchanged.
+
+![Nine complex modes and their exact sum rotate through five phase turns while their magnitude envelopes remain fixed](../../content/drafts/animations/symmetry-complex-phase-modes-poster.png)
+
+[Open MP4: symmetry-complex-phase-modes.mp4](../../content/drafts/animations/symmetry-complex-phase-modes.mp4)
+
+We can also discover and define phase directly from our symmetry group's commutation relations, which gives us a very useful algebraic packaging of the group structure. Let's ask the question:
+
+```math
+[\hat X, \hat K] = \; ?
+```
+
+If the commutator is non-zero \(and linearly independent of  $\hat X$ and $\hat K$\), there must be a third kind of transformation to the complete symmetry group. To find the commutator, we follow the usual procedure of translating the function around a loop in $x$-$k$ space and asking if the function changes. If it does $?$ is nonzero, the commutator is the generator of that change, and the action will be identifiably that of a phase shift.
+
+First, write a single mode in the $x$ and $k$ representations:
 
 ```math
 \psi_{k_0}(x)
@@ -32,17 +48,14 @@ The additional structure of the group appears when the two transformations are c
 e^{ik_0x}.
 ```
 
-The same mode in the $k$ representation is
-
 ```math
-\widetilde\psi_{k_0}(k)
-=
-\sqrt{2\pi}\,\delta(k-k_0),
+\begin{gathered}
+\tilde{\psi}_{k_0}(k)=2\pi\,\delta(k-k_0),\\[0.5em]
+\text{where }\delta\text{ is a spike at }k_0\text{ that integrates to }1.
+\end{gathered}
 ```
 
-where $\delta$ means a unit-integral spike at $k_0$.
-
-Define the $x$ translation operator in the $x$ representation:
+Define the $x$ and $k$ translation operators in their respective representations:
 
 ```math
 (T_x(a)\psi_{k_0})(x)
@@ -50,15 +63,13 @@ Define the $x$ translation operator in the $x$ representation:
 \psi_{k_0}(x-a).
 ```
 
-Define the $k$ translation operator in the $k$ representation:
-
 ```math
 (T_k(b)\widetilde\psi_{k_0})(k)
 =
 \widetilde\psi_{k_0}(k-b).
 ```
 
-In order to carry out the translations, we have to choose either the position basis or the wave-number basis. Let's choose the position basis:
+Working in the position basis:
 
 ```math
 (T_k(b)\psi)(x)
@@ -68,7 +79,9 @@ In order to carry out the translations, we have to choose either the position ba
 e^{ibx}\psi(x).
 ```
 
-Here $T_x(a)$ shifts $x$ by $a$, while $T_k(b)$ shifts $k$ by $b$. The two possible orders give
+$\hat X$ generates translation in $k$-space just as $\hat K$ generated translations in $x$-space. In $x$-space, it multiplies $\psi$ by $x$ as it weights each component of $\psi$ by its position coordinate.
+
+We can construct a loop by first translating the function by $b$ in $k$ and by $a$ in $x$, then by $-b$ in $k$ and by $-a$ in $x$.
 
 ```math
 (T_x(a)T_k(b)\psi_{k_0})(x)
@@ -76,23 +89,21 @@ Here $T_x(a)$ shifts $x$ by $a$, while $T_k(b)$ shifts $k$ by $b$. The two possi
 e^{i(k_0+b)(x-a)},
 ```
 
-but
-
 ```math
 (T_k(b)T_x(a)\psi_{k_0})(x)
 =
 e^{ibx}e^{ik_0(x-a)}.
 ```
 
-Therefore
-
 ```math
-T_x(a)T_k(b)\psi_{k_0}
+\bigl(T_x(-a)T_k(-b)T_x(a)T_k(b)\psi_{k_0}\bigr)(x)
 =
-e^{-iab}T_k(b)T_x(a)\psi_{k_0},
+e^{-ib(x+a)}e^{i(k_0+b)x}
+=
+e^{-iab}\psi_{k_0}(x).
 ```
 
-so the two shifts fail to commute by the phase factor $e^{-iab}$, or simply, $e^{i\phi}$. Here $\phi$ is the phase angle, the parameter of phase transformations.
+The two shifts fail to commute by the factor $e^{-iab}$. Writing $\phi=-ab$, the loop multiplies the function by $e^{i\phi}$. But this is precisely a phase shift, a rotation in the complex plane that “turns” the whole "spiral" of the wave function.
 
 Phase translation, then, is a third translation symmetry, whose invariant is the inner product under its unitary action, rounding out the group of $x$, $k$, and phase translations coupled through Fourier structure:
 
@@ -114,9 +125,9 @@ Phase translation, then, is a third translation symmetry, whose invariant is the
 \langle\psi,\chi\rangle.
 ```
 
-![An x–k loop returns the packet and spectrum while leaving a global phase](../../content/drafts/animations/symmetry-ccr-loop-global-phase-contact-sheet.png)
+![A complex spiral follows an x–k loop and returns to its original magnitude envelope with a quarter-turn of phase remaining](../../content/drafts/animations/symmetry-ccr-loop-complex-poster.png)
 
-[Open MP4: symmetry-ccr-loop-global-phase.mp4](../../content/drafts/animations/symmetry-ccr-loop-global-phase.mp4)
+[Open MP4: symmetry-ccr-loop-complex.mp4](../../content/drafts/animations/symmetry-ccr-loop-complex.mp4)
 
 The infinitesimal closed $x$-$k$ loop is generated by $[\hat X,\hat K]$. Because the finite loop leaves a phase translation, and phase translations are generated by $iI$, we have:
 
@@ -126,7 +137,15 @@ The infinitesimal closed $x$-$k$ loop is generated by $[\hat X,\hat K]$. Because
 iI.
 ```
 
-##### The Uncertainty Principle
+Before we close out here, a small amount of house cleaning is needed to keep the picky happy. First, we have not shown explicitly that changes in $\phi$ are linearly independent of change in $x$ and $k$. They are, as evidenced by the fact that shifts in $\phi$ can leave the wave function's position and wave number unchanged. We also did not show that there are *only* 3 generators in the group. This is done by showing that the generators close under commutation:
+
+```math
+[\hat X,\hat K]=i\hat\Phi,
+\qquad
+[\hat X,\hat\Phi]=[\hat K,\hat\Phi]=0.
+```
+
+#####  Position Wave Number Uncertainty
 This commutation relation compactly expresses the Fourier structure we have discussed. A corollary of that structure is that a wave cannot have both a sharply defined position and a sharply defined wave number, for a pure mode extends to infinity in $x$ while a localized function in $x$ contains a broad range of $k$ modes.
 
 ![A wave function and its Fourier transform sweep between the localization extremes](../../content/drafts/animations/symmetry-xk-fourier-amplitudes-contact-sheet.png)
@@ -177,7 +196,7 @@ This derivation is quite involved, but we can get the gist of it simply by showi
 
 *Trade-off in uncertainty of position and wave number*
 
-##### Rays and Stationarity
+##### Phase Stationarity
 We have an intuitive sense that a travelling wave can be can be thought of as a ray. But we also know this isn't always the case, a wave can bend around and object, or passing through an aperture, it reemerges as a new sperical wave. 
 
 ![Ray-like propagation beside diffraction and interference](../../content/drafts/animations/symmetry-rays-and-double-slit-contact-sheet.png)
@@ -292,121 +311,74 @@ We can plot the contribution from each path ACB and ADB in the complex plane, sh
 
 ![The two path contributions added tip-to-tail](../../content/drafts/diagrams/symmetry-double-slit-two-path-phasor-sum.png)
 
-Now let's play a game and start adding more slits.
+Now let's see what happens when we add many more slits.
 
 ![Many paths, their complex sum, and the resulting interference pattern](../../content/drafts/animations/symmetry-many-slit-paths-phasors-interference-contact-sheet.png)
 
 [Open MP4: symmetry-many-slit-paths-phasors-interference.mp4](../../content/drafts/animations/symmetry-many-slit-paths-phasors-interference.mp4)
 
-As the path deviates more from a straight, minimum length path, it has a greater first-order change in phase. \(This is the common result from calculus that near a function's minimum, there is no change to the value of the function in the first order of the argument\). Thus, as we can see from the tip-to-tail diagram, the change in magntiude from A to B is dominated by paths near the minimum length. The larger the tip-to-tail sum the larger the magnitude and thus "brighter" the spot on the projection screen is. Taken together, this is the wave's interference patten, and the procedure we've developed is used to calculate it.
-...........
-Now what if we add another screen with two slits? What if we add two more slits to each of the two downstream screens?
+As the path deviates more from a straight, minimum length path, it has a greater first-order change in phase. \(This is the common result from calculus that near a function's minimum, there is no change to the value of the function in the first order of the argument\). When the candidate paths are far from the stationary value their phases vary greatly, effectively cancelling out their contributions to the total sum. On the other hand, the phases of the paths near the stationary path align and dominate the sum. The yellow line in the tip-to-tail pane of the animation shows the sum of each of these contributions and thus gives value of A relative to B. The resulting intensity on the projection screen is the square of this magnitude.
 
-[animation with candidate paths drawn]
+We can extend this procedure to its limit and include infinitely many screens with infinitely many slits, and when doing so, recover a plane wave. The construction, which will be our bridge to a formulation of quantum mechanics, was articulated by Huygens in the late 1600s!
 
+![Huygens wavelets and their coherent sum as slits and screens are added](../../content/drafts/animations/symmetry-schematic-screens-v3-check-40.png)
 
-Obviously we can apply the same procedure as for our simpler two slit case and find $\Psi$ at B. And, of course We can continue along these lines until we reach the limit.
+[Open MP4: symmetry-schematic-screens-v3.mp4](../../content/drafts/animations/symmetry-schematic-screens-v3.mp4)
 
-[beautiful animation of countless wavelets (both -> inf slits and -> inf screens), no paths drawn to avoid clutter]
+Summing phase advances along infinite paths between point sources is equivalent to globally propagating a wave front. 
 
-The wave's propagation in the limit of this arrangement is just a freely propagating wave! Now let us ask, for a freely propagating wave that moves from A to B, what is the phase at B. We can answer directly. [how]. But we can also answer by summing up all the tiny paths through our infinity of slits. If we assume our slits are all symmetrically placed so that the magnitude emanating from each slit is equal, then each path contributes only a phase, which is a single arrow in the complex plane all with the same magnitude.
+Let us ask. What happens when we vary the wavelength relative to the slit? As the wavelength becomes small, even a slight change in path length can produce a large phase change:
 
+```math
+\phi=\frac{2\pi L}{\lambda}=2\pi n+\theta,
+\qquad 0\leq\theta<2\pi
+```
 
-// announce POLA here near the end
+Away from a stationary path, the phase winds through many cycles over a small range of paths, leaving a more or less random phase remainder so that the contribution from these paths cancel, and only paths near the stationary combine to contribute to the sum. 
 
-##### From Fourier to QM uncertainty
-The Fourier structure itself and the relation $\Delta x\,\Delta k\ge\frac12.$ says nothing about behavior in the real world, it is pure mathematical artifice. If we are to use this artifice to describe the physical world, $x$ and $k$ must be associated with physical dimensions. The abstract structure does require that the product of $x$ and $k$ be dimensionless to match phase. To apply the Fourier structure to physics two things must be done. First, we assign $x$ the dimension of length \(or time for time translation\). Second, we need a scale that converts the dimensionless phase encoded by the commutator into a dimensionful physical quantity.
+![Three trials accumulate a quarter turn at the longer wavelength while the shorter wavelength produces many rotations](../../content/drafts/animations/symmetry-phase-remainder-spinners-run-3.png)
 
-Ok, so how do we fix up the chapter. first i kind of prattle on "making things physical" and then i put h-bar in the commutator.
+[Open MP4: symmetry-phase-remainder-spinners.mp4](../../content/drafts/animations/symmetry-phase-remainder-spinners.mp4)
 
-So I need to replace this:
+In this regimes, as waves pass through slits, they behave purely as rays, just as if you through a ball from one point through a hole, it could only hit the projection screen in one spot.
 
-The Fourier structure itself and the relation $\Delta x\\,\Delta k\ge\frac12.$ says nothing about behavior in the real world, it is pure mathematical artifice. If we are to use this artifice to describe the physical world, $x$ and $k$ must be associated with physical dimensions. The abstract structure does require that the product of $x$ and $k$ be dimensionless to match phase. To apply the Fourier structure to physics two things must be done. First, we assign $x$ the dimension of length \\(or time for time translation\\). Second, we need a scale that converts the dimensionless phase encoded by the commutator into a dimensionful physical quantity.
+![Matching colors connect candidate paths to their contributions in the tip-to-tail sum as wavelength decreases](../../content/drafts/animations/symmetry-spectrum-path-diamond-wavelength-scan-lambda-3.png)
 
-with something that says "x/k is a formal structure in which [x,k] provides a quantity that when extremized gives the ray in the appropriate limit. the ray here also is a formal structure. we are going to claim that the real world follows this structure. but to do so, we must ask, what physical quantities pair with x as measured distance to obtain the HW structure. Say that again -- what quantities pair with measured distance such that [position, position-generator] is extremized in the right limit to find a physical path. Now we've said "physical path" rather blasely, what do we mean by that. We mean in one sense, the physical path of some ideal 'particle'. We also mean the ray that describes the wave propagation direction in the appropriate limit. Now QM enters. It says that the position measurements we obtain are for a particle. They are quantized. they cannot be 'amplified.' But the evolution of the state is of the wave function that carries the amplitudes for possible paths the particle can take that corresponds exactly to would-be rays of the wave functions. Now we ask, "what is the measurable quantity given by [position,position-generator] that is extremized. We already know it must be proportional phase. We knew that when we said it was going to fit in HW structure. The only other thing to know is that it must be very small, since in the limit we are talking about, everything macroscopic travels like a full coherent (is that the right word here) wave with a single clear ray between any two points. we than have [x,?] = ih-bar. from that we know from the H/W structure that ? = h-bar(k). That is the definition of momentum.
+[Open MP4: symmetry-spectrum-path-diamond-wavelength-scan.mp4](../../content/drafts/animations/symmetry-spectrum-path-diamond-wavelength-scan.mp4)
 
-Yes. But the new idea replaces more than that first paragraph: it replaces the block through the definition of \(\hat P\). The argument now has a different spine.
-Three corrections to your rough formulation first:
-- The commutator is not extremized. It identifies the phase direction; accumulated phase along candidate histories is stationary.
-- Position values are not quantized. What is countable is the particle or detection event. A one-particle wavefunction cannot be “amplified” into more particle; multiplying it by a constant gives the same normalized state.
-- Macroscopic objects do not behave classically because their states form one fully coherent wave. The relevant condition is
-\[
-\frac{S_{\mathrm{characteristic}}}{\hbar}\gg1,
-\]which makes nonstationary contributions cancel sharply. Decoherence supplies another part of the eventual classical story.
-I would replace the present block with something organized like this:
-So far, the \(x\)-\(k\) construction is formal. The Heisenberg–Weyl relation tells us that translations in \(x\) and \(k\) are accompanied by a translation in phase. That phase can be accumulated along candidate wave histories, and, in the appropriate limit, stationary phase singles out a ray. At this stage, \(x\), \(k\), phase, and even the ray are elements of a mathematical wave model.
-We now ask whether nature realizes this same pattern. We first identify \(x\) with measured distance. We then ask what measurable physical quantities occupy the two remaining roles: what quantity generates translations in physical position, and what quantity accumulates along a history such that its stationary histories appear as physical paths?
-Here “physical path” has two related meanings. For a classical wave, it is the ray describing the direction of propagation in the short-wavelength limit. For an ideally localized object, it is the classical trajectory. These are not the same physical object, but wave mechanics produces both limiting descriptions through the same stationary-phase structure.
-Quantum mechanics connects them in a peculiar way. A position measurement yields a localized, particle-like outcome, but the state assigning amplitudes to those possible outcomes evolves as a wavefunction. Multiplying a one-particle wavefunction does not produce more of the particle; its overall scale is removed by normalization. In the path formulation, the wavefunction is built by adding complex amplitudes associated with candidate position histories. In the classical limit, the histories near stationary phase predominate and form the classical path.
-The physical quantity whose stationarity identifies that classical path is called action. Phase and action both accumulate additively along a history, and their stationary histories coincide in this limit. They must therefore be related by a constant scale:
-\[
-S[\gamma]=\alpha\phi[\gamma].
-\]Classical wave mechanics gives us the stationary-phase structure but does not determine a universal value of \(\alpha\). Quantum experiment supplies that new physical fact:
-\[
-\alpha=\hbar.
-\]Thus
-\[
-S[\gamma]=\hbar\phi[\gamma].
-\]Because \(\hbar\) is extraordinarily small compared with ordinary macroscopic actions, phases away from the stationary history vary rapidly and cancel:
-\[
-\frac{S_{\mathrm{characteristic}}}{\hbar}\gg1.
-\]We now return to the Heisenberg–Weyl relation. Position has been fixed as measured distance, while the phase direction has been converted into physical action by the factor \(\hbar\). Preserving the same structure therefore requires the still-unnamed position generator to be
-\[
-\hat P:=\hbar\hat K.
-\]This physical generator of position translations is what we call momentum. It follows that
-\[
-[\hat X,\hat P]
-=
-[\hat X,\hbar\hat K]
-=
-i\hbar I.
-\]
-The essential conceptual chain is now:
-\[
-\text{formal wave structure}
-\longrightarrow
-\text{stationary-phase ray}
-\longrightarrow
-\text{measured configurations and physical paths}
-\]\[
-\longrightarrow
-S=\hbar\phi
-\longrightarrow
-\hat P=\hbar\hat K
-\longrightarrow
-[\hat X,\hat P]=i\hbar I.
-\]That lets the chapter genuinely discover action and momentum instead of naming them before explaining what physical roles they fill.
+##### From Wave Mechanics to Quantum Mechanics
+The Fourier structure itself and the relation $\Delta x\,\Delta k\ge\frac12.$ says nothing about behavior in the real world, it is a mathematical abstraction. If we are to use this abstraction to describe the physical world, $x$ and $k$ must be associated with something we can measure, some physical dimension. To apply the Fourier structure to physics two things must be done. First, we assign $x$ the dimension of length \(or time for time translation\). Second, we need a scale that converts the dimensionless phase, encoded by the commutator, into a quantity with physical dimensions. Why? Because, as we will see, the idea of stationarity we discussed above will allow us to find laws of physical evolution, and we must be able to construct the quantity under which different candidate histories are stationary from physical observables.
 
+But we are getting ahead of ourselves -- why should we want to apply the mathematical structure of wave propagation to formulating the laws of physics generally. The answer comes from quantum mechanics \(which is our current working model\). Physics is about saying how systems evolve over time. In quantum mechanics, there is no concept of objects with definite positions and velocities, only a probabilistic distribution over such "observables." But this distribution is given as the square of a wave function, which can be expressed either in position -- $x$ in our Fourier discussion -- or in what we will call momentum -- proportional to $k$ in our Fourier discussion. Note that what was was wave intensity \(the square of the complex magnitude\) is now the *probability* of measuring a point-like object at a particular position or momentum. What evolves over time is not the an object moving through space, but the wave function that encodes this distribution. Therefore, our entire discussion of phase stationariy can be precisely apporpriated for mechanical systems. The link we must discover is how to scale $phi$ to a quantity contructed from physical observables. We will call this quantity **action**, $S$. 
 
-
-Both the physical quantity we want this commutator to generate and abstract phase share the property that the paths, or histories, that physically predominate in the ray or classical limit are those for which these quantities are **stationary**. This means that nearby paths do not change this quantity to first order, just as one finds minimum, maximum, or saddle points of a function in calculus. If we have such a quantity, we then have a method to derive equations of motions by extremizing said quantity. At this point we are merely asserting that physical paths extremize the quantities. We will, however, show that ray-like wave propagation arises from stationary phase.
-
-In quantum mechanics the time evolution of a system is the time evolution of wave function describing it. For this reason, the physical quantity whose stationarity identifies the predominant ray-like histories must be proportional to the phase accumulated by the wavefunction along those same histories. This physical quantity is called **action** and, for a candidate history $\gamma$, quantum mechanics gives it the form:
+For a candidate history $\gamma$, quantum mechanics gives action the form:
 
 ```math
 S[\gamma]=\hbar\phi[\gamma],
 ```
 
-It follows that the commutator that generates action is:
+Via the structure of the $[\hat X,\hat K] = iI$ commutation relation, whatever scales $phi$ to action will also scale $k$ to the generator of translations in $x$, which we call **momentum**, $p$.
 
 ```math
-[\hat x, \hat P] = i \hbar I
+[\hat X,\hat K]=iI
+\;\xrightarrow{\times\hbar}\;
+[\hat X,\hbar\hat K]=i\hbar I
+\;\xrightarrow{\hat P=\hbar\hat K}\;
+[\hat X,\hat P]=i\hbar I
 ```
 
 This is called the quantum **canonical commutation relation**
 
-$\hat P$ generates physical translation and is the definition of **momentum**:
+Recall the $x$ and $p$ are the eigenvalues of the $\hat X$ and $\hat P$ operators respectively acting on the wave function. We then have:
 
 ```math
-\hat P = \hbar \hat K
-```
-
-Since $\hat P=\hbar\hat K$, the corresponding uncertainties satisfy $\Delta p=\hbar\Delta k$, giving:
-
-```math
-\Delta x\,\Delta p\ge\frac{\hbar}{2},
+\Delta x\,\Delta k\ge\frac{1}{2}
+\;\xrightarrow{\Delta p=\hbar\Delta k}\;
+\Delta x\,\Delta p\ge\frac{\hbar}{2}
 ```
 
 This is the Heisenberg uncertainty relation, which states that a quantum state cannot have perfectly sharp values of both position and momentum. $\hbar\approx1.055\times10^{-34}\,\mathrm{J\,s}$ is insanely tiny on the scale of everyday action, but governs the world of tiny scales.
 
 The canonical commutation relation, along with the definitions of \(\hat X\) and \(\hat P\), is also sufficient to serve as a starting point from which to derive quantum theory’s general law of motion.
+
+In the limit of the short wavelength, which is tantamount to large momentum or, more intuitively, to large mass or simply being "macroscopic," the stationary path dominates, and we may say \(to an approximation that is so accurate that we can effectively treat is as an identity\) that an object only follows the path that we say abides the "laws of motion." Thus, from symmetry considerations and the tiny value of $\hbar$, we have a procedure with which to derive the derive the laws of motion, up to externally imposed constraints, which will discuss in later chapters.

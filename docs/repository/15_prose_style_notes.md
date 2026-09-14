@@ -2,6 +2,19 @@
 
 This note records the manuscript's current sentence-level prose preferences. It is not a general writing guide. It is a calibration note for future drafting and revision.
 
+## Author-approved voice calibration (September 2026)
+
+This passage is the current voice reference, preserved in the author's wording:
+
+> Once we have a function representation of translational symmetry, we might be clever and notice that we can translate a function in wave number, $k$ just as well as we can in position, $x$. While shifting the wave number isn't a translation in the familiar physical space we live in, from a mathematical perspective, $k$-space is the dual, or equivalent up to role reversal, of $x$-space. If we want to understand the full symmetry group the wave function represents and the implications it has, we would be wise to take this observation seriously.
+
+- Aim for short, precise prose with warmth, a little sweetness, and an iconoclastic streak. Use poetic flourishes when the point itself is poetic.
+- Preserve useful softening, invitations, pauses, and modesty. These can carry the relationship with the reader. Do not remove them merely to shorten a sentence. This qualifies the older instructions below about cutting warm-ups and softening.
+- Weed out borrowed academic mannerisms. In this discussion, "we may note that" was rejected for its proof-writing register, not its length or its gentleness. This is a contextual judgment, not a phrase blacklist.
+- "We might be clever and notice" includes the reader in a small discovery. "We would be wise to take this observation seriously" sustains the playfulness while understating substantial consequences. Preserve this kind of human voice without mechanically repeating these phrases.
+- Keep the voice consistent through intuition and mathematics. Avoid swinging from "magical/wonderful" enthusiasm to stiff "hence/thus" exposition. Authority should come from clear reasoning; warmth and playfulness can remain present in a precise argument.
+- Calibrate feedback as well as drafting. Distinguish conceptual errors from linguistic imprecision and from deliberate voice choices. Preserve successful author wording; "LGTM" is appropriate when no change would improve it.
+
 ## Core Rhythm
 
 - Lead with the claim. Do not warm up.

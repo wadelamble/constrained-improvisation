@@ -1,0 +1,28 @@
+{
+  "F_a_squared_over_lambda_z": 100000000.0,
+  "fixed_equal_aperture_groups": 21,
+  "central_interval_y_over_a": [
+    -0.04761904761904767,
+    0.04761904761904745
+  ],
+  "central_amplitude": [
+    0.9997546801566012,
+    0.0006218075219039665
+  ],
+  "outer_groups_combined": [
+    0.00022281193545911626,
+    -0.0006443154297720854
+  ],
+  "total_amplitude": [
+    0.9999774920920603,
+    -2.250790786811896e-05
+  ],
+  "outer_combined_magnitude_over_total": 0.000681768622691232,
+  "largest_individual_outer_group_magnitude": 0.00044486897542158217,
+  "independent_endpoint_expansion_max_error": 1.234598437826024e-12,
+  "pixels_per_amplitude_unit": 910.0,
+  "central_group_dy_pixels": 0.5658448449326094,
+  "phase_reference": "unobstructed plane wave exp(ikz) at B; full Fresnel prefactor retained",
+  "gold_resultant_display": "translated down; same scale and actual angle",
+  "individual_path_claim": false
+}

@@ -1,0 +1,36 @@
+{
+  "canonical_video": "symmetry-many-slit-paths-phasors-interference.mp4",
+  "version": 2,
+  "versioned_video": "iterations/symmetry-many-slit-paths-phasors-interference-v2-centered.mp4",
+  "previous_version": "iterations/symmetry-many-slit-paths-phasors-interference-v1-original.mp4",
+  "source_video": "symmetry-many-slit-corrected-centered.mp4",
+  "sha256": "fac1f77aac2932b5cce5d8cabf18e51eaf63b0aa5ba14e7d2045bad6f58321fe",
+  "resolution": [
+    1280,
+    720
+  ],
+  "frames": 444,
+  "seconds": 18.5,
+  "full_decode": "passed",
+  "display": {
+    "fixed_rotation_degrees": 5.057997625773197,
+    "center_sum_after_rotation": [
+      1.0477850204844985,
+      0.0
+    ],
+    "gray_phase_comparison_omitted": true,
+    "underlying_physics_validation": "symmetry-tip-to-tail-corrected-validation.json"
+  },
+  "display_invariants": {
+    "tested_B_values": 257,
+    "central_angle_degrees": 0.0,
+    "max_arrow_length_change": 4.163336342344337e-17,
+    "max_intensity_change": 8.881784197001252e-16,
+    "max_sum_consistency_error": 5.578801654593729e-16
+  },
+  "preview_source": {
+    "contact_sheet": "symmetry-many-slit-corrected-centered-contact-sheet.png",
+    "final_still": "symmetry-many-slit-corrected-centered-check-17.png",
+    "note": "The final hold is static from 16 seconds onward."
+  }
+}

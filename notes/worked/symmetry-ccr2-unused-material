@@ -1,0 +1,68 @@
+
+// announce POLA here near the end
+.......
+Ok, so how do we fix up the chapter. first i kind of prattle on "making things physical" and then i put h-bar in the commutator.
+
+So I need to replace this:
+
+The Fourier structure itself and the relation $\Delta x\\,\Delta k\ge\frac12.$ says nothing about behavior in the real world, it is pure mathematical artifice. If we are to use this artifice to describe the physical world, $x$ and $k$ must be associated with physical dimensions. The abstract structure does require that the product of $x$ and $k$ be dimensionless to match phase. To apply the Fourier structure to physics two things must be done. First, we assign $x$ the dimension of length \\(or time for time translation\\). Second, we need a scale that converts the dimensionless phase encoded by the commutator into a dimensionful physical quantity.
+
+with something that says "x/k is a formal structure in which [x,k] provides a quantity that when extremized gives the ray in the appropriate limit. the ray here also is a formal structure. we are going to claim that the real world follows this structure. but to do so, we must ask, what physical quantities pair with x as measured distance to obtain the HW structure. Say that again -- what quantities pair with measured distance such that [position, position-generator] is extremized in the right limit to find a physical path. Now we've said "physical path" rather blasely, what do we mean by that. We mean in one sense, the physical path of some ideal 'particle'. We also mean the ray that describes the wave propagation direction in the appropriate limit. Now QM enters. It says that the position measurements we obtain are for a particle. They are quantized. they cannot be 'amplified.' But the evolution of the state is of the wave function that carries the amplitudes for possible paths the particle can take that corresponds exactly to would-be rays of the wave functions. Now we ask, "what is the measurable quantity given by [position,position-generator] that is extremized. We already know it must be proportional phase. We knew that when we said it was going to fit in HW structure. The only other thing to know is that it must be very small, since in the limit we are talking about, everything macroscopic travels like a full coherent (is that the right word here) wave with a single clear ray between any two points. we than have [x,?] = ih-bar. from that we know from the H/W structure that ? = h-bar(k). That is the definition of momentum.
+
+Yes. But the new idea replaces more than that first paragraph: it replaces the block through the definition of \(\hat P\). The argument now has a different spine.
+Three corrections to your rough formulation first:
+- The commutator is not extremized. It identifies the phase direction; accumulated phase along candidate histories is stationary.
+- Position values are not quantized. What is countable is the particle or detection event. A one-particle wavefunction cannot be “amplified” into more particle; multiplying it by a constant gives the same normalized state.
+- Macroscopic objects do not behave classically because their states form one fully coherent wave. The relevant condition is
+\[
+\frac{S_{\mathrm{characteristic}}}{\hbar}\gg1,
+\]which makes nonstationary contributions cancel sharply. Decoherence supplies another part of the eventual classical story.
+I would replace the present block with something organized like this:
+So far, the \(x\)-\(k\) construction is formal. The Heisenberg–Weyl relation tells us that translations in \(x\) and \(k\) are accompanied by a translation in phase. That phase can be accumulated along candidate wave histories, and, in the appropriate limit, stationary phase singles out a ray. At this stage, \(x\), \(k\), phase, and even the ray are elements of a mathematical wave model.
+We now ask whether nature realizes this same pattern. We first identify \(x\) with measured distance. We then ask what measurable physical quantities occupy the two remaining roles: what quantity generates translations in physical position, and what quantity accumulates along a history such that its stationary histories appear as physical paths?
+Here “physical path” has two related meanings. For a classical wave, it is the ray describing the direction of propagation in the short-wavelength limit. For an ideally localized object, it is the classical trajectory. These are not the same physical object, but wave mechanics produces both limiting descriptions through the same stationary-phase structure.
+Quantum mechanics connects them in a peculiar way. A position measurement yields a localized, particle-like outcome, but the state assigning amplitudes to those possible outcomes evolves as a wavefunction. Multiplying a one-particle wavefunction does not produce more of the particle; its overall scale is removed by normalization. In the path formulation, the wavefunction is built by adding complex amplitudes associated with candidate position histories. In the classical limit, the histories near stationary phase predominate and form the classical path.
+The physical quantity whose stationarity identifies that classical path is called action. Phase and action both accumulate additively along a history, and their stationary histories coincide in this limit. They must therefore be related by a constant scale:
+\[
+S[\gamma]=\alpha\phi[\gamma].
+\]Classical wave mechanics gives us the stationary-phase structure but does not determine a universal value of \(\alpha\). Quantum experiment supplies that new physical fact:
+\[
+\alpha=\hbar.
+\]Thus
+\[
+S[\gamma]=\hbar\phi[\gamma].
+\]Because \(\hbar\) is extraordinarily small compared with ordinary macroscopic actions, phases away from the stationary history vary rapidly and cancel:
+\[
+\frac{S_{\mathrm{characteristic}}}{\hbar}\gg1.
+\]We now return to the Heisenberg–Weyl relation. Position has been fixed as measured distance, while the phase direction has been converted into physical action by the factor \(\hbar\). Preserving the same structure therefore requires the still-unnamed position generator to be
+\[
+\hat P:=\hbar\hat K.
+\]This physical generator of position translations is what we call momentum. It follows that
+\[
+[\hat X,\hat P]
+=
+[\hat X,\hbar\hat K]
+=
+i\hbar I.
+\]
+The essential conceptual chain is now:
+\[
+\text{formal wave structure}
+\longrightarrow
+\text{stationary-phase ray}
+\longrightarrow
+\text{measured configurations and physical paths}
+\]\[
+\longrightarrow
+S=\hbar\phi
+\longrightarrow
+\hat P=\hbar\hat K
+\longrightarrow
+[\hat X,\hat P]=i\hbar I.
+\]That lets the chapter genuinely discover action and momentum instead of naming them before explaining what physical roles they fill.
+
+
+Both the physical quantity we want this commutator to generate and abstract phase share the property that the paths, or histories, that physically predominate in the ray or classical limit are those for which these quantities are **stationary**. This means that nearby paths do not change this quantity to first order, just as one finds minimum, maximum, or saddle points of a function in calculus. If we have such a quantity, we then have a method to derive equations of motions by extremizing said quantity. At this point we are merely asserting that physical paths extremize the quantities. We will, however, show that ray-like wave propagation arises from stationary phase.
+
+.............................
+

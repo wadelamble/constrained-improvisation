@@ -1,0 +1,272 @@
+{
+  "canonical_video": "symmetry-many-slit-paths-phasors-interference.mp4",
+  "versioned_video": "iterations/symmetry-many-slit-paths-phasors-interference-v5-49-physical-slits.mp4",
+  "frames": 588,
+  "seconds": 24.5,
+  "resolution": [
+    1280,
+    720
+  ],
+  "fps": 24,
+  "bookend_frames_each": 72,
+  "middle_frames": 444,
+  "middle_decoded_frames_identical": true,
+  "middle_source": "content/drafts/animations/iterations/symmetry-many-slit-paths-phasors-interference-20260911T150313560139Z-centered-body.mp4",
+  "middle_sha256": "242053bd9c434123dbc1f49e76ed302455572958652ae16d39f568f2b543cb4b",
+  "video_sha256": "f98da2d18693d8fccc64372fabdc2899392eac234e06825ee0577266c8f3ccd8",
+  "wave_model_checks": {
+    "detector_complex_sum_max_error": 2.2887833992611187e-16,
+    "detector_phase_max_error_radians": 3.2949954147551114e-16,
+    "detector_intensity_max_error": 3.885780586188048e-16,
+    "near_aperture_quadrature_refinement_max_error": 3.855927796350635e-15,
+    "display_grid_vs_same_integral_error": 0.0,
+    "equal_xy_scale": true,
+    "fixed_display_phase_degrees": 1.8734152290756128,
+    "color_map": "continuous muted blue-purple-red: mix(blue, red, (1+tanh(Re(E)/1.3))/2); purple is zero; no contour strokes",
+    "world_bounds": [
+      -7.6,
+      6.622222222222222,
+      -4.0,
+      4.0
+    ],
+    "screen_opening_bounds": [
+      -2.835,
+      2.835
+    ],
+    "source_aperture_wavelength": "identical to perforated_tip_to_tail_model.py",
+    "slit_count": 49,
+    "slit_width": 0.06999999999999999,
+    "opaque_gap_width": 0.04666666666666666,
+    "bookend_B": [
+      0.0,
+      0.94
+    ]
+  },
+  "slit_model_checks": {
+    "status": "passed",
+    "geometry": "49 disjoint finite slits separated by 48 opaque bars, plus opaque outer screen",
+    "slit_count": 49,
+    "slit_width": 0.06999999999999999,
+    "center_spacing": 0.11666666666666665,
+    "opaque_gap_width": 0.04666666666666666,
+    "open_fraction_of_pitch": 0.6,
+    "slit_bounds_bottom_to_top": [
+      [
+        -2.835,
+        -2.7649999999999997
+      ],
+      [
+        -2.7183333333333333,
+        -2.648333333333333
+      ],
+      [
+        -2.6016666666666666,
+        -2.5316666666666663
+      ],
+      [
+        -2.485,
+        -2.4149999999999996
+      ],
+      [
+        -2.368333333333333,
+        -2.298333333333333
+      ],
+      [
+        -2.251666666666667,
+        -2.1816666666666666
+      ],
+      [
+        -2.135,
+        -2.0649999999999995
+      ],
+      [
+        -2.0183333333333335,
+        -1.9483333333333335
+      ],
+      [
+        -1.9016666666666666,
+        -1.8316666666666668
+      ],
+      [
+        -1.785,
+        -1.715
+      ],
+      [
+        -1.6683333333333332,
+        -1.5983333333333334
+      ],
+      [
+        -1.5516666666666665,
+        -1.4816666666666667
+      ],
+      [
+        -1.4349999999999998,
+        -1.365
+      ],
+      [
+        -1.3183333333333331,
+        -1.2483333333333333
+      ],
+      [
+        -1.2016666666666667,
+        -1.1316666666666668
+      ],
+      [
+        -1.085,
+        -1.0150000000000001
+      ],
+      [
+        -0.9683333333333334,
+        -0.8983333333333333
+      ],
+      [
+        -0.8516666666666667,
+        -0.7816666666666666
+      ],
+      [
+        -0.7350000000000002,
+        -0.6650000000000001
+      ],
+      [
+        -0.6183333333333335,
+        -0.5483333333333335
+      ],
+      [
+        -0.5016666666666668,
+        -0.4316666666666668
+      ],
+      [
+        -0.38500000000000006,
+        -0.3150000000000001
+      ],
+      [
+        -0.26833333333333337,
+        -0.1983333333333334
+      ],
+      [
+        -0.1516666666666667,
+        -0.08166666666666669
+      ],
+      [
+        -0.034999999999999996,
+        0.034999999999999996
+      ],
+      [
+        0.08166666666666669,
+        0.1516666666666667
+      ],
+      [
+        0.1983333333333334,
+        0.26833333333333337
+      ],
+      [
+        0.31499999999999967,
+        0.3849999999999996
+      ],
+      [
+        0.43166666666666637,
+        0.5016666666666664
+      ],
+      [
+        0.548333333333333,
+        0.6183333333333331
+      ],
+      [
+        0.6649999999999997,
+        0.7349999999999998
+      ],
+      [
+        0.7816666666666664,
+        0.8516666666666665
+      ],
+      [
+        0.8983333333333331,
+        0.9683333333333332
+      ],
+      [
+        1.015,
+        1.0849999999999997
+      ],
+      [
+        1.1316666666666666,
+        1.2016666666666664
+      ],
+      [
+        1.2483333333333333,
+        1.3183333333333331
+      ],
+      [
+        1.3649999999999995,
+        1.4349999999999994
+      ],
+      [
+        1.4816666666666667,
+        1.5516666666666665
+      ],
+      [
+        1.598333333333333,
+        1.6683333333333328
+      ],
+      [
+        1.715,
+        1.785
+      ],
+      [
+        1.8316666666666663,
+        1.9016666666666662
+      ],
+      [
+        1.9483333333333335,
+        2.0183333333333335
+      ],
+      [
+        2.0649999999999995,
+        2.135
+      ],
+      [
+        2.1816666666666658,
+        2.251666666666666
+      ],
+      [
+        2.298333333333333,
+        2.368333333333333
+      ],
+      [
+        2.414999999999999,
+        2.4849999999999994
+      ],
+      [
+        2.5316666666666663,
+        2.6016666666666666
+      ],
+      [
+        2.6483333333333325,
+        2.718333333333333
+      ],
+      [
+        2.7649999999999997,
+        2.835
+      ]
+    ],
+    "quadrature_12_vs_24_max_error": 4.1005575377887105e-16,
+    "independent_integral_over_49_slits_error": 1.5334955527634975e-15,
+    "symmetry_error": 1.2287917140018453e-15,
+    "difference_from_one_continuous_opening_at_center": 0.42113246693675993,
+    "center_physical_phase_degrees": -1.8734152290756132,
+    "fixed_display_rotation_degrees": 1.8734152290756128,
+    "center_intensity_relative_to_free_center": 0.4362777195405986,
+    "propagation_model": "same validated outgoing 2D scalar thin-mask kernel; finite opaque gaps now included"
+  },
+  "layout_checks": {
+    "minimum_plot_margin_pixels": 28.1599375789026,
+    "same_scale_all_frames": true
+  },
+  "body_geometry": "recalculated with the same 49 physical slits as the waves",
+  "previous_assets": [
+    "content/drafts/animations/iterations/symmetry-many-slit-paths-phasors-interference-20260911T150313560139Z-previous.mp4",
+    "content/drafts/animations/iterations/symmetry-many-slit-paths-phasors-interference-20260911T150313560139Z-previous-final.png",
+    "content/drafts/animations/iterations/symmetry-many-slit-paths-phasors-interference-20260911T150313560139Z-previous-contact-sheet.png",
+    "content/drafts/animations/iterations/symmetry-many-slit-paths-phasors-interference-20260911T150313560139Z-previous-validation.json"
+  ],
+  "full_decode_and_encoded_preview": "passed"
+}

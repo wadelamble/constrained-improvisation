@@ -1,0 +1,16 @@
+{
+  "F": 100000000.0,
+  "phase_reference": "U / exp(ikz); normalized Fresnel kernel retained",
+  "grouped": false,
+  "curve_samples": 928859,
+  "pixels_per_amplitude_unit": 830.0,
+  "tail_sampling_changes_below_radius_px": 0.5283944110650926,
+  "endpoint": [
+    0.9999774920920603,
+    -2.250790786811896e-05
+  ],
+  "image_size": [
+    1200,
+    600
+  ]
+}

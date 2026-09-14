@@ -1,0 +1,10 @@
+{
+  "decoded_frames": 540,
+  "duration": 18.0,
+  "size": [
+    1440,
+    1080
+  ],
+  "fps": 30.0,
+  "max_decoded_rgb_error": 1.934954346707819
+}

@@ -1,0 +1,47 @@
+{
+  "display": {
+    "fixed_rotation_degrees": 5.057997625773197,
+    "center_sum_after_rotation": [
+      1.0477850204844985,
+      0.0
+    ],
+    "gray_phase_comparison_omitted": true,
+    "underlying_physics_validation": "symmetry-tip-to-tail-corrected-validation.json"
+  },
+  "layout": {
+    "minimum_plot_margin_pixels": 28.408135785277977,
+    "same_scale_all_frames": true
+  },
+  "videos": [
+    {
+      "file": "symmetry-tip-to-tail-corrected-centered.mp4",
+      "frames": 444,
+      "seconds": 18.5,
+      "bytes": 593255,
+      "full_decode": "passed"
+    },
+    {
+      "file": "symmetry-many-slit-corrected-centered.mp4",
+      "frames": 444,
+      "seconds": 18.5,
+      "bytes": 931768,
+      "full_decode": "passed"
+    }
+  ],
+  "display_invariants": {
+    "tested_B_values": 257,
+    "central_angle_degrees": 0.0,
+    "max_arrow_length_change": 4.163336342344337e-17,
+    "max_intensity_change": 8.881784197001252e-16,
+    "max_sum_consistency_error": 5.578801654593729e-16
+  },
+  "encoded_frame_inspection": {
+    "frames_per_video": 444,
+    "selected_frames_per_video": 3,
+    "times_seconds": [
+      7.5,
+      10,
+      17
+    ]
+  }
+}

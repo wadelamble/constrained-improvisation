@@ -1,0 +1,164 @@
+{
+  "model": "equal-weight exact-geometric point-path phasors",
+  "source": [
+    -4.5,
+    0
+  ],
+  "screen_x": 0,
+  "observer": [
+    4.5,
+    0
+  ],
+  "transverse_interval": [
+    -2.8,
+    2.8
+  ],
+  "midpoint_spacing": 0.00027998600069996496,
+  "fixed_count": 20001,
+  "weight_each": 4.999750012499375e-05,
+  "same_positions_weights_every_stage": true,
+  "fixed_display_rotation_degrees": -38.32591632823523,
+  "reference": "completed first-wavelength sum; one constant rotation for entire film",
+  "fixed_pixels_per_phasor_unit": 4300.0,
+  "path_vector_length_pixels": 0.21498925053747311,
+  "absolute_propagation_kernel": false,
+  "intensity_panel": false,
+  "grouped_arrows": false,
+  "endpoint_normalization": false,
+  "forced_straightening": false,
+  "path_fill": "schematic envelope of unresolved candidate rays, not probability or field",
+  "screen_glyph": "schematic dots; not one visible dot per computational position",
+  "sampling_order": "top to bottom; every term included in the cumulative trace",
+  "settle_seconds_each": 0.8,
+  "scan_seconds_each": 9.6,
+  "hold_seconds_each": 1.6,
+  "fps": 60,
+  "frames": 2160,
+  "duration_seconds": 36.0,
+  "resolution": [
+    1440,
+    1080
+  ],
+  "stages": [
+    {
+      "wavelength": 0.5,
+      "path_count": 20001,
+      "path_weights_sha256": "7c54b5f0bdb7a35cfefe0cd3fb548467c2cd46c43982c88e76aa5b80ae88c215",
+      "max_adjacent_phase_step_degrees": 0.2129853156362199,
+      "endpoint": [
+        0.20251028730262044,
+        -4.152494320619482e-17
+      ],
+      "magnitude": 0.20251028730262044,
+      "display_angle_degrees": -1.1748558662997946e-14,
+      "independent_scalar_sum_max_error": 3.1031676915590914e-17,
+      "adaptive_integral_checks": [
+        {
+          "count": 5000,
+          "absolute_error": 1.0873003208365585e-08
+        },
+        {
+          "count": 9800,
+          "absolute_error": 7.688459696710404e-09
+        },
+        {
+          "count": 10000,
+          "absolute_error": 7.744397804865146e-09
+        },
+        {
+          "count": 10201,
+          "absolute_error": 7.80450038251996e-09
+        },
+        {
+          "count": 15001,
+          "absolute_error": 6.2980459125330065e-09
+        },
+        {
+          "count": 20001,
+          "absolute_error": 1.5489077055316915e-08
+        }
+      ],
+      "trace_margin_pixels": 15.980834977156519
+    },
+    {
+      "wavelength": 0.05,
+      "path_count": 20001,
+      "path_weights_sha256": "7c54b5f0bdb7a35cfefe0cd3fb548467c2cd46c43982c88e76aa5b80ae88c215",
+      "max_adjacent_phase_step_degrees": 2.129853156361385,
+      "endpoint": [
+        0.05781429096016746,
+        0.004873782757246751
+      ],
+      "magnitude": 0.05801935881748208,
+      "display_angle_degrees": 4.818678644494691,
+      "independent_scalar_sum_max_error": 6.094412186918576e-17,
+      "adaptive_integral_checks": [
+        {
+          "count": 5000,
+          "absolute_error": 1.20934979027726e-07
+        },
+        {
+          "count": 9800,
+          "absolute_error": 7.56271301239582e-08
+        },
+        {
+          "count": 10000,
+          "absolute_error": 7.744391845814577e-08
+        },
+        {
+          "count": 10201,
+          "absolute_error": 7.92701612236359e-08
+        },
+        {
+          "count": 15001,
+          "absolute_error": 3.4125389944584274e-08
+        },
+        {
+          "count": 20001,
+          "absolute_error": 1.548969576810113e-07
+        }
+      ],
+      "trace_margin_pixels": 96.60301684183511
+    },
+    {
+      "wavelength": 0.005,
+      "path_count": 20001,
+      "path_weights_sha256": "7c54b5f0bdb7a35cfefe0cd3fb548467c2cd46c43982c88e76aa5b80ae88c215",
+      "max_adjacent_phase_step_degrees": 21.29853156362362,
+      "endpoint": [
+        0.018644125577692003,
+        0.0019896992755451793
+      ],
+      "magnitude": 0.01874999524703551,
+      "display_angle_degrees": 6.091544047416141,
+      "independent_scalar_sum_max_error": 4.081312075873717e-16,
+      "adaptive_integral_checks": [
+        {
+          "count": 5000,
+          "absolute_error": 5.160442940940816e-07
+        },
+        {
+          "count": 9800,
+          "absolute_error": 7.660654085928676e-07
+        },
+        {
+          "count": 10000,
+          "absolute_error": 7.775411348676286e-07
+        },
+        {
+          "count": 10201,
+          "absolute_error": 7.893635533372853e-07
+        },
+        {
+          "count": 15001,
+          "absolute_error": 1.1503335897434578e-06
+        },
+        {
+          "count": 20001,
+          "absolute_error": 1.555173480825829e-06
+        }
+      ],
+      "trace_margin_pixels": 130.49296223559097
+    }
+  ]
+}

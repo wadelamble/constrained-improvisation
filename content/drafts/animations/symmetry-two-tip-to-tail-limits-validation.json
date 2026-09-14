@@ -1,0 +1,24 @@
+{
+  "finite_element_quadrature_max_error": 9.306528730494763e-16,
+  "minimum_curve_margin_px": 12.728636015234542,
+  "same_initial_chain": true,
+  "phase_reference": "U / exp(ikz); normalized Fresnel prefactor retained",
+  "fixed_pixels_per_unit": 355.0,
+  "start_F": 2.0,
+  "final_left_F": 0.05,
+  "final_right_F": 24.0,
+  "duration_seconds": 26.0,
+  "fps": 30,
+  "resolution": [
+    1440,
+    840
+  ],
+  "endpoint_left": [
+    0.33197688440194895,
+    -0.29891990774903376
+  ],
+  "endpoint_right": [
+    0.953757501747545,
+    -0.04563354688565152
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "path_lengths": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "wavelengths": [
+    12.0,
+    0.10638297872340426
+  ],
+  "phase_rule": "2*pi*L/lambda",
+  "whole_turns": [
+    [
+      0,
+      9
+    ],
+    [
+      0,
+      18
+    ],
+    [
+      0,
+      28
+    ]
+  ],
+  "remainders_degrees": [
+    [
+      29.999999999999996,
+      144.0
+    ],
+    [
+      59.99999999999999,
+      288.0
+    ],
+    [
+      90.0,
+      72.00000000000041
+    ]
+  ],
+  "same_path_increment": 1.0,
+  "deterministic_no_random_angles": true,
+  "continuous_counterclockwise_advance_across_trials": true,
+  "left_full_phase_degrees": [
+    29.999999999999996,
+    59.99999999999999,
+    90.0
+  ],
+  "left_no_completed_turns_or_remainder_display": true,
+  "three_examples_are_not_a_cancellation_proof": true,
+  "playback": "phase advance with smooth display pacing, not optical time",
+  "largest_phase_advance_per_frame_degrees": 23.49932841792453,
+  "timing": {
+    "prelude": 0.8,
+    "spin_each": 3.6,
+    "hold_each": 1.8
+  },
+  "duration_seconds": 17.000000000000004,
+  "fps": 60,
+  "frames": 1020,
+  "resolution": [
+    1440,
+    870
+  ]
+}

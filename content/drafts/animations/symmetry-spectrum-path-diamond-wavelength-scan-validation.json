@@ -1,0 +1,76 @@
+{
+  "model": "unchanged normalized scalar propagation, no grouping",
+  "path_count": 20001,
+  "path_positions_sha256": "16efe46ceb6039e0ac709a7059fa2d2a978d883e18a05fea0f488f5c5bee5d33",
+  "color_mapping": "linear palette coordinate 1 - abs(y)/2.8, independent of wavelength",
+  "palette_edge_to_center": [
+    [
+      43,
+      86,
+      161
+    ],
+    [
+      12,
+      144,
+      166
+    ],
+    [
+      38,
+      147,
+      86
+    ],
+    [
+      181,
+      158,
+      30
+    ],
+    [
+      224,
+      116,
+      32
+    ],
+    [
+      198,
+      49,
+      45
+    ]
+  ],
+  "path_colors_sha256": "5e71f09742662c24e9a48685a050b2dd2d3b157afe50c33d8045ea40bde37ee1",
+  "all_original_segments_retained": true,
+  "color_run_count": 1173,
+  "maximum_fan_pixel_color_discretization_error": 2.0,
+  "current_path_index": "count - 1",
+  "current_segment": "vertices[count-1] to vertices[count]",
+  "gold_sum": "vertices[count]",
+  "scale": 620.0,
+  "timing": "unchanged: 0.8s prelude, 9.6s scan, 1.6s hold per wavelength",
+  "fps": 60,
+  "frames": 2160,
+  "duration_seconds": 36.0,
+  "stages": [
+    {
+      "wavelength": 0.5,
+      "endpoint": [
+        1.043704936090848,
+        -0.0923770706396196
+      ],
+      "vectors_sha256": "894e2f66bd6229b21117530a6f759b380ff1c85a90427bfe9196b883e51bfc6d"
+    },
+    {
+      "wavelength": 0.05,
+      "endpoint": [
+        0.977039241098416,
+        -0.022825499876034914
+      ],
+      "vectors_sha256": "0d9bec871d8494574f7525985a6393fd85f2851329972f7cb63109b91e892fa5"
+    },
+    {
+      "wavelength": 0.005,
+      "endpoint": [
+        0.9927168253735563,
+        -0.007278913328425878
+      ],
+      "vectors_sha256": "cdccd24f1356fffcbf102c3a4dfb4949fb5a567ba30591cdab265d93970c7396"
+    }
+  ]
+}

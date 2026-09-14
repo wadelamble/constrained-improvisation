@@ -1,0 +1,205 @@
+{
+  "model": "one-transverse-coordinate scalar Rayleigh--Sommerfeld propagation",
+  "source": "outgoing H0^(1)(k*r)",
+  "kernel": "i*k*z*H1^(1)(k*r)/(2*r)",
+  "reference": "independent unobstructed source H0^(1)(k*(z1+z2)) at each wavelength",
+  "source_position": [
+    -4.5,
+    0
+  ],
+  "screen_x": 0,
+  "observer_position": [
+    4.5,
+    0
+  ],
+  "permitted_transverse_span": [
+    -2.8,
+    2.8
+  ],
+  "midpoint_spacing": 0.00027998600069996496,
+  "same_crossing_positions_every_pass": true,
+  "fixed_path_count": 20001,
+  "wavelength_dependent_source_and_kernel_weights": true,
+  "equal_vector_lengths": false,
+  "normalizes_all_vectors_and_prefixes": true,
+  "endpoint_dependent_scaling": false,
+  "additional_display_rotation": false,
+  "fixed_pixels_per_reference_amplitude": 620.0,
+  "fixed_origin": [
+    300.0,
+    770.0
+  ],
+  "grouping_or_artificial_straightening": false,
+  "intensity_or_arrival_probability_claim": false,
+  "spectral_kernel_relative_errors": [
+    1.117594457481761e-14,
+    1.10448950052079e-14,
+    1.1137157494191995e-14
+  ],
+  "transparent_plane_extent": 256.0,
+  "transparent_plane_reference_errors": [
+    2.317894851224101e-05,
+    7.329792340844561e-06,
+    2.317883639087028e-06
+  ],
+  "path_paint": "schematic envelope of added routes, not amplitude or probability",
+  "screen": "schematic sampling plane; no new finite-hole width or opaque fill fraction",
+  "timing": {
+    "settle": 0.8,
+    "scan": 9.6,
+    "hold": 1.6,
+    "duration": 36.0
+  },
+  "resolution": [
+    1440,
+    1080
+  ],
+  "fps": 60,
+  "frames": 2160,
+  "stages": [
+    {
+      "wavelength": 0.5,
+      "path_count": 20001,
+      "positions_sha256": "16efe46ceb6039e0ac709a7059fa2d2a978d883e18a05fea0f488f5c5bee5d33",
+      "reference_real_imag": [
+        0.05299272384845548,
+        -0.05310998836626879
+      ],
+      "endpoint": [
+        1.043704936090848,
+        -0.0923770706396196
+      ],
+      "magnitude": 1.047785052766243,
+      "phase_degrees": -5.058000323711222,
+      "vector_magnitude_min_max": [
+        0.00019030921721479254,
+        0.00026398493879286933
+      ],
+      "max_adjacent_phase_step_degrees": 0.2129793150134881,
+      "all_prefix_refinement_max_error": 5.24094006046349e-08,
+      "adaptive_prefix_checks": [
+        {
+          "count": 5000,
+          "absolute_error": 4.5013247484973297e-08
+        },
+        {
+          "count": 9800,
+          "absolute_error": 2.9185159474951422e-08
+        },
+        {
+          "count": 10000,
+          "absolute_error": 2.9479536777515442e-08
+        },
+        {
+          "count": 10201,
+          "absolute_error": 2.980378036771233e-08
+        },
+        {
+          "count": 15001,
+          "absolute_error": 2.4314766489999284e-08
+        },
+        {
+          "count": 20001,
+          "absolute_error": 5.8960574847278174e-08
+        }
+      ],
+      "trace_margin_pixels": 18.90602393606696
+    },
+    {
+      "wavelength": 0.05,
+      "path_count": 20001,
+      "positions_sha256": "16efe46ceb6039e0ac709a7059fa2d2a978d883e18a05fea0f488f5c5bee5d33",
+      "reference_real_imag": [
+        0.016774548913733308,
+        -0.016778257311520422
+      ],
+      "endpoint": [
+        0.977039241098416,
+        -0.022825499876034914
+      ],
+      "magnitude": 0.9773058283315206,
+      "phase_degrees": -1.3382952363133607,
+      "vector_magnitude_min_max": [
+        0.0006017908891667766,
+        0.0008347573408448347
+      ],
+      "max_adjacent_phase_step_degrees": 2.129852556145139,
+      "all_prefix_refinement_max_error": 1.6572112664684105e-06,
+      "adaptive_prefix_checks": [
+        {
+          "count": 5000,
+          "absolute_error": 1.5942274711171996e-06
+        },
+        {
+          "count": 9800,
+          "absolute_error": 9.01774697104669e-07
+        },
+        {
+          "count": 10000,
+          "absolute_error": 9.321010247639564e-07
+        },
+        {
+          "count": 10201,
+          "absolute_error": 9.62587374115366e-07
+        },
+        {
+          "count": 15001,
+          "absolute_error": 2.744792820457421e-07
+        },
+        {
+          "count": 20001,
+          "absolute_error": 1.8643542825948156e-06
+        }
+      ],
+      "trace_margin_pixels": 38.94084776084151
+    },
+    {
+      "wavelength": 0.005,
+      "path_count": 20001,
+      "positions_sha256": "16efe46ceb6039e0ac709a7059fa2d2a978d883e18a05fea0f488f5c5bee5d33",
+      "reference_real_imag": [
+        0.00530510613186637,
+        -0.005305223401760794
+      ],
+      "endpoint": [
+        0.9927168253735563,
+        -0.007278913328425878
+      ],
+      "magnitude": 0.9927435106607319,
+      "phase_degrees": -0.42010322459609284,
+      "vector_magnitude_min_max": [
+        0.0019030292619264825,
+        0.002639733341371835
+      ],
+      "max_adjacent_phase_step_degrees": 21.29853150348409,
+      "all_prefix_refinement_max_error": 5.263878413324306e-05,
+      "adaptive_prefix_checks": [
+        {
+          "count": 5000,
+          "absolute_error": 1.8662031598963275e-05
+        },
+        {
+          "count": 9800,
+          "absolute_error": 2.8990588668584736e-05
+        },
+        {
+          "count": 10000,
+          "absolute_error": 2.959365237187814e-05
+        },
+        {
+          "count": 10201,
+          "absolute_error": 3.0220241121271575e-05
+        },
+        {
+          "count": 15001,
+          "absolute_error": 4.779951346043517e-05
+        },
+        {
+          "count": 20001,
+          "absolute_error": 5.9192121228581425e-05
+        }
+      ],
+      "trace_margin_pixels": 35.118644325945525
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "wave_numbers": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "amplitudes": [
+    0.04005057329740832,
+    0.08254003792691415,
+    0.13835355608461306,
+    0.18861912399373662,
+    0.2091466226833607,
+    0.18861912399373662,
+    0.13835355608461306,
+    0.08254003792691415,
+    0.04005057329740832
+  ],
+  "initial_phases": [
+    0.8320000000000001,
+    0.5760000000000001,
+    0.30400000000000005,
+    0.08800000000000001,
+    0.0,
+    0.112,
+    0.496,
+    1.2240000000000002,
+    2.3680000000000003
+  ],
+  "exactly_nine_modes": true,
+  "max_direct_sum_error": 5.402801278774216e-15,
+  "max_envelope_error": 4.701100619897147e-15,
+  "common_wave_number_shift": 8,
+  "envelope_change_from_original": 4.440892098500626e-16,
+  "max_projected_addition_error_pixels": 7.389644451905042e-13,
+  "max_outline_sampling_excess_pixels": 0.6176600481275045,
+  "phase_turns": 5,
+  "duration": 18.0,
+  "fps": 30,
+  "frames": 540,
+  "size": [
+    1440,
+    1080
+  ],
+  "no_curve_markers": true,
+  "camera_is_fixed": true,
+  "projection": {
+    "transverse_rotation_degrees": 25,
+    "depth_scale": 0.3
+  },
+  "common_amplitude_pixels_per_unit": 110.0,
+  "common_x_plot_width": 550.0,
+  "envelope": "Projected outer boundary of stationary surface of revolution with exact radius |sum of nine complex modes|; no internal grid.",
+  "interpretation": "Common phase parameter, not physical time evolution; one period of a finite Fourier sum."
+}
