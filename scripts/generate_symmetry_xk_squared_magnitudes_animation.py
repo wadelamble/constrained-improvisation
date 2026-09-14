@@ -1,9 +1,17 @@
 from __future__ import annotations
 
 import math
+from pathlib import Path
 import subprocess
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+PACKAGES = ROOT / ".tools" / "animation-python-packages"
+if PACKAGES.is_dir():
+    sys.path.insert(0, str(PACKAGES))
 
 from PIL import Image, ImageDraw
+import imageio_ffmpeg
 
 import generate_symmetry_xk_uncertainty_extremes_animation as amplitude
 
@@ -26,7 +34,7 @@ def density_points(
             * index
             / (amplitude.SAMPLES - 1)
         )
-        # Squaring exp[-u²/(4 Δ²)] gives a density with standard deviation Δ.
+        # Squaring exp[-u²/(4 σ²)] gives a density with standard deviation σ.
         density = math.exp(-(value * value) / (2.0 * width * width))
         points.append(
             (
@@ -79,7 +87,7 @@ def draw_density_finite_state(
         draw,
         amplitude.LEFT_GRAPH,
         delta_x,
-        "Δx",
+        "σₓ",
         amplitude.PURPLE,
         alpha,
     )
@@ -87,7 +95,7 @@ def draw_density_finite_state(
         draw,
         amplitude.RIGHT_GRAPH,
         delta_k,
-        "Δk",
+        "σₖ",
         amplitude.PURPLE,
         alpha,
     )
@@ -109,7 +117,11 @@ def draw_constant_density(
         ),
         fill=amplitude.rgba(color, 0.12 * alpha),
     )
-    amplitude.draw_constant(draw, graph, color, alpha)
+    draw.line(
+        (amplitude.s(graph[0]), amplitude.s(top), amplitude.s(graph[2]), amplitude.s(top)),
+        fill=amplitude.rgba(color, alpha),
+        width=amplitude.s(4),
+    )
 
 
 def draw_exact_k_density(draw: ImageDraw.ImageDraw, alpha: float) -> None:
@@ -120,14 +132,14 @@ def draw_exact_k_density(draw: ImageDraw.ImageDraw, alpha: float) -> None:
     amplitude.draw_infinite_width_marker(
         draw,
         amplitude.LEFT_GRAPH,
-        "Δx → ∞",
+        "σₓ → ∞",
         amplitude.PURPLE,
         alpha,
     )
     amplitude.draw_zero_width_label(
         draw,
         amplitude.RIGHT_GRAPH,
-        "Δk → 0",
+        "σₖ → 0",
         amplitude.PURPLE,
         alpha,
     )
@@ -141,14 +153,14 @@ def draw_exact_x_density(draw: ImageDraw.ImageDraw, alpha: float) -> None:
     amplitude.draw_zero_width_label(
         draw,
         amplitude.LEFT_GRAPH,
-        "Δx → 0",
+        "σₓ → 0",
         amplitude.PURPLE,
         alpha,
     )
     amplitude.draw_infinite_width_marker(
         draw,
         amplitude.RIGHT_GRAPH,
-        "Δk → ∞",
+        "σₖ → ∞",
         amplitude.PURPLE,
         alpha,
     )
@@ -163,7 +175,7 @@ def density_scene_text(seconds: float) -> tuple[str, str]:
     if seconds < 5.0:
         return (
             "Trade statistical width between representations",
-            "as Δx decreases, Δk increases",
+            "as σₓ decreases, σₖ increases",
         )
     if seconds < 6.3:
         return (
@@ -181,9 +193,24 @@ def density_scene_text(seconds: float) -> tuple[str, str]:
     )
 
 
+def density_scene_state(seconds: float) -> tuple[float, float, float]:
+    # Preserve this movie's original return to balanced distributions. The
+    # amplitude movie later acquired a different ending and is shared for art.
+    if seconds < 6.3:
+        return amplitude.scene_state(seconds)[:3]
+    if seconds < 9.7:
+        amount = amplitude.interval_progress(seconds, 6.3, 9.7)
+        return (
+            -amplitude.EXTREME_LOG_WIDTH * (1.0 - amount),
+            0.0,
+            1.0 - amplitude.interval_progress(seconds, 6.3, 6.78),
+        )
+    return 0.0, 0.0, 0.0
+
+
 def draw_frame(frame: int) -> Image.Image:
     seconds = frame / amplitude.FPS
-    log_width, exact_k, exact_x, _, _ = amplitude.scene_state(seconds)
+    log_width, exact_k, exact_x = density_scene_state(seconds)
     heading, caption = density_scene_text(seconds)
     delta_x = amplitude.BALANCED_WIDTH * math.exp(log_width)
     delta_k = amplitude.BALANCED_WIDTH * math.exp(-log_width)
@@ -227,7 +254,7 @@ def draw_frame(frame: int) -> Image.Image:
     if exact_k > 0.55 or exact_x > 0.55:
         relation = "ideal limit of the Gaussian family"
     else:
-        relation = "finite Gaussian family:  Δx Δk = 1/2"
+        relation = "finite Gaussian family:  σₓ σₖ = 1/2"
     amplitude.draw_text(
         draw,
         (1236, 94),
@@ -393,43 +420,39 @@ def make_contact_sheet() -> Path:
 
 def render() -> tuple[Path, Path, Path]:
     amplitude.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    scratch = amplitude.OUTPUT_DIR / f"_{NAME}_frames"
-    if scratch.exists():
-        amplitude.remove_scratch_tree(scratch)
-    scratch.mkdir()
     video = amplitude.OUTPUT_DIR / f"{NAME}.mp4"
+    temporary_video = video.with_name(f"{NAME}-rendering.mp4")
     final_still = amplitude.OUTPUT_DIR / f"{NAME}-final.png"
+    process = subprocess.Popen(
+        [
+            imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-v", "error",
+            "-f", "rawvideo", "-pix_fmt", "rgb24",
+            "-s", f"{amplitude.WIDTH}x{amplitude.HEIGHT}",
+            "-r", str(amplitude.FPS), "-i", "-", "-an",
+            "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p",
+            "-movflags", "+faststart", str(temporary_video),
+        ],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.PIPE,
+    )
     try:
         for index in range(FRAMES):
-            draw_frame(index).save(scratch / f"frame_{index:04d}.png")
+            process.stdin.write(draw_frame(index).tobytes())
+            if index % (3 * amplitude.FPS) == 0:
+                print(f"Rendering {index // amplitude.FPS}/{amplitude.TOTAL_SECONDS:g}s", flush=True)
+        process.stdin.close()
+        error = process.stderr.read().decode(errors="replace")
+        if process.wait():
+            raise RuntimeError(error)
+        temporary_video.replace(video)
         draw_frame(FRAMES - 1).save(final_still)
-        subprocess.run(
-            [
-                str(amplitude.FFMPEG),
-                "-y",
-                "-framerate",
-                str(amplitude.FPS),
-                "-i",
-                str(scratch / "frame_%04d.png"),
-                "-c:v",
-                "libx264",
-                "-crf",
-                "18",
-                "-pix_fmt",
-                "yuv420p",
-                "-movflags",
-                "+faststart",
-                str(video),
-            ],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-            check=True,
-        )
         contact = make_contact_sheet()
         return video, contact, final_still
-    finally:
-        if scratch.exists():
-            amplitude.remove_scratch_tree(scratch)
+    except BaseException:
+        process.kill()
+        process.wait()
+        raise
 
 
 def main() -> None:
@@ -439,7 +462,13 @@ def main() -> None:
     print(video)
     print(contact)
     print(final_still)
-    print(amplitude.verify_video(video))
+    reader = imageio_ffmpeg.read_frames(str(video), pix_fmt="rgb24")
+    metadata = next(reader)
+    decoded_frames = sum(1 for _ in reader)
+    if (tuple(metadata["size"]) != (amplitude.WIDTH, amplitude.HEIGHT)
+            or metadata["fps"] != amplitude.FPS or decoded_frames != FRAMES):
+        raise RuntimeError(f"unexpected video output: {metadata}; frames={decoded_frames}")
+    print(f"Verified {decoded_frames} frames; {metadata['fps']:g} fps; {metadata['size']}")
     print(
         f"essential_content_bottom={amplitude.ESSENTIAL_CONTENT_BOTTOM}; "
         f"controls_safe_top={amplitude.CONTROLS_SAFE_TOP}"

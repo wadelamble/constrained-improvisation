@@ -1,0 +1,22 @@
+{
+  "max_relative_complex_fourier_error": 4.5647923516941026e-11,
+  "max_norm_error": 5.551115123125783e-16,
+  "max_uncertainty_product_error": 3.3306690738754696e-16,
+  "x0": 8.0,
+  "k0": 9.42477796076938,
+  "sigma_x_range": [
+    0.019320789429739655,
+    25.878859754579782
+  ],
+  "display_peak_rescaled": true,
+  "fixed_horizontal_scales": true,
+  "full_complex_curve": true,
+  "endpoint_deltas_schematic": true,
+  "duration": 12.0,
+  "fps": 30,
+  "frames": 360,
+  "size": [
+    1440,
+    900
+  ]
+}
