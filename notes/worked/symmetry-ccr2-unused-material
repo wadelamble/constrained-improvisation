@@ -66,3 +66,19 @@ Both the physical quantity we want this commutator to generate and abstract phas
 
 .............................
 
+phase accumulatoin....
+
+
+![A fixed-magnitude complex amplitude changing through phase](../../content/drafts/animations/symmetry-complex-phasor-rotation-contact-sheet.png)
+
+[Open MP4: symmetry-complex-phasor-rotation.mp4](../../content/drafts/animations/symmetry-complex-phasor-rotation.mp4)
+
+[why?]
+Now, let us ask the question what it means for a wave to travel from one point A to another point B. For simple free waves, the answer is obvious -- it is simply the rays we illustrated above that are perpendicular to the level sets of phase. In the case of a plane wave, the ray through A continues in one direction. In the case of a spherical wave, rays from A extend in every radial direction.
+[why]
+
+![Plane and spherical waves with their rays](../../content/drafts/animations/symmetry-plane-and-spherical-wave-rays-contact-sheet.png)
+
+[Open MP4: symmetry-plane-and-spherical-wave-rays.mp4](../../content/drafts/animations/symmetry-plane-and-spherical-wave-rays.mp4)
+
+We place a source at A. When the single-wave-number wave emitted from it reaches the screen the only rays emanating from A that can pass through are at C and D. We therefore have two candidate paths from A to B, ACB and ADB.

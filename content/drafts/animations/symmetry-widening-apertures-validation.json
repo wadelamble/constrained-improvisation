@@ -1,0 +1,22 @@
+{
+  "interval_integration_max_complex_error": 0.00017016001685034207,
+  "plane_wave_complex_error": 0.0,
+  "final_core_mean_intensity": 1.1770436763763428,
+  "final_central_shadow_mean_intensity": 0.09089314937591553,
+  "wavelength": 0.2,
+  "width_range": [
+    0.12,
+    3.4
+  ],
+  "fixed_color_mapping": "signed real part; |value|^0.72; no variable gain",
+  "period": 512.0,
+  "n": 131072,
+  "dy": 0.00390625,
+  "duration": 20.0,
+  "model": "forward scalar, finite-interval thin aperture; steady states",
+  "size": [
+    1440,
+    1120
+  ],
+  "fps": 30
+}

@@ -1,0 +1,41 @@
+{
+  "model": "finite intervals; forward scalar angular spectrum; steady states",
+  "fixed_opening": 0.5,
+  "centers": [
+    -2.4,
+    2.4
+  ],
+  "wavelengths": [
+    0.5,
+    0.2,
+    0.08,
+    0.015,
+    0.001
+  ],
+  "period": 128.0,
+  "n": 16384,
+  "axial_samples": 301,
+  "max_sampling_complex_error": 0.004802363268707202,
+  "final_visible_intensity_fraction_within_geometric_beams": 0.9585950970649719,
+  "intensity_transition_wavelengths": [
+    0.3,
+    0.18
+  ],
+  "max_visible_carrier_phase_step_per_frame": 2.538756577865847,
+  "fixed_intensity_color_levels": [
+    0.0,
+    0.025,
+    0.1,
+    0.25,
+    0.5,
+    1.0,
+    1.7,
+    2.5
+  ],
+  "duration": 20.0,
+  "size": [
+    1440,
+    1120
+  ],
+  "fps": 30
+}

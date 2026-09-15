@@ -201,46 +201,44 @@ This derivation is rather involved, but we can get a feel for the result by plot
 
 *Trade-off in uncertainty of position and wave number*
 
-##### Phase Stationarity
-We have an intuitive sense that a travelling wave can be can be thought of as a ray. But we also know this isn't always the case, a wave can bend around and object, or passing through an aperture, it reemerges as a new sperical wave. 
+##### Wave Propagation and Interference
+Everyone who has taken a high-school physics class knows that given a particular setup, the laws of motion tell us the path an object follows. For example, under constant acceleration:
 
-![Ray-like propagation beside diffraction and interference](../../content/drafts/animations/symmetry-rays-and-double-slit-contact-sheet.png)
+```math
+x = x_0 + v_0t + 1/2 at^2
+```
 
-[Open MP4: symmetry-rays-and-double-slit.mp4](../../content/drafts/animations/symmetry-rays-and-double-slit.mp4)
+Such "physically valid" paths in the macroscopic world have a fascinating quality that can be leveraged to find the laws of motion that predict them. They are such that some quantity associated with possible paths, we needn't worry what, is minimized or otherwise held **stationary** at the valid path. Waves are not paths. There is no "object" to travel in a path, rather, there is an amplitude at all locations in space. We will outline a procedure for finding these amplitudes, and with it, we will show what we already know intuitively, that a wave with a wavelength that is much smaller than an opening it passes through behaves like a "ray." We will see that in that limit, the "path" in fact does minimize a quantity, namely the accumulated phase along the path. This may make us wonder if a wave that acts like a ray is somehow physically equivalent to a rigid object following a path. Enter quantum mechanics. It calculates measurement probabilities not by assigning objects definite paths, but by equating a wave function's intensity to those probabilities. In the classical regime where our everyday sense of scale resides, the quantum wave function has a tiny wavelength, and all the probability falls on a single path that extremizes the wave function's phase.
 
-We are going to dive into how these different behaviors are related, not out of specific interest in real-world waves in media, but because, remarkably, the reasoning we use to show that free wave propagation tends toward ray-like behavior is precisely the same reasoning we will use later to derive the laws of motion for any body.
+![Waves through fixed openings becoming narrow beams as the wavelength decreases](../../content/drafts/animations/symmetry-short-wave-beams-poster.png)
 
-Thus far we have described a wave as having a single translation direction $x$ and wave number, $k$. If the wave is to travel, though, we also require the wave to represent time translation. Time translation must commute with spatial translation, for otherwise, it would change the mode composition over time, and spatial translation would then not be a symmetry of nature. It's worth pointing out here that there are two different ways to picture time parameterization. We can picture a "movie" a wave travelling down a 1-dimensional string, or we can imagine a still diagram in $x$-$t$ space. The former is closer to our experience, but the formalism maps to the latter. With that in mind, we can see that a travelling, sigle-mode wave is given by:
+[Open MP4: symmetry-short-wave-beams.mp4](../../content/drafts/animations/symmetry-short-wave-beams.mp4)
+
+*Interference and Rays*
+
+Thus far we have described the symmetry group of a wave with a single translation direction $x$ and wave number, $k$. If the wave is to propagate, we also require that the wave represent time translation. We also need to require that time translation commute with spatial translation, for otherwise, it would change the mode composition over time, and spatial translation would no longer be a symmetry of nature. A single-mode travelling wave is then given by:
+
+```math
+M_0e^{i\left[kx-\omega t\right]}.
+```
+
+Because time is special, $\omega$ is called \(angular\) **frequency**, not wave number, but from a mathematical perspective, it is just another wave number.
+
+Let us now ask the question, how do we find the amplitude at some point $B$ from some initial state of a wave. To do this, we can decompose the contributions into those from individual paths, starting with a very simple model. First, let's contruct a point source of single-mode spherical waves emanating from a $A$. Then let's add a barrier with two slits through which the wave can pass, $C$ and $D$. This setup allows us to calculated the amplitude at $B$ by combining only the amplitude associated with the two paths $ACB$ and $ADB$.
+
+![The two contributions $ACB$ and $ADB$ from a point source through two narrow openings](../../content/drafts/animations/symmetry-double-slit-candidate-paths-shortwave-arcs-poster.png)
+
+[Open MP4: symmetry-double-slit-candidate-paths-shortwave-arcs.mp4](../../content/drafts/animations/symmetry-double-slit-candidate-paths-shortwave-arcs.mp4)
+
+*Two Path Interference*
+
+First, let's figure out how any one straight segment of a plane wave contributes to the amplitude at its endpoint. From:
 
 ```math
 e^{i\left[kx-\omega t\right]}.
 ```
 
-$\omega$ is commonly called angular **frequency**, even though structurally it is wave number in a different translation direction.
-
-We need to be a bit careful here to remember that we are thinking here of complex waves. As a free plane wave mode travels, unlike a sinusoidal wave, the magnitude is constant and the change in value comes from the change in phase:
-
-```math
-\Psi=M_0 e^{i\phi}
-```
-
-![A fixed-magnitude complex amplitude changing through phase](../../content/drafts/animations/symmetry-complex-phasor-rotation-contact-sheet.png)
-
-[Open MP4: symmetry-complex-phasor-rotation.mp4](../../content/drafts/animations/symmetry-complex-phasor-rotation.mp4)
-
-Now, let us ask the question what it means for a wave to travel from one point A to another point B. For simple free waves, the answer is obvious -- it is simply the rays we illustrated above that are perpendicular to the level sets of phase. In the case of a plane wave, the ray through A continues in one direction. In the case of a spherical wave, rays from A extend in every radial direction.
-
-![Plane and spherical waves with their rays](../../content/drafts/animations/symmetry-plane-and-spherical-wave-rays-contact-sheet.png)
-
-[Open MP4: symmetry-plane-and-spherical-wave-rays.mp4](../../content/drafts/animations/symmetry-plane-and-spherical-wave-rays.mp4)
-
-We place a source at A. When the single-wave-number wave emitted from it reaches the screen the only rays emanating from A that can pass through are at C and D. We therefore have two candidate paths from A to B, ACB and ADB.
-
-![Two candidate paths through a double slit](../../content/drafts/animations/symmetry-double-slit-candidate-paths-contact-sheet.png)
-
-[Open MP4: symmetry-double-slit-candidate-paths.mp4](../../content/drafts/animations/symmetry-double-slit-candidate-paths.mp4)
-
-The wave at a point can receive contributions along multiple paths. Knowing the possible paths, how do we calculate the wave's value at B given its source value at A? Along any radial segment, the phase advances as:
+we can identify that:
 
 ```math
 \Delta\phi
@@ -250,7 +248,15 @@ k\,\Delta\ell
 \omega\,\Delta t,
 ```
 
-where $\Delta\ell$ is distance along the ray. We can use this relationship to calculate the phase accumulation along any one segment. In the arrangement we are considering, the segments combine into two candidate paths from A to B: AC followed by CB, and AD followed by DB. Because we compare their contributions at B at the same observation time, their time-dependent phase is the same, so we need only track their path-dependent spatial phases. Let $\ell_{AC}$ be the length of segment AC, and likewise for the other segments. The phase advances are:
+where $\Delta\ell$ is distance along the ray. In our setup, the segments combine into two candidate paths from $A$ to $B$:
+
+```math
+A \to C \to B
+\qquad\text{and}\qquad
+A \to D \to B.
+```
+
+We can now ask how each path contributes to the amplitude at $B$. The magnitude simply falls off as $1/r$ in accordance with spherical geometry. Also, since all contributions arrive at $B$ at the same  observation time, their time-dependent phase is the same. The remaining thing to calculate is their path-dependent spatial phases. Let $\ell_{AC}$ be the length of segment $AC$, and likewise for the other segments. The phase advances are:
 
 ```math
 \begin{aligned}
@@ -264,9 +270,7 @@ where $\Delta\ell$ is distance along the ray. We can use this relationship to ca
 \end{aligned}
 ```
 
-Because multiplying phase factors adds the angles in their exponents, we can simply add these contributions to calculate the total phase advance along ACB and ADB.
-
-But what, then is the amplitude at B? Let $\phi_0$ include the original phase at A and the temporal phase advance common to both paths. Along each path we add the path-dependent phase advance:
+To transform the wave function along the path, we compose, or multiply, the phase actions, and because multiplying phase factors adds the angles in their exponents, we can simply add the phase angle contributions to calculate the total phase advance along $ACB$ and $ADB$, respectively. Letting $\phi_0$ include the original phase at $A$ and the temporal phase advance common to both paths, we have:
 
 ```math
 \begin{aligned}
@@ -284,7 +288,7 @@ But what, then is the amplitude at B? Let $\phi_0$ include the original phase at
 \end{aligned}
 ```
 
-What have we computed? It is the phase of the wave contribution arriving at B along each path. What then is the total amplitude at B? It is just the sum of the two contributions arriving there. This is the principle of superposition, which is just the very intuitive idea that wave values add. Let $M_{ACB}$ and $M_{ADB}$ denote the magnitudes of the two path contributions. We can now calculate the value of $\Psi$ at B from its value at A:
+If we let $M_{ACB}$ and $M_{ADB}$ denote the magnitudes of the two path contributions, we then have the total contributions of each path at $B$:
 
 ```math
 \Psi_{ACB}(B)
@@ -300,7 +304,7 @@ M_{ADB}
 e^{i(\phi_0+\phi_{AD}+\phi_{DB})}.
 ```
 
-The two contributions add at \(B\):
+What then is the total amplitude at $B$? It is just the sum of the two contributions arriving there. This is the principle of superposition which manifests visually as interference:
 
 ```math
 \Psi_B
@@ -312,40 +316,42 @@ M_{ADB}
 e^{i(\phi_0+\phi_{AD}+\phi_{DB})}.
 ```
 
-We can plot the contribution from each path ACB and ADB in the complex plane, showing their sum by drawing them tip-to-tail. The vector from the beginning of the first arrow to the end of the second is the amplitude at B, that is its length is the magnitude at B and its angle is the phase at B.
+We can plot the contribution from each path $ACB$ and $ADB$ in the complex plane, showing their sum by drawing them tip-to-tail. The vector from the beginning of the first arrow to the end of the second is the amplitude at $B$. Its length is the magnitude at $B$ and its angle is the phase at $B$.
 
-![The two path contributions added tip-to-tail](../../content/drafts/diagrams/symmetry-double-slit-two-path-phasor-sum.png)
+![The two path contributions added tip-to-tail](../../content/drafts/diagrams/symmetry-double-slit-two-path-phasor-sum-shortwave.png)
 
-Now let's see what happens when we add many more slits.
+*Amplitude at $B$ is the sum of contribution from $ACB$ and $ADB$*
+
+We can repeat the same procedure with many more paths. As the path deviates more from a straight, minimum length path, it has a greater first-order change in phase. \(This is the common result from calculus that near a function's minimum, there is no change to the value of the function in the first order of the argument\). When the candidate paths are far from the stationary value their phases vary greatly, effectively cancelling out their contributions to the total sum. On the other hand, the phases of the paths near the stationary path align and dominate the sum. The yellow line in the tip-to-tail pane of the animation shows the sum of each of these contributions and thus gives value of $A$ relative to $B$. The resulting intensity on the projection screen is the square of this magnitude.
 
 ![Many paths, their complex sum, and the resulting interference pattern](../../content/drafts/animations/symmetry-many-slit-paths-phasors-interference-contact-sheet.png)
 
 [Open MP4: symmetry-many-slit-paths-phasors-interference.mp4](../../content/drafts/animations/symmetry-many-slit-paths-phasors-interference.mp4)
 
-As the path deviates more from a straight, minimum length path, it has a greater first-order change in phase. \(This is the common result from calculus that near a function's minimum, there is no change to the value of the function in the first order of the argument\). When the candidate paths are far from the stationary value their phases vary greatly, effectively cancelling out their contributions to the total sum. On the other hand, the phases of the paths near the stationary path align and dominate the sum. The yellow line in the tip-to-tail pane of the animation shows the sum of each of these contributions and thus gives value of A relative to B. The resulting intensity on the projection screen is the square of this magnitude.
+*Seeing stationarity emerge in closely spaced paths*
 
-We can extend this procedure to its limit and include infinitely many screens with infinitely many slits, and when doing so, recover a plane wave. The construction, which will be our bridge to a formulation of quantum mechanics, was articulated by Huygens in the late 1600s!
+We can extend this procedure to its limit and include infinitely many screens with infinitely many slits, and when doing so, recover a plane wave. This construction, which is the bridge to the so-called Feynman path integral formulation of quantum mechanics, was articulated by Huygens in the late 1600s!
 
-![Huygens wavelets and their coherent sum as slits and screens are added](../../content/drafts/animations/symmetry-schematic-screens-v3-check-40.png)
+![Huygens wavelets and their coherent sum as slits and screens are added](../../content/drafts/animations/symmetry-schematic-screens-v3-concise-poster.png)
 
-[Open MP4: symmetry-schematic-screens-v3.mp4](../../content/drafts/animations/symmetry-schematic-screens-v3.mp4)
+[Open MP4: symmetry-schematic-screens-v3-concise.mp4](../../content/drafts/animations/symmetry-schematic-screens-v3-concise.mp4)
 
-Summing phase advances along infinite paths between point sources is equivalent to globally propagating a wave front. 
+*Huygen's Principle*
 
-Let us ask. What happens when we vary the wavelength relative to the slit? As the wavelength becomes small, even a slight change in path length can produce a large phase change:
+Let us now ask one more question. What happens to our tip-to-tail map to alternate paths when we vary the wavelength relative to the slit? As the wavelength becomes small, even a slight change in path length can produce a large phase change:
 
 ```math
 \phi=\frac{2\pi L}{\lambda}=2\pi n+\theta,
 \qquad 0\leq\theta<2\pi
 ```
 
-Away from a stationary path, the phase winds through many cycles over a small range of paths, leaving a more or less random phase remainder so that the contribution from these paths cancel, and only paths near the stationary combine to contribute to the sum. 
+Away from a stationary path, the phase winds through many cycles over a small range of paths, approaching a random phase remainder so that the contribution from these paths cancel, and only paths near the stationary combine to contribute to the sum. 
 
 ![Three trials accumulate a quarter turn at the longer wavelength while the shorter wavelength produces many rotations](../../content/drafts/animations/symmetry-phase-remainder-spinners-run-3.png)
 
 [Open MP4: symmetry-phase-remainder-spinners.mp4](../../content/drafts/animations/symmetry-phase-remainder-spinners.mp4)
 
-In this regimes, as waves pass through slits, they behave purely as rays, just as if you through a ball from one point through a hole, it could only hit the projection screen in one spot.
+In this limit, as waves pass through slits, they behave as rays, just as if you through a ball from one point through a hole, it could only hit the projection screen in one spot.
 
 ![Matching colors connect candidate paths to their contributions in the tip-to-tail sum as wavelength decreases](../../content/drafts/animations/symmetry-spectrum-path-diamond-wavelength-scan-lambda-3.png)
 

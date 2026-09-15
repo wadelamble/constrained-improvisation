@@ -1,0 +1,12 @@
+{
+  "original_field_max_error": 4.145989107584569e-15,
+  "duration": 6.0,
+  "cycles": 4,
+  "frames_per_cycle": 45,
+  "display": "real part, with time-independent positive contrast gains",
+  "label_collisions": [],
+  "size": [
+    1440,
+    760
+  ]
+}

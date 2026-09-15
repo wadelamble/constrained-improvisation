@@ -1,0 +1,35 @@
+{
+  "A": [
+    -3.2,
+    0.0
+  ],
+  "C": [
+    0.0,
+    1.0
+  ],
+  "D": [
+    0.0,
+    -1.0
+  ],
+  "B": [
+    5.2,
+    0.55
+  ],
+  "wavelength": 1.25,
+  "path_lengths": [
+    8.57204575815349,
+    8.778705282514117
+  ],
+  "relative_phase_at_B": 1.0387840696411355,
+  "signed_sum_max_error": 2.3175905639050143e-15,
+  "phase_step_per_frame": 0.1308996938995747,
+  "display_limit": 1.35,
+  "component_front_max_phase_error": 7.595286077259942e-15,
+  "model": "original phase-only two-point-aperture illustration",
+  "size": [
+    1440,
+    810
+  ],
+  "fps": 30,
+  "duration": 10.0
+}
