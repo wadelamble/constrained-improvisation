@@ -82,3 +82,17 @@ Now, let us ask the question what it means for a wave to travel from one point A
 [Open MP4: symmetry-plane-and-spherical-wave-rays.mp4](../../content/drafts/animations/symmetry-plane-and-spherical-wave-rays.mp4)
 
 We place a source at A. When the single-wave-number wave emitted from it reaches the screen the only rays emanating from A that can pass through are at C and D. We therefore have two candidate paths from A to B, ACB and ADB.
+
+
+........
+quantum bridge:
+
+The Heisenberg $H_3$ group structure says nothing about behavior in the real world. It is a mathematical abstraction. If we are to use this abstraction to describe the physical world, $x$ and $k$ must be associated with something we can measure, some physical dimension. To apply the Fourier structure to physics two things must be done. First, we assign $x$ the dimension of length \(or time for time translation\). Second, we need a scale that converts the dimensionless phase, encoded by the commutator, into a quantity with physical dimensions. Why? The idea of stationarity we discussed above will determine the laws of physical evolution, and we must be able to construct the quantity under which different candidate histories are stationary from physical observables.
+
+But we are getting ahead of ourselves -- why should we want to apply the mathematical structure of wave propagation to formulating the laws of physics generally. The answer comes from quantum mechanics \(which is our current working model\). Physics is about saying how systems evolve over time. In quantum mechanics, there is no concept of objects with definite positions and velocities, only a probabilistic distribution over such "observables." But this distribution is given as the square of a wave function, which can be expressed either in position -- $x$ in our Fourier discussion -- or in what we will call momentum -- proportional to $k$ in our Fourier discussion. Note that what was was wave intensity \(the square of the complex magnitude\) is now the *probability* of measuring a point-like object at a particular position or momentum. What evolves over time is not the an object moving through space, but the wave function that encodes this distribution. Therefore, our entire discussion of phase stationariy can be precisely apporpriated for mechanical systems. The link we must discover is how to scale $phi$ to a quantity contructed from physical observables. We will call this quantity **action**, $S$. 
+
+For a candidate history $\gamma$, quantum mechanics gives action the form:
+
+```math
+S[\gamma]=\hbar\phi[\gamma],
+```
