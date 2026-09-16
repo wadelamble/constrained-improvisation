@@ -501,6 +501,11 @@ a:hover {
     font-size: 17px;
   }
 
+  .site-header__inner,
+  .site-nav {
+    flex-wrap: wrap;
+  }
+
   .article-layout {
     display: block;
   }

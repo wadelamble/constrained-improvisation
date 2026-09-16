@@ -13,6 +13,7 @@ SITE_SRC = ROOT / "site_src"
 OUT_DIR = ROOT / "site"
 PATH_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "lm-draft-polished.md"
 DIFFERENTIAL_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "Differential-Mechanics-With-Diagrams.md"
+WAVE_SYMMETRY_DRAFT = ROOT / "notes" / "worked" / "symmetry-ccr-2.md"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 
 TITLE = "Nature's Improvisation on Form"
@@ -43,9 +44,11 @@ class Article:
     title: str
     slug: str
     draft: Path
+    heading_offset: int = 0
 
 
 ARTICLES = [
+    Article("Wave Symmetry", "symmetry", WAVE_SYMMETRY_DRAFT, heading_offset=3),
     Article("The Principle of Least Action", "path-mechanics", PATH_MECHANICS_DRAFT),
     Article("Differential Mechanics", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
 ]
@@ -61,10 +64,12 @@ SECTIONS = [
         outline=["Invariant structure", "State, law, and observation"],
     ),
     Section(
-        "Symmetry",
+        "Wave Symmetry",
         "symmetry",
-        "A primer on symmetry from simple shapes to physical behavior.",
-        outline=["Transformation groups", "Conserved quantities"],
+        "Wave symmetry, interference, and the connection to quantum mechanics.",
+        status="",
+        href="/symmetry/",
+        disabled=False,
     ),
     Section(
         "Spacetime",
@@ -126,8 +131,20 @@ def slugify(text: str) -> str:
     return slug or "section"
 
 
-def article_outline(article: Article) -> list[str]:
+def article_markdown(article: Article) -> str:
     markdown = article.draft.read_text(encoding="utf-8")
+    if article.heading_offset:
+        def adjust_heading(match: re.Match[str]) -> str:
+            depth = max(1, len(match.group(1)) - article.heading_offset)
+            text = article.title if depth == 1 else match.group(2).strip()
+            return f"{'#' * depth} {text}"
+
+        markdown = re.sub(r"^(#{1,6})[ \t]+(.+)$", adjust_heading, markdown, flags=re.MULTILINE)
+    return markdown
+
+
+def article_outline(article: Article) -> list[str]:
+    markdown = article_markdown(article)
     return [
         line.removeprefix("## ").strip()
         for line in markdown.splitlines()
@@ -226,7 +243,7 @@ def render_home() -> str:
 
 
 def inline(text: str) -> str:
-    parts = re.split(r"(`[^`]+`)", text)
+    parts = re.split(r"(`[^`]+`|\$[^$\n]+\$)", text)
     out: list[str] = []
     for part in parts:
         if not part:
@@ -234,7 +251,12 @@ def inline(text: str) -> str:
         if part.startswith("`") and part.endswith("`"):
             out.append(f"<code>{html.escape(part[1:-1])}</code>")
             continue
+        if part.startswith("$") and part.endswith("$"):
+            out.append(html.escape(part))
+            continue
         escaped = html.escape(part)
+        escaped = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", escaped)
+        escaped = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", escaped)
         escaped = re.sub(
             r"\[([^\]]+)\]\(([^)]+)\)",
             lambda m: f'<a href="{html.escape(rewrite_asset_path(m.group(2)), quote=True)}">{m.group(1)}</a>',
@@ -244,20 +266,30 @@ def inline(text: str) -> str:
     return "".join(out)
 
 
+def local_asset_path(path: str) -> str | None:
+    relative = path.removeprefix("../../content/drafts/")
+    if relative.startswith(("animations/", "diagrams/")):
+        return relative
+    return None
+
+
 def rewrite_asset_path(path: str) -> str:
-    if path.startswith("animations/"):
-        return site_path(f"/assets/{path}")
+    relative = local_asset_path(path)
+    if relative is not None:
+        return site_path(f"/assets/{relative}")
     return path
 
 
 def copy_asset(path: str) -> None:
-    if not path.startswith("animations/"):
+    relative = local_asset_path(path)
+    if relative is None:
         return
-    source = ROOT / "content" / "drafts" / path
-    dest = OUT_DIR / "assets" / path
-    if source.exists():
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(source, dest)
+    source = ROOT / "content" / "drafts" / relative
+    dest = OUT_DIR / "assets" / relative
+    if not source.is_file():
+        raise FileNotFoundError(f"Missing manuscript asset: {source}")
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, dest)
 
 
 def figure_for_image(alt: str, path: str, caption: str | None = None) -> str:
@@ -393,8 +425,18 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
             mp4_match = re.fullmatch(r"\[Open MP4: ([^\]]+)\]\(([^)]+)\)", next_line)
             if mp4_match:
                 _, video_path = mp4_match.groups()
+                end_index = next_index + 1
+                if caption is None:
+                    caption_index = end_index
+                    while caption_index < len(lines) and not lines[caption_index].strip():
+                        caption_index += 1
+                    if caption_index < len(lines):
+                        trailing_caption = re.fullmatch(r"\*(.+)\*", lines[caption_index].strip())
+                        if trailing_caption:
+                            caption = trailing_caption.group(1).strip()
+                            end_index = caption_index + 1
                 html_blocks.append(figure_for_video(alt, image_path, video_path, caption))
-                i = next_index + 1
+                i = end_index
             else:
                 html_blocks.append(figure_for_image(alt, image_path, caption))
                 i = next_index if caption is not None else i + 1
@@ -480,7 +522,7 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
 
 
 def render_article(article: Article) -> str:
-    markdown = article.draft.read_text(encoding="utf-8")
+    markdown = article_markdown(article)
     article_html, toc_items = render_markdown(markdown)
     toc_links = "\n".join(
         f'<a class="depth-{depth}" href="#{hid}">{html.escape(text)}</a>'
