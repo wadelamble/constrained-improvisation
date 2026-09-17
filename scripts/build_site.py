@@ -15,6 +15,7 @@ PATH_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "lm-draft-polished.md"
 DIFFERENTIAL_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "Differential-Mechanics-With-Diagrams.md"
 WAVE_SYMMETRY_DRAFT = ROOT / "notes" / "worked" / "symmetry-ccr-2.md"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
+REEL_DIR = ROOT / "content" / "reels" / "ccr2-series"
 
 TITLE = "Nature's Improvisation on Form"
 BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
@@ -550,6 +551,12 @@ def build() -> None:
         article_dir = OUT_DIR / article.slug
         article_dir.mkdir(parents=True, exist_ok=True)
         (article_dir / "index.html").write_text(render_article(article), encoding="utf-8")
+    # Stable public MP4 URLs for the unpublished Buffer drafts. Keep the review
+    # gallery, manifests, and publishing records out of the public site.
+    for video in sorted(REEL_DIR.glob("ccr2-*.mp4")):
+        media_dir = OUT_DIR / "media" / "reels" / "waves-to-quanta"
+        media_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(video, media_dir / video.name)
 
 
 if __name__ == "__main__":
