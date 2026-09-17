@@ -29,7 +29,7 @@ By now, we know that a symmetry is defined by what it leaves invariant. We've se
 
 *Unitarity of position and wave-number translations*
 
-In addition to position and wave number, waves have a third independent way of changing. A wave's **phase**, $\phi$, refers to where it is in its cyclic pattern. For example, a phase shift of $2\pi$, or one full "cycle," returns the wave to its exact initial state. We need to be a bit careful here. For a pure mode, shifting its position is indistinguishable from shifting its phase, somewhat in the way the turning of a barbershop sign appears as though its stripes are moving up and down. We might, then, be tempted to think there is no difference between position and phase shifts. But the single mode is an idealization. In the general case, in which the wave function is a composition of modes, position translation shifts the entire function. Phase translation shifts each mode by the same fraction of its cycle, changing the function while leaving its magnitude envelope unchanged.
+In addition to position and wave number, waves have a third independent way of changing. A wave's **phase**, $\phi$, refers to where it is in its cyclic pattern. For example, a phase shift of $2\pi$, or one full "cycle," returns the wave to its exact initial state. We need to be a bit careful here. For a pure mode, shifting its position is indistinguishable from shifting its phase, somewhat in the way the turning of a barbershop sign appears as though its stripes are moving up and down. We might, then, be tempted to think there is no difference between position and phase shifts. But the single mode is an idealization. In the general case, in which the wave function is a packet comprised of a composition of modes, position translation shifts the entire function. Phase translation shifts each mode by the same fraction of its cycle, changing the function while leaving its magnitude envelope unchanged.
 
 ![Nine complex modes and their exact sum rotate through five phase turns while their magnitude envelopes remain fixed](../../content/drafts/animations/symmetry-complex-phase-modes-poster.png)
 
@@ -37,7 +37,7 @@ In addition to position and wave number, waves have a third independent way of c
 
 *Visualizing Phase Change*
 
-We can also discover and define phase directly from our symmetry group's commutation relations, which gives us a very useful algebraic packaging of the group structure. Let's ask the question:
+We can also discover and define phase directly from our symmetry group's commutation relations, which gives us a useful algebraic packaging of the group structure. Let's ask the question:
 
 ```math
 [\hat X, \hat K] = \; ?
@@ -110,9 +110,9 @@ e^{-iab}\psi_{k_0}(x).
 
 The two shifts fail to commute by the factor $e^{-iab}$. Writing $\phi=-ab$, the loop multiplies the function by $e^{i\phi}$. But this is precisely a phase shift, a rotation in the complex plane that “turns” the whole "spiral" of the wave function.
 
-Because this factor is independent of $k_0$, the same phase shift applies to every superposition of modes.
+Because this factor is independent of $k_0$, the same phase shift applies to every mode in a superposition.
 
-Phase translation, then, is a third translation symmetry, whose invariant is the inner product under its unitary action, rounding out the group of $x$, $k$, and phase translations coupled through Fourier structure:
+Phase translation, then, is a third translation symmetry, whose invariant is the inner product under its unitary action, rounding out the group of $x$, $k$, and $\phi$ coupled through Fourier structure:
 
 ```math
 \langle T_x(a)\psi,T_x(a)\chi\rangle
@@ -157,7 +157,7 @@ Before we close out here, a small amount of house cleaning is needed. First, we 
 ```
 
 #####  Position / Wave Number Uncertainty
-As we know, a single-mode wave function has a single wave number. But what position does it have? There is no answer to this as the wave is uniform over all position space. The same statement holds in reverse. A wave packet ideally localized at one position is uniform over all $k$-space. Anywhere in between these extremes, as a wave packet is more localized in one space, it is more spread out in the dual space. 
+As we know, a single-mode wave function has a single wave number. But what position does it have? There is no way to answer this as the wave is uniform over all position space. The same statement holds in reverse. A wave packet ideally localized at one position is uniform over all $k$-space. Anywhere in between these extremes, as a wave packet is more localized in one space, it is more spread out in the dual space. 
 
 ![A complex wave function and its Fourier transform sweep between the localization extremes](../../content/drafts/animations/symmetry-xk-fourier-complex-poster.png)
 
@@ -207,7 +207,7 @@ Everyone who has taken a high-school physics class knows that given a particular
 x = x_0 + v_0t + \frac{1}{2}at^2
 ```
 
-Such "physically valid" paths in the macroscopic world have a fascinating quality that can be leveraged to find the laws of motion that predict them. They are such that some quantity associated with possible paths, which is called **action**, is minimized or otherwise held **stationary** at the valid path. Waves are not paths. There is no "object" to travel along a path; rather, there is an amplitude at all locations in space. We will outline a procedure for finding these amplitudes, and with it, we will show what we already know intuitively, that a wave with a wavelength that is much smaller than an opening it passes through behaves like a "ray." We will see that in that limit, the "path" in fact does minimize a quantity, namely the accumulated phase along the path. This may make us wonder if a wave that acts like a ray is somehow physically equivalent to a rigid object following a path. Enter quantum mechanics. It calculates measurement probabilities not by assigning objects definite paths, but by equating a wave function's intensity to those probabilities. In the classical regime where our everyday sense of scale resides, the quantum wave function has a tiny wavelength, and all the probability falls on a single path that extremizes the wave function's phase.
+Such "physically valid" paths in the macroscopic world have a fascinating quality that can be leveraged to find the laws of motion that predict them. They are such that some quantity associated with possible paths, which is called **action**, is minimized or otherwise held **stationary** at the valid path. Waves are not paths. There is no "object" to travel along a path. Rather, there is an amplitude at all locations in space. We will outline a procedure for finding these amplitudes, and with it, we will show what we already know intuitively, that a wave with a wavelength that is much smaller than an opening it passes through behaves like a "ray." We will see that in that limit, the "path" minimizes the accumulated phase along the path. This may make us wonder if a wave that acts like a ray is somehow physically equivalent to a rigid object following a path. Enter quantum mechanics. It calculates measurement probabilities not by assigning objects definite paths, but by equating a wave function's intensity to those probabilities. In the classical regime where our everyday sense of scale resides, the quantum wave function has a tiny wavelength, and all the probability falls on a single path that extremizes the wave function's phase.
 
 ![Waves through fixed openings becoming narrow beams as the wavelength decreases](../../content/drafts/animations/symmetry-short-wave-beams-poster.png)
 
@@ -321,7 +321,7 @@ We can plot the contribution from each path $ACB$ and $ADB$ in the complex plane
 
 *Amplitude at $B$ is the sum of contributions from $ACB$ and $ADB$*
 
-We can repeat the same procedure with many more paths. As the path deviates more from a straight, minimum length path, it has a greater first-order change in phase. (This is the common result from calculus that near a function's minimum, there is no change to the value of the function in the first order of the argument.) When the candidate paths are far from the stationary value, their phases vary greatly, effectively cancelling out their contributions to the total sum. On the other hand, the phases of the paths near the stationary path align and dominate the sum. The green line in the tip-to-tail pane of the animation shows the sum of each of these contributions and thus gives the amplitude at $B$. The resulting intensity on the projection screen is the square of this magnitude.
+We can repeat the same procedure with many more paths. As the path deviates more from a straight, minimum length path, it has a greater first-order change in phase. (This is the common result from calculus that near a function's minimum, there is no change to the value of the function in the first order of the argument.) When the candidate paths are far from the stationary value, their phases vary greatly, effectively cancelling out their contributions to the total sum. On the other hand, the phases of the paths near the stationary path align and dominate the sum. The green line in the tip-to-tail pane of the animation shows the sum of each of these contributions, giving the amplitude at $B$. The resulting intensity on the projection screen is the square of this magnitude.
 
 ![Many paths, their complex sum, and the resulting interference pattern](../../content/drafts/animations/symmetry-many-slit-paths-phasors-interference-contact-sheet.png)
 
@@ -357,7 +357,7 @@ In this limit, as waves pass through slits, they behave as rays, just as if you 
 [Open MP4: symmetry-spectrum-path-diamond-wavelength-scan.mp4](../../content/drafts/animations/symmetry-spectrum-path-diamond-wavelength-scan.mp4)
 
 ##### From Wave Mechanics to Quantum Mechanics
-The action along a given path, the quantity that is minimized by that path, can be constructed from an understanding of the structure of the **spacetime**, as articulated in the theory of special relativity, which will be the topic of our next chapter. Crudely speaking, because the quantity to be minimized must be agreed upon by all observers, it must be an invariant of symmetry actions on spacetime. This leads to the conclusion that the action is, in simple cases, proportional to an invariant built from translations, the time elapsed along a path as measured in a body's rest frame times a dual invariant built from translation generators. The former quantity is called **proper time** while the latter is **mass**.
+The action along a given path, the quantity that is minimized by that path, can be constructed from an understanding of the structure of the **spacetime**, as articulated in the theory of special relativity, which will be the topic of our next chapter. Crudely speaking, because the quantity to be minimized must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. This leads to the result that the action is, in simple cases, proportional to an invariant built from translations, the time elapsed along a path as measured in a body's rest frame times a dual invariant built from translation generators. The former quantity is called **proper time** while the latter is **mass**.
 
 ```math
 S = -m\tau
@@ -381,7 +381,7 @@ We can measure this constant in the lab by comparing mass, as measured through c
 \frac{S}{\phi}:=\hbar\approx 1.055\times10^{-34}\,\mathrm{J\,s}.
 ```
 
-The smaller $\hbar$ is, the more a wave function's phase cycles for a given amount of path variation. But this is exactly our condition for possible paths being dominated by the stationary path. $\hbar$ sets the mass scale at which bodies behave deterministically. Because $1.055\times10^{-34}\,\mathrm{J\,s}$ is an incredibly tiny dimension relative to human scale, we see no quantum stochasticity in everyday life. Are we saying that the laws of motion we learn in high school physics are an approximation? Yes, a very, very good approximation.
+The smaller $\hbar$ is, the more a wave function's phase cycles for a given amount of path variation. But this is exactly our condition for possible paths being dominated by the stationary path. $\hbar$ sets the mass scale at which bodies behave deterministically. Because $1.055\times10^{-34}\,\mathrm{J\,s}$ is tiny relative to human scale, we see no quantum stochasticity in everyday life. Are we saying that the laws of motion we learn in high school physics are an approximation? Yes, a very good approximation.
 
 We can now express our $H_3$ commutation relation in units of action:
 
@@ -396,7 +396,7 @@ We then have:
 ```math
 \hat P := \hbar\hat K
 ```
-where $\hat P$ generates translations from a mechanical collision perspective. Its eigenvalue is momentum, $p$, giving us the quantum **canonical commutation relation**:
+where $\hat P$ generates translations from a mechanical collision perspective. Its eigenvalue is **momentum**, $p$, giving us the quantum **canonical commutation relation**:
 
 ```math
 [\hat X, \hat P] = i\hbar I
@@ -410,6 +410,6 @@ Recall that $x$ and $p$ are the eigenvalues of the $\hat X$ and $\hat P$ operato
 \Delta x\,\Delta p\ge\frac{\hbar}{2}
 ```
 
-This is the Heisenberg uncertainty relation, which states that a quantum state cannot have perfectly sharp values of both position and momentum. $\hbar\approx1.055\times10^{-34}\,\mathrm{J\,s}$ is insanely tiny on the scale of everyday action, but governs the world of tiny scales.
+This is the Heisenberg uncertainty relation, which states that a quantum state cannot have perfectly sharp values of both position and momentum, which becomes relevant at subatomic scales.
 
 The canonical commutation relation, along with the definitions of $\hat X$ and $\hat P$, is also sufficient to serve as a starting point from which to derive quantum theory’s general law of motion.
