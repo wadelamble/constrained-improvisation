@@ -29,7 +29,7 @@ By now, we know that a symmetry is defined by what it leaves invariant. We've se
 
 *Unitarity of position and wave-number translations*
 
-In addition to position and wave number, waves have a third independent way of changing. A wave's **phase**, $\phi$, refers to where it is in its cyclic pattern. For example, a phase shift of $2\pi$, or one full "cycle," returns the wave to its exact initial state. We need to be a bit careful here. For a pure mode, shifting its position is indistinguishable from shifting its phase, somewhat in the way the turning of a barbershop sign appears as though its stripes are moving up and down. We might, then, be tempted to think there is no difference between position and phase shifts. But the single mode is an idealization. In the general case, in which the wave function is a packet comprised of a composition of modes, position translation shifts the entire function. Phase translation shifts each mode by the same fraction of its cycle, changing the function while leaving its magnitude envelope unchanged.
+In addition to position and wave number, waves have a third independent way of changing. A wave's **phase**, $\phi$, refers to where it is in its cyclic pattern. For example, a phase shift of $2\pi$, or one full "cycle," returns the wave to its exact initial state. We need to be a bit careful here. For a pure mode, shifting its position is indistinguishable from shifting its phase, somewhat in the way the turning of a barbershop sign appears as though its stripes are moving up and down. We might, then, be tempted to think there is no difference between position and phase shifts. But the single mode is an idealization. In the general case, in which the wave function is a packet composed of modes, position translation shifts the entire function. Phase translation shifts each mode by the same fraction of its cycle, changing the function while leaving its magnitude envelope unchanged.
 
 ![Nine complex modes and their exact sum rotate through five phase turns while their magnitude envelopes remain fixed](../../content/drafts/animations/symmetry-complex-phase-modes-poster.png)
 
@@ -269,7 +269,7 @@ We can now ask how each path contributes to the amplitude at $B$. The magnitude 
 \end{aligned}
 ```
 
-To transform the wave function along the path, we compose, or multiply, the phase actions, and because multiplying phase factors adds the angles in their exponents, we can simply add the phase angle contributions to calculate the total phase advance along $ACB$ and $ADB$, respectively. Letting $\phi_0$ include the original phase at $A$ and the temporal phase advance common to both paths, we have:
+To transform the wave function along the path, we compose, or multiply, the phase actions. Because multiplying phase factors adds the angles in their exponents, we can simply add the phase angle contributions to calculate the total phase advance along $ACB$ and $ADB$, respectively. Letting $\phi_0$ include the original phase at $A$ and the temporal phase advance common to both paths, we have:
 
 ```math
 \begin{aligned}
@@ -337,7 +337,7 @@ We can extend this procedure to its limit and include infinitely many screens wi
 
 *Huygens' Principle*
 
-Let us now ask one more question. What happens to our tip-to-tail map to alternate paths when we vary the wavelength relative to the slit? As the wavelength becomes small, even a slight change in path length can produce a large phase change:
+Let us now ask one more question. What happens to our tip-to-tail diagram of the path contributions when we vary the wavelength relative to the slit? As the wavelength becomes small, even a slight change in path length can produce a large phase change:
 
 ```math
 \phi=\frac{2\pi L}{\lambda}=2\pi n+\theta,
@@ -357,7 +357,7 @@ In this limit, as waves pass through slits, they behave as rays, just as if you 
 [Open MP4: symmetry-spectrum-path-diamond-wavelength-scan.mp4](../../content/drafts/animations/symmetry-spectrum-path-diamond-wavelength-scan.mp4)
 
 ##### From Wave Mechanics to Quantum Mechanics
-The action along a given path, the quantity that is minimized by that path, can be constructed from an understanding of the structure of the **spacetime**, as articulated in the theory of special relativity, which will be the topic of our next chapter. Crudely speaking, because the quantity to be minimized must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. This leads to the result that the action is, in simple cases, proportional to an invariant built from translations, the time elapsed along a path as measured in a body's rest frame times a dual invariant built from translation generators. The former quantity is called **proper time** while the latter is **mass**.
+The action along a given path, the quantity that is minimized by that path, can be constructed from the structure of **spacetime**, as articulated in the theory of special relativity, which will be the topic of our next chapter. Crudely speaking, because the quantity to be minimized must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. This leads to the result that the action is, in simple cases, proportional to an invariant built from translations — the time elapsed along a path as measured in a body's rest frame — times a dual invariant built from translation generators. The former quantity is called **proper time** while the latter is **mass**.
 
 ```math
 S = -m\tau
