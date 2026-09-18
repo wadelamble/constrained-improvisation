@@ -1,0 +1,363 @@
+# Reel text
+
+Current accompanying text for the Waves to Quanta series.
+
+## Slide 1
+
+Waves to Quanta · 1/13
+A wave can shift two ways
+
+We can slide a wave function in position. We can also slide it in wave number (inversely proportional to wavelength), which shifts the collection of spatial frequencies that compose it. While shifting the wave number isn't a translation in the familiar physical space we live in, from a mathematical perspective, wave-number-space is the dual, or equivalent up to role reversal, of position-space.
+
+These are separate transformations of the same starting function. Position translation is shown in position space, while wave-number translation is shown in wave-number space. In these respective representations, the operations appear as a simple shift of the function. For shifts a and b, ψ(x) → ψ(x − a) and ψ̃(k) → ψ̃(k − b). The gold outline tracks the wave function's magnitude. The coiled curve includes both real and imaginary components.
+
+The two spaces are related by Fourier transformation. The moving control is a translation amount, not the passage of physical time.
+
+Next: What a translation preserves.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+## Slide 2
+
+Waves to Quanta · 2/13
+What a translation preserves
+
+A symmetry is defined by what it leaves unchanged. Translate two wave functions by the same amount, and their inner product — intuitively, their overlap — stays the same. This is unitarity, an extension of orthogonal transformations to complex functions. Writing either translation as T, ⟨Tψ, Tχ⟩ = ⟨ψ, χ⟩.
+
+The upper panels show two independent translations -- position translations in position space, and wave-number translations in wave-number space. Both preserve the overlap of the cyan and red functions.
+
+Below, the same relationship is shown schematically as a pair of unit vectors in wave function representation space. Their common motion preserves the angle between them and the length of one vector's projection onto the other. We chose functions with real, positive overlap so that this ordinary projection picture applies. If the angle between these unit vectors is θ, ⟨ψ, χ⟩ = cos θ. A general complex overlap is preserved as well.
+
+Next: Phase turns the function.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+## Slide 3
+
+Waves to Quanta · 3/13
+Phase turns the function
+
+Multiply a complex wave function by eⁱᵠ, and every complex value rotates by the same angle φ. That is a global phase shift: ψ → eⁱᵠψ.
+
+On the right are nine modes. On the left is their exact sum, drawn at the same amplitude scale. All nine turn by the same fraction of a cycle. Their sum turns with them, while its magnitude envelope stays fixed. In symbols, |eⁱᵠψ(x)| = |ψ(x)|. Five full turns are shown.
+
+While phase translation and position translation result in the same transformation for pure modes, phase translation acting on the wave packet as a whole leaves its position unchanged.
+
+Next: A loop that leaves a trace.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+## Slide 4
+
+Waves to Quanta · 4/13
+Phase in the symmetry group structure
+
+A commutator is defined by [X̂, Ŷ] = X̂Ŷ − ŶX̂. The corresponding test for finite translations is to move the function around a loop and examine what changes when the loop closes. Here we shift a function by b in wave number, then by a in position. Then, undo the wave-number shift, undo the position shift, and observe the effect of turning the function.
+
+The whole loop multiplies it by e⁻ⁱᵃᵇ. Here ab = π/2, so a quarter-turn of phase remains. The gray curve is the starting function. The gold magnitude envelope returns exactly. This residual phase is shared by every mode, so the result applies to their sum.
+
+As the loop shrinks, its phase shrinks with its area. The infinitesimal relation is [X̂,K̂] = iI. Commuting either generator with I gives zero so that position, wave number, and phase close into the three-dimensional Heisenberg group H₃. To be clear, this is a loop in translation parameters, not physical space.
+
+Next: Where is the wave?
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+## Slide 5
+
+Waves to Quanta · 5/13
+Where is a wave?
+
+A single wave number represents an infinitely extended wave in position space. Conversely, a function localized at a single position is represented by an infinitely extended wave in wave-number space. The two representations describe the same function. Up to overall normalization, exp(ik₀x) ↔ δ(k − k₀), and δ(x − x₀) ↔ exp(−ix₀k), where δ denotes an ideal spike.
+
+Here the cyan and red curves are complex functions drawn as spirals, while gold traces their magnitudes. Their axes and vertical scales stay fixed. The width bars show one standard deviation on either side of the center, calculated from the normalized squared magnitude.
+
+These particular functions are Gaussian, so σx σk = 1/2 throughout. Other functions can only have a larger product so that bound is σx σk ≥ 1/2. This is Fourier mathematics before it is quantum physics. Both axes show offsets from their fixed centers, x₀ and k₀.
+
+Next: When waves look like rays.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+## Slide 6
+
+Waves to Quanta · 6/13
+When waves look like rays
+
+Keep two openings fixed and shorten the incoming wavelength. The transmitted wave spreads less, interference lessens, and, in the limit, the two beams behave like rays.
+
+At first, red and blue show the real part of the wave, with the familiar travelling phase kx − ωt. As a complex function, the incoming wave is ψ(x,t) = exp[i(kx − ωt)]. Once individual cycles become too fine to draw, the picture changes continuously to gold: the cycle-averaged intensity I = |ψ|².
+
+In the next several reels, we will explore why this transition from interference pattern to ray happens and how it relates to the variational approach to physics known as the principle of least action.
+
+Next: Multiply along a route. Add across routes.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+## Slide 7
+
+Waves to Quanta · 7/13
+Compose symmetry operators along a route. Add amplitudes across candidate routes.
+
+Along a route, phase-shift operators compose, or multiply, stitching each straight line segment to the next. Across routes, complex amplitudes add.
+
+For a monochromatic wave, a segment of length ℓ accumulates phase Δφ = kℓ. Following A→C→B means multiplying the factors for AC and CB. Multiplication adds their angles: exp(ikℓAC) exp(ikℓCB) = exp[ik(ℓAC + ℓCB)]. The three little clocks show the two factors and their product. Repeat the calculation through D.
+
+We now have two contributions at B: ψ₁ from ACB and ψ₂ from ADB. Draw one after the other, tip to tail. The green arrow that joins the beginning to the end is their complex sum, ψ(B) = ψ₁ + ψ₂. As B moves, the route lengths change and the arrows turn accordingly. We give the two route contributions equal magnitudes to isolate the phase effect.
+
+Next: Many routes. One complex sum.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+## Slide 8
+
+Waves to Quanta · 8/13
+Many routes. One complex sum.
+
+More openings give us more contributions. The rule stays the same.
+
+Each colored route supplies a complex arrow at the selected point B. The lower panel adds those arrows tip to tail. The green arrow is their sum: ψ(B) = ψ₁ + ψ₂ + … + ψ₁₇. Its squared length gives the intensity, I(B) = |ψ(B)|²; repeating the calculation across the detector produces the green intensity profile above.
+
+Move B and the route lengths change. The arrows turn, some reinforce, others cancel, and the detector intensity changes with them. Both pictures come from the same calculation.
+
+This example uses seventeen idealized narrow openings with equal contribution magnitudes. Their geometric lengths determine their phases. The display scale stays fixed, so a larger green arrow really does mean a larger amplitude. Each drawn route identifies a term in the wave calculation.
+
+Next: Wavelets recombine into a wavefront.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+[Human]
+Waves to Quanta · 8/13
+The emergence of stationary paths
+
+With a larger number of openings, we see a pattern emerge. Near the straight path to B, neighboring paths accumulate nearly the same phase, so their contributions reinforce one another. Farther away, the phases change more rapidly and the contributions tend to cancel.
+
+Each colored route supplies a complex arrow at the selected point B. The lower panel adds those arrows tip to tail. The green arrow is their sum: ψ(B) = ψ₁ + ψ₂ + … + ψ₁₇. Its squared length gives the intensity, I(B) = |ψ(B)|². Repeating the calculation across the detector produces the green intensity profile above.
+
+Move B and the route lengths change. The arrows turn, some reinforce, others cancel, and the detector intensity changes with them. Both pictures come from the same calculation.
+
+This example uses seventeen idealized narrow openings with equal contribution magnitudes. Their geometric lengths determine their phases. The display scale stays fixed, so a larger green arrow represents a larger amplitude. Each drawn route identifies a term in the wave calculation.
+
+Next: Wavelets recombine into a wavefront.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+[Human]
+## Slide 9
+
+Waves to Quanta · 9/13
+Wavelets recombine into a wavefront.
+
+A plane wave reaches a screen. Each opening contributes secondary waves. The blue arcs show some of their fronts; gold follows the fronts of their complex sum.
+
+Increase the openings until the transmitting plane becomes continuous. The original plane wave returns. We can then insert another continuous plane, and another: the wavelets recombine at every step. Each plane gives us a new way to calculate the same propagation.
+
+Writing K(z) for propagation through distance z, the wave changes as ψ_z = K(z)ψ₀. The composition rule K(z₁ + z₂) = K(z₂)K(z₁) says that splitting a distance into successive steps leaves the result unchanged. The added planes represent this continuous construction. The blue arcs are selected components; the gold fronts come from the full calculated field.
+
+This is the point of the Huygens construction: local secondary waves cooperate to produce the advancing wavefront.
+
+Next: The same paths. A shorter wavelength.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+[Human]
+Waves to Quanta · 9/13
+Huygens’ principle -- path formulation in the continuous limit
+
+A plane wave reaches a screen. Each opening contributes secondary waves. The blue arcs show some of their fronts, while gold follows the fronts of their complex sum.
+
+Increase the openings until the transmitting plane becomes continuous. The original plane wave returns. We can then insert another continuous plane, and another, and so on. The wavelets recombine at every step. Each plane gives us a new way to calculate the same propagation.
+
+Writing K(z) for propagation through distance z, the wave changes as ψ_z = K(z)ψ₀. The composition rule K(z₁ + z₂) = K(z₂)K(z₁) says that splitting a distance into successive steps leaves the result unchanged. The added planes represent this continuous construction. The blue arcs are selected components, and the gold fronts come from the full calculated field.
+
+This is the essence of Huygens’ principle and Feynman’s path integral formulation of quantum mechanics. The amplitude at a point is the sum of contributions from all possible paths leading to it.
+
+Next: The same paths. A shorter wavelength.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+[Human]
+
+## Slide 10
+
+Waves to Quanta · 10/13
+The same paths. A shorter wavelength.
+
+Watch which colors move the sum forward.
+
+The source, target, and 20,001 sampled routes stay fixed. Each route has the same color as its individual segment in the tip-to-tail chain. Repeat the sum at three progressively shorter wavelengths.
+
+A path of length L accumulates phase φ(L) = 2πL/λ. Full turns bring an arrow back to the same orientation; its final direction depends on the remainder. For nearby routes, Δφ = 2πΔL/λ. Shorter wavelengths make that direction vary faster as the route changes.
+
+The outer paths wind into loops. Near the straight, stationary route, neighboring contributions point more nearly together and carry the sum forward. As wavelength shrinks, that coherent advance comes from a narrower range of routes. The color correspondence makes it visible.
+
+Every contribution is retained, with its propagation weight. The fixed reference at 1 is unobstructed propagation; all three passes use the same scale.
+
+Next: From amplitudes to probabilities.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+[Human]
+
+Waves to Quanta · 10/13
+Converging on the stationary path in the short wavelength limit
+
+The transition from waves to rays in the short wavelength limit occurs as the net amplitude comes from an increasingly narrow range of paths around the stationary path.
+
+Watch which colors move the sum forward.
+
+The source, target, and 20,001 sampled routes stay fixed. Each route has the same color as its individual segment in the tip-to-tail chain. Repeat the sum at three progressively shorter wavelengths.
+
+A path of length L accumulates phase φ(L) = 2πL/λ. Full turns bring an arrow back to the same orientation, while its final direction depends on the remainder. For nearby routes, Δφ = 2πΔL/λ. Shorter wavelengths make that direction vary faster as the route changes.
+
+The outer paths wind into loops. Near the straight, stationary route, neighboring contributions point more nearly together and carry the sum forward. As wavelength shrinks, that coherent advance comes from a narrower range of routes. The color correspondence makes it visible.
+
+Every contribution is retained, with its propagation weight. The fixed reference at 1 is unobstructed propagation, and all three passes use the same scale.
+
+Next: From amplitudes to probabilities.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+[Human]
+
+## Slide 11
+
+Waves to Quanta · 11/13
+From amplitudes to probabilities
+
+So far, we have calculated wave amplitudes. Quantum mechanics gives that calculation a physical interpretation: the normalized squared magnitude tells us the probability density for a measurement. Writing that density as ρ(x), we have ρ(x) = |ψ(x)|², with ∫ρ(x) dx = 1.
+
+The upper curve is a complex amplitude at a detector. Below it, green shows |ψ|². Individual detections are unpredictable; repeat the same preparation, and their distribution builds toward that density. The dots here are reproducible simulated samples from the displayed function.
+
+We then repeat the experiment with a shorter wavelength and the same Gaussian opening. Its calculated diffraction spread is smaller, so the outcomes concentrate near the transmitted ray. Both panels keep fixed scales. The animation compares two preparations; the dots are not particles being steered between outcomes.
+
+The path sum calculates the amplitude. The quantum interpretation tells us what its squared magnitude predicts.
+
+Next: What turns phase into action?
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+[Human]
+Waves to Quanta · 11/13
+From Intensity to probability
+
+So far, we have calculated wave amplitudes. Quantum mechanics gives that calculation a physical interpretation. The normalized squared magnitude tells us the probability density for a position measurement. Writing that density as ρ(x), we have ρ(x) = |ψ(x)|², with ∫ρ(x) dx = 1.
+
+The upper curve is a complex amplitude at a detector. Below it, green shows |ψ|². Individual detections are unpredictable. Repeat the same preparation, and the ensuing distribution builds toward that density. The dots here are reproducible simulated samples from the displayed function.
+
+We then repeat the experiment with a shorter wavelength and the same Gaussian opening. Its calculated diffraction spread is smaller, so the outcomes concentrate near the transmitted ray. Both panels keep fixed scales. The animation compares two preparations. The dots are not particles being steered between outcomes.
+
+The path sum calculates the amplitude. The quantum interpretation tells us what its squared magnitude predicts.
+
+Next: What turns phase into action?
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+[Human]
+
+## Slide 12
+
+Waves to Quanta · 12/13
+What turns phase into action?
+
+Spacetime supplies two linked invariants: proper time along a path, and the invariant labeling a mass shell. This is a preview of the next chapter; we use units with c = 1.
+
+Moving around one shell changes the translation-generator values while preserving its label κ. Along a free path, phase advances as φ = −κτ. The corresponding mechanical action is S = −mτ. Their ratio is S/φ = m/κ.
+
+To connect these descriptions, compare the mass scale established through collisions with the wave scale established through interference. Experiment supplies the universal conversion ħ, about 1.055 × 10⁻³⁴ joule-seconds. The plotted calibration is schematic, not laboratory data.
+
+Once calibrated, phase and action are the same advance expressed in different units: S = ħφ. A tiny conversion factor means many phase turns for a given action difference.
+
+Next: Wave number becomes momentum.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+[Human]
+Waves to Quanta · 12/13
+Relativity maps phase to mechanical action through ħ
+
+Action, the quantity made stationary by the physical path, can be constructed from the structure of spacetime, as articulated in special relativity, the topic of our next chapter. Because this quantity must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. For free motion, action is proportional to an invariant built from translations — the time elapsed along a path as measured in a body's rest frame — times a dual invariant built from translation generators. The former is called proper time while the latter is mass. We use units with c = 1.
+
+S = −mτ
+
+At the same time, we can calculate how phase advances along a path in spacetime. Introducing κ, the invariant built from wave function spacetime-translation generators, the phase factor along a free path is
+
+exp(−iκτ).
+
+The blue curve is a mass shell. Moving along it changes k and ω while κ stays fixed.
+
+We then have
+
+constant = S/φ = m/κ.
+
+We can measure this constant in the lab by comparing mass, as measured through collisions, to wavelength, as measured through interference. The calibration plot is schematic. We find
+
+S/φ := ħ ≈ 1.055 × 10⁻³⁴ J s.
+
+The smaller ħ is, the more phase cycles a given path variation produces. This is exactly our condition for the path sum to be dominated by stationary paths. Through m/κ = ħ, mass sets the phase accumulation per unit proper time. For everyday bodies, action differences are enormous compared with ħ, and their motion is effectively deterministic. Are we saying that the laws of motion we learn in high school physics are an approximation? Yes, a very good approximation.
+
+Next: Wave number becomes momentum.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+[Human]
+
+## Slide 13
+
+Waves to Quanta · 13/13
+Wave number becomes momentum
+
+The scale that converts phase to action also converts wave number to momentum: P̂ = ħK̂. The two spirals show the same translation written with either generator: Tₓ(a) = exp(−iaK̂) = exp(−iaP̂/ħ). Changing units does not change the operation.
+
+Our wave commutator becomes [X̂,P̂] = iħI. The position/wave-number tradeoff becomes σx σp ≥ ħ/2. The lower plots show normalized squared magnitudes for a Gaussian family, which reaches equality. The position axis uses nanometers; the momentum axis uses 10⁻²⁵ kg m/s. Both scales remain fixed while the widths trade places.
+
+We began with ways to move a wave function. We found phase, interference, a short-wavelength route to ray behavior, and the structure of quantum uncertainty. With quantum probabilities and the measured scale ħ, that structure acquires a physical meaning. The next chapter develops its spacetime setting.
+
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+
+[Human]
+Waves to Quanta · 13/13
+The uncertainty principle
+
+The scale that converts phase to action also converts wave number to momentum. P̂ = ħK̂. The two spirals show the same translation written with either generator. Tₓ(a) = exp(−iaK̂) = exp(−iaP̂/ħ). Changing units does not change the operation.
+
+The wave commutator becomes [X̂,P̂] = iħI. The position/wave-number tradeoff becomes σx σp ≥ ħ/2. The lower plots show normalized squared magnitudes for a Gaussian family, which reaches equality. The position axis uses nanometers, and the momentum axis uses 10⁻²⁵ kg m/s. Both scales remain fixed while the widths trade places.
+
+We began with ways to move a wave function. We found phase, interference, a short-wavelength route to ray behavior, and the structure of quantum uncertainty. With quantum probabilities and the measured scale ħ, that structure acquires a physical meaning. The next series will develop its spacetime setting.
+
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
+[human]

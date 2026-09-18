@@ -1,0 +1,188 @@
+[
+  {
+    "order": 4,
+    "title": "Phase in the symmetry group structure",
+    "size": 54,
+    "lines": [
+      "Phase in the symmetry group",
+      "structure"
+    ],
+    "boxes": [
+      [
+        70,
+        28,
+        813,
+        81
+      ],
+      [
+        70,
+        94,
+        299,
+        130
+      ]
+    ]
+  },
+  {
+    "order": 5,
+    "title": "Where is a wave?",
+    "size": 54,
+    "lines": [
+      "Where is a wave?"
+    ],
+    "boxes": [
+      [
+        70,
+        28,
+        503,
+        69
+      ]
+    ]
+  },
+  {
+    "order": 7,
+    "title": "Compose symmetry operators along a route. Add amplitudes across candidate routes.",
+    "size": 41,
+    "lines": [
+      "Compose symmetry operators along a route.",
+      "Add amplitudes across candidate routes."
+    ],
+    "boxes": [
+      [
+        70,
+        23,
+        927,
+        63
+      ],
+      [
+        70,
+        69,
+        849,
+        109
+      ]
+    ]
+  },
+  {
+    "order": 8,
+    "title": "The emergence of stationary paths",
+    "size": 54,
+    "lines": [
+      "The emergence of stationary",
+      "paths"
+    ],
+    "boxes": [
+      [
+        70,
+        27,
+        797,
+        81
+      ],
+      [
+        70,
+        89,
+        210,
+        141
+      ]
+    ]
+  },
+  {
+    "order": 9,
+    "title": "Huygens’ principle -- path formulation in the continuous limit",
+    "size": 53,
+    "lines": [
+      "Huygens’ principle -- path",
+      "formulation in the continuous limit"
+    ],
+    "boxes": [
+      [
+        70,
+        28,
+        724,
+        80
+      ],
+      [
+        70,
+        87,
+        948,
+        128
+      ]
+    ]
+  },
+  {
+    "order": 10,
+    "title": "Converging on the stationary path in the short wavelength limit",
+    "size": 54,
+    "lines": [
+      "Converging on the stationary path",
+      "in the short wavelength limit"
+    ],
+    "boxes": [
+      [
+        70,
+        28,
+        943,
+        81
+      ],
+      [
+        70,
+        89,
+        802,
+        142
+      ]
+    ]
+  },
+  {
+    "order": 11,
+    "title": "From Intensity to probability",
+    "size": 54,
+    "lines": [
+      "From Intensity to probability"
+    ],
+    "boxes": [
+      [
+        70,
+        28,
+        800,
+        81
+      ]
+    ]
+  },
+  {
+    "order": 12,
+    "title": "Relativity maps phase to mechanical action through ħ",
+    "size": 54,
+    "lines": [
+      "Relativity maps phase to",
+      "mechanical action through ħ"
+    ],
+    "boxes": [
+      [
+        70,
+        28,
+        690,
+        81
+      ],
+      [
+        70,
+        89,
+        796,
+        142
+      ]
+    ]
+  },
+  {
+    "order": 13,
+    "title": "The uncertainty principle",
+    "size": 54,
+    "lines": [
+      "The uncertainty principle"
+    ],
+    "boxes": [
+      [
+        70,
+        28,
+        704,
+        81
+      ]
+    ]
+  }
+]

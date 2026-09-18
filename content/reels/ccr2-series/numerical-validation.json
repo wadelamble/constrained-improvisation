@@ -1,0 +1,212 @@
+{
+  "mathematics": {
+    "overlap": 0.48675225595997157,
+    "overlap_quadrature_error": 6.724186561047276e-17,
+    "fourier_pair_quadrature_error": 1.3668035872266427e-15,
+    "unit_norm_error": 2.220446049250313e-16,
+    "loop_residual_error": 2.482534153247273e-16,
+    "exact_mode_sum_error": 3.376611507232129e-16,
+    "phase_magnitude_error": 3.3306690738754696e-16,
+    "loop_area": 1.5707963267948966,
+    "5": {
+      "normalized_fourier_partners": true,
+      "gaussian_checks": [
+        {
+          "sigma_x": 0.07,
+          "sigma_k": 7.142857142857142,
+          "norm_x": 1.0,
+          "norm_k": 1.0,
+          "width_product": 0.49999999999999994,
+          "fourier_error": 5.748357713239046e-16
+        },
+        {
+          "sigma_x": 0.4,
+          "sigma_k": 1.25,
+          "norm_x": 1.0,
+          "norm_k": 1.0,
+          "width_product": 0.5000000000000001,
+          "fourier_error": 4.2001807449902774e-16
+        },
+        {
+          "sigma_x": 0.7071067811865475,
+          "sigma_k": 0.7071067811865476,
+          "norm_x": 0.9999999999999998,
+          "norm_k": 1.0,
+          "width_product": 0.5,
+          "fourier_error": 5.578801654593729e-16
+        },
+        {
+          "sigma_x": 1.6,
+          "sigma_k": 0.3125,
+          "norm_x": 1.0000000000000002,
+          "norm_k": 1.0,
+          "width_product": 0.5,
+          "fourier_error": 7.409386728853838e-16
+        },
+        {
+          "sigma_x": 7.142857142857142,
+          "sigma_k": 0.07,
+          "norm_x": 1.0,
+          "norm_k": 1.0,
+          "width_product": 0.49999999999999994,
+          "fourier_error": 7.549516567451064e-15
+        }
+      ],
+      "fixed_coordinate_axes": true,
+      "fixed_amplitude_gain": 46,
+      "finite_width_range": [
+        0.07,
+        7.142857142857142
+      ]
+    },
+    "6": {
+      "model": "scalar paraxial thin-mask propagation",
+      "periodic_domain": 24,
+      "norm_conservation_max_error": 4.440892098500626e-16,
+      "constant_incident_amplitude": true,
+      "display_switch": "signed real component to cycle-averaged intensity, explicitly labeled"
+    },
+    "7": {
+      "multiplication_error": 1.7777115755220295e-15,
+      "route_magnitudes": [
+        0.5,
+        0.49999999999999994
+      ]
+    },
+    "8": {
+      "intensity_sum_error": 5.551115123125783e-17,
+      "fixed_phasor_scale": 494.9181231225405,
+      "fixed_origin": [
+        505.3073596809596,
+        1217.78286154843
+      ],
+      "maximum_detector_intensity": 0.0877449911701519,
+      "slits": 17
+    },
+    "9": {
+      "plane_front_error": 7.144352018071917e-15,
+      "transparent_plane_composition_error": 1.5700924586837752e-16,
+      "field_model": "scalar Helmholtz angular spectrum; evanescent terms retained",
+      "periodic_transverse_span": 24.0,
+      "continuous_screen_reached_before_adding_planes": true,
+      "gold_fronts": "Im(field exp(-i phase)) = 0 with Re > 0",
+      "blue_fronts": "constant arg(i H1(k r)) of selected scalar propagation kernels"
+    },
+    "10": {
+      "same_original_model": true,
+      "segments": 20001,
+      "fixed_display_scale": 430.0,
+      "grouped_segments": false,
+      "endpoint_normalization": false,
+      "stages": [
+        {
+          "wavelength": 0.5,
+          "vectors_sha256": "894e2f66bd6229b21117530a6f759b380ff1c85a90427bfe9196b883e51bfc6d",
+          "endpoint": [
+            1.043704936090848,
+            -0.0923770706396196
+          ],
+          "trace_pixel_bounds": [
+            193.2022873615628,
+            1161.2053505242443,
+            765.5908351575001,
+            1368.5167898507923
+          ]
+        },
+        {
+          "wavelength": 0.05,
+          "vectors_sha256": "0d9bec871d8494574f7525985a6393fd85f2851329972f7cb63109b91e892fa5",
+          "endpoint": [
+            0.977039241098416,
+            -0.022825499876034914
+          ],
+          "trace_pixel_bounds": [
+            177.06300152999344,
+            1145.1932948453432,
+            753.0638721423252,
+            1354.6216701013518
+          ]
+        },
+        {
+          "wavelength": 0.005,
+          "vectors_sha256": "cdccd24f1356fffcbf102c3a4dfb4949fb5a567ba30591cdab265d93970c7396",
+          "endpoint": [
+            0.9927168253735563,
+            -0.007278913328425878
+          ],
+          "trace_pixel_bounds": [
+            180.24960510386921,
+            1141.7435759034784,
+            756.6186298068097,
+            1351.386356827802
+          ]
+        }
+      ]
+    },
+    "11": {
+      "model": "normalized paraxial free Gaussian",
+      "independent_detector_quadratures": [
+        {
+          "k": 8.0,
+          "norm": 1.0,
+          "mean": 0.0,
+          "integrated_variance": 1.6025,
+          "expected_variance": 1.6025
+        },
+        {
+          "k": 32.0,
+          "norm": 0.9999999999999998,
+          "mean": 2.7755575615628914e-17,
+          "integrated_variance": 0.13765624999999995,
+          "expected_variance": 0.13765625
+        },
+        {
+          "k": 160.0,
+          "norm": 1.0,
+          "mean": 4.163336342344337e-17,
+          "integrated_variance": 0.04390625000000001,
+          "expected_variance": 0.04390625000000001
+        }
+      ],
+      "random_seed": 73921,
+      "fixed_axes": true
+    },
+    "12": {
+      "shell_invariant_max_error": 2.6645352591003757e-15,
+      "proper_time_invariant_max_error": 3.552713678800501e-14,
+      "units": "c=1",
+      "calibration": "schematic empirical ratio, not laboratory data"
+    },
+    "13": {
+      "hbar_Js": 1.054571817e-34,
+      "independent_SI_width_quadratures": [
+        {
+          "sigma_x_nm": 0.42,
+          "sigma_p_units_1e_25": 1.2554426392857143,
+          "norm_x": 1.0,
+          "norm_p": 1.0,
+          "integrated_width_product_SI": 5.272859085000001e-35,
+          "relative_error": 2.220446049250313e-16
+        },
+        {
+          "sigma_x_nm": 0.82,
+          "sigma_p_units_1e_25": 0.6430315957317073,
+          "norm_x": 1.0,
+          "norm_p": 1.0,
+          "integrated_width_product_SI": 5.272859085000001e-35,
+          "relative_error": 2.220446049250313e-16
+        },
+        {
+          "sigma_x_nm": 1.22,
+          "sigma_p_units_1e_25": 0.4322015643442622,
+          "norm_x": 1.0,
+          "norm_p": 1.0,
+          "integrated_width_product_SI": 5.272859084999999e-35,
+          "relative_error": 2.220446049250313e-16
+        }
+      ],
+      "identical_translation_multiplier_max_error": 1.847779371410367e-15
+    }
+  },
+  "media": []
+}

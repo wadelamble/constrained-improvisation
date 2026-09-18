@@ -1,0 +1,51 @@
+{
+  "normalized_fourier_partners": true,
+  "gaussian_checks": [
+    {
+      "sigma_x": 0.07,
+      "sigma_k": 7.142857142857142,
+      "norm_x": 1.0,
+      "norm_k": 1.0,
+      "width_product": 0.49999999999999994,
+      "fourier_error": 5.748357713239046e-16
+    },
+    {
+      "sigma_x": 0.4,
+      "sigma_k": 1.25,
+      "norm_x": 1.0,
+      "norm_k": 1.0,
+      "width_product": 0.5000000000000001,
+      "fourier_error": 4.2001807449902774e-16
+    },
+    {
+      "sigma_x": 0.7071067811865475,
+      "sigma_k": 0.7071067811865476,
+      "norm_x": 0.9999999999999998,
+      "norm_k": 1.0,
+      "width_product": 0.5,
+      "fourier_error": 5.578801654593729e-16
+    },
+    {
+      "sigma_x": 1.6,
+      "sigma_k": 0.3125,
+      "norm_x": 1.0000000000000002,
+      "norm_k": 1.0,
+      "width_product": 0.5,
+      "fourier_error": 7.409386728853838e-16
+    },
+    {
+      "sigma_x": 7.142857142857142,
+      "sigma_k": 0.07,
+      "norm_x": 1.0,
+      "norm_k": 1.0,
+      "width_product": 0.49999999999999994,
+      "fourier_error": 7.549516567451064e-15
+    }
+  ],
+  "fixed_coordinate_axes": true,
+  "fixed_amplitude_gain": 46,
+  "finite_width_range": [
+    0.07,
+    7.142857142857142
+  ]
+}

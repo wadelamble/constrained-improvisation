@@ -1,0 +1,16 @@
+Waves to Quanta · 11/13
+From Intensity to probability
+
+So far, we have calculated wave amplitudes. Quantum mechanics gives that calculation a physical interpretation. The normalized squared magnitude tells us the probability density for a position measurement. Writing that density as ρ(x), we have ρ(x) = |ψ(x)|², with ∫ρ(x) dx = 1.
+
+The upper curve is a complex amplitude at a detector. Below it, green shows |ψ|². Individual detections are unpredictable. Repeat the same preparation, and the ensuing distribution builds toward that density. The dots here are reproducible simulated samples from the displayed function.
+
+We then repeat the experiment with a shorter wavelength and the same Gaussian opening. Its calculated diffraction spread is smaller, so the outcomes concentrate near the transmitted ray. Both panels keep fixed scales. The animation compares two preparations. The dots are not particles being steered between outcomes.
+
+The path sum calculates the amplitude. The quantum interpretation tells us what its squared magnitude predicts.
+
+Next: What turns phase into action?
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics

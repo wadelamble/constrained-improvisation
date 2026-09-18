@@ -1,0 +1,28 @@
+Waves to Quanta · 12/13
+Relativity maps phase to mechanical action through ħ
+
+Action, the quantity made stationary by the physical path, can be constructed from the structure of spacetime, as articulated in special relativity, the topic of our next chapter. Because this quantity must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. For free motion, action is proportional to an invariant built from translations — the time elapsed along a path as measured in a body's rest frame — times a dual invariant built from translation generators. The former is called proper time while the latter is mass. We use units with c = 1.
+
+S = −mτ
+
+At the same time, we can calculate how phase advances along a path in spacetime. Introducing κ, the invariant built from wave function spacetime-translation generators, the phase factor along a free path is
+
+exp(−iκτ).
+
+The blue curve is a mass shell. Moving along it changes k and ω while κ stays fixed.
+
+We then have
+
+constant = S/φ = m/κ.
+
+We can measure this constant in the lab by comparing mass, as measured through collisions, to wavelength, as measured through interference. The calibration plot is schematic. We find
+
+S/φ := ħ ≈ 1.055 × 10⁻³⁴ J s.
+
+The smaller ħ is, the more phase cycles a given path variation produces. This is exactly our condition for the path sum to be dominated by stationary paths. Through m/κ = ħ, mass sets the phase accumulation per unit proper time. For everyday bodies, action differences are enormous compared with ħ, and their motion is effectively deterministic. Are we saying that the laws of motion we learn in high school physics are an approximation? Yes, a very good approximation.
+
+Next: Wave number becomes momentum.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics

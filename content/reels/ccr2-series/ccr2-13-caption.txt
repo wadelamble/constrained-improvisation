@@ -1,0 +1,13 @@
+Waves to Quanta · 13/13
+The uncertainty principle
+
+The scale that converts phase to action also converts wave number to momentum. P̂ = ħK̂. The two spirals show the same translation written with either generator. Tₓ(a) = exp(−iaK̂) = exp(−iaP̂/ħ). Changing units does not change the operation.
+
+The wave commutator becomes [X̂,P̂] = iħI. The position/wave-number tradeoff becomes σx σp ≥ ħ/2. The lower plots show normalized squared magnitudes for a Gaussian family, which reaches equality. The position axis uses nanometers, and the momentum axis uses 10⁻²⁵ kg m/s. Both scales remain fixed while the widths trade places.
+
+We began with ways to move a wave function. We found phase, interference, a short-wavelength route to ray behavior, and the structure of quantum uncertainty. With quantum probabilities and the measured scale ħ, that structure acquires a physical meaning. The next series will develop its spacetime setting.
+
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics

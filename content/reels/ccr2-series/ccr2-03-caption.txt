@@ -1,0 +1,14 @@
+Waves to Quanta · 3/13
+Phase turns the function
+
+Multiply a complex wave function by eⁱᵠ, and every complex value rotates by the same angle φ. That is a global phase shift: ψ → eⁱᵠψ.
+
+On the right are nine modes. On the left is their exact sum, drawn at the same amplitude scale. All nine turn by the same fraction of a cycle. Their sum turns with them, while its magnitude envelope stays fixed. In symbols, |eⁱᵠψ(x)| = |ψ(x)|. Five full turns are shown.
+
+While phase translation and position translation result in the same transformation for pure modes, phase translation acting on the wave packet as a whole leaves its position unchanged.
+
+Next: A loop that leaves a trace.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics

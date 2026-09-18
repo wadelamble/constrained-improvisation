@@ -1,0 +1,16 @@
+Waves to Quanta · 8/13
+The emergence of stationary paths
+
+With a larger number of openings, we see a pattern emerge. Near the straight path to B, neighboring paths accumulate nearly the same phase, so their contributions reinforce one another. Farther away, the phases change more rapidly and the contributions tend to cancel.
+
+Each colored route supplies a complex arrow at the selected point B. The lower panel adds those arrows tip to tail. The green arrow is their sum: ψ(B) = ψ₁ + ψ₂ + … + ψ₁₇. Its squared length gives the intensity, I(B) = |ψ(B)|². Repeating the calculation across the detector produces the green intensity profile above.
+
+Move B and the route lengths change. The arrows turn, some reinforce, others cancel, and the detector intensity changes with them. Both pictures come from the same calculation.
+
+This example uses seventeen idealized narrow openings with equal contribution magnitudes. Their geometric lengths determine their phases. The display scale stays fixed, so a larger green arrow represents a larger amplitude. Each drawn route identifies a term in the wave calculation.
+
+Next: Wavelets recombine into a wavefront.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics

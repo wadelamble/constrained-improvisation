@@ -1,0 +1,230 @@
+{
+  "speed": 1.75,
+  "immutable_backup": ".tools\\buffer-staging\\original-speed-v1\\ccr2-series",
+  "episodes": [
+    {
+      "episode": 1,
+      "source_seconds": 44.0,
+      "seconds": 25.142857142857142,
+      "frames": 1056,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.0011725134503863834,
+        0.0009652465226394346,
+        0.00103897815438969,
+        0.001166544098494776,
+        0.0010009543846728527
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 2,
+      "source_seconds": 44.0,
+      "seconds": 25.142857142857142,
+      "frames": 1056,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.001112889629890517,
+        0.0008772501885572403,
+        0.0010201531355060497,
+        0.0012071204509952404,
+        0.0010633058250032617
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 3,
+      "source_seconds": 44.0,
+      "seconds": 25.142857142857142,
+      "frames": 1056,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.0013799927258930976,
+        0.0015840343192468935,
+        0.0016324005855602737,
+        0.0016942996209918962,
+        0.0018632546538970736
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 4,
+      "source_seconds": 46.0,
+      "seconds": 26.285714285714285,
+      "frames": 1104,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.0010632686250163698,
+        0.0011617363190876387,
+        0.000984719731429733,
+        0.0009650825950667942,
+        0.0009787770121796682
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 5,
+      "source_seconds": 42.0,
+      "seconds": 24.0,
+      "frames": 1008,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.000989248307896085,
+        0.0009918837524756628,
+        0.0009651440711693546,
+        0.0009844586044858458,
+        0.0011676455632327492
+      ],
+      "caption_changes": "URLs only",
+      "status": "historical_superseded",
+      "superseded_by_video_sha256": "7039b2317e6adc8c6e987c3b03ca44d02066a786765bdfe1312a75c74a960e9e",
+      "current_media_validation": "revisions/ccr2-05-extended/media-validation.json"
+    },
+    {
+      "episode": 6,
+      "source_seconds": 42.0,
+      "seconds": 24.0,
+      "frames": 1008,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.0026177432361549854,
+        0.0026735541581335417,
+        0.0014701443693896133,
+        0.0011639303140758609,
+        0.0013756578548921037
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 7,
+      "source_seconds": 45.0,
+      "seconds": 25.714285714285715,
+      "frames": 1080,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.0009896080999821388,
+        0.001040176679397051,
+        0.0009239587801331627,
+        0.0009855026971193567,
+        0.0009709461833849921
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 8,
+      "source_seconds": 45.0,
+      "seconds": 25.714285714285715,
+      "frames": 1080,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.0011078133241347536,
+        0.0009807955274442487,
+        0.0013685807929192273,
+        0.0012399812965581834,
+        0.001143981033398416
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 9,
+      "source_seconds": 48.0,
+      "seconds": 27.428571428571427,
+      "frames": 1152,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.0014476136462204978,
+        0.0027186234157143044,
+        0.002615422812718719,
+        0.0028451746609945545,
+        0.003125589797406038
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 10,
+      "source_seconds": 45.0,
+      "seconds": 25.714285714285715,
+      "frames": 1080,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.0010532141146206379,
+        0.0011795932092707245,
+        0.0014045812067408228,
+        0.001087889395843793,
+        0.0011253660042518773
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 11,
+      "source_seconds": 46.0,
+      "seconds": 26.285714285714285,
+      "frames": 1104,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.0011837438905963364,
+        0.001067649276148657,
+        0.00120086202622268,
+        0.0012212263433746386,
+        0.0010887616555469563
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 12,
+      "source_seconds": 46.0,
+      "seconds": 26.285714285714285,
+      "frames": 1104,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.001043005805696003,
+        0.0011239768040889643,
+        0.0009351499205171518,
+        0.0008903188122746209,
+        0.0009086778326973274
+      ],
+      "caption_changes": "URLs only"
+    },
+    {
+      "episode": 13,
+      "source_seconds": 46.0,
+      "seconds": 26.285714285714285,
+      "frames": 1104,
+      "fps": 42,
+      "faststart": true,
+      "frame_count_and_sample_order": "pass",
+      "sampled_frame_rmse": [
+        0.0012482791936056837,
+        0.0010756954210852947,
+        0.0011902917402727186,
+        0.001227123095131934,
+        0.0013797490717205444
+      ],
+      "caption_changes": "URLs only"
+    }
+  ]
+}

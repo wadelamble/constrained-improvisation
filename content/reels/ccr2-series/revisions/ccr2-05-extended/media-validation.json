@@ -1,0 +1,13 @@
+{
+  "duration_seconds": 24.0,
+  "fps": 42.0,
+  "size": [
+    1080,
+    1920
+  ],
+  "full_decode": "pass",
+  "audio_tracks": 0,
+  "video_sha256": "7039b2317e6adc8c6e987c3b03ca44d02066a786765bdfe1312a75c74a960e9e",
+  "source_sha256": "281a8865d112837c4028f8f971e3c7d6253117eeb3d0453313fcfdc418c8ea40",
+  "status": "local_review_candidate"
+}

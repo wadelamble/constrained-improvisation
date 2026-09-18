@@ -1,0 +1,14 @@
+Waves to Quanta · 5/13
+Where is a wave?
+
+A single wave number represents an infinitely extended wave in position space. Conversely, a function localized at a single position is represented by an infinitely extended wave in wave-number space. The two representations describe the same function. Up to overall normalization, exp(ik₀x) ↔ δ(k − k₀), and δ(x − x₀) ↔ exp(−ix₀k), where δ denotes an ideal spike.
+
+Here the cyan and red curves are complex functions drawn as spirals, while gold traces their magnitudes. Their axes and vertical scales stay fixed. The width bars show one standard deviation on either side of the center, calculated from the normalized squared magnitude.
+
+These particular functions are Gaussian, so σx σk = 1/2 throughout. Other functions can only have a larger product so that bound is σx σk ≥ 1/2. This is Fourier mathematics before it is quantum physics. Both axes show offsets from their fixed centers, x₀ and k₀.
+
+Next: When waves look like rays.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics

@@ -1,0 +1,79 @@
+{
+  "7": {
+    "multiplication_error": 1.7777115755220295e-15,
+    "route_magnitudes": [
+      0.5,
+      0.49999999999999994
+    ]
+  },
+  "8": {
+    "intensity_sum_error": 5.551115123125783e-17,
+    "fixed_phasor_scale": 494.9181231225405,
+    "fixed_origin": [
+      505.3073596809596,
+      1217.78286154843
+    ],
+    "maximum_detector_intensity": 0.0877449911701519,
+    "slits": 17
+  },
+  "9": {
+    "plane_front_error": 7.144352018071917e-15,
+    "transparent_plane_composition_error": 1.5700924586837752e-16,
+    "field_model": "scalar Helmholtz angular spectrum; evanescent terms retained",
+    "periodic_transverse_span": 24.0,
+    "continuous_screen_reached_before_adding_planes": true,
+    "gold_fronts": "Im(field exp(-i phase)) = 0 with Re > 0",
+    "blue_fronts": "constant arg(i H1(k r)) of selected scalar propagation kernels"
+  },
+  "10": {
+    "same_original_model": true,
+    "segments": 20001,
+    "fixed_display_scale": 430.0,
+    "grouped_segments": false,
+    "endpoint_normalization": false,
+    "stages": [
+      {
+        "wavelength": 0.5,
+        "vectors_sha256": "894e2f66bd6229b21117530a6f759b380ff1c85a90427bfe9196b883e51bfc6d",
+        "endpoint": [
+          1.043704936090848,
+          -0.0923770706396196
+        ],
+        "trace_pixel_bounds": [
+          193.2022873615628,
+          1161.2053505242443,
+          765.5908351575001,
+          1368.5167898507923
+        ]
+      },
+      {
+        "wavelength": 0.05,
+        "vectors_sha256": "0d9bec871d8494574f7525985a6393fd85f2851329972f7cb63109b91e892fa5",
+        "endpoint": [
+          0.977039241098416,
+          -0.022825499876034914
+        ],
+        "trace_pixel_bounds": [
+          177.06300152999344,
+          1145.1932948453432,
+          753.0638721423252,
+          1354.6216701013518
+        ]
+      },
+      {
+        "wavelength": 0.005,
+        "vectors_sha256": "cdccd24f1356fffcbf102c3a4dfb4949fb5a567ba30591cdab265d93970c7396",
+        "endpoint": [
+          0.9927168253735563,
+          -0.007278913328425878
+        ],
+        "trace_pixel_bounds": [
+          180.24960510386921,
+          1141.7435759034784,
+          756.6186298068097,
+          1351.386356827802
+        ]
+      }
+    ]
+  }
+}

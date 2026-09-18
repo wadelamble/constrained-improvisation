@@ -1,0 +1,14 @@
+Waves to Quanta · 4/13
+Phase in the symmetry group structure
+
+A commutator is defined by [X̂, Ŷ] = X̂Ŷ − ŶX̂. The corresponding test for finite translations is to move the function around a loop and examine what changes when the loop closes. Here we shift a function by b in wave number, then by a in position. Then, undo the wave-number shift, undo the position shift, and observe the effect of turning the function.
+
+The whole loop multiplies it by e⁻ⁱᵃᵇ. Here ab = π/2, so a quarter-turn of phase remains. The gray curve is the starting function. The gold magnitude envelope returns exactly. This residual phase is shared by every mode, so the result applies to their sum.
+
+As the loop shrinks, its phase shrinks with its area. The infinitesimal relation is [X̂,K̂] = iI. Commuting either generator with I gives zero so that position, wave number, and phase close into the three-dimensional Heisenberg group H₃. To be clear, this is a loop in translation parameters, not physical space.
+
+Next: Where is the wave?
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics

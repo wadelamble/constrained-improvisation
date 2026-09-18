@@ -1,0 +1,20 @@
+Waves to Quanta · 10/13
+Converging on the stationary path in the short wavelength limit
+
+The transition from waves to rays in the short wavelength limit occurs as the net amplitude comes from an increasingly narrow range of paths around the stationary path.
+
+Watch which colors move the sum forward.
+
+The source, target, and 20,001 sampled routes stay fixed. Each route has the same color as its individual segment in the tip-to-tail chain. Repeat the sum at three progressively shorter wavelengths.
+
+A path of length L accumulates phase φ(L) = 2πL/λ. Full turns bring an arrow back to the same orientation, while its final direction depends on the remainder. For nearby routes, Δφ = 2πΔL/λ. Shorter wavelengths make that direction vary faster as the route changes.
+
+The outer paths wind into loops. Near the straight, stationary route, neighboring contributions point more nearly together and carry the sum forward. As wavelength shrinks, that coherent advance comes from a narrower range of routes. The color correspondence makes it visible.
+
+Every contribution is retained, with its propagation weight. The fixed reference at 1 is unobstructed propagation, and all three passes use the same scale.
+
+Next: From amplitudes to probabilities.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics

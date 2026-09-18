@@ -1,0 +1,16 @@
+Waves to Quanta · 9/13
+Huygens’ principle -- path formulation in the continuous limit
+
+A plane wave reaches a screen. Each opening contributes secondary waves. The blue arcs show some of their fronts, while gold follows the fronts of their complex sum.
+
+Increase the openings until the transmitting plane becomes continuous. The original plane wave returns. We can then insert another continuous plane, and another, and so on. The wavelets recombine at every step. Each plane gives us a new way to calculate the same propagation.
+
+Writing K(z) for propagation through distance z, the wave changes as ψ_z = K(z)ψ₀. The composition rule K(z₁ + z₂) = K(z₂)K(z₁) says that splitting a distance into successive steps leaves the result unchanged. The added planes represent this continuous construction. The blue arcs are selected components, and the gold fronts come from the full calculated field.
+
+This is the essence of Huygens’ principle and Feynman’s path integral formulation of quantum mechanics. The amplitude at a point is the sum of contributions from all possible paths leading to it.
+
+Next: The same paths. A shorter wavelength.
+Website: https://wadelamble.github.io/constrained-improvisation/
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics
