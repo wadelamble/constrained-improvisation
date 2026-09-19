@@ -1,0 +1,34 @@
+{
+  "order": 9,
+  "title": "Huygens’ principle - the continuous limit",
+  "source_sha256": "9c5862cd49467f13319d7a855031ab0af0ccab38412a38e79124854feb6d7d8e",
+  "video_sha256": "adbb2a43e604615d43df0ae25051939863a5596e8a4f7a9eb02e1523ffaeeb1a",
+  "video_bytes": 28235397,
+  "frames": 1152,
+  "duration": 27.428571428571427,
+  "fps": 42,
+  "playback_speed": 1.75,
+  "video_metadata": {
+    "faststart": true,
+    "timescale": 10752,
+    "duration_ticks": 294912,
+    "timing_runs": [
+      [
+        1152,
+        256
+      ]
+    ],
+    "frames": 1152,
+    "duration": 27.428571428571427
+  },
+  "outside_header_rmse": [
+    0.4306883051880438,
+    1.055964331875847,
+    1.2549482306965476
+  ],
+  "full_decode": "pass; exact first, middle and final frames selected from full stream",
+  "audio_tracks": 0,
+  "preview_sha256": "126a1b4f98655122f900105c4cc869eb2cce73c495eae79fc99d54361908e7ee",
+  "cover_sha256": "b0042a3d3c3059540f4a7ae10806753cbbe4dc7b34915bfdae53873f16cbbd14",
+  "completed_at": "2026-09-19T21:05:57.384224+00:00"
+}

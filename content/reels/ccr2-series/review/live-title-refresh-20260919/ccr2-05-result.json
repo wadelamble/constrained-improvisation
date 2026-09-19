@@ -1,0 +1,34 @@
+{
+  "order": 5,
+  "title": "Position/wave-number uncertainty",
+  "source_sha256": "3c006f1f2c9724cd63b06e16064eaeff9b76c8f3d3b7af4f93d05edf378370a7",
+  "video_sha256": "71d53feeccdf3e65156b3db3055265a4dc1621ac6983d077c2a9edd9d2429a48",
+  "video_bytes": 1699028,
+  "frames": 1008,
+  "duration": 24.0,
+  "fps": 42,
+  "playback_speed": 1.75,
+  "video_metadata": {
+    "faststart": true,
+    "timescale": 10752,
+    "duration_ticks": 258048,
+    "timing_runs": [
+      [
+        1008,
+        256
+      ]
+    ],
+    "frames": 1008,
+    "duration": 24.0
+  },
+  "outside_header_rmse": [
+    0.23135823173878656,
+    0.1744838697739349,
+    0.23772659291841888
+  ],
+  "full_decode": "pass; exact first, middle and final frames selected from full stream",
+  "audio_tracks": 0,
+  "preview_sha256": "7608e31035e62855829edbe2988599331320be2313339a2172ce8157c196ddce",
+  "cover_sha256": "e9c1a5da1d3855131797f3a99144a855523b533d92010cbe1459b9e34c801f67",
+  "completed_at": "2026-09-19T21:02:30.732216+00:00"
+}

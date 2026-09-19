@@ -1,0 +1,34 @@
+{
+  "order": 6,
+  "title": "Waves behave as rays in the short wavelength limit",
+  "source_sha256": "1549097f02cfd90095788dd30c51387914e25f7fc1e4747c4d52cfaa0a8146b8",
+  "video_sha256": "47f23947e3eec91d4ec3a60d856354de033778689cbe4be83250dc970614490f",
+  "video_bytes": 7115949,
+  "frames": 1008,
+  "duration": 24.0,
+  "fps": 42,
+  "playback_speed": 1.75,
+  "video_metadata": {
+    "faststart": true,
+    "timescale": 10752,
+    "duration_ticks": 258048,
+    "timing_runs": [
+      [
+        1008,
+        256
+      ]
+    ],
+    "frames": 1008,
+    "duration": 24.0
+  },
+  "outside_header_rmse": [
+    1.0501399083743526,
+    0.5089386195981973,
+    0.701567406167665
+  ],
+  "full_decode": "pass; exact first, middle and final frames selected from full stream",
+  "audio_tracks": 0,
+  "preview_sha256": "6c6d28a4b6108d0348e3afa3198f7582bcd4ac8c670904907bef3858f51d9f15",
+  "cover_sha256": "e6d6f5a672741aac09ae01e55a5dfd66b441e0f5fa972c588117057e675cc1fc",
+  "completed_at": "2026-09-19T21:04:13.828982+00:00"
+}

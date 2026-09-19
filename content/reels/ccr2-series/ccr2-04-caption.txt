@@ -7,7 +7,7 @@ The whole loop multiplies it by e⁻ⁱᵃᵇ. Here ab = π/2, so a quarter-turn
 
 As the loop shrinks, its phase shrinks with its area. The infinitesimal relation is [X̂,K̂] = iI. Commuting either generator with I gives zero so that position, wave number, and phase close into the three-dimensional Heisenberg group H₃. To be clear, this is a loop in translation parameters, not physical space.
 
-Next: Where is the wave?
+Next: Position/wave-number uncertainty
 Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 

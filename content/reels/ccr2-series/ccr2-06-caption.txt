@@ -1,5 +1,5 @@
 Waves to Quanta · 6/13
-When waves look like rays
+Waves behave as rays in the short wavelength limit
 
 Keep two openings fixed and shorten the incoming wavelength. The transmitted wave spreads less, interference lessens, and, in the limit, the two beams behave like rays.
 
@@ -7,7 +7,7 @@ At first, red and blue show the real part of the wave, with the familiar travell
 
 In the next several reels, we will explore why this transition from interference pattern to ray happens and how it relates to the variational approach to physics known as the principle of least action.
 
-Next: Multiply along a route. Add across routes.
+Next: Amplitude contributions from possible paths
 Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 

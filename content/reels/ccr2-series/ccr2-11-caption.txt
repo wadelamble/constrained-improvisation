@@ -9,7 +9,7 @@ We then repeat the experiment with a shorter wavelength and the same Gaussian op
 
 The path sum calculates the amplitude. The quantum interpretation tells us what its squared magnitude predicts.
 
-Next: What turns phase into action?
+Next: h-bar emerges as the conversion factor of phase to action
 Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 

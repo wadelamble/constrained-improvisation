@@ -1,5 +1,5 @@
 Waves to Quanta · 2/13
-What a translation preserves
+Unitarity - Translation preserves overlap of functions
 
 A symmetry is defined by what it leaves unchanged. Translate two wave functions by the same amount, and their inner product — intuitively, their overlap — stays the same. This is unitarity, an extension of orthogonal transformations to complex functions. Writing either translation as T, ⟨Tψ, Tχ⟩ = ⟨ψ, χ⟩.
 
@@ -7,7 +7,7 @@ The upper panels show two independent translations -- position translations in p
 
 Below, the same relationship is shown schematically as a pair of unit vectors in wave function representation space. Their common motion preserves the angle between them and the length of one vector's projection onto the other. We chose functions with real, positive overlap so that this ordinary projection picture applies. If the angle between these unit vectors is θ, ⟨ψ, χ⟩ = cos θ. A general complex overlap is preserved as well.
 
-Next: Phase turns the function.
+Next: Shifting phase turns a wave function
 Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 

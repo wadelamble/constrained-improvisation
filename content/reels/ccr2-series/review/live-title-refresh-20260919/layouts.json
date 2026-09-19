@@ -1,0 +1,600 @@
+[
+  {
+    "order": 1,
+    "title": "A wave can shift in position and wave number",
+    "header": {
+      "size": 54,
+      "lines": [
+        "A wave can shift in position and",
+        "wave number"
+      ],
+      "boxes": [
+        [
+          70,
+          27,
+          880,
+          80
+        ],
+        [
+          70,
+          89,
+          414,
+          130
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "A wave can shift in position and",
+        "wave number"
+      ],
+      "boxes": [
+        [
+          90,
+          569,
+          928,
+          624
+        ],
+        [
+          90,
+          633,
+          446,
+          675
+        ]
+      ]
+    },
+    "strip_sha256": "441217ebbcecfab86c6ff8b0d87eef569e3acc286839952fbaf476a610df9602",
+    "cover_sha256": "37fdc0d732e5f5fa04cc487878d806e63976989bfd4b5bc82acd0eb7efd5e4e0"
+  },
+  {
+    "order": 2,
+    "title": "Unitarity - Translation preserves overlap of functions",
+    "header": {
+      "size": 54,
+      "lines": [
+        "Unitarity - Translation preserves",
+        "overlap of functions"
+      ],
+      "boxes": [
+        [
+          70,
+          28,
+          884,
+          81
+        ],
+        [
+          70,
+          88,
+          582,
+          141
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "Unitarity - Translation preserves",
+        "overlap of functions"
+      ],
+      "boxes": [
+        [
+          90,
+          570,
+          936,
+          625
+        ],
+        [
+          90,
+          632,
+          619,
+          687
+        ]
+      ]
+    },
+    "strip_sha256": "5023943b402f534170bc1fccbdb53405cfbd181478ab84872c994b836f70dd60",
+    "cover_sha256": "8e0cba77e5d36d0eab4aecd705e7de52c0c900d1094a616580bb7f35b0248099"
+  },
+  {
+    "order": 3,
+    "title": "Shifting phase turns a wave function",
+    "header": {
+      "size": 54,
+      "lines": [
+        "Shifting phase turns a wave",
+        "function"
+      ],
+      "boxes": [
+        [
+          70,
+          27,
+          770,
+          81
+        ],
+        [
+          70,
+          88,
+          285,
+          130
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "Shifting phase turns a wave",
+        "function"
+      ],
+      "boxes": [
+        [
+          90,
+          569,
+          815,
+          625
+        ],
+        [
+          90,
+          632,
+          312,
+          675
+        ]
+      ]
+    },
+    "strip_sha256": "2d15592964eb44bb1ce33420a54f37c50e5ad64ac88dc3e491b398ff70a0dbe9",
+    "cover_sha256": "bc081b67057891f2a9b407f03475ed6d053b6f449a6394974464e0a6f615d03a"
+  },
+  {
+    "order": 4,
+    "title": "Phase in the symmetry group structure",
+    "header": {
+      "size": 54,
+      "lines": [
+        "Phase in the symmetry group",
+        "structure"
+      ],
+      "boxes": [
+        [
+          70,
+          28,
+          813,
+          81
+        ],
+        [
+          70,
+          94,
+          299,
+          130
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "Phase in the symmetry group",
+        "structure"
+      ],
+      "boxes": [
+        [
+          90,
+          570,
+          860,
+          625
+        ],
+        [
+          90,
+          637,
+          328,
+          675
+        ]
+      ]
+    },
+    "strip_sha256": "aae6c99006593adaccb7f26dbae17ce9be9add1f2255e395532e386c8e439fdb",
+    "cover_sha256": "a068ede5b8d49ec4dce3665b656b5037c95e3e36f354c17d2e76827109d31b19"
+  },
+  {
+    "order": 5,
+    "title": "Position/wave-number uncertainty",
+    "header": {
+      "size": 54,
+      "lines": [
+        "Position/wave-number",
+        "uncertainty"
+      ],
+      "boxes": [
+        [
+          70,
+          28,
+          652,
+          74
+        ],
+        [
+          70,
+          89,
+          361,
+          142
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "Position/wave-number",
+        "uncertainty"
+      ],
+      "boxes": [
+        [
+          90,
+          570,
+          694,
+          618
+        ],
+        [
+          90,
+          633,
+          392,
+          688
+        ]
+      ]
+    },
+    "strip_sha256": "863dcd7bfc3292aee85df1fa497bd35712aae8a7e0c83bc9ed5798d0a11ec9fc",
+    "cover_sha256": "e9c1a5da1d3855131797f3a99144a855523b533d92010cbe1459b9e34c801f67"
+  },
+  {
+    "order": 6,
+    "title": "Waves behave as rays in the short wavelength limit",
+    "header": {
+      "size": 54,
+      "lines": [
+        "Waves behave as rays in the short",
+        "wavelength limit"
+      ],
+      "boxes": [
+        [
+          70,
+          28,
+          926,
+          81
+        ],
+        [
+          70,
+          89,
+          494,
+          142
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "Waves behave as rays in the",
+        "short wavelength limit"
+      ],
+      "boxes": [
+        [
+          90,
+          570,
+          823,
+          625
+        ],
+        [
+          90,
+          633,
+          684,
+          688
+        ]
+      ]
+    },
+    "strip_sha256": "8923fa73b38b0d1bef5f1d864e7f6fc9e680a40ea44d7bac7046a2c025dc9997",
+    "cover_sha256": "e6d6f5a672741aac09ae01e55a5dfd66b441e0f5fa972c588117057e675cc1fc"
+  },
+  {
+    "order": 7,
+    "title": "Amplitude contributions from possible paths",
+    "header": {
+      "size": 54,
+      "lines": [
+        "Amplitude contributions from",
+        "possible paths"
+      ],
+      "boxes": [
+        [
+          70,
+          27,
+          831,
+          80
+        ],
+        [
+          70,
+          89,
+          431,
+          141
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "Amplitude contributions from",
+        "possible paths"
+      ],
+      "boxes": [
+        [
+          90,
+          569,
+          881,
+          624
+        ],
+        [
+          90,
+          633,
+          467,
+          687
+        ]
+      ]
+    },
+    "strip_sha256": "9ea393375b3b46cae9378562f6df148480c05b2c2b82cb2443fe7d472555a173",
+    "cover_sha256": "2fedf3f644e6a92993891d625ae50306d8d28162b9d63a85bd4875ccd3a168eb"
+  },
+  {
+    "order": 8,
+    "title": "The emergence of stationary paths",
+    "header": {
+      "size": 54,
+      "lines": [
+        "The emergence of stationary",
+        "paths"
+      ],
+      "boxes": [
+        [
+          70,
+          27,
+          797,
+          81
+        ],
+        [
+          70,
+          89,
+          210,
+          141
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "The emergence of stationary",
+        "paths"
+      ],
+      "boxes": [
+        [
+          90,
+          569,
+          842,
+          625
+        ],
+        [
+          90,
+          633,
+          236,
+          687
+        ]
+      ]
+    },
+    "strip_sha256": "e2fba4e0bef5f6e93cc26ec6d965d43971a3573d60e693dd23bd3e4c4a5be824",
+    "cover_sha256": "42e8ef34c77d429cc28c298c52bd31095c0883d552eebd82ae758f78e7e2f02e"
+  },
+  {
+    "order": 9,
+    "title": "Huygens’ principle - the continuous limit",
+    "header": {
+      "size": 54,
+      "lines": [
+        "Huygens’ principle - the",
+        "continuous limit"
+      ],
+      "boxes": [
+        [
+          70,
+          28,
+          678,
+          81
+        ],
+        [
+          70,
+          89,
+          484,
+          130
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "Huygens’ principle - the",
+        "continuous limit"
+      ],
+      "boxes": [
+        [
+          90,
+          570,
+          722,
+          625
+        ],
+        [
+          90,
+          633,
+          520,
+          675
+        ]
+      ]
+    },
+    "strip_sha256": "1ab1a03f7054b4355fe5bda8ad58f9d8574b9c478f4f91fb1142da532a5c7ac8",
+    "cover_sha256": "b0042a3d3c3059540f4a7ae10806753cbbe4dc7b34915bfdae53873f16cbbd14"
+  },
+  {
+    "order": 10,
+    "title": "Converging on the stationary path in the short wavelength limit",
+    "header": {
+      "size": 54,
+      "lines": [
+        "Converging on the stationary path",
+        "in the short wavelength limit"
+      ],
+      "boxes": [
+        [
+          70,
+          28,
+          943,
+          81
+        ],
+        [
+          70,
+          89,
+          802,
+          142
+        ]
+      ]
+    },
+    "cover": {
+      "size": 53,
+      "lines": [
+        "Converging on the stationary",
+        "path in the short wavelength limit"
+      ],
+      "boxes": [
+        [
+          90,
+          569,
+          822,
+          621
+        ],
+        [
+          90,
+          629,
+          944,
+          681
+        ]
+      ]
+    },
+    "strip_sha256": "c07e3a3c29ad1ecefe7e8cadca68c9053c1ed568c7e6c5aa6acf053766f5e2ee",
+    "cover_sha256": "179fcc3b7db4ee49c96a29cb1093ac8091279244edad3a3c74d384516a25b4d9"
+  },
+  {
+    "order": 11,
+    "title": "From Intensity to probability",
+    "header": {
+      "size": 54,
+      "lines": [
+        "From Intensity to probability"
+      ],
+      "boxes": [
+        [
+          70,
+          28,
+          800,
+          81
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "From Intensity to probability"
+      ],
+      "boxes": [
+        [
+          90,
+          570,
+          850,
+          625
+        ]
+      ]
+    },
+    "strip_sha256": "51784896bacb5f79051bb44e5961795cb8dff42b8c98cb329faabdfdb09405e3",
+    "cover_sha256": "111ef6f34139dcb8cdecd71bc27eef0daa5a52fbc85eeb3ccaa6c05a10f72563"
+  },
+  {
+    "order": 12,
+    "title": "ℏ emerges as the conversion factor of phase to action",
+    "header": {
+      "size": 54,
+      "lines": [
+        "ℏ emerges as the conversion",
+        "factor of phase to action"
+      ],
+      "boxes": [
+        [
+          70,
+          26,
+          794.0,
+          81
+        ],
+        [
+          70,
+          88,
+          694,
+          141
+        ]
+      ],
+      "glyph_fallback": "U+210F: DejaVuSans-Bold"
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "ℏ emerges as the conversion",
+        "factor of phase to action"
+      ],
+      "boxes": [
+        [
+          90,
+          568,
+          840.0,
+          625
+        ],
+        [
+          90,
+          632,
+          734,
+          687
+        ]
+      ],
+      "glyph_fallback": "U+210F: DejaVuSans-Bold"
+    },
+    "strip_sha256": "fb83e56f969107b1d5a9b0a9971c9e5a477f0fabc647136aae774716a97f21dd",
+    "cover_sha256": "62c0f4386bc3f6dd0c345a38b3bc8371b60d8356f34d12e73b15f5645e0514bf"
+  },
+  {
+    "order": 13,
+    "title": "The uncertainty principle",
+    "header": {
+      "size": 54,
+      "lines": [
+        "The uncertainty principle"
+      ],
+      "boxes": [
+        [
+          70,
+          28,
+          704,
+          81
+        ]
+      ]
+    },
+    "cover": {
+      "size": 56,
+      "lines": [
+        "The uncertainty principle"
+      ],
+      "boxes": [
+        [
+          90,
+          570,
+          749,
+          625
+        ]
+      ]
+    },
+    "strip_sha256": "b1fb0df26e073a159d22d00aaca37a303d753b73a9e728a6b3562344993f5236",
+    "cover_sha256": "4e0e3b87ea34c152f35f889a9b729a084d6b45053536e73c58e797260fe9cc54"
+  }
+]

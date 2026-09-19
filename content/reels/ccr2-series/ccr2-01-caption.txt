@@ -1,5 +1,5 @@
 Waves to Quanta · 1/13
-A wave can shift two ways
+A wave can shift in position and wave number
 
 We can slide a wave function in position. We can also slide it in wave number (inversely proportional to wavelength), which shifts the collection of spatial frequencies that compose it. While shifting the wave number isn't a translation in the familiar physical space we live in, from a mathematical perspective, wave-number-space is the dual, or equivalent up to role reversal, of position-space.
 
@@ -7,7 +7,7 @@ These are separate transformations of the same starting function. Position trans
 
 The two spaces are related by Fourier transformation. The moving control is a translation amount, not the passage of physical time.
 
-Next: What a translation preserves.
+Next: Unitarity - Translation preserves overlap of functions
 Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 

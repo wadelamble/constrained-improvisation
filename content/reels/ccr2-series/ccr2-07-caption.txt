@@ -1,5 +1,5 @@
 Waves to Quanta · 7/13
-Compose symmetry operators along a route. Add amplitudes across candidate routes.
+Amplitude contributions from possible paths
 
 Along a route, phase-shift operators compose, or multiply, stitching each straight line segment to the next. Across routes, complex amplitudes add.
 
@@ -7,7 +7,7 @@ For a monochromatic wave, a segment of length ℓ accumulates phase Δφ = kℓ.
 
 We now have two contributions at B: ψ₁ from ACB and ψ₂ from ADB. Draw one after the other, tip to tail. The green arrow that joins the beginning to the end is their complex sum, ψ(B) = ψ₁ + ψ₂. As B moves, the route lengths change and the arrows turn accordingly. We give the two route contributions equal magnitudes to isolate the phase effect.
 
-Next: Many routes. One complex sum.
+Next: The emergence of stationary paths
 Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 

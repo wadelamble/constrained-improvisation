@@ -9,7 +9,7 @@ Move B and the route lengths change. The arrows turn, some reinforce, others can
 
 This example uses seventeen idealized narrow openings with equal contribution magnitudes. Their geometric lengths determine their phases. The display scale stays fixed, so a larger green arrow represents a larger amplitude. Each drawn route identifies a term in the wave calculation.
 
-Next: Wavelets recombine into a wavefront.
+Next: Huygens’ principle - the continuous limit
 Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 

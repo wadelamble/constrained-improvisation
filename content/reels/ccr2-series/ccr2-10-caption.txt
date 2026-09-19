@@ -13,7 +13,7 @@ The outer paths wind into loops. Near the straight, stationary route, neighborin
 
 Every contribution is retained, with its propagation weight. The fixed reference at 1 is unobstructed propagation, and all three passes use the same scale.
 
-Next: From amplitudes to probabilities.
+Next: From intensity to probability
 Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 

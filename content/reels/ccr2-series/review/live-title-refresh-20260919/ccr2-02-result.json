@@ -1,0 +1,34 @@
+{
+  "order": 2,
+  "title": "Unitarity - Translation preserves overlap of functions",
+  "source_sha256": "751bb052d5c1c9797305639e5f67fdf9b5ec7defc240afcbf55c07fdc5ad6062",
+  "video_sha256": "d197e24e7c33e73527be272db32d3867eaac4cc784df0257fc0ed8effbc5e8ee",
+  "video_bytes": 2942899,
+  "frames": 1056,
+  "duration": 25.142857142857142,
+  "fps": 42,
+  "playback_speed": 1.75,
+  "video_metadata": {
+    "faststart": true,
+    "timescale": 10752,
+    "duration_ticks": 270336,
+    "timing_runs": [
+      [
+        1056,
+        256
+      ]
+    ],
+    "frames": 1056,
+    "duration": 25.142857142857142
+  },
+  "outside_header_rmse": [
+    0.5695838389202093,
+    0.49997671903471624,
+    0.5177881666646302
+  ],
+  "full_decode": "pass; exact first, middle and final frames selected from full stream",
+  "audio_tracks": 0,
+  "preview_sha256": "e1a4e0310e3561a6984e60afc9fb4bc053a78e6b1fedff46cda7a001a1b7f9d3",
+  "cover_sha256": "8e0cba77e5d36d0eab4aecd705e7de52c0c900d1094a616580bb7f35b0248099",
+  "completed_at": "2026-09-19T21:01:01.589171+00:00"
+}

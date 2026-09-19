@@ -1,0 +1,34 @@
+{
+  "order": 12,
+  "title": "ℏ emerges as the conversion factor of phase to action",
+  "source_sha256": "a99f22140fad67ec90b1405ccf1fc8c51e37a2def3b39d4c3cbe94189a0f5a7f",
+  "video_sha256": "7d68266cc6dfcf47b580d3c2d8c74083f4d56148cf2f2431ba2e5f4670d12c3d",
+  "video_bytes": 1119968,
+  "frames": 1104,
+  "duration": 26.285714285714285,
+  "fps": 42,
+  "playback_speed": 1.75,
+  "video_metadata": {
+    "faststart": true,
+    "timescale": 10752,
+    "duration_ticks": 282624,
+    "timing_runs": [
+      [
+        1104,
+        256
+      ]
+    ],
+    "frames": 1104,
+    "duration": 26.285714285714285
+  },
+  "outside_header_rmse": [
+    0.19663303452001715,
+    0.18230737460667584,
+    0.24219018282350888
+  ],
+  "full_decode": "pass; exact first, middle and final frames selected from full stream",
+  "audio_tracks": 0,
+  "preview_sha256": "2860552dab81a142ff8ac1ed4fef2d110a84ed63ef0948dbdc1f3e2bface35a2",
+  "cover_sha256": "62c0f4386bc3f6dd0c345a38b3bc8371b60d8356f34d12e73b15f5645e0514bf",
+  "completed_at": "2026-09-19T21:05:18.781716+00:00"
+}

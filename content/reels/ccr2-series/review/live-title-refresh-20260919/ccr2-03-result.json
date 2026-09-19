@@ -1,0 +1,34 @@
+{
+  "order": 3,
+  "title": "Shifting phase turns a wave function",
+  "source_sha256": "e16de3dec54bbbf687f579799e8fc9027261ef81a314d12f7bf163596bdf831e",
+  "video_sha256": "19634b3ecb497888a95b163a3585055e433c39415125e07cf80c5081ea095f38",
+  "video_bytes": 13769383,
+  "frames": 1056,
+  "duration": 25.142857142857142,
+  "fps": 42,
+  "playback_speed": 1.75,
+  "video_metadata": {
+    "faststart": true,
+    "timescale": 10752,
+    "duration_ticks": 270336,
+    "timing_runs": [
+      [
+        1056,
+        256
+      ]
+    ],
+    "frames": 1056,
+    "duration": 25.142857142857142
+  },
+  "outside_header_rmse": [
+    0.8527480218168331,
+    0.847351096105119,
+    1.0509116727467365
+  ],
+  "full_decode": "pass; exact first, middle and final frames selected from full stream",
+  "audio_tracks": 0,
+  "preview_sha256": "c6fe3f2e597eb1e1bba198c0c3e3b8f6b245f67231ded9fb04a957a0d3940095",
+  "cover_sha256": "bc081b67057891f2a9b407f03475ed6d053b6f449a6394974464e0a6f615d03a",
+  "completed_at": "2026-09-19T21:02:54.516130+00:00"
+}
