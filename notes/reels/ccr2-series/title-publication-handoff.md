@@ -1,3 +1,17 @@
+# Completed — September 19, 2026
+
+All thirteen reels were republished sequentially, 1 through 13, and verified sent. The thirteen superseded Instagram posts were then removed through Instagram. The final profile has exactly 13 posts, with Latest order 13 down to 1. The user will arrange the profile grid separately.
+
+Current authoritative receipt: `publication-20260919.json`. Caption text was read from live Instagram, with the authorized Reel 3 Next correction and the user's final Reel 10 Next edit. `reel-text.md` now has a single canonical caption per episode. Every caption was checked against the final live profile after replacement. The manifest, gallery and helper contain current replacement links.
+
+Eight video headers/covers were refreshed. Episodes 4, 8, 10, 11 and 13 retained their accepted media unchanged. All animations preserve their accepted timing, including Reel 5's extended limit. Media validation is in `content/reels/ccr2-series/review/live-title-refresh-20260919/validation.json`.
+
+This run used 31 Buffer calls including the opening headroom check. The final response reported 219 requests remaining in the daily window. No follow-up publisher or scheduled automation exists. Do not rerun any historical publisher.
+
+---
+
+## Historical publication records
+
 # Completed — September 17, 2026, 4:44 p.m. Pacific
 
 Publication and cleanup are complete. Do not run another publisher or resume the historical plan below. The profile was verified to contain exactly 13 posts, one episode each. Replacements 1, 2, 4, 5, 7, 8, 9, 10, 11, 12, and 13 are live. Their eleven superseded posts were deleted through Instagram after verification. Original episodes 3 and 6 remain unchanged. Ordering was deferred at the user's request to fit the remaining Buffer allowance before travel.

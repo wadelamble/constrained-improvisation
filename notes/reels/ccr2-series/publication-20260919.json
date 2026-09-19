@@ -3,7 +3,7 @@
   "organization": "My organization",
   "channel": "symmetryphysics",
   "source": "Live Instagram captions read 2026-09-19; approved Next correction on Reel 3.",
-  "complete": false,
+  "complete": true,
   "publish_order": [
     1,
     2,
@@ -35,9 +35,16 @@
         "published_video_sha256": "c0d25bb39f968cecb1bd76784b1cbf9e98d5ccef7888309df98c3adadde9bc40",
         "sent_at": "2026-09-17T23:17:24.857Z"
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaefa946e039ccbc82541eb",
+      "submitted_at": "2026-09-19T21:11:48.348Z",
+      "sent_at": "2026-09-19T21:14:44.485Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde8rn1CHFw/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 2,
@@ -53,9 +60,16 @@
         "published_video_sha256": "751bb052d5c1c9797305639e5f67fdf9b5ec7defc240afcbf55c07fdc5ad6062",
         "sent_at": null
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaefbac4594e3153f41134d",
+      "submitted_at": "2026-09-19T21:16:28.054Z",
+      "sent_at": "2026-09-19T21:17:26.548Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde9ISmDgG8/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 3,
@@ -71,9 +85,16 @@
         "published_video_sha256": null,
         "sent_at": "2026-09-17T14:34:22.576Z"
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaefc94bb86436624a7cc49",
+      "submitted_at": "2026-09-19T21:20:20.173Z",
+      "sent_at": "2026-09-19T21:20:46.307Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde9kzjDyUY/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 4,
@@ -89,9 +110,16 @@
         "published_video_sha256": "7abc41df6fdb0a8c9a410c8d93ec99c2061c98e89fccaa009e0ab2be2db1e12d",
         "sent_at": "2026-09-17T23:26:20.369Z"
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaefd1bbb86436624a7d97e",
+      "submitted_at": "2026-09-19T21:22:35.543Z",
+      "sent_at": "2026-09-19T21:23:33.177Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde91N1jKVb/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 5,
@@ -107,9 +135,16 @@
         "published_video_sha256": "3c006f1f2c9724cd63b06e16064eaeff9b76c8f3d3b7af4f93d05edf378370a7",
         "sent_at": "2026-09-17T23:27:00.059Z"
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaefda0140a302402607670",
+      "submitted_at": "2026-09-19T21:24:48.932Z",
+      "sent_at": "2026-09-19T21:25:45.371Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde-Fe-gZgN/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 6,
@@ -125,9 +160,16 @@
         "published_video_sha256": null,
         "sent_at": "2026-09-17T14:42:48.562Z"
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaefe266e039ccbc8259532",
+      "submitted_at": "2026-09-19T21:27:02.271Z",
+      "sent_at": "2026-09-19T21:28:00.101Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde-VxdFZz8/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 7,
@@ -143,9 +185,16 @@
         "published_video_sha256": "ea93017b99dcc7188bc3b780e62adac8096938705d5bfe376b7e7c7d28e5445e",
         "sent_at": "2026-09-17T23:27:33.766Z"
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaefeac13d908add20687d7",
+      "submitted_at": "2026-09-19T21:29:16.327Z",
+      "sent_at": "2026-09-19T21:30:17.560Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde-mIPD-Un/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 8,
@@ -161,9 +210,16 @@
         "published_video_sha256": "5b75eaa03f2fb28dacadb9665c87adb881e92d71eefe9dc7c364e4b87f154047",
         "sent_at": "2026-09-17T23:28:06.845Z"
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaeff326e039ccbc825b32a",
+      "submitted_at": "2026-09-19T21:31:30.815Z",
+      "sent_at": "2026-09-19T21:34:28.412Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde-6UylYaX/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 9,
@@ -179,9 +235,16 @@
         "published_video_sha256": "9c5862cd49467f13319d7a855031ab0af0ccab38412a38e79124854feb6d7d8e",
         "sent_at": null
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaf002d3916ba5b752f7a72",
+      "submitted_at": "2026-09-19T21:35:41.588Z",
+      "sent_at": "2026-09-19T21:36:37.639Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde_VYbDb9l/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 10,
@@ -197,9 +260,16 @@
         "published_video_sha256": "c4d51021c94d9a7dcd84da9d2d426c9766725d0123f873702608ca522900ed97",
         "sent_at": "2026-09-17T23:29:15.664Z"
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaf00b4140a30240260bc3e",
+      "submitted_at": "2026-09-19T21:37:56.982Z",
+      "sent_at": "2026-09-19T21:38:22.004Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde_lq9DWZX/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 11,
@@ -215,9 +285,16 @@
         "published_video_sha256": "8c8896f12f05236954cc77bf39e2ddc853cb6316ca7a3b7eff3e06640d1cbe2f",
         "sent_at": null
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaf013a13d908add206c817",
+      "submitted_at": "2026-09-19T21:40:10.614Z",
+      "sent_at": "2026-09-19T21:40:37.642Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/Dde_1-FDNVT/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 12,
@@ -233,9 +310,16 @@
         "published_video_sha256": "a99f22140fad67ec90b1405ccf1fc8c51e37a2def3b39d4c3cbe94189a0f5a7f",
         "sent_at": "2026-09-17T23:30:41.557Z"
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaf01c04594e3153f4194eb",
+      "submitted_at": "2026-09-19T21:42:24.126Z",
+      "sent_at": "2026-09-19T21:45:22.346Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/DdfALvcjFrH/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     },
     {
       "order": 13,
@@ -251,9 +335,38 @@
         "published_video_sha256": "cec5f6a0ae57961244d5c383d0d262d18e244b802043e5d7706883f8bb52a0f1",
         "sent_at": null
       },
-      "status": "prepared",
-      "verified": false,
-      "old_removed": false
+      "status": "sent",
+      "verified": true,
+      "old_removed": true,
+      "buffer_post_id": "6aaf02b93916ba5b752f97d6",
+      "submitted_at": "2026-09-19T21:46:33.705Z",
+      "sent_at": "2026-09-19T21:47:32.959Z",
+      "error": null,
+      "instagram_url": "https://www.instagram.com/reel/DdfAmJhERS9/",
+      "removal_verification": "Exact superseded URL deleted through Instagram UI. Final profile has exactly 13 posts and all 13 replacement URLs.",
+      "live_caption_verified": true
     }
-  ]
+  ],
+  "completed_at": "2026-09-19T21:55:18.709708+00:00",
+  "profile_verification": {
+    "post_count": 13,
+    "visible_episode_order": [
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "all_replacement_urls_present": true,
+    "no_original_urls_present": true,
+    "captions_match_prepared": true
+  }
 }

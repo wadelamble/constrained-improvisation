@@ -1,5 +1,5 @@
 ﻿order,title,video,cover,caption_file,duration_seconds,status,caption,video_title
-1,A wave can shift in position and wave number,ccr2-01.mp4,ccr2-01-cover.jpg,ccr2-01-caption.txt,25.142857142857142,replacement_prepared,"Waves to Quanta · 1/13
+1,A wave can shift in position and wave number,ccr2-01.mp4,ccr2-01-cover.jpg,ccr2-01-caption.txt,25.142857142857142,sent,"Waves to Quanta · 1/13
 A wave can shift in position and wave number
 
 We can slide a wave function in position. We can also slide it in wave number (inversely proportional to wavelength), which shifts the collection of spatial frequencies that compose it. While shifting the wave number isn't a translation in the familiar physical space we live in, from a mathematical perspective, wave-number-space is the dual, or equivalent up to role reversal, of position-space.
@@ -13,7 +13,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",A wave can shift in position and wave number
-2,Unitarity - Translation preserves overlap of functions,ccr2-02.mp4,ccr2-02-cover.jpg,ccr2-02-caption.txt,25.142857142857142,replacement_prepared,"Waves to Quanta · 2/13
+2,Unitarity - Translation preserves overlap of functions,ccr2-02.mp4,ccr2-02-cover.jpg,ccr2-02-caption.txt,25.142857142857142,sent,"Waves to Quanta · 2/13
 Unitarity - Translation preserves overlap of functions
 
 A symmetry is defined by what it leaves unchanged. Translate two wave functions by the same amount, and their inner product — intuitively, their overlap — stays the same. This is unitarity, an extension of orthogonal transformations to complex functions. Writing either translation as T, ⟨Tψ, Tχ⟩ = ⟨ψ, χ⟩.
@@ -27,7 +27,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",Unitarity - Translation preserves overlap of functions
-3,Shifting phase turns a wave function,ccr2-03.mp4,ccr2-03-cover.jpg,ccr2-03-caption.txt,25.142857142857142,replacement_prepared,"Waves to Quanta · 3/13
+3,Shifting phase turns a wave function,ccr2-03.mp4,ccr2-03-cover.jpg,ccr2-03-caption.txt,25.142857142857142,sent,"Waves to Quanta · 3/13
 Shifting phase turns a wave function
 
 Multiply a complex wave function by eⁱᵠ, and every complex value rotates by the same angle φ. That is a global phase shift: ψ → eⁱᵠψ.
@@ -41,7 +41,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",Shifting phase turns a wave function
-4,Phase in the symmetry group structure,ccr2-04.mp4,ccr2-04-cover.jpg,ccr2-04-caption.txt,26.285714285714285,replacement_prepared,"Waves to Quanta · 4/13
+4,Phase in the symmetry group structure,ccr2-04.mp4,ccr2-04-cover.jpg,ccr2-04-caption.txt,26.285714285714285,sent,"Waves to Quanta · 4/13
 Phase in the symmetry group structure
 
 A commutator is defined by [X̂, Ŷ] = X̂Ŷ − ŶX̂. The corresponding test for finite translations is to move the function around a loop and examine what changes when the loop closes. Here we shift a function by b in wave number, then by a in position. Then, undo the wave-number shift, undo the position shift, and observe the effect of turning the function.
@@ -55,7 +55,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",Phase in the symmetry group structure
-5,Position/wave-number uncertainty,ccr2-05.mp4,ccr2-05-cover.jpg,ccr2-05-caption.txt,24.0,replacement_prepared,"Waves to Quanta · 5/13
+5,Position/wave-number uncertainty,ccr2-05.mp4,ccr2-05-cover.jpg,ccr2-05-caption.txt,24.0,sent,"Waves to Quanta · 5/13
 Position/wave-number uncertainty
 
 A single wave number represents an infinitely extended wave in position space. Conversely, a function localized at a single position is represented by an infinitely extended wave in wave-number space. The two representations describe the same function. Up to overall normalization, exp(ik₀x) ↔ δ(k − k₀), and δ(x − x₀) ↔ exp(−ix₀k), where δ denotes an ideal spike.
@@ -69,7 +69,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",Position/wave-number uncertainty
-6,Waves behave as rays in the short wavelength limit,ccr2-06.mp4,ccr2-06-cover.jpg,ccr2-06-caption.txt,24.0,replacement_prepared,"Waves to Quanta · 6/13
+6,Waves behave as rays in the short wavelength limit,ccr2-06.mp4,ccr2-06-cover.jpg,ccr2-06-caption.txt,24.0,sent,"Waves to Quanta · 6/13
 Waves behave as rays in the short wavelength limit
 
 Keep two openings fixed and shorten the incoming wavelength. The transmitted wave spreads less, interference lessens, and, in the limit, the two beams behave like rays.
@@ -83,7 +83,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",Waves behave as rays in the short wavelength limit
-7,Amplitude contributions from possible paths,ccr2-07.mp4,ccr2-07-cover.jpg,ccr2-07-caption.txt,25.714285714285715,replacement_prepared,"Waves to Quanta · 7/13
+7,Amplitude contributions from possible paths,ccr2-07.mp4,ccr2-07-cover.jpg,ccr2-07-caption.txt,25.714285714285715,sent,"Waves to Quanta · 7/13
 Amplitude contributions from possible paths
 
 Along a route, phase-shift operators compose, or multiply, stitching each straight line segment to the next. Across routes, complex amplitudes add.
@@ -97,7 +97,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",Amplitude contributions from possible paths
-8,The emergence of stationary paths,ccr2-08.mp4,ccr2-08-cover.jpg,ccr2-08-caption.txt,25.714285714285715,replacement_prepared,"Waves to Quanta · 8/13
+8,The emergence of stationary paths,ccr2-08.mp4,ccr2-08-cover.jpg,ccr2-08-caption.txt,25.714285714285715,sent,"Waves to Quanta · 8/13
 The emergence of stationary paths
 
 With a larger number of openings, we see a pattern emerge. Near the straight path to B, neighboring paths accumulate nearly the same phase, so their contributions reinforce one another. Farther away, the phases change more rapidly and the contributions tend to cancel.
@@ -113,7 +113,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",The emergence of stationary paths
-9,Huygens’ principle - the continuous limit,ccr2-09.mp4,ccr2-09-cover.jpg,ccr2-09-caption.txt,27.428571428571427,replacement_prepared,"Waves to Quanta · 9/13
+9,Huygens’ principle - the continuous limit,ccr2-09.mp4,ccr2-09-cover.jpg,ccr2-09-caption.txt,27.428571428571427,sent,"Waves to Quanta · 9/13
 Huygens’ principle - the continuous limit
 
 A plane wave reaches a screen. Each opening contributes secondary waves. The blue arcs show some of their fronts, while gold follows the fronts of their complex sum.
@@ -129,7 +129,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",Huygens’ principle - the continuous limit
-10,Converging on the stationary path in the short wavelength limit,ccr2-10.mp4,ccr2-10-cover.jpg,ccr2-10-caption.txt,25.714285714285715,replacement_prepared,"Waves to Quanta · 10/13
+10,Converging on the stationary path in the short wavelength limit,ccr2-10.mp4,ccr2-10-cover.jpg,ccr2-10-caption.txt,25.714285714285715,sent,"Waves to Quanta · 10/13
 Converging on the stationary path in the short wavelength limit
 
 The transition from waves to rays in the short wavelength limit occurs as the net amplitude comes from an increasingly narrow range of paths around the stationary path.
@@ -149,7 +149,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",Converging on the stationary path in the short wavelength limit
-11,From Intensity to probability,ccr2-11.mp4,ccr2-11-cover.jpg,ccr2-11-caption.txt,26.285714285714285,replacement_prepared,"Waves to Quanta · 11/13
+11,From Intensity to probability,ccr2-11.mp4,ccr2-11-cover.jpg,ccr2-11-caption.txt,26.285714285714285,sent,"Waves to Quanta · 11/13
 From Intensity to probability
 
 So far, we have calculated wave amplitudes. Quantum mechanics gives that calculation a physical interpretation. The normalized squared magnitude tells us the probability density for a position measurement. Writing that density as ρ(x), we have ρ(x) = |ψ(x)|², with ∫ρ(x) dx = 1.
@@ -165,7 +165,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",From Intensity to probability
-12,ℏ emerges as the conversion factor of phase to action,ccr2-12.mp4,ccr2-12-cover.jpg,ccr2-12-caption.txt,26.285714285714285,replacement_prepared,"Waves to Quanta · 12/13
+12,ℏ emerges as the conversion factor of phase to action,ccr2-12.mp4,ccr2-12-cover.jpg,ccr2-12-caption.txt,26.285714285714285,sent,"Waves to Quanta · 12/13
 ℏ emerges as the conversion factor of phase to action
 
 Action, the quantity made stationary by the physical path, can be constructed from the structure of spacetime, as articulated in special relativity, the topic of our next chapter. Because this quantity must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. For free motion, action is proportional to an invariant built from translations — the time elapsed along a path as measured in a body's rest frame — times a dual invariant built from translation generators. The former is called proper time while the latter is mass. We use units with c = 1.
@@ -193,7 +193,7 @@ Website: https://wadelamble.github.io/constrained-improvisation/
 Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
 
 #Physics #ScienceExplained #FourierTransform #NaturalPhilosophy #QuantumMechanics",ℏ emerges as the conversion factor of phase to action
-13,The uncertainty principle,ccr2-13.mp4,ccr2-13-cover.jpg,ccr2-13-caption.txt,26.285714285714285,replacement_prepared,"Waves to Quanta · 13/13
+13,The uncertainty principle,ccr2-13.mp4,ccr2-13-cover.jpg,ccr2-13-caption.txt,26.285714285714285,sent,"Waves to Quanta · 13/13
 The uncertainty principle
 
 The scale that converts phase to action also converts wave number to momentum. P̂ = ħK̂. The two spirals show the same translation written with either generator. Tₓ(a) = exp(−iaK̂) = exp(−iaP̂/ħ). Changing units does not change the operation.

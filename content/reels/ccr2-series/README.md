@@ -1,3 +1,9 @@
+# Current publication — September 19, 2026
+
+All 13 replacements are live on @symmetryphysics, published in order 1–13; the old copies were removed. Local titles and captions match the final live set. Canonical receipt: `notes/reels/ccr2-series/publication-20260919.json`. Reproduce title layouts with `scripts/ccr2_reels/retitle_live.py --titles notes/reels/ccr2-series/publication-20260919.json --prepare` using a fresh `--run-id`. Earlier production notes below are historical.
+
+---
+
 # Waves to Quanta — review and publishing package
 
 Open `index.html` to review thirteen reels in order. Each video has a matching
