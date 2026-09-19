@@ -315,6 +315,8 @@ M_{ADB}
 e^{i(\phi_0+\phi_{AD}+\phi_{DB})}.
 ```
 
+Compose phase actions along a route. Add amplitudes across candidate routes.
+
 We can plot the contribution from each path $ACB$ and $ADB$ in the complex plane, showing their sum by drawing them tip-to-tail. The vector from the beginning of the first arrow to the end of the second is the amplitude at $B$. Its length is the magnitude at $B$ and its angle is the phase at $B$.
 
 ![The two path contributions added tip-to-tail](../../content/drafts/diagrams/symmetry-double-slit-two-path-phasor-sum-shortwave.png)
@@ -352,11 +354,29 @@ Away from a stationary path, the phase winds through many cycles over a small ra
 
 In this limit, as waves pass through slits, they behave as rays, just as if you threw a ball from one point through a hole, it could only hit the projection screen in one spot.
 
+Each path shares its color with its contribution to the tip-to-tail sum. As the wavelength shrinks, an increasingly narrow range of paths around the straight path carries the sum forward.
+
 ![Matching colors connect candidate paths to their contributions in the tip-to-tail sum as wavelength decreases](../../content/drafts/animations/symmetry-spectrum-path-diamond-wavelength-scan-lambda-3.png)
 
 [Open MP4: symmetry-spectrum-path-diamond-wavelength-scan.mp4](../../content/drafts/animations/symmetry-spectrum-path-diamond-wavelength-scan.mp4)
 
 ##### From Wave Mechanics to Quantum Mechanics
+Quantum mechanics gives wave intensity a new physical interpretation. For a normalized wave function, the squared magnitude gives the probability density for a position measurement:
+
+```math
+\rho(x)=|\psi(x)|^2,
+\qquad
+\int_{-\infty}^{\infty}\rho(x)\,dx=1.
+```
+
+![A complex amplitude and its squared magnitude predict the distribution of repeated position measurements at two wavelengths](../../content/drafts/animations/symmetry-amplitude-probability-poster.png)
+
+[Open MP4: symmetry-amplitude-probability.mp4](../../content/drafts/animations/symmetry-amplitude-probability.mp4)
+
+*From intensity to position measurement probability density*
+
+To connect our wave description to mechanics, we need to relate phase to action.
+
 The action along a given path, the quantity that is minimized by that path, can be constructed from the structure of **spacetime**, as articulated in the theory of special relativity, which will be the topic of our next chapter. Crudely speaking, because the quantity to be minimized must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. This leads to the result that the action is, in simple cases, proportional to an invariant built from translations — the time elapsed along a path as measured in a body's rest frame — times a dual invariant built from translation generators. The former quantity is called **proper time** while the latter is **mass**.
 
 ```math
@@ -381,7 +401,13 @@ We can measure this constant in the lab by comparing mass, as measured through c
 \frac{S}{\phi}:=\hbar\approx 1.055\times10^{-34}\,\mathrm{J\,s}.
 ```
 
-The smaller $\hbar$ is, the more a wave function's phase cycles for a given amount of path variation. But this is exactly our condition for possible paths being dominated by the stationary path. $\hbar$ sets the mass scale at which bodies behave deterministically. Because $1.055\times10^{-34}\,\mathrm{J\,s}$ is tiny relative to human scale, we see no quantum stochasticity in everyday life. Are we saying that the laws of motion we learn in high school physics are an approximation? Yes, a very good approximation.
+The smaller $\hbar$ is, the more phase cycles a given action difference produces. For two candidate paths:
+
+```math
+\Delta\phi=\frac{\Delta S}{\hbar}.
+```
+
+But this is exactly our condition for the path sum to be dominated by stationary paths. For everyday bodies, $\hbar$ is tiny compared with action differences so that their motion is effectively deterministic. Are we saying that the laws of motion we learn in high school physics are an approximation? Yes, a very good approximation.
 
 We can now express our $H_3$ commutation relation in units of action:
 
@@ -396,7 +422,7 @@ We then have:
 ```math
 \hat P := \hbar\hat K
 ```
-where $\hat P$ generates translations from a mechanical collision perspective. Its eigenvalue is **momentum**, $p$, giving us the quantum **canonical commutation relation**:
+where $\hat P$ generates position translations with the same scaling that relates phase to action. Its eigenvalue is **momentum**, $p$, giving us the quantum **canonical commutation relation**:
 
 ```math
 [\hat X, \hat P] = i\hbar I

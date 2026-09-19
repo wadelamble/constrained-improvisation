@@ -1,0 +1,77 @@
+{
+  "model": "Exact normalized paraxial free Gaussian from accepted Reel 11",
+  "source_intensity_sigma": 0.2,
+  "propagation_distance": 4.0,
+  "preparations": [
+    {
+      "wave_number": 8.0,
+      "wavelength_ratio": 1.0,
+      "integrated_norm": 1.0,
+      "integrated_variance": 1.6024999999999998,
+      "detector_sigma": 1.2658988901172163,
+      "seed": 73921,
+      "density_vs_sampling_pdf_max_error": 2.7755575615628914e-16,
+      "sample_count": 540,
+      "sample_mean": -0.06293613903053359,
+      "sample_std": 1.2702388610370863,
+      "samples_outside_display": 0
+    },
+    {
+      "wave_number": 160.0,
+      "wavelength_ratio": 0.05,
+      "integrated_norm": 1.0,
+      "integrated_variance": 0.04390625000000001,
+      "detector_sigma": 0.20953818267800264,
+      "seed": 73922,
+      "density_vs_sampling_pdf_max_error": 1.5543122344752192e-15,
+      "sample_count": 540,
+      "sample_mean": -0.00866975105876363,
+      "sample_std": 0.2093326218737727,
+      "samples_outside_display": 0
+    }
+  ],
+  "samples": "Independent normal draws from the exact displayed density",
+  "horizontal_domain": [
+    -5.0,
+    5.0
+  ],
+  "fixed_amplitude_gain": 82,
+  "fixed_density_gain": 99,
+  "complex_projection": "x + 0.30 * gain * Im(psi exp(-0.38i)); y - gain * Re(psi exp(-0.38i))",
+  "reset_seconds": 13,
+  "accumulation_intervals_seconds": [
+    [
+      2,
+      12
+    ],
+    [
+      15,
+      25
+    ]
+  ],
+  "dots": "Each displayed point remains fixed until preparation reset; vertical jitter separates marks only",
+  "short_wavelength_limit": "Width approaches the finite initial opening width, not a point",
+  "video": {
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "decoded_frames": 840,
+    "duration_seconds": 28.0,
+    "bytes": 749916,
+    "sha256": "1c8983aa042f447817ec993a7139134c5d2c412565f7d32badf6e8f487886adf",
+    "contact_sheet_source": "Representative frames decoded from the final MP4",
+    "representative_decoded_frame_sha256": {
+      "0.0": "19b23419f4a62f774917f7ea6ca70f9f5a178aeba329804a0d710c0120ed2e5c",
+      "2.0": "086b9ade9cded9147e80525b6e355f201b224353f360a4cc36f85cddc47f0e08",
+      "6.0": "d4b2e2e1758eef6baa743593d569968c4673f1609af282853405754bb3a2a659",
+      "12.5": "940bc6a98fd5d1f97adcf3a2c3da94cd7feb6f9604521e8d427025a830d130a5",
+      "13.5": "9f0055c8615c5c22c17b1e064117b672001ba6f912a34f951bba9779d1cdade7",
+      "18.0": "2a672a3ed0ed228ade28ff39850a03ed2cf62db9287e72a1413c73714e26dff7",
+      "24.0": "37e19753364807e84c61929f869443e593045f8eb207ccc7cb71d52a21e36777",
+      "27.0": "55d67ec4ad6593813afcddea73c2954eb17c5317659b0355b20e964d382358f7"
+    }
+  },
+  "visual_review": "Inspect the generated poster/contact sheet and encoded representative frames before acceptance."
+}
