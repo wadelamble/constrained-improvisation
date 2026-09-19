@@ -11,3 +11,6 @@ Git-*.exe
 ~$*.docx
 .codex-flight-debug/
 .codex-flight-profile/
+
+# Generated download bundle; the individual reel assets are tracked.
+/content/reels/ccr2-series-package.zip
