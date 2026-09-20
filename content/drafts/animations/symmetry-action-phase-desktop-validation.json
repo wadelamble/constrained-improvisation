@@ -1,0 +1,35 @@
+{
+  "width": 1920,
+  "height": 1080,
+  "fps": 42,
+  "duration_seconds": 24.0,
+  "frames": 1008,
+  "shared_state": "revise_action_phase.state",
+  "sweep_seconds": 8.0,
+  "pass_seconds": 5.333333333333333,
+  "masses_eV": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "tau_interval_fs": [
+    0,
+    12.0
+  ],
+  "endpoint_action_eV_fs": [
+    12.0,
+    24.0,
+    36.0
+  ],
+  "endpoint_turns": [
+    2.90158709227976,
+    5.80317418455952,
+    8.704761276839282
+  ],
+  "invariant_errors": {
+    "shell": 1.7763568394002505e-15,
+    "proper_time": 8.526512829121202e-14,
+    "spacetime_phase": 2.1316282072803006e-14,
+    "action_to_phase": 7.105427357601002e-15
+  }
+}

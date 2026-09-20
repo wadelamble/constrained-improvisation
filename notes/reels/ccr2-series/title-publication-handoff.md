@@ -1,3 +1,14 @@
+<!-- action-phase-20260920 completed -->
+# Completed — September 20, 2026
+
+Reel 12 action-phase replacement and unchanged Reel 13 repost verified live; both superseded posts removed. Other eleven posts unchanged. Latest order: 13 down to 1.
+
+Current authoritative receipt: `publication-20260920-action-phase.json`. Only reels 12 and 13 were published in this run, in that order. Reel 12 uses the approved action-phase animation; its caption removes only the obsolete calibration-plot sentence. Reel 13 retains its video and caption unchanged.
+
+Local caption files, publication links, manifests, gallery, and caption helper are synchronized for these two reels. Direct author edits in all other `reel-text.md` sections are preserved. The manuscript was not touched. The user handles profile-grid arrangement. Dated earlier receipts and the publication records below remain historical. Do not rerun an earlier publisher.
+
+---
+
 # Completed — September 19, 2026
 
 All thirteen reels were republished sequentially, 1 through 13, and verified sent. The thirteen superseded Instagram posts were then removed through Instagram. The final profile has exactly 13 posts, with Latest order 13 down to 1. The user will arrange the profile grid separately.

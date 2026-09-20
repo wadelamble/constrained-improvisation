@@ -1,3 +1,12 @@
+<!-- action-phase-20260920 completed -->
+# Current publication — September 20, 2026
+
+Reel 12 action-phase replacement and unchanged Reel 13 repost verified live; both superseded posts removed. Other eleven posts unchanged. Latest order: 13 down to 1.
+
+Only reels 12 and 13 were updated in this publication run. Reel 12 uses the approved 24-second action-phase animation and omits the obsolete calibration-plot sentence from its caption; Reel 13 was reposted unchanged. Current receipt: `notes/reels/ccr2-series/publication-20260920-action-phase.json`. Earlier dated receipts and production notes below are historical.
+
+---
+
 # Current publication — September 19, 2026
 
 All 13 replacements are live on @symmetryphysics, published in order 1–13; the old copies were removed. Local titles and captions match the final live set. Canonical receipt: `notes/reels/ccr2-series/publication-20260919.json`. Reproduce title layouts with `scripts/ccr2_reels/retitle_live.py --titles notes/reels/ccr2-series/publication-20260919.json --prepare` using a fresh `--run-id`. Earlier production notes below are historical.

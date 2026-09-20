@@ -377,7 +377,7 @@ Quantum mechanics gives wave intensity a new physical interpretation. For a norm
 
 To connect our wave description to mechanics, we need to relate phase to action.
 
-The action along a given path, the quantity that is minimized by that path, can be constructed from the structure of **spacetime**, as articulated in the theory of special relativity, which will be the topic of our next chapter. Crudely speaking, because the quantity to be minimized must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. This leads to the result that the action is, in simple cases, proportional to an invariant built from translations — the time elapsed along a path as measured in a body's rest frame — times a dual invariant built from translation generators. The former quantity is called **proper time** while the latter is **mass**.
+The action along a given path, the quantity that is minimized by that path, can be constructed from the structure of **spacetime**, as articulated in the theory of special relativity, which will be the topic of our next chapter. Crudely speaking, because the quantity to be minimized must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. This leads to the result that the action is, in simple cases, proportional to an invariant built from translations — the time elapsed along a path as measured in a body's rest frame — times a dual invariant built from position translation generators. The former quantity is called **proper time** while the latter is **mass**. 
 
 ```math
 S = -m\tau
@@ -406,6 +406,10 @@ The smaller $\hbar$ is, the more phase cycles a given action difference produces
 ```math
 \Delta\phi=\frac{\Delta S}{\hbar}.
 ```
+
+![Three wave-number shells share the same proper-time interval while phase cycles and action accumulates at corresponding rates](../../content/drafts/animations/symmetry-action-phase-desktop-poster.png)
+
+[Open MP4: symmetry-action-phase-desktop.mp4](../../content/drafts/animations/symmetry-action-phase-desktop.mp4)
 
 But this is exactly our condition for the path sum to be dominated by stationary paths. For everyday bodies, $\hbar$ is tiny compared with action differences so that their motion is effectively deterministic. Are we saying that the laws of motion we learn in high school physics are an approximation? Yes, a very good approximation.
 

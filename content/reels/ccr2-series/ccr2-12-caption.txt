@@ -15,7 +15,7 @@ We then have
 
 constant = S/φ = m/κ.
 
-We can measure this constant in the lab by comparing mass, as measured through collisions, to wavelength, as measured through interference. The calibration plot is schematic. We find
+We can measure this constant in the lab by comparing mass, as measured through collisions, to wavelength, as measured through interference. We find
 
 S/φ := ħ ≈ 1.055 × 10⁻³⁴ J s.
 
