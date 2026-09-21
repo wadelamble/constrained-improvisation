@@ -19,7 +19,7 @@ WAVE_SYMMETRY_DRAFT = ROOT / "notes" / "worked" / "symmetry-ccr-2.md"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 REEL_DIR = ROOT / "content" / "reels" / "ccr2-series"
 
-TITLE = "Nature's Improvisation on Form"
+TITLE = "Nature's Improvisation on Symmetry"
 BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
 
 
@@ -53,7 +53,7 @@ class Article:
 ARTICLES = [
     Article("Wave Symmetry", "symmetry", WAVE_SYMMETRY_DRAFT, heading_offset=3),
     Article("The Principle of Least Action", "path-mechanics", PATH_MECHANICS_DRAFT),
-    Article("Differential Mechanics", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
+    Article("State flow", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
 ]
 
 ARTICLE_BY_SLUG = {article.slug: article for article in ARTICLES}
@@ -83,42 +83,30 @@ SECTIONS = [
     Section(
         "The Principle of Least Action",
         "path-mechanics",
-        "Physical motion as geometric simplicity.",
+        "Evolution reducing surprise.",
         status="",
         href="/path-mechanics/",
         disabled=False,
     ),
     Section(
-        "Field Theories",
+        "Fields and Interactions",
         "field-theories",
         "General Relativity and Gauge Fields.",
     ),
     Section(
-        "Differential Mechanics",
+        "State flow",
         "differential-mechanics",
-        "Mechanics as state flow.",
+        "The evolution of ensembles.",
         status="",
         href="/differential-mechanics/",
         outline=["Evolution of ensembles", "Phase-space geometry", "Hamiltonian flows", "Poisson algebra"],
         disabled=False,
     ),
     Section(
-        "Unitarity",
-        "unitarity",
-        "Preserving the identity of distributions over time.",
-        outline=["Norm preservation", "Time evolution"],
-    ),
-    Section(
-        "Quantum Mechanics",
-        "quantum-mechanics",
-        "From objects to patterns.",
-        outline=["State and measurement", "Operators", "Commutators"],
-    ),
-    Section(
-        "Quantum Field Theory",
-        "quantum-field-theory",
-        "Giving statistical patterns causal structure.",
-        outline=["Fields", "Quantization", "Particle interpretation"],
+        "Zooming into the Stochastic",
+        "zooming-into-the-stochastic",
+        "From paths to observations.",
+        outline=["State and measurement", "Operators", "Commutators", "Fields", "Quantization", "Particle interpretation"],
     ),
 ]
 
@@ -143,6 +131,9 @@ def article_markdown(article: Article) -> str:
             return f"{'#' * depth} {text}"
 
         markdown = re.sub(r"^(#{1,6})[ \t]+(.+)$", adjust_heading, markdown, flags=re.MULTILINE)
+    # The public chapter title may differ from its working manuscript title.
+    markdown = re.sub(r"^#[ \t]+[^\n]+$", lambda _: f"# {article.title}",
+                      markdown, count=1, flags=re.MULTILINE)
     return markdown
 
 
