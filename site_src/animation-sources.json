@@ -1,0 +1,72 @@
+{
+  "symmetry-ccr-x-k-translations-symmetric.mp4": {
+    "sources": ["scripts/generate_symmetry_ccr_x_k_translations_symmetric.py"],
+    "generation_note": "Run the main script without --stills-only. It validates the Gaussian Fourier pair, draws both panels with Pillow, and pipes 510 RGB frames to FFmpeg. No local Python imports or input movie are used.",
+    "evidence": "The script's NAME exactly matches the linked movie; render() writes that MP4 and decodes a sample at 9.5 s. Constants specify 1440 x 810, 30 fps, 17 s. No matching validation JSON is present, so this is a source/output-name attribution rather than a hash-attested build."
+  },
+  "symmetry-ccr-unitarity.mp4": {
+    "sources": ["scripts/generate_symmetry_ccr_unitarity.py"],
+    "generation_note": "Main script --render writes the MP4; --check and --encoded-check write mathematical and decoded-video validation. The renderer is self-contained apart from external NumPy/Pillow/imageio-ffmpeg libraries.",
+    "evidence": "NAME and output path match. content/drafts/animations/symmetry-ccr-unitarity-validation.json records 1440 x 1040, 30 fps, 510 frames, 17 s; the matching encoded-validation.json records the same geometry and frame count and compares decoded frames with source renders."
+  },
+  "symmetry-complex-phase-modes.mp4": {
+    "sources": ["scripts/generate_symmetry_complex_phase_modes.py", "scripts/generate_symmetry_packet_phase_modes.py"],
+    "generation_note": "Main script --render supplies the complex-mode frame renderer and uses drawing, numerical, and encoding helpers imported from generate_symmetry_packet_phase_modes. The imported script is a code dependency, not an input movie. --check and --encoded-check produce the companion checks.",
+    "evidence": "Exact NAME match. The matching validation JSON records nine wave numbers 11 through 19, five phase turns, 540 frames at 30 fps, 1440 x 1080, 18 s; encoded-validation.json confirms that frame count and compares decoded frames with this renderer."
+  },
+  "symmetry-ccr-loop-complex.mp4": {
+    "sources": ["scripts/generate_symmetry_ccr_loop_complex.py", "scripts/generate_symmetry_packet_phase_modes.py"],
+    "generation_note": "Main script --render draws the ordered +k,+x,-k,-x loop and uses the imported packet-phase script for shared artwork, math, and encoding libraries. --check and --encoded-check produce companion checks; there is no input movie.",
+    "evidence": "Exact NAME match. Matching validation records the -pi/2 residual phase, 480 frames, 30 fps, 1440 x 900, 16 s, and final hold after 13 s. Matching encoded-validation.json confirms the frame count and renderer comparisons."
+  },
+  "symmetry-xk-fourier-complex.mp4": {
+    "sources": ["scripts/generate_symmetry_xk_fourier_complex.py", "scripts/generate_symmetry_packet_phase_modes.py"],
+    "generation_note": "Main script --render implements the complex Gaussian Fourier-pair sweep. The packet-phase module supplies shared drawing helpers and libraries; no earlier video is consumed. --check and --encoded-check write the companion validation.",
+    "evidence": "Exact NAME match. Matching validation records the full complex Fourier check and sigma_x sweep, 360 frames, 30 fps, 1440 x 900, 12 s; encoded-validation.json confirms these video dimensions and compares decoded samples with source frames."
+  },
+  "symmetry-xk-squared-magnitudes.mp4": {
+    "sources": ["scripts/generate_symmetry_xk_squared_magnitudes_animation.py", "scripts/generate_symmetry_xk_uncertainty_extremes_animation.py"],
+    "generation_note": "Run the main script without arguments. It draws squared-magnitude frames and uses the imported uncertainty-extremes module for parameters, geometry, fonts, and helpers. It encodes a temporary MP4, replaces the canonical file, then decodes all frames and checks dimensions/fps/count. No earlier movie is consumed.",
+    "evidence": "The main script's NAME and render() destination match the linked movie; imported constants specify 1280 x 720, 24 fps, 12 s (288 frames). No matching validation JSON is present; the generator prints its decoded-video verification rather than saving a report. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-short-wave-beams.mp4": {
+    "sources": ["scripts/generate_symmetry_short_wave_beams.py", "scripts/generate_symmetry_widening_apertures.py"],
+    "generation_note": "Main script --render computes finite-opening angular-spectrum fields and encodes their frames. generate_symmetry_widening_apertures supplies shared visual helpers and imported libraries. --check and --encoded-check write the companion reports; no input movie is used.",
+    "evidence": "Exact NAME match. Matching validation records fixed opening 0.5, centers -2.4/+2.4, wavelengths 0.5 down to 0.001, and 1440 x 1120, 30 fps, 20 s. Matching encoded-validation.json records all 600 decoded frames and source-frame comparison errors."
+  },
+  "symmetry-double-slit-candidate-paths-shortwave-arcs.mp4": {
+    "sources": ["scripts/generate_symmetry_double_slit_candidate_paths_vivid.py", "scripts/generate_symmetry_widening_apertures.py"],
+    "generation_note": "The vivid generator, whose NAME uses the shortwave-arcs stem, is the actual entrypoint (--render). It uses shared artwork from widening_apertures and renders the two-point-aperture phase illustration directly. --check and --encoded-check produce the companion reports.",
+    "evidence": "The vivid script explicitly sets NAME to symmetry-double-slit-candidate-paths-shortwave-arcs. Matching validation records wavelength 0.5 and the same A,C,D,B geometry as the script; matching encoded-validation.json records 300 frames, 30 fps, 1440 x 810, 10 s. notes/worked/double-slit-candidate-paths-vivid-animation.md identifies this output."
+  },
+  "symmetry-many-slit-paths-phasors-interference.mp4": {
+    "sources": ["scripts/generate_symmetry_many_slit_paths_phasors_interference.py", "scripts/generate_symmetry_desktop_wave_bookends.py", "scripts/generate_symmetry_slit_tip_to_tail.py", "scripts/perforated_tip_to_tail_model.py", "scripts/corrected_tip_to_tail_model.py", "scripts/generate_symmetry_wave_paths_explainer.py", "scripts/generate_symmetry_step2_packet_summary_point.py"],
+    "generation_note": "The same-named canonical entrypoint's main() now delegates to generate_symmetry_desktop_wave_bookends.render_canonical_desktop(); its older draw_frame helpers alone do not reproduce the accepted movie. V7 adds a 96-frame intensity-colored wave intro to a 444-frame centered 49-slit body, then concatenates with FFmpeg stream copy. The recorded build reused content/drafts/animations/iterations/symmetry-many-slit-paths-phasors-interference-20260911T150313560139Z-centered-body.mp4, with its .model.json record; running the canonical entrypoint regenerates that body, while the bookends script supports --reuse-middle. Shared geometry imports pass through the old canonical helpers, wave_paths_explainer, and step2_packet_summary_point. All five main V7 implementation/model files are byte-identical to their scripts/iterations/*-20260911T155628136531Z-v7.py snapshots.",
+    "evidence": "Canonical validation identifies iterations/symmetry-many-slit-paths-phasors-interference-v7-intensity-in-the-wave.mp4, 540 frames, 24 fps, 22.5 s, 1280 x 720, the exact body input, and middle_decoded_frames_identical=true. The current MP4 SHA-256 matches its recorded video_sha256 (05a021cdde8ada00ecd1e43d59d990d0be25a7892cc0cced8b7e047303be2a3e). notes/worked/desktop-wave-intensity-field.md confirms the canonical entrypoint and V7 implementation."
+  },
+  "symmetry-schematic-screens-v3-concise.mp4": {
+    "sources": ["scripts/retime_symmetry_schematic_screens.py", "scripts/generate_symmetry_schematic_screens_v3.py", "scripts/schematic_screens_v3_model.py", "scripts/generate_symmetry_schematic_screens_v2.py", "scripts/generate_symmetry_schematic_screens.py", "scripts/generate_symmetry_plane_wave_screens.py", "scripts/plane_wave_screens_model.py"],
+    "generation_note": "Final entrypoint is retime_symmetry_schematic_screens.py, which consumes content/drafts/animations/symmetry-schematic-screens-v3.mp4. Generate that 52-second source with generate_symmetry_schematic_screens_v3.py --render; its listed local imports supply construction state, field model, and drawing helpers. The final script applies whole-frame monotone FFmpeg setpts/fps retiming to 24 seconds, without recomputing fields or interpolating frames. Source-to-output knots are 0:0, 2:1, 22:7, 42:17, 48:21, 52:24 seconds.",
+    "evidence": "The concise validation explicitly names the v3 input and retiming method and records 576 frames, 24 fps, 1280 x 720, 24 s. Both current movies match its source_sha256 and video_sha256 fields (source 4fca2f3e85cddef6ae2e85b0fbb400b157c807dfebdb86cc9df76be8cf298da2; final 66887f22e7e0dae166c0e097a20ef5256c28be0e9192eb803e6af168e0d0a24b)."
+  },
+  "symmetry-phase-remainder-spinners.mp4": {
+    "sources": ["scripts/generate_symmetry_phase_remainder_spinners.py", "scripts/generate_symmetry_two_tip_to_tail_limits.py"],
+    "generation_note": "Use the current main script --render, with --check and --encoded-check for validation. It imports general drawing/encoding helpers from two_tip_to_tail_limits. Archived phase-remainder v1/v2 scripts and movies are earlier variants; the current generator shows left endpoints at 30,60,90 degrees.",
+    "evidence": "Matching validation records lengths 1,2,3, wavelengths 12 and 5/47, right remainders 144,288,72 degrees, 1020 frames at 60 fps, 1440 x 870, 17 s. Matching encoded-validation.json confirms all 1020 frames. notes/worked/phase-remainder-spinners.md identifies the current generator and explicitly distinguishes the archived v1/v2 variants."
+  },
+  "symmetry-spectrum-path-diamond-wavelength-scan.mp4": {
+    "sources": ["scripts/generate_symmetry_spectrum_path_diamond.py", "scripts/generate_symmetry_normalized_path_diamond.py", "scripts/generate_symmetry_dense_path_diamond.py", "scripts/generate_symmetry_two_tip_to_tail_limits.py"],
+    "generation_note": "Main script --render configures the normalized-path renderer with fixed path-position colors, then calls drawing.render() from dense_path_diamond through normalized_path_diamond. These imported modules supply the normalized propagation model, frame schedule, geometry, and general drawing helpers. There is no input video; --check and --encoded-check produce validation.",
+    "evidence": "Main NAME matches exactly; configure_renderer installs this movie name and frame implementation in the reused renderer. Matching validation records 20,001 paths, wavelengths 0.5/0.05/0.005, 2160 frames at 60 fps, 36 s, fixed path/color hashes, and unchanged normalized scalar propagation. Matching encoded-validation.json records 1440 x 1080 and confirms all frames."
+  },
+  "symmetry-amplitude-probability.mp4": {
+    "sources": ["scripts/generate_symmetry_amplitude_probability.py", "scripts/ccr2_reels/episodes_quantum.py", "scripts/ccr2_reels/core.py"],
+    "generation_note": "Main script --render adapts accepted Reel 11 to landscape. It imports detector_state from episodes_quantum and artwork/math helpers from core; neither a portrait MP4 nor a postprocessor is consumed. --verify-video can refresh decoded-video validation without rerendering.",
+    "evidence": "Exact STEM/output match. Validation names the normalized paraxial Gaussian model, seeds 73921/73922, wave numbers 8/160, and a video block reporting 840 frames, 30 fps, 1920 x 1080, 28 s. The current MP4 matches that block's SHA-256 (1c8983aa042f447817ec993a7139134c5d2c412565f7d32badf6e8f487886adf)."
+  },
+  "symmetry-action-phase-desktop.mp4": {
+    "sources": ["scripts/ccr2_reels/render_action_phase_desktop.py", "scripts/ccr2_reels/revise_action_phase.py", "scripts/ccr2_reels/core.py", "scripts/ccr2_reels/render.py", "scripts/ccr2_reels/retitle_live.py", "scripts/ccr2_reels/validate_retime.py", "scripts/ccr2_reels/retime.py"],
+    "generation_note": "Run render_action_phase_desktop.py --render. It directly encodes landscape frames using the shared state and timing constants from revise_action_phase and drawing primitives from core. The remaining listed modules are transitive imports through revise_action_phase/retitle_live; their portrait packaging and retiming entrypoints are not executed by the desktop build, and no earlier movie is consumed.",
+    "evidence": "Exact STEM and output match. Matching validation explicitly identifies shared_state=revise_action_phase.state and records masses 1/2/3 eV, proper-time interval 0..12 fs, 1008 frames at 42 fps, 1920 x 1080, 24 s. It verifies shell/proper-time/phase/action invariants but contains no MP4 hash, so source attribution is not a hash-attested build."
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-ccr-loop-complex.mp4",
+  "video_sha256": "4786dad4ba257da869a943a9098907eb5375beed47e425551094e870bdcf7f70",
+  "duration_seconds": 16.0,
+  "fps": 30.0,
+  "frame_count": 480,
+  "width": 1440,
+  "height": 900,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "14d8b86350821fd98d4fdd20a5edcc3da82540c8f5eb3a9f4ca5278a1ea9465c"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 44,
+      "time_seconds": 1.466667,
+      "sha256": "881d065240b68ff82caa1589de0045ac680927fdd1c9f80cd4178d33c0736350"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 87,
+      "time_seconds": 2.9,
+      "sha256": "f571cbed8f9d3a9f706064497d519524cfc87bbafab2717cd1e9d8e40a1691ae"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 131,
+      "time_seconds": 4.366667,
+      "sha256": "a44e2a615b4d50cae6a388bd6daebcd42d7a25170694b9f9cef83ffdae7f7345"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 174,
+      "time_seconds": 5.8,
+      "sha256": "02b63002c0259927e2ed10576914cf447a17ef84dc0e12aa2fa5f5df183cf563"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 218,
+      "time_seconds": 7.266667,
+      "sha256": "d3d0bc47719ec3c26e4ded7312965dbe0119ae8c3e570be939542ca32b7882f8"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 261,
+      "time_seconds": 8.7,
+      "sha256": "b4318bc328abb5faf35659b6e8ed47c9736a3e5e952af2ec8d073ece79dfcc55"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 305,
+      "time_seconds": 10.166667,
+      "sha256": "ec55b1e052447862b5655920bdd7cab0194ea94198ef30ed8b8a0b0be3aaa5f1"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 348,
+      "time_seconds": 11.6,
+      "sha256": "5cb44a22159ccea1fddaeeebaef7f93687d726fdac137408b2734e395da65d03"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 392,
+      "time_seconds": 13.066667,
+      "sha256": "48862fd516afdcb589a928cb96769fa7368d01cca9dd2fa84fb738b77f771245"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 435,
+      "time_seconds": 14.5,
+      "sha256": "1d9ae3db8f28f32e6c90b848fc976431dbc29d2e888a531c4fe46ccff5a3d9ac"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 479,
+      "time_seconds": 15.966667,
+      "sha256": "5a61d35185451749c1d7ee6749aee10d58583d666a3a72784c2d45b29bdd2e57"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "3cb7da5b4a44662ae3b6c730acd1f1e240f394ec3c894475f241a18f0d8769dd"
+  }
+}

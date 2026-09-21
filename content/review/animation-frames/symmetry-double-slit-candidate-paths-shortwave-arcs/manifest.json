@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-double-slit-candidate-paths-shortwave-arcs.mp4",
+  "video_sha256": "f567d8740a19e069ed3e38146db5b7a7672924649866e6bbde34c026bebdb688",
+  "duration_seconds": 10.0,
+  "fps": 30.0,
+  "frame_count": 300,
+  "width": 1440,
+  "height": 810,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "4d4eaeae2aafc0e02d4f24214628edea0fd96e4972044f8bee429dff99097c1d"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 27,
+      "time_seconds": 0.9,
+      "sha256": "cd05a7d62739341297a171f9f4b8b2af4585d667650eaeb9c1ece6762bda6237"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 54,
+      "time_seconds": 1.8,
+      "sha256": "c49bad34b0f45291446fb4d37e4ba61248fa08fb667abed0a5a7a11a3cd589d2"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 82,
+      "time_seconds": 2.733333,
+      "sha256": "fe8cff53ad300fd1440df989a83ec07dba9d0b7766ce64c73bdac57c25ae6131"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 109,
+      "time_seconds": 3.633333,
+      "sha256": "93f002bc5bef73d89c06f40b40e0ab9bc6e6760b946dea208013e54c487a6ccf"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 136,
+      "time_seconds": 4.533333,
+      "sha256": "55995fa077f06ee66f26def9df6b5d2f40de5c9832b143d522eabad06451ae25"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 163,
+      "time_seconds": 5.433333,
+      "sha256": "ef5427380eb68578d5aae3be7435c9c4bd2f17a58710bc48a6f3f2b484f710e0"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 190,
+      "time_seconds": 6.333333,
+      "sha256": "db2b3a2b30f56153325debf80da7fe49de68342cd376bc16aac68d5a1c0b3a03"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 217,
+      "time_seconds": 7.233333,
+      "sha256": "75b3e2d47b74ba7a08db3801ee92a61b0db7eadfd1ee2213aac9ef43f48ffc37"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 245,
+      "time_seconds": 8.166667,
+      "sha256": "63a923a9034cec0da9d1710be9cca5610a5f4f5f7e811661be6a5a07d6618198"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 272,
+      "time_seconds": 9.066667,
+      "sha256": "91e2144941d4e9dba977063130f59904773abdb86248c8acbe09daea519dbfee"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 299,
+      "time_seconds": 9.966667,
+      "sha256": "903a73aad66d2ec0ad810a532cfaa888d99f55ae4cdddd9398c8392cf043738a"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "95dd8a1f1858a91eb37daec69a125a5c6a5e0646fd482805c4d07b52709145a4"
+  }
+}

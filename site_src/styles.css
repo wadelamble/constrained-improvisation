@@ -455,6 +455,112 @@ a:hover {
   font-size: 0.76rem;
 }
 
+.site-footer a {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+/* Evidence pages stay outside the manuscript's reading flow. */
+.article-layout.review-layout {
+  display: block;
+}
+
+.review-location {
+  color: var(--muted);
+  font: 0.78rem system-ui, sans-serif;
+}
+
+.animation-review code {
+  overflow-wrap: anywhere;
+}
+
+.review-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  margin: 1.2rem 0;
+  font: 0.85rem system-ui, sans-serif;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 1.2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.review-card {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.article .review-card h2 {
+  font-size: 1.2rem;
+  margin: 0 0 0.7rem;
+  padding: 0;
+  border: 0;
+}
+
+.review-card > p:last-child {
+  font: 0.78rem system-ui, sans-serif;
+  color: var(--muted);
+}
+
+.review-card img,
+.review-frame img,
+.review-contact-sheet img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.review-context {
+  border-left: 2px solid var(--line);
+  padding-left: 1rem;
+}
+
+.review-hash,
+.review-facts,
+.review-source-list {
+  overflow-wrap: anywhere;
+}
+
+.review-hash {
+  font: 0.72rem ui-monospace, monospace;
+}
+
+.review-facts dt {
+  font-weight: 600;
+}
+
+.review-facts dd {
+  margin: 0 0 0.7rem;
+}
+
+.review-frames {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.review-frame,
+.review-contact-sheet {
+  margin: 0.8rem 0;
+}
+
+.review-frame figcaption,
+.review-contact-sheet figcaption {
+  font: 0.78rem system-ui, sans-serif;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 650px) {
+  .review-frames { grid-template-columns: 1fr; }
+}
+
 .lightbox {
   position: fixed;
   inset: 0;

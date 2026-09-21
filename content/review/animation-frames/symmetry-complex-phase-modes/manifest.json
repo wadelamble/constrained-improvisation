@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-complex-phase-modes.mp4",
+  "video_sha256": "157579b5ba38bda8a03bce2d88586dd45f37ffb060cf936cedb50e029738ca93",
+  "duration_seconds": 18.0,
+  "fps": 30.0,
+  "frame_count": 540,
+  "width": 1440,
+  "height": 1080,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "79ac9046b3f5c77409ddba68707a8c6130a9d80d71486de6c2fd38cc7f32746b"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 49,
+      "time_seconds": 1.633333,
+      "sha256": "1b951a01dd9915ca34c827c6d8face8d980f25d72f103e937a07bbbd7e541304"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 98,
+      "time_seconds": 3.266667,
+      "sha256": "73cb00148206fad0ab13785082573b37e854adc6226dbd29934230ccfab21e8e"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 147,
+      "time_seconds": 4.9,
+      "sha256": "9db4698c9ed1c029cfcb1be41366f8b399f9fae66a42f25db180be6447520a59"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 196,
+      "time_seconds": 6.533333,
+      "sha256": "5af7c652e185079fb036558db680d0ac46ca641a482c1ef797859579eff7d103"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 245,
+      "time_seconds": 8.166667,
+      "sha256": "477123c918556b51894df2a5b2279fb13b894e35d5a9187d4fb53c1a1cdbff9b"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 294,
+      "time_seconds": 9.8,
+      "sha256": "3598249f97ae2fd3dc6ea485467baa16dd82c8ba4fc1bcf7ad906feeca4da9b9"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 343,
+      "time_seconds": 11.433333,
+      "sha256": "d966c36e5d64aa57dc0acd853f2ce56e814f9cdd1cdaf3f9209aec3eb7bd67da"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 392,
+      "time_seconds": 13.066667,
+      "sha256": "75616b75412286887e758695ad08af17b2bfb82e504e5ede266898dd92ec0171"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 441,
+      "time_seconds": 14.7,
+      "sha256": "f1b479d092419d5991d63a37258b2c1e4fc65d47bab5062f5dc2662edf4a07c9"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 490,
+      "time_seconds": 16.333333,
+      "sha256": "ff68407eec0c1bc6be1cc8207f93979eddaee3c60f1c45bdc01639bc53cc8a8a"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 539,
+      "time_seconds": 17.966667,
+      "sha256": "e957e45bad422b686fcc48c206835c601814c8e27a51727960b1a81ebabb0545"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "977c83bfed4e6a9766b9847b60a3e90b13b9605d5bf226ad392cd900cf0119e8"
+  }
+}

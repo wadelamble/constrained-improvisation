@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-ccr-unitarity.mp4",
+  "video_sha256": "b101e244c9651fa1e0979a1ac7450bd9234d09251a78efd750a888f8bfca636d",
+  "duration_seconds": 17.0,
+  "fps": 30.0,
+  "frame_count": 510,
+  "width": 1440,
+  "height": 1040,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "dc10a4833bff278a84c437850c229fcae65e5a4bf7c583543dfbad28d01b4301"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 46,
+      "time_seconds": 1.533333,
+      "sha256": "23dff1cb24e2968a8d098c3744ea7337e683588fa5e770d10d1345c013229688"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 93,
+      "time_seconds": 3.1,
+      "sha256": "2fe28ff2df18e5ba55f9678ad5cbe9f4fc76c42904208caa85fbb3e59a0e586a"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 139,
+      "time_seconds": 4.633333,
+      "sha256": "4a48096e560fbb0bfa3190a33d4ef5ed64b837681340a9bf57c60db044b2651d"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 185,
+      "time_seconds": 6.166667,
+      "sha256": "4dd80682b984982ac7f87babb5462964c63d8e60fc2dc6f5257a3f31d6925829"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 231,
+      "time_seconds": 7.7,
+      "sha256": "673031428370b494c365cd4a91847984ec845cad34bc89756787a51cf1340f4d"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 278,
+      "time_seconds": 9.266667,
+      "sha256": "d9f7a47974d9dfd66d84ff894d5837d1418e2c820a0923b3d09cd32242bf69c6"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 324,
+      "time_seconds": 10.8,
+      "sha256": "cf5fb53bb7a7f9810dd9eba9e9443fdd3ed186848125a46819cd59da3d08a1a2"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 370,
+      "time_seconds": 12.333333,
+      "sha256": "b33adac356914136000a51fb2b3241b460f23f750b92f744ea1585ade7e5f646"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 416,
+      "time_seconds": 13.866667,
+      "sha256": "f0a915fe14eb9e5b157ecfd095e4fce0445b14f0af79b4267c8f61e4ce9bff64"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 463,
+      "time_seconds": 15.433333,
+      "sha256": "f45143517b497989450071023d3b94dd270fb43999633ff540f53d637815b27d"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 509,
+      "time_seconds": 16.966667,
+      "sha256": "a1aab93acd1adb45bbf94205c71fa331fb9924f6f6ef8d5b1e42d1033148a547"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "074757e417bf5b2cb7bc423345decbb9afeb31c255f8e9887b1e50e82eb75591"
+  }
+}

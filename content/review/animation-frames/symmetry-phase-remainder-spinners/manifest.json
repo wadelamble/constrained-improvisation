@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-phase-remainder-spinners.mp4",
+  "video_sha256": "bb3a49c2b2cb17d33c7a5e67dd057eb1efa4c07e4f7d06390caad1214601360a",
+  "duration_seconds": 17.0,
+  "fps": 60.0,
+  "frame_count": 1020,
+  "width": 1440,
+  "height": 870,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "8015eae8365191147c05122e42690d67c872c3f359e9426af1bc759dbf88fffd"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 93,
+      "time_seconds": 1.55,
+      "sha256": "e9e70e4e0a13aeb495658245cc7c1880ee036838d43703e542c06dc94a3b75e9"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 185,
+      "time_seconds": 3.083333,
+      "sha256": "aefca65f27171bf3b62cae3977e63461ac94459587822036ccfa1d02a819f11f"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 278,
+      "time_seconds": 4.633333,
+      "sha256": "8a15c607abd48608d2a0da3a3410a3a08d7622d0532c3ea8dc103ae9af71a042"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 371,
+      "time_seconds": 6.183333,
+      "sha256": "61b84769042da8b287308685ffd7aa57092f432bf668dbf5488eacc3311a66bf"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 463,
+      "time_seconds": 7.716667,
+      "sha256": "2a0909e51a46fb2a7a7246d9ef98ea1502c28eb0816ee33f2d55c42ae8fe4c9d"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 556,
+      "time_seconds": 9.266667,
+      "sha256": "1e2602263d0e030c5173822dfd1562d12c6938103775d8dea65b5bb7dd3b3706"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 648,
+      "time_seconds": 10.8,
+      "sha256": "996462cbbdb1383c26064a96f9b49699a41ccfa328ebf6ba33ea9b1b5f0eacba"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 741,
+      "time_seconds": 12.35,
+      "sha256": "2853da874cc25b2afbdd595653ef4f4b316e5f85b2900a486c2100fd7681b31b"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 834,
+      "time_seconds": 13.9,
+      "sha256": "968664272019793bd50e2edf7f44a72d7ef78689946587e716a8d1b8b1142cbc"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 926,
+      "time_seconds": 15.433333,
+      "sha256": "388824695676b75063b05988d1a971d7f3d93d3986985b0b29f136a59dd684f9"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 1019,
+      "time_seconds": 16.983333,
+      "sha256": "057f0b02300da0489498a78ba402537f13040a2abca6ca60e4099c71bd2c798c"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "d379f55c0563bc94a33be1f6763f6379e2958eaae3a1ab4eb2e5ee3239206e51"
+  }
+}

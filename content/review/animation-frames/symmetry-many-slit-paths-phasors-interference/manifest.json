@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-many-slit-paths-phasors-interference.mp4",
+  "video_sha256": "05a021cdde8ada00ecd1e43d59d990d0be25a7892cc0cced8b7e047303be2a3e",
+  "duration_seconds": 22.5,
+  "fps": 24.0,
+  "frame_count": 540,
+  "width": 1280,
+  "height": 720,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "b05dcc64824397f088f2698a793fe73ac80c9a25904c9e38cc1ed0231f1d9f0b"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 49,
+      "time_seconds": 2.041667,
+      "sha256": "22037e45edc22ddc11813dc120e0e78e24a42e4797d4e977b82efe299b096742"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 98,
+      "time_seconds": 4.083333,
+      "sha256": "d1b28c020a227a177bb3c3c3839b65eec5f6409355fcc4329705e01001e389ec"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 147,
+      "time_seconds": 6.125,
+      "sha256": "1161aa7e922e4f4bd3d93d986f3220b6dde0414e46f0ceec8285ede8b2495106"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 196,
+      "time_seconds": 8.166667,
+      "sha256": "98ea998495d431616a6d36b394daae3df0a4b2d692b295441af6c18b6693ceef"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 245,
+      "time_seconds": 10.208333,
+      "sha256": "993234919266c208cc1d576772c8e9b8953b8ba6bc629a2dfc857c8e406ddf4e"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 294,
+      "time_seconds": 12.25,
+      "sha256": "0969ddf2e16bd5d799599b1f14f9c8a5acb240741e60318df1cdaea860cfa06e"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 343,
+      "time_seconds": 14.291667,
+      "sha256": "cc605c879f08f5b900ad6e8208fddeae03798112f22859474ec6fb0170762734"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 392,
+      "time_seconds": 16.333333,
+      "sha256": "2b920e891cd8abd70fff29466374d678e8de5d32f40604efd83987531a593ae2"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 441,
+      "time_seconds": 18.375,
+      "sha256": "ff50976a486fb8fe3f216f5f529f8471815e420d8fac49111a02725b799fe74d"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 490,
+      "time_seconds": 20.416667,
+      "sha256": "315ddfa03ceb30079036634fad10900f9b83fce290b6151d65467b692b4cd8b6"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 539,
+      "time_seconds": 22.458333,
+      "sha256": "412a7fd2c24f1474dc53a761437852801df8327014c70ca518dd0a923475f9d2"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "da8f45f21b19503e674044f7a7cdd92235fe70ce7a6d66e12d69e5994d969991"
+  }
+}

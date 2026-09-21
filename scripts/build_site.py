@@ -7,6 +7,8 @@ import shutil
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from animation_review import build_review_pages, review_slug
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_SRC = ROOT / "site_src"
@@ -199,6 +201,7 @@ def page_shell(title: str, body: str, toc: str = "") -> str:
     {toc}
     <footer class="site-footer">
       Draft manuscript site. Structure, titles, and section order remain provisional.
+      <a href="{site_path('/animation-review/')}">Wave Symmetry code and frames</a>
     </footer>
   </div>
   <div class="lightbox" data-lightbox aria-hidden="true">
@@ -316,7 +319,13 @@ def figure_for_video(alt: str, poster_path: str, video_path: str, caption: str |
     video = rewrite_asset_path(video_path)
     safe_alt = html.escape(alt, quote=True)
     caption_text = caption or alt
-    return f"""<figure class="media-figure">
+    slug = review_slug(video_path)
+    figure_id = f' id="animation-{slug}"' if slug else ""
+    review_link = (
+        f'<a href="{site_path("/animation-review/" + slug + "/")}">Code and frames</a>'
+        if slug else ""
+    )
+    return f"""<figure class="media-figure"{figure_id}>
   <video controls preload="metadata" poster="{html.escape(poster, quote=True)}">
     <source src="{html.escape(video, quote=True)}" type="video/mp4">
   </video>
@@ -324,6 +333,7 @@ def figure_for_video(alt: str, poster_path: str, video_path: str, caption: str |
   <div class="media-actions">
     <button type="button" data-popout data-kind="video" data-src="{html.escape(video, quote=True)}" data-alt="{safe_alt}">Pop out video</button>
     <a href="{html.escape(video, quote=True)}" target="_blank" rel="noreferrer">Open MP4</a>
+    {review_link}
   </div>
 </figure>"""
 
@@ -551,6 +561,8 @@ def build() -> None:
         article_dir = OUT_DIR / article.slug
         article_dir.mkdir(parents=True, exist_ok=True)
         (article_dir / "index.html").write_text(render_article(article), encoding="utf-8")
+    build_review_pages(OUT_DIR, site_path, page_shell, render_markdown,
+                       article_markdown(ARTICLE_BY_SLUG['symmetry']))
     # Stable public MP4 URLs for the unpublished Buffer drafts. Keep the review
     # gallery, manifests, and publishing records out of the public site.
     for video in sorted(REEL_DIR.glob("ccr2-*.mp4")):

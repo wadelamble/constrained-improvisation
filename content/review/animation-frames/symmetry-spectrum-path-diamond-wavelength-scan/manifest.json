@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-spectrum-path-diamond-wavelength-scan.mp4",
+  "video_sha256": "20b1b041404d6a38d47cf4b9e638fbb4eaf620ddf22e76f0417e9f335134209f",
+  "duration_seconds": 36.0,
+  "fps": 60.0,
+  "frame_count": 2160,
+  "width": 1440,
+  "height": 1080,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "421a8fd7d7fe6689d825324b16e2e1bb5c6577c8dd256d1f7f5c07254d2280f6"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 196,
+      "time_seconds": 3.266667,
+      "sha256": "7d34facb9db2c4ed7169d043e4712d5d71469e79e55b085ab2182ce36f06d35a"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 393,
+      "time_seconds": 6.55,
+      "sha256": "b0eef189539a99da2dfa64018c864f2206bfb86e46c36728c39a81217847b684"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 589,
+      "time_seconds": 9.816667,
+      "sha256": "d44e8cd8aa64da02c350f5e9469ec055210a99125c4b578fb0b87ef8a1a660cc"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 785,
+      "time_seconds": 13.083333,
+      "sha256": "db3d4912ad03fdc8da2cd3aada1db78810edea836d6cd5eb8dfa1be0ebc0604e"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 981,
+      "time_seconds": 16.35,
+      "sha256": "73370613ff47f342f21d1388170b4908186891b64b53b49f9d32d4d7e8a214d1"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 1178,
+      "time_seconds": 19.633333,
+      "sha256": "a236370e626b2ba69dbad25e58e13609d8802f2164912afed2ba64aed443cb46"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 1374,
+      "time_seconds": 22.9,
+      "sha256": "514045adb4218364883c85c9cc0be10043c2ac0b4d2d64ffeabef86ec0fab770"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 1570,
+      "time_seconds": 26.166667,
+      "sha256": "257c6a0e3ca661df8ac556efa21109b65c683ac73c7910dd671da4054964cf22"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 1766,
+      "time_seconds": 29.433333,
+      "sha256": "e183cb4f077cc33e66057e10cf8adc2df555dc853338526b663e4c2d69be9c4b"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 1963,
+      "time_seconds": 32.716667,
+      "sha256": "963d828c3a271a9dee567a8c2bb07270c53d9fc0a4f2aae507bf808366e1bbbb"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 2159,
+      "time_seconds": 35.983333,
+      "sha256": "76d0501c6a867291ab2dda11e7a0ec99247a23eeb751779ded752c2fd6b73dd4"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "ff5c3d14cab4bddc8203ebfe6c7d99cbe8f05a815b67c1243f61f7e1be8bc921"
+  }
+}
