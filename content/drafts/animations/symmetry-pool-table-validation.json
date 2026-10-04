@@ -1,0 +1,30 @@
+{
+  "model": "equal-mass elastic disks, no friction or spin, no rail contact",
+  "transformation": "x'=R x+a+u t; t'=t+b",
+  "trails": "table-relative",
+  "role": "illustration of dynamical symmetry, not derivation of Newton's first law",
+  "contact_elapsed": 1.48,
+  "end_elapsed": 2.78,
+  "minimum_separation": 0.27999999999999997,
+  "ball_diameter": 0.28,
+  "minimum_rail_clearance": 0.16120000000000012,
+  "inverse_transform_error": 4.440892098500626e-16,
+  "within_trial_energy_error": 1.1102230246251565e-16,
+  "within_trial_momentum_error": 1.1102230246251565e-16,
+  "outgoing_velocities": [
+    [
+      0.43199999999999994,
+      -0.576
+    ],
+    [
+      0.768,
+      0.576
+    ]
+  ],
+  "fps": 30,
+  "duration": 14.0,
+  "size": [
+    1600,
+    960
+  ]
+}

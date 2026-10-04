@@ -1,0 +1,19 @@
+Our pool game illustrates what we mean by symmetries of physical behavior, but why should we start our story here? We will argue that symmetry constrains both the laws that govern physical evolution and the classification of the objects that undergo that evolution.
+
+Perhaps the notion that the pool balls behave "in the same way" could be quantified, and such a quantification might figure into the equations that describe a system's evolution. In fact, we will see that whenever a symmetry is present there are quantifiable *invariants* that express what is left the same by the symmetry. This seems promising. Setting aside symmetry for a moment, there is a principle that there exists some quantity, called **action**, associated with a physical system's history that is optimized (fn1) by the physically valid history a real system exhibits. We might imagine this quantity would itself be an invariant of our symmetry, and in reality it is (fn2). In ideal cases, it is simply the time that passes according to an observer moving along with an object times the object's mass (fn3). This seems very promising, but there is a problem. Quantum mechanics shows that there is in fact no "right path" per se. What we observe as the predictable behavior of pool balls is an incredibly narrow distribution of outcomes given by the underlying probabilistic behavior that occurs at much tinier scales than we can observe at human scale. But there is still hope. Quantum mechanics replaces the evolution of an "object following a path" with a new object that is something like a wave, and this wave function in fact does have a single physically valid "history" that is given by optimizing an invariant of space and time symmetry (fn4).
+
+fn1 - A more proper term is "extremized," by which we mean that, in the case of a single object following some path, the functional of the path does not change to first order under variations of the path, such as is the case for a minimum or maximum point.
+
+fn2 - Variational approaches are used in pre-relativistic mechanics to arrive at Newton's laws. In these cases, the action is not an invariant under velocity boosts, unlike relativistic action. But Newtonian mechanics is from our perspective a historical artifact, not a conceptual component of later theories.
+
+fn3 - Action is proportional to **proper time** (time measured in the rest frame of the object whose action is being calculated) in the case of an object that is free or acted on by gravitation.
+
+fn4 - In reality, to see that this generalized action is an invariant, we need the picture of quantum field theory, in which the wave function of quantum mechanics becomes a wave functional over field configurations. We then have:
+
+```math
+\mathcal A[\Psi]
+=
+\int dt\,\mathcal L[\Psi,\partial_t\Psi],
+\qquad
+\delta\mathcal A=0.
+```

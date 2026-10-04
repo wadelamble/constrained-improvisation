@@ -1,0 +1,10 @@
+{
+  "decoded_frames": 360,
+  "duration": 12.0,
+  "size": [
+    1440,
+    900
+  ],
+  "fps": 30.0,
+  "max_decoded_rgb_error": 0.8492494855967078
+}

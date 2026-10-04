@@ -1,0 +1,16 @@
+{
+  "rule": "f_theta(x)=R_theta f(R_theta^-1 x)",
+  "base_field": "f(x,y)=(0.55-0.15*y, 0.20+0.18*x)",
+  "sample_count": 9,
+  "sample_correspondence_error": 3.3306690738754696e-16,
+  "norm_error": 3.3306690738754696e-16,
+  "composition_error": 5.551115123125783e-16,
+  "minimum_geometry_margin_px": 26.315837885333167,
+  "size": [
+    1440,
+    900
+  ],
+  "fps": 30,
+  "duration": 12,
+  "note": "Both plot axes are inputs. Moving samples display a function defined on all of R^2. Rotation parameter is not physical time."
+}

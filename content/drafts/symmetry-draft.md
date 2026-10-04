@@ -1,9 +1,32 @@
+# todos
+1) 3 kinds of symmetry, of physical laws, of physical subsystems, of canonical structure,
+2) symmetry raison d'etra is contstraining laws, now newton's first w/o x symmetry.
+3) push symmetry, example local guage, to find more contstraints and more laws
+
+
 # Symmetry
-Strike a pool ball with a cue, and the balls move in an expected way. Move the table over a few feet, and the balls move in recognizably the same way. Wait a few minutes, and the balls move in the same way. Turn the pool table a few degrees, and the balls still move the same way. Put the pool table on a train, and, again, the balls move in the same way. These are the manifest symmetries of the space we live in -- position and time translation, rotation, and velocity "boosts."
+Strike a pool ball with a cue, and the balls move in an expected way. Move the table over a few feet, and the balls move in recognizably the same way. Wait a few minutes, and the balls move in the same way. Turn the pool table a few degrees, and the balls still move the same way. Put the pool table on a train at constant velocity, and, again, the balls move in the same way. These are the manifest "symmetries" of the world we live in -- position and time translation, rotation, and velocity "boosts."
 
-The symmetry of physical behavior may be an interesting observeration, but why start our story here? The reason is this. Symmetry constrains patterns of motion and classifies that which moves. One may rightfully say that modern physical theories proceed by identifying what patterns symmetry permits, then honing those possibilities to match what is observed. 
+![The same pool-ball collision under position and time translations, rotation, and a velocity boost](animations/symmetry-pool-table-poster.png)
 
-The term "symmetry" in this context may not at first glance seem like the same concept as, say, a triangle's symmetry, but it precisely is. We can leverage this commonality to build up a vocabulary for symmetry from simple, concrete examples that is essential to tell our story.
+[Open MP4: symmetry-pool-table.mp4](animations/symmetry-pool-table.mp4)
+
+*Symmetry transforms don't change how pool balls behave*
+
+
+The symmetry of physical behavior may be an interesting observation, but why start our story here? The task of physics is say how a given state will evolve as time elapses. According to our best theory, quantum mechanics, the thing that evolves over time is not an object at a specific location, like out billard balls, but a wave-like function whose square amplitude is the probability of a measurement outcome of a specific question, such as "where is this particle"? This formulations opens all sorts of interpretive conundums that we will summarily set aside until a later chapter. The bit that we need to focus on now for understanding the central role of symmetry is that the state we evolve is a function, and that function can be thought of intuitively as a wave-packet. Now we ask, given the amplitude the wave-function over the space of answers to some question we pose at some initial time, what is it's amplitude over those answers at some later time. To find that, we will arrange a careful construction in which we compute the phase advance along every possible path. The illustration below shows a setup in which a wave follows two path to a specific location.
+
+<animation>
+
+For this scheme to work, all observers, here, there, facing this way or that, or on a train moving at constant velocity, must agree on the phase advance. 
+
+
+
+First, the laws of physics must be consistent with the constraints symmetry imposes. Our pool table "acting the same way" under different symmetry **transformations** suggests that we may be able to construct quantities that are **invariant** under these transformations, such as, for example, the distance between our pool balls. Now suppose there were some quantity we could associate with every imaginable, wild way our pool balls could move to get from one particular starting state to another particular ending state, and imagine if the actual way they *do* move, the way that abides by the laws of physics, optimized this quantity. If this were the case, such a quantity would have to be an invariant of symmetry, for otherwise, a symmetry transformation would change these laws. As we will see, this is, in fact, the case, and the fact that the expression to be optimized, the **action**, must be an invariant of the symmetry makes "guessing" the quantitative expression for action a tractable problem it would otherwise not be.
+
+Second, symmetry not only constrains physical behavior but also the form that the "things" behaving can take. We will in time adopt a view that the "thing" that evolves in time is not "that which is at such and such coordinates" but "that which is such and such a wave-like function over a coordinate space." When we adopt this view, several aspects of the function will classify the "thing" in question, or, in the parlance of modern physics, the kind of **particle**, such as an electron or photon. We will have to wait until later to delve into the curiosity of how a function can be associated with particles. In any case, the form of a given function serves to specify the **mass**, **spin**, **charge** and other related quantities that together provide a particle's classification. Mass derives from the characteristic relationship between a wave-like function's spatial and temporal frequencies. Spin derives from the way the type of return value, such as a vector, behaves under rotation. Charge is more complicated. It derives from the implications of new symmetries that are not manifest in our pool table example.
+
+The term "symmetry" in this context may not at first glance seem like the same concept as, say, a triangle's symmetry, but it is precisely the same concept, as we will see. Let's then start with the humble triangle and build up the vocabulary about symmetry we need to tell the rest of our story.
 
 ## Discrete symmetries
 Consider a triangle.
@@ -793,202 +816,448 @@ Physically, such a function is a **wave packet**. Expressing an arbitrary wave p
 
 In modern physics, localizable objects are represented as wave packets. The story we want to tell is this -- nature's symmetry requires that the substrate of observations consists of combinations of "tones" and that the complexities that unfold over time are a way of perceiving the composition of these tones. Steep some tea, grab your crystals, and ponder -- the unfolding of nature in time, every child splashing in a puddle and every leaf falling from a tree, is, decomposed into its Fourier modes, a timeless "chord." Well, that's what the math says, anyway.
 
-#### Canonical commutator
-In addition to all the palpable symmetry of nature and the fiber bundle structure that arises from the complex function representation, there is another symmetry group with altogether different and pivotal importance. This is symmetry group that stands behind Fourier transformations, known better by its commutator name than the symmetry group, the **canonical commutation relation**. Once we choose a complex wavefunction representation, one set of operators (for translation in $x$, $y$, $z$, and $t$) on the function space act to produce shifts in position and time. But a different set of operators produce shifts in wave number, and these operators do not commute. This failure to commute is not hard to show algebraically, but we will omit it. The effect of the commutator, that is, of shifting a wave in position, then in momentum, the completing the loop by undoing each operation, is to shift the phase of the wavefunction. 
+####  The Heisenberg Group Represented by Waves
+Once we have a function representation of translational symmetry, we might be clever and notice that we can translate a function in wave number, $k$, just as well as we can in position, $x$. While shifting the wave number isn't a translation in the familiar physical space we live in, from a mathematical perspective, $k$-space is the dual, or equivalent up to role reversal, of $x$-space. If we want to understand the group generated by these translations and the implications it has, we would be wise to take this observation seriously.
+
+![Separate translations in position and wave number, each shown in its own representation](../../content/drafts/animations/symmetry-ccr-x-k-translations-symmetric-poster.png)
+
+[Open MP4: symmetry-ccr-x-k-translations-symmetric.mp4](../../content/drafts/animations/symmetry-ccr-x-k-translations-symmetric.mp4)
+
+*Wave Packet translated in position and momentum space*
+
+By now, we know that a symmetry is defined by what it leaves invariant. We've seen that translations in $x$ leave the inner product of complex wave functions -- intuitively, their "overlap" -- unchanged. We noted that mathematicians call this invariance "unitarity." Translation in $k$-space shares this invariant.
 
 ```math
-(T(a)\psi)(x)=\psi(x-a),
+\begin{gathered}
+\text{Translation by }a\text{ in }x\\[0.5em]
+\langle T_x(a)\psi,T_x(a)\chi\rangle\\
+=\langle\psi,\chi\rangle
+\end{gathered}
 \qquad
-(M(b)\widetilde\psi)(k)=\widetilde\psi(k-b).
+\begin{gathered}
+\text{Translation by }b\text{ in }k\\[0.5em]
+\langle T_k(b)\psi,T_k(b)\chi\rangle\\
+=\langle\psi,\chi\rangle
+\end{gathered}
 ```
 
-Choosing the $x$-representation, the translation in $k$ becomes multiplication by a phase:
+![Four panes show two wave functions translating in x or k while their overlap is preserved, with schematic state-space projections for a real, positive overlap](../../content/drafts/animations/symmetry-ccr-unitarity-poster.png)
+
+[Open MP4: symmetry-ccr-unitarity.mp4](../../content/drafts/animations/symmetry-ccr-unitarity.mp4)
+
+*Unitarity of position and wave-number translations*
+
+In addition to position and wave number, waves have a third independent way of changing. A wave's **phase**, $\phi$, refers to where it is in its cyclic pattern. For example, a phase shift of $2\pi$, or one full "cycle," returns the wave to its exact initial state. We need to be a bit careful here. For a pure mode, shifting its position is indistinguishable from shifting its phase, somewhat in the way the turning of a barbershop sign appears as though its stripes are moving up and down. We might, then, be tempted to think there is no difference between position and phase shifts. But the single mode is an idealization. In the general case, in which the wave function is a packet composed of modes, position translation shifts the entire function. Phase translation shifts each mode by the same fraction of its cycle, changing the function while leaving its magnitude envelope unchanged.
+
+![Nine complex modes and their exact sum rotate through five phase turns while their magnitude envelopes remain fixed](../../content/drafts/animations/symmetry-complex-phase-modes-poster.png)
+
+[Open MP4: symmetry-complex-phase-modes.mp4](../../content/drafts/animations/symmetry-complex-phase-modes.mp4)
+
+*Visualizing Phase Change*
+
+We can also discover and define phase directly from our symmetry group's commutation relations, which gives us a useful algebraic packaging of the group structure. Let's ask the question:
 
 ```math
-(M(b)\psi)(x)=e^{ibx}\psi(x).
+[\hat X, \hat K] = \; ?
 ```
 
+If the commutator is non-zero (and linearly independent of $\hat X$ and $\hat K$), there must be a third kind of transformation in the complete symmetry group. To find the commutator, we follow the usual procedure of translating the function around a loop in $x$-$k$ space and asking if the function changes. If it does, $?$ is nonzero, the commutator is the generator of that change, and the action will be identifiably that of a phase shift.
+
+First, write a single mode in the $x$ and $k$ representations:
+
 ```math
-T(a)M(b)T(-a)M(-b)
+\psi_{k_0}(x)
 =
-e^{-iab}I,
+e^{ik_0x}.
+```
+
+```math
+\begin{gathered}
+\tilde{\psi}_{k_0}(k)=2\pi\,\delta(k-k_0),\\[0.5em]
+\text{where }\delta\text{ is a spike at }k_0\text{ that integrates to }1.
+\end{gathered}
+```
+
+Define the $x$ and $k$ translation operators in their respective representations:
+
+```math
+(T_x(a)\psi_{k_0})(x)
+=
+\psi_{k_0}(x-a).
+```
+
+```math
+(T_k(b)\widetilde\psi_{k_0})(k)
+=
+\widetilde\psi_{k_0}(k-b).
+```
+
+Working in the position basis:
+
+```math
+(T_k(b)\psi)(x)
+=
+\left(e^{ib\hat X}\psi\right)(x)
+=
+e^{ibx}\psi(x).
+```
+
+$\hat X$ generates translation in $k$-space just as $\hat K$ generated translations in $x$-space. In $x$-space, it multiplies $\psi$ by $x$ as it weights each component of $\psi$ by its position coordinate.
+
+We can construct a loop by first translating the function by $b$ in $k$ and by $a$ in $x$, then by $-b$ in $k$ and by $-a$ in $x$.
+
+```math
+(T_x(a)T_k(b)\psi_{k_0})(x)
+=
+e^{i(k_0+b)(x-a)},
+```
+
+```math
+(T_k(b)T_x(a)\psi_{k_0})(x)
+=
+e^{ibx}e^{ik_0(x-a)}.
+```
+
+```math
+\bigl(T_x(-a)T_k(-b)T_x(a)T_k(b)\psi_{k_0}\bigr)(x)
+=
+e^{-ib(x+a)}e^{i(k_0+b)x}
+=
+e^{-iab}\psi_{k_0}(x).
+```
+
+The two shifts fail to commute by the factor $e^{-iab}$. Writing $\phi=-ab$, the loop multiplies the function by $e^{i\phi}$. But this is precisely a phase shift, a rotation in the complex plane that “turns” the whole "spiral" of the wave function.
+
+Because this factor is independent of $k_0$, the same phase shift applies to every mode in a superposition.
+
+Phase translation, then, is a third translation symmetry, whose invariant is the inner product under its unitary action, rounding out the group of $x$, $k$, and $\phi$ coupled through Fourier structure:
+
+```math
+\langle T_x(a)\psi,T_x(a)\chi\rangle
+=
+\langle\psi,\chi\rangle.
+```
+
+```math
+\langle T_k(b)\psi,T_k(b)\chi\rangle
+=
+\langle\psi,\chi\rangle.
+```
+
+```math
+\langle T_\phi(\beta)\psi,T_\phi(\beta)\chi\rangle
+=
+\langle\psi,\chi\rangle.
+```
+
+![A complex spiral follows an x–k loop and returns to its original magnitude envelope with a quarter-turn of phase remaining](../../content/drafts/animations/symmetry-ccr-loop-complex-poster.png)
+
+[Open MP4: symmetry-ccr-loop-complex.mp4](../../content/drafts/animations/symmetry-ccr-loop-complex.mp4)
+
+*Phase as the $[\hat X,\hat K]$ commutator*
+
+The infinitesimal closed $x$-$k$ loop is generated by $[\hat X,\hat K]$. Because the finite loop leaves a phase translation, and phase translations are generated by $iI$, we have:
+
+```math
+[\hat X,\hat K]
+=
+iI.
+```
+
+Mathematicians love to name groups. Just as we have encountered $D_3$ and $SO(2)$, our new group has a name, the three-dimensional Heisenberg group, or $H_3$. With $n$ spatial dimensions, the group has $2n+1$ dimensions, where the $+1$ is due to the fact that there is only one phase regardless of the number of spatial dimensions.
+
+Before we close out here, a small amount of house cleaning is needed. First, we have not shown explicitly that changes in $\phi$ are linearly independent of changes in $x$ and $k$. They are, as evidenced by the fact that shifts in $\phi$ can leave the wave function's position and wave number unchanged. We also did not show that there are *only* 3 generators in $H_3$. This is done by showing that the generators close under commutation:
+
+```math
+[\hat X,\hat K]=iI,
 \qquad
-[X,K]=iI.
+[\hat X,I]=[\hat K,I]=0.
 ```
 
-The infinitesimal commutator can be exponentiated to obtain the finite phase advance:
+#####  Position / Wave Number Uncertainty
+As we know, a single-mode wave function has a single wave number. But what position does it have? There is no way to answer this as the wave is uniform over all position space. The same statement holds in reverse. A wave packet ideally localized at one position is uniform over all $k$-space. Anywhere in between these extremes, as a wave packet is more localized in one space, it is more spread out in the dual space. 
+
+![A complex wave function and its Fourier transform sweep between the localization extremes](../../content/drafts/animations/symmetry-xk-fourier-complex-poster.png)
+
+[Open MP4: symmetry-xk-fourier-complex.mp4](../../content/drafts/animations/symmetry-xk-fourier-complex.mp4)
+
+*Trading off spread in position for spread in wave number*
+
+We can easily see this relationship drawn on paper, but we also hear it in music. The precise pitch of a tuning fork requires long sustain, while the percussive clap of a clave has no clear pitch. This tradeoff is the root of the Heisenberg uncertainty principle, or what is known in popular science as "quantum fuzziness."
+
+With this visual understanding of the tradeoff in the spread of the magnitude envelopes in $x$ and $k$ space, we can define the corresponding statistical standard deviation, or uncertainty, in position and wave number.
+
+For simplicity, set the wave's mean position and wave number at their respective origins. Then:
 
 ```math
-e^{-ab[X,K]}
+(\sigma_x)^2
 =
-e^{-iab}I.
+\int_{-\infty}^{\infty}x^2|\psi(x)|^2\,dx,
 ```
 
-So that:
+and likewise for $\sigma_k$.
+
+$\sigma^2$ is a probability-weighted average of squared distances from the distribution’s center. This is the textbook definition of variance.
+
+From the commutation relation
 
 ```math
-\left(e^{-iab}I\right)\psi(\bar{x})
+[\hat X,\hat K]=iI,
+```
+
+one can derive the position/wave-number "uncertainty relation":
+
+```math
+\Delta x\,\Delta k\ge\frac12.
+```
+This derivation is rather involved, but we can get a feel for the result by plotting the squared magnitude of a wave function and labelling the standard deviation.
+
+![The squared magnitudes trade position and wave-number widths](../../content/drafts/animations/symmetry-xk-squared-magnitudes-contact-sheet.png)
+
+[Open MP4: symmetry-xk-squared-magnitudes.mp4](../../content/drafts/animations/symmetry-xk-squared-magnitudes.mp4)
+
+*Trade-off in uncertainty of position and wave number*
+
+##### Wave Propagation and Interference
+Everyone who has taken a high-school physics class knows that given a particular setup, the laws of motion tell us the path an object follows. For example, under constant acceleration:
+
+```math
+x = x_0 + v_0t + \frac{1}{2}at^2
+```
+
+Such "physically valid" paths in the macroscopic world have a fascinating quality that can be leveraged to find the laws of motion that predict them. They are such that some quantity associated with possible paths, which is called **action**, is minimized or otherwise held **stationary** at the valid path. Waves are not paths. There is no "object" to travel along a path. Rather, there is an amplitude at all locations in space. We will outline a procedure for finding these amplitudes, and with it, we will show what we already know intuitively, that a wave with a wavelength that is much smaller than an opening it passes through behaves like a "ray." We will see that in that limit, the "path" minimizes the accumulated phase along the path. This may make us wonder if a wave that acts like a ray is somehow physically equivalent to a rigid object following a path. Enter quantum mechanics. It calculates measurement probabilities not by assigning objects definite paths, but by equating a wave function's intensity to those probabilities. In the classical regime where our everyday sense of scale resides, the quantum wave function has a tiny wavelength, and all the probability falls on a single path that extremizes the wave function's phase.
+
+![Waves through fixed openings becoming narrow beams as the wavelength decreases](../../content/drafts/animations/symmetry-short-wave-beams-poster.png)
+
+[Open MP4: symmetry-short-wave-beams.mp4](../../content/drafts/animations/symmetry-short-wave-beams.mp4)
+
+*Interference and Rays*
+
+Thus far we have described the symmetry group of a wave with a single translation direction $x$ and wave number, $k$. If the wave is to propagate, we also require that the wave represent time translation. We also need to require that time translation commute with spatial translation, for otherwise, it would change the mode composition over time, and spatial translation would no longer be a symmetry of nature. A single-mode travelling wave is then given by:
+
+```math
+M_0e^{i\left[kx-\omega t\right]}.
+```
+
+Because time is special, $\omega$ is called (angular) **frequency**, not wave number, but from a mathematical perspective, it is just another wave number.
+
+Let us now ask the question: how do we find the amplitude at some point $B$ from some initial state of a wave? To do this, we can decompose the contributions into those from individual paths, starting with a very simple model. First, let's construct a point source of single-mode spherical waves emanating from $A$. Then let's add a barrier with two slits through which the wave can pass, $C$ and $D$. This setup allows us to calculate the amplitude at $B$ by combining only the amplitudes associated with the two paths $ACB$ and $ADB$.
+
+![The two contributions $ACB$ and $ADB$ from a point source through two narrow openings](../../content/drafts/animations/symmetry-double-slit-candidate-paths-shortwave-arcs-poster.png)
+
+[Open MP4: symmetry-double-slit-candidate-paths-shortwave-arcs.mp4](../../content/drafts/animations/symmetry-double-slit-candidate-paths-shortwave-arcs.mp4)
+
+*Two Path Interference*
+
+First, let's figure out how any one straight segment of a plane wave contributes to the amplitude at its endpoint. From:
+
+```math
+e^{i\left[kx-\omega t\right]}.
+```
+
+we can identify that:
+
+```math
+\Delta\phi
 =
-e^{-iab}A e^{i\bar{k}\cdot\bar{x}}
-=
-A e^{i(\bar{k}\cdot\bar{x}-ab)}.
+k\,\Delta\ell
+-
+\omega\,\Delta t,
 ```
 
-![Weyl order phase animation contact sheet](animations/differential-weyl-order-phase-contact-sheet.png)
-
-*Applying position and wave-number shifts in opposite orders leaves a residual phase. The animation compares the inverse ordering, and therefore displays $e^{iab}$ rather than $e^{-iab}$.*
-
-[Open MP4: differential-weyl-order-phase.mp4](animations/differential-weyl-order-phase.mp4)
-
-We can write the phase of a wavefunction in terms of the time and position translation generators.
+where $\Delta\ell$ is distance along the ray. In our setup, the segments combine into two candidate paths from $A$ to $B$:
 
 ```math
-\psi_{\mathbf k,\omega}(\mathbf x,t)
-=
-A e^{i(\mathbf k\cdot\mathbf x-\omega t)},
-\qquad
--i\nabla\psi=\mathbf k\psi,
-\qquad
-i\partial_t\psi=\omega\psi.
+A \to C \to B
+\qquad\text{and}\qquad
+A \to D \to B.
 ```
 
-$[X,K]$, then, tells us how phase advances, when applying the $\hat X$ and $\hat K$ operators interact when applied sequentially. But what does this mean? What does it mean to "apply the $\hat X$ operator" other than what we can say here, in the math itself, which is to transform the wavefunction along the $k$ axis. Because time and position translations commute, waves free state is to translate along $x$. However, waves do not freely change wave number over time. Thus "translation in wave number" doesn't freely happen over some time, making it yet harder to say what "applying the $\hat X$ operator" means.  
-
-In quantum mechanics, indeed in wave mechanics in general, the information the wave carries is determined by the relative phases of its components. Shifting $k$ (or $x$ in the position representation) changes these relative phases, and the $[X,K]$ commutator tells us how a shift in $k$, and then in $x$ changes the shape of the wave function. But what, in practice, in physics, does it mean to shift the symmetry transformation's parameter? This is subtle. It is tempting to think that as a system evolves in time it is transformed along some symmetry. And this may we be the case if that symmetry is a symmetry of the system, such as transformation in position for a free particle. But a free wave certainly does not transform in $k$ space over time. The key to understanding the role of the commutator is to understand that the transformations are *hypothetical*. What we will see in a later is that path a system takes in time is the one for which some function on the path is **extremized**, that is, that it is minimized, maximized, or otherwise has a vanishing first derivative. To find the actual, physical path, we consider alternate paths between the same endpoints and ask how much they vary from alternate "wrong" paths. For a wave, as we will see later, this function is precisely the phase advance, and we can see how how rapidly the phase advance changes between candidate path by tiling the area they enclose with infinitesimal loops that contribute the value of the coummator. 
-
-![A path variation tiled by local commutator loops](animations/symmetry-ccr-action-variation-contact-sheet.png)
-
-[Open MP4: symmetry-ccr-action-variation.mp4](animations/symmetry-ccr-action-variation.mp4)
-
-What have we said? That for travelling wave packets, the commutator encodes the actual, physical evolution of the packet. Once we have this, we can find the differential **equations of motion** which can be integrated to find the physical path, thus providing an alternate way to arrive at the real path. However, given the position and wave number generators and their commutator, we can directly derive the equations of motion without working out the **variational** procedure, as they are, precisely, the local measure of phase variation.
-
-So much for waves, but why obsess about waves, or wave packets, or wavefunctions. The reason, which some may have guessed, is that in quantum mechanics, or we could say "the best mechanics we know," there are no particles or rigid objects with definite positions, but only probabilities of position and momentum measurements, which are encoded into a wavefunction. Thus in quantum mechanics the canonical commutation relation (CCR) along with the position and momentum (which is associated with wave number through Planck's constant, or $\hbar$) tells us the form of the equations of motion for *any* quantum system. 
-
-...table of definitions...
-...close...
-
-#### Generators and Conserved Quantities
-[move to function rep section - find a home...]
-A generator is an operator. In a representation, it acts on a vector as a linear transformation. In the finite case, it is a matrix. However, in physics we associate generators with numerical quantities, and, in particular, with conserved quantities. For example, the operator $P_x$ generates translations in $x$, and it is associated with the conserved quanity $p_x$ in a system with translation symmetry in the $x$ direction. This relationship is best understood as an eigenvalue problem....
-
-The clean bridge is to treat the possible positions of a point particle exactly as you treated the possible arrangements of cards or vertices of a triangle.
-
-For every possible position $x$, introduce a formal basis vector
-
-```math
-|x\rangle.
-```
-
-A translation acts by permuting these definite-position vectors:
-
-```math
-T(a)|x\rangle=|x+a\rangle.
-```
-
-This is already a linear representation: define its action on linear combinations by linearity. Because there is now one coefficient for every possible value of $x$, a general vector has the form
-
-```math
-|\psi\rangle
-=
-\int dx\,\psi(x)|x\rangle.
-```
-
-The function $\psi(x)$ is simply the continuous coordinate list of that vector. Nothing quantum has been assumed. We have linearized the action of translations on the set of possible particle positions, just as a permutation representation linearizes the action on a finite set of vertices.
-
-In the function coordinates, translation acts as
-
-```math
-(T(a)\psi)(x)=\psi(x-a).
-```
-
-Write
-
-```math
-T(a)=e^{-iaP}.
-```
-
-Differentiating at $a=0$ gives
-
-```math
-P=-i\frac{\partial}{\partial x}.
-```
-
-Now solve the eigenvalue problem:
-
-```math
-P\psi_p=p\psi_p.
-```
-
-Its solutions are
-
-```math
-\psi_p(x)=e^{ipx}.
-```
-
-Under a finite translation,
-
-```math
-T(a)\psi_p
-=
-e^{-iap}\psi_p.
-```
-
-So lowercase $p$ has a precise meaning:
-
-> $p$ is the number measuring how a translation eigenvector responds to translation.
-
-That explains why the generator and quantity use the same letter:
-
-```math
-P=\text{translation operator},
-\qquad
-p=\text{its eigenvalue}.
-```
-
-Now suppose the law of evolution respects translation symmetry. If $U(t)$ denotes evolution, then
-
-```math
-U(t)T(a)=T(a)U(t).
-```
-
-It therefore also commutes with the generator $P$. Starting with a $P$-eigenvector,
-
-```math
-P\psi_p=p\psi_p,
-```
-
-we obtain
+We can now ask how each path contributes to the amplitude at $B$. The magnitude simply falls off as $1/r$ in accordance with spherical geometry. Also, since all contributions arrive at $B$ at the same observation time, their time-dependent phase is the same. The remaining things to calculate are their path-dependent spatial phases. Let $\ell_{AC}$ be the length of segment $AC$, and likewise for the other segments. The phase advances are:
 
 ```math
 \begin{aligned}
-P\,U(t)\psi_p
-&=
-U(t)P\psi_p\\
-&=
-p\,U(t)\psi_p.
+\phi_{AC}&=k\ell_{AC},
+&
+\phi_{CB}&=k\ell_{CB},
+\\
+\phi_{AD}&=k\ell_{AD},
+&
+\phi_{DB}&=k\ell_{DB}.
 \end{aligned}
 ```
 
-Thus evolution may change the vector, but it cannot change its translation eigenvalue $p$. The number $p$ is conserved.
-
-This gives the complete bridge using only the mathematics already available:
+To transform the wave function along the path, we compose, or multiply, the phase actions. Because multiplying phase factors adds the angles in their exponents, we can simply add the phase angle contributions to calculate the total phase advance along $ACB$ and $ADB$, respectively. Letting $\phi_0$ include the original phase at $A$ and the temporal phase advance common to both paths, we have:
 
 ```math
-\text{definite particle positions}
-\longrightarrow
-\text{basis vectors }|x\rangle
-\longrightarrow
-\text{function representation}
-\longrightarrow
-\text{translation operator }P
-\longrightarrow
-\text{eigenvalue }p
-\longrightarrow
-\text{conserved translation label}.
+\begin{aligned}
+\Phi_{ACB}
+&=
+\phi_0+\phi_{AC}+\phi_{CB}
+=
+\phi_0+k(\ell_{AC}+\ell_{CB}),
+\\
+\Phi_{ADB}
+&=
+\phi_0+\phi_{AD}+\phi_{DB}
+=
+\phi_0+k(\ell_{AD}+\ell_{DB}).
+\end{aligned}
 ```
 
-Physics calls that conserved translation label **momentum**.
+If we let $M_{ACB}$ and $M_{ADB}$ denote the magnitudes of the two path contributions, we then have the total contributions of each path at $B$:
 
-One limitation should remain explicit: a definite-position vector $|x\rangle$ is not a momentum eigenvector. It decomposes into all the Fourier modes $\psi_p$. So this construction explains momentum as the conserved eigenvalue of translation, but it does not assign a definite momentum to an instantaneous point using its position alone. Motion or additional physical structure is needed for that.
-[move to function rep section]
+```math
+\Psi_{ACB}(B)
+=
+M_{ACB}
+e^{i(\phi_0+\phi_{AC}+\phi_{CB})}.
+```
 
+```math
+\Psi_{ADB}(B)
+=
+M_{ADB}
+e^{i(\phi_0+\phi_{AD}+\phi_{DB})}.
+```
+
+What then is the total amplitude at $B$? It is just the sum of the two contributions arriving there. This is the principle of superposition which manifests visually as interference:
+
+```math
+\Psi_B
+=
+M_{ACB}
+e^{i(\phi_0+\phi_{AC}+\phi_{CB})}
++
+M_{ADB}
+e^{i(\phi_0+\phi_{AD}+\phi_{DB})}.
+```
+
+Compose phase actions along a route. Add amplitudes across candidate routes.
+
+We can plot the contribution from each path $ACB$ and $ADB$ in the complex plane, showing their sum by drawing them tip-to-tail. The vector from the beginning of the first arrow to the end of the second is the amplitude at $B$. Its length is the magnitude at $B$ and its angle is the phase at $B$.
+
+![The two path contributions added tip-to-tail](../../content/drafts/diagrams/symmetry-double-slit-two-path-phasor-sum-shortwave.png)
+
+*Amplitude at $B$ is the sum of contributions from $ACB$ and $ADB$*
+
+We can repeat the same procedure with many more paths. As the path deviates more from a straight, minimum length path, it has a greater first-order change in phase. (This is the common result from calculus that near a function's minimum, there is no change to the value of the function in the first order of the argument.) When the candidate paths are far from the stationary value, their phases vary greatly, effectively cancelling out their contributions to the total sum. On the other hand, the phases of the paths near the stationary path align and dominate the sum. The green line in the tip-to-tail pane of the animation shows the sum of each of these contributions, giving the amplitude at $B$. The resulting intensity on the projection screen is the square of this magnitude.
+
+![Many paths, their complex sum, and the resulting interference pattern](../../content/drafts/animations/symmetry-many-slit-paths-phasors-interference-contact-sheet.png)
+
+[Open MP4: symmetry-many-slit-paths-phasors-interference.mp4](../../content/drafts/animations/symmetry-many-slit-paths-phasors-interference.mp4)
+
+*Seeing stationarity emerge in closely spaced paths*
+
+We can extend this procedure to its limit and include infinitely many screens with infinitely many slits, and recover unobstructed propagation. In the following animation, we start with a plane wave and recover that same wave. This construction, which is the bridge to the so-called Feynman path integral formulation of quantum mechanics, was articulated by Huygens in the late 1600s!
+
+![Huygens wavelets and their coherent sum as slits and screens are added](../../content/drafts/animations/symmetry-schematic-screens-v3-concise-poster.png)
+
+[Open MP4: symmetry-schematic-screens-v3-concise.mp4](../../content/drafts/animations/symmetry-schematic-screens-v3-concise.mp4)
+
+*Huygens' Principle*
+
+Let us now ask one more question. What happens to our tip-to-tail diagram of the path contributions when we vary the wavelength relative to the slit? As the wavelength becomes small, even a slight change in path length can produce a large phase change:
+
+```math
+\phi=\frac{2\pi L}{\lambda}=2\pi n+\theta,
+\qquad 0\leq\theta<2\pi
+```
+
+Away from a stationary path, the phase winds through many cycles over a small range of paths, leaving an effectively random phase remainder so that the contributions from these paths cancel, and only paths near the stationary combine to contribute to the sum.
+
+![Three trials accumulate a quarter turn at the longer wavelength while the shorter wavelength produces many rotations](../../content/drafts/animations/symmetry-phase-remainder-spinners-run-3.png)
+
+[Open MP4: symmetry-phase-remainder-spinners.mp4](../../content/drafts/animations/symmetry-phase-remainder-spinners.mp4)
+
+In this limit, as waves pass through slits, they behave as rays, just as if you threw a ball from one point through a hole, it could only hit the projection screen in one spot.
+
+Each path shares its color with its contribution to the tip-to-tail sum. As the wavelength shrinks, an increasingly narrow range of paths around the straight path carries the sum forward.
+
+![Matching colors connect candidate paths to their contributions in the tip-to-tail sum as wavelength decreases](../../content/drafts/animations/symmetry-spectrum-path-diamond-wavelength-scan-lambda-3.png)
+
+[Open MP4: symmetry-spectrum-path-diamond-wavelength-scan.mp4](../../content/drafts/animations/symmetry-spectrum-path-diamond-wavelength-scan.mp4)
+
+##### From Wave Mechanics to Quantum Mechanics
+Quantum mechanics gives wave intensity a new physical interpretation. For a normalized wave function, the squared magnitude gives the probability density for a position measurement:
+
+```math
+\rho(x)=|\psi(x)|^2,
+\qquad
+\int_{-\infty}^{\infty}\rho(x)\,dx=1.
+```
+
+![A complex amplitude and its squared magnitude predict the distribution of repeated position measurements at two wavelengths](../../content/drafts/animations/symmetry-amplitude-probability-poster.png)
+
+[Open MP4: symmetry-amplitude-probability.mp4](../../content/drafts/animations/symmetry-amplitude-probability.mp4)
+
+*From intensity to position measurement probability density*
+
+To connect our wave description to mechanics, we need to relate phase to action.
+
+The action along a given path, the quantity that is minimized by that path, can be constructed from the structure of **spacetime**, as articulated in the theory of special relativity, which will be the topic of our next chapter. Crudely speaking, because the quantity to be minimized must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. This leads to the result that the action is, in simple cases, proportional to an invariant built from translations — the time elapsed along a path as measured in a body's rest frame — times a dual invariant built from position translation generators. The former quantity is called **proper time** while the latter is **mass**. 
+
+```math
+S = -m\tau
+```
+
+At the same time, we can calculate how phase advances along a path in spacetime. Introducing $\kappa$, the invariant built from wave function spacetime-translation generators, a single-mode plane wave in spacetime is:
+
+```math
+e^{-i\kappa\tau}
+```
+
+We then have:
+
+```math
+\mathrm{constant} = \frac{S}{\phi} = \frac{m}{\kappa}
+```
+
+We can measure this constant in the lab by comparing mass, as measured through collisions, to wavelength, as measured through interference. We then find:
+
+```math
+\frac{S}{\phi}:=\hbar\approx 1.055\times10^{-34}\,\mathrm{J\,s}.
+```
+
+The smaller $\hbar$ is, the more phase cycles a given action difference produces. For two candidate paths:
+
+```math
+\Delta\phi=\frac{\Delta S}{\hbar}.
+```
+
+![Three wave-number shells share the same proper-time interval while phase cycles and action accumulates at corresponding rates](../../content/drafts/animations/symmetry-action-phase-desktop-poster.png)
+
+[Open MP4: symmetry-action-phase-desktop.mp4](../../content/drafts/animations/symmetry-action-phase-desktop.mp4)
+
+But this is exactly our condition for the path sum to be dominated by stationary paths. For everyday bodies, $\hbar$ is tiny compared with action differences so that their motion is effectively deterministic. Are we saying that the laws of motion we learn in high school physics are an approximation? Yes, a very good approximation.
+
+We can now express our $H_3$ commutation relation in units of action:
+
+```math
+[\hat X,\hat K]=iI
+\;\xrightarrow{\times\hbar}\;
+[\hat X,\hbar\hat K]=i\hbar I
+```
+
+We then have:
+
+```math
+\hat P := \hbar\hat K
+```
+where $\hat P$ generates position translations with the same scaling that relates phase to action. Its eigenvalue is **momentum**, $p$, giving us the quantum **canonical commutation relation**:
+
+```math
+[\hat X, \hat P] = i\hbar I
+```
+
+Recall that $x$ and $p$ are the eigenvalues of the $\hat X$ and $\hat P$ operators, respectively, acting on the wave function. We then have:
+
+```math
+\Delta x\,\Delta k\ge\frac{1}{2}
+\;\xrightarrow{\Delta p=\hbar\Delta k}\;
+\Delta x\,\Delta p\ge\frac{\hbar}{2}
+```
+
+This is the Heisenberg uncertainty relation, which states that a quantum state cannot have perfectly sharp values of both position and momentum, which becomes relevant at subatomic scales.
+
+The canonical commutation relation, along with the definitions of $\hat X$ and $\hat P$, is also sufficient to serve as a starting point from which to derive quantum theory’s general law of motion.

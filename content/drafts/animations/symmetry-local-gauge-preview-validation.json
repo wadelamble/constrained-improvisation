@@ -1,0 +1,24 @@
+{
+  "max_errors": {
+    "density": 6.661338147750939e-16,
+    "covariant_derivative": 6.404745667978754e-15,
+    "current": 7.105427357601002e-15,
+    "finite_phase_comparison": 1.047382306668854e-15,
+    "link_quadrature": 2.1135102556968377e-09
+  },
+  "current_units": "hbar/m",
+  "x1": -0.25,
+  "x2": 0.25,
+  "fixed_corrected_angle_degrees": 61.14158111375393,
+  "definition": "D=partial-i(q/hbar)A, alpha=c+g f, (q/hbar)A=g fprime",
+  "transport": "exp(+i beta), beta=(q/hbar) integral A dx",
+  "interpretation": "Gauge parameter, not time evolution; pure gauge on a spatial interval; no EM field generated.",
+  "input_function": "Exact accepted nine-mode sum, unchanged normalization.",
+  "fps": 30,
+  "duration": 24,
+  "frames": 720,
+  "size": [
+    1600,
+    1000
+  ]
+}

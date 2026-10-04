@@ -67,3 +67,10 @@ This passage is the current voice reference, preserved in the author's wording:
 - Weak prose arrives after a preamble.
 
 Future drafting should bias hard toward the first.
+
+## Fresh-reader reviews
+
+- Always start a new critic agent with `fork_turns: "none"` for each evaluation, including evaluations after small revisions. Never reuse an earlier critic for another reading.
+- Give the critic only the fixed review prompt, the current excerpt, and exhibits associated with that excerpt. Do not pass earlier reviews, revision notes, author defenses, or discussion from the working conversation.
+- Use `prompts/symmetry_first_chapter_critic.md` for the first-chapter introduction. Keep the review criteria unchanged unless the author requests a change.
+- Return the critic's full reply verbatim. A fresh conversation context is not a security sandbox; shared tool access still exists, and the critic must be instructed not to read other project material.

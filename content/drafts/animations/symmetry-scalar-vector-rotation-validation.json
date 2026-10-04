@@ -1,0 +1,41 @@
+{
+  "action": "active rotation on fixed coordinate axes",
+  "scalar_rule": "f_R(x)=f(R^-1 x)",
+  "vector_rule": "V_R(x)=R V(R^-1 x)",
+  "scalar_correspondence_error": 4.440892098500626e-16,
+  "vector_correspondence_error": 5.551115123125783e-16,
+  "vector_norm_error": 4.440892098500626e-16,
+  "vector_group_composition_error": 4.440892098500626e-16,
+  "tracked_scalar": 0.8097434888047303,
+  "tracked_vector_at_0_90_180_degrees": [
+    [
+      0.8097434888047303,
+      0.0
+    ],
+    [
+      4.958248858475618e-17,
+      0.8097434888047303
+    ],
+    [
+      -0.8097434888047303,
+      9.916497716951237e-17
+    ]
+  ],
+  "minimum_field_geometry_margin_px": 15.789066879618929,
+  "vector_sample_count": 21,
+  "contour_levels": [
+    0.12,
+    0.24,
+    0.4,
+    0.58,
+    0.76
+  ],
+  "duration": 20.0,
+  "fps": 30,
+  "size": [
+    1440,
+    900
+  ],
+  "frames": 600,
+  "note": "Chosen example has |V(x)|=f(x). All spatial patterns rotate; only vector values carry direction."
+}
