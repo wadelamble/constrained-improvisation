@@ -1,0 +1,31 @@
+# Symmetry
+Strike a pool ball with a cue, and the balls move in an expected way. Move the table over a few feet, and the balls move in recognizably the same way. Wait a few minutes, and the balls move in the same way. Turn the pool table a few degrees, and the balls still move the same way. Put the pool table on a train at constant velocity, and, again, the balls move in the same way. These are the manifest "symmetries" of the world we live in -- position and time translation, rotation, and velocity "boosts."
+
+![The same pool-ball collision under position and time translations, rotation, and a velocity boost](../../../content/drafts/animations/symmetry-pool-table-poster.png)
+
+[Open MP4: symmetry-pool-table.mp4](../../../content/drafts/animations/symmetry-pool-table.mp4)
+
+*Symmetry transforms don't change how pool balls behave*
+
+Our pool game illustrates what we mean by symmetries of physical behavior, but why should we start our story here? We will argue that symmetry constrains both the laws that govern physical evolution and the classification of the objects that undergo that evolution.
+
+Perhaps the notion that the pool balls behave "in the same way" could be quantified, and such a quantification might figure into the equations that describe a system's evolution. In fact, we will see that whenever a symmetry is present there are quantifiable *invariants* that express what is left the same by the symmetry. Setting aside symmetry for a moment, there is a principle that there exists some quantity, called **action**, associated with a physical system's history that is minimized[^1] by the physically valid history a real system exhibits. We might imagine this quantity would itself be an invariant of our symmetry, and in reality it is.[^2] In ideal cases, it is simply the time that passes according to an observer moving along with an object times the object's mass times the speed of light squared.[^3] However, there is a problem with this formulation. Quantum mechanics shows that there is in fact not one physically valid history for a given system. What we observe as the predictable behavior of pool balls is an incredibly narrow distribution of outcomes given by the underlying probabilistic behavior[^4] that occurs at much tinier scales than we can observe at human scale. Quantum mechanics addresses this concern by replacing the evolution of an "object following a path" with a new object that is something like a wave, and this wave function for a given system with given beginning and ending states in fact does have a single physically valid "history" that is given by minimizing an invariant of space and time symmetry.[^5]
+
+Symmetry not only constrains physical behavior but also the form that the "things" behaving can take. We suggested above that in quantum mechanics, the state that evolves is a "wave function." Several aspects of the way this function transforms under different symmetry actions will classify the "thing" in question, or, in the parlance of modern physics, the kind of **particle**, such as an electron or photon. (We will have to wait until later to delve into the curiosity of how a function can be associated with particles.) The structure of a given function serves to specify the **mass**, **spin**, **charge** and other related quantities that together provide a particle's classification. Mass derives from the characteristic relationship between a wave-like function's spatial and temporal frequencies. The symmetries of physics dictate the form of this relationship, while the value is determined empirically. Spin derives from the way the type of return value, such as a vector, behaves under rotation.[^6] Charge derives from the implications of new symmetries that are not manifest in our pool table example.[^7]
+
+The term "symmetry" in this context may not at first glance seem like the same concept as, say, a triangle's symmetry, but it is precisely the same concept, as we will see. Let's then start with the humble triangle and build up the vocabulary about symmetry we need to tell the rest of our story.
+
+[^1]: A more proper term is "extremized," by which we mean that, in the case of a single object following some path, the functional of the path does not change to first order under variations of the path, such as is the case for a minimum or maximum point. We call such a point a "stationary" point.
+
+[^2]: Variational approaches are used in pre-relativistic mechanics to arrive at Newton's laws. In these cases, the action is not an invariant under velocity boosts, unlike relativistic action. Thus a variational approach can result in equations of motion that respect a given symmetry without the action itself being invariant. That said, for the most modern theories which comprise our story, action is in fact generally invariant.
+
+[^3]: Action is proportional to **proper time** (time measured in the rest frame of the object whose action is being calculated) in the case of an object that is free or acted on by gravitation.
+
+[^4]: "Probabilistic behavior" could give the wrong impression that there is some real, hidden state that is revealed when an outcome is observed. The situation is in fact much more unintuitive, which we will discuss at a later point.
+
+[^5]: In reality, to see that this generalized action is an invariant, we need the picture of quantum field theory, in which the wave function of quantum mechanics becomes a wave functional over field configurations. 
+
+[^6]: All ordinary, visualizable objects behave "the same way" under rotation. If we rotate them once around, they are exactly as they were. There are other objects that are not easily visualizable that do not return to their original state unless we rotate them multiple times.
+
+[^7]: The symmetries in our pool table example are experienced directly, but from a mathematical perspective any variable is a symmetry when it is needed to specify a state, but does not impact observations. Because the quantum wave function is a complex-valued function, it includes an overall phase, but this is unobservable. This is the new symmetry in question. This is just the beginning of the story of gauge fields, from which charge arises, and whose further elucidation will have to wait.
+

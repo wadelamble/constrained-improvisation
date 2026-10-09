@@ -7,13 +7,14 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-from _make_contact_sheets import make_contact_sheet
-
-
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "content" / "drafts" / "animations"
 SCRATCH = OUTPUT_DIR / "_symmetry_triangle_actions_frames"
 FFMPEG = ROOT / ".tools" / "micromamba-anim-root" / "envs" / "anim" / "Library" / "bin" / "ffmpeg.exe"
+if not FFMPEG.is_file():
+    from imageio_ffmpeg import get_ffmpeg_exe
+
+    FFMPEG = Path(get_ffmpeg_exe())
 
 WIDTH = 900
 HEIGHT = 620
@@ -56,10 +57,10 @@ ORDER = ["A", "B", "C"]
 ACTIONS = [
     ("e", "identity", None),
     ("r", "rotate", 120.0),
-    ("r^2", "rotate", 240.0),
+    ("r²", "rotate", 240.0),
     ("s", "flip", "A"),
     ("sr", "flip_rotate", ("A", 120.0)),
-    ("sr^2", "flip_rotate", ("A", 240.0)),
+    ("sr²", "flip_rotate", ("A", 240.0)),
 ]
 
 
@@ -138,10 +139,10 @@ def set_text(count: int) -> str:
     if count <= 0:
         return ""
     symbols = [symbol for symbol, _, _ in ACTIONS[:count]]
-    body = " + ".join(symbols)
+    body = ", ".join(symbols)
     if count == len(ACTIONS):
-        return "{" + body + "} = D3"
-    return "{" + body
+        return "{" + body + "} = D₃"
+    return "{" + body + "}"
 
 
 def text_width(draw: ImageDraw.ImageDraw, text: str) -> int:
@@ -222,15 +223,13 @@ def main() -> None:
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-        sheet = make_contact_sheet(video.name)
+        poster = OUTPUT_DIR / "symmetry-triangle-actions-poster.png"
+        frames[-1].save(poster)
         print(video)
-        print(sheet)
+        print(poster)
     finally:
         if SCRATCH.exists():
             shutil.rmtree(SCRATCH)
-        contact_scratch = OUTPUT_DIR / "_contact_sheet_frames"
-        for path in contact_scratch.glob("symmetry-triangle-actions-*.png"):
-            path.unlink()
 
 
 if __name__ == "__main__":

@@ -233,3 +233,34 @@ other aspects of it determine the type of thing whose properties are being measu
 the type of thing whose state is being measured is restricted in two ways, both of which are difficult to by the fixed way time, position, and velocity transformations relate for a given funcion and by the way the type of value the function returns -- for example, a vector -- behaves under rotations. The former determines the parameter we call a particle's mass, while the latter determines what we call its spin. These, along with other symmetry-derived parameters, identify the type of particle. This description is necessarily superficial at this point, but we will unpack it piece by piece.
 
 First, the laws of physics must be consistent with the constraints symmetry imposes. Our pool table "acting the same way" under different symmetry **transformations** suggests that we may be able to construct quantities that are **invariant** under these transformations, such as, for example, the distance between our pool balls. Now suppose there were some quantity we could associate with every imaginable, wild way our pool balls could move to get from one particular starting state to another particular ending state, and imagine if the actual way they *do* move, the way that abides by the laws of physics, optimized this quantity. If this were the case, such a quantity would have to be an invariant of symmetry, for otherwise, a symmetry transformation would change these laws. As we will see, this is, in fact, the case, and the fact that the expression to be optimized, the **action**, must be an invariant of the symmetry makes "guessing" the quantitative expression for action a tractable problem it would otherwise not be.
+
+#### The Role of Linear Operations on Function Representations
+[maybe move this down a bit]
+The function representation becomes indispensible when a "state" is thought of not as a single coordinate in state space, or the "state of a particle," but as a function, or distribution, over state space. In that case, treating distributions as vectors we evolve with operators allows us to define their overlap as an inner product. We can then require time evolution to be orthogonal, meaning that it preserves the lengths and angles between distribution vectors just as a rotation preserves the lengths and angles between ordinary vectors. That is:
+```math
+\langle O\rho_1,O\rho_2\rangle
+=
+\langle\rho_1,\rho_2\rangle.
+```
+The distributions may change as they evolve, but their overlap does not, so distinct distributions cannot be compressed together or collapse into the same distribution.
+
+But why, we ask, should we focus on the evolution of a distribution of states rather than on a single state. In one sense, we might say the idea of a single state, an object at a point, is more a storytelling device than a scientifically-framed question. Questions like "how will this storm develop" or "how will voters react to inflation" don't start with a story about an individual air molecule or an indvidual voter, they ask to find patterns over spaces. More concretely, physics has two reasons to focus on te evolution of distributions. First, in the familiar world of "classical" mechanics, the number of individual states is often unfathomably large, so we instead study distributions characterized by aggregate properties. A hot system and a cool system, for example, correspond to different patterns distributed over state space. Their evolution is therefore naturally described as the transformation of one function over state space into another. This makes function representations—and linear operations that preserve the distinction between such functions—the appropriate language. Then, in the deeply unfamiliar world of "quantum" mechanics, individual states themselves become vectors in a function representation. At this point, only a linear operation that preserves inner products in the function space can describe even a single particle's evolution.
+
+#### Fourier Decomposition of Wave Packets into Plane Wave Components
+If you strike a chord on a piano, some complicated function of time describes how the sound pressure reaches your ear. It starts soft, gets louder, softens again. It has discernible main tones, but also a clutter of overtones that comprise the timbre of the piano. While you hear a clear tonal structure, a plot of the sound pressure level over time reaching your ear would completely obscure that structure. 
+
+![Three-tone chord packet and its Fourier decomposition](animations/symmetry-fourier-three-tone-packet-contact-sheet.png)
+
+[Open MP4: symmetry-fourier-three-tone-packet.mp4](animations/symmetry-fourier-three-tone-packet.mp4)
+
+But we know something about this random-seeming function reaching your ear. We know it is comprised of mostly 3 pitches, and some overtones. If we plot the sound pressure level as a function of these pitches rather than as a function of time, the structure of our plot clearly reveals what we hear with our ear. "Pitch" is what we call a plane wave in music. The pattern of sound pressure over time is the sum of these pure **modes**. 
+
+In fact, any smooth function that does not "blow up" as we go to positive or negative infinity, that is, any function whose inner product with itself is finite, can be decomposed into a linear combination, or **superposition** of plane waves. 
+
+```math
+\int_{-\infty}^{\infty}|f(x)|^2\,dx<\infty.
+```
+
+Physically, such a function is a **wave packet**. Expressing an arbitrary wave packet as a superposition of its modes is called **Fourier decomposition** and the transformation from an amplitude over translation coordinate to amplitude over wave number coordinate is called a **Fourier transformation**.
+
+In modern physics, localizable objects are represented as wave packets. The story we want to tell is this -- nature's symmetry requires that the substrate of observations consists of combinations of "tones" and that the complexities that unfold over time are a way of perceiving the composition of these tones. Steep some tea, grab your crystals, and ponder -- the unfolding of nature in time, every child splashing in a puddle and every leaf falling from a tree, is, decomposed into its Fourier modes, a timeless "chord." Well, that's what the math says, anyway.

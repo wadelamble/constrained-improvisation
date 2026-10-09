@@ -1,0 +1,40 @@
+{
+  "model": "unitary scalar Fresnel propagation; fixed preparation; open intermediate plane",
+  "playback_is_not_physical_time": true,
+  "entrance_intensity_identical_at_every_wavelength": true,
+  "axial_global_phase_removed": true,
+  "color_and_plot_scales_fixed": true,
+  "aperture_width": 1.0,
+  "intermediate_plane": 6.0,
+  "receiving_screen": 12.0,
+  "norm0": 0.9999999999999996,
+  "checks": [
+    {
+      "wavelength": 0.18,
+      "norm": 1.0,
+      "route_sum_max_absolute_error": 5.5177393357185465e-05,
+      "displayed_probability": 0.9906026508405811,
+      "rms_width": 1.3032762106339457,
+      "central_intensity": 0.391483850880662,
+      "off_ray_intensity": 0.26969482751915874
+    },
+    {
+      "wavelength": 0.08,
+      "norm": 1.0000000000000002,
+      "route_sum_max_absolute_error": 1.639197978142097e-05,
+      "displayed_probability": 0.9989613973218561,
+      "rms_width": 0.6084240397388089,
+      "central_intensity": 0.8602475161985031,
+      "off_ray_intensity": 0.10128736143010456
+    },
+    {
+      "wavelength": 0.006,
+      "norm": 1.0000000000000002,
+      "route_sum_max_absolute_error": 4.997606768105268e-06,
+      "displayed_probability": 0.999999999224632,
+      "rms_width": 0.21165456847844671,
+      "central_intensity": 1.6986469730071398,
+      "off_ray_intensity": 0.0005977378251802656
+    }
+  ]
+}

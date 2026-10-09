@@ -237,19 +237,154 @@ def render_home() -> str:
     return page_shell("Contents", body)
 
 
-def inline(text: str) -> str:
-    parts = re.split(r"(`[^`]+`|\$[^$\n]+\$)", text)
+INLINE_LITERAL = re.compile(r"(?P<ticks>`+)(?P<code>.+?)(?P=ticks)(?!`)|\$[^$\n]+\$")
+FOOTNOTE_DEFINITION = re.compile(r"^ {0,3}\[\^([^\]\s]+)\]:[ \t]*(.*)$")
+
+
+@dataclass
+class Footnote:
+    markdown: str
+    number: int = 0
+    identifier: str = ""
+    references: list[str] = field(default_factory=list)
+
+
+class Footnotes:
+    """Keep definition groups at their source locations, with page-wide links."""
+
+    def __init__(self, markdown: str):
+        self.notes: dict[str, Footnote] = {}
+        self.groups: dict[str, list[str]] = {}
+        self.ids: set[str] = set()
+        self.number = 0
+        self.marker = "\x00footnote-"
+        while self.marker in markdown:
+            self.marker += "-"
+        lines = markdown.splitlines()
+        output: list[str] = []
+        i = 0
+        in_fence = False
+        while i < len(lines):
+            if lines[i].strip().startswith("```"):
+                in_fence = not in_fence
+            match = None if in_fence else FOOTNOTE_DEFINITION.match(lines[i])
+            if match is None:
+                output.append(lines[i])
+                i += 1
+                continue
+            labels: list[str] = []
+            while match:
+                label, first_line = match.groups()
+                if label in self.notes:
+                    raise ValueError(f"Duplicate footnote definition: {label}")
+                body = [first_line]
+                i += 1
+                while i < len(lines):
+                    if lines[i].startswith(("    ", "\t")):
+                        body.append(lines[i][1:] if lines[i].startswith("\t") else lines[i][4:])
+                        i += 1
+                    elif not lines[i].strip():
+                        body.append("")
+                        i += 1
+                    else:
+                        break
+                self.notes[label] = Footnote("\n".join(body).strip("\n"))
+                labels.append(label)
+                match = FOOTNOTE_DEFINITION.match(lines[i]) if i < len(lines) else None
+            marker = f"{self.marker}{len(self.groups)}\x00"
+            self.groups[marker] = labels
+            output.extend(["", marker, ""])
+        self.markdown = "\n".join(output)
+
+    def unique_id(self, base: str) -> str:
+        identifier = base
+        suffix = 2
+        while identifier in self.ids:
+            identifier = f"{base}-{suffix}"
+            suffix += 1
+        self.ids.add(identifier)
+        return identifier
+
+    def numbered(self, label: str) -> Footnote:
+        note = self.notes[label]
+        if not note.number:
+            self.number += 1
+            note.number = self.number
+            note.identifier = self.unique_id(f"fn-{note.number}")
+        return note
+
+    def reference(self, label: str) -> str | None:
+        if label not in self.notes:
+            return None
+        note = self.numbered(label)
+        identifier = self.unique_id(f"fnref-{note.number}")
+        note.references.append(identifier)
+        return (
+            f'<sup class="footnote-ref" id="{identifier}">'
+            f'<a href="#{note.identifier}" role="doc-noteref" '
+            f'aria-label="Footnote {note.number}">{note.number}</a></sup>'
+        )
+
+    def insert_groups(self, rendered: str) -> str:
+        # Render every body before adding return links, so later references work.
+        bodies = {label: _render_markdown(note.markdown, self)[0]
+                  for label, note in self.notes.items()}
+        for marker, labels in self.groups.items():
+            items = []
+            for label in labels:
+                note = self.numbered(label)
+                backlinks = " ".join(
+                    f'<a class="footnote-backref" href="#{identifier}" '
+                    f'role="doc-backlink" aria-label="Back to reference {index} '
+                    f'for footnote {note.number}">↩{index if len(note.references) > 1 else ""}</a>'
+                    for index, identifier in enumerate(note.references, 1)
+                )
+                body = bodies[label]
+                if backlinks:
+                    if body.endswith("</p>"):
+                        body = body[:-4] + " " + backlinks + "</p>"
+                    else:
+                        body += f'<p class="footnote-backlinks">{backlinks}</p>'
+                items.append(f'<li id="{note.identifier}" value="{note.number}">{body}</li>')
+            group = ('<section class="footnotes" role="doc-endnotes" aria-label="Footnotes">'
+                     f'<ol>{"".join(items)}</ol></section>')
+            rendered = rendered.replace(marker, group)
+        return rendered
+
+
+def inline(text: str, footnotes: Footnotes | None = None) -> str:
+    parts: list[tuple[str, re.Match[str] | None]] = []
+    start = 0
+    for match in INLINE_LITERAL.finditer(text):
+        parts.extend([(text[start:match.start()], None), (match.group(), match)])
+        start = match.end()
+    parts.append((text[start:], None))
     out: list[str] = []
-    for part in parts:
+    for part, literal in parts:
         if not part:
             continue
-        if part.startswith("`") and part.endswith("`"):
-            out.append(f"<code>{html.escape(part[1:-1])}</code>")
+        if literal and literal.group("ticks"):
+            out.append(f'<code>{html.escape(literal.group("code"))}</code>')
             continue
-        if part.startswith("$") and part.endswith("$"):
+        if literal:
             out.append(html.escape(part))
             continue
         escaped = html.escape(part)
+        references: dict[str, str] = {}
+        if footnotes:
+            def replace_reference(match: re.Match[str]) -> str:
+                # Existing links consume their whole match; never nest an anchor.
+                if match.group(1) is None:
+                    return match.group()
+                reference = footnotes.reference(html.unescape(match.group(1)))
+                if reference is None:
+                    return match.group()
+                marker = f"{footnotes.marker}inline-{len(references)}\x00"
+                references[marker] = reference
+                return marker
+
+            escaped = re.sub(r"\[[^\]]+\]\([^)]+\)|(?<!\\)\[\^([^\]\s]+)\]",
+                             replace_reference, escaped)
         escaped = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", escaped)
         escaped = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", escaped)
         escaped = re.sub(
@@ -257,6 +392,8 @@ def inline(text: str) -> str:
             lambda m: f'<a href="{html.escape(rewrite_asset_path(m.group(2)), quote=True)}">{m.group(1)}</a>',
             escaped,
         )
+        for marker, reference in references.items():
+            escaped = escaped.replace(marker, reference)
         out.append(escaped)
     return "".join(out)
 
@@ -287,7 +424,7 @@ def copy_asset(path: str) -> None:
     shutil.copy2(source, dest)
 
 
-def figure_for_image(alt: str, path: str, caption: str | None = None) -> str:
+def figure_for_image(alt: str, path: str, caption: str | None = None, footnotes: Footnotes | None = None) -> str:
     copy_asset(path)
     src = rewrite_asset_path(path)
     safe_alt = html.escape(alt, quote=True)
@@ -295,7 +432,7 @@ def figure_for_image(alt: str, path: str, caption: str | None = None) -> str:
     figure_class = f"media-figure media-figure--{slugify(Path(path).stem)}"
     return f"""<figure class="{figure_class}">
   <img src="{html.escape(src, quote=True)}" alt="{safe_alt}">
-  <figcaption>{inline(caption_text)}</figcaption>
+  <figcaption>{inline(caption_text, footnotes)}</figcaption>
   <div class="media-actions">
     <button type="button" data-popout data-kind="image" data-src="{html.escape(src, quote=True)}" data-alt="{safe_alt}">Enlarge</button>
     <a href="{html.escape(src, quote=True)}" target="_blank" rel="noreferrer">Open file</a>
@@ -303,7 +440,7 @@ def figure_for_image(alt: str, path: str, caption: str | None = None) -> str:
 </figure>"""
 
 
-def figure_for_video(alt: str, poster_path: str, video_path: str, caption: str | None = None) -> str:
+def figure_for_video(alt: str, poster_path: str, video_path: str, caption: str | None = None, footnotes: Footnotes | None = None) -> str:
     copy_asset(poster_path)
     copy_asset(video_path)
     poster = rewrite_asset_path(poster_path)
@@ -320,7 +457,7 @@ def figure_for_video(alt: str, poster_path: str, video_path: str, caption: str |
   <video controls preload="metadata" poster="{html.escape(poster, quote=True)}">
     <source src="{html.escape(video, quote=True)}" type="video/mp4">
   </video>
-  <figcaption>{inline(caption_text)}</figcaption>
+  <figcaption>{inline(caption_text, footnotes)}</figcaption>
   <div class="media-actions">
     <button type="button" data-popout data-kind="video" data-src="{html.escape(video, quote=True)}" data-alt="{safe_alt}">Pop out video</button>
     <a href="{html.escape(video, quote=True)}" target="_blank" rel="noreferrer">Open MP4</a>
@@ -330,6 +467,14 @@ def figure_for_video(alt: str, poster_path: str, video_path: str, caption: str |
 
 
 def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
+    footnotes = Footnotes(markdown)
+    if not footnotes.notes:
+        return _render_markdown(markdown)
+    rendered, toc = _render_markdown(footnotes.markdown, footnotes)
+    return footnotes.insert_groups(rendered), toc
+
+
+def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple[str, list[tuple[int, str, str]]]:
     lines = markdown.splitlines()
     html_blocks: list[str] = []
     toc: list[tuple[int, str, str]] = []
@@ -337,6 +482,8 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
 
     def unique_id(text: str) -> str:
         base = slugify(re.sub(r"`([^`]+)`", r"\1", text))
+        if footnotes:
+            return footnotes.unique_id(base)
         count = used_ids.get(base, 0)
         used_ids[base] = count + 1
         return base if count == 0 else f"{base}-{count + 1}"
@@ -359,6 +506,11 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
         stripped = line.strip()
 
         if not stripped:
+            i += 1
+            continue
+
+        if footnotes and stripped in footnotes.groups:
+            html_blocks.append(stripped)
             i += 1
             continue
 
@@ -385,7 +537,7 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
                 i += 1
             if i < len(lines):
                 i += 1
-            sidebar_html, _ = render_markdown("\n".join(sidebar_lines))
+            sidebar_html, _ = _render_markdown("\n".join(sidebar_lines), footnotes)
             html_blocks.append(f'<aside class="manuscript-sidebar">{sidebar_html}</aside>')
             continue
 
@@ -398,10 +550,10 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
                 i += 1
             if i < len(lines):
                 i += 1
-            detail_html, _ = render_markdown("\n".join(detail_lines))
+            detail_html, _ = _render_markdown("\n".join(detail_lines), footnotes)
             html_blocks.append(
                 '<details class="manuscript-details">'
-                f"<summary>{inline(summary)}</summary>"
+                f"<summary>{inline(summary, footnotes)}</summary>"
                 f'<div class="manuscript-details__body">{detail_html}</div>'
                 "</details>"
             )
@@ -437,17 +589,17 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
                         if trailing_caption:
                             caption = trailing_caption.group(1).strip()
                             end_index = caption_index + 1
-                html_blocks.append(figure_for_video(alt, image_path, video_path, caption))
+                html_blocks.append(figure_for_video(alt, image_path, video_path, caption, footnotes))
                 i = end_index
             else:
-                html_blocks.append(figure_for_image(alt, image_path, caption))
+                html_blocks.append(figure_for_image(alt, image_path, caption, footnotes))
                 i = next_index if caption is not None else i + 1
             continue
 
         open_mp4_match = re.fullmatch(r"\[Open MP4: ([^\]]+)\]\(([^)]+)\)", stripped)
         if open_mp4_match:
             label, video_path = open_mp4_match.groups()
-            html_blocks.append(figure_for_video(label, "", video_path))
+            html_blocks.append(figure_for_video(label, "", video_path, footnotes=footnotes))
             i += 1
             continue
 
@@ -458,7 +610,7 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
             hid = unique_id(text)
             if depth >= 2:
                 toc.append((depth, text, hid))
-            html_blocks.append(f'<h{depth} id="{hid}">{inline(text)}</h{depth}>')
+            html_blocks.append(f'<h{depth} id="{hid}">{inline(text, footnotes)}</h{depth}>')
             i += 1
             continue
 
@@ -473,11 +625,11 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
             while i < len(lines) and is_table_row(lines[i].strip()):
                 rows.append(table_cells(lines[i].strip()))
                 i += 1
-            header_html = "".join(f"<th>{inline(cell)}</th>" for cell in headers)
+            header_html = "".join(f"<th>{inline(cell, footnotes)}</th>" for cell in headers)
             body_rows = []
             for row in rows:
                 padded = row + [""] * max(0, len(headers) - len(row))
-                cells = "".join(f"<td>{inline(cell)}</td>" for cell in padded[: len(headers)])
+                cells = "".join(f"<td>{inline(cell, footnotes)}</td>" for cell in padded[: len(headers)])
                 body_rows.append(f"<tr>{cells}</tr>")
             html_blocks.append(
                 f'<div class="table-wrap"><table><thead><tr>{header_html}</tr></thead>'
@@ -492,7 +644,7 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
                 match = re.fullmatch(r"\d+\.\s+(.+)", lines[i].strip())
                 if not match:
                     break
-                items.append(f"<li>{inline(match.group(1))}</li>")
+                items.append(f"<li>{inline(match.group(1), footnotes)}</li>")
                 i += 1
             html_blocks.append(f"<ol>{''.join(items)}</ol>")
             continue
@@ -518,7 +670,7 @@ def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
                 break
             paragraph_lines.append(candidate)
             i += 1
-        html_blocks.append(f"<p>{inline(' '.join(paragraph_lines))}</p>")
+        html_blocks.append(f"<p>{inline(' '.join(paragraph_lines), footnotes)}</p>")
 
     return "\n".join(html_blocks), toc
 

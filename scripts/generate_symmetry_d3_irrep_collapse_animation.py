@@ -7,9 +7,10 @@ from pathlib import Path
 
 from PIL import Image
 
-from _make_contact_sheets import make_contact_sheet
 from symmetry_d3_rendering import (
     AXIS,
+    BG,
+    INK,
     RUST,
     TEAL,
     PURPLE,
@@ -30,6 +31,10 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "content" / "drafts" / "animations"
 SCRATCH = OUTPUT_DIR / "_symmetry_d3_irrep_collapse_frames"
 FFMPEG = ROOT / ".tools" / "micromamba-anim-root" / "envs" / "anim" / "Library" / "bin" / "ffmpeg.exe"
+if not FFMPEG.is_file():
+    from imageio_ffmpeg import get_ffmpeg_exe
+
+    FFMPEG = Path(get_ffmpeg_exe())
 
 WIDTH = 1200
 HEIGHT = 720
@@ -163,6 +168,15 @@ def draw_frame(
         renderer.diagonal_axis(proj, axis_alpha)
 
     draw_vectors(renderer, proj, vector_reveals, angles, collapse, vector_alpha)
+
+    renderer.component_axis_labels(proj, axes_alpha, right_offset=14.0)
+    renderer.equal_components_key((815.0, 130.0), axis_alpha)
+    if camera_blend > 0.0:
+        renderer.draw.rectangle((renderer.xy((365.0, 40.0)), renderer.xy((835.0, 116.0))), fill=BG)
+        renderer.text("components sum to zero", (WIDTH / 2, 62.0), 26, INK)
+        renderer.text("v₁ + v₂ + v₃ = 0", (WIDTH / 2, 98.0), 22, INK, camera_blend)
+    elif collapse > 0.0:
+        renderer.text("Subtract the common component", (WIDTH / 2, 62.0), 26, INK, min(1.0, collapse * 8.0))
 
     return renderer.output()
 
@@ -326,20 +340,18 @@ def encode(frames: list[Image.Image]) -> tuple[Path, Path]:
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-        sheet = make_contact_sheet(video.name)
-        return video, sheet
+        poster = OUTPUT_DIR / "symmetry-d3-irrep-collapse-poster.png"
+        frames[-1].save(poster)
+        return video, poster
     finally:
         if SCRATCH.exists():
             shutil.rmtree(SCRATCH)
-        contact_scratch = OUTPUT_DIR / "_contact_sheet_frames"
-        for path in contact_scratch.glob("symmetry-d3-irrep-collapse-*.png"):
-            path.unlink()
 
 
 def main() -> None:
-    video, sheet = encode(build_frames())
+    video, poster = encode(build_frames())
     print(video)
-    print(sheet)
+    print(poster)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,89 @@
+{
+  "model": "free positive-energy massive scalar particle in a fixed inertial frame",
+  "position_representation": "L2 canonical/Newton-Wigner",
+  "scaled_units": "c=hbar=1",
+  "physical_time_is_playback": true,
+  "physical_barriers": false,
+  "same_initial_position_density": true,
+  "same_central_group_velocity": true,
+  "phase_gauge": "common temporal carrier removed in picture; endpoint carrier removed in sums",
+  "all_intermediate_positions_summed": true,
+  "phasors_grouped_by_intermediate_y": true,
+  "checks": [
+    {
+      "mass": 16.0,
+      "central_wave_number": 21.33333333333334,
+      "central_frequency": 26.66666666666667,
+      "wavelength": 0.29452431127404305,
+      "central_group_velocity": 0.8,
+      "mean_velocity_x": 0.7954931537881551,
+      "mean_position_x": 6.363945230305243,
+      "norm": 1.0000000000000004,
+      "initial_sigma_x": 0.38,
+      "initial_sigma_y": 0.2,
+      "final_sigma_x": 0.40862333950511504,
+      "final_sigma_y": 0.7682639857887102,
+      "probability_inside_picture": 0.9952709373837335,
+      "on_trajectory_density": 0.5051002729634497,
+      "off_trajectory_density": 0.18401170374143608,
+      "composition_errors": [
+        1.5700924586837752e-16,
+        2.237726045655905e-16
+      ],
+      "finer_grid_amplitude_errors": [
+        0.00012442290961027201,
+        0.00034736896938222746
+      ]
+    },
+    {
+      "mass": 48.0,
+      "central_wave_number": 64.00000000000001,
+      "central_frequency": 80.00000000000001,
+      "wavelength": 0.09817477042468101,
+      "central_group_velocity": 0.8,
+      "mean_velocity_x": 0.7994932778581838,
+      "mean_position_x": 6.39594622286547,
+      "norm": 1.0000000000000004,
+      "initial_sigma_x": 0.38,
+      "initial_sigma_y": 0.2,
+      "final_sigma_x": 0.3829810375946544,
+      "final_sigma_y": 0.3199122965600835,
+      "probability_inside_picture": 0.9999999999795407,
+      "on_trajectory_density": 1.2984428176191825,
+      "off_trajectory_density": 0.0037462161623376218,
+      "composition_errors": [
+        2.482534153247273e-16,
+        7.757919228897728e-17
+      ],
+      "finer_grid_amplitude_errors": [
+        0.00021226425182233277,
+        0.0002284392681383684
+      ]
+    },
+    {
+      "mass": 128.0,
+      "central_wave_number": 170.6666666666667,
+      "central_frequency": 213.33333333333337,
+      "wavelength": 0.03681553890925538,
+      "central_group_velocity": 0.8,
+      "mean_velocity_x": 0.7999286496999961,
+      "mean_position_x": 6.399429197599972,
+      "norm": 1.0000000000000004,
+      "initial_sigma_x": 0.38,
+      "initial_sigma_y": 0.2,
+      "final_sigma_x": 0.38041574631793806,
+      "final_sigma_y": 0.2208754508711735,
+      "probability_inside_picture": 1.0000000000000004,
+      "on_trajectory_density": 1.8938488933008366,
+      "off_trajectory_density": 9.003142667474597e-06,
+      "composition_errors": [
+        8.95090418262362e-16,
+        5.543868261115115e-17
+      ],
+      "finer_grid_amplitude_errors": [
+        0.0002581665068338486,
+        2.2908243833632462e-05
+      ]
+    }
+  ]
+}

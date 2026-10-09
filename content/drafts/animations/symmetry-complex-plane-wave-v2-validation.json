@@ -1,0 +1,44 @@
+{
+  "equation": "z(x,t)=A exp(i(k x - omega t))",
+  "A": 1.0,
+  "k": 1.5707963267948966,
+  "omega": 1.5707963267948966,
+  "wavelength": 4.0,
+  "phase_period_seconds": 4.0,
+  "spatial_range": [
+    0.0,
+    10.0
+  ],
+  "visible_spatial_cycles": 2.5,
+  "fixed_highlight_x": 5.0,
+  "max_modulus_error": 2.220446049250313e-16,
+  "max_component_error": 0.0,
+  "max_independent_3d_projection_error_px": 1.1368683772161603e-13,
+  "max_dial_radius_error_px": 1.1368683772161603e-13,
+  "dial_scale_xy": [
+    143.0,
+    143.0
+  ],
+  "wavelength_repeat_error": 3.86670135183298e-15,
+  "rightward_phase_speed": 1.0,
+  "rightward_travel_test_shift": 0.2,
+  "rightward_travel_test_error": 1.8906416838689214e-15,
+  "largest_phase_step_radians": -0.07853981633974305,
+  "dial_time_direction": "clockwise",
+  "camera_fixed": true,
+  "camera_transverse_rotation_degrees": 25.0,
+  "camera_depth_foreshortening": 0.7,
+  "minimum_helix_clearance_px": 10.046906319529626,
+  "size": [
+    1440,
+    900
+  ],
+  "fps": 30,
+  "frames": 360,
+  "duration_seconds": 12,
+  "start_hold_seconds": 2.0,
+  "active_physical_time_seconds": 8.0,
+  "time_phase_cycles": 2.0,
+  "end_hold_seconds": 2.0,
+  "meaning": "Spatial complex field at successive physical times. Constant pointwise modulus is displayed without defining unitarity."
+}

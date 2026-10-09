@@ -299,6 +299,27 @@ class Renderer:
         for endpoint in ((1.0, 0.0, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0)):
             self.arrow(mul(-0.16, endpoint), mul(length_pos, endpoint), projection, COORD, 1.8, alpha, head=10.0)
 
+    def component_axis_labels(self, projection: Projection, alpha: float = 1.0, right_offset: float = -18.0) -> None:
+        labels = (
+            ("v₁", (1.0, 0.0, 0.0), (14.0, 10.0)),
+            ("v₂", (0.0, 1.0, 0.0), (right_offset, -18.0)),
+            ("v₃", (0.0, 0.0, 1.0), (0.0, -18.0)),
+        )
+        for label, endpoint, offset in labels:
+            point = projection.project(mul(2.55, endpoint))
+            position = (point[0] + offset[0], point[1] + offset[1])
+            bbox = self.draw.textbbox(self.xy(position), label, font=font(22 * self.scale), anchor="mm")
+            margin = 12 * self.scale
+            if bbox[0] < margin or bbox[1] < margin or bbox[2] > self.width * self.scale - margin or bbox[3] > self.height * self.scale - margin:
+                continue
+            self.text(label, position, 22, (100, 100, 100), alpha)
+
+    def equal_components_key(self, position: Vec2, alpha: float = 1.0) -> None:
+        x, y = position
+        self.line([(x, y), (x + 38.0, y)], AXIS, 3.2, alpha)
+        self.polygon([(x + 38.0, y), (x + 29.0, y - 4.5), (x + 29.0, y + 4.5)], AXIS, alpha)
+        self.text("equal components", (x + 50.0, y), 22, INK, alpha, anchor="lm")
+
     def diagonal_axis(self, projection: Projection, alpha: float = 1.0, length_pos: float = 2.55) -> None:
         self.arrow(mul(-0.10, U), mul(length_pos, U), projection, AXIS, 3.2, alpha, head=15.0)
         origin = projection.project((0.0, 0.0, 0.0))

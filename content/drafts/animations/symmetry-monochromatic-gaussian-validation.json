@@ -1,0 +1,62 @@
+{
+  "model": "2D scalar monochromatic paraxial Gaussian beam with one transverse coordinate",
+  "source_radius": 0.7,
+  "observation_distance": 14.0,
+  "temporal_frequency_count_per_configuration": 1,
+  "playback_is_physical_time": false,
+  "source_amplitude_and_flat_phase_fixed": true,
+  "field_phase": "true spatial carrier, sampled at physical t=0",
+  "width_contours": "1/e^2 intensity, not edges",
+  "real_field_contrast_mapping": "0.8*abs(Re psi)^0.75, sign sets blue/coral",
+  "intensity_profile_scale": "fixed linear, initial on-axis intensity = 1",
+  "checks": [
+    {
+      "wavelength": 0.28,
+      "output_radius": 1.9150541295283832,
+      "radius_ratio": 2.735791613611976,
+      "power": 0.8773198961208504,
+      "power_relative_error": 2.220446049250313e-16,
+      "fresnel_complex_max_error": 3.7238012298709097e-16,
+      "helmholtz_intensity_max_error": 0.0006572286205343558,
+      "output_rms_width": 0.9575270647641916,
+      "propagating_spectral_power_fraction": 1.0,
+      "initial_field_max_error": 1.1102230246251565e-16
+    },
+    {
+      "wavelength": 0.14,
+      "output_radius": 1.133295230624363,
+      "radius_ratio": 1.618993186606233,
+      "power": 0.8773198961208502,
+      "power_relative_error": 0.0,
+      "fresnel_complex_max_error": 4.965068306494546e-16,
+      "helmholtz_intensity_max_error": 0.00044264509768365823,
+      "output_rms_width": 0.5666476153121816,
+      "propagating_spectral_power_fraction": 1.0,
+      "initial_field_max_error": 1.1102230246251565e-16
+    },
+    {
+      "wavelength": 0.07,
+      "output_radius": 0.8298129427400986,
+      "radius_ratio": 1.1854470610572838,
+      "power": 0.8773198961208504,
+      "power_relative_error": 2.220446049250313e-16,
+      "fresnel_complex_max_error": 4.742874840267547e-16,
+      "helmholtz_intensity_max_error": 0.00013165684103078057,
+      "output_rms_width": 0.41490647137004927,
+      "propagating_spectral_power_fraction": 1.0,
+      "initial_field_max_error": 1.1102230246251565e-16
+    },
+    {
+      "wavelength": 0.04,
+      "output_radius": 0.744879559077235,
+      "radius_ratio": 1.0641136558246216,
+      "power": 0.8773198961208499,
+      "power_relative_error": 2.220446049250313e-16,
+      "fresnel_complex_max_error": 6.777420539824541e-16,
+      "helmholtz_intensity_max_error": 2.4080413957627833e-05,
+      "output_rms_width": 0.3724397795386175,
+      "propagating_spectral_power_fraction": 1.0,
+      "initial_field_max_error": 1.1102230246251565e-16
+    }
+  ]
+}

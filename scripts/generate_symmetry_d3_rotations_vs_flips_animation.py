@@ -6,7 +6,6 @@ from pathlib import Path
 
 from PIL import Image
 
-from _make_contact_sheets import make_contact_sheet
 from symmetry_d3_rendering import (
     AXIS,
     BG,
@@ -28,6 +27,10 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "content" / "drafts" / "animations"
 SCRATCH = OUTPUT_DIR / "_symmetry_d3_rotations_vs_flips_frames"
 FFMPEG = ROOT / ".tools" / "micromamba-anim-root" / "envs" / "anim" / "Library" / "bin" / "ffmpeg.exe"
+if not FFMPEG.is_file():
+    from imageio_ffmpeg import get_ffmpeg_exe
+
+    FFMPEG = Path(get_ffmpeg_exe())
 
 WIDTH = 1200
 HEIGHT = 700
@@ -63,6 +66,7 @@ def draw_rotation_panel(renderer: Renderer, angle: float, trace: float) -> None:
     renderer.diagonal_axis(projection, 1.0)
     renderer.orbit_trace(orbit(ROT_STATE), projection, RUST, 0.88, progress=trace, width=2.8)
     renderer.vector(rotate_about_axis(ROT_STATE, angle), projection, TEAL, 1.0)
+    renderer.component_axis_labels(projection)
 
 
 def draw_flip_trace(renderer: Renderer, projection: Projection, progress: float, global_progress: float) -> None:
@@ -85,6 +89,7 @@ def draw_flip_panel(renderer: Renderer, progress: float, global_progress: float)
     renderer.reflection_plane(projection, 0.28)
     renderer.diagonal_axis(projection, 1.0)
     draw_flip_trace(renderer, projection, progress, global_progress)
+    renderer.component_axis_labels(projection)
 
 
 def draw_frame(angle: float, trace: float, index: int, total: int) -> Image.Image:
@@ -92,6 +97,8 @@ def draw_frame(angle: float, trace: float, index: int, total: int) -> Image.Imag
     renderer.line([(WIDTH / 2, 46.0), (WIDTH / 2, HEIGHT - 42.0)], (235, 235, 235), 1.2, 1.0)
     renderer.text("rotations", (WIDTH * 0.25, 52.0), 24, INK, 0.92, bold=True)
     renderer.text("flips", (WIDTH * 0.75, 52.0), 24, INK, 0.92, bold=True)
+    renderer.equal_components_key((180.0, 112.0))
+    renderer.equal_components_key((780.0, 112.0))
 
     draw_rotation_panel(renderer, angle, trace)
 
@@ -138,20 +145,18 @@ def encode(frames: list[Image.Image]) -> tuple[Path, Path]:
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-        sheet = make_contact_sheet(video.name)
-        return video, sheet
+        poster = OUTPUT_DIR / "symmetry-d3-rotations-vs-flips-poster.png"
+        frames[-1].save(poster)
+        return video, poster
     finally:
         if SCRATCH.exists():
             shutil.rmtree(SCRATCH)
-        contact_scratch = OUTPUT_DIR / "_contact_sheet_frames"
-        for path in contact_scratch.glob("symmetry-d3-rotations-vs-flips-*.png"):
-            path.unlink()
 
 
 def main() -> None:
-    video, sheet = encode(build_frames())
+    video, poster = encode(build_frames())
     print(video)
-    print(sheet)
+    print(poster)
 
 
 if __name__ == "__main__":

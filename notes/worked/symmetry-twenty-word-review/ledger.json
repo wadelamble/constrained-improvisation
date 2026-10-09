@@ -1,0 +1,226 @@
+{
+  "source": "content/drafts/symmetry-draft-shorter-intro.md",
+  "copy": "content/drafts/symmetry-draft-shorter-intro-critic-copy.md",
+  "source_sha256": "2174615d21ac3b791801d7573eb0af81c0d9c98a37e43ee03fb863ef891d310f",
+  "budget": 40,
+  "counting": "Cumulative added plus deleted whitespace-delimited prose tokens. Equation corrections are free by user instruction.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "changes": [
+        {
+          "kind": "prose",
+          "old": "in simple cases, proportional",
+          "new": "in free motion, proportional",
+          "added": 2,
+          "deleted": 2,
+          "cost": 4
+        },
+        {
+          "kind": "prose",
+          "old": "a single-mode plane wave in spacetime is:",
+          "new": "a single-mode plane wave along its inertial worldline is:",
+          "added": 4,
+          "deleted": 2,
+          "cost": 6
+        },
+        {
+          "kind": "prose",
+          "old": "sufficient to serve",
+          "new": "useful",
+          "added": 1,
+          "deleted": 3,
+          "cost": 4
+        },
+        {
+          "kind": "prose",
+          "old": "in quantum mechanics, a measurement always results",
+          "new": "in quantum mechanics, an ideal measurement results",
+          "added": 2,
+          "deleted": 2,
+          "cost": 4
+        },
+        {
+          "kind": "prose",
+          "old": "an \"electron\" is a specific irreducible representation",
+          "new": "an \"electron\" inhabits a specific irreducible representation",
+          "added": 1,
+          "deleted": 1,
+          "cost": 2
+        },
+        {
+          "kind": "equation",
+          "old": "\\hat K\r\n=\r\n-\r\n\\frac{d}{dx}.",
+          "new": "-i\\hat K\r\n=\r\n-\r\n\\frac{d}{dx},\r\n\\qquad\r\n\\hat K=-i\\frac{d}{dx},\r\n\\qquad\r\nT_a=e^{-ia\\hat K}.",
+          "added": 0,
+          "deleted": 0,
+          "cost": 0
+        },
+        {
+          "kind": "equation",
+          "old": "[L_x,L_y]=L_z",
+          "new": "L_i=i\\hbar J_i,\r\n\\qquad\r\n[L_x,L_y]=i\\hbar L_z",
+          "added": 0,
+          "deleted": 0,
+          "cost": 0
+        },
+        {
+          "kind": "equation",
+          "old": "&=-L_yL_z-L_zL_y+L_zL_y+L_yL_z\\\\",
+          "new": "&=i\\hbar(-L_yL_z-L_zL_y+L_zL_y+L_yL_z)\\\\",
+          "added": 0,
+          "deleted": 0,
+          "cost": 0
+        },
+        {
+          "kind": "equation",
+          "old": "S = -m\\tau",
+          "new": "S = -m\\tau \\qquad(c=1)",
+          "added": 0,
+          "deleted": 0,
+          "cost": 0
+        },
+        {
+          "kind": "equation",
+          "old": "(T_x(a)\\psi_{k_0})(x)\r\n=\r\n\\psi_{k_0}(x-a).",
+          "new": "(T_x(a)\\psi_{k_0})(x)\r\n=\r\n\\left(e^{-ia\\hat K}\\psi_{k_0}\\right)(x)\r\n=\r\n\\psi_{k_0}(x-a).",
+          "added": 0,
+          "deleted": 0,
+          "cost": 0
+        },
+        {
+          "kind": "equation",
+          "old": "e^{-ib(x+a)}e^{i(k_0+b)x}\r\n=\r\ne^{-iab}\\psi_{k_0}(x).",
+          "new": "e^{-ib(x+a)}e^{i(k_0+b)x}\r\n=\r\ne^{-ab[\\hat X,\\hat K]}\\psi_{k_0}(x)\r\n=\r\ne^{-iab}\\psi_{k_0}(x).",
+          "added": 0,
+          "deleted": 0,
+          "cost": 0
+        },
+        {
+          "kind": "equation",
+          "old": "[\\hat X,\\hat K]=iI,\r\n\\qquad\r\n[\\hat X,I]=[\\hat K,I]=0.",
+          "new": "[i\\hat X,-i\\hat K]=iI,\r\n\\qquad\r\n[i\\hat X,iI]=[-i\\hat K,iI]=0.",
+          "added": 0,
+          "deleted": 0,
+          "cost": 0
+        }
+      ],
+      "prose_cost": 20,
+      "copy_sha256": "92f4bd69dd1ef063b5288e5dec9747c11da863bb59bbe5ab8ab30a31c0ca3ba9"
+    },
+    {
+      "iteration": 2,
+      "changes": [
+        {
+          "kind": "prose",
+          "old": "generalized eigenbasis",
+          "new": "translation eigenfunctions",
+          "added": 2,
+          "deleted": 2,
+          "cost": 4
+        },
+        {
+          "kind": "prose",
+          "old": "for the case of real exponentials",
+          "new": "on the span of nonconstant real exponentials",
+          "added": 3,
+          "deleted": 2,
+          "cost": 5
+        },
+        {
+          "kind": "prose",
+          "old": "It is the property that ensures different states remain",
+          "new": "It is a property that ensures different states remain",
+          "added": 1,
+          "deleted": 1,
+          "cost": 2
+        },
+        {
+          "kind": "prose",
+          "old": "remain *distinguishable*",
+          "new": "remain equally *distinguishable*",
+          "added": 1,
+          "deleted": 0,
+          "cost": 1
+        },
+        {
+          "kind": "prose",
+          "old": "and that those transformations are *reversible*. Let",
+          "new": "and that those transformations are *reversible*. Suppose",
+          "added": 1,
+          "deleted": 1,
+          "cost": 2
+        },
+        {
+          "kind": "prose",
+          "old": "Thus real exponentials are eigenfunctions of translation",
+          "new": "Thus nonconstant real exponentials are eigenfunctions of translation",
+          "added": 1,
+          "deleted": 0,
+          "cost": 1
+        },
+        {
+          "kind": "prose",
+          "old": "is the tangent line to that function",
+          "new": "is the tangent slope to that function",
+          "added": 1,
+          "deleted": 1,
+          "cost": 2
+        },
+        {
+          "kind": "prose",
+          "old": "The answer is that $i$ has two real-number degrees of freedom.",
+          "new": "The answer is that $z$ has two real-number degrees of freedom.",
+          "added": 1,
+          "deleted": 1,
+          "cost": 2
+        },
+        {
+          "kind": "prose",
+          "old": "provide a minimal set of transformations",
+          "new": "provide a set of transformations",
+          "added": 0,
+          "deleted": 1,
+          "cost": 1
+        },
+        {
+          "kind": "equation",
+          "old": "f_k(x)=e^{kx},\r\n\\qquad\r\ng_l(x)=e^{lx}.",
+          "new": "\\begin{gathered}\r\nf_k(x)=e^{kx},\\qquad g_l(x)=e^{lx},\\qquad k,l\\in\\mathbb R,\\\\\r\n0<\\langle f_k,f_k\\rangle<\\infty,\\qquad\r\n0<\\langle g_l,g_l\\rangle<\\infty.\r\n\\end{gathered}",
+          "added": 0,
+          "deleted": 0,
+          "cost": 0
+        },
+        {
+          "kind": "equation",
+          "old": "\\langle T_a f_k,T_a g_l\\rangle\r\n=\r\ne^{-(k+l)a}\r\n\\langle f_k,g_l\\rangle.",
+          "new": "\\begin{aligned}\r\n\\langle T_a f_k,T_a f_k\\rangle\r\n&=e^{-2ka}\\langle f_k,f_k\\rangle,\\\\\r\n\\langle T_a g_l,T_a g_l\\rangle\r\n&=e^{-2la}\\langle g_l,g_l\\rangle.\r\n\\end{aligned}",
+          "added": 0,
+          "deleted": 0,
+          "cost": 0
+        },
+        {
+          "kind": "equation",
+          "old": "e^{-(k+l)a}=1.",
+          "new": "e^{-2ka}=e^{-2la}=1\r\n\\quad(\\forall a\\in\\mathbb R)\r\n\\quad\\Longleftrightarrow\\quad k=l=0.",
+          "added": 0,
+          "deleted": 0,
+          "cost": 0
+        }
+      ],
+      "prose_cost": 20,
+      "copy_sha256": "32b083aea82c593cb1aa6eba4270855de3c840fd54dcba09571a2a1a7448eb38"
+    }
+  ],
+  "spent": 40,
+  "status": "Stopped at prose budget after two fresh-reader reviews; substantive objections remain.",
+  "review_prompt": "prompts/first_chapter_critic.md",
+  "fresh_readers": [
+    "/root/fresh_reader_budget_pass_1",
+    "/root/fresh_reader_budget_pass_2"
+  ],
+  "reviews": [
+    "reader-01.md",
+    "reader-02.md"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "decoded_frames": 360,
+  "duration_seconds": 12.0,
+  "size": [
+    1440,
+    900
+  ],
+  "fps": 30.0,
+  "codec": "h264",
+  "pixel_format": "yuv420p(progressive)",
+  "max_decoded_rgb_error": 1.0709220679012346,
+  "sample_frame_indices": [
+    0,
+    75,
+    105,
+    135,
+    165,
+    357
+  ],
+  "sample_decoded_rgb_errors": [
+    0.9953708847736625,
+    1.0709220679012346,
+    1.0675604423868312,
+    1.0586949588477366,
+    1.0451576646090535,
+    0.9855722736625514
+  ],
+  "file_bytes": 1430115
+}
