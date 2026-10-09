@@ -12,7 +12,7 @@ import subprocess
 import time
 
 from core import ROOT, Scene, Image, ImageDraw, font, np, phasor
-from revise_action_phase import (state, TITLE, DURATION, SWEEP_END,
+from revise_action_phase import (state, DURATION, SWEEP_END,
                                  PASS_DURATION, START_HOLD, END_HOLD,
                                  TAU_MAX, HBAR, MASSES, KAPPAS, ACTION_MAX, FPS)
 import imageio_ffmpeg
@@ -20,6 +20,7 @@ import imageio_ffmpeg
 
 OUT = ROOT / 'content/drafts/animations'
 STEM = 'symmetry-action-phase-desktop'
+TITLE = 'ℏ relates phase to action'
 WIDTH, HEIGHT = 1920, 1080
 TIMES = [2.2, 8.0, 13.1, 18.4, 20.65, 23.7]
 # Match the manuscript's unitarity and complex-phase desktop palette.

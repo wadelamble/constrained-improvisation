@@ -264,3 +264,10 @@ In fact, any smooth function that does not "blow up" as we go to positive or neg
 Physically, such a function is a **wave packet**. Expressing an arbitrary wave packet as a superposition of its modes is called **Fourier decomposition** and the transformation from an amplitude over translation coordinate to amplitude over wave number coordinate is called a **Fourier transformation**.
 
 In modern physics, localizable objects are represented as wave packets. The story we want to tell is this -- nature's symmetry requires that the substrate of observations consists of combinations of "tones" and that the complexities that unfold over time are a way of perceiving the composition of these tones. Steep some tea, grab your crystals, and ponder -- the unfolding of nature in time, every child splashing in a puddle and every leaf falling from a tree, is, decomposed into its Fourier modes, a timeless "chord." Well, that's what the math says, anyway.
+
+![A monochromatic Gaussian beam spreads less sideways as its wavelength decreases](animations/symmetry-monochromatic-gaussian-poster.png)
+
+[Open MP4: symmetry-monochromatic-gaussian.mp4](animations/symmetry-monochromatic-gaussian.mp4)
+
+*Shorter wavelengths reduce sideways diffraction*
+

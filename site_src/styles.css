@@ -430,6 +430,56 @@ a:hover {
   margin-bottom: 0;
 }
 
+.article .chapter-toc {
+  margin: 1.6rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chapter-toc__title {
+  font-weight: 600;
+}
+
+.article .chapter-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chapter-toc > ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.chapter-toc > ul > li > a {
+  font-weight: 600;
+}
+
+.article .chapter-toc li ul {
+  margin-top: 0.4rem;
+  padding-left: 0.85rem;
+}
+
+.chapter-toc a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.chapter-toc a:hover,
+.chapter-toc a:focus-visible {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .chapter-toc > ul {
+    grid-template-columns: 1fr;
+  }
+}
+
 .page-toc {
   position: sticky;
   top: 1.2rem;

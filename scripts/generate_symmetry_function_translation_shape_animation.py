@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import argparse
 import math
+import os
 import shutil
 import subprocess
 from pathlib import Path
@@ -11,7 +13,6 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "content" / "drafts" / "animations"
 SCRATCH = OUTPUT_DIR / "_symmetry_function_translation_shape_frames"
-FFMPEG = ROOT / ".tools" / "micromamba-anim-root" / "envs" / "anim" / "Library" / "bin" / "ffmpeg.exe"
 
 WIDTH = 1280
 HEIGHT = 620
@@ -28,6 +29,25 @@ FAINT = (226, 219, 209)
 BLUE = (57, 103, 157)
 RED = (184, 72, 48)
 GOLD = (196, 132, 42)
+
+
+def find_ffmpeg() -> str:
+    configured = os.environ.get("FFMPEG_BINARY")
+    if configured and Path(configured).is_file():
+        return str(Path(configured))
+    system = shutil.which("ffmpeg")
+    if system:
+        return system
+    candidates = sorted((ROOT / ".tools" / "animation-python-packages" /
+                         "imageio_ffmpeg" / "binaries").glob("ffmpeg*"))
+    for candidate in candidates:
+        if candidate.is_file() and candidate.suffix in ("", ".exe"):
+            return str(candidate)
+    try:
+        import imageio_ffmpeg
+        return imageio_ffmpeg.get_ffmpeg_exe()
+    except ImportError as exc:
+        raise RuntimeError("Install ffmpeg or set FFMPEG_BINARY to its executable.") from exc
 
 
 def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -144,9 +164,9 @@ def draw_frame(frame: int) -> Image.Image:
     draw_panel(draw, left_panel)
     draw_panel(draw, right_panel)
 
-    draw_text(draw, (82, 92), "translation symmetry", font_obj=TITLE)
+    draw_text(draw, (82, 92), "Translation", font_obj=TITLE)
     draw_text(draw, (82, 128), "shape preserved", fill=BLUE, font_obj=LABEL)
-    draw_text(draw, (696, 92), "not a translation symmetry", font_obj=TITLE)
+    draw_text(draw, (696, 92), "Translation + deformation", font_obj=TITLE)
     draw_text(draw, (696, 128), "shape distorted", fill=RED, font_obj=LABEL)
 
     draw_axes(draw, left_graph)
@@ -200,7 +220,15 @@ def make_contact_sheet() -> Path:
     return out
 
 
+def make_poster() -> Path:
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    out = OUTPUT_DIR / "symmetry-function-translation-shape-poster.png"
+    draw_frame(FRAMES - 1).save(out)
+    return out
+
+
 def main() -> None:
+    ffmpeg = find_ffmpeg()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     if SCRATCH.exists():
         shutil.rmtree(SCRATCH)
@@ -212,7 +240,7 @@ def main() -> None:
             draw_frame(index).save(SCRATCH / f"frame_{index:04d}.png")
         subprocess.run(
             [
-                str(FFMPEG),
+                ffmpeg,
                 "-y",
                 "-framerate",
                 str(FPS),
@@ -232,10 +260,17 @@ def main() -> None:
         )
         print(video)
         print(make_contact_sheet())
+        print(make_poster())
     finally:
         if SCRATCH.exists():
             shutil.rmtree(SCRATCH)
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Render function translation and deformation.")
+    parser.add_argument("--poster-only", action="store_true", help="Write the final-frame poster without rendering video.")
+    args = parser.parse_args()
+    if args.poster_only:
+        print(make_poster())
+    else:
+        main()

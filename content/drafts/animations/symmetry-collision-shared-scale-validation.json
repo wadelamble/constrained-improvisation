@@ -1,0 +1,77 @@
+{
+  "model": "Fixed-endpoint free timelike collision legs; local interaction contribution neglected",
+  "dimensions": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "duration_seconds": 30.0,
+  "frames": 720,
+  "parameters": {
+    "c": 1,
+    "T": 4.0,
+    "kappas": [
+      32.0,
+      64.0
+    ],
+    "endpoint_x": [
+      -2.82842712474619,
+      1.7888543819998317
+    ],
+    "x_domain": [
+      -0.7,
+      0.7
+    ]
+  },
+  "minimum_timelike_interval_squared": 3.5502020253553344,
+  "phase_derivatives_at_zero": [
+    63.99999999999999,
+    -64.0
+  ],
+  "total_phase_derivative_at_zero": -7.105427357601002e-15,
+  "trial_a2": 1.6,
+  "trial_action_derivative_at_zero": -38.40000000000001,
+  "trial_stationary_action_vertex": 0.3138045414628273,
+  "shared_stationary_action_vertex": 2.2202834189244397e-16,
+  "derivative_finite_difference_error": 4.192841629446775e-10,
+  "fixed_vertex_during_factor_test": true,
+  "no_physical_time_animation": true,
+  "graph_shows_exact_changes": true,
+  "derivative_panel_is_first_order": true,
+  "repeated_equal_factor_sweep": true,
+  "equal_factor_sweep_seconds": [
+    20,
+    26.5
+  ],
+  "incoming_gaussian_packets": true,
+  "packet_sigma": 0.24,
+  "packet_centers_at_candidate_vertex": true,
+  "packet_wave_numbers_from_candidate_velocity": true,
+  "packet_norms_and_local_phase_gradient": "passed",
+  "packet_snapshot_family_not_scattering_simulation": true,
+  "equal_factor_final_hold_seconds": 3.5,
+  "review_times": [
+    1.5,
+    5.5,
+    8.5,
+    16.0,
+    18.5,
+    22.0,
+    25.0,
+    28.0
+  ],
+  "text_bounds_errors": [],
+  "text_overlap_errors": [],
+  "numerical_validation": "passed",
+  "encoded_video": {
+    "decoded_frames": 720,
+    "duration_seconds": 30.0,
+    "dimensions": [
+      1600,
+      900
+    ],
+    "fps": 24.0,
+    "codec": "h264",
+    "file_bytes": 1205737
+  }
+}

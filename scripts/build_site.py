@@ -466,6 +466,29 @@ def figure_for_video(alt: str, poster_path: str, video_path: str, caption: str |
 </figure>"""
 
 
+def render_chapter_toc(items: list[tuple[int, str, str]]) -> str:
+    groups: list[tuple[str, list[str]]] = []
+    for depth, text, hid in items:
+        if depth not in (2, 3):
+            continue
+        link = f'<a href="#{html.escape(hid, quote=True)}">{inline(text)}</a>'
+        if depth == 2 or not groups:
+            groups.append((link, []))
+        else:
+            groups[-1][1].append(f"<li>{link}</li>")
+    if not groups:
+        return ""
+    entries = []
+    for link, children in groups:
+        nested = f"<ul>{''.join(children)}</ul>" if children else ""
+        entries.append(f"<li>{link}{nested}</li>")
+    return (
+        '<nav class="chapter-toc" aria-label="Chapter contents">'
+        '<p class="chapter-toc__title">Contents</p>'
+        f"<ul>{''.join(entries)}</ul></nav>"
+    )
+
+
 def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
     footnotes = Footnotes(markdown)
     if not footnotes.notes:
@@ -478,6 +501,7 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
     lines = markdown.splitlines()
     html_blocks: list[str] = []
     toc: list[tuple[int, str, str]] = []
+    toc_slots: list[int] = []
     used_ids: dict[str, int] = {}
 
     def unique_id(text: str) -> str:
@@ -508,6 +532,17 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
         if not stripped:
             i += 1
             continue
+
+        if stripped == "<!-- chapter-toc:start -->":
+            end = next((j for j in range(i + 1, len(lines))
+                        if lines[j].strip() == "<!-- chapter-toc:end -->"), None)
+            if end is not None:
+                # Keep a normal Markdown list in the manuscript, but rebuild
+                # web links from the headings and IDs rendered below.
+                toc_slots.append(len(html_blocks))
+                html_blocks.append("")
+                i = end + 1
+                continue
 
         if footnotes and stripped in footnotes.groups:
             html_blocks.append(stripped)
@@ -658,6 +693,7 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
                 or candidate.startswith("#")
                 or candidate.startswith("```")
                 or candidate.startswith(":::")
+                or candidate == "<!-- chapter-toc:start -->"
                 or re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)", candidate)
                 or re.fullmatch(r"\[Open MP4: ([^\]]+)\]\(([^)]+)\)", candidate)
                 or re.fullmatch(r"\d+\.\s+.+", candidate)
@@ -672,6 +708,10 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
             i += 1
         html_blocks.append(f"<p>{inline(' '.join(paragraph_lines), footnotes)}</p>")
 
+    if toc_slots:
+        contents = render_chapter_toc(toc)
+        for slot in toc_slots:
+            html_blocks[slot] = contents
     return "\n".join(html_blocks), toc
 
 
