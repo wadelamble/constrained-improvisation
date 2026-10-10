@@ -61,9 +61,9 @@ ARTICLE_BY_SLUG = {article.slug: article for article in ARTICLES}
 
 SECTIONS = [
     Section(
-        "Principles",
+        "Introduction",
         "principles",
-        "A priori principles and seminal observations.",
+        "How symmetry, locality, variational reasoning, and superposition form physical theories",
         outline=["Invariant structure", "State, law, and observation"],
     ),
     Section(
@@ -726,6 +726,11 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
 
 def render_article(article: Article) -> str:
     markdown = article_markdown(article)
+    if article.slug == "symmetry":
+        # Keep the manuscript contents list for Markdown readers. The website
+        # already provides chapter navigation in the right-hand pane.
+        markdown = re.sub(r"^<!-- chapter-toc:start -->\n.*?^<!-- chapter-toc:end -->\n?",
+                          "", markdown, flags=re.MULTILINE | re.DOTALL)
     article_html, toc_items = render_markdown(markdown)
     toc_links = "\n".join(
         f'<a class="depth-{depth}" href="#{hid}">{html.escape(text)}</a>'
