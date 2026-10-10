@@ -19,7 +19,7 @@ SYMMETRY_DRAFT = ROOT / "content" / "drafts" / "symmetry-draft.md"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 REEL_DIR = ROOT / "content" / "reels" / "ccr2-series"
 
-TITLE = "Nature's Improvisation on Symmetry"
+TITLE = "Variations on Symmetry"
 BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
 
 
@@ -228,7 +228,7 @@ def render_home() -> str:
 
     body = f"""<main class="home">
   <h1 class="home-title">{html.escape(TITLE)}</h1>
-  <p class="home-intro">A work in progress on the wave description of nature that emerges from physical principles and seminal observations.</p>
+  <p class="home-intro">A work in progress on the wave description of nature that emerges from physical principles, stipulated symmetry, and seminal observations.</p>
   <h2 class="contents-heading">Contents</h2>
   <ol class="section-list">
     {''.join(items)}
