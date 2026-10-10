@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-hyperbolic-rotation.mp4",
+  "video_sha256": "17517c198f57608fce58c372da980248bd7ea5bece69ceef0b96da3622742b14",
+  "duration_seconds": 7.0,
+  "fps": 24.0,
+  "frame_count": 168,
+  "width": 1280,
+  "height": 720,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "62f4d38a46b2b804205ef4dc37ae0e05531f730f18b0ab00a71df17645ecee8c"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 15,
+      "time_seconds": 0.625,
+      "sha256": "72930e08646ae614e33177f74c043ef686d4c6d7d6f56a2262a74b220db5b231"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 30,
+      "time_seconds": 1.25,
+      "sha256": "35623aef38c8bf51c6f1a441118a45cfdc0d31fae32374f4792da0583f52fa0e"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 46,
+      "time_seconds": 1.916667,
+      "sha256": "6042f435cb8d76353afea5a64be3e577073fcce5cc54e971604af21217dc526b"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 61,
+      "time_seconds": 2.541667,
+      "sha256": "57d3e8ec94eeed2c17fa612d3d80eae40873e14f3568dc68e6bee89c9816c20a"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 76,
+      "time_seconds": 3.166667,
+      "sha256": "e80526c47521958b22d043a8bb1a53c82d3245bb0c9cf4149295b69b0603dd90"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 91,
+      "time_seconds": 3.791667,
+      "sha256": "7719895e62be32787bcd3185e5222ea8b90d8bdb2c37ec79c8f2b46ed07fc245"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 106,
+      "time_seconds": 4.416667,
+      "sha256": "608abd50ec1189878fc4ad0b70e5cdc31038374e0667a9f8989ceb5b80bab79e"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 121,
+      "time_seconds": 5.041667,
+      "sha256": "63fee49525a5a19750c8d6b8ad5e24cfccf1467a97c36bafe679d1f8513bdffb"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 137,
+      "time_seconds": 5.708333,
+      "sha256": "e541060dfe60ac2810b371d4a7ebab9db5ffb56686d1bac428f27daf322a3cd5"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 152,
+      "time_seconds": 6.333333,
+      "sha256": "43ef288b5e97199c0e49002b0d8943665a58773ec42b34b2cab157b3d7106e6d"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 167,
+      "time_seconds": 6.958333,
+      "sha256": "be6f2edef8440a28d84bf977f64837cb760b4fa556b53f9e6900d6106adb16bd"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "a204e19d7fe691a86ae861c5c2b0f4a29dcd51c541a34cf550b18148e6d44c17"
+  }
+}

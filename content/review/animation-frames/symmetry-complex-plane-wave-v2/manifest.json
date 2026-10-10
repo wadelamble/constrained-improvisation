@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-complex-plane-wave-v2.mp4",
+  "video_sha256": "e407d6199cc5539ba3a33469fd1a417d21023bef7461f1acad2ecd11fa903892",
+  "duration_seconds": 12.0,
+  "fps": 30.0,
+  "frame_count": 360,
+  "width": 1440,
+  "height": 900,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "7c70c331e0a56ce9d678463ad06af8eac6ac1026b632b230dff20ed375e0fa49"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 33,
+      "time_seconds": 1.1,
+      "sha256": "0fc832dca21a630310d083fa64b00189050042dfacca138eb0239548547bf1f5"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 65,
+      "time_seconds": 2.166667,
+      "sha256": "096d4b8151674206fe5c5d941465f0890edc2a11b5f44a94c6862ae73f264638"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 98,
+      "time_seconds": 3.266667,
+      "sha256": "b180baa3508a97d31225b3544f5552fd96db7e37a75fbfc883fdfd5c1448c0f6"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 131,
+      "time_seconds": 4.366667,
+      "sha256": "ee7a17263d08f14a8eadd6945c46cd140c0b228faa9f0b6c147d4f1c2230ef81"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 163,
+      "time_seconds": 5.433333,
+      "sha256": "9dc23f74a45c727cd05643564e4dd138723bfdbe54c61dd68e0ca520edbf66dd"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 196,
+      "time_seconds": 6.533333,
+      "sha256": "c083abc12ab894fcb847dc649d47cfe9e0a08561efa834bdc5eb4083bd0f5fce"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 228,
+      "time_seconds": 7.6,
+      "sha256": "21298c1bd7ce5e37a8d148035e6e6fdb9967f9cdac9d01d039ebcfd020004abc"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 261,
+      "time_seconds": 8.7,
+      "sha256": "1164204aef73fdda80ffa168f7cad686614fb422b8e035fd77d0281ebee9d1ce"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 294,
+      "time_seconds": 9.8,
+      "sha256": "c0ba7e7362a715a409ee07dd730a1a1bb7f3f3ad5da00a70ffc65f16b17e13b0"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 326,
+      "time_seconds": 10.866667,
+      "sha256": "56b6fdbbcc1d15dd69362db7b0e60f7222d13eb14e78db60655d942804b5b185"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 359,
+      "time_seconds": 11.966667,
+      "sha256": "ff86ba2b7c616dfeb19b9f5005192e917b819b580b22e28dac07ab05e958dfe6"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "22c570490f6b94b2ec2d32d8752eac963ae1af3c6e2645921fbaf3d934cbd970"
+  }
+}

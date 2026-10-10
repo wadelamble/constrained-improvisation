@@ -1,4 +1,4 @@
-"""Build a public, source-and-decoded-frame review packet for Wave Symmetry.
+"""Build a public, source-and-decoded-frame review packet for Symmetry.
 
 Uses only the explicitly catalogued scripts and the chapter supplied by the site
 builder. Frame extraction is a separate operation; this module never renders an
@@ -20,7 +20,7 @@ from urllib.parse import quote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "site_src" / "animation-sources.json"
 FRAME_ROOT = ROOT / "content" / "review" / "animation-frames"
-CHAPTER_PATH = "notes/worked/symmetry-ccr-2.md"
+CHAPTER_PATH = "content/drafts/symmetry-draft.md"
 PUBLIC_SITE_URL = "https://wadelamble.github.io/constrained-improvisation"
 LIMITS = (
     "These are sparse samples decoded from the current MP4, not newly rendered "
@@ -62,7 +62,7 @@ def _relative(value: str) -> str:
     if not isinstance(value, str) or not value or "\\" in value or ":" in value:
         raise ValueError(f"Invalid review path: {value!r}")
     path = PurePosixPath(value)
-    if path.is_absolute() or any(part in (".", "..") for part in value.split("/")):
+    if path.is_absolute() or any(part in ("", ".", "..") for part in value.split("/")):
         raise ValueError(f"Invalid review path: {value!r}")
     return path.as_posix()
 
@@ -71,6 +71,22 @@ def _inside(base: Path, relative: str) -> Path:
     path = base / _relative(relative)
     if not path.resolve().is_relative_to(base.resolve()):
         raise ValueError(f"Review path escapes its directory: {relative}")
+    return path
+
+
+def _chapter_media_path(reference: str, *, video: bool = False) -> str:
+    """Resolve current draft links and the retained worked-note media links."""
+    path = reference.removeprefix("../../") if reference.startswith("../../content/drafts/") else reference
+    if path.startswith(("animations/", "diagrams/")):
+        path = "content/drafts/" + path
+    path = _relative(path)
+    directories = ("content/drafts/animations/",) if video else (
+        "content/drafts/animations/", "content/drafts/diagrams/")
+    formats = {".mp4"} if video else {".png", ".jpg", ".jpeg", ".webp", ".svg"}
+    if (not path.startswith(directories) or PurePosixPath(path).suffix.lower() not in formats
+            or any(character in path for character in "?#")
+            or any(not part for part in path.split("/"))):
+        raise ValueError(f"Unexpected chapter {'video' if video else 'image'} path: {reference}")
     return path
 
 
@@ -129,7 +145,7 @@ def _blocks(markdown: str) -> list[dict]:
 def _chapter_entries(markdown: str) -> list[dict]:
     blocks = _blocks(markdown)
     entries = []
-    heading = "Wave Symmetry"
+    heading = "Symmetry"
     for index, block in enumerate(blocks):
         text = block["markdown"].strip()
         title = re.match(r"^#{1,6}\s+([^\n]+)", text)
@@ -138,10 +154,7 @@ def _chapter_entries(markdown: str) -> list[dict]:
         match = VIDEO_LINK.fullmatch(text)
         if not match:
             continue
-        video_path = match[1].removeprefix("../../")
-        if not video_path.startswith("content/drafts/animations/"):
-            raise ValueError(f"Unexpected chapter video path: {match[1]}")
-        video_path = _relative(video_path)
+        video_path = _chapter_media_path(match[1], video=True)
         name = PurePosixPath(video_path).name
         start, end = index, index
         caption = None
@@ -177,7 +190,8 @@ def _chapter_entries(markdown: str) -> list[dict]:
             return selected[::-1] if step < 0 else selected
 
         entries.append({
-            "video": video_path, "basename": name, "slug": name[:-4],
+            "video": video_path, "original_reference": match[1],
+            "basename": name, "slug": name[:-4],
             "chapter_section": heading, "caption": caption,
             "image_description": alt, "video_link_line": block["start_line"],
             "context_before": nearby(start - 1, -1),
@@ -245,14 +259,10 @@ def _chapter_assets(markdown: str) -> list[tuple[dict, bytes]]:
     seen = set()
     for match in re.finditer(r"!\[[^\]]*\]\(([^)]+)\)", markdown):
         original = match[1]
-        path = _relative(original.removeprefix("../../"))
-        if not path.startswith(("content/drafts/animations/", "content/drafts/diagrams/")):
-            raise ValueError(f"Unexpected chapter image path: {original}")
-        if PurePosixPath(path).suffix.lower() not in (".png", ".jpg", ".jpeg", ".webp", ".svg"):
-            raise ValueError(f"Unexpected chapter image format: {path}")
-        if path in seen:
+        path = _chapter_media_path(original)
+        if original in seen:
             continue
-        seen.add(path)
+        seen.add(original)
         data = _inside(ROOT, path).read_bytes()
         record = {"path": path, "original_reference": original,
                   "file": f"chapter-assets/{path}", "sha256": _sha(data), "bytes": len(data),
@@ -367,20 +377,26 @@ def build_review_pages(out_dir, site_path, page_shell, render_markdown, chapter_
 
     chapter_bytes = chapter_markdown.encode("utf-8")
     write("chapter.md", chapter_bytes)
-    portable_chapter = chapter_markdown
+    image_targets = {asset["original_reference"]: asset["file"] for asset, _ in chapter_assets}
+    video_targets = {entry["original_reference"]: _public("/assets/animations/" + entry["basename"])
+                     for entry in entries}
+    portable_chapter = re.sub(
+        r"(!\[[^\]]*\]\()([^)]+)(\))",
+        lambda match: match[1] + image_targets[match[2]] + match[3], chapter_markdown)
+    portable_chapter = re.sub(
+        r"(^\[Open MP4: [^\]]+\]\()([^)]+\.mp4)(\))",
+        lambda match: match[1] + video_targets[match[2]] + match[3],
+        portable_chapter, flags=re.MULTILINE)
     media_map = ["# Chapter media map", "The verbatim chapter.md retains its repository-relative media "
                  "references. chapter-portable.md changes only media link targets: images point to "
                  "the included chapter-assets files and MP4s point to the public site."]
     for asset, data in chapter_assets:
         write(asset["file"], data)
-        portable_chapter = portable_chapter.replace(f"({asset['original_reference']})",
-                                                     f"({asset['file']})")
         media_map.append(f"- `{asset['original_reference']}`: [included image]({asset['file']}); "
                          f"[public image]({asset['public_url']}); SHA-256 `{asset['sha256']}`")
     for entry in entries:
         public_video = _public("/assets/animations/" + entry["basename"])
-        portable_chapter = portable_chapter.replace(f"(../../{entry['video']})", f"({public_video})")
-        media_map.append(f"- `../../{entry['video']}`: [full MP4 online]({public_video}); "
+        media_map.append(f"- `{entry['original_reference']}`: [full MP4 online]({public_video}); "
                          "not included in the ZIP.")
     write("chapter-portable.md", portable_chapter)
     write("chapter-media.md", "\n\n".join(media_map) + "\n")
@@ -388,11 +404,11 @@ def build_review_pages(out_dir, site_path, page_shell, render_markdown, chapter_
     for path, record in sources.items():
         write(record["file"], source_data[path])
     records, cards = [], []
-    packet = ["# Wave Symmetry: chapter and animation review packet",
-              "Review the complete Wave Symmetry section, including its prose, equations, "
+    packet = ["# Symmetry: chapter and animation review packet",
+              "Review the complete Symmetry section, including its prose, equations, "
               "static figures, and animations, using the supplied source and sampled movie frames. "
               "This packet supplies evidence and context; it contains no review findings or grades.",
-              "The intended reader is an interested non-specialist with high-school mathematics. "
+              "The intended reader is an interested non-specialist with undergraduate mathematics. "
               "Assess how the explanation builds from its stated starting points; identify "
               "additional prerequisites when they occur.",
               LIMITS, PROVENANCE,
@@ -522,7 +538,7 @@ def build_review_pages(out_dir, site_path, page_shell, render_markdown, chapter_
         for frame in manifest["frames"]:
             packet.append(f"- [{_timestamp(frame['time_seconds'])}, frame {frame['index']}]"
                           f"({slug}/frames/{frame['file']})")
-    index = {"schema_version": 1, "scope": "Wave Symmetry / symmetry-ccr-2",
+    index = {"schema_version": 1, "scope": "Symmetry / symmetry-draft",
              "chapter": "chapter.md", "chapter_source": CHAPTER_PATH,
              "portable_chapter": "chapter-portable.md", "chapter_media_map": "chapter-media.md",
              "chapter_assets": [asset for asset, _ in chapter_assets],
@@ -534,8 +550,8 @@ def build_review_pages(out_dir, site_path, page_shell, render_markdown, chapter_
     write("index.json", _json(index))
     write("review.md", "\n\n".join(packet) + "\n")
     index_body = f'''<main class="article-layout review-layout"><article class="article animation-review">
-<p><a href="{html.escape(site_path('/symmetry/'), quote=True)}">Wave Symmetry</a></p><h1>Wave Symmetry review</h1>
-<p class="review-intro">Review the complete Wave Symmetry section and its {len(entries)} animations. The packet includes the chapter, static images, exact surrounding context, generation source, and sampled frames decoded from the current movies. No review findings or grades are supplied.</p>
+<p><a href="{html.escape(site_path('/symmetry/'), quote=True)}">Symmetry</a></p><h1>Symmetry review</h1>
+<p class="review-intro">Review the complete Symmetry section and its {len(entries)} animations. The packet includes the chapter, static images, exact surrounding context, generation source, and sampled frames decoded from the current movies. No review findings or grades are supplied.</p>
 <p>Consider physical and mathematical correctness, support for the argument and its assumptions, teaching clarity, and the fidelity of the visuals to the stated mathematics.</p>
 <details class="manuscript-details"><summary>What this evidence can establish</summary><p>{html.escape(LIMITS)}</p><p>{html.escape(PROVENANCE)}</p></details>
 <p class="review-links">{link('symmetry-review.zip', 'Download review packet (ZIP, no MP4s)')} {link('review.md', 'Reviewer guide')} {link('index.json', 'Machine-readable index')} {link('chapter-portable.md', 'Full chapter markdown')}</p>

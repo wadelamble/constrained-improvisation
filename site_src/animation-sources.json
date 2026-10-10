@@ -1,4 +1,89 @@
 {
+  "symmetry-pool-table.mp4": {
+    "sources": ["scripts/generate_symmetry_pool_table.py"],
+    "generation_note": "Main script --render draws the equal-mass elastic-disk trials and encodes frames directly with FFmpeg. --check and --encoded-check produce the companion numerical and decoded-video reports. It has no local Python imports or input movie.",
+    "evidence": "The script's NAME and output match the linked movie. Matching validation and encoded-validation JSON record 1600 x 960, 30 fps, 420 frames, 14 s. The reports contain no movie hash, so this is source/output-name attribution rather than a hash-attested build."
+  },
+  "symmetry-triangle-actions.mp4": {
+    "sources": ["scripts/generate_symmetry_triangle_actions_animation.py"],
+    "generation_note": "Run the main script without arguments. It draws the triangle-action frames with Pillow and encodes them with FFmpeg, then writes a poster. It has no local Python imports or input movie.",
+    "evidence": "main() explicitly writes symmetry-triangle-actions.mp4; constants specify 900 x 620 at 18 fps. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-d3-rotations-vs-flips.mp4": {
+    "sources": ["scripts/generate_symmetry_d3_rotations_vs_flips_animation.py", "scripts/symmetry_d3_rendering.py"],
+    "generation_note": "Run the main script without arguments. It uses symmetry_d3_rendering for shared geometry, transformations, and drawing, then encodes its frames with FFmpeg. The imported module is a code dependency, not an input movie.",
+    "evidence": "The generator explicitly writes symmetry-d3-rotations-vs-flips.mp4; constants specify 1200 x 700 at 24 fps. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-d3-irrep-collapse.mp4": {
+    "sources": ["scripts/generate_symmetry_d3_irrep_collapse_animation.py", "scripts/symmetry_d3_rendering.py"],
+    "generation_note": "Run the main script without arguments. It uses symmetry_d3_rendering for shared geometry, transformations, and drawing, then encodes its frames with FFmpeg. The imported module is a code dependency, not an input movie.",
+    "evidence": "The generator explicitly writes symmetry-d3-irrep-collapse.mp4; constants specify 1200 x 720 at 24 fps. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-continuous-so2-translation.mp4": {
+    "sources": ["scripts/generate_symmetry_continuous_so2_translation_animation.py", "scripts/_make_contact_sheets.py"],
+    "generation_note": "Run the main script without arguments. It draws and encodes the movie directly, then calls make_contact_sheet from _make_contact_sheets to sample the encoded output. The helper does not supply an earlier input movie.",
+    "evidence": "main() explicitly writes symmetry-continuous-so2-translation.mp4; constants specify 1280 x 620, 24 fps, 120 frames. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-so2-vector-field-flow.mp4": {
+    "sources": ["scripts/generate_symmetry_so2_vector_field_flow_animation.py"],
+    "generation_note": "Run the main script without arguments. It draws the vector-field-flow frames with Pillow and encodes them with FFmpeg. It has no local Python imports or input movie.",
+    "evidence": "main() explicitly writes symmetry-so2-vector-field-flow.mp4; constants specify 1280 x 720, 24 fps, 210 frames. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-rotation-vector-invariants.mp4": {
+    "sources": ["scripts/generate_symmetry_rotation_vector_invariants_animation.py"],
+    "generation_note": "Run the main script without arguments. It draws the rotation-and-invariants frames with Pillow and encodes them with FFmpeg. It has no local Python imports or input movie.",
+    "evidence": "main() explicitly writes symmetry-rotation-vector-invariants.mp4; constants specify 1280 x 720, 24 fps, 144 frames. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-hyperbolic-rotation.mp4": {
+    "sources": ["scripts/generate_symmetry_hyperbolic_rotation_animation.py"],
+    "generation_note": "Run the main script without arguments. It draws the hyperbolic-rotation frames with Pillow and encodes them with FFmpeg. It has no local Python imports or input movie.",
+    "evidence": "main() explicitly writes symmetry-hyperbolic-rotation.mp4; constants specify 1280 x 720, 24 fps, 168 frames. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-so3-rotation-order.mp4": {
+    "sources": ["scripts/generate_symmetry_so3_rotation_order_animation.py", "scripts/symmetry_d3_rendering.py"],
+    "generation_note": "Run the main script without arguments. It uses symmetry_d3_rendering for shared geometry and drawing helpers, then encodes the ordered-rotation frames with FFmpeg. The imported module is a code dependency, not an input movie.",
+    "evidence": "render() sets the output stem to symmetry-so3-rotation-order; constants specify 1200 x 700, 24 fps, 192 frames. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-translation-point-linearity-failure.mp4": {
+    "sources": ["scripts/generate_symmetry_translation_linearity_animations.py"],
+    "generation_note": "Run the main script without arguments. It renders two separate movies: this point-translation example using draw_point_linearity_frame, and the function-linearity example using its other renderer. Frames are drawn with Pillow and encoded with FFmpeg; no local Python imports or input movie are used.",
+    "evidence": "main() pairs the exact symmetry-translation-point-linearity-failure stem with draw_point_linearity_frame. Constants specify 1280 x 720, 24 fps, 156 frames. No matching validation JSON is present; attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-translation-function-linearity.mp4": {
+    "sources": ["scripts/generate_symmetry_translation_linearity_animations.py"],
+    "generation_note": "Run the main script without arguments. It renders two separate movies: this function-linearity example using draw_function_linearity_frame, and the point-translation example using its other renderer. Frames are drawn with Pillow and encoded with FFmpeg; no local Python imports or input movie are used.",
+    "evidence": "main() pairs the exact symmetry-translation-function-linearity stem with draw_function_linearity_frame. Constants specify 1280 x 720, 24 fps, 156 frames. No matching validation JSON is present; attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-function-translation-shape.mp4": {
+    "sources": ["scripts/generate_symmetry_function_translation_shape_animation.py"],
+    "generation_note": "Run the main script without --poster-only to draw and encode the translated-function frames. FFmpeg is resolved from configuration, the local tool installation, PATH, or imageio-ffmpeg. No local Python imports or input movie are used.",
+    "evidence": "main() explicitly writes symmetry-function-translation-shape.mp4; constants specify 1280 x 620, 24 fps, 132 frames. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-translation-tangent-zoom.mp4": {
+    "sources": ["scripts/generate_symmetry_translation_tangent_zoom_animation.py"],
+    "generation_note": "Run the main script without arguments. It draws the translation-and-tangent-zoom frames with Pillow and encodes them with FFmpeg. It has no local Python imports or input movie.",
+    "evidence": "render() sets the exact symmetry-translation-tangent-zoom output stem. Constants specify 1280 x 720, 24 fps, 360 frames. No matching validation JSON is present; attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-eigenbasis-stretch.mp4": {
+    "sources": ["scripts/generate_symmetry_eigenbasis_stretch_animation.py"],
+    "generation_note": "Run the main script without arguments. It draws the eigenbasis-stretch frames with Pillow and encodes them with FFmpeg. It has no local Python imports or input movie.",
+    "evidence": "render() sets the exact symmetry-eigenbasis-stretch output stem. Constants specify 1280 x 720 at 24 fps. No matching validation JSON is present; attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-complex-plane-wave-v2.mp4": {
+    "sources": ["scripts/generate_symmetry_complex_plane_wave_v2.py"],
+    "generation_note": "Main script --render draws the complex plane-wave frames and encodes them directly. --check and --encoded-check produce the companion mathematical and decoded-video reports. It has no local Python imports or input movie.",
+    "evidence": "The script's NAME and output match the linked movie. Matching validation and encoded-validation JSON record 1440 x 900, 30 fps, 360 frames, 12 s. The reports contain no movie hash, so this is source/output-name attribution rather than a hash-attested build."
+  },
+  "symmetry-fourier-three-tone-packet.mp4": {
+    "sources": ["scripts/generate_symmetry_fourier_chord_packet_animation.py"],
+    "generation_note": "Run the main script without arguments. Its Fourier-chord renderer draws the three-tone packet frames with Pillow and encodes them with FFmpeg. It has no local Python imports or input movie.",
+    "evidence": "Despite the generator filename, render() explicitly sets the output stem to symmetry-fourier-three-tone-packet. Constants specify 1280 x 720, 24 fps, 192 frames. No matching validation JSON is present; attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-collision-shared-scale.mp4": {
+    "sources": ["scripts/generate_symmetry_collision_shared_scale.py"],
+    "generation_note": "Main script --render first writes review stills and numerical validation, then directly encodes the shared-scale collision illustration and appends decoded-video metadata to its validation report. It has no local Python imports or input movie.",
+    "evidence": "The script's STEM and output match the linked movie. Matching validation JSON records 1600 x 900, 24 fps, 720 frames, 30 s, and confirms those values in its encoded_video block. It contains no movie hash, so this is source/output-name attribution rather than a hash-attested build."
+  },
   "symmetry-ccr-x-k-translations-symmetric.mp4": {
     "sources": ["scripts/generate_symmetry_ccr_x_k_translations_symmetric.py"],
     "generation_note": "Run the main script without --stills-only. It validates the Gaussian Fourier pair, draws both panels with Pillow, and pipes 510 RGB frames to FFmpeg. No local Python imports or input movie are used.",

@@ -1,7 +1,7 @@
-# Reviewing Wave Symmetry and its animations
+# Reviewing Symmetry and its animations
 
-The public `/animation-review/` page accompanies the Wave Symmetry chapter
-(`notes/worked/symmetry-ccr-2.md`). Each of its 14 animations links to a review
+The public `/animation-review/` page accompanies the full Symmetry chapter
+(`content/drafts/symmetry-draft.md`). Each of its 31 animations links to a review
 page through **Code and frames**. The other chapters are outside this packet.
 
 The packet provides chapter text, surrounding passages, decoded frames, source

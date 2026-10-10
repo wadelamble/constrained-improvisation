@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-translation-tangent-zoom.mp4",
+  "video_sha256": "a4db667ace47c5f9a12f280dbb6ac8ef4002e3511aedf2c5824cc67cc5fa9b40",
+  "duration_seconds": 15.0,
+  "fps": 24.0,
+  "frame_count": 360,
+  "width": 1280,
+  "height": 720,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "43bf4ad92cd819a3a667075cee87b8978c7a44ad77ae4ab5597a30dfc3333fd4"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 33,
+      "time_seconds": 1.375,
+      "sha256": "cc0c068f95290429c01ce5d0835b18e10e8e372a4c31ee9ccf7ad222afd6d569"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 65,
+      "time_seconds": 2.708333,
+      "sha256": "4aec2afef1ea02e2e308f3802caba72ba0d1821f0cf614c92b35827c2b1fd22f"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 98,
+      "time_seconds": 4.083333,
+      "sha256": "916ed2d4295f25ddeacb9cc4ef4ca184e6541ea2784c8f4c225dfb539fd599d0"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 131,
+      "time_seconds": 5.458333,
+      "sha256": "164e6b1d42d49a965a65e42288d093f27dd71716dca8ccd4be65e2a2145f3e07"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 163,
+      "time_seconds": 6.791667,
+      "sha256": "fa2a4c870a2bd586408f5cddfb17d7ce7cf32e91437511a472b0635df7fc93aa"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 196,
+      "time_seconds": 8.166667,
+      "sha256": "3ed8286c8d2868c3d7eaea0afc9b9b2d5d4102dcb05b289570b351e9a19c8cab"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 228,
+      "time_seconds": 9.5,
+      "sha256": "d7f819ad789c00f8cae5a96fae30f348336717b8c99da7f19301d6b77b4e117d"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 261,
+      "time_seconds": 10.875,
+      "sha256": "406aa2871cbeb8e79fed76d5083ce2707f5583ebb3bbb16aaf6a5ea516e3e9b9"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 294,
+      "time_seconds": 12.25,
+      "sha256": "ab991ee1707e685756b9de717745289c13c937c39feaa69fb7a6cd9dfc636c42"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 326,
+      "time_seconds": 13.583333,
+      "sha256": "ab991ee1707e685756b9de717745289c13c937c39feaa69fb7a6cd9dfc636c42"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 359,
+      "time_seconds": 14.958333,
+      "sha256": "ab991ee1707e685756b9de717745289c13c937c39feaa69fb7a6cd9dfc636c42"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "1ad74fbe6593786a1f7f3ea208c578286422c6344e4f41e7720ffe2220184a8b"
+  }
+}

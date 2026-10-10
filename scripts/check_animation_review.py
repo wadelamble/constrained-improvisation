@@ -1,4 +1,4 @@
-"""Check the built Wave Symmetry code-and-frames review package (stdlib only).
+"""Check the built Symmetry code-and-frames review package (stdlib only).
 
 This checks delivery, links and recorded hashes. It does not assess physics,
 reproduce an animation, or establish that sparse frames represent all motion.
@@ -20,10 +20,25 @@ import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CHAPTER = ROOT / "notes" / "worked" / "symmetry-ccr-2.md"
+CHAPTER = ROOT / "content" / "drafts" / "symmetry-draft.md"
 CATALOG = ROOT / "site_src" / "animation-sources.json"
 EXTERNAL_SCHEMES = {"https", "http", "mailto", "tel", "data"}
 PUBLIC_SITE = "https://wadelamble.github.io/constrained-improvisation"
+
+
+def chapter_media_path(reference: str, *, video: bool = False) -> str:
+    """Validate a chapter media reference and return its repository path."""
+    path = reference.removeprefix("../../") if reference.startswith("../../content/drafts/") else reference
+    if path.startswith(("animations/", "diagrams/")):
+        path = "content/drafts/" + path
+    directories = ("content/drafts/animations/",) if video else (
+        "content/drafts/animations/", "content/drafts/diagrams/")
+    formats = {".mp4"} if video else {".png", ".jpg", ".jpeg", ".webp", ".svg"}
+    if (not path.startswith(directories) or PurePosixPath(path).suffix.lower() not in formats
+            or any(character in path for character in "\\:?#")
+            or any(part in {"", ".", ".."} for part in path.split("/"))):
+        raise ValueError(f"Unexpected chapter {'video' if video else 'image'} path: {reference!r}")
+    return path
 
 
 def sha256(path: Path) -> str:
@@ -218,9 +233,16 @@ class Checker:
     def chapter_names(self) -> list[str]:
         text = CHAPTER.read_text(encoding="utf-8")
         links = re.findall(r"\]\(([^\s)]+\.mp4)\)", text)
-        names = list(dict.fromkeys(PurePosixPath(link).name for link in links))
-        if len(names) != 14:
-            self.fail(f"{CHAPTER.relative_to(ROOT)}: expected 14 linked MP4s, found {len(names)}; update coverage expectation if chapter intentionally changed")
+        names = []
+        for link in links:
+            try:
+                names.append(PurePosixPath(chapter_media_path(link, video=True)).name)
+            except ValueError as exc:
+                self.fail(str(exc))
+        if len(names) != 31:
+            self.fail(f"{CHAPTER.relative_to(ROOT)}: expected 31 linked MP4s, found {len(names)}; update coverage expectation if chapter intentionally changed")
+        if len(names) != len(set(names)):
+            self.fail(f"{CHAPTER.relative_to(ROOT)}: each chapter MP4 must appear exactly once")
         return names
 
     def check_chapter(self, names: list[str]):
@@ -427,24 +449,28 @@ class Checker:
             return
         if [asset.get("original_reference") for asset in assets] != image_references:
             self.fail("animation-review/index.json: chapter_assets do not cover the chapter's static images in order")
-        portable = chapter_text
+        image_targets = {}
         for asset in assets:
             original = asset.get("original_reference")
-            if not isinstance(original, str) or original not in image_references or not original.startswith("../../content/drafts/"):
+            if not isinstance(original, str) or original not in image_references:
                 self.fail(f"chapter asset: unexpected original reference {original!r}")
                 continue
-            path = original.removeprefix("../../")
-            if (not path.startswith(("content/drafts/animations/", "content/drafts/diagrams/"))
-                    or ".." in PurePosixPath(path).parts
-                    or PurePosixPath(path).suffix.lower() not in {".png", ".jpg", ".jpeg", ".webp", ".svg"}):
-                self.fail(f"chapter asset: path is outside chapter image directories/formats: {path!r}")
+            try:
+                path = chapter_media_path(original)
+            except ValueError as exc:
+                self.fail(str(exc))
                 continue
             filename = "chapter-assets/" + path
             self.check_record_file(asset, f"chapter image {path}", path, filename, packet_files)
             expected_public = PUBLIC_SITE + "/assets/" + path.removeprefix("content/drafts/")
             if asset.get("public_url") != expected_public:
                 self.fail(f"chapter image {path}: incorrect public_url")
-            portable = portable.replace(f"({original})", f"({filename})")
+            image_targets[original] = filename
+        video_references = re.findall(r"^\[Open MP4: [^\]]+\]\(([^)]+\.mp4)\)",
+                                      chapter_text, flags=re.MULTILINE)
+        if [record.get("original_reference") for record in records] != video_references:
+            self.fail("animation-review/index.json: original MP4 references differ from the chapter")
+        video_targets = {}
         for record in records:
             name = record.get("basename")
             if not isinstance(name, str):
@@ -453,7 +479,24 @@ class Checker:
             public_chapter = PUBLIC_SITE + "/symmetry/#animation-" + PurePosixPath(name).stem
             if record.get("public_video_url") != public_video or record.get("public_chapter_url") != public_chapter:
                 self.fail(f"{name}: incorrect absolute public movie/chapter URL in index")
-            portable = portable.replace(f"(../../content/drafts/animations/{name})", f"({public_video})")
+            original = record.get("original_reference")
+            if not isinstance(original, str) or original not in video_references:
+                self.fail(f"{name}: unexpected original MP4 reference {original!r}")
+                continue
+            try:
+                if chapter_media_path(original, video=True) != record.get("video"):
+                    self.fail(f"{name}: original MP4 reference does not resolve to the indexed video")
+            except ValueError as exc:
+                self.fail(str(exc))
+                continue
+            video_targets[original] = public_video
+        portable = re.sub(
+            r"(!\[[^\]]*\]\()([^)]+)(\))",
+            lambda match: match[1] + image_targets.get(match[2], match[2]) + match[3], chapter_text)
+        portable = re.sub(
+            r"(^\[Open MP4: [^\]]+\]\()([^)]+\.mp4)(\))",
+            lambda match: match[1] + video_targets.get(match[2], match[2]) + match[3],
+            portable, flags=re.MULTILINE)
         try:
             actual = (folder / "chapter-portable.md").read_text(encoding="utf-8")
             if actual != portable:
@@ -471,7 +514,7 @@ class Checker:
         if index.get("schema_version") != 1:
             self.fail("animation-review/index.json: expected schema_version 1")
         if set(catalog) != set(names):
-            self.fail("site_src/animation-sources.json: catalog coverage differs from the 14 chapter MP4s")
+            self.fail("site_src/animation-sources.json: catalog coverage differs from the 31 chapter MP4s")
         copied_catalog = self.read_json(folder / "animation-sources.json")
         if copied_catalog != catalog:
             self.fail("animation-review/animation-sources.json differs from the approved source catalog")
@@ -479,17 +522,13 @@ class Checker:
         if index.get("chapter") != "chapter.md" or index.get("chapter_source") != CHAPTER.relative_to(ROOT).as_posix():
             self.fail("animation-review/index.json: chapter/chapter_source identifies the wrong manuscript")
         self.check_hash(folder / "chapter.md", index.get("chapter_sha256"), "copied chapter")
-        # The existing site promotes source headings by three levels and uses
-        # the article title for level one. Body prose/equations stay verbatim.
+        # The current draft already has the public title and heading hierarchy.
         chapter_text = CHAPTER.read_text(encoding="utf-8")
-        def promote_heading(match):
-            depth = max(1, len(match[1]) - 3)
-            title = "Wave Symmetry" if depth == 1 else match[2].strip()
-            return "#" * depth + " " + title
-        chapter_text = re.sub(r"^(#{1,6})[ \t]+(.+)$", promote_heading, chapter_text, flags=re.MULTILINE)
+        if not chapter_text.startswith("# Symmetry\n"):
+            self.fail(f"{CHAPTER.relative_to(ROOT)}: expected the public title '# Symmetry'")
         chapter_digest = hashlib.sha256(chapter_text.encode("utf-8")).hexdigest()
         if chapter_digest != index.get("chapter_sha256"):
-            self.fail("animation-review/chapter.md: chapter hash differs from current manuscript after the site's heading normalization")
+            self.fail("animation-review/chapter.md: chapter hash differs from the current manuscript")
         records = index.get("animations")
         if not isinstance(records, list) or not all(isinstance(record, dict) for record in records):
             self.fail("animation-review/index.json: animations must be a list of animation records")

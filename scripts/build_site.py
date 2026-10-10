@@ -15,7 +15,7 @@ SITE_SRC = ROOT / "site_src"
 OUT_DIR = ROOT / "site"
 PATH_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "lm-draft-polished.md"
 DIFFERENTIAL_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "Differential-Mechanics-With-Diagrams.md"
-WAVE_SYMMETRY_DRAFT = ROOT / "notes" / "worked" / "symmetry-ccr-2.md"
+SYMMETRY_DRAFT = ROOT / "content" / "drafts" / "symmetry-draft.md"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 REEL_DIR = ROOT / "content" / "reels" / "ccr2-series"
 
@@ -51,7 +51,7 @@ class Article:
 
 
 ARTICLES = [
-    Article("Wave Symmetry", "symmetry", WAVE_SYMMETRY_DRAFT, heading_offset=3),
+    Article("Symmetry", "symmetry", SYMMETRY_DRAFT),
     Article("The Principle of Least Action", "path-mechanics", PATH_MECHANICS_DRAFT),
     Article("State flow", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
 ]
@@ -67,9 +67,9 @@ SECTIONS = [
         outline=["Invariant structure", "State, law, and observation"],
     ),
     Section(
-        "Wave Symmetry",
+        "Symmetry",
         "symmetry",
-        "Wave symmetry, interference, and the connection to quantum mechanics.",
+        "Symmetry, representations, waves, and the connection to quantum mechanics.",
         status="",
         href="/symmetry/",
         disabled=False,
@@ -192,7 +192,7 @@ def page_shell(title: str, body: str, toc: str = "") -> str:
     {toc}
     <footer class="site-footer">
       Draft manuscript site. Structure, titles, and section order remain provisional.
-      <a href="{site_path('/animation-review/')}">Wave Symmetry code and frames</a>
+      <a href="{site_path('/animation-review/')}">Symmetry code and frames</a>
     </footer>
   </div>
   <div class="lightbox" data-lightbox aria-hidden="true">
@@ -237,7 +237,9 @@ def render_home() -> str:
     return page_shell("Contents", body)
 
 
-INLINE_LITERAL = re.compile(r"(?P<ticks>`+)(?P<code>.+?)(?P=ticks)(?!`)|\$[^$\n]+\$")
+INLINE_LITERAL = re.compile(
+    r"(?P<ticks>`+)(?P<code>.+?)(?P=ticks)(?!`)|\$[^$\n]+\$|\\\((?P<escaped_math>.*?)\\\)"
+)
 FOOTNOTE_DEFINITION = re.compile(r"^ {0,3}\[\^([^\]\s]+)\]:[ \t]*(.*)$")
 
 
@@ -365,6 +367,13 @@ def inline(text: str, footnotes: Footnotes | None = None) -> str:
             continue
         if literal and literal.group("ticks"):
             out.append(f'<code>{html.escape(literal.group("code"))}</code>')
+            continue
+        if literal and literal.group("escaped_math") is not None:
+            math = literal.group("escaped_math")
+            # Dollar-delimited terms inside escaped parentheses already mark
+            # their math. Otherwise normalize the alternate math delimiters.
+            out.append(inline(f"({math})", footnotes) if "$" in math
+                       else html.escape(f"${math}$"))
             continue
         if literal:
             out.append(html.escape(part))

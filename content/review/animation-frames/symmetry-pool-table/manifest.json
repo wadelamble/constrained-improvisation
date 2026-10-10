@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-pool-table.mp4",
+  "video_sha256": "60ac9f04ccefa11525471e6dc5bcced6497776b8f51b767f1c00ffbddfbbb4a6",
+  "duration_seconds": 14.0,
+  "fps": 30.0,
+  "frame_count": 420,
+  "width": 1600,
+  "height": 960,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "daade1c411a5d269f95bf6b4768b8d926750241d7b51dcb336187184c707b5e4"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 38,
+      "time_seconds": 1.266667,
+      "sha256": "acaea3d1b4980aa5b609f385251d899d131c92b64bd3889743e7c5f36a974c94"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 76,
+      "time_seconds": 2.533333,
+      "sha256": "36cce8fe53c605d404dbac55630c41e0288c1c926467d0fc23470511607f042b"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 114,
+      "time_seconds": 3.8,
+      "sha256": "17dd56a3f7f4c1096bd60adc602756685110c379544438fdc405f6bac49eb895"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 152,
+      "time_seconds": 5.066667,
+      "sha256": "66cc354c4306deee4aa72c4890bbbc6e45bc06ed0b7f7699f798fc477742c416"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 190,
+      "time_seconds": 6.333333,
+      "sha256": "29b589f8fc34ec412479fe45061aa66ffc1de1f936ce78a5f23604ffb5aef6a7"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 229,
+      "time_seconds": 7.633333,
+      "sha256": "589f015a378ef53c4bc10999a95a58dda4e8cf50a2ba5b681ef9cb91cb4646e7"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 267,
+      "time_seconds": 8.9,
+      "sha256": "0c2691b6c2c3ab9501a76334e57d187feef8b59d30191bfdf7fecd3821b684d0"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 305,
+      "time_seconds": 10.166667,
+      "sha256": "560ef28640435c03b062ee17290ac9a30453bff25e36a795fd6b141ddd6992c2"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 343,
+      "time_seconds": 11.433333,
+      "sha256": "ee7339fa8d57db279b0575566989cdb0d86a2ba812eab1fa6d426c508aea9a9c"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 381,
+      "time_seconds": 12.7,
+      "sha256": "cc4aa4b36fc4d121877da364335e8c3cc978220dd75c40dcade12cf5ed0d4d2e"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 419,
+      "time_seconds": 13.966667,
+      "sha256": "de2b6edd7c31efd5cdc366b386933b336e66cf7acb0bd503585fa32a3e5bbe64"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "7eadf769f15e8620cca4f3bdf1ba27ce08cc44437e2a3881462daf6a9ddb4a10"
+  }
+}

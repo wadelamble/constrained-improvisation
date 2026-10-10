@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-translation-point-linearity-failure.mp4",
+  "video_sha256": "8e71aef46dd223bb43ca609758f270c3867484b936e193b4f31d6cc60093123c",
+  "duration_seconds": 6.5,
+  "fps": 24.0,
+  "frame_count": 156,
+  "width": 1280,
+  "height": 720,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "76af039a9332e14342190847e7690a561485f16c24252c4633284215feeb96aa"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 14,
+      "time_seconds": 0.583333,
+      "sha256": "8b4911e30c8ad00273af6fc07a5d12f2b1cf752a9ca19e5bc631871a2d4200d7"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 28,
+      "time_seconds": 1.166667,
+      "sha256": "d4200851cdab50b8b8680aa252162ef41d82e765e5f17170c0750aad7aefabf7"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 42,
+      "time_seconds": 1.75,
+      "sha256": "02fbfc5ec30702ea1c957a07c51c33eb8b7363cd9a7608a6bf0dc20cbe165fb6"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 56,
+      "time_seconds": 2.333333,
+      "sha256": "9d48f721a6933e0419495e99f3ef511821722b51458da32d638c9d359f06197b"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 70,
+      "time_seconds": 2.916667,
+      "sha256": "767fb9fc17e80fa8ea9ca52e049fb3de70ba30553049341031421e87dd30ad87"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 85,
+      "time_seconds": 3.541667,
+      "sha256": "6f59324c08bb873be0ffab3c67cfbe499acd7b2987cfc030e9cba1a455af698a"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 99,
+      "time_seconds": 4.125,
+      "sha256": "d24b79fbb5341b20db720ad1e789d488fa65b4f8fdfcdebc3fdaa70c1d9aab79"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 113,
+      "time_seconds": 4.708333,
+      "sha256": "6836681d2f560f47c652d5148f7fbf0164131da2b10f986f7fb58cdabb3601a2"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 127,
+      "time_seconds": 5.291667,
+      "sha256": "a533a9455997c9e9f70caaacaa7bb78abcdb4aa8fad472fd10f70edd07b30119"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 141,
+      "time_seconds": 5.875,
+      "sha256": "15816a5e2846b0c15dc1a8a75f5bfbff30c62007ef02be0ffc153605d4881c00"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 155,
+      "time_seconds": 6.458333,
+      "sha256": "15816a5e2846b0c15dc1a8a75f5bfbff30c62007ef02be0ffc153605d4881c00"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "348b13818bc0e8a8a72226933ab55d3f2b2454cb8403197128aaa3980415c550"
+  }
+}

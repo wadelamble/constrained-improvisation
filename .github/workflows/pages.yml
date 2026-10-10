@@ -35,7 +35,7 @@ jobs:
           SITE_BASE_PATH: /constrained-improvisation
         run: python scripts/build_site.py
 
-      - name: Check Wave Symmetry review evidence
+      - name: Check Symmetry review evidence
         run: python scripts/check_animation_review.py --site site --base-path /constrained-improvisation
 
       - name: Upload site artifact
