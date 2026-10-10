@@ -836,7 +836,7 @@ The transformation from an amplitude over translation coordinate to amplitude ov
 Quantum mechanics uses the wave structure we have developed from symmetry. Extending the quantum description to the universe as a whole, some physicists propose a single universal wave function from which observations are, in a loose manner of speaking, sampled. We could apply the ideas of Fourier analysis to shamelessly indulge in mystical cosmology and argue that the structure, the harmony, of the endless complexity that unfolds in time is a single cosmic chord. Perhaps Pythagoras had something like this in mind when he (supposedly) said: "There is geometry in the humming of the strings. There is music in the spacings of the spheres.”
 
 ### The Heisenberg Symmetry Group
-We can understand Fourier analysis in terms of the full symmetry group that acts on wave functions, the Heisenberg group. This group's actions preserve the overlaps between states, and therefore their distinguishability. They do not in general preserve the behavior of those states as they evolve. In this sense, they are symmetries of state space, whether or not they are also dynamical symmetries of a particular system. This group not only underlies Fourier analysis, but in defining similarity and distinguishability of wave functions, supplies an essential ingredient for a logically viable notion of state.
+We can understand Fourier analysis in terms of the symmetry group that acts on wave functions, the Heisenberg group. This group's actions preserve the overlaps between states, and therefore their distinguishability. They do not in general preserve the behavior of those states as they evolve. In this sense, they are symmetries of state space, whether or not they are also dynamical symmetries of a particular system. This group not only underlies Fourier analysis, but in defining similarity and distinguishability of wave functions, supplies an essential ingredient for a logically viable notion of state.
 
 We can translate a wave function either in $x$-space or in $k$-space. While shifting the wave number isn't a translation in the familiar physical space we live in, from a mathematical perspective, $k$-space is the dual, or equivalent up to role reversal, of $x$-space. 
 
@@ -1211,13 +1211,13 @@ Let us now ask one more question. What happens to our tip-to-tail diagram of the
 \qquad 0\leq\theta<2\pi
 ```
 
-Away from a stationary path, the phase winds through many cycles over a small range of paths, leaving an effectively random phase remainder so that the contributions from these paths cancel, and only paths near the stationary path combine to contribute to the sum.
+Away from a stationary path, the phase winds through many cycles over a small range of paths, leaving an effectively random phase remainder so that contributions away from stationary paths largely cancel, while those near stationary paths dominate the sum.
 
 ![Three trials accumulate a quarter turn at the longer wavelength while the shorter wavelength produces many rotations](../../content/drafts/animations/symmetry-phase-remainder-spinners-run-3.png)
 
 [Open MP4: symmetry-phase-remainder-spinners.mp4](../../content/drafts/animations/symmetry-phase-remainder-spinners.mp4)
 
-In this limit, as waves pass through slits, they behave as rays, much as if you threw a ball from one point through a hole, it would only hit the projection screen in one spot.
+In this limit, waves passing through slits behave as rays. A narrow beam through one opening reaches a small region of the screen, much as a thrown ball does.
 
 Each path shares its color with its contribution to the tip-to-tail sum. As the wavelength shrinks, an increasingly narrow range of paths around the straight path carries the sum forward.
 
@@ -1244,7 +1244,7 @@ We could write the same relationship in the wave-number representation. In eithe
 
 To connect our wave description to mechanics, we need to relate phase to action.
 
-Action, the quantity extremized by a physically valid path, can be constructed from the structure of **spacetime**, as articulated in the theory of special relativity, which will be the topic of our next chapter. Crudely speaking, because the quantity to be extremized must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. This leads to the result that the action is, in free motion, for massive bodies, proportional to an invariant built from translations — the time elapsed along a path as measured in a body's rest frame — times a dual invariant built from position translation generators. The former quantity is called **proper time** while the latter is the body's **mass**.
+Action, the quantity extremized by a physically valid path, can be constructed from the structure of **spacetime**, as articulated in the theory of special relativity, which will be the topic of our next chapter. Crudely speaking, because the quantity to be extremized must be agreed upon by all observers, it is natural that it should be an invariant of symmetry actions on spacetime. This leads to the result that the action is, in free motion, for massive bodies, proportional to an invariant built from translations — the time elapsed along a path as measured in a body's rest frame — times a dual invariant built from time and space translation generators. The former quantity is called **proper time** while the latter is the body's **mass**.
 
 ```math
 S = -m\tau \qquad(c=1)
