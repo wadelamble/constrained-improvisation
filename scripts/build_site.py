@@ -52,8 +52,8 @@ class Article:
 
 ARTICLES = [
     Article("Symmetry", "symmetry", SYMMETRY_DRAFT),
-    Article("The Principle of Least Action", "path-mechanics", PATH_MECHANICS_DRAFT),
-    Article("State flow", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
+    Article("Variational Approaches", "path-mechanics", PATH_MECHANICS_DRAFT),
+    Article("State space", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
 ]
 
 ARTICLE_BY_SLUG = {article.slug: article for article in ARTICLES}
@@ -81,9 +81,9 @@ SECTIONS = [
         outline=["Galilean structure", "Relativistic structure"],
     ),
     Section(
-        "The Principle of Least Action",
+        "Variational Approaches",
         "path-mechanics",
-        "Evolution reducing surprise.",
+        "The Principle of Least Action",
         status="",
         href="/path-mechanics/",
         disabled=False,
@@ -94,18 +94,18 @@ SECTIONS = [
         "General Relativity and Gauge Fields.",
     ),
     Section(
-        "State flow",
+        "State space",
         "differential-mechanics",
-        "The evolution of ensembles.",
+        "The evolution of ensembles",
         status="",
         href="/differential-mechanics/",
         outline=["Evolution of ensembles", "Phase-space geometry", "Hamiltonian flows", "Poisson algebra"],
         disabled=False,
     ),
     Section(
-        "Zooming into the Stochastic",
+        "Quantum Mechanics",
         "zooming-into-the-stochastic",
-        "From paths to observations.",
+        "Shifting to an information perspective",
         outline=["State and measurement", "Operators", "Commutators", "Fields", "Quantization", "Particle interpretation"],
     ),
 ]
