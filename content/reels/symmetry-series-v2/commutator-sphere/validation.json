@@ -1,0 +1,18 @@
+{
+  "unit_sphere": "preserved",
+  "rotation_order": "verified",
+  "blue_minus_coral": "positive Jz",
+  "inset_geometry": "same camera, exact 1/theta\u00b2 magnification",
+  "reference_vector": "Jz v, translated only",
+  "limit_errors": [
+    0.5189924924241849,
+    0.27135261894162777,
+    0.1352104159142559,
+    0.06704400802971305,
+    0.013276857084651794,
+    0.0006620049602458139,
+    6.619089006651272e-05
+  ],
+  "duration": 54,
+  "fps": 30
+}

@@ -1,0 +1,600 @@
+﻿order,title,video,cover,caption_file,duration_seconds,caption_buffer_count,status,caption
+1,Symmetries of physical behavior,symmetry-01.mp4,symmetry-01-cover.jpg,gallery-captions/reel-01.txt,26,1951,offline review,"Symmetry to Waves · 1/27
+Symmetries of physical behavior
+
+Strike a pool ball with a cue, and the balls move in an expected way. Move the table over a few feet, and the balls move in recognizably the same way. Wait a few minutes, and the balls move in the same way. Turn the pool table a few degrees, and the balls still move the same way. Put the pool table on a train at constant velocity, and, again, the balls move in the same way. These are the manifest ‘symmetries’ of the world we live in — position and time translation, rotation, and velocity ‘boosts.’
+
+Our pool game illustrates what we mean by symmetries of physical behavior, but why should we start our story here? We will argue that symmetry constrains both the laws that govern physical evolution and the classification of the objects that undergo that evolution. The term ‘symmetry’ in this context may not at first glance seem like the same concept as, say, a triangle’s symmetry, but it precisely is, as we will see.
+
+The animation compares each transformed collision with the reference experiment. The positions on the screen change, and an observer moving relative to the table assigns different velocities, but the relation between the incoming and outgoing motion remains the same. That relation is what our account of the collision must preserve.
+
+We can move the table a few feet to the right or the observer a few feet to the left. When discussing invariants, quantities unchanged by a symmetry, we often think in terms of what observers agree on. We will start with the familiar world of discrete symmetries and build up the definitions we need from there. Then we will turn to continuous rotations and translations, where symmetry ideas meet calculus and waves arise naturally.
+
+Next: A triangle’s six symmetries
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+2,A triangle’s six symmetries,symmetry-02.mp4,symmetry-02-cover.jpg,gallery-captions/reel-02.txt,26,1885,offline review,"Symmetry to Waves · 2/27
+A triangle’s six symmetries
+
+We can see the obvious symmetry of an equilateral triangle. To categorize its symmetry, we can write down all the actions that leave it unchanged. We can do nothing, rotate 120°, rotate 240°, flip along an axis, flip then rotate 120°, and flip then rotate 240°. There are six actions, including the one in which we do nothing.
+
+‘Unchanged’ needs a little care here. The labeled vertices move, but the outline of the triangle returns to itself. A vertex may arrive where another vertex began. Keeping track of A, B, and C lets us distinguish actions that leave the same outline, including the action that leaves every vertex where it began. This do-nothing action is called the identity.
+
+The animation carries the vertices through each action and compares the result with the reference outline. A rotation through 100° would leave the triangle pointing somewhere else. The intermediate angles on the way to 120° are not additional triangle symmetries. The allowed rotations are discrete.
+
+We say the triangle belongs to the D₃ symmetry group. The group contains these six actions and the way they compose. Performing one allowed action and then another always gives an action already on the list. Two 120° rotations give a 240° rotation, and three return every vertex to its starting point. Performing the same flip twice does so too.
+
+We can plainly see the triangle’s symmetry, but we also have the beginnings of a mathematical description. Instead of treating each motion as an unrelated event, we can ask how actions combine, which action reverses another, and how to keep track of the labels through a sequence of moves.
+
+Next: D₃ is more general than triangles
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+3,D₃ is more general than triangles,symmetry-03.mp4,symmetry-03-cover.jpg,gallery-captions/reel-03.txt,22,1885,offline review,"Symmetry to Waves · 3/27
+D₃ is more general than triangles
+
+Any number of objects possess D₃ symmetry. We tend to think of a ‘triangle’s symmetry,’ not the symmetry of two rotations and flips about three axes, but this latter way of thinking in terms of symmetry groups is more general. The group describes the actions and how they compose, rather than the particular outline on which we first noticed them.
+
+The triangle, three circles, three petals, and three rounded bars in the animation have different outlines. Yet a 120° rotation returns each outline to itself, and so does a reflection along an appropriate axis. Each object realizes the same six actions. The rotation cycles three positions, and the reflection exchanges two while leaving the third in place.
+
+This is the definition of symmetry used in physics, where we ask not ‘what symmetry does this or that object have?’ but ‘what mathematical objects realize the actions of a symmetry group?’ The change in emphasis matters. Once we identify the group, we can study its structure without choosing one particular shape as the only object it can act on.
+
+For example, three successive 120° rotations return us to the identity whether the object is a triangle or three petals. The details of the drawing do not enter that rule. Nor do they enter the rule that repeating the same reflection restores the starting arrangement.
+
+We would like to write these actions in a form that can apply to more than a picture. Our next step is to let three positions carry labels or numerical values and describe how the symmetry moves them. The same group will then act on a vector, giving us a mathematical representation of the symmetry.
+
+Next: From vertices to a vector
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+4,From vertices to a vector,symmetry-04.mp4,symmetry-04-cover.jpg,gallery-captions/reel-04.txt,22,1941,offline review,"Symmetry to Waves · 4/27
+From vertices to a vector
+
+We can plainly see the symmetry of the triangle, but what if we want to write it down mathematically? Specifically, what if we want to write group actions in terms of how they transform labels on an object? Suppose we label our triangle’s vertices A, B, C and ask, if we rotate twice, flip once, then rotate again, where is vertex A sent?
+
+Recognizing that the triangle’s state has three ordered components, we might guess that we could represent it as a vector with three components. To construct this three-dimensional representation of D₃, we map the three vertices to the three entries of a column. The ordering tells us which vertex each entry describes.
+
+A way to think of this is to allow the triangle’s vertices to store some information, like a number or any numerical quantity. A state might then be written (1, 3, 5). We are recording the three stored values, not the horizontal and vertical coordinates of a point in the drawing. This is why a triangle drawn on a flat page can lead us to a three-dimensional vector space.
+
+A rotation permutes the entries in accordance with the motion of the vertices. In the convention we will use, a 120° rotation sends (1, 3, 5) to (5, 1, 3). A flip that fixes the first vertex exchanges the other two entries. These rules apply to any three values we choose.
+
+There is nothing special about the vertices here. We could just as easily have chosen the midpoints of the edges or any other triplet of points with the triangle’s symmetries. The same rule would permute the values attached to those positions. We have separated the information being transformed from the rule that transforms it, and that rule can be written as a matrix.
+
+Next: Representing symmetry with matrices
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+5,Representing symmetry with matrices,symmetry-05.mp4,symmetry-05-cover.jpg,gallery-captions/reel-05.txt,26,1926,offline review,"Symmetry to Waves · 5/27
+Representing symmetry with matrices
+
+A representation of a symmetry group is a vector space and a set of linear transformations that compose in the same way as the group actions. For our triangle, the vector stores three component values and the matrices permute them.
+
+The matrix R for a 120° rotation sends (a, b, c) to (c, a, b). The matrix S for a flip sends (a, b, c) to (a, c, b). For example,
+
+R(1, 3, 5) = (5, 1, 3),
+S(1, 3, 5) = (1, 5, 3).
+
+Applying R three times returns every component to its starting position. Applying S twice does the same. In matrix notation, R³ = I and S² = I, where I is the identity matrix. These are the same composition rules we found by turning and flipping the triangle.
+
+We can write the defining requirement for a representation as
+
+D(g₁g₂) = D(g₁)D(g₂).
+
+Here g₁ and g₂ are group actions, such as a rotation and a flip, and D(g) is the matrix representing action g. D itself is the map from symmetry actions to matrices. This says that the matrix for the composed action, g₂ followed by g₁, is the product of the matrices for the separate actions. The action on the right is applied first.
+
+The transformations are linear because permuting a sum of vectors gives the same result as permuting each vector and then adding. Multiplying every component by a number also commutes with the permutation. We can therefore use the same matrix for any values stored at the vertices.
+
+A set of actions from which all the others can be constructed is called a set of generators. One 120° rotation and one flip suffice for D₃. Composing them gives the remaining rotation and the other two flips. A small collection of matrices now describes every symmetry on our list.
+
+Next: D₃ in three dimensions
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+6,D₃ in three dimensions,symmetry-06.mp4,symmetry-06-cover.jpg,gallery-captions/reel-06.txt,30,1948,offline review,"Symmetry to Waves · 6/27
+D₃ in three dimensions
+
+Permutations that correspond to rotations of the triangle are 120° rotations about a diagonal axis in our three-dimensional vector space. Those that correspond to flips are reflections in planes that contain the diagonal axis. The matrices do more than rearrange a list of numbers. Their action has a geometry we can draw.
+
+Each axis in this picture records one component value. A state (a, b, c) is a point in this space, and the vector from the origin to that point is the state vector. Cycling the entries sends the point to (c, a, b). Repeating the action traces a three-point orbit around the diagonal where all three components are equal.
+
+Every vector on that diagonal has the form (q, q, q). Permuting its entries does nothing, so the entire axis stays fixed. This is the axis about which the rotation matrix turns the rest of the space. The trace joins the starting state to the states reached by the allowed 120° turns. Only the endpoints are discrete group actions.
+
+The flip keeps one component and exchanges the other two. If the exchanged values already agree, the state does not move. These fixed states form a plane containing the equal-components diagonal. States away from the plane are reflected across it.
+
+Now we can notice something about these visualizations. All transformed versions of a given vector lie in one plane perpendicular to the diagonal, and these orbit planes are parallel to one another. Permuting components preserves their sum, so it also preserves their average. The position of an orbit plane along the diagonal records this common part. We can subtract it without changing the permutation structure, leaving the part on which the symmetry acts nontrivially.
+
+Next: Separating the common part
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+7,Separating the common part,symmetry-07.mp4,symmetry-07-cover.jpg,gallery-captions/reel-07.txt,27,2097,offline review,"Symmetry to Waves · 7/27
+Separating the common part
+
+The transformed versions of any vector lie in a plane, and all such planes are parallel to one another. If we subtract the average of a vector’s components from each component, we move the point where that plane intersects the axis of rotation to the origin and preserve the permutation structure of the transformations.
+
+For our earlier vector, the average of the components is 3. We can separate it into a common part and a zero-sum part.
+
+(1, 3, 5) = (3, 3, 3) + (−2, 0, 2).
+
+The common part lies on the rotation axis and is unchanged by every permutation. The zero-sum part lies in a plane through the origin. Although written with three components, it needs only two independent numbers, since the third must make their sum zero. The three stacked orbits in the animation move into this same plane when their common parts are removed.
+
+A way to think of this is to allow the triangle’s vertices to store some information. If the value they store is the same for all vertices, the symmetry actions have no effect. If the values differ, the actions permute those differences in a two-dimensional space.
+
+The three-dimensional representation decomposes into two subspaces, one one-dimensional and the other two-dimensional. Each stays within itself under every group action. Neither contains a smaller nonzero subspace preserved by every action. These are called irreducible representations, or irreps for short.
+
+This is admittedly heavy math. Why do we bother? In the story we have to tell of quantum physics, constituents of matter must abide the dynamical symmetry of nature. Particle types correspond to irreducible representations of the relevant symmetry, and particular states live in those representations. Separating a representation into its irreducible parts will help us classify the objects whose behavior symmetry constrains.
+
+Next: What a symmetry preserves
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+8,What a symmetry preserves,symmetry-08.mp4,symmetry-08-cover.jpg,gallery-captions/reel-08.txt,24,2059,offline review,"Symmetry to Waves · 8/27
+What a symmetry preserves
+
+Once we have chosen a representation for a symmetry, we might well ask, how do we know our transformations preserve the symmetry? If we look at a triangle and rotate by 100°, we can see that it does not overlay itself. In a representation, we need mathematical expressions that say ‘this transformation left the triangle the same.’ We call these the invariants of the transformation.
+
+In our two-dimensional representation of D₃, a symmetry action cannot change these expressions in the coordinates of an arbitrary vector:
+
+r² = x² + y²,
+u = x³ − 3xy² = r³ cos(3θ).
+
+Here r is the vector’s length and θ its angle from the reference axis. The first expression gives its squared length. The second records the threefold structure of its orientation. A 120° turn adds 360° inside cos(3θ), and a flip across the x-axis changes θ to −θ. Both leave u unchanged.
+
+The values agree before and after each allowed action. Intermediate angles during a turn are not themselves triangle symmetries, so the cubic expression varies until the turn is complete. Length alone would allow every rotation. The cubic expression distinguishes the triangle’s discrete symmetry from the continuous symmetry of a circle.
+
+These exact invariants are not the important part. What matters is that we can write an expression in coordinates that must not change under a symmetry transformation.
+
+Why should we care? A system’s characteristic physical behavior can be found by assigning a number to each possible history and using variational calculus to find a history at which that number is stationary. A minimum or maximum is an example. Symmetry constrains this description of the possible histories. The ‘sameness’ of our pool game will acquire a mathematical meaning through quantities on which differently situated observers agree.
+
+Next: Continuous symmetries
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+9,Continuous symmetries,symmetry-09.mp4,symmetry-09-cover.jpg,gallery-captions/reel-09.txt,24,1967,offline review,"Symmetry to Waves · 9/27
+Continuous symmetries
+
+What rotations return a circle to itself? All of them! Similarly, all translations return a line to itself. The symmetries of space and time are continuous and can therefore be represented as transformations that depend on continuously varying parameters.
+
+The animation turns a marked circle against fixed reference marks. The full circle overlays itself at every angle, while the moving marks let us follow the transformation. The growing arc records how far it has turned. The same distinction applies to the line. Its marks move as it slides, but the unmarked mathematical line still occupies the same set of points. The frame shows only a finite window of that line.
+
+For the triangle, rotations that return the outline to itself are separated by 120°. For the circle there is no smallest positive angle. If we can rotate by 1°, we can rotate by half a degree or a hundredth of a degree. A continuously varying angle describes a whole family of transformations. Translation distance plays the corresponding role for the line.
+
+As we saw in D₃, we can build any action from a combination of elemental rotations and flips. Now let us ask what the generator of a continuous transformation should be. Suppose we want to rotate a circle by 10°. We could compose ten 1° rotations. But what if we want to rotate by 1°? We can see where this is going. The generators must describe infinitesimal rotations.
+
+Calculus gives us a way to make that thought precise. We can take the derivative of a transformation with respect to its parameter, at the point where no transformation has yet occurred. This gives a local rule for change. The remaining task is to see how that rule determines a finite transformation.
+
+Next: A tangent to the space of transformations
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+10,A tangent to the space of transformations,symmetry-10.mp4,symmetry-10-cover.jpg,gallery-captions/reel-10.txt,24,2023,offline review,"Symmetry to Waves · 10/27
+A tangent to the space of transformations
+
+If we zoom in enough, a smooth curved surface appears flat. At a point on the surface, a tangent plane describes its first-order behavior. The surface may bend away as we move farther from the point, but sufficiently small displacements can be described by vectors in that plane.
+
+The picture gives us a way to think about a continuous symmetry. Imagine each point on a smooth space represents a transformation. Nearby points represent slightly different transformations. A tangent vector then describes an infinitesimal change in the transformation, just as a tangent to a curve describes an infinitesimal change along it.
+
+The two arrows shown in the tangent plane are independent. One cannot be obtained by simply multiplying the other by a number, but their linear combinations describe every tangent direction in this plane. This is the sense in which independent generators supply the local directions available to a symmetry. The plane is an illustration of a two-dimensional space, not a claim that every symmetry has two generators.
+
+For rotations in a plane, we need only one parameter, the angle, so there is only one independent infinitesimal direction. To find its generator, we differentiate the rotation with respect to that angle at the identity, the transformation that does nothing.
+
+A derivative is familiar as the slope of a function. Here the object being differentiated is a transformation, which we can write as a matrix. Its derivative will also be a matrix. Acting on a state, that generator will produce the tangent to the state’s path. The tangent in transformation space and the tangent to a moving state are connected by this action. We can then use the same local rule repeatedly to recover the finite rotation.
+
+Next: From an infinitesimal rotation to a turn
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+11,From an infinitesimal rotation to a turn,symmetry-11.mp4,symmetry-11-cover.jpg,gallery-captions/reel-11.txt,26,1921,offline review,"Symmetry to Waves · 11/27
+From an infinitesimal rotation to a turn
+
+In the two-dimensional representation of rotations, a single variable, θ, parameterizes the operator matrix R(θ). To obtain one matrix representing an infinitesimal nudge, we differentiate R with respect to θ and evaluate the derivative at θ = 0, where R(0) = I is the identity transformation.
+
+This gives the generator
+
+J = [[0, −1], [1, 0]].
+
+The two bracketed pairs are the rows of the matrix. Applied to v = (x, y), J gives (−y, x). At the point (1, 0), it produces the tangent vector (0, 1). J acts on any point on a circle centered at the origin to produce the tangent vector at that point. Putting this into calculus notation,
+
+dv/dθ = Jv.
+
+We now have a differential equation for the transformation that uses the generator. We found it by starting with a known transformation and deducing its generator. But we can just as well go in the opposite direction. Given this differential equation, we can find the transformation:
+
+v(θ) = exp(θJ)v(0).
+
+The exponential of a matrix is defined in terms of the Taylor expansion for an exponential. Here exp(θJ) means I + θJ + θ²J²/2! + θ³J³/3! + ⋯. Since J² = −I, its even powers alternate between I and −I, while its odd powers alternate between J and −J. Collecting the terms gives the familiar series for cosine and sine:
+
+exp(θJ) = cos(θ)I + sin(θ)J = R(θ).
+
+This is an exponential map. It takes the infinitesimal generator J and returns the finite symmetry transformation R(θ). Exponential maps give what one would think is the familiar purely algebraic quality of exponentiation a rich geometric interpretation. The tangent rule contains enough information to reconstruct the whole turn.
+
+Next: From a tangent rule to a flow
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+12,From a tangent rule to a flow,symmetry-12.mp4,symmetry-12-cover.jpg,gallery-captions/reel-12.txt,30,1996,offline review,"Symmetry to Waves · 12/27
+From a tangent rule to a flow
+
+We can think of a symmetry transform as a ‘uniform looking’ vector field. Here we ask not what happens when the transformation is applied to a single set of starting conditions, but what the transformation does to all starting conditions. This view lends itself to seeing the structure in the evolution of a collection of nearby states.
+
+For rotation, the generator J sends the point (x, y) to the tangent vector (−y, x). We first draw that vector at one point, then apply the same rule throughout the plane. The resulting arrows form a vector field. Each arrow says how the state at that position changes when the angle increases by an infinitesimal amount.
+
+Releasing the colored points lets us see the flow generated by this field. At each point along a trail, the motion follows the local tangent. The direction changes continuously, carrying the state around a circle. Farther from the origin, the tangent arrows are longer because the same change in angle sweeps out a greater distance. The origin remains fixed.
+
+Every starting point obeys the same differential equation,
+
+dv/dθ = Jv,
+
+and its finite transformation is v(θ) = exp(θJ)v(0). The different arrow directions do not represent different generators. They are the result of one generator acting on different states.
+
+Following nearby points together shows more than following a single point. Their whole arrangement turns, and the trails reveal the family of circular paths across the plane. This is the geometric content of the transformation acting on its entire representation space. The parameter here is the angle θ. The animation unfolds a rotation as that parameter changes, so its playback need not describe the physical motion of objects through time.
+
+Next: Rotation preserves lengths and angles
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+13,Rotation preserves lengths and angles,symmetry-13.mp4,symmetry-13-cover.jpg,gallery-captions/reel-13.txt,25,1987,offline review,"Symmetry to Waves · 13/27
+Rotation preserves lengths and angles
+
+What is the invariant of rotation in this representation? It is just the length of vectors and the angles between them. The two arrows turn together, so their directions change while their relationship does not. The length of one arrow’s projection onto the other remains the same.
+
+These relationships are expressed by a single invariant, the dot product. If u and v are vectors in the plane,
+
+u · v = uₓvₓ + uᵧvᵧ = |u||v| cos θ.
+
+Here uₓ and uᵧ are the components of u, and similarly for v. The vertical bars mean length, and θ is the angle between the arrows. Rotating both changes the individual component values but leaves the sum uₓvₓ + uᵧvᵧ unchanged.
+
+Taking the dot product of a vector with itself gives its squared length, u · u = |u|². Taking the dot product of two different vectors tells us their angle once their lengths are known. One mathematical relationship therefore accounts for both the lengths and the angle preserved in the animation.
+
+An invariant of this sort, that fixes some notion of placing reliable rulers on the space, is a metric. We can use these rulers to compare vectors before and after a transformation, even though their coordinate values have changed. For an ordinary rotation, this is intuitive. Turning two arrows together does not stretch them or alter their angle.
+
+A symmetry may preserve a less intuitive metric. The expression serving as our ruler need not be the familiar sum of squares. If we replace x² + y² by t² − x², we obtain a different geometry and a different kind of rotation. The ordinary separation between points can then change while the quantity defined by this new ruler stays fixed. This will lead us toward the geometry of spacetime.
+
+Next: A different invariant under hyperbolic rotation
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+14,A different invariant under hyperbolic rotation,symmetry-14.mp4,symmetry-14-cover.jpg,gallery-captions/reel-14.txt,28,1970,offline review,"Symmetry to Waves · 14/27
+A different invariant under hyperbolic rotation
+
+If we define invariant length not as x² + y² but as t² − x², we have a hyperbolic rotation. Separation between points can stretch out without bound as the rotation approaches its asymptotes, leaving the invariant interval unchanged even though the separation appears to grow using our everyday notion of distance.
+
+Here we choose units in which the speed of light is 1, so time t and position x can appear on the same plot. The transformation is
+
+t′ = t cosh η + x sinh η,
+x′ = x cosh η + t sinh η.
+
+The parameter η plays a role similar to the angle in ordinary rotation. The functions cosh and sinh are the hyperbolic counterparts of cosine and sine. Their identity cosh²η − sinh²η = 1 ensures that t′² − x′² = t² − x². The point follows a hyperbola instead of a circle.
+
+The animation follows two points and the segment between them. Each point keeps its own interval from the origin. Because both undergo the same linear transformation, their coordinate differences do too. If Δt and Δx are the differences between their time and position coordinates, then
+
+Δt′² − Δx′² = Δt² − Δx².
+
+The ordinary length of the connecting segment changes, but its hyperbolic interval remains fixed. The new ruler gives a different answer from the familiar sum of squares, and the symmetry preserves precisely that new answer.
+
+Such a hyperbolic metric encodes the asymptotic limit of light speed in relativistic spacetime. Different inertial observers assign different times and positions to events while agreeing on their spacetime interval. The diagonal asymptotes are the light-speed directions. We are introducing the geometry here, with its physical meaning to be developed in the next chapter.
+
+Next: The order of rotations matters
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+15,The order of rotations matters,symmetry-15.mp4,symmetry-15-cover.jpg,gallery-captions/reel-15.txt,27,2115,offline review,"Symmetry to Waves · 15/27
+The order of rotations matters
+
+When several independent transformations can be composed, their order may produce different resultant states. In the three-dimensional rotation group, called SO(3), rotating about the x-axis then the y-axis leaves a marked sphere in a different state than applying the same actions in the opposite order.
+
+This order-dependence is expressed by the commutator, [X, Y] = XY − YX. For the infinitesimal rotation generators,
+
+[Jₓ, Jᵧ] = J_z,
+[Jᵧ, J_z] = Jₓ,
+[J_z, Jₓ] = Jᵧ.
+
+The commutator supplies another generator. For small rotation parameters a and b, combining two rotations into one exponential gives
+
+exp(aJₓ)exp(bJᵧ) = exp(aJₓ + bJᵧ + ½abJ_z + ⋯).
+
+We cannot simply add the exponents as we could for ordinary numbers. The first correction records the difference between the orders. On a sphere, short motions along perpendicular surface directions likewise leave a residual rotation when composed and undone in the same order. For a sphere of radius R, this effect scales as its curvature, 1/R², and shrinks as the sphere flattens.
+
+The generators, their linear combinations, and their commutators form a Lie algebra. It captures the group’s local structure, while global features such as wrapping around onto itself require more information. Every representation must preserve this commutator structure.
+
+Lie algebra also provides a way to find invariants. An operator built from generators that commutes with every generator is called a Casimir operator. For rotations, writing the angular-momentum generators as Lₓ, Lᵧ, and L_z gives L² = Lₓ² + Lᵧ² + L_z². It commutes with all three. The magnitude of angular momentum is independent of the direction of the axis. The fixed values such operators take in irreducible representations help classify particle types, returning us to symmetry’s role in specifying both objects and their behavior.
+
+Next: What the commutator measures
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+16,What the commutator measures,commutator-sphere/commutator-sphere.mp4,commutator-sphere/poster.jpg,gallery-captions/reel-16.txt,54,2038,offline review,"Symmetry to Waves · 16/27
+What the commutator measures
+
+Rotations about different axes depend on their order. Turning a vector about x and then y generally leaves it in a different state from performing the same rotations in reverse. Making the angles smaller brings the two results closer, but the difference has a structure we can isolate.
+
+Let Rₓ(a) and Rᵧ(b) rotate through small angles a and b. Applied to a vector v, the two orders agree through first order in the angles. Their leading difference is proportional to the product ab. The animation magnifies that difference by dividing by ab, so it remains visible as both angles shrink:
+
+(Rₓ(a)Rᵧ(b) − Rᵧ(b)Rₓ(a))v / (ab) → J_zv.
+
+The matrices act from right to left. Here Jₓ, Jᵧ, and J_z are the real generators of right-handed rotations. J_zv is the infinitesimal change in v produced by rotation about z. It points along the motion of the vector’s tip, rather than along the rotation axis. The magnified difference approaches this change as the angles tend to zero. At finite angles, it still contains higher-order contributions.
+
+This limiting relation is expressed by the commutator:
+
+[Jₓ, Jᵧ] = JₓJᵧ − JᵧJₓ = J_z.
+
+Cycling through the axes gives
+
+[Jᵧ, J_z] = Jₓ,
+[J_z, Jₓ] = Jᵧ.
+
+The commutator supplies another generator. Together, the generators, their linear combinations, and their commutators form a Lie algebra. For three-dimensional rotations, these relations describe how the three independent directions of infinitesimal motion fit together.
+
+The Lie algebra captures the symmetry group’s local structure. Global features, such as how the group wraps around onto itself, require more information. Every representation of the symmetry must preserve the commutator relations, giving us a way to test whether a proposed representation has the right structure.
+
+Next: Building a Casimir operator
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+17,Building a Casimir operator,casimir-stepwise/casimir-stepwise.mp4,casimir-stepwise/poster.jpg,gallery-captions/reel-17.txt,66,1991,offline review,"Symmetry to Waves · 17/27
+Building a Casimir operator
+
+A Casimir operator is built from symmetry generators and commutes with every generator. For rotations, the sum of the squared angular-momentum generators has this property:
+
+L² = Lₓ² + Lᵧ² + L_z².
+
+Writing Lᵢ = iℏJᵢ lets us express the same operator without its factor of ℏ²:
+
+C = −(Jₓ² + Jᵧ² + J_z²) = L²/ℏ².
+
+The animation follows this construction in the ordinary three-dimensional vector representation. Here v is a vector on which rotation matrices act, and Jₓ, Jᵧ, and J_z generate infinitesimal rotations about the three coordinate axes. Squaring a generator means applying it twice.
+
+In this representation, −Jₓ² removes the x component of v and retains its y and z components. The other two terms do the corresponding operations for their own axes:
+
+−Jₓ²v = (0, vᵧ, v_z),
+−Jᵧ²v = (vₓ, 0, v_z),
+−J_z²v = (vₓ, vᵧ, 0).
+
+The three colored arrows show these output vectors. Bringing them tip to tail adds the contributions. Every component of v appears twice, so their sum is exactly 2v.
+
+As v turns, the individual contributions change. Their sum continues to point along v with twice its length. The operator therefore acts as multiplication by 2 throughout this representation, C = 2I. This also makes its commutation with rotations visible: rotating v preserves the relation Cv = 2v.
+
+The value 2 belongs to this particular representation. In other irreducible representations, Casimir operators can take different fixed values. Their eigenvalues supply labels that help classify representations and, in physics, the particle states those representations describe. The same construction extends beyond rotations. A Casimir built from spacetime translation generators, for example, determines invariant mass.
+
+Next: Why translating points is not linear
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+18,Why translating points is not linear,symmetry-16.mp4,symmetry-16-cover.jpg,gallery-captions/reel-18.txt,28,1974,offline review,"Symmetry to Waves · 18/27
+Why translating points is not linear
+
+Translation is, to the eye, the simplest possible symmetry. It would be natural to think the ideal representation space for a translation is simply a one-dimensional vector space, where points move by sliding a number line. But there is a problem.
+
+If an operation moves x by some amount a, then 0 is moved to a. A linear transformation must leave the zero vector fixed. This is a special case of the rule for linearity: a linear operation must preserve addition and multiplication by numbers. Adding two vectors and then transforming must give the same result as transforming each vector and then adding.
+
+For translation of points, the candidate operation is Tₐ(x) = x + a. Compare the two orders in the animation. First add 2 and 3 to get 5, then translate by 10 to get 15. In the other order, translate each number first. The 2 becomes 12 and the 3 becomes 13. Adding them gives 25.
+
+T₁₀(2 + 3) = 15,
+T₁₀(2) + T₁₀(3) = 25.
+
+One procedure adds the displacement once, while the other adds it twice. In general,
+
+Tₐ(x₁ + x₂) = x₁ + x₂ + a,
+Tₐ(x₁) + Tₐ(x₂) = x₁ + x₂ + 2a.
+
+These are not equal unless a = 0. Translation does act sensibly on a number line, but it is not a linear operation when acting on this space. We cannot obtain the representation we want by treating the point coordinate itself as the state vector.
+
+This asks us to reconsider what should be transformed. Our triangle representation worked by putting information at vertices and permuting the stored values. We can do something similar on the number line. A function assigns a value to each input coordinate, and we can translate that whole assignment. On the space of functions, translation will preserve linear combinations.
+
+Next: Translating functions is linear
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+19,Translating functions is linear,symmetry-17.mp4,symmetry-17-cover.jpg,gallery-captions/reel-19.txt,28,2052,offline review,"Symmetry to Waves · 19/27
+Translating functions is linear
+
+The space of functions on a number line does form a linear representation of translation. Instead of translating the point x, we translate a function by shifting its argument:
+
+(Tₐf)(x) = f(x − a).
+
+Now the state is the whole function f, and Tₐ is an operator on the vector space of functions. An operator plays the role of a matrix. We can think of a function as an infinite-dimensional vector, with input coordinates labeling the components and function values giving the component values.
+
+Linearity works because function addition is pointwise. At each x, the value of f + g is f(x) + g(x). Translating this sum gives
+
+Tₐ(f + g)(x) = (f + g)(x − a)
+= f(x − a) + g(x − a).
+
+That is exactly what we obtain by translating f and g separately and then adding them. The animation performs both procedures. In the upper panel, the functions are added before the result moves. In the lower panel, they move before being added. Both give the same final curve.
+
+Multiplying a function by a number also commutes with translation. Shifting 3f gives the same result as shifting f and multiplying every resulting value by 3. The zero function remains the zero function, since its value is zero wherever we sample it. Translation therefore preserves all linear combinations.
+
+This representation is completely analogous to our three-dimensional representation of D₃. There a vertex contained a component value, here an input coordinate does. The D₃ representation is itself a function representation whose domain contains only three members.
+
+The minus sign in f(x − a) means that positive a moves the graph to the right. The new value at x comes from the earlier coordinate x − a. It is the function’s location that changes, while the coordinate at which we inspect it stays fixed.
+
+Next: Translation preserves a function’s shape
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+20,Translation preserves a function’s shape,symmetry-18.mp4,symmetry-18-cover.jpg,gallery-captions/reel-20.txt,24,1958,offline review,"Symmetry to Waves · 20/27
+Translation preserves a function’s shape
+
+Translational symmetry needs an object to translate, just as D₃ symmetry needs a triangly thing to transform. We can think of the function as a shape. A translation moves that shape while preserving the relationships among its features.
+
+The rule is (Tₐf)(x) = f(x − a). Every peak, dip, and zero crossing moves by the same amount a. A feature that was at x₀ appears at x₀ + a because the new function there has value f(x₀ + a − a) = f(x₀). Its height is unchanged, and the spacing between any two features is unchanged.
+
+The animation compares this with a motion that also deforms the function. The faint earlier curves let us compare the shapes at different locations. In the translation-only case, sliding the old curve into the new position makes them coincide. In the other case, the moving curve also changes shape, so one common displacement no longer brings the curves into agreement.
+
+This describes how the function transforms. Whether the physical system it describes behaves the same way after translation is a separate question. In our pool-table example, we asked whether moving the experiment changes the relationship between incoming and outgoing motion. Writing down an operator that shifts a function tells us how to move its description. A symmetry of the physical system requires its law of evolution to respect that shift.
+
+Keeping these ideas distinct will matter as the function becomes our representation of a state. We already know how a finite translation acts on it. We now want the infinitesimal generator, the local rule that produces a translation when accumulated over a finite displacement. For a smooth function, that rule will come from its slope.
+
+Next: The derivative generates translation
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+21,The derivative generates translation,symmetry-19.mp4,symmetry-19-cover.jpg,gallery-captions/reel-21.txt,26,2024,offline review,"Symmetry to Waves · 21/27
+The derivative generates translation
+
+We have a function representation. Now we want to find an infinitesimal generator that acts on functions to produce a translation. We can do so by considering what happens to a function’s value under tiny displacements.
+
+The new value f(x − a) is close to the old value f(x), and the correction is given, in the infinitesimal limit, by the slope at x. This is the same idea that a smooth curve appears straight when we zoom in sufficiently. The tangent line supplies the first approximation to the shifted value.
+
+f(x − a) = f(x) − a f′(x) + O(a²).
+
+This is the first-order Taylor expansion. The symbol f′ means the derivative, and O(a²) collects corrections of second order and higher in the displacement. As a approaches zero, these corrections become smaller relative to the first-order change. The animation compares the curve and tangent while magnifying the region between x and x − a.
+
+A positive a moves the whole graph to the right. At the fixed coordinate x, the translated function takes its value from x − a. If the function slopes upward there, this earlier value is lower. That gives the minus sign in the first-order change.
+
+The derivative operation therefore generates translation, with the sign fixed by our chosen direction. In the notation we will use for waves,
+
+K = −i d/dx,
+Tₐ = exp(−iaK).
+
+Here i is the imaginary unit, defined by i² = −1. The exponent −iaK equals −a d/dx, so the finite action remains (Tₐf)(x) = f(x − a).
+
+For rotation, the generator gave a tangent vector at each state. Here it gives the change in the function’s values as its graph shifts. Exponentiating the generator assembles those infinitesimal changes into a finite translation. We have again recovered a whole transformation from a local differential rule.
+
+Next: Finding an eigenbasis
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+22,Finding an eigenbasis,symmetry-20.mp4,symmetry-20-cover.jpg,gallery-captions/reel-22.txt,25,2132,offline review,"Symmetry to Waves · 22/27
+Finding an eigenbasis
+
+Imagine a rubber sheet. We pull on its corners. What does this do to the x- and y-axes? It rotates their images toward each other while stretching them. Now instead choose diagonal axes aligned with the stretch. The long axis is stretched but not rotated and the short axis is compressed but not rotated.
+
+The action on these directions is now simple scalar multiplication of the original vector. ‘Scalar’ here means a single number. An arrow may grow or shrink, but its transformed version still lies along the same line.
+
+The animation shows the same deformation with two choices of basis. A basis is a set of independent vectors from which every vector in the space can be built by addition and scaling. In the ordinary x,y basis, the transformed basis vectors point in new directions, so each needs components along both original axes. The transformation mixes those components.
+
+In the diagonal basis, each basis vector changes only by an overall factor. If s is the factor stretching the long direction, the short direction is scaled by 1/s. These reciprocal factors preserve the area in this example. Finding the special directions makes the transformation easier to describe.
+
+Now for a bunch of terminology. These natural basis vectors are the eigenvectors. The values by which a transformation scales them are the eigenvalues, and the basis they form is called an eigenbasis. Since the transformation matrix is diagonal in this basis, the procedure for finding it is called diagonalization.
+
+Choosing the basis does not change the deformation of the sheet. It changes how we describe that deformation. Once the basis vectors no longer mix, any other vector, which is a linear combination of them, transforms by having its components scaled independently. We can therefore understand an arbitrary vector’s transformation by separating it into these simpler parts.
+
+Next: A vector as a sum of eigencomponents
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+23,A vector as a sum of eigencomponents,symmetry-21.mp4,symmetry-21-cover.jpg,gallery-captions/reel-23.txt,26,2020,offline review,"Symmetry to Waves · 23/27
+A vector as a sum of eigencomponents
+
+Once the basis vectors no longer mix, any other vector, that is, any linear combination of the basis vectors, transforms by having its components scaled independently. We can see this by separating an arbitrary arrow into parts along the two diagonal directions of our stretched sheet.
+
+Call the unit vectors in those directions eᵤ and eᵥ. A vector r with components u and v is
+
+r = u eᵤ + v eᵥ.
+
+The animation places the two component arrows tip to tail. Their sum is the original arrow. The transformation stretches eᵤ by a factor s and compresses eᵥ by 1/s. Because the transformation is linear, we can transform the two component arrows separately and add the results:
+
+r′ = su eᵤ + (v/s)eᵥ.
+
+The transformed components recombine into the same final arrow we would obtain by applying the transformation directly to r. Nothing has been lost by resolving it into the special directions. Each component simply receives the scale factor associated with its own eigenvector.
+
+In this basis, the matrix has rows [s, 0] and [0, 1/s]. Only its diagonal entries are nonzero. The zeros say that the u component contributes nothing to the new v component, and the v component contributes nothing to the new u component. In the ordinary x,y basis, both new components depend on both old ones.
+
+This is the usefulness of an eigenbasis. A transformation that mixes the original coordinates becomes a set of independent scalings. When our vectors are functions, we call the corresponding special vectors eigenfunctions. The same question then applies to the derivative operator that generates translation: which functions does it return unchanged except for multiplication by a number? Solving that problem will take us directly to exponentials.
+
+Next: Translation eigenfunctions are exponentials
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+24,Translation eigenfunctions are exponentials,translation-eigenfunctions/symmetry-24.mp4,translation-eigenfunctions/symmetry-24-cover.jpg,gallery-captions/reel-24.txt,26,2147,offline review,"Symmetry to Waves · 24/27
+Translation eigenfunctions are exponentials
+
+Since a function is an infinite-dimensional vector, and the generator d/dx plays the role of a matrix, we can solve an eigenvalue equation here too. It now takes the form of a differential equation:
+
+df/dx = λf.
+
+We are looking for a function whose derivative returns the same function, scaled by a single number. The solution is f(x) = Ce^(λx), since differentiating gives Cλe^(λx). Here C is a constant and λ is the eigenvalue of d/dx.
+
+A finite translation also returns a multiple of the same function:
+
+f(x − a) = e^(−λa)f(x).
+
+The multiplier differs from the derivative’s eigenvalue, but the eigenfunction is the same. One fixed multiplier relates the translated and original curves at every position x.
+
+We now have a potential way to represent a state using exponential functions. There is an additional condition when symmetry must preserve the relationship between states. Their overlap, the function-space counterpart of the dot product, must remain unchanged. This property is known as unitarity. It preserves the lengths and relative relationships of the state vectors.
+
+For a translation eigenfunction, the multiplying factor must then have magnitude one. Real nonzero λ makes e^(−λa) grow or shrink. Choosing λ = ik, with real k, instead gives e^(−ika), which has magnitude one. The eigenfunction becomes Ce^(ikx), with eigenvalue k for K = −i d/dx. Translation changes its phase, the angle of its complex value, without changing its magnitude.
+
+A sum of these waves translates by changing the component phases while preserving their magnitudes. When translation is a symmetry of the dynamics, its distribution over generator eigenvalues is conserved. This is the structure behind momentum and energy conservation. Momentum will be associated with wave number, and energy with frequency. First, we need to see why a complex exponential describes a wave.
+
+Next: A complex number as a vector
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+25,A complex number as a vector,symmetry-23.mp4,symmetry-23-cover.jpg,gallery-captions/reel-25.txt,24,1895,offline review,"Symmetry to Waves · 25/27
+A complex number as a vector
+
+A complex number has two real-number degrees of freedom. We define z = x + iy, where x and y are real numbers and i² = −1. The number z therefore maps to a vector (x, y) in the complex plane. The horizontal axis records the real part x, and the vertical axis records the imaginary part y.
+
+The diagram builds z from these two parts. An arrow along the real axis supplies x. An arrow along the imaginary direction supplies iy. Placing them tip to tail gives the resultant z, just as adding the two coordinate components of an ordinary vector gives the whole vector.
+
+The word ‘imaginary’ names a part of the number system. It does not prevent us from drawing this part or calculating its effect. Both x and y are real coordinate values, and together they specify one complex number. One complex dimension therefore has the same number of real degrees of freedom as a two-dimensional real plane.
+
+This answers a question raised by complex exponentials. How can a single number i play the role of the two-by-two matrix J that generated rotations? A complex number has enough components for the same geometry. Multiplication by i acts on them as
+
+iz = i(x + iy) = −y + ix.
+
+The corresponding real-vector operation sends (x, y) to (−y, x), exactly the action of J. Applying it twice gives −z, just as J² = −I reverses a real vector.
+
+We have repackaged the rotation generator in complex notation. This makes it possible to describe a turn by complex multiplication, and an oscillating wave by a complex exponential. Before adding position and time, we can follow the action at one point and recover the circle from its tangent rule.
+
+Next: Multiplication by i gives a tangent
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+26,Multiplication by i gives a tangent,symmetry-24.mp4,symmetry-24-cover.jpg,gallery-captions/reel-26.txt,24,1986,offline review,"Symmetry to Waves · 26/27
+Multiplication by i gives a tangent
+
+What action does multiplication by i have at the identity vector 1? The point 1 = 1 + 0i lies on the positive real axis. Multiplying by i gives i = 0 + 1i, a perpendicular vector. Draw that vector at the tip of the original one and it gives the tangent to the unit circle.
+
+This is exactly the action the J matrix generator had in two dimensions. More generally, if z = x + iy, then iz = −y + ix. The vector iz is perpendicular to z and has the same length. Anchored at the tip of z, it supplies the tangent to the circle through that point.
+
+Since multiplication by i produces the tangent vector at every point, and the tangent vector is the geometric version of the derivative, we have
+
+dz/dθ = iz(θ).
+
+With z(0) = 1, solving this differential equation gives z(θ) = e^(iθ). The parameter θ is the angle. At each point along the circle, the derivative supplies the direction and rate of change needed to continue the turn. The multiplication by i gives the tangent rule, while exponentiating it gives the finite rotation.
+
+Halfway around the unit circle, θ = π and e^(iπ) = −1. Mapping z back to its real and imaginary coordinates gives Euler’s formula,
+
+e^(iθ) = cos θ + i sin θ.
+
+The real coordinate oscillates as cosine and the imaginary coordinate as sine. Their combination has length one throughout the turn, because cos²θ + sin²θ = 1. Multiplying by an amplitude A gives a circle of radius A.
+
+Engineers often represent real sinusoidal waves with complex exponentials and read off the real part, since exponentials simplify the algebra. We now have the geometry behind that practice. Letting the angle vary with position and time will turn this circular motion into a travelling complex wave.
+
+Next: A complex exponential is a travelling wave
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"
+27,A complex exponential is a travelling wave,symmetry-25.mp4,symmetry-25-cover.jpg,gallery-captions/reel-27.txt,30,2066,offline review,"Symmetry to Waves · 27/27
+A complex exponential is a travelling wave
+
+Now let us turn from circular motion to a travelling complex wave. Let the phase vary with position x and time t:
+
+θ(x,t) = kx − ωt,
+z(x,t) = Ae^(i(kx − ωt)).
+
+Here A is the wave’s amplitude, λ is its wavelength, k = 2π/λ is its wave number, and ω sets how quickly the phase changes with time. The phase is the angle of the complex value. Increasing x by one wavelength increases that angle by 2π, one complete turn.
+
+In the animation, position runs along the helix. The other two directions show the real and imaginary parts of the complex value at each position. As time advances, these values rotate and the wave pattern travels along x. The highlighted coordinate stays fixed while its complex value turns in the accompanying circle.
+
+The helix is a picture of a complex-valued function. Its transverse directions record two components of the value at each x. The synchronized curves show those components separately:
+
+Re z = A cos(kx − ωt),
+Im z = A sin(kx − ωt).
+
+Their values oscillate, while the length of the complex value stays fixed at A. A crest of the real component occurs at a fixed phase. As t increases, x must increase to keep kx − ωt constant, so the pattern travels in the positive x direction for the positive k and ω shown.
+
+Translating the wave multiplies it by a phase factor:
+
+z(x − a,t) = e^(−ika)z(x,t).
+
+The eigenvalue e^(−ika) has magnitude one. It turns each complex value without stretching it, the phase-only scaling allowed by unitarity.
+
+We arrived here by asking how to represent translation on functions, finding the derivative as its generator, and seeking functions that return as multiples of themselves. Requiring the symmetry to preserve overlap brought us to complex exponentials. The circular geometry of those exponentials now gives us waves.
+
+Continue with Waves to Quanta
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics"

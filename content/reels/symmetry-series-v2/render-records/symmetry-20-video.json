@@ -1,0 +1,25 @@
+{
+  "order": 20,
+  "title": "Finding an eigenbasis",
+  "screen_text": [
+    "Ordinary basis",
+    "Eigenbasis",
+    "a=\\frac{s+s^{-1}}{2},\\qquad b=\\frac{s-s^{-1}}{2}",
+    "s = [value]",
+    "x",
+    "y",
+    "u",
+    "v",
+    "x′",
+    "y′",
+    "s u",
+    "s⁻¹ v",
+    "x'=ax+by,\\qquad y'=bx+ay",
+    "u'=su,\\qquad v'=s^{-1}v"
+  ],
+  "visual_sha256": "3a2d69b48b89ac8f4ff09a9005c41a429510f826da93b24b3b765d17ca7fd17c",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 25
+}

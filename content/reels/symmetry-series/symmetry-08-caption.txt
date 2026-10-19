@@ -1,0 +1,23 @@
+Symmetry to Waves · 8/16
+Seeing the whole symmetry flow
+
+We can think of a symmetry transform as a “uniform looking” vector field. Here we ask not what happens when the transformation is applied to a single set of starting conditions, but what the transformation does to all starting conditions. This view lends itself to seeing the structure in the evolution of a collection of nearby states.
+
+For rotation, the generator J acts on any point to produce its tangent vector. At (x, y), that vector is (−y, x). Placing one of these arrows at each point gives the field in the animation. Each arrow tells us how the state at that position changes when we increase the angle by an infinitesimal amount.
+
+The same equation governs every starting point.
+
+dv/dθ = Jv.
+
+As θ increases, the points follow circles centered at the origin. Points farther from the origin travel farther for the same change of angle, so their tangent arrows are longer. The origin stays fixed. These different arrows all express one rotation generator acting on different states.
+
+We found the generator by starting with a known transformation, but we can go in the opposite direction. The finite transformation is
+
+v(θ) = exp(θJ)v(0).
+
+Applying it to a collection of starting points lets us watch the whole collection turn. A single trajectory shows where one state goes. Following nearby states together shows how the transformation acts across the space of states. The parameter in this picture is the rotation angle, so the motion on screen is the symmetry transformation unfolding as that angle changes.
+
+Next: Rotation preserves lengths and angles
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

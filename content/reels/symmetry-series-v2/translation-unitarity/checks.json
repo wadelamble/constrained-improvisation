@@ -1,0 +1,8 @@
+{
+  "samples": 193,
+  "max_inner_product_error": 1.2412670766236366e-16,
+  "real_inner_product": [
+    0.57,
+    2.4057966156880344
+  ]
+}

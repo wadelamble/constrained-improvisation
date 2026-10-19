@@ -1,0 +1,18 @@
+{
+  "order": 11,
+  "title": "From an infinitesimal rotation to a turn",
+  "screen_text": [
+    "Infinitesimal rotation",
+    "State",
+    "Tangent",
+    "\\frac{d\\mathbf{v}}{d\\theta}=J\\mathbf{v}",
+    "J^2=-I",
+    "e^{\\theta J}=\\cos\\theta\\,I+\\sin\\theta\\,J",
+    "R(\\theta)=e^{\\theta J}"
+  ],
+  "visual_sha256": "c4f9eee252029c7a48fd35ed1128ca7799bfff7ce45cbac0d82c97aa84b162d9",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 26
+}

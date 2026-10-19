@@ -1,0 +1,19 @@
+{
+  "order": 5,
+  "title": "Representing symmetry with matrices",
+  "screen_text": [
+    "Matrices act on component values",
+    "Rotation",
+    "Reflection",
+    "Before",
+    "After",
+    "D(g_1g_2)=D(g_1)D(g_2)",
+    "R^3=I",
+    "S^2=I"
+  ],
+  "visual_sha256": "3bff043a8173fb0c91868646d22be35333d204206c560b571af0c70884888646",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 26
+}

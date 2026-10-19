@@ -1,0 +1,15 @@
+Symmetry to Waves · 1/16
+The same game
+
+Strike a pool ball with a cue, and the balls move in an expected way. Move the table over a few feet, and the balls move in recognizably the same way. Wait a few minutes, and the balls move in the same way. Turn the pool table a few degrees, and the balls still move the same way. Put the pool table on a train at constant velocity, and, again, the balls move in the same way. These are the manifest “symmetries” of the world we live in — position and time translation, rotation, and velocity “boosts.”
+
+The animation repeats the same collision under each transformation. The positions on the screen change, and a moving observer may describe different velocities, but the relation between the incoming and outgoing motion remains the same. This is what we mean by symmetries of physical behavior.
+
+Our pool game illustrates the idea, but why should we start our story here? We will argue that symmetry constrains both the laws that govern physical evolution and the classification of the objects that undergo that evolution. The term “symmetry” in this context may not at first glance seem like the same concept as, say, a triangle’s symmetry, but it precisely is, as we will see.
+
+We can also move the table a few feet to the right or the observer a few feet to the left. When discussing invariants, we often think in terms of what observers agree on. The task is to say mathematically what is preserved when we make these changes of perspective. We will start with the familiar world of discrete symmetries and build up the definitions we need from there.
+
+Next: A triangle’s six symmetries
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

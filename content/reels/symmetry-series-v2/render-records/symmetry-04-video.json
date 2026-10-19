@@ -1,0 +1,16 @@
+{
+  "order": 4,
+  "title": "From vertices to a vector",
+  "screen_text": [
+    "Vertex labels",
+    "Ordered components",
+    "A",
+    "B",
+    "C"
+  ],
+  "visual_sha256": "dbb6fbb2478e384930bb13404b0af004a6b881e61534008f59ebc53523c448fc",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 22
+}

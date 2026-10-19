@@ -1,0 +1,17 @@
+Symmetry to Waves · 9/27
+Continuous symmetries
+
+What rotations return a circle to itself? All of them! Similarly, all translations return a line to itself. The symmetries of space and time are continuous and can therefore be represented as transformations that depend on continuously varying parameters.
+
+The animation turns a marked circle against fixed reference marks. The full circle overlays itself at every angle, while the moving marks let us follow the transformation. The growing arc records how far it has turned. The same distinction applies to the line. Its marks move as it slides, but the unmarked mathematical line still occupies the same set of points. The frame shows only a finite window of that line.
+
+For the triangle, rotations that return the outline to itself are separated by 120°. For the circle there is no smallest positive angle. If we can rotate by 1°, we can rotate by half a degree or a hundredth of a degree. A continuously varying angle describes a whole family of transformations. Translation distance plays the corresponding role for the line.
+
+As we saw in D₃, we can build any action from a combination of elemental rotations and flips. Now let us ask what the generator of a continuous transformation should be. Suppose we want to rotate a circle by 10°. We could compose ten 1° rotations. But what if we want to rotate by 1°? We can see where this is going. The generators must describe infinitesimal rotations.
+
+Calculus gives us a way to make that thought precise. We can take the derivative of a transformation with respect to its parameter, at the point where no transformation has yet occurred. This gives a local rule for change. The remaining task is to see how that rule determines a finite transformation.
+
+Next: A tangent to the space of transformations
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

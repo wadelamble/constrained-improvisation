@@ -1,0 +1,93 @@
+{
+  "render_key": {
+    "source": "268f49200bed89507ad67c9c9a08e914eea4ee02fe3a71bbdad214ccc32a3e15",
+    "overlay": "34f236eeb08fad0d387fce5664b7b613b638647a2791341c427aa862c0007cb4",
+    "encoder": "overlay-v1-crf18"
+  },
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "audio_codec": "aac",
+    "fps": 30.0,
+    "source_size": [
+      1080,
+      1920
+    ],
+    "size": [
+      1080,
+      1920
+    ],
+    "rotate": 0,
+    "duration": 30.0
+  },
+  "title_layout": {
+    "size": 54,
+    "lines": [
+      "3 dimensional representation of",
+      "the D₃ group"
+    ],
+    "boxes": [
+      [
+        70,
+        287,
+        880,
+        340
+      ],
+      [
+        70,
+        349,
+        398,
+        402
+      ]
+    ]
+  },
+  "cover_title_layout": {
+    "size": 56,
+    "lines": [
+      "3 dimensional representation of",
+      "the D₃ group"
+    ],
+    "boxes": [
+      [
+        90,
+        544,
+        930,
+        599
+      ],
+      [
+        90,
+        608,
+        430,
+        663
+      ]
+    ]
+  },
+  "cover_time_seconds": 28.2,
+  "audio_render_key": {
+    "bed": {
+      "source_sha256": "cbf51c94e44b8c110a3c833f618290543db744b1926edba00a7167ea2c209c7d",
+      "duration_seconds": 776.0,
+      "gain_db": -4.0,
+      "crossfade_seconds": 2.0,
+      "sample_rate": 48000,
+      "version": 2
+    },
+    "video_stream": "SHA256=71e0db68f66305b21620161aff63dc639460e9ab2a289d1c15f8045344c611f5",
+    "start": 122.0,
+    "duration": 30.0,
+    "fade_in": 1.5,
+    "fade_out": 2,
+    "codec": "aac-192k-v1"
+  },
+  "audio_video_sha256": "b3892db12ded4c229b68f2010d8d6924284ac3dbe4235d0b4ecb824785d9fe72",
+  "audio_validation": {
+    "video_stream_unchanged": true,
+    "audio_codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "decoded_duration_seconds": 30.016,
+    "peak_dbfs": -12.769027379839121,
+    "rms_dbfs": -33.844186355883906
+  }
+}

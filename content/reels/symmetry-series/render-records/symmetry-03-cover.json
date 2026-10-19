@@ -1,0 +1,19 @@
+{
+  "order": 3,
+  "title": "Writing symmetry as matrices",
+  "screen_text": [
+    "Matrices act on component values",
+    "Rotation",
+    "Reflection",
+    "Before",
+    "After",
+    "D(g_1g_2)=D(g_1)D(g_2)",
+    "R^3=I",
+    "S^2=I"
+  ],
+  "visual_sha256": "47fbd13f6465e5618ddd36b6ecaba5dbe95bba1518c3b6746d0252bde17e5795",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

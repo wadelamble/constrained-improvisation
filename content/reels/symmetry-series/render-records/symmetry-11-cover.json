@@ -1,0 +1,19 @@
+{
+  "order": 11,
+  "title": "The order of rotations matters",
+  "screen_text": [
+    "Same rotations, different order",
+    "R_yR_x\\ne R_xR_y",
+    "R_x\\;\\longrightarrow\\;R_y",
+    "R_y\\;\\longrightarrow\\;R_x",
+    "x",
+    "y",
+    "z",
+    "[J_x,J_y]=J_z"
+  ],
+  "visual_sha256": "30a63040751e198d7fde7b1c75f343e4303e7b21e6231bb020552d8154fbc363",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

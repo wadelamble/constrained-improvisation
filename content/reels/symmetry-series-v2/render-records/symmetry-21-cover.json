@@ -1,0 +1,27 @@
+{
+  "order": 21,
+  "title": "A vector as a sum of eigencomponents",
+  "screen_text": [
+    "Resolve the vector into its components",
+    "Scale each component independently",
+    "\\mathbf{r}_{\\mathrm{in}}=u\\hat{\\mathbf{u}}+v\\hat{\\mathbf{v}}",
+    "s",
+    "u",
+    "v",
+    "u component",
+    "v component",
+    "Result",
+    "\\mathbf{r}_{\\mathrm{in}}",
+    "\\mathbf{r}",
+    "\\mathbf{r}=su\\hat{\\mathbf{u}}+s^{-1}v\\hat{\\mathbf{v}}",
+    "\\mathbf{r}=",
+    "s",
+    "s^{-1}",
+    "0"
+  ],
+  "visual_sha256": "d690c72c302e4fe22c0fd7fe6d5c78d01849093976539db8b0f80bd3878878e0",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 26
+}

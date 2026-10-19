@@ -1,0 +1,17 @@
+Symmetry to Waves · 20/27
+Translation preserves a function’s shape
+
+Translational symmetry needs an object to translate, just as D₃ symmetry needs a triangly thing to transform. We can think of the function as a shape. A translation moves that shape while preserving the relationships among its features.
+
+The rule is (Tₐf)(x) = f(x − a). Every peak, dip, and zero crossing moves by the same amount a. A feature that was at x₀ appears at x₀ + a because the new function there has value f(x₀ + a − a) = f(x₀). Its height is unchanged, and the spacing between any two features is unchanged.
+
+The animation compares this with a motion that also deforms the function. The faint earlier curves let us compare the shapes at different locations. In the translation-only case, sliding the old curve into the new position makes them coincide. In the other case, the moving curve also changes shape, so one common displacement no longer brings the curves into agreement.
+
+This describes how the function transforms. Whether the physical system it describes behaves the same way after translation is a separate question. In our pool-table example, we asked whether moving the experiment changes the relationship between incoming and outgoing motion. Writing down an operator that shifts a function tells us how to move its description. A symmetry of the physical system requires its law of evolution to respect that shift.
+
+Keeping these ideas distinct will matter as the function becomes our representation of a state. We already know how a finite translation acts on it. We now want the infinitesimal generator, the local rule that produces a translation when accumulated over a finite displacement. For a smooth function, that rule will come from its slope.
+
+Next: The derivative generates translation
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

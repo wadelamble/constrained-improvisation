@@ -1,0 +1,35 @@
+{
+  "order": 24,
+  "title": "Translation eigenfunctions are exponentials",
+  "duration": 26,
+  "on_screen_text": [
+    "Blue is the exponential. Gold is its derivative.",
+    "Halve every height of a copy. Watch it meet the gold derivative.",
+    "The scaled copy matches the derivative at every x.",
+    "Now slide a copy to the right. Its shape stays the same.",
+    "Keep the translated curve in place.",
+    "Scale a fresh copy of the original vertically.",
+    "It matches the translated curve at every x. A shift is also a rescaling.",
+    "\\frac{df}{dx}=\\lambda f,\\qquad f(x)=e^{\\lambda x}",
+    "λ = 0.50",
+    "f",
+    "f'=\\lambda f",
+    "f(x-a)=e^{-\\lambda a}f(x)",
+    "x"
+  ],
+  "screen_text": [
+    "Blue is the exponential. Gold is its derivative.",
+    "Halve every height of a copy. Watch it meet the gold derivative.",
+    "The scaled copy matches the derivative at every x.",
+    "Now slide a copy to the right. Its shape stays the same.",
+    "Keep the translated curve in place.",
+    "Scale a fresh copy of the original vertically.",
+    "It matches the translated curve at every x. A shift is also a rescaling.",
+    "\\frac{df}{dx}=\\lambda f,\\qquad f(x)=e^{\\lambda x}",
+    "λ = 0.50",
+    "f",
+    "f'=\\lambda f",
+    "f(x-a)=e^{-\\lambda a}f(x)",
+    "x"
+  ]
+}

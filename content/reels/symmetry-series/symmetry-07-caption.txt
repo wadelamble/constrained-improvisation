@@ -1,0 +1,27 @@
+Symmetry to Waves · 7/16
+From a nudge to a rotation
+
+In the two-dimensional representation of rotations, we have a single variable, θ, that parameterizes the operator matrix R(θ). We can take the derivative of this matrix-valued function. To obtain a single matrix representing the infinitesimal nudge, we evaluate the derivative at θ = 0, where R(0) = I is the identity transformation.
+
+This gives the infinitesimal generator
+
+J = [[0, −1], [1, 0]].
+
+Applied to a vector v = (x, y), J gives (−y, x). At the point (1, 0), it produces the tangent vector (0, 1). J acts on any point on the circle to produce the tangent vector at that point. Putting this into calculus notation,
+
+dv/dθ = Jv.
+
+We now have a differential equation for the transformation that uses the generator. We found this by starting with a known transformation and deducing its generator. But we can just as well go in the opposite direction. Given this differential equation, we can find the transformation.
+
+v(θ) = exp(θJ)v(0).
+
+The exponential of a matrix is defined in terms of the Taylor expansion for an exponential. Since J² = −I, its even powers alternate between I and −I, while its odd powers alternate between J and −J. Collecting them gives the familiar series for cosine and sine.
+
+exp(θJ) = cos(θ)I + sin(θ)J = R(θ).
+
+The animation follows the vector around its circle while J supplies the tangent direction at each point. This is an exponential map. It takes the infinitesimal generator J and returns the finite symmetry transformation R(θ). Exponential maps give what one would think is the familiar purely algebraic quality of exponentiation a rich geometric interpretation.
+
+Next: Seeing the whole symmetry flow
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

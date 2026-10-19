@@ -1,0 +1,26 @@
+Symmetry to Waves · 19/27
+Translating functions is linear
+
+The space of functions on a number line does form a linear representation of translation. Instead of translating the point x, we translate a function by shifting its argument:
+
+(Tₐf)(x) = f(x − a).
+
+Now the state is the whole function f, and Tₐ is an operator on the vector space of functions. An operator plays the role of a matrix. We can think of a function as an infinite-dimensional vector, with input coordinates labeling the components and function values giving the component values.
+
+Linearity works because function addition is pointwise. At each x, the value of f + g is f(x) + g(x). Translating this sum gives
+
+Tₐ(f + g)(x) = (f + g)(x − a)
+= f(x − a) + g(x − a).
+
+That is exactly what we obtain by translating f and g separately and then adding them. The animation performs both procedures. In the upper panel, the functions are added before the result moves. In the lower panel, they move before being added. Both give the same final curve.
+
+Multiplying a function by a number also commutes with translation. Shifting 3f gives the same result as shifting f and multiplying every resulting value by 3. The zero function remains the zero function, since its value is zero wherever we sample it. Translation therefore preserves all linear combinations.
+
+This representation is completely analogous to our three-dimensional representation of D₃. There a vertex contained a component value, here an input coordinate does. The D₃ representation is itself a function representation whose domain contains only three members.
+
+The minus sign in f(x − a) means that positive a moves the graph to the right. The new value at x comes from the earlier coordinate x − a. It is the function’s location that changes, while the coordinate at which we inspect it stays fixed.
+
+Next: Translation preserves a function’s shape
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

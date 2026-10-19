@@ -1,0 +1,23 @@
+{
+  "status": "mixed",
+  "title": "String Quartet No. 5, movement I",
+  "artist": "Philip Glass · Kronos Quartet",
+  "recording_title": "String Quartet No. 5: I. — Kronos Quartet Performs Philip Glass",
+  "source_url": "https://kronosquartet.bandcamp.com/track/string-quartet-no-5-i",
+  "local_source": ".tools/reel-audio/kronos-glass-quartet-5-movement-1.mp3",
+  "target_lufs": -28.0,
+  "loop_crossfade_seconds": 2.0,
+  "baked_into_exports": true,
+  "source_sha256": "cbf51c94e44b8c110a3c833f618290543db744b1926edba00a7167ea2c209c7d",
+  "source_duration_seconds": 71.0,
+  "gain_db": -4.0,
+  "source_lufs": -24.0,
+  "source_true_peak_dbfs": -7.51,
+  "fade_in_seconds": 1.5,
+  "fade_out_seconds": 2,
+  "excerpt_policy": "Consecutive passages with 2-second crossfades at recording loops and gentle fades on each reel",
+  "audio_codec": "AAC",
+  "audio_bitrate_kbps": 192,
+  "sample_rate": 48000,
+  "mode": "embedded soundtrack"
+}

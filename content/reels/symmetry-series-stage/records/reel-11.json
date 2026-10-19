@@ -1,0 +1,93 @@
+{
+  "render_key": {
+    "source": "1954fd735289abf6f5ab125b70f2294a6e0d7d01cda5692abde643d5fa3fbb41",
+    "overlay": "70dc2cad4aac9f8f7734967d8e4b04c148e1687ce12470ed995b1abe527b7497",
+    "encoder": "overlay-v1-crf18"
+  },
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "audio_codec": "aac",
+    "fps": 30.0,
+    "source_size": [
+      1080,
+      1920
+    ],
+    "size": [
+      1080,
+      1920
+    ],
+    "rotate": 0,
+    "duration": 26.0
+  },
+  "title_layout": {
+    "size": 54,
+    "lines": [
+      "The exponential map of SO₂",
+      "rotations"
+    ],
+    "boxes": [
+      [
+        70,
+        287,
+        782,
+        340
+      ],
+      [
+        70,
+        349,
+        300,
+        390
+      ]
+    ]
+  },
+  "cover_title_layout": {
+    "size": 56,
+    "lines": [
+      "The exponential map of SO₂",
+      "rotations"
+    ],
+    "boxes": [
+      [
+        90,
+        544,
+        826,
+        599
+      ],
+      [
+        90,
+        608,
+        329,
+        650
+      ]
+    ]
+  },
+  "cover_time_seconds": 24.439999999999998,
+  "audio_render_key": {
+    "bed": {
+      "source_sha256": "cbf51c94e44b8c110a3c833f618290543db744b1926edba00a7167ea2c209c7d",
+      "duration_seconds": 776.0,
+      "gain_db": -4.0,
+      "crossfade_seconds": 2.0,
+      "sample_rate": 48000,
+      "version": 2
+    },
+    "video_stream": "SHA256=b7cedea1eeac4185522a1070abfd5e242716560d919c6efe827b81c809f89d5b",
+    "start": 251.0,
+    "duration": 26.0,
+    "fade_in": 1.5,
+    "fade_out": 2,
+    "codec": "aac-192k-v1"
+  },
+  "audio_video_sha256": "dd0b5aebc8ef36529edb65d2a6a368d3518977633518f607c250ab57b3e955a3",
+  "audio_validation": {
+    "video_stream_unchanged": true,
+    "audio_codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "decoded_duration_seconds": 26.005333333333333,
+    "peak_dbfs": -11.491291937246118,
+    "rms_dbfs": -30.70104947695782
+  }
+}

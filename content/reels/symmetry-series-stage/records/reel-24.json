@@ -1,0 +1,93 @@
+{
+  "render_key": {
+    "source": "96c39021480cb224a9493522a98bfb24726b7341f2501e0700e5d31513896e15",
+    "overlay": "33da65861895c68ad551fd23c7d5021e320bbd8f4c4c49c372e07be6178bd11f",
+    "encoder": "overlay-v1-crf18"
+  },
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "audio_codec": "aac",
+    "fps": 30.0,
+    "source_size": [
+      1080,
+      1920
+    ],
+    "size": [
+      1080,
+      1920
+    ],
+    "rotate": 0,
+    "duration": 32.0
+  },
+  "title_layout": {
+    "size": 51,
+    "lines": [
+      "Translation of complex exponentials",
+      "preserves the inner product"
+    ],
+    "boxes": [
+      [
+        70,
+        286,
+        945,
+        337
+      ],
+      [
+        70,
+        345,
+        734,
+        395
+      ]
+    ]
+  },
+  "cover_title_layout": {
+    "size": 50,
+    "lines": [
+      "Translation of complex exponentials",
+      "preserves the inner product"
+    ],
+    "boxes": [
+      [
+        90,
+        541,
+        946,
+        591
+      ],
+      [
+        90,
+        597,
+        738,
+        647
+      ]
+    ]
+  },
+  "cover_time_seconds": 30.08,
+  "audio_render_key": {
+    "bed": {
+      "source_sha256": "cbf51c94e44b8c110a3c833f618290543db744b1926edba00a7167ea2c209c7d",
+      "duration_seconds": 776.0,
+      "gain_db": -4.0,
+      "crossfade_seconds": 2.0,
+      "sample_rate": 48000,
+      "version": 2
+    },
+    "video_stream": "SHA256=29d18c77b863f204b22f2bbb8548b34b9b1ec47855d8a8d40319c0c0800c2988",
+    "start": 666.0,
+    "duration": 32.0,
+    "fade_in": 1.5,
+    "fade_out": 2,
+    "codec": "aac-192k-v1"
+  },
+  "audio_video_sha256": "cdafb13ae144de7de7521b6f7a3f0d954f72941e78940f3e614dc044caed6b3e",
+  "audio_validation": {
+    "video_stream_unchanged": true,
+    "audio_codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "decoded_duration_seconds": 32.0,
+    "peak_dbfs": -11.67041950697405,
+    "rms_dbfs": -31.37704757319744
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "order": 2,
+  "title": "A triangle’s six symmetries",
+  "screen_text": [
+    "Discrete symmetry actions",
+    "Identity",
+    "120° rotation",
+    "240° rotation",
+    "Reflection",
+    "Reflection + 120°",
+    "Reflection + 240°",
+    "D_3=\\{e,r,r^2,s,rs,r^2s\\}",
+    "r^3=e",
+    "s^2=e",
+    "D₃ is more general than triangles"
+  ],
+  "visual_sha256": "7cbcd3e902058fbe0c88e2890bd2438fb56ab05c101dcfa9f8a02fcedc373cb5",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 26
+}

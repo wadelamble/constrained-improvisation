@@ -1,0 +1,17 @@
+Symmetry to Waves · 6/16
+From discrete to continuous
+
+What rotations return a circle to itself? All of them! Similarly, all translations return a line to itself. The symmetries of space and time are continuous and can therefore be represented as transformations that depend on continuously varying parameters.
+
+The animation lets the rotation angle and the translation distance vary smoothly. A marked point on the circle moves, but the circle returns to itself at every angle. A marked point on the line moves as the line is translated, but the line itself remains the same. As with the labels on our triangle, the marks let us follow an action whose effect on the unmarked object would otherwise be invisible.
+
+For the triangle, the angles that return it to itself are separated by 120°. For the circle, there is no smallest nonzero angle on the list. If we can rotate by 1°, we can rotate by half a degree or a hundredth of a degree. The transformation depends on a parameter that we can vary by an arbitrarily small amount.
+
+As we saw in the D₃ symmetry group, we can build any action from a combination of the elemental actions of rotations and flips about an axis. Now let us ask the question, what is the generator of a continuous transformation? Let’s say we want to rotate a circle by 10°. We could compose ten 1° rotations. But what if we want to rotate by 1°? We can see where this is going. The generators must be infinitesimal rotations.
+
+This is where symmetry ideas meet calculus. We will take the derivative of a transformation with respect to its parameter and use that infinitesimal change to recover the finite transformation.
+
+Next: From a nudge to a rotation
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

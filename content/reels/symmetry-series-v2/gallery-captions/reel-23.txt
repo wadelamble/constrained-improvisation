@@ -1,0 +1,23 @@
+Symmetry to Waves · 23/27
+A vector as a sum of eigencomponents
+
+Once the basis vectors no longer mix, any other vector, that is, any linear combination of the basis vectors, transforms by having its components scaled independently. We can see this by separating an arbitrary arrow into parts along the two diagonal directions of our stretched sheet.
+
+Call the unit vectors in those directions eᵤ and eᵥ. A vector r with components u and v is
+
+r = u eᵤ + v eᵥ.
+
+The animation places the two component arrows tip to tail. Their sum is the original arrow. The transformation stretches eᵤ by a factor s and compresses eᵥ by 1/s. Because the transformation is linear, we can transform the two component arrows separately and add the results:
+
+r′ = su eᵤ + (v/s)eᵥ.
+
+The transformed components recombine into the same final arrow we would obtain by applying the transformation directly to r. Nothing has been lost by resolving it into the special directions. Each component simply receives the scale factor associated with its own eigenvector.
+
+In this basis, the matrix has rows [s, 0] and [0, 1/s]. Only its diagonal entries are nonzero. The zeros say that the u component contributes nothing to the new v component, and the v component contributes nothing to the new u component. In the ordinary x,y basis, both new components depend on both old ones.
+
+This is the usefulness of an eigenbasis. A transformation that mixes the original coordinates becomes a set of independent scalings. When our vectors are functions, we call the corresponding special vectors eigenfunctions. The same question then applies to the derivative operator that generates translation: which functions does it return unchanged except for multiplication by a number? Solving that problem will take us directly to exponentials.
+
+Next: Translation eigenfunctions are exponentials
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

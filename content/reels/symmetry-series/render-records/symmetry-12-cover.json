@@ -1,0 +1,23 @@
+{
+  "order": 12,
+  "title": "Translations act linearly on functions",
+  "screen_text": [
+    "Translating points",
+    "Translating functions",
+    "T_a(x)=x+a",
+    "a = [value]",
+    "T_a(2+3)=5+a",
+    "T_a(2)+T_a(3)=5+2a",
+    "T_a(u+v)\\ne T_a(u)+T_a(v)\\quad(a\\ne0)",
+    "T_a(f+g)=T_af+T_ag",
+    "(f+g)(x-a)",
+    "f(x-a)+g(x-a)",
+    "(T_af)(x)=f(x-a),\\qquad T_a0=0",
+    "x"
+  ],
+  "visual_sha256": "c851a47341c8ad99d915d4093ff3ea7e498ff32b06f33495fed4639f092d599b",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 27
+}

@@ -1,0 +1,25 @@
+Symmetry to Waves · 17/27
+Building a Casimir operator
+
+Just as symmetry transformations preserve an invariant expression built from the state, they also preserve an invariant operator built from the symmetry's generators. A Casimir operator is built from generators and commutes with every generator. Within an irreducible representation, it rescales every vector by the same amount. In direct analogy to the way the squared length of a vector is invariant under rotations, the sum of squared rotation generators has an invariant scaling action:
+
+C = −(Jₓ² + Jᵧ² + J_z²).
+
+The animation uses the ordinary three-dimensional vector representation. Here rotation matrices act on v, and Jₓ, Jᵧ, and J_z generate infinitesimal rotations about the three coordinate axes. Squaring a generator means applying it twice.
+
+In this representation, −Jₓ² removes the x component of v and retains its y and z components. The other two terms do the corresponding operations for their own axes:
+
+−Jₓ²v = (0, vᵧ, v_z),
+−Jᵧ²v = (vₓ, 0, v_z),
+−J_z²v = (vₓ, vᵧ, 0).
+
+The three colored arrows show these output vectors. Bringing them tip to tail adds the contributions. Every component of v appears twice, so their sum is exactly 2v.
+
+As v turns, the individual contributions change. Their sum continues to point along v with twice its length. The operator therefore acts as multiplication by 2 throughout this representation, C = 2I. This also makes its commutation with rotations visible: rotating v preserves the relation Cv = 2v.
+
+The value 2 belongs to this particular representation. In other irreducible representations, Casimir operators can take different fixed values. Their scale factors, or eigenvalues, help label the irreps. For massive particles, mass and spin label irreps of spacetime symmetry. The same construction extends beyond rotations. A Casimir built from spacetime translation generators, for example, determines invariant mass.
+
+Next: Translations cannot be represented by position coordinates alone
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

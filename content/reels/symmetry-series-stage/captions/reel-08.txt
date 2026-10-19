@@ -1,0 +1,23 @@
+Symmetry to Waves · 8/27
+Invariants
+
+Once we have chosen a representation for a symmetry, we might well ask, how do we know our transformations preserve the symmetry? If we look at a triangle and rotate by 100°, we can see that it does not overlay itself. In a representation, we need mathematical expressions that say 
+"this transformation left the triangle the same." We call these the invariants of the transformation.
+
+In our two-dimensional representation of D₃, a symmetry action cannot change these expressions in the coordinates of an arbitrary vector:
+
+r² = x² + y²,
+u = x³ − 3xy² = r³ cos(3θ).
+
+Here r is the vector’s length and θ its angle from the reference axis. The first expression gives its squared length. The second records the threefold structure of its orientation. A 120° turn adds 360° inside cos(3θ), and a flip across the x-axis changes θ to −θ. Both leave u unchanged.
+
+These exact invariants for D₃ are not important and are, in fact, more complicated than invariants we will encounter later. What matters is the idea that we can write an expression in coordinates that must not change under a symmetry transformation.
+
+The “sameness” we see in our pool game is reflected in physical laws of motion that are invariant under symmetry transformations. There are, however, much simpler invariant quantities. For example, translating the table leaves distances between the balls unchanged. These simple invariants provide indispensable clues in the quest to find physical laws.
+
+From our triangle, we have learned about symmetry groups, representations, states, transformations,  generators, irreducible representations, and invariants. This takes us a long way toward the symmetry concepts we need to understand modern physics.
+
+Next: Continuous symmetries
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

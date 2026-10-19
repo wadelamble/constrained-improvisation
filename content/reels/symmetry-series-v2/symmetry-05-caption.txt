@@ -1,0 +1,26 @@
+Symmetry to Waves · 5/25
+Representing symmetry with matrices
+
+A representation of a symmetry group is a vector space and a set of linear transformations that compose in the same way as the group actions. For our triangle, the vector stores three component values and the matrices permute them.
+
+The matrix R for a 120° rotation sends (a, b, c) to (c, a, b). The matrix S for a flip sends (a, b, c) to (a, c, b). For example,
+
+R(1, 3, 5) = (5, 1, 3),
+S(1, 3, 5) = (1, 5, 3).
+
+Applying R three times returns every component to its starting position. Applying S twice does the same. In matrix notation, R³ = I and S² = I, where I is the identity matrix. These are the same composition rules we found by turning and flipping the triangle.
+
+We can write the defining requirement for a representation as
+
+D(g₁g₂) = D(g₁)D(g₂).
+
+Here g₁ and g₂ are group actions, such as a rotation and a flip, and D(g) is the matrix representing action g. D itself is the map from symmetry actions to matrices. This says that the matrix for the composed action, g₂ followed by g₁, is the product of the matrices for the separate actions. The action on the right is applied first.
+
+The transformations are linear because permuting a sum of vectors gives the same result as permuting each vector and then adding. Multiplying every component by a number also commutes with the permutation. We can therefore use the same matrix for any values stored at the vertices.
+
+A set of actions from which all the others can be constructed is called a set of generators. One 120° rotation and one flip suffice for D₃. Composing them gives the remaining rotation and the other two flips. A small collection of matrices now describes every symmetry on our list.
+
+Next: D₃ in three dimensions
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

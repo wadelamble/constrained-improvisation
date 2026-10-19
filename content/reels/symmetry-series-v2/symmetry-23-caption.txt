@@ -1,0 +1,21 @@
+Symmetry to Waves · 23/25
+A complex number as a vector
+
+A complex number has two real-number degrees of freedom. We define z = x + iy, where x and y are real numbers and i² = −1. The number z therefore maps to a vector (x, y) in the complex plane. The horizontal axis records the real part x, and the vertical axis records the imaginary part y.
+
+The diagram builds z from these two parts. An arrow along the real axis supplies x. An arrow along the imaginary direction supplies iy. Placing them tip to tail gives the resultant z, just as adding the two coordinate components of an ordinary vector gives the whole vector.
+
+The word ‘imaginary’ names a part of the number system. It does not prevent us from drawing this part or calculating its effect. Both x and y are real coordinate values, and together they specify one complex number. One complex dimension therefore has the same number of real degrees of freedom as a two-dimensional real plane.
+
+This answers a question raised by complex exponentials. How can a single number i play the role of the two-by-two matrix J that generated rotations? A complex number has enough components for the same geometry. Multiplication by i acts on them as
+
+iz = i(x + iy) = −y + ix.
+
+The corresponding real-vector operation sends (x, y) to (−y, x), exactly the action of J. Applying it twice gives −z, just as J² = −I reverses a real vector.
+
+We have repackaged the rotation generator in complex notation. This makes it possible to describe a turn by complex multiplication, and an oscillating wave by a complex exponential. Before adding position and time, we can follow the action at one point and recover the circle from its tangent rule.
+
+Next: Multiplication by i gives a tangent
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

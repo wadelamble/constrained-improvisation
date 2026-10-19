@@ -1,0 +1,16 @@
+{
+  "order": 10,
+  "title": "A tangent to the space of transformations",
+  "screen_text": [
+    "Curved surface",
+    "Tangent plane",
+    "Two independent tangent directions",
+    "\\mathbf{e}_1",
+    "\\mathbf{e}_2"
+  ],
+  "visual_sha256": "cddf14a44cf4d1c68986033421b172479e4a1630bebaf4d00df49083e7a92a29",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

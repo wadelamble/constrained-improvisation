@@ -1,0 +1,17 @@
+{
+  "order": 9,
+  "title": "Continuous symmetries",
+  "screen_text": [
+    "SO(2): rotation",
+    "Translation",
+    "\\theta\\in\\mathbb{R}",
+    "a\\in\\mathbb{R}",
+    "R(\\theta)",
+    "T(a)"
+  ],
+  "visual_sha256": "8dd6eb9df2522bc1f23ef8b7dd13aabcd496a9b329a87e5d68e7510a01f7a686",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

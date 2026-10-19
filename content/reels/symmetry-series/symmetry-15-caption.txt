@@ -1,0 +1,25 @@
+Symmetry to Waves · 15/16
+Translation eigenfunctions are exponentials
+
+Since a function is an infinite-dimensional vector, and the generator d/dx is a way of writing an infinite-dimensional matrix, we can solve an eigenvalue equation here too. It now takes the form of a differential equation,
+
+df/dx = λf.
+
+We are looking for a function whose derivative returns the same function, scaled by a single number. The solution is f(x) = Ce^(λx), since differentiating this expression gives Cλe^(λx). The eigenvalue of d/dx is λ.
+
+Translating an exponential also returns a multiple of the same function,
+
+f(x − a) = e^(−λa)f(x).
+
+The factor is different from the derivative's eigenvalue, but the eigenfunction is the same. The animation compares the original exponential with its translated version. One fixed multiplier relates them at every position x. The ratio does not depend on which point we inspect.
+
+We now have a potential way to represent a state using exponential functions. There is an additional requirement when symmetry actions must preserve the overlap between states. This property is called unitarity. For a translation eigenfunction, the multiplying factor must then have magnitude one.
+
+For a real nonzero λ, e^(−λa) stretches or shrinks the function. Choosing λ = ik instead gives a factor e^(−ika) of magnitude one. The function becomes a complex exponential, Ce^(ikx). Translating it changes its phase without changing its magnitude.
+
+We will look into overlaps more fully in the wave series. For now, this gives us the route from a translation generator, through its eigenfunctions, to the complex exponentials that describe waves.
+
+Next: A complex exponential is a travelling wave
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

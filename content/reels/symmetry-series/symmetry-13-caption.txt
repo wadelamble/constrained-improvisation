@@ -1,0 +1,25 @@
+Symmetry to Waves · 13/16
+The derivative generates translation
+
+We have a function representation. Now we want to find an infinitesimal generator that acts on functions to produce a translation. We can do so by considering what happens to a function's value under tiny displacements.
+
+For a small shift a, the new value f(x − a) is close to the old value f(x). The correction is given, to first order, by the slope at x. This is the same idea that any smooth curve appears straight when we zoom in sufficiently.
+
+f(x − a) = f(x) − a f′(x) + O(a²).
+
+The term O(a²) collects corrections of second order and higher in the shift. As a becomes smaller, the tangent-line estimate becomes more accurate. The animation lets us compare the actual function value with the value predicted by that local slope.
+
+A positive a moves the whole graph to the right. At a fixed coordinate x, the translated function therefore takes its value from the earlier coordinate x − a. That is why the first-order correction has a minus sign.
+
+The generator acting on functions is the derivative operation, with this sign fixed by our direction convention. In the notation we will use for waves,
+
+K̂ = −i d/dx,
+Tₐ = e^(−iaK̂),
+(Tₐf)(x) = f(x − a).
+
+The exponent −iaK̂ is therefore −a d/dx. This is the function-space counterpart of the rotation generator J. There, a tangent vector specified a small change in orientation. Here, the derivative specifies a small change in the function's values as its graph shifts. Exponentiating the generator assembles those infinitesimal changes into a finite translation.
+
+Next: Eigenvectors simplify a transformation
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

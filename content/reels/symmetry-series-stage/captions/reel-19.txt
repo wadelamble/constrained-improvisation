@@ -1,0 +1,22 @@
+Symmetry to Waves · 19/27
+Function representations of translations
+
+Translational symmetry needs a "shape" to translate, just as D₃ symmetry needs a triangly thing. A translation moves that shape while preserving the relationships among its features. The "shape" is a function of a coordinate parameter. Functions provide a linear representation of translation. Instead of translating the point x, we translate a function by shifting its argument:
+
+(Tₐf)(x) = f(x − a).
+
+Now the state is the whole function f, and Tₐ is an operator on the vector space of functions. An operator plays the role of a matrix. We can think of a function as an infinite-dimensional vector, with input coordinates labeling the components and function values giving the component values. This arrangement is analogous to our three-dimensional representation of D₃. There a vertex contained a component value, here an input coordinate does.
+
+Linearity works because function addition is pointwise. At each x, the value of f + g is f(x) + g(x). Translating this sum gives
+
+Tₐ(f + g)(x) = (f + g)(x − a)
+= f(x − a) + g(x − a).
+
+That is what we obtain by translating f and g separately and then adding them. The animation performs both procedures. In the upper panel, the functions are added before the result moves. In the lower panel, they move before being added. Both give the same final curve.
+
+Multiplying a function by a number also commutes with translation. Shifting 3f gives the same result as shifting f and multiplying every resulting value by 3. The zero function remains the zero function, since its value is zero wherever we sample it. Translation therefore preserves all linear combinations.
+
+Next: The derivative of a function generates translation
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

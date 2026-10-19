@@ -1,0 +1,21 @@
+Symmetry to Waves · 11/16
+The order of rotations matters
+
+When there are multiple independent transformations, the order in which we apply them may produce different resultant states. In the three-dimensional rotation group, called SO(3), rotating about the x-axis and then the y-axis leaves an object in a different orientation than applying the same actions in the opposite order.
+
+The two views begin with the same orientation and use the same two rotations. Only their order changes. Following the marked directions makes the difference visible. A featureless sphere would hide the orientation we need to compare.
+
+For infinitesimal generators, this order-dependence is expressed by the commutator,
+
+[X, Y] = XY − YX.
+
+For three-dimensional rotations, the generators satisfy [Jₓ, Jᵧ] = J_z, with corresponding relations for the other two pairs of axes. The commutator gives another rotation generator. It records the leading difference between composing two small rotations in opposite orders.
+
+For ordinary numbers, eᴬeᴮ = e⁽ᴬ⁺ᴮ⁾. This identity does not hold for noncommuting generators. Combining two rotations into one exponential requires correction terms, beginning with a term involving their commutator. We cannot simply add the two exponents and expect the same final orientation.
+
+Taken together, the generators, their linear combinations, and their commutators form a Lie algebra. It captures the group's local structure, while some global features, such as wrapping around onto itself, require additional information. Every representation must preserve this commutator structure. This is why the relations between the generators matter just as much as the individual motions they produce.
+
+Next: Translations act linearly on functions
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

@@ -1,0 +1,17 @@
+Symmetry to Waves · 2/25
+A triangle’s six symmetries
+
+We can see the obvious symmetry of an equilateral triangle. To categorize its symmetry, we can write down all the actions that leave it unchanged. We can do nothing, rotate 120°, rotate 240°, flip along an axis, flip then rotate 120°, and flip then rotate 240°. There are six actions, including the one in which we do nothing.
+
+‘Unchanged’ needs a little care here. The labeled vertices move, but the outline of the triangle returns to itself. A vertex may arrive where another vertex began. Keeping track of A, B, and C lets us distinguish actions that leave the same outline, including the action that leaves every vertex where it began. This do-nothing action is called the identity.
+
+The animation carries the vertices through each action and compares the result with the reference outline. A rotation through 100° would leave the triangle pointing somewhere else. The intermediate angles on the way to 120° are not additional triangle symmetries. The allowed rotations are discrete.
+
+We say the triangle belongs to the D₃ symmetry group. The group contains these six actions and the way they compose. Performing one allowed action and then another always gives an action already on the list. Two 120° rotations give a 240° rotation, and three return every vertex to its starting point. Performing the same flip twice does so too.
+
+We can plainly see the triangle’s symmetry, but we also have the beginnings of a mathematical description. Instead of treating each motion as an unrelated event, we can ask how actions combine, which action reverses another, and how to keep track of the labels through a sequence of moves.
+
+Next: D₃ is more general than triangles
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

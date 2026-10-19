@@ -1,0 +1,25 @@
+{
+  "order": 14,
+  "title": "Eigenvectors simplify a transformation",
+  "screen_text": [
+    "Ordinary basis",
+    "Eigenbasis",
+    "a=\\frac{s+s^{-1}}{2},\\qquad b=\\frac{s-s^{-1}}{2}",
+    "s = [value]",
+    "x",
+    "y",
+    "u",
+    "v",
+    "x′",
+    "y′",
+    "s u",
+    "s⁻¹ v",
+    "x'=ax+by,\\qquad y'=bx+ay",
+    "u'=su,\\qquad v'=s^{-1}v"
+  ],
+  "visual_sha256": "9f5cf52c6486ce6031e9b3460a4a3d7835527460ad7ae2dacb2054b9c7ea3b82",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

@@ -1,0 +1,138 @@
+[
+  {
+    "number": 1,
+    "title": "The same game",
+    "body": "Strike a pool ball with a cue, and the balls move in an expected way. Move the table over a few feet, and the balls move in recognizably the same way. Wait a few minutes, and the balls move in the same way. Turn the pool table a few degrees, and the balls still move the same way. Put the pool table on a train at constant velocity, and, again, the balls move in the same way. These are the manifest “symmetries” of the world we live in. position and time translation, rotation, and velocity “boosts.”\n\nThe animation repeats the same collision under each transformation. The positions on the screen change, and a moving observer may describe different velocities, but the relation between the incoming and outgoing motion remains the same. This is what we mean by symmetries of physical behavior.\n\nOur pool game illustrates the idea, but why should we start our story here? We will argue that symmetry constrains both the laws that govern physical evolution and the classification of the objects that undergo that evolution. The term “symmetry” in this context may not at first glance seem like the same concept as, say, a triangle’s symmetry, but it precisely is, as we will see.\n\nWe can also move the table a few feet to the right or the observer a few feet to the left. When discussing invariants, we often think in terms of what observers agree on. The task is to say mathematically what is preserved when we make these changes of perspective. We will start with the familiar world of discrete symmetries and build up the definitions we need from there.",
+    "screen_text": [
+      "Position translation",
+      "Time translation",
+      "Rotation",
+      "Velocity boost",
+      "The same collision"
+    ],
+    "source_sections": [
+      "Symmetry — opening pool-table example",
+      "Invariants — active transformation and observer perspective"
+    ],
+    "editorial_notes": "The collision description makes explicit what 'the same way' means when coordinates or observed velocities change. It does not add a relativistic claim to the pool-table example."
+  },
+  {
+    "number": 2,
+    "title": "A triangle’s six symmetries",
+    "body": "We can see the obvious symmetry of an equilateral triangle. To categorize its symmetry, we can write down all the actions that leave it unchanged. do nothing, rotate 120°, rotate 240°, flip along an axis, flip then rotate 120°, and flip then rotate 240°. There are six actions, including the one in which we do nothing.\n\nThe animation carries the labeled vertices through these actions. A vertex may arrive where a different vertex began, but at the end the triangle overlays itself. Keeping track of the labels lets us distinguish actions that leave the same outline. A turn through 100° would leave the triangle pointing somewhere else and would not belong on this list.\n\nWe say the triangle belongs to the D₃ symmetry group. Any number of objects possess D₃ symmetry. We tend to think of a “triangle’s symmetry,” rather than the symmetry of two rotations and flips about three axes, but this latter way of thinking in terms of symmetry groups is more general.\n\nThis is the definition of symmetry used in physics, where we ask not “what symmetry does this or that object have?” but “what mathematical objects realize the actions of a symmetry group?” The group describes the actions and the way they compose, so we can recognize the same structure in different objects.\n\nFor example, suppose we label our triangle’s vertices A, B, C and ask, if we rotate twice, flip once, then rotate again, where is vertex A sent? We can follow the animation to find out. But if we want to write this down mathematically, we need a way to represent each action and its effect on the labels.",
+    "screen_text": [
+      "Do nothing",
+      "Rotate 120°",
+      "Rotate 240°",
+      "Flip",
+      "Flip → rotate 120°",
+      "Flip → rotate 240°",
+      "D₃"
+    ],
+    "source_sections": [
+      "Discrete symmetries",
+      "Representations — labeled vertices and composed actions"
+    ]
+  },
+  {
+    "number": 3,
+    "title": "Writing symmetry as matrices",
+    "body": "We can plainly see the symmetry of the triangle, but what if we want to write it down mathematically? Specifically, what if we want to write group actions in terms of how they transform labels on an object? Recognizing that the triangle’s state has three ordered components, we might guess that we could represent it as a vector with three components.\n\nWe can then represent 120° rotations as transformations that permute those components in accordance with the symmetry group actions. For our example, a single rotation gives\n\nR(1, 3, 5) = (5, 1, 3).\n\nA flip that keeps the first vertex in place exchanges the other two components. There is nothing special about the vertices here. We could just as easily have chosen the midpoints of the edges or any other triplet of points with the triangle’s symmetries, and the same matrix would permute those values.\n\nA representation of a symmetry group is a vector space and a set of linear transformations that compose in the same way as the group actions.\n\nD(g₁g₂) = D(g₁)D(g₂).\n\nThis says that the matrix for the composed action, g₂ followed by g₁, is the product of the matrices for the separate actions. D is the map from symmetry actions to matrices in the representation.\n\nIn the animation, permutations that correspond to rotations of the triangle are 120° rotations about a diagonal axis in this vector space. Those that correspond to flips are reflections in planes that contain the diagonal axis. The point (1, 3, 5) records three values assigned to the triangle. Watching that point move lets us see a symmetry action as a transformation of a state.",
+    "screen_text": [
+      "v = (1, 3, 5)",
+      "Rv = (5, 1, 3)",
+      "Fv = (1, 5, 3)",
+      "D(g₁g₂) = D(g₁)D(g₂)",
+      "R = [[0, 0, 1], [1, 0, 0], [0, 1, 0]]",
+      "F = [[1, 0, 0], [0, 0, 1], [0, 1, 0]]"
+    ],
+    "source_sections": [
+      "Representations — definition, matrices, and 3D permutation geometry"
+    ],
+    "editorial_notes": "The nested lists record matrix rows in editable plain text. Render them as three stacked rows. 'Reflections in planes' clarifies the source's 'flips about planes.'"
+  },
+  {
+    "number": 4,
+    "title": "Separating the common part",
+    "body": "Now we can notice something about these transformations. The transformed versions of any vector lie in a plane, and all such planes are parallel to one another. If we subtract the average of a vector’s components from each component, we move the point where that plane intersects the axis of rotation to the origin and preserve the permutation structure of the transformations.\n\nFor our earlier vector, the average of the components is 3. We can separate it into a common part and a zero-sum part.\n\n(1, 3, 5) = (3, 3, 3) + (−2, 0, 2).\n\nThe common part lies on the rotation axis and is unchanged by every permutation. The zero-sum part lies in a plane through the origin. Although written with three components, it needs only two independent numbers, since the third must make their sum zero. In the animation, subtracting the common part brings the permuted states into this plane.\n\nA way to think of this is to allow the triangle’s vertices to store some information, like a number or any numerical quantity. If the value they store is the same for all vertices, the symmetry actions have no effect. If the values differ, the actions permute them in a way that can be represented in a two-dimensional vector space.\n\nThe three-dimensional representation space we began with is therefore decomposable into two subspaces, one one-dimensional and the other two-dimensional. Each stays within itself under every group action. Neither can be decomposed into smaller nonzero subspaces with this property. These are called irreducible representations, or irreps for short.",
+    "screen_text": [
+      "(1, 3, 5) = (3, 3, 3) + (−2, 0, 2)",
+      "Common part",
+      "Zero-sum part",
+      "x + y + z = 0",
+      "3 = 1 + 2"
+    ],
+    "source_sections": [
+      "Representations — common component, zero-sum plane, and irreducible decomposition"
+    ],
+    "editorial_notes": "The irreducibility sentence specifies smaller nonzero subspaces preserved by every group action. This is a minimal clarification of the manuscript's definition. The particle connection is reserved for the manuscript and is unnecessary for this series."
+  },
+  {
+    "number": 5,
+    "title": "What a symmetry preserves",
+    "body": "Once we have chosen a representation for a symmetry, we might well ask, how do we know our transformations preserve the symmetry? If we look at a triangle and rotate by 100°, we can see that it does not overlay itself. In a representation, we need mathematical expressions that say “this transformation left the triangle the same.” We call these the invariants of the transformation.\n\nIn our two-dimensional irrep of D₃, we can describe the action on an arbitrary vector using two expressions that a symmetry transformation cannot change.\n\nr² = x² + y²\n\nu = x³ − 3xy² = r³ cos(3θ).\n\nThe first is the squared length of the vector. The second records its orientation relative to the reference axes. Rotating by 120° adds 360° to the angle inside cos(3θ), so u returns to the same value. A flip across the x-axis changes θ to −θ and also leaves u unchanged.\n\nThe animation compares the vector before and after each allowed action. These two values agree at the endpoints. Intermediate positions during a turn are not themselves triangle symmetries, so the cubic expression varies until the turn is complete. Length alone would allow every rotation. The cubic expression carries the threefold structure that distinguishes the triangle’s symmetry from the continuous symmetry of a circle.\n\nThese exact invariants are not the important part. They are obscure without seeing the derivation, but what matters is that we can write an expression in terms of coordinates that must not change under the symmetry transformation. This gives the “sameness” of our picture a precise mathematical meaning. We can ask the same kind of question about the pool game. what is preserved when we translate, rotate, or change our state of motion?",
+    "screen_text": [
+      "r² = x² + y²",
+      "u = x³ − 3xy²",
+      "u = r³ cos(3θ)",
+      "Rotation: θ → θ + 120°",
+      "Reflection: θ → −θ"
+    ],
+    "source_sections": [
+      "Invariants — D₃ quadratic and cubic invariants",
+      "Symmetry — pool-table example"
+    ],
+    "editorial_notes": "The explanation fixes the reference reflection axis as the x-axis, consistent with u = r³ cos(3θ). The caption states necessary preservation rather than suggesting that two scalar values certify an unrestricted transformation. Invariants are compared at discrete-action endpoints. Interpolated motion between those endpoints is not a D3 symmetry."
+  },
+  {
+    "number": 6,
+    "title": "From discrete to continuous",
+    "body": "What rotations return a circle to itself? All of them! Similarly, all translations return a line to itself. The symmetries of space and time are continuous and can therefore be represented as transformations that depend on continuously varying parameters.\n\nThe animation lets the rotation angle and the translation distance vary smoothly. A marked point on the circle moves, but the circle returns to itself at every angle. A marked point on the line moves as the line is translated, but the line itself remains the same. As with the labels on our triangle, the marks let us follow an action whose effect on the unmarked object would otherwise be invisible.\n\nFor the triangle, the angles that return it to itself are separated by 120°. For the circle, there is no smallest nonzero angle on the list. If we can rotate by 1°, we can rotate by half a degree or a hundredth of a degree. The transformation depends on a parameter that we can vary by an arbitrarily small amount.\n\nAs we saw in the D₃ symmetry group, we can build any action from a combination of the elemental actions of rotations and flips about an axis. Now let us ask the question, what is the generator of a continuous transformation? Let’s say we want to rotate a circle by 10°. We could compose ten 1° rotations. But what if we want to rotate by 1°? We can see where this is going. The generators must be infinitesimal rotations.\n\nThis is where symmetry ideas meet calculus. We will take the derivative of a transformation with respect to its parameter and use that infinitesimal change to recover the finite transformation.",
+    "screen_text": [
+      "Continuous rotation",
+      "θ varies continuously",
+      "Continuous translation",
+      "a varies continuously",
+      "10° = 10 × 1°"
+    ],
+    "source_sections": [
+      "Continuous symmetries",
+      "Infinitesimal Generators — composing progressively smaller rotations"
+    ],
+    "editorial_notes": "Marked points are described as tracking aids rather than additional features that the symmetry must preserve. Translation refers to the full mathematical line, even when the frame shows only a finite window."
+  },
+  {
+    "number": 7,
+    "title": "From a nudge to a rotation",
+    "body": "In the two-dimensional representation of rotations, we have a single variable, θ, that parameterizes the operator matrix R(θ). We can take the derivative of this matrix-valued function. To obtain a single matrix representing the infinitesimal nudge, we evaluate the derivative at θ = 0, where R(0) = I is the identity transformation.\n\nThis gives the infinitesimal generator\n\nJ = [[0, −1], [1, 0]].\n\nApplied to a vector v = (x, y), J gives (−y, x). At the point (1, 0), it produces the tangent vector (0, 1). J acts on any point on the circle to produce the tangent vector at that point. Putting this into calculus notation,\n\ndv/dθ = Jv.\n\nWe now have a differential equation for the transformation that uses the generator. We found this by starting with a known transformation and deducing its generator. But we can just as well go in the opposite direction. Given this differential equation, we can find the transformation.\n\nv(θ) = exp(θJ)v(0).\n\nThe exponential of a matrix is defined in terms of the Taylor expansion for an exponential. Since J² = −I, its even powers alternate between I and −I, while its odd powers alternate between J and −J. Collecting them gives the familiar series for cosine and sine.\n\nexp(θJ) = cos(θ)I + sin(θ)J = R(θ).\n\nThe animation follows the vector around its circle while J supplies the tangent direction at each point. This is an exponential map. It takes the infinitesimal generator J and returns the finite symmetry transformation R(θ). Exponential maps give what one would think is the familiar purely algebraic quality of exponentiation a rich geometric interpretation.",
+    "screen_text": [
+      "J = [[0, −1], [1, 0]]",
+      "J(x, y) = (−y, x)",
+      "dv/dθ = Jv",
+      "J² = −I",
+      "v(θ) = exp(θJ)v(0)",
+      "exp(θJ) = cos(θ)I + sin(θ)J = R(θ)"
+    ],
+    "source_sections": [
+      "Infinitesimal Generators — derivative at identity, tangent equation, and exponential map"
+    ],
+    "editorial_notes": "The nested lists record matrix rows in editable plain text. Render J as two stacked rows. The motion should follow the exact rotation, with the tangent indicating the derivative rather than a finite straight step."
+  },
+  {
+    "number": 8,
+    "title": "Seeing the whole symmetry flow",
+    "body": "We can think of a symmetry transform as a “uniform looking” vector field. Here we ask not what happens when the transformation is applied to a single set of starting conditions, but what the transformation does to all starting conditions. This view lends itself to seeing the structure in the evolution of a collection of nearby states.\n\nFor rotation, the generator J acts on any point to produce its tangent vector. At (x, y), that vector is (−y, x). Placing one of these arrows at each point gives the field in the animation. Each arrow tells us how the state at that position changes when we increase the angle by an infinitesimal amount.\n\nThe same equation governs every starting point.\n\ndv/dθ = Jv.\n\nAs θ increases, the points follow circles centered at the origin. Points farther from the origin travel farther for the same change of angle, so their tangent arrows are longer. The origin stays fixed. These different arrows all express one rotation generator acting on different states.\n\nWe found the generator by starting with a known transformation, but we can go in the opposite direction. The finite transformation is\n\nv(θ) = exp(θJ)v(0).\n\nApplying it to a collection of starting points lets us watch the whole collection turn. A single trajectory shows where one state goes. Following nearby states together shows how the transformation acts across the space of states. The parameter in this picture is the rotation angle, so the motion on screen is the symmetry transformation unfolding as that angle changes.",
+    "screen_text": [
+      "J(x, y) = (−y, x)",
+      "dv/dθ = Jv",
+      "v(θ) = exp(θJ)v(0)",
+      "All starting conditions",
+      "θ increases"
+    ],
+    "source_sections": [
+      "Symmetry Flows",
+      "Infinitesimal Generators — tangent vector and finite transformation"
+    ],
+    "editorial_notes": "This entry stays on the generator field and its flow. It does not introduce metrics. The caption identifies θ as the animation parameter so playback is not mistaken for a physical equation of motion."
+  }
+]

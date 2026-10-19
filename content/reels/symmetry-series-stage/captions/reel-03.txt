@@ -1,0 +1,15 @@
+Symmetry to Waves · 3/27
+From symmetric shapes to symmetry groups
+
+Any number of objects possess D₃ symmetry. We tend to think of a ‘triangle’s symmetry,’ not the symmetry of two rotations and flips about three axes, but this latter way of thinking in terms of symmetry groups is more general. The group describes the actions and how they compose, rather than the particular outline on which we first noticed them.
+
+The triangle, three circles, three petals, and three rounded bars in the animation have different outlines. Yet a 120° rotation returns each outline to itself, and so does a reflection along an appropriate axis. Each object realizes the same six actions. The rotation cycles three positions, and the reflection exchanges two while leaving the third in place.
+
+In physics, we ask less ‘what symmetry does this or that object have?’ and more ‘what mathematical objects realize the actions of a symmetry group?’ The change in emphasis matters. Once we identify the group, we can study its structure without choosing one particular shape as the only object it can act on.
+
+We would like to write these actions in a symbolic form that abstracts moving a picture. Our next step is to let three positions carry labels or numerical values and describe how the symmetry moves them. The same group will then act on a vector, giving us a mathematical representation of the symmetry.
+
+Next: Representations — the state vector
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

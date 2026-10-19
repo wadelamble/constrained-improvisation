@@ -1,0 +1,24 @@
+{
+  "order": 14,
+  "title": "A different invariant under hyperbolic rotation",
+  "screen_text": [
+    "Two points under the same boost",
+    "(ct)^2-x^2=1\\qquad(c=1)",
+    "η",
+    "x",
+    "ct",
+    "A",
+    "B",
+    "Ordinary tip distance",
+    "B(\\eta)=",
+    "\\cosh\\eta",
+    "\\sinh\\eta",
+    "A:\\ (ct_A)^2-x_A^2=1",
+    "B:\\ (ct_B)^2-x_B^2=1"
+  ],
+  "visual_sha256": "08503957fb82b857bfeabe8eb4232da04f30687ce913da419d988461069ae4ec",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 28
+}

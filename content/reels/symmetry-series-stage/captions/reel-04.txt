@@ -1,0 +1,17 @@
+Symmetry to Waves · 4/27
+Representations — the state vector
+
+We can plainly see the symmetry of the triangle, but what if we want to write it down mathematically? We can find a representation of the symmetry group in a linear vector space, representing states with vectors and group actions with linear transformations of those vectors. Let’s start by seeing how we can map the state of our object to a vector.
+
+Suppose we label the triangle’s three vertices A, B, C and allow each to store a number. We can record these values in an ordered column with three entries. The ordering tells us which vertex each entry describes. A state might then be written (1, 3, 5).
+
+We are recording the three stored values, not the horizontal and vertical coordinates of a point in the drawing. One can think of this as a function with a domain consisting of three inputs. Different choices of the three values give different state vectors in that space.
+
+A rotation permutes the entries in accordance with the motion of the vertices. In the convention we will use, a 120° rotation sends (1, 3, 5) to (5, 1, 3). A flip that fixes the first vertex exchanges the other two entries. These rules apply to any three values we choose.
+
+There is nothing special about the vertices here. We could just as easily have chosen the midpoints of the edges or any other triplet of points with the triangle’s symmetries. The same rule would permute the values attached to those positions. We have separated the information being transformed from the rule that transforms it. Next we will write that rule as a matrix.
+
+Next: Representations — transformation matrices
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

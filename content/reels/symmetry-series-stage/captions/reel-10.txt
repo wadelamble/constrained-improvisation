@@ -1,0 +1,15 @@
+Symmetry to Waves · 10/27
+Lie algebra
+
+We may think of a continuous symmetry group as a smooth space, or manifold, whose points represent transformations. Such a smooth symmetry group is called a Lie group. The identity is the point representing no change. Differentiating the transformations with respect to their parameters at the identity gives the infinitesimal generators. These belong to a linear vector space, the tangent space at the identity, whose elements are linear combinations of independent generators that form a basis. This gives us an infinitesimal description of the group through its associated Lie algebra. Integrating an element in the Lie algebra supplies a family of finite transformations in the group.
+
+We can visualize this with a 2-dimensional curved surface embedded in 3-dimensional space. If we zoom in enough, a smooth curved surface appears flat. At the identity point on this surface, a tangent plane describes changes in the transformation to first order in its parameters. The surface may bend away as we move farther from the point, but sufficiently small displacements can be described by vectors in that plane.
+
+The two arrows shown in the tangent plane are independent basis generators. Linear combinations describe every tangent direction in this plane, supplying the local directions available to a symmetry. In general a tangent space can be of any dimension. The "plane" is just convenient for visualization.
+
+Here the object being differentiated is a transformation, which we can write as a matrix whose entries depend on the transformation’s parameter. Its derivative with respect to that parameter will also be a matrix. Acting on a state, that generator will produce the tangent to the state’s path. To be clear, the tangent vector the generator produces is not in the space of transformations (visualized here) but in the representation space in which the state lives.
+
+Next: The exponential map of SO₂ rotations
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

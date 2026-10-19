@@ -1,0 +1,20 @@
+{
+  "status": "pass",
+  "samples_per_motion": 49,
+  "maximum_errors": {
+    "source_f": 0.0,
+    "source_g": 3.3087224502121107e-23,
+    "source_shape": 0.0,
+    "source_deformation": 1.0842021724855044e-18,
+    "boost_interval": 6.217248937900877e-15,
+    "boost_gap": 3.885780586188048e-16,
+    "eigen_recombination": 0.0,
+    "eigen_reciprocity": 6.661338147750939e-16,
+    "tangent_attachment": 0.0,
+    "tangent_orthogonality": 6.587557821804822e-16,
+    "tangent_norm": 4.837737775387916e-16
+  },
+  "ordinary_tip_distance_start": 0.44162243452002653,
+  "ordinary_tip_distance_end": 1.3291682391798856,
+  "note": "Checks use the actual arrows passed to the renderer; function shapes match the desktop scalar source functions."
+}

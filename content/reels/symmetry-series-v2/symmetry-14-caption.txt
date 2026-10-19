@@ -1,0 +1,24 @@
+Symmetry to Waves · 14/25
+A different invariant under hyperbolic rotation
+
+If we define invariant length not as x² + y² but as t² − x², we have a hyperbolic rotation. Separation between points can stretch out without bound as the rotation approaches its asymptotes, leaving the invariant interval unchanged even though the separation appears to grow using our everyday notion of distance.
+
+Here we choose units in which the speed of light is 1, so time t and position x can appear on the same plot. The transformation is
+
+t′ = t cosh η + x sinh η,
+x′ = x cosh η + t sinh η.
+
+The parameter η plays a role similar to the angle in ordinary rotation. The functions cosh and sinh are the hyperbolic counterparts of cosine and sine. Their identity cosh²η − sinh²η = 1 ensures that t′² − x′² = t² − x². The point follows a hyperbola instead of a circle.
+
+The animation follows two points and the segment between them. Each point keeps its own interval from the origin. Because both undergo the same linear transformation, their coordinate differences do too. If Δt and Δx are the differences between their time and position coordinates, then
+
+Δt′² − Δx′² = Δt² − Δx².
+
+The ordinary length of the connecting segment changes, but its hyperbolic interval remains fixed. The new ruler gives a different answer from the familiar sum of squares, and the symmetry preserves precisely that new answer.
+
+Such a hyperbolic metric encodes the asymptotic limit of light speed in relativistic spacetime. Different inertial observers assign different times and positions to events while agreeing on their spacetime interval. The diagonal asymptotes are the light-speed directions. We are introducing the geometry here, with its physical meaning to be developed in the next chapter.
+
+Next: The order of rotations matters
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

@@ -1,0 +1,21 @@
+Symmetry to Waves · 13/25
+Rotation preserves lengths and angles
+
+What is the invariant of rotation in this representation? It is just the length of vectors and the angles between them. The two arrows turn together, so their directions change while their relationship does not. The length of one arrow’s projection onto the other remains the same.
+
+These relationships are expressed by a single invariant, the dot product. If u and v are vectors in the plane,
+
+u · v = uₓvₓ + uᵧvᵧ = |u||v| cos θ.
+
+Here uₓ and uᵧ are the components of u, and similarly for v. The vertical bars mean length, and θ is the angle between the arrows. Rotating both changes the individual component values but leaves the sum uₓvₓ + uᵧvᵧ unchanged.
+
+Taking the dot product of a vector with itself gives its squared length, u · u = |u|². Taking the dot product of two different vectors tells us their angle once their lengths are known. One mathematical relationship therefore accounts for both the lengths and the angle preserved in the animation.
+
+An invariant of this sort, that fixes some notion of placing reliable rulers on the space, is a metric. We can use these rulers to compare vectors before and after a transformation, even though their coordinate values have changed. For an ordinary rotation, this is intuitive. Turning two arrows together does not stretch them or alter their angle.
+
+A symmetry may preserve a less intuitive metric. The expression serving as our ruler need not be the familiar sum of squares. If we replace x² + y² by t² − x², we obtain a different geometry and a different kind of rotation. The ordinary separation between points can then change while the quantity defined by this new ruler stays fixed. This will lead us toward the geometry of spacetime.
+
+Next: A different invariant under hyperbolic rotation
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

@@ -1,0 +1,93 @@
+{
+  "render_key": {
+    "source": "e2caba1155940dea31c98cbb051421f6696c22ad23c8c60443ed7dc61562bef6",
+    "overlay": "a53a7b011f3a6f17048f5a49f0094ca99c443e3065a24505a1c5a3d03fc880d0",
+    "encoder": "overlay-v1-crf18"
+  },
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "audio_codec": "aac",
+    "fps": 30.0,
+    "source_size": [
+      1080,
+      1920
+    ],
+    "size": [
+      1080,
+      1920
+    ],
+    "rotate": 0,
+    "duration": 26.0
+  },
+  "title_layout": {
+    "size": 54,
+    "lines": [
+      "The derivative of a function",
+      "generates translation"
+    ],
+    "boxes": [
+      [
+        70,
+        287,
+        772,
+        329
+      ],
+      [
+        70,
+        349,
+        607,
+        402
+      ]
+    ]
+  },
+  "cover_title_layout": {
+    "size": 56,
+    "lines": [
+      "The derivative of a function",
+      "generates translation"
+    ],
+    "boxes": [
+      [
+        90,
+        544,
+        815,
+        587
+      ],
+      [
+        90,
+        608,
+        648,
+        663
+      ]
+    ]
+  },
+  "cover_time_seconds": 24.439999999999998,
+  "audio_render_key": {
+    "bed": {
+      "source_sha256": "cbf51c94e44b8c110a3c833f618290543db744b1926edba00a7167ea2c209c7d",
+      "duration_seconds": 776.0,
+      "gain_db": -4.0,
+      "crossfade_seconds": 2.0,
+      "sample_rate": 48000,
+      "version": 2
+    },
+    "video_stream": "SHA256=f09909e4b5c91950af51f502eb516628b64b8145f2e362673e66a155a639c9d0",
+    "start": 563.0,
+    "duration": 26.0,
+    "fade_in": 1.5,
+    "fade_out": 2,
+    "codec": "aac-192k-v1"
+  },
+  "audio_video_sha256": "37edf38770f2cb6464ee3cba384589627f726d14dd1e36250b64bb31c3c113fd",
+  "audio_validation": {
+    "video_stream_unchanged": true,
+    "audio_codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "decoded_duration_seconds": 26.005333333333333,
+    "peak_dbfs": -12.675795479649974,
+    "rms_dbfs": -32.998509344309255
+  }
+}

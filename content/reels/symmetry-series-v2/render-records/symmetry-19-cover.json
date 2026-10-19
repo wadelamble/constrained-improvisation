@@ -1,0 +1,20 @@
+{
+  "order": 19,
+  "title": "The derivative generates translation",
+  "screen_text": [
+    "A small shift follows the tangent",
+    "f(x-a)=f(x)-a f'(x)+O(a^2)",
+    "×[magnification]",
+    "a = 0.035",
+    "x − a",
+    "x",
+    "−a",
+    "\\hat K=-i\\frac{d}{dx}",
+    "T_a=e^{-ia\\hat K}"
+  ],
+  "visual_sha256": "4eaec6827e42c3b2a7ad6b4638baa73fa136846494b345ddcf96a29ee3c1adb2",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 26
+}

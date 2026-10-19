@@ -1,0 +1,22 @@
+Symmetry to Waves · 14/16
+Eigenvectors simplify a transformation
+
+Imagine a rubber sheet. We pull on its corners. What does this do to the x- and y-axes? It rotates their images toward each other while stretching them. Now instead choose diagonal axes aligned with the stretch. The long-axis component is stretched and the short-axis component is compressed, with neither of these directions rotated.
+
+The action on these axes is simple scalar multiplication of the original vector. Once the basis vectors no longer mix, any other vector, which is a linear combination of them, transforms by having its components scaled independently.
+
+Let u and v be the components in the diagonal directions, and let s be the factor by which the long-axis component is stretched. In this example,
+
+u′ = su,
+v′ = v/s.
+
+The reciprocal factors keep the area fixed. In the ordinary x,y basis, each new component depends on both old components. In the diagonal basis, each depends only on its own earlier value. The animation shows the same deformation in both descriptions. Changing the basis simplifies our account of what happens.
+
+Now for a bunch of terminology. These special basis vectors are the eigenvectors. The values by which a transformation scales them are the eigenvalues, and the basis they form is called an eigenbasis. Since the transformation matrix is diagonal in this basis, the procedure for finding it is called diagonalization.
+
+When the vectors are functions, we call them eigenfunctions. The geometric idea carries over. We look for functions that the operator returns with only an overall scaling, without mixing them into other functions. That will be our next question for the derivative operator that generates translation.
+
+Next: Translation eigenfunctions are exponentials
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

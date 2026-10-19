@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Translation of complex exponentials preserves the inner product</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #080b14; color: #fff2e4; }
+    * { box-sizing: border-box; }
+    body { max-width: 1060px; margin: auto; padding: 24px; }
+    h1 { margin: 0 0 22px; font-size: clamp(24px, 4vw, 30px); line-height: 1.2; }
+    main { display: grid; grid-template-columns: minmax(250px, 430px) minmax(0, 1fr); gap: 28px; align-items: start; }
+    video { display: block; width: 100%; height: auto; max-height: 86vh; aspect-ratio: 9 / 16; background: #080b14; }
+    p { margin: 0 0 18px; line-height: 1.6; color: #a5b2c8; }
+    .metadata { font-size: 14px; }
+    nav { display: grid; gap: 7px; }
+    button, select { font: inherit; color: inherit; border: 1px solid #334258; border-radius: 7px; background: #111a2a; }
+    button { padding: 10px 12px; cursor: pointer; }
+    nav button { display: flex; gap: 14px; align-items: baseline; text-align: left; }
+    nav time { min-width: 3.5em; font-size: 13px; font-variant-numeric: tabular-nums; color: #a5b2c8; }
+    button:hover, select:hover { border-color: #ffb45e; }
+    button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid #ffb45e; outline-offset: 3px; }
+    nav button[aria-current="true"] { border-color: #ffb45e; background: #253044; }
+    .playback { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; margin: 18px 0; }
+    .playback label { color: #a5b2c8; }
+    select { padding: 9px; }
+    a { color: #46beff; text-underline-offset: 3px; }
+    details { margin-top: 24px; border-top: 1px solid #334258; padding-top: 16px; }
+    summary { cursor: pointer; margin-bottom: 14px; }
+    details p { font-size: 14px; }
+    .math { white-space: nowrap; color: #fff2e4; }
+    @media (max-width: 700px) {
+      body { padding: 20px 16px; }
+      main { grid-template-columns: 1fr; gap: 24px; }
+      video { max-height: 75vh; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Translation of complex exponentials preserves the inner product</h1>
+  <main>
+    <video id="reel" width="1080" height="1920" controls playsinline preload="metadata"
+      aria-label="Translation of complex exponentials preserves the inner product, a 32-second animation"
+      poster="poster.jpg?v=96c39021480c" src="translation-unitarity.mp4?v=96c39021480c">
+      <a href="translation-unitarity.mp4?v=96c39021480c">Open the animation</a>.
+    </video>
+    <section aria-label="Review controls">
+      <p class="metadata">32 seconds · Separate review preview</p>
+      <p>Translate two copies of a real exponential, then two copies of a complex exponential. The enlarged cross-section follows their values at x = 0. The real values grow. The complex values turn together, keeping their magnitudes and relative angle.</p>
+      <nav aria-label="Animation chapters">
+        <button type="button" data-time="0" aria-current="true"><time>0:00</time><span>Compare two exponentials</span></button>
+        <button type="button" data-time="3"><time>0:03</time><span>Translate the real exponentials</span></button>
+        <button type="button" data-time="8"><time>0:08</time><span>The inner product changes</span></button>
+        <button type="button" data-time="12"><time>0:12</time><span>Compare complex exponentials</span></button>
+        <button type="button" data-time="15"><time>0:15</time><span>Translate the complex exponentials</span></button>
+        <button type="button" data-time="25"><time>0:25</time><span>The inner product stays the same</span></button>
+      </nav>
+      <div class="playback" role="group" aria-label="Playback controls">
+        <button id="toggle" type="button" aria-controls="reel">Play</button>
+        <button id="replay" type="button" aria-controls="reel">Replay</button>
+        <label for="speed">Speed</label>
+        <select id="speed" aria-controls="reel">
+          <option value="0.5">0.5×</option>
+          <option value="0.75">0.75×</option>
+          <option value="1" selected>1×</option>
+          <option value="1.25">1.25×</option>
+        </select>
+      </div>
+      <p><a href="translation-unitarity.mp4?v=96c39021480c">Open MP4</a> · <a href="draft-caption.md">Editable caption draft</a> · <a href="../index.html#24">Full reel preview</a></p>
+      <details>
+        <summary>About the comparison</summary>
+        <p>Each pair consists of two multiples of the same exponential mode. Their coefficients c₁ and c₂ are their values at x = 0. The displayed inner product is <span class="math">c<sub>1</sub><sup>*</sup> c<sub>2</sub></span> in this coefficient space, where the star means complex conjugation. It measures their magnitudes and relative phase.</p>
+        <p>This tests the multiplying factor by which an exponential mode responds to translation. The complex pair uses k = 2π/3, so a leftward shift of three units makes one complete turn. The radii and relative angle stay fixed throughout, not just at the end.</p>
+        <p>The real exponentials are a formal comparison, not normalizable wave packets on the whole line. Ordinary translations of real wave packets also preserve their inner product. The quantity displayed here is not an integral over the cropped plotting window.</p>
+      </details>
+    </section>
+  </main>
+  <script>
+    const video = document.getElementById('reel');
+    const toggle = document.getElementById('toggle');
+    const chapters = [...document.querySelectorAll('[data-time]')];
+    const updateChapter = () => {
+      const current = chapters.reduce((active, chapter) => Number(chapter.dataset.time) <= video.currentTime ? chapter : active, chapters[0]);
+      chapters.forEach(chapter => {
+        if (chapter === current) chapter.setAttribute('aria-current', 'true');
+        else chapter.removeAttribute('aria-current');
+      });
+    };
+    const play = () => video.play().catch(() => {});
+    chapters.forEach(chapter => chapter.addEventListener('click', () => {
+      video.currentTime = Number(chapter.dataset.time);
+      updateChapter();
+      play();
+    }));
+    toggle.addEventListener('click', () => video.paused ? play() : video.pause());
+    document.getElementById('replay').addEventListener('click', () => {
+      video.currentTime = 0;
+      updateChapter();
+      play();
+    });
+    document.getElementById('speed').addEventListener('change', event => {
+      video.playbackRate = Number(event.target.value);
+    });
+    video.addEventListener('play', () => { toggle.textContent = 'Pause'; });
+    video.addEventListener('pause', () => { toggle.textContent = 'Play'; });
+    video.addEventListener('ended', () => { toggle.textContent = 'Play'; });
+    video.addEventListener('timeupdate', updateChapter);
+    video.addEventListener('seeked', updateChapter);
+  </script>
+</body>
+</html>

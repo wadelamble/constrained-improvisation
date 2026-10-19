@@ -1,0 +1,19 @@
+Symmetry to Waves · 21/27
+Finding an eigenbasis
+
+Imagine a rubber sheet. We pull on its corners. What does this do to the x- and y-axes? It rotates their images toward each other while stretching them. Now instead choose diagonal axes aligned with the stretch. The long axis is stretched but not rotated and the short axis is compressed but not rotated.
+
+The action on these directions is now simple scalar multiplication of the original vector. ‘Scalar’ here means a single number. An arrow may grow or shrink, but its transformed version still lies along the same line.
+
+The animation shows the same deformation with two choices of basis. A basis is a set of independent vectors from which every vector in the space can be built by addition and scaling. In the ordinary x,y basis, the transformed basis vectors point in new directions, so each needs components along both original axes. The transformation mixes those components.
+
+In the diagonal basis, each basis vector changes only by an overall factor. If s is the factor stretching the long direction, the short direction is scaled by 1/s. These reciprocal factors preserve the area in this example. Finding the special directions makes the transformation easier to describe.
+
+Now for a bunch of terminology. These natural basis vectors are the eigenvectors. The values by which a transformation scales them are the eigenvalues, and the basis they form is called an eigenbasis. Since the transformation matrix is diagonal in this basis, the procedure for finding it is called diagonalization.
+
+Choosing the basis does not change the deformation of the sheet. It changes how we describe that deformation. Once the basis vectors no longer mix, any other vector, which is a linear combination of them, transforms by having its components scaled independently. We can therefore understand an arbitrary vector’s transformation by separating it into these simpler parts.
+
+Next: A vector as a sum of eigencomponents
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

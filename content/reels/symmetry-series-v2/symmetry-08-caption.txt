@@ -1,0 +1,22 @@
+Symmetry to Waves · 8/25
+What a symmetry preserves
+
+Once we have chosen a representation for a symmetry, we might well ask, how do we know our transformations preserve the symmetry? If we look at a triangle and rotate by 100°, we can see that it does not overlay itself. In a representation, we need mathematical expressions that say ‘this transformation left the triangle the same.’ We call these the invariants of the transformation.
+
+In our two-dimensional representation of D₃, a symmetry action cannot change these expressions in the coordinates of an arbitrary vector:
+
+r² = x² + y²,
+u = x³ − 3xy² = r³ cos(3θ).
+
+Here r is the vector’s length and θ its angle from the reference axis. The first expression gives its squared length. The second records the threefold structure of its orientation. A 120° turn adds 360° inside cos(3θ), and a flip across the x-axis changes θ to −θ. Both leave u unchanged.
+
+The values agree before and after each allowed action. Intermediate angles during a turn are not themselves triangle symmetries, so the cubic expression varies until the turn is complete. Length alone would allow every rotation. The cubic expression distinguishes the triangle’s discrete symmetry from the continuous symmetry of a circle.
+
+These exact invariants are not the important part. What matters is that we can write an expression in coordinates that must not change under a symmetry transformation.
+
+Why should we care? A system’s characteristic physical behavior can be found by assigning a number to each possible history and using variational calculus to find a history at which that number is stationary. A minimum or maximum is an example. Symmetry constrains this description of the possible histories. The ‘sameness’ of our pool game will acquire a mathematical meaning through quantities on which differently situated observers agree.
+
+Next: Continuous symmetries
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

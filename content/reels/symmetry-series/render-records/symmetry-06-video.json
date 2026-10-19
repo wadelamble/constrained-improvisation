@@ -1,0 +1,18 @@
+{
+  "order": 6,
+  "title": "From discrete to continuous",
+  "screen_text": [
+    "Continuously varying parameters",
+    "Rotation",
+    "Translation",
+    "R(\\theta)",
+    "T(a)",
+    "\\theta\\in\\mathbb{R}",
+    "a\\in\\mathbb{R}"
+  ],
+  "visual_sha256": "0971168e3b1ff001e03c2ec36440bea60e60d7731061db36d8cd035112df7ec4",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 20
+}

@@ -1,0 +1,12 @@
+{
+  "generator_derivatives": "verified",
+  "squared_generators": "negative projections",
+  "casimir": "2I",
+  "sample_vectors": 100,
+  "duration_seconds": 66,
+  "minimum_component_angle_degrees": 15.8,
+  "sum_to_internal_corners_clearance_pixels": [
+    62.1,
+    101.0
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "order": 10,
+  "title": "Hyperbolic rotations preserve a different interval",
+  "screen_text": [
+    "Hyperbolic rotation",
+    "(ct)^2-x^2=1\\qquad(c=1)",
+    "η = [value]",
+    "ct",
+    "x",
+    "ct = −x",
+    "ct = x",
+    "(x, ct)",
+    "ct = [value], x = [value]",
+    "ct=\\cosh\\eta,\\qquad x=\\sinh\\eta",
+    "\\cosh^2\\eta-\\sinh^2\\eta=1"
+  ],
+  "visual_sha256": "c6cca2673b4deb9b87e2e354c058a34180581464ab1ea3496acffb585ad4f4f4",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

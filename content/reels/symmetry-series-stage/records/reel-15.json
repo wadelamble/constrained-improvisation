@@ -1,0 +1,86 @@
+{
+  "render_key": {
+    "source": "a51219e6d2357c3b7651bc412b3beb40b5ad22eae65802747dd6f2f5c02fdcb4",
+    "overlay": "f6c37e3160f31fee67e972898c07ad544601b497aa395f303afbdc9ed2779ccf",
+    "encoder": "overlay-v1-crf18"
+  },
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "audio_codec": "aac",
+    "fps": 30.0,
+    "source_size": [
+      1080,
+      1920
+    ],
+    "size": [
+      1080,
+      1920
+    ],
+    "rotate": 0,
+    "duration": 27.0
+  },
+  "title_layout": {
+    "size": 54,
+    "lines": [
+      "Commutation in symmetry groups"
+    ],
+    "boxes": [
+      [
+        70,
+        288,
+        941,
+        341
+      ]
+    ]
+  },
+  "cover_title_layout": {
+    "size": 56,
+    "lines": [
+      "Commutation in symmetry",
+      "groups"
+    ],
+    "boxes": [
+      [
+        90,
+        545,
+        795,
+        600
+      ],
+      [
+        90,
+        620,
+        275,
+        663
+      ]
+    ]
+  },
+  "cover_time_seconds": 25.38,
+  "audio_render_key": {
+    "bed": {
+      "source_sha256": "cbf51c94e44b8c110a3c833f618290543db744b1926edba00a7167ea2c209c7d",
+      "duration_seconds": 776.0,
+      "gain_db": -4.0,
+      "crossfade_seconds": 2.0,
+      "sample_rate": 48000,
+      "version": 2
+    },
+    "video_stream": "SHA256=8167df73e0b520c74cef180ef1470633924584fe0224f6e427d115cf8f8a7181",
+    "start": 360.0,
+    "duration": 27.0,
+    "fade_in": 1.5,
+    "fade_out": 2,
+    "codec": "aac-192k-v1"
+  },
+  "audio_video_sha256": "ee7b5a9659d1608319b095a08d5848f4d5e80ba953f47fac19837be63a3b4349",
+  "audio_validation": {
+    "video_stream_unchanged": true,
+    "audio_codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "decoded_duration_seconds": 27.008,
+    "peak_dbfs": -12.71699559021156,
+    "rms_dbfs": -33.44500381186337
+  }
+}

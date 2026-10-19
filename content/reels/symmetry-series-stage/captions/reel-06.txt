@@ -1,0 +1,17 @@
+Symmetry to Waves · 6/27
+3 dimensional representation of the D₃ group
+
+Let’s now take our state vector and assign any values to its components. What happens to our state vector when we cycle those values in accordance with a rotation of the triangle? Our vector rotates by 120° about the diagonal axis where all three components are equal, as we can see in the animation. Similarly, when we permute the values in accordance with flips of the triangle, our vector reflects across planes that contain that axis.
+
+Each coordinate axis in this picture records one component value. A state (a, b, c) is a point in this space, and the vector from the origin to that point is the state vector. Cycling the entries sends the point to (c, a, b). Repeating the action traces a three-point orbit around the diagonal where all three components are equal.
+
+Every vector on the diagonal axis has the form (q, q, q). Permuting its entries does nothing, so the entire axis stays fixed. This is the axis about which the rotation matrix turns the rest of the space. The animation shows each turn continuously, but only rotations by multiples of 120° belong to D₃.
+
+The flip keeps one component and exchanges the other two. If the exchanged values already agree, the state does not move. These fixed states form a plane containing the equal-components diagonal. States away from the plane are reflected across it.
+
+Notice a pattern in our representation. Our vector has “slots” and “values,” and the symmetry moves the values to different slots in accordance with its allowed permutations, regardless of what the values themselves are. We will see that continuous functions, which can be treated as infinite-dimensional vectors with their inputs serving as slots, are similarly suited to state representations.
+
+Next: Irreducible representations
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

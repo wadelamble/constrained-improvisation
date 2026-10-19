@@ -1,0 +1,25 @@
+Symmetry to Waves · 16/25
+Why translating points is not linear
+
+Translation is, to the eye, the simplest possible symmetry. It would be natural to think the ideal representation space for a translation is simply a one-dimensional vector space, where points move by sliding a number line. But there is a problem.
+
+If an operation moves x by some amount a, then 0 is moved to a. A linear transformation must leave the zero vector fixed. This is a special case of the rule for linearity: a linear operation must preserve addition and multiplication by numbers. Adding two vectors and then transforming must give the same result as transforming each vector and then adding.
+
+For translation of points, the candidate operation is Tₐ(x) = x + a. Compare the two orders in the animation. First add 2 and 3 to get 5, then translate by 10 to get 15. In the other order, translate each number first. The 2 becomes 12 and the 3 becomes 13. Adding them gives 25.
+
+T₁₀(2 + 3) = 15,
+T₁₀(2) + T₁₀(3) = 25.
+
+One procedure adds the displacement once, while the other adds it twice. In general,
+
+Tₐ(x₁ + x₂) = x₁ + x₂ + a,
+Tₐ(x₁) + Tₐ(x₂) = x₁ + x₂ + 2a.
+
+These are not equal unless a = 0. Translation does act sensibly on a number line, but it is not a linear operation when acting on this space. We cannot obtain the representation we want by treating the point coordinate itself as the state vector.
+
+This asks us to reconsider what should be transformed. Our triangle representation worked by putting information at vertices and permuting the stored values. We can do something similar on the number line. A function assigns a value to each input coordinate, and we can translate that whole assignment. On the space of functions, translation will preserve linear combinations.
+
+Next: Translating functions is linear
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

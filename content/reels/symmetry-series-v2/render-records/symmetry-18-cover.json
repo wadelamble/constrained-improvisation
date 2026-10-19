@@ -1,0 +1,21 @@
+{
+  "order": 18,
+  "title": "Translation preserves a function’s shape",
+  "screen_text": [
+    "The same starting shape",
+    "(T_af)(x)=f(x-a)",
+    "Translation",
+    "Translation + deformation",
+    "Shape preserved",
+    "Shape distorted",
+    "Same values, new position",
+    "New position and new shape",
+    "x",
+    "+a"
+  ],
+  "visual_sha256": "6ddaeab7e37ea6d50eb75bacb9266605703631adbdc4a20f49b32c543ca14646",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

@@ -1,0 +1,22 @@
+{
+  "order": 1,
+  "title": "The same game",
+  "screen_text": [
+    "Position translation",
+    "Time translation",
+    "Rotation",
+    "Velocity boost",
+    "Reference experiment",
+    "Transformed experiment",
+    "\\mathbf{x}'=\\mathbf{x}+\\mathbf{a}",
+    "t'=t+b",
+    "\\mathbf{x}'=R\\mathbf{x}",
+    "\\mathbf{x}'=\\mathbf{x}+\\mathbf{u}t",
+    "Equal masses · elastic collision"
+  ],
+  "visual_sha256": "9df40e1b0b8569c2381e4be57467134ce5a9c4f87758b89cb02c3502811255c5",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

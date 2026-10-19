@@ -1,0 +1,210 @@
+[
+  {
+    "number": 1,
+    "title": "The same game",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1796
+  },
+  {
+    "number": 2,
+    "title": "A triangle’s six symmetries",
+    "duration": 36.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 2004
+  },
+  {
+    "number": 3,
+    "title": "Writing symmetry as matrices",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1895
+  },
+  {
+    "number": 4,
+    "title": "Separating the common part",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1818
+  },
+  {
+    "number": 5,
+    "title": "What a symmetry preserves",
+    "duration": 22.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1978
+  },
+  {
+    "number": 6,
+    "title": "From discrete to continuous",
+    "duration": 20.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1844
+  },
+  {
+    "number": 7,
+    "title": "From a nudge to a rotation",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1872
+  },
+  {
+    "number": 8,
+    "title": "Seeing the whole symmetry flow",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1794
+  },
+  {
+    "number": 9,
+    "title": "Rotation preserves lengths and angles",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1916
+  },
+  {
+    "number": 10,
+    "title": "Hyperbolic rotations preserve a different interval",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1824
+  },
+  {
+    "number": 11,
+    "title": "The order of rotations matters",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1918
+  },
+  {
+    "number": 12,
+    "title": "Translations act linearly on functions",
+    "duration": 27.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1786
+  },
+  {
+    "number": 13,
+    "title": "The derivative generates translation",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1800
+  },
+  {
+    "number": 14,
+    "title": "Eigenvectors simplify a transformation",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1954
+  },
+  {
+    "number": 15,
+    "title": "Translation eigenfunctions are exponentials",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1873
+  },
+  {
+    "number": 16,
+    "title": "A complex exponential is a travelling wave",
+    "duration": 24.0,
+    "fps": 30.0,
+    "size": [
+      1080,
+      1920
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p(progressive)",
+    "caption_buffer_count": 1880
+  }
+]

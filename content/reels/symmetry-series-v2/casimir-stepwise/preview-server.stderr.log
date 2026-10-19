@@ -1,0 +1,35 @@
+127.0.0.1 - - [14/Oct/2026 20:40:29] "GET /content/reels/symmetry-series-v2/casimir-stepwise/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:40:29] "HEAD /content/reels/symmetry-series-v2/casimir-stepwise/casimir-stepwise.mp4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:48:45] "GET /content/reels/symmetry-series-v2/casimir-stepwise/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:49:20] "GET /content/reels/symmetry-series-v2/casimir-stepwise/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:49:20] "HEAD /content/reels/symmetry-series-v2/casimir-stepwise/casimir-stepwise.mp4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:49:33] "GET /content/reels/symmetry-series-v2/casimir-stepwise/index.html?v=437301627dc6 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:49:33] "GET /content/reels/symmetry-series-v2/casimir-stepwise/poster.jpg?v=437301627dc6 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:49:33] "GET /content/reels/symmetry-series-v2/casimir-stepwise/casimir-stepwise.mp4?v=437301627dc6 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:49:33] code 404, message File not found
+127.0.0.1 - - [14/Oct/2026 20:49:33] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [14/Oct/2026 20:55:42] "GET /content/reels/symmetry-series-v2/casimir-stepwise/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:56:07] "GET /content/reels/symmetry-series-v2/casimir-stepwise/index.html?v=4d257c8eaf17 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:56:07] "GET /content/reels/symmetry-series-v2/casimir-stepwise/poster.jpg?v=4d257c8eaf17 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:56:08] "GET /content/reels/symmetry-series-v2/casimir-stepwise/casimir-stepwise.mp4?v=4d257c8eaf17 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:57:28] "GET /content/reels/symmetry-series-v2/casimir-stepwise/index.html?v=4d257c8eaf17 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:57:28] "GET /content/reels/symmetry-series-v2/casimir-stepwise/poster.jpg?v=4d257c8eaf17 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:57:28] "GET /content/reels/symmetry-series-v2/casimir-stepwise/casimir-stepwise.mp4?v=4d257c8eaf17 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 20:57:28] code 404, message File not found
+127.0.0.1 - - [14/Oct/2026 20:57:28] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [14/Oct/2026 21:12:36] "GET /content/reels/symmetry-series-v2/casimir-stepwise/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:22:35] "HEAD /content/reels/symmetry-series-v2/commutator-sphere/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:25:58] "HEAD /content/reels/symmetry-series-v2/commutator-sphere/commutator-sphere.mp4?v=d4c1b8d81174 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:26:07] "GET /content/reels/symmetry-series-v2/commutator-sphere/index.html?v=d4c1b8d81174 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:26:07] "GET /content/reels/symmetry-series-v2/commutator-sphere/poster.jpg?v=d4c1b8d81174 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:26:07] "GET /content/reels/symmetry-series-v2/commutator-sphere/commutator-sphere.mp4?v=d4c1b8d81174 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:26:48] "GET /content/reels/symmetry-series-v2/commutator-sphere/index.html?v=d4c1b8d81174 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:26:48] "GET /content/reels/symmetry-series-v2/commutator-sphere/poster.jpg?v=d4c1b8d81174 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:26:48] "GET /content/reels/symmetry-series-v2/commutator-sphere/commutator-sphere.mp4?v=d4c1b8d81174 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:35:54] "HEAD /content/reels/symmetry-series-v2/commutator-sphere/commutator-sphere.mp4?v=b14a157aba3f HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:35:57] "GET /content/reels/symmetry-series-v2/commutator-sphere/index.html?v=b14a157aba3f HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:35:57] "GET /content/reels/symmetry-series-v2/commutator-sphere/poster.jpg?v=b14a157aba3f HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:35:57] "GET /content/reels/symmetry-series-v2/commutator-sphere/commutator-sphere.mp4?v=b14a157aba3f HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:36:08] "GET /content/reels/symmetry-series-v2/commutator-sphere/index.html?v=b14a157aba3f HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:36:08] "GET /content/reels/symmetry-series-v2/commutator-sphere/poster.jpg?v=b14a157aba3f HTTP/1.1" 200 -
+127.0.0.1 - - [14/Oct/2026 21:36:08] "GET /content/reels/symmetry-series-v2/commutator-sphere/commutator-sphere.mp4?v=b14a157aba3f HTTP/1.1" 200 -

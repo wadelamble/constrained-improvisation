@@ -1,0 +1,24 @@
+{
+  "order": 25,
+  "title": "A complex exponential is a travelling wave",
+  "screen_text": [
+    "A complex wave",
+    "z(x,t)=e^{i(kx-\\omega t)}",
+    "Re z",
+    "Im z",
+    "\\cos(kx-\\omega t)",
+    "\\sin(kx-\\omega t)",
+    "Re",
+    "Im",
+    "x",
+    "x_0=4",
+    "|z|=1",
+    "z(x-a,t)=e^{-ika}z(x,t)",
+    "\\lambda=\\frac{2\\pi}{k}"
+  ],
+  "visual_sha256": "6dcff19dd6ec3e51877404a088d062615b0d8b283950a71373137b7ee71325b3",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 30
+}

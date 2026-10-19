@@ -1,0 +1,21 @@
+{
+  "order": 13,
+  "title": "Rotation preserves lengths and angles",
+  "screen_text": [
+    "Lengths and angles stay fixed",
+    "(R\\mathbf{u})\\cdot(R\\mathbf{v})=\\mathbf{u}\\cdot\\mathbf{v}",
+    "\\mathbf{u}\\cdot\\mathbf{v}=|\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta",
+    "|\\mathbf{u}|=1,\\quad |\\mathbf{v}|=\\frac{3}{4},\\quad \\theta=60^\\circ",
+    "\\mathbf{u}\\cdot\\mathbf{v}=\\frac{3}{8}",
+    "x",
+    "y",
+    "u",
+    "v",
+    "θ"
+  ],
+  "visual_sha256": "a75a649e566cf02ff58443bb2885b1a930736478b9677567fef1daa5d852094e",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 25
+}

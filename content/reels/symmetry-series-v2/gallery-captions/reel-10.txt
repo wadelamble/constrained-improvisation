@@ -1,0 +1,17 @@
+Symmetry to Waves · 10/27
+A tangent to the space of transformations
+
+If we zoom in enough, a smooth curved surface appears flat. At a point on the surface, a tangent plane describes its first-order behavior. The surface may bend away as we move farther from the point, but sufficiently small displacements can be described by vectors in that plane.
+
+The picture gives us a way to think about a continuous symmetry. Imagine each point on a smooth space represents a transformation. Nearby points represent slightly different transformations. A tangent vector then describes an infinitesimal change in the transformation, just as a tangent to a curve describes an infinitesimal change along it.
+
+The two arrows shown in the tangent plane are independent. One cannot be obtained by simply multiplying the other by a number, but their linear combinations describe every tangent direction in this plane. This is the sense in which independent generators supply the local directions available to a symmetry. The plane is an illustration of a two-dimensional space, not a claim that every symmetry has two generators.
+
+For rotations in a plane, we need only one parameter, the angle, so there is only one independent infinitesimal direction. To find its generator, we differentiate the rotation with respect to that angle at the identity, the transformation that does nothing.
+
+A derivative is familiar as the slope of a function. Here the object being differentiated is a transformation, which we can write as a matrix. Its derivative will also be a matrix. Acting on a state, that generator will produce the tangent to the state’s path. The tangent in transformation space and the tangent to a moving state are connected by this action. We can then use the same local rule repeatedly to recover the finite rotation.
+
+Next: From an infinitesimal rotation to a turn
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

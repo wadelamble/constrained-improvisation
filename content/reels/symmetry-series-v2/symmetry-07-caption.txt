@@ -1,0 +1,21 @@
+Symmetry to Waves · 7/25
+Separating the common part
+
+The transformed versions of any vector lie in a plane, and all such planes are parallel to one another. If we subtract the average of a vector’s components from each component, we move the point where that plane intersects the axis of rotation to the origin and preserve the permutation structure of the transformations.
+
+For our earlier vector, the average of the components is 3. We can separate it into a common part and a zero-sum part.
+
+(1, 3, 5) = (3, 3, 3) + (−2, 0, 2).
+
+The common part lies on the rotation axis and is unchanged by every permutation. The zero-sum part lies in a plane through the origin. Although written with three components, it needs only two independent numbers, since the third must make their sum zero. The three stacked orbits in the animation move into this same plane when their common parts are removed.
+
+A way to think of this is to allow the triangle’s vertices to store some information. If the value they store is the same for all vertices, the symmetry actions have no effect. If the values differ, the actions permute those differences in a two-dimensional space.
+
+The three-dimensional representation decomposes into two subspaces, one one-dimensional and the other two-dimensional. Each stays within itself under every group action. Neither contains a smaller nonzero subspace preserved by every action. These are called irreducible representations, or irreps for short.
+
+This is admittedly heavy math. Why do we bother? In the story we have to tell of quantum physics, constituents of matter must abide the dynamical symmetry of nature. Particle types correspond to irreducible representations of the relevant symmetry, and particular states live in those representations. Separating a representation into its irreducible parts will help us classify the objects whose behavior symmetry constrains.
+
+Next: What a symmetry preserves
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

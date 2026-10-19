@@ -1,0 +1,55 @@
+{
+  "mechanical": {
+    "08": [
+      [
+        "are not the important and are",
+        "are not important and are"
+      ]
+    ],
+    "13": [
+      [
+        "### Caption198",
+        "### Caption"
+      ],
+      [
+        "**innner product**",
+        "**inner product**"
+      ]
+    ],
+    "18": [
+      [
+        "it  be natural",
+        "it would be natural"
+      ]
+    ],
+    "19": [
+      [
+        "Functions provides a linear representation",
+        "Functions provide a linear representation"
+      ]
+    ],
+    "25": [
+      [
+        "intuition abput them",
+        "intuition about them"
+      ]
+    ]
+  },
+  "caption_splits": [
+    "24 unitarity to 24a",
+    "25 multiplication by i to 26"
+  ],
+  "removed_source_id": "20",
+  "caption_limit_cuts": [
+    {
+      "old": "The animation follows this construction in the ordinary three-dimensional vector representation.",
+      "new": "The animation uses the ordinary three-dimensional vector representation.",
+      "source_reel": 17
+    },
+    {
+      "old": "Here v is a vector on which rotation matrices act, and",
+      "new": "Here rotation matrices act on v, and",
+      "source_reel": 17
+    }
+  ]
+}

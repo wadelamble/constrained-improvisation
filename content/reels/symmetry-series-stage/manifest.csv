@@ -1,0 +1,28 @@
+﻿order,source_id,title,duration_seconds,caption_buffer_count,video,cover,caption_file,music_start_seconds
+1,1,Symmetries of physical behavior,26.0,1951,reel-01.mp4,reel-01-cover.jpg,captions/reel-01.txt,0.0
+2,2,A triangle’s six symmetries,26.0,1892,reel-02.mp4,reel-02-cover.jpg,captions/reel-02.txt,26.0
+3,3,From symmetric shapes to symmetry groups,22.0,1592,reel-03.mp4,reel-03-cover.jpg,captions/reel-03.txt,52.0
+4,4,Representations — the state vector,22.0,1801,reel-04.mp4,reel-04-cover.jpg,captions/reel-04.txt,74.0
+5,5,Representations — transformation matrices,26.0,1964,reel-05.mp4,reel-05-cover.jpg,captions/reel-05.txt,96.0
+6,6,3 dimensional representation of the D₃ group,30.0,1991,reel-06.mp4,reel-06-cover.jpg,captions/reel-06.txt,122.0
+7,7,Irreducible representations,27.0,2174,reel-07.mp4,reel-07-cover.jpg,captions/reel-07.txt,152.0
+8,8,Invariants,24.0,1950,reel-08.mp4,reel-08-cover.jpg,captions/reel-08.txt,179.0
+9,9,Continuous symmetries,24.0,1970,reel-09.mp4,reel-09-cover.jpg,captions/reel-09.txt,203.0
+10,10,Lie algebra,24.0,2124,reel-10.mp4,reel-10-cover.jpg,captions/reel-10.txt,227.0
+11,11,The exponential map of SO₂ rotations,26.0,1695,reel-11.mp4,reel-11-cover.jpg,captions/reel-11.txt,251.0
+12,12,Vector field flows,30.0,1984,reel-12.mp4,reel-12-cover.jpg,captions/reel-12.txt,277.0
+13,13,Rotations preserve the inner product,25.0,1604,reel-13.mp4,reel-13-cover.jpg,captions/reel-13.txt,307.0
+14,14,The invariant interval of hyperbolic rotation,28.0,2124,reel-14.mp4,reel-14-cover.jpg,captions/reel-14.txt,332.0
+15,15,Commutation in symmetry groups,27.0,737,reel-15.mp4,reel-15-cover.jpg,captions/reel-15.txt,360.0
+16,16,The commutator encodes group structure locally,54.0,1777,reel-16.mp4,reel-16-cover.jpg,captions/reel-16.txt,387.0
+17,17,Building a Casimir operator,66.0,2177,reel-17.mp4,reel-17-cover.jpg,captions/reel-17.txt,441.0
+18,18,Translations cannot be represented by position coordinates alone,28.0,2106,reel-18.mp4,reel-18-cover.jpg,captions/reel-18.txt,507.0
+19,19,Function representations of translations,28.0,1907,reel-19.mp4,reel-19-cover.jpg,captions/reel-19.txt,535.0
+20,21,The derivative of a function generates translation,26.0,2039,reel-20.mp4,reel-20-cover.jpg,captions/reel-20.txt,563.0
+21,22,Finding an eigenbasis,25.0,2132,reel-21.mp4,reel-21-cover.jpg,captions/reel-21.txt,589.0
+22,23,A vector as a sum of eigencomponents,26.0,2185,reel-22.mp4,reel-22-cover.jpg,captions/reel-22.txt,614.0
+23,24,Translation eigenfunctions are exponentials,26.0,1017,reel-23.mp4,reel-23-cover.jpg,captions/reel-23.txt,640.0
+24,24a,Translation of complex exponentials preserves the inner product,32.0,1639,reel-24.mp4,reel-24-cover.jpg,captions/reel-24.txt,666.0
+25,25,The complex plane,24.0,1278,reel-25.mp4,reel-25-cover.jpg,captions/reel-25.txt,698.0
+26,26,i generates rotations,24.0,2150,reel-26.mp4,reel-26-cover.jpg,captions/reel-26.txt,722.0
+27,27,A travelling wave as a complex exponential,30.0,2107,reel-27.mp4,reel-27-cover.jpg,captions/reel-27.txt,746.0

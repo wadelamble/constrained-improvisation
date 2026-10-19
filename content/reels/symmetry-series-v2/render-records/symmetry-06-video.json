@@ -1,0 +1,20 @@
+{
+  "order": 6,
+  "title": "D₃ in three dimensions",
+  "screen_text": [
+    "Equal-components axis",
+    "Rotation",
+    "Reflection",
+    "Reflection plane",
+    "v₁",
+    "v₂",
+    "v₃",
+    "R^3=I",
+    "S^2=I"
+  ],
+  "visual_sha256": "fe74082509671b99f6c7b8f7e2a0990197905e76a2e0584cc549d6db54ad2622",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 30
+}

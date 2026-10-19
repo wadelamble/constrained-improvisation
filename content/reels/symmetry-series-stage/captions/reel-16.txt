@@ -1,0 +1,31 @@
+Symmetry to Waves · 16/27
+The commutator encodes group structure locally
+
+In a Lie algebra, these ordering relations are expressed by the commutator
+
+[X, Y] = XY − YX. 
+
+The commutator is itself an element of the Lie algebra. That is, it must be some linear combination of the full set of generators. For rotation generators, this takes a simple form:
+
+[Jₓ, Jᵧ] = J_z,
+[Jᵧ, J_z] = Jₓ,
+[J_z, Jₓ] = Jᵧ,
+
+where Jₓ, Jᵧ, and J_z generate rotations about the x-, y-, and z-axes, respectively.
+
+This is a clever bit of math. The overall order-dependence of finite actions is encoded into the relations of infinitesimal generators. (There are global features that cannot be anticipated from a local view, such as a space wrapping around on itself, such as in the video game “Asteroids.”)
+
+We can see how this works visually. As in the previous animation, rotations about different axes depend on their order. But now, we make the rotation angles smaller, bringing the two results closer toward the infinitesimal. 
+
+Let Rₓ(a) and Rᵧ(b) rotate through small angles a and b. Applied to a vector v, the two orders agree through first order in the angles. Their leading difference is proportional to the product ab. The animation magnifies that difference by dividing by ab, so it remains visible as both angles shrink:
+
+(Rₓ(a)Rᵧ(b) − Rᵧ(b)Rₓ(a))v / (ab) → J_zv.
+
+Here J_zv is the infinitesimal change in v produced by rotation about z.
+
+The commutation relations encode the group’s local structure independently of the representation. Every representation must preserve them.
+
+Next: Building a Casimir operator
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

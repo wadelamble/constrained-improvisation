@@ -1,0 +1,15 @@
+Symmetry to Waves · 25/27
+The complex plane
+
+Complex valued functions are not directly a part of our exposition about symmetry, but they are so pervasive as the solutions to the differential equations entailed by translation symmetry that we really must gain some intuition about them to continue. 
+
+A complex number has two real-number degrees of freedom. We define z = x + iy, where x and y are real numbers and i² = −1. The number z therefore maps to a vector (x, y) in the complex plane. The horizontal axis records the real part x, and the vertical axis records the imaginary part y.
+
+The diagram builds z from these two parts. An arrow along the real axis supplies x. An arrow along the imaginary direction supplies iy. Placing them tip to tail gives the resultant z, just as adding the two coordinate components of an ordinary vector gives the whole vector.
+
+In the complex plane, both x and y are real coordinate values, and together they specify one complex number. One complex dimension therefore has the same number of real degrees of freedom as a two-dimensional real plane.
+
+Next: i generates rotations
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

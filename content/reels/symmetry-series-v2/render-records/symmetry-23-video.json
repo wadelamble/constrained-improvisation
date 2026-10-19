@@ -1,0 +1,21 @@
+{
+  "order": 23,
+  "title": "A complex number as a vector",
+  "screen_text": [
+    "A sum in the complex plane",
+    "z=x+iy",
+    "Re",
+    "Im",
+    "x",
+    "iy",
+    "z",
+    "Complex form",
+    "Vector form",
+    "z=x+iy\\quad\\longleftrightarrow\\quad(x,y)"
+  ],
+  "visual_sha256": "a49555438bae89b8506fc5042b5c141c7113ae3d0b6d8a8eb3675d52d47f90f5",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

@@ -1,0 +1,25 @@
+Symmetry to Waves · 24/25
+Multiplication by i gives a tangent
+
+What action does multiplication by i have at the identity vector 1? The point 1 = 1 + 0i lies on the positive real axis. Multiplying by i gives i = 0 + 1i, a perpendicular vector. Draw that vector at the tip of the original one and it gives the tangent to the unit circle.
+
+This is exactly the action the J matrix generator had in two dimensions. More generally, if z = x + iy, then iz = −y + ix. The vector iz is perpendicular to z and has the same length. Anchored at the tip of z, it supplies the tangent to the circle through that point.
+
+Since multiplication by i produces the tangent vector at every point, and the tangent vector is the geometric version of the derivative, we have
+
+dz/dθ = iz(θ).
+
+With z(0) = 1, solving this differential equation gives z(θ) = e^(iθ). The parameter θ is the angle. At each point along the circle, the derivative supplies the direction and rate of change needed to continue the turn. The multiplication by i gives the tangent rule, while exponentiating it gives the finite rotation.
+
+Halfway around the unit circle, θ = π and e^(iπ) = −1. Mapping z back to its real and imaginary coordinates gives Euler’s formula,
+
+e^(iθ) = cos θ + i sin θ.
+
+The real coordinate oscillates as cosine and the imaginary coordinate as sine. Their combination has length one throughout the turn, because cos²θ + sin²θ = 1. Multiplying by an amplitude A gives a circle of radius A.
+
+Engineers often represent real sinusoidal waves with complex exponentials and read off the real part, since exponentials simplify the algebra. We now have the geometry behind that practice. Letting the angle vary with position and time will turn this circular motion into a travelling complex wave.
+
+Next: A complex exponential is a travelling wave
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

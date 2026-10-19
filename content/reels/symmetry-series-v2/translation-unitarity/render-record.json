@@ -1,0 +1,28 @@
+{
+  "title": "Translation of complex exponentials preserves the inner product",
+  "sha256": "96c39021480cb224a9493522a98bfb24726b7341f2501e0700e5d31513896e15",
+  "media": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "fps": 30.0,
+    "source_size": [
+      1080,
+      1920
+    ],
+    "size": [
+      1080,
+      1920
+    ],
+    "rotate": 0,
+    "duration": 32.0
+  },
+  "math": {
+    "samples": 193,
+    "max_inner_product_error": 1.2412670766236366e-16,
+    "real_inner_product": [
+      0.57,
+      2.4057966156880344
+    ]
+  }
+}

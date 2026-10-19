@@ -1,0 +1,17 @@
+Symmetry to Waves · 4/25
+From vertices to a vector
+
+We can plainly see the symmetry of the triangle, but what if we want to write it down mathematically? Specifically, what if we want to write group actions in terms of how they transform labels on an object? Suppose we label our triangle’s vertices A, B, C and ask, if we rotate twice, flip once, then rotate again, where is vertex A sent?
+
+Recognizing that the triangle’s state has three ordered components, we might guess that we could represent it as a vector with three components. To construct this three-dimensional representation of D₃, we map the three vertices to the three entries of a column. The ordering tells us which vertex each entry describes.
+
+A way to think of this is to allow the triangle’s vertices to store some information, like a number or any numerical quantity. A state might then be written (1, 3, 5). We are recording the three stored values, not the horizontal and vertical coordinates of a point in the drawing. This is why a triangle drawn on a flat page can lead us to a three-dimensional vector space.
+
+A rotation permutes the entries in accordance with the motion of the vertices. In the convention we will use, a 120° rotation sends (1, 3, 5) to (5, 1, 3). A flip that fixes the first vertex exchanges the other two entries. These rules apply to any three values we choose.
+
+There is nothing special about the vertices here. We could just as easily have chosen the midpoints of the edges or any other triplet of points with the triangle’s symmetries. The same rule would permute the values attached to those positions. We have separated the information being transformed from the rule that transforms it, and that rule can be written as a matrix.
+
+Next: Representing symmetry with matrices
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

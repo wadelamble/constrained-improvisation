@@ -1,0 +1,19 @@
+{
+  "order": 12,
+  "title": "From a tangent rule to a flow",
+  "screen_text": [
+    "One state",
+    "Every state",
+    "Flow",
+    "Tangent",
+    "J(x,y)=(-y,x)",
+    "\\mathbf{v}(\\theta)=e^{\\theta J}\\mathbf{v}(0)",
+    "x",
+    "y"
+  ],
+  "visual_sha256": "a2f8bd8fb99ec927107a591d41e6ba375f15ba7cd4db36e6dca643d6802664f4",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 30
+}

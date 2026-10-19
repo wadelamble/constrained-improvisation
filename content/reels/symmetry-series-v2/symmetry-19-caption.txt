@@ -1,0 +1,26 @@
+Symmetry to Waves · 19/25
+The derivative generates translation
+
+We have a function representation. Now we want to find an infinitesimal generator that acts on functions to produce a translation. We can do so by considering what happens to a function’s value under tiny displacements.
+
+The new value f(x − a) is close to the old value f(x), and the correction is given, in the infinitesimal limit, by the slope at x. This is the same idea that a smooth curve appears straight when we zoom in sufficiently. The tangent line supplies the first approximation to the shifted value.
+
+f(x − a) = f(x) − a f′(x) + O(a²).
+
+This is the first-order Taylor expansion. The symbol f′ means the derivative, and O(a²) collects corrections of second order and higher in the displacement. As a approaches zero, these corrections become smaller relative to the first-order change. The animation compares the curve and tangent while magnifying the region between x and x − a.
+
+A positive a moves the whole graph to the right. At the fixed coordinate x, the translated function takes its value from x − a. If the function slopes upward there, this earlier value is lower. That gives the minus sign in the first-order change.
+
+The derivative operation therefore generates translation, with the sign fixed by our chosen direction. In the notation we will use for waves,
+
+K = −i d/dx,
+Tₐ = exp(−iaK).
+
+Here i is the imaginary unit, defined by i² = −1. The exponent −iaK equals −a d/dx, so the finite action remains (Tₐf)(x) = f(x − a).
+
+For rotation, the generator gave a tangent vector at each state. Here it gives the change in the function’s values as its graph shifts. Exponentiating the generator assembles those infinitesimal changes into a finite translation. We have again recovered a whole transformation from a local differential rule.
+
+Next: Finding an eigenbasis
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

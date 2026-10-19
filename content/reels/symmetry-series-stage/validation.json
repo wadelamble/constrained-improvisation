@@ -1,0 +1,271 @@
+{
+  "status": "passed",
+  "count": 27,
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "fps": 30,
+  "max_caption_count": 2185,
+  "caption_limit": 2196,
+  "total_duration_seconds": 776.0,
+  "sources_unchanged": true,
+  "text_sha256": "78fc8296726a551e9a34758cd0710f568d6ef8601f00acfaceb122274b6f3c55",
+  "tests": [
+    "source and exported dimensions, frame rate, and duration",
+    "all captions within limit",
+    "consecutive ordering and current next-title pointers",
+    "unique source mapping with 20 removed and 24a included",
+    "decoded contact sheets and frames generated for every export",
+    "asset hashes recorded",
+    "source text unchanged during build",
+    "all video bitstreams unchanged by audio mux",
+    "AAC stereo 48 kHz audio decoded for every export; finite, non-silent, unclipped, correct duration"
+  ],
+  "audio": "AAC soundtrack embedded in all 27 exports",
+  "audio_validation": {
+    "1": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 26.005333333333333,
+      "peak_dbfs": -12.803422528640397,
+      "rms_dbfs": -33.530828128884366
+    },
+    "2": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 26.005333333333333,
+      "peak_dbfs": -11.624793642082533,
+      "rms_dbfs": -29.85787721966308
+    },
+    "3": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 22.016,
+      "peak_dbfs": -15.325314713391379,
+      "rms_dbfs": -36.20457974348322
+    },
+    "4": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 22.016,
+      "peak_dbfs": -13.082668240852984,
+      "rms_dbfs": -33.42251776846295
+    },
+    "5": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 26.005333333333333,
+      "peak_dbfs": -11.497088437889179,
+      "rms_dbfs": -29.710098495826568
+    },
+    "6": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 30.016,
+      "peak_dbfs": -12.769027379839121,
+      "rms_dbfs": -33.844186355883906
+    },
+    "7": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 27.008,
+      "peak_dbfs": -12.583692007742025,
+      "rms_dbfs": -33.47334248399556
+    },
+    "8": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 24.0,
+      "peak_dbfs": -11.573635951606287,
+      "rms_dbfs": -30.29744512904877
+    },
+    "9": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 24.0,
+      "peak_dbfs": -12.76757897701037,
+      "rms_dbfs": -33.65077536222558
+    },
+    "10": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 24.0,
+      "peak_dbfs": -12.676173106901947,
+      "rms_dbfs": -33.33995282749464
+    },
+    "11": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 26.005333333333333,
+      "peak_dbfs": -11.491291937246118,
+      "rms_dbfs": -30.70104947695782
+    },
+    "12": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 30.016,
+      "peak_dbfs": -12.817398271713984,
+      "rms_dbfs": -33.938028910836884
+    },
+    "13": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 25.002666666666666,
+      "peak_dbfs": -11.554983263793975,
+      "rms_dbfs": -30.245802597129142
+    },
+    "14": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 28.010666666666665,
+      "peak_dbfs": -12.855939817616752,
+      "rms_dbfs": -34.18733813274965
+    },
+    "15": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 27.008,
+      "peak_dbfs": -12.71699559021156,
+      "rms_dbfs": -33.44500381186337
+    },
+    "16": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 54.016,
+      "peak_dbfs": -11.580621778386808,
+      "rms_dbfs": -32.000269753891345
+    },
+    "17": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 66.00533333333334,
+      "peak_dbfs": -11.497088437889179,
+      "rms_dbfs": -31.7526041855419
+    },
+    "18": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 28.010666666666665,
+      "peak_dbfs": -11.446867656456588,
+      "rms_dbfs": -30.1174931001715
+    },
+    "19": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 28.010666666666665,
+      "peak_dbfs": -12.688135898474009,
+      "rms_dbfs": -34.2638290042431
+    },
+    "20": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 26.005333333333333,
+      "peak_dbfs": -12.675795479649974,
+      "rms_dbfs": -32.998509344309255
+    },
+    "21": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 25.002666666666666,
+      "peak_dbfs": -11.472624969341895,
+      "rms_dbfs": -30.53984664823318
+    },
+    "22": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 26.005333333333333,
+      "peak_dbfs": -12.871133871703828,
+      "rms_dbfs": -34.110163290565495
+    },
+    "23": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 26.005333333333333,
+      "peak_dbfs": -12.658176102299494,
+      "rms_dbfs": -33.53618613781955
+    },
+    "24": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 32.0,
+      "peak_dbfs": -11.67041950697405,
+      "rms_dbfs": -31.37704757319744
+    },
+    "25": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 24.0,
+      "peak_dbfs": -16.10686139050828,
+      "rms_dbfs": -34.19919535599178
+    },
+    "26": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 24.0,
+      "peak_dbfs": -11.535434655717179,
+      "rms_dbfs": -30.42734264312575
+    },
+    "27": {
+      "video_stream_unchanged": true,
+      "audio_codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_duration_seconds": 30.016,
+      "peak_dbfs": -12.855939817616752,
+      "rms_dbfs": -34.22222237784262
+    }
+  }
+}

@@ -1,0 +1,288 @@
+[
+  {
+    "number": 1,
+    "title": "Symmetries of physical behavior",
+    "duration": 26,
+    "renderer": "legacy:1",
+    "sources": [
+      "animations/symmetry-pool-table.mp4"
+    ],
+    "required": "Four transformed collisions, compared with the reference experiment.",
+    "scene_number": 1
+  },
+  {
+    "number": 2,
+    "title": "A triangle’s six symmetries",
+    "duration": 26,
+    "renderer": "triangle",
+    "sources": [
+      "diagrams/symmetry-triangle.svg",
+      "animations/symmetry-triangle-actions.mp4"
+    ],
+    "required": "Labeled triangle, all six discrete actions and return to the reference outline.",
+    "scene_number": 2
+  },
+  {
+    "number": 3,
+    "title": "D₃ is more general than triangles",
+    "duration": 22,
+    "renderer": "carriers",
+    "sources": [
+      "diagrams/symmetry-d3-carriers.svg"
+    ],
+    "required": "Triangle and all three other carriers undergo the same rotation and reflection.",
+    "scene_number": 3
+  },
+  {
+    "number": 4,
+    "title": "From vertices to a vector",
+    "duration": 22,
+    "renderer": "early",
+    "sources": [
+      "diagrams/symmetry-d3-vertices-to-vector.svg"
+    ],
+    "required": "A, B, C explicitly map from triangle vertices to ordered column components.",
+    "scene_number": 4
+  },
+  {
+    "number": 5,
+    "title": "Representing symmetry with matrices",
+    "duration": 26,
+    "renderer": "legacy:3",
+    "sources": [],
+    "required": "Follow cyclic permutation and reflection of components, with the representation composition equation.",
+    "scene_number": 5
+  },
+  {
+    "number": 6,
+    "title": "D₃ in three dimensions",
+    "duration": 30,
+    "renderer": "early",
+    "sources": [
+      "animations/symmetry-d3-rotations-vs-flips.mp4"
+    ],
+    "required": "Compare rotation about the fixed equal-components diagonal and reflection through a plane containing it. Show axes, traces and labels.",
+    "scene_number": 6
+  },
+  {
+    "number": 7,
+    "title": "Separating the common part",
+    "duration": 27,
+    "renderer": "legacy:4",
+    "sources": [
+      "animations/symmetry-d3-irrep-collapse.mp4"
+    ],
+    "required": "Build all three stacked triangular orbits, subtract the common components and turn face-on.",
+    "scene_number": 7
+  },
+  {
+    "number": 8,
+    "title": "What a symmetry preserves",
+    "duration": 24,
+    "renderer": "legacy:5",
+    "sources": [],
+    "required": "Squared length and cubic D3 invariant, including changing cubic value between group endpoints.",
+    "scene_number": 8
+  },
+  {
+    "number": 9,
+    "title": "Continuous symmetries",
+    "duration": 24,
+    "renderer": "early",
+    "sources": [
+      "animations/symmetry-continuous-so2-translation.mp4"
+    ],
+    "required": "Rotate the full marked circle against fixed reference marks and grow the angle arc. Translate marked line.",
+    "scene_number": 9
+  },
+  {
+    "number": 10,
+    "title": "A tangent to the space of transformations",
+    "duration": 24,
+    "renderer": "early",
+    "sources": [
+      "diagrams/tangent-plane-curved-surface.png"
+    ],
+    "required": "Curved surface, local tangent plane and two independent tangent vectors.",
+    "scene_number": 10
+  },
+  {
+    "number": 11,
+    "title": "From an infinitesimal rotation to a turn",
+    "duration": 26,
+    "renderer": "legacy:7",
+    "sources": [
+      "diagrams/so2-tangent-at-identity.png"
+    ],
+    "required": "Identity point and tangent, derivative generator, finite exponential action.",
+    "scene_number": 11
+  },
+  {
+    "number": 12,
+    "title": "From a tangent rule to a flow",
+    "duration": 30,
+    "renderer": "early",
+    "sources": [
+      "animations/symmetry-so2-vector-field-flow.mp4"
+    ],
+    "required": "One tangent, the tangent field everywhere, release colored points and draw growing colored trails.",
+    "scene_number": 12
+  },
+  {
+    "number": 13,
+    "title": "Rotation preserves lengths and angles",
+    "duration": 25,
+    "renderer": "legacy:9",
+    "sources": [
+      "animations/symmetry-rotation-vector-invariants.mp4"
+    ],
+    "required": "Two unequal vectors rotate while their lengths and angle stay fixed.",
+    "scene_number": 13
+  },
+  {
+    "number": 14,
+    "title": "A different invariant under hyperbolic rotation",
+    "duration": 28,
+    "renderer": "late",
+    "sources": [
+      "animations/symmetry-hyperbolic-rotation.mp4"
+    ],
+    "required": "Two points on the hyperbola, connecting segment, changing ordinary separation and fixed hyperbolic intervals.",
+    "scene_number": 14
+  },
+  {
+    "number": 15,
+    "title": "The order of rotations matters",
+    "duration": 27,
+    "renderer": "legacy:11",
+    "sources": [
+      "animations/symmetry-so3-rotation-order.mp4"
+    ],
+    "required": "Same start, opposite orders of two 90-degree rotations, different final orientations.",
+    "scene_number": 15
+  },
+  {
+    "number": 16,
+    "title": "What the commutator measures",
+    "duration": 40,
+    "renderer": "lie_commutator",
+    "sources": [],
+    "required": "Compare opposite rotation orders, shrink both angles, and magnify their difference to reveal the third generator. Cycle all three commutators."
+  },
+  {
+    "number": 17,
+    "title": "Building a Casimir operator",
+    "duration": 34,
+    "renderer": "casimir",
+    "sources": [],
+    "required": "Apply the three squared-generator terms on fixed axes and add the outputs tip to tail. Their sum remains 2v as the input turns."
+  },
+  {
+    "number": 18,
+    "title": "Why translating points is not linear",
+    "duration": 28,
+    "renderer": "late",
+    "sources": [
+      "animations/symmetry-translation-point-linearity-failure.mp4"
+    ],
+    "required": "Perform 2+3 then +10, compared with 2+10 and 3+10 then addition. Show 15 versus 25.",
+    "scene_number": 16
+  },
+  {
+    "number": 19,
+    "title": "Translating functions is linear",
+    "duration": 28,
+    "renderer": "late",
+    "sources": [
+      "animations/symmetry-translation-function-linearity.mp4"
+    ],
+    "required": "Actually add then translate in one pane and translate then add in the other.",
+    "scene_number": 17
+  },
+  {
+    "number": 20,
+    "title": "Translation preserves a function’s shape",
+    "duration": 24,
+    "renderer": "late",
+    "sources": [
+      "animations/symmetry-function-translation-shape.mp4"
+    ],
+    "required": "Full translation-only versus translation-plus-deformation comparison, with ghosts.",
+    "scene_number": 18
+  },
+  {
+    "number": 21,
+    "title": "The derivative generates translation",
+    "duration": 26,
+    "renderer": "legacy:13",
+    "sources": [
+      "animations/symmetry-translation-tangent-zoom.mp4"
+    ],
+    "required": "Zoom from smooth curve to local tangent, x and x-a marked, signs consistent.",
+    "scene_number": 19
+  },
+  {
+    "number": 22,
+    "title": "Finding an eigenbasis",
+    "duration": 25,
+    "renderer": "legacy:14",
+    "sources": [
+      "animations/symmetry-eigenbasis-stretch.mp4"
+    ],
+    "required": "First act of source. Ordinary basis vectors mix, eigenbasis vectors only scale.",
+    "scene_number": 20
+  },
+  {
+    "number": 23,
+    "title": "A vector as a sum of eigencomponents",
+    "duration": 26,
+    "renderer": "late",
+    "sources": [
+      "animations/symmetry-eigenbasis-stretch.mp4"
+    ],
+    "required": "Second act of source. Decompose arbitrary vector tip to tail, scale components, recombine, display diagonal matrix.",
+    "scene_number": 21
+  },
+  {
+    "number": 24,
+    "title": "Translation eigenfunctions are exponentials",
+    "duration": 26,
+    "renderer": "legacy:15",
+    "sources": [],
+    "required": "Derivative and finite translation act on exponential by a scalar factor.",
+    "scene_number": 22
+  },
+  {
+    "number": 25,
+    "title": "A complex number as a vector",
+    "duration": 24,
+    "renderer": "late",
+    "sources": [
+      "diagrams/symmetry-complex-plane-vector.png"
+    ],
+    "required": "Real x plus imaginary iy as tip-to-tail arrows, resultant z and explicit (x,y) correspondence.",
+    "scene_number": 23
+  },
+  {
+    "number": 26,
+    "title": "Multiplication by i gives a tangent",
+    "duration": 24,
+    "renderer": "late",
+    "sources": [
+      "diagrams/symmetry-complex-unit-tangent.png"
+    ],
+    "required": "Identity 1, unit tangent i anchored at the tip, then generalize to z and iz during rotation.",
+    "scene_number": 24
+  },
+  {
+    "number": 27,
+    "title": "A complex exponential is a travelling wave",
+    "duration": 30,
+    "renderer": "wave",
+    "sources": [
+      "animations/symmetry-complex-plane-wave-v2.mp4"
+    ],
+    "required": "Helix, synchronized real/imaginary components, fixed x slice, rotating value, amplitude and wavelength bracket.",
+    "scene_number": 25
+  }
+]

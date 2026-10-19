@@ -1,0 +1,17 @@
+Symmetry to Waves · 24/27
+Translation of complex exponentials preserves the inner product
+
+We now have a potential way to represent a state using exponential functions. We also want symmetry transformations to preserve the relationship between states, expressed by their inner product. This property is called unitarity.
+
+Take two multiples of the same exponential, with coefficients c₁ and c₂. In this one-dimensional space of functions, their inner product is c₁* c₂, where the star means complex conjugation, used here to extend the dot product to complex values. The magnified cross-section shows these coefficients as the function values at x = 0.
+
+When we translate the real exponentials to the left, both coefficients grow. Their product grows too. Translation multiplies them by a factor whose magnitude changes.
+
+Now translate two complex exponentials. Their values turn in the complex plane, but their magnitudes and relative angle stay the same. The common phase cancels in c₁* c₂, leaving the inner product unchanged throughout the translation. We can see this relationship visually. The relative structure of the complex exponential "spirals" stays the same.
+
+This gives us a reason to choose complex exponentials. They represent translations by turning amplitudes without stretching them. We've looked ahead here a bit. Why complex exponentials look like spirals whose projections are sinusoidal functions is what we will explain next.
+
+Next: The complex plane
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

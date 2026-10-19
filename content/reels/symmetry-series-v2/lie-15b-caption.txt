@@ -1,0 +1,28 @@
+Symmetry to Waves · Lie algebra
+What the commutator measures
+
+Rotations about different axes depend on their order. Turning a vector about x and then y generally leaves it in a different state from performing the same rotations in reverse. Making the angles smaller brings the two results closer, but the difference has a structure we can isolate.
+
+Let Rₓ(a) and Rᵧ(b) rotate through small angles a and b. Applied to a vector v, the two orders agree through first order in the angles. Their leading difference is proportional to the product ab. The animation magnifies that difference by dividing by ab, so it remains visible as both angles shrink:
+
+(Rₓ(a)Rᵧ(b) − Rᵧ(b)Rₓ(a))v / (ab) → J_zv.
+
+The matrices act from right to left. Here Jₓ, Jᵧ, and J_z are the real generators of right-handed rotations. J_zv is the infinitesimal change in v produced by rotation about z. It points along the motion of the vector’s tip, rather than along the rotation axis. The magnified difference approaches this change as the angles tend to zero. At finite angles, it still contains higher-order contributions.
+
+This limiting relation is expressed by the commutator:
+
+[Jₓ, Jᵧ] = JₓJᵧ − JᵧJₓ = J_z.
+
+Cycling through the axes gives
+
+[Jᵧ, J_z] = Jₓ,
+[J_z, Jₓ] = Jᵧ.
+
+The commutator supplies another generator. Together, the generators, their linear combinations, and their commutators form a Lie algebra. For three-dimensional rotations, these relations describe how the three independent directions of infinitesimal motion fit together.
+
+The Lie algebra captures the symmetry group’s local structure. Global features, such as how the group wraps around onto itself, require more information. Every representation of the symmetry must preserve the commutator relations, giving us a way to test whether a proposed representation has the right structure.
+
+Next: Why translating points is not linear
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

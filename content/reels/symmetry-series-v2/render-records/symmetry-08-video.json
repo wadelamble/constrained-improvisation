@@ -1,0 +1,20 @@
+{
+  "order": 8,
+  "title": "What a symmetry preserves",
+  "screen_text": [
+    "Invariants of discrete rotations",
+    "Allowed D₃ endpoints",
+    "Between endpoints",
+    "r^2=x^2+y^2",
+    "u=x^3-3xy^2=r^3\\cos(3\\theta)",
+    "Squared length",
+    "Cubic invariant",
+    "Current",
+    "Reference"
+  ],
+  "visual_sha256": "b0b0b773e39c94ab437d91b8fee9e49dcbcafa62333ce058c7f7448e10fa567e",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

@@ -1,0 +1,28 @@
+Symmetry to Waves · 16/16
+A complex exponential is a travelling wave
+
+A single-parameter complex exponential, e^(iθ), describes a circle. It is a way to repackage the rotation operator we have already seen. Multiplication by i supplies the tangent direction in the complex plane, just as the matrix J did in the two-dimensional real representation.
+
+i² = −1 corresponds to J² = −I.
+
+A complex number z = x + iy has two real-number degrees of freedom. Euler's formula makes the connection to rotation explicit,
+
+e^(iθ) = cos θ + i sin θ.
+
+Now let us turn from circular motion to a travelling complex wave. Let the phase vary with position x and time t,
+
+θ(x,t) = kx − ωt,
+z(x,t) = Ae^(i(kx − ωt)).
+
+Here A is the amplitude, k = 2π/λ is the wave number, λ is the wavelength, and ω sets how quickly the phase changes with time.
+
+In the animation, position runs along the helix. The other two directions show the real and imaginary parts of the complex value at each position. As time advances, these values rotate and the wave pattern travels along x. The highlighted coordinate stays fixed while its complex value turns in the accompanying circle.
+
+The two components are A cos θ and A sin θ. Their values oscillate, while the length of the complex value stays fixed at A. Translating this wave multiplies it by a phase factor, z(x − a,t) = e^(−ika)z(x,t). The multiplier has magnitude one, so it turns each value without stretching it.
+
+We have arrived at waves by asking how to represent translation while preserving overlap. The existing Waves to Quanta series takes up the story from here, exploring wave packets, Fourier duality, and the connection to quantum mechanics.
+
+Continue with Waves to Quanta
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

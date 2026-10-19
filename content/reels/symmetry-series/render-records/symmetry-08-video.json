@@ -1,0 +1,17 @@
+{
+  "order": 8,
+  "title": "Seeing the whole symmetry flow",
+  "screen_text": [
+    "The same generator at every state",
+    "Vector field",
+    "Flow",
+    "J(x,y)=(-y,x)",
+    "\\frac{d\\mathbf{v}}{d\\theta}=J\\mathbf{v}",
+    "\\mathbf{v}(\\theta)=e^{\\theta J}\\mathbf{v}(0)"
+  ],
+  "visual_sha256": "85486ec7a4a255b9f6d8f2e4bf131b67bc1e0cbdae4897ce0ab4a0724880d421",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casimir operator · step-by-step preview</title>
+<style>:root{color-scheme:dark;font-family:system-ui;background:#080b14;color:#fff2e4}
+body{max-width:1060px;margin:auto;padding:24px}main{display:grid;grid-template-columns:minmax(250px,430px) 1fr;gap:28px}video{width:100%;max-height:86vh}h1{font-size:28px}p{line-height:1.6;color:#a5b2c8}nav{display:grid;gap:9px}button{font:inherit;color:inherit;text-align:left;border:1px solid #334258;border-radius:7px;background:#111a2a;padding:12px;cursor:pointer}button:hover{border-color:#ffb45e}a{color:#46beff}.rate{margin-top:18px}select{font:inherit;padding:6px}@media(max-width:700px){main{display:block}video{max-height:75vh}}</style>
+<h1>Building a Casimir operator</h1><main><video id="reel" controls playsinline preload="metadata" poster="poster.jpg?v=4d257c8eaf17" src="casimir-stepwise.mp4?v=4d257c8eaf17"></video>
+<section><p>66 seconds · Step-by-step revision · Separate review preview</p><nav><button data-time="0">The operator</button><button data-time="5">Choose a vector</button><button data-time="9">Apply Jx</button><button data-time="19">Apply Jx again</button><button data-time="28">Jy and Jz</button><button data-time="36">Add the results</button><button data-time="45">Apply the minus sign</button><button data-time="52">Two copies of v</button><button data-time="58">The eigenvalue</button></nav>
+<p class="rate">Playback speed <select id="speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></p>
+<p>The two applications of Jx are shown separately. The three squared-generator results are then added, and the minus sign reverses their sum.</p>
+<p><a href="casimir-stepwise.mp4">Open MP4</a> · <a href="../casimir.html">Original version</a></p></section></main>
+<script>const v=document.getElementById('reel');document.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>{v.currentTime=Number(b.dataset.time);v.play()});document.getElementById('speed').onchange=e=>v.playbackRate=Number(e.target.value);</script></html>

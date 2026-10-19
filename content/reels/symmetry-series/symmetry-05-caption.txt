@@ -1,0 +1,21 @@
+Symmetry to Waves · 5/16
+What a symmetry preserves
+
+Once we have chosen a representation for a symmetry, we might well ask, how do we know our transformations preserve the symmetry? If we look at a triangle and rotate by 100°, we can see that it does not overlay itself. In a representation, we need mathematical expressions that say “this transformation left the triangle the same.” We call these the invariants of the transformation.
+
+In our two-dimensional irrep of D₃, we can describe the action on an arbitrary vector using two expressions that a symmetry transformation cannot change.
+
+r² = x² + y²
+
+u = x³ − 3xy² = r³ cos(3θ).
+
+The first is the squared length of the vector. The second records its orientation relative to the reference axes. Rotating by 120° adds 360° to the angle inside cos(3θ), so u returns to the same value. A flip across the x-axis changes θ to −θ and also leaves u unchanged.
+
+The animation compares the vector before and after each allowed action. These two values agree at the endpoints. Intermediate positions during a turn are not themselves triangle symmetries, so the cubic expression varies until the turn is complete. Length alone would allow every rotation. The cubic expression carries the threefold structure that distinguishes the triangle’s symmetry from the continuous symmetry of a circle.
+
+These exact invariants are not the important part. They are obscure without seeing the derivation, but what matters is that we can write an expression in terms of coordinates that must not change under the symmetry transformation. This gives the “sameness” of our picture a precise mathematical meaning. We can ask the same kind of question about the pool game. What is preserved when we translate, rotate, or change our state of motion?
+
+Next: From discrete to continuous
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

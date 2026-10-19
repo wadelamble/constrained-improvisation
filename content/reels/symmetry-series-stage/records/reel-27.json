@@ -1,0 +1,93 @@
+{
+  "render_key": {
+    "source": "afd22cd269d78acaace585478b564954b7e80774ee7cfd721d538605ef2f82c4",
+    "overlay": "e4219755b4b453aaad83c37776a6cf6562febc259e93b34ad73d9c0e280d8a21",
+    "encoder": "overlay-v1-crf18"
+  },
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "audio_codec": "aac",
+    "fps": 30.0,
+    "source_size": [
+      1080,
+      1920
+    ],
+    "size": [
+      1080,
+      1920
+    ],
+    "rotate": 0,
+    "duration": 30.0
+  },
+  "title_layout": {
+    "size": 54,
+    "lines": [
+      "A travelling wave as a complex",
+      "exponential"
+    ],
+    "boxes": [
+      [
+        70,
+        288,
+        850,
+        341
+      ],
+      [
+        70,
+        349,
+        370,
+        401
+      ]
+    ]
+  },
+  "cover_title_layout": {
+    "size": 56,
+    "lines": [
+      "A travelling wave as a complex",
+      "exponential"
+    ],
+    "boxes": [
+      [
+        90,
+        545,
+        899,
+        600
+      ],
+      [
+        90,
+        608,
+        402,
+        662
+      ]
+    ]
+  },
+  "cover_time_seconds": 28.2,
+  "audio_render_key": {
+    "bed": {
+      "source_sha256": "cbf51c94e44b8c110a3c833f618290543db744b1926edba00a7167ea2c209c7d",
+      "duration_seconds": 776.0,
+      "gain_db": -4.0,
+      "crossfade_seconds": 2.0,
+      "sample_rate": 48000,
+      "version": 2
+    },
+    "video_stream": "SHA256=2de1f97824ffd9d4a7d299312b60a7ec76a599b3e3cb620ec9104c9340755304",
+    "start": 746.0,
+    "duration": 30.0,
+    "fade_in": 1.5,
+    "fade_out": 2,
+    "codec": "aac-192k-v1"
+  },
+  "audio_video_sha256": "4d180666eb323ddf8a298b7f6b377b580f23666c073976ef324cff0d90be42c4",
+  "audio_validation": {
+    "video_stream_unchanged": true,
+    "audio_codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "decoded_duration_seconds": 30.016,
+    "peak_dbfs": -12.855939817616752,
+    "rms_dbfs": -34.22222237784262
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "order": 7,
+  "title": "From a nudge to a rotation",
+  "screen_text": [
+    "Infinitesimal rotation",
+    "State",
+    "Tangent",
+    "\\frac{d\\mathbf{v}}{d\\theta}=J\\mathbf{v}",
+    "J^2=-I",
+    "e^{\\theta J}=\\cos\\theta\\,I+\\sin\\theta\\,J",
+    "R(\\theta)=e^{\\theta J}"
+  ],
+  "visual_sha256": "f734bb47365591e9e5f962c935b77d3294d6619d2874c855197083117f9310e3",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

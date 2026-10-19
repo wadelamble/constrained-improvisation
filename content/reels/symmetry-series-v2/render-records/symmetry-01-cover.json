@@ -1,0 +1,22 @@
+{
+  "order": 1,
+  "title": "Symmetries of physical behavior",
+  "screen_text": [
+    "Position translation",
+    "Time translation",
+    "Rotation",
+    "Velocity boost",
+    "Reference experiment",
+    "Transformed experiment",
+    "\\mathbf{x}'=\\mathbf{x}+\\mathbf{a}",
+    "t'=t+b",
+    "\\mathbf{x}'=R\\mathbf{x}",
+    "\\mathbf{x}'=\\mathbf{x}+\\mathbf{u}t",
+    "Equal masses · elastic collision"
+  ],
+  "visual_sha256": "451f0a77111d42847b16544b90af8a4e99dbb3cc275a9f5cd1ffbd53362e3c70",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 26
+}

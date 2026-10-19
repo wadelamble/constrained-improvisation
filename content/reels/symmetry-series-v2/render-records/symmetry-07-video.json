@@ -1,0 +1,17 @@
+{
+  "order": 7,
+  "title": "Separating the common part",
+  "screen_text": [
+    "Common part and zero-sum part",
+    "Common part",
+    "Zero-sum part",
+    "\\mathbf{v}=\\overline{v}(1,1,1)+\\mathbf{w}",
+    "w_1+w_2+w_3=0",
+    "\\mathbf{3}=\\mathbf{1}\\oplus\\mathbf{2}"
+  ],
+  "visual_sha256": "149442fd1f1c13fe4b8127f798a434a8c3666acc165220fff5b05eb2ea11a807",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 27
+}

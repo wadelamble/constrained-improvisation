@@ -1,0 +1,31 @@
+Symmetry to Waves · 25/25
+A complex exponential is a travelling wave
+
+Now let us turn from circular motion to a travelling complex wave. Let the phase vary with position x and time t:
+
+θ(x,t) = kx − ωt,
+z(x,t) = Ae^(i(kx − ωt)).
+
+Here A is the wave’s amplitude, λ is its wavelength, k = 2π/λ is its wave number, and ω sets how quickly the phase changes with time. The phase is the angle of the complex value. Increasing x by one wavelength increases that angle by 2π, one complete turn.
+
+In the animation, position runs along the helix. The other two directions show the real and imaginary parts of the complex value at each position. As time advances, these values rotate and the wave pattern travels along x. The highlighted coordinate stays fixed while its complex value turns in the accompanying circle.
+
+The helix is a picture of a complex-valued function. Its transverse directions record two components of the value at each x. The synchronized curves show those components separately:
+
+Re z = A cos(kx − ωt),
+Im z = A sin(kx − ωt).
+
+Their values oscillate, while the length of the complex value stays fixed at A. A crest of the real component occurs at a fixed phase. As t increases, x must increase to keep kx − ωt constant, so the pattern travels in the positive x direction for the positive k and ω shown.
+
+Translating the wave multiplies it by a phase factor:
+
+z(x − a,t) = e^(−ika)z(x,t).
+
+The eigenvalue e^(−ika) has magnitude one. It turns each complex value without stretching it, the phase-only scaling allowed by unitarity.
+
+We arrived here by asking how to represent translation on functions, finding the derivative as its generator, and seeking functions that return as multiples of themselves. Requiring the symmetry to preserve overlap brought us to complex exponentials. The circular geometry of those exponentials now gives us waves.
+
+Continue with Waves to Quanta
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

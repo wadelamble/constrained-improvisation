@@ -1,0 +1,23 @@
+Symmetry to Waves · 3/16
+Writing symmetry as matrices
+
+We can plainly see the symmetry of the triangle, but what if we want to write it down mathematically? Specifically, what if we want to write group actions in terms of how they transform labels on an object? Recognizing that the triangle’s state has three ordered components, we might guess that we could represent it as a vector with three components.
+
+We can then represent 120° rotations as transformations that permute those components in accordance with the symmetry group actions. For our example, a single rotation gives
+
+R(1, 3, 5) = (5, 1, 3).
+
+A flip that keeps the first vertex in place exchanges the other two components. There is nothing special about the vertices here. We could just as easily have chosen the midpoints of the edges or any other triplet of points with the triangle’s symmetries, and the same matrix would permute those values.
+
+A representation of a symmetry group is a vector space and a set of linear transformations that compose in the same way as the group actions.
+
+D(g₁g₂) = D(g₁)D(g₂).
+
+This says that the matrix for the composed action, g₂ followed by g₁, is the product of the matrices for the separate actions. D is the map from symmetry actions to matrices in the representation.
+
+These permutations also have a geometric interpretation. Those that correspond to rotations of the triangle are 120° rotations about a diagonal axis in this vector space. Those that correspond to flips are reflections in planes that contain the diagonal axis. In the animation, the colored values are reassigned among the three component positions. This lets us follow each matrix’s action on the state (1, 3, 5).
+
+Next: Separating the common part
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

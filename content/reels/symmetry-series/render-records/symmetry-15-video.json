@@ -1,0 +1,20 @@
+{
+  "order": 15,
+  "title": "Translation eigenfunctions are exponentials",
+  "screen_text": [
+    "The derivative returns a multiple",
+    "A shift returns a multiple",
+    "\\frac{df}{dx}=\\lambda f,\\qquad f(x)=e^{\\lambda x}",
+    "λ = [value]",
+    "f",
+    "f'=\\lambda f",
+    "f(x-a)=e^{-\\lambda a}f(x)",
+    "a = [value], exp(−λa) = [value]",
+    "x"
+  ],
+  "visual_sha256": "87e231415b2ecfc9a2b780881778ff5bbbc4af499afd07f1818b4c115bb4fc08",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

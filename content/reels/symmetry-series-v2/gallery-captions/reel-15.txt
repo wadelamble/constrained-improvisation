@@ -1,0 +1,25 @@
+Symmetry to Waves · 15/27
+The order of rotations matters
+
+When several independent transformations can be composed, their order may produce different resultant states. In the three-dimensional rotation group, called SO(3), rotating about the x-axis then the y-axis leaves a marked sphere in a different state than applying the same actions in the opposite order.
+
+This order-dependence is expressed by the commutator, [X, Y] = XY − YX. For the infinitesimal rotation generators,
+
+[Jₓ, Jᵧ] = J_z,
+[Jᵧ, J_z] = Jₓ,
+[J_z, Jₓ] = Jᵧ.
+
+The commutator supplies another generator. For small rotation parameters a and b, combining two rotations into one exponential gives
+
+exp(aJₓ)exp(bJᵧ) = exp(aJₓ + bJᵧ + ½abJ_z + ⋯).
+
+We cannot simply add the exponents as we could for ordinary numbers. The first correction records the difference between the orders. On a sphere, short motions along perpendicular surface directions likewise leave a residual rotation when composed and undone in the same order. For a sphere of radius R, this effect scales as its curvature, 1/R², and shrinks as the sphere flattens.
+
+The generators, their linear combinations, and their commutators form a Lie algebra. It captures the group’s local structure, while global features such as wrapping around onto itself require more information. Every representation must preserve this commutator structure.
+
+Lie algebra also provides a way to find invariants. An operator built from generators that commutes with every generator is called a Casimir operator. For rotations, writing the angular-momentum generators as Lₓ, Lᵧ, and L_z gives L² = Lₓ² + Lᵧ² + L_z². It commutes with all three. The magnitude of angular momentum is independent of the direction of the axis. The fixed values such operators take in irreducible representations help classify particle types, returning us to symmetry’s role in specifying both objects and their behavior.
+
+Next: What the commutator measures
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

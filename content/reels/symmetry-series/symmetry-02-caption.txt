@@ -1,0 +1,17 @@
+Symmetry to Waves · 2/16
+A triangle’s six symmetries
+
+We can see the obvious symmetry of an equilateral triangle. To categorize its symmetry, we can write down all the actions that leave it unchanged. We can do nothing, rotate 120°, rotate 240°, flip along an axis, flip then rotate 120°, and flip then rotate 240°. There are six actions, including the one in which we do nothing.
+
+The animation carries the labeled vertices through these actions. A vertex may arrive where a different vertex began, but at the end the triangle overlays itself. Keeping track of the labels lets us distinguish actions that leave the same outline. A turn through 100° would leave the triangle pointing somewhere else and would not belong on this list.
+
+We say the triangle belongs to the D₃ symmetry group. Any number of objects possess D₃ symmetry. The next scene puts the triangle beside three circles, three petals, and three rounded bars. The same rotation and flip return each outline to itself. The shapes differ, but the group actions are the same. We tend to think of a “triangle’s symmetry,” rather than the symmetry of two rotations and flips about three axes, but this latter way of thinking in terms of symmetry groups is more general.
+
+This is the definition of symmetry used in physics, where we ask not “what symmetry does this or that object have?” but “what mathematical objects realize the actions of a symmetry group?” The group describes the actions and the way they compose, so we can recognize the same structure in different objects.
+
+For example, suppose we label our triangle’s vertices A, B, C and ask, if we rotate twice, flip once, then rotate again, where is vertex A sent? But if we want to write this down mathematically, we need a way to represent each action and its effect on the labels.
+
+Next: Writing symmetry as matrices
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

@@ -1,0 +1,25 @@
+Symmetry to Waves · 22/25
+Translation eigenfunctions are exponentials
+
+Since a function is an infinite-dimensional vector, and the generator d/dx plays the role of a matrix, we can solve an eigenvalue equation here too. It now takes the form of a differential equation:
+
+df/dx = λf.
+
+We are looking for a function whose derivative returns the same function, scaled by a single number. The solution is f(x) = Ce^(λx), since differentiating gives Cλe^(λx). Here C is a constant and λ is the eigenvalue of d/dx.
+
+A finite translation also returns a multiple of the same function:
+
+f(x − a) = e^(−λa)f(x).
+
+The multiplier differs from the derivative’s eigenvalue, but the eigenfunction is the same. One fixed multiplier relates the translated and original curves at every position x.
+
+We now have a potential way to represent a state using exponential functions. There is an additional condition when symmetry must preserve the relationship between states. Their overlap, the function-space counterpart of the dot product, must remain unchanged. This property is known as unitarity. It preserves the lengths and relative relationships of the state vectors.
+
+For a translation eigenfunction, the multiplying factor must then have magnitude one. Real nonzero λ makes e^(−λa) grow or shrink. Choosing λ = ik, with real k, instead gives e^(−ika), which has magnitude one. The eigenfunction becomes Ce^(ikx), with eigenvalue k for K = −i d/dx. Translation changes its phase, the angle of its complex value, without changing its magnitude.
+
+A sum of these waves translates by changing the component phases while preserving their magnitudes. When translation is a symmetry of the dynamics, its distribution over generator eigenvalues is conserved. This is the structure behind momentum and energy conservation. Momentum will be associated with wave number, and energy with frequency. First, we need to see why a complex exponential describes a wave.
+
+Next: A complex number as a vector
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

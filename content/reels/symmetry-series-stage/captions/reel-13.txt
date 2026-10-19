@@ -1,0 +1,19 @@
+Symmetry to Waves · 13/27
+Rotations preserve the inner product
+
+What is the invariant of rotation in this representation? It is just the length of vectors and the angles between them. The two arrows turn together, so their directions change while their relationship does not. The length of one arrow’s projection onto the other remains the same.
+
+These relationships are expressed by a single invariant, the dot product, or more generally, the inner product. If u and v are vectors in the plane,
+
+u · v = uₓvₓ + uᵧvᵧ = |u||v| cos θ.
+
+Here uₓ and uᵧ are the components of u, and similarly for v. The vertical bars mean length, and θ is the angle between the arrows. Rotating both changes the individual component values but leaves the sum uₓvₓ + uᵧvᵧ unchanged.
+
+Taking the dot product of a vector with itself gives its squared length, u · u = |u|². Taking the dot product of two different vectors tells us their angle once their lengths are known. One mathematical relationship therefore accounts for both the lengths and the angle preserved in the animation.
+
+A mathematical structure that supplies reliable rulers for measuring lengths and angles in a space is called a metric. Rotations preserve this metric. We can use these rulers to compare vectors before and after a transformation, even though their coordinate values have changed. For an ordinary rotation, this is intuitive.
+
+Next: The invariant interval of hyperbolic rotation
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

@@ -1,0 +1,21 @@
+Symmetry to Waves · 10/16
+Hyperbolic rotations preserve a different interval
+
+For an ordinary rotation, x² + y² stays fixed. If we instead define the invariant interval using a difference, t² − x², we have a hyperbolic rotation. Here we choose units in which the speed of light is 1, so time and position can appear on the same plot.
+
+The point moves along a hyperbola rather than a circle. Its time and position coordinates change, and its distance from the origin grows according to our everyday notion of distance. Yet the difference between the squares of its coordinates stays fixed.
+
+t′ = t cosh η + x sinh η
+x′ = x cosh η + t sinh η
+t′² − x′² = t² − x².
+
+The parameter η plays a role similar to the angle in an ordinary rotation. The functions cosh and sinh are the hyperbolic counterparts of cosine and sine. Their identity cosh²η − sinh²η = 1 does the work that cos²θ + sin²θ = 1 did for the circle.
+
+Watch both the moving point and the interval readout. The point changes its apparent distance from the origin while the interval stays the same. Increasing the magnitude of η carries it farther out along the hyperbola, toward the diagonal asymptotes. The animation shows a finite part of this motion. The hyperbola continues beyond the frame.
+
+Such a hyperbolic metric, as we will see, encodes the asymptotic limit of light speed in relativistic spacetime. A change of inertial observer changes the time and position assigned to events while preserving their spacetime interval. Here we are introducing the geometry that makes that agreement possible. The next chapter will put its physical meaning to work.
+
+Next: The order of rotations matters
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

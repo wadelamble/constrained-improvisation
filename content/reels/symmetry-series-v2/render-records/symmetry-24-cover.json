@@ -1,0 +1,23 @@
+{
+  "order": 24,
+  "title": "Multiplication by i gives a tangent",
+  "screen_text": [
+    "At the identity",
+    "At every point on the circle",
+    "z=1,\\qquad iz=i",
+    "z=e^{i\\theta},\\qquad iz=ie^{i\\theta}",
+    "Re",
+    "Im",
+    "1",
+    "i",
+    "z",
+    "iz",
+    "|z|=|iz|=1",
+    "\\frac{dz}{d\\theta}=iz(\\theta)"
+  ],
+  "visual_sha256": "d0e3776f8b44495e12727e7d4a5bedbe6ec42a34e94f7a41371809c0bb197718",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24
+}

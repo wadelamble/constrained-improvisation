@@ -1,0 +1,26 @@
+Symmetry to Waves · 12/16
+Translations act linearly on functions
+
+Translation is, to the eye, the simplest possible symmetry. It would be natural to think the ideal representation space for a translation is simply a one-dimensional vector space, where points move by sliding a number line. But there is a problem if we want this action to be linear.
+
+Moving x by an amount a sends 0 to a, while a linear transformation must leave the zero vector fixed. More generally, a linear operation T must preserve addition and scaling. For a translation of points, Tₐ(x) = x + a, we have
+
+Tₐ(x₁ + x₂) = x₁ + x₂ + a,
+Tₐ(x₁) + Tₐ(x₂) = x₁ + x₂ + 2a.
+
+These are not equal unless a = 0. Translation acts sensibly on a number line, but it is not a linear operation on the point coordinates themselves.
+
+On the other hand, the space of functions on a number line does form a linear representation. Instead of translating the point x, we translate a function by shifting its argument,
+
+(Tₐf)(x) = f(x − a).
+
+Now the state is the whole function f. Function addition is pointwise, so translating a sum gives the same result as translating both functions and then adding them.
+
+Tₐ(f + g) = Tₐf + Tₐg.
+
+The zero function also remains the zero function. The animation first shows the mismatch for points, then the agreement for functions. A translation preserves each function's shape while moving its location. This describes how the function transforms. Whether a physical system described by that function behaves the same way after translation is a separate question about the dynamics.
+
+Next: The derivative generates translation
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

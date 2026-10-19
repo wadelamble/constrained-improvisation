@@ -1,0 +1,17 @@
+{
+  "order": 3,
+  "title": "D₃ is more general than triangles",
+  "screen_text": [
+    "The same actions on different objects",
+    "120° rotation",
+    "Reflection",
+    "D_3=\\{e,r,r^2,s,rs,r^2s\\}",
+    "r^3=e",
+    "s^2=e"
+  ],
+  "visual_sha256": "bbe19bf3dd307ef7dafda5b0ae73462dbadd3130c4b6b7f880e66fe2d538469f",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 22
+}

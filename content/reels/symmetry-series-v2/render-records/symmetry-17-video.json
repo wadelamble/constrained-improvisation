@@ -1,0 +1,25 @@
+{
+  "order": 17,
+  "title": "Translating functions is linear",
+  "screen_text": [
+    "The same functions, two orders",
+    "(T_af)(x)=f(x-a),\\qquad a=1.35",
+    "Add, then translate",
+    "Translate, then add",
+    "f",
+    "g",
+    "f+g",
+    "T_a(f+g)",
+    "T_af",
+    "T_ag",
+    "T_af+T_ag",
+    "x",
+    "+a",
+    "T_a(f+g)=T_af+T_ag"
+  ],
+  "visual_sha256": "9a102b7c75fe739dd54340c6d1d8a47765f84d750f26694e07ada6061dce7391",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 28
+}
