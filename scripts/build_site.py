@@ -18,6 +18,7 @@ DIFFERENTIAL_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "Differential-Mecha
 SYMMETRY_DRAFT = ROOT / "content" / "drafts" / "symmetry-draft.md"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 REEL_DIR = ROOT / "content" / "reels" / "ccr2-series"
+SYMMETRY_REEL_DIR = ROOT / "content" / "reels" / "symmetry-series-stage"
 
 TITLE = "Variations on Symmetry"
 BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
@@ -760,12 +761,18 @@ def build() -> None:
         (article_dir / "index.html").write_text(render_article(article), encoding="utf-8")
     build_review_pages(OUT_DIR, site_path, page_shell, render_markdown,
                        article_markdown(ARTICLE_BY_SLUG['symmetry']))
-    # Stable public MP4 URLs for the unpublished Buffer drafts. Keep the review
+    # Stable public media URLs for Buffer. Keep the review
     # gallery, manifests, and publishing records out of the public site.
     for video in sorted(REEL_DIR.glob("ccr2-*.mp4")):
         media_dir = OUT_DIR / "media" / "reels" / "waves-to-quanta"
         media_dir.mkdir(parents=True, exist_ok=True)
         shutil.copy2(video, media_dir / video.name)
+    media_dir = OUT_DIR / "media" / "reels" / "symmetry-to-waves"
+    media_dir.mkdir(parents=True, exist_ok=True)
+    for number in range(1, 28):
+        for suffix in (".mp4", "-cover.jpg"):
+            asset = SYMMETRY_REEL_DIR / f"reel-{number:02d}{suffix}"
+            shutil.copy2(asset, media_dir / asset.name)
 
 
 if __name__ == "__main__":
