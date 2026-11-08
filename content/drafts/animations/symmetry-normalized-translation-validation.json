@@ -1,0 +1,49 @@
+{
+  "model": "Two distinct smooth compact-support complex wave packets in L2(R)",
+  "inner_product": "Integral conjugate(psi_1(x-a))*psi_2(x-a) dx",
+  "norm_squared": "Integral abs(psi_j(x-a))^2 dx",
+  "norm_squared_max_error": 7.771561172376096e-16,
+  "complex_inner_product_max_error": 1.1102380467631307e-16,
+  "display_quadrature_max_error": 2.220446049250313e-16,
+  "pointwise_product_imaginary_max": 6.110352584110914e-17,
+  "complex_overlap": [
+    0.38521630120851663,
+    -1.8833710130591457e-20
+  ],
+  "squared_overlap": 0.1483915987167706,
+  "nonproportional_states": true,
+  "initial_centers": [
+    -1.8,
+    -0.2
+  ],
+  "support_radii": [
+    2.2,
+    1.55
+  ],
+  "carrier_wavenumber": 6.0,
+  "fixed_normalizers": [
+    0.6798730002450489,
+    0.8099781168755871
+  ],
+  "normalization": "At preparation only, never per frame",
+  "domain": [
+    -6.0,
+    6.0
+  ],
+  "translation_range": [
+    0,
+    3
+  ],
+  "support_fully_visible_at_all_shifts": true,
+  "validation_grid_points": 32769,
+  "display_integration_grid_points": 8193,
+  "layout_checked_frames": 9,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "duration_seconds": 28,
+  "source_sha256": "56d14b393ceaf05cb536ba9a3f92db35fd581c41412b7291defe47120d8a09c9",
+  "helper_sha256": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445"
+}

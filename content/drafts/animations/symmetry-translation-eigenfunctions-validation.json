@@ -1,0 +1,15 @@
+{
+  "derivative_finite_difference_error": 5.538680625249981e-11,
+  "translation_scaling_max_error": 8.881784197001252e-16,
+  "translation_samples": 101,
+  "monotone_single_pass": true,
+  "layout_bounds_frames": 57,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "duration_seconds": 28,
+  "source_sha256": "ed6ea95d82dc4538dd42348bb08dc564d6d3232245103104f931bdc188f28cfa",
+  "helper_sha256": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445"
+}

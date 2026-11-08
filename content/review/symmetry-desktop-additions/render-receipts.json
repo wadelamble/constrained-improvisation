@@ -1,0 +1,43 @@
+{
+  "symmetry-d3-transformation-matrices": {
+    "video_sha256": "136deb3604f3b7d3bf2f666d2138b4773c6889e89a1cd26cd74d895f0eb1d1eb",
+    "sources": {
+      "generate_symmetry_d3_matrices_desktop.py": "170c27fb011f96078fc8d2af0f69c82e853686d0fd4ebfa44e33b489b997d260",
+      "symmetry_desktop_d3.py": "2bf7b26741045de4fc7b1bfc18e80a33d5103632994eaa68bc91f8ed387eae52"
+    }
+  },
+  "symmetry-d3-invariants": {
+    "video_sha256": "2f01f291f87111ef542c63692fbb97bbd6ff580be6e5b0e6b81029ddb4245183",
+    "sources": {
+      "generate_symmetry_d3_invariants_desktop.py": "02e805373138656421ee85c3e8183beafb0cc4d771510010cceea6803003c083",
+      "symmetry_desktop_d3.py": "2bf7b26741045de4fc7b1bfc18e80a33d5103632994eaa68bc91f8ed387eae52"
+    }
+  },
+  "symmetry-commutator-sphere": {
+    "video_sha256": "d164b0b5e4c469c7e0ae92da7c4e8113c519eb3c4b428f41a93a5508a80a912b",
+    "sources": {
+      "generate_symmetry_commutator_sphere_desktop.py": "4106ce3eb126e8f7f6bcdc1c0e01c29bab7e9fec239e33ec5bc4d6730d248579"
+    }
+  },
+  "symmetry-translation-eigenfunctions": {
+    "video_sha256": "59c1a5bbe45c61b4d9d4bd92f365cd7444ef3b3ab0e178cbb89c6e3f1cab2f94",
+    "sources": {
+      "generate_symmetry_translation_eigenfunctions_desktop.py": "ed6ea95d82dc4538dd42348bb08dc564d6d3232245103104f931bdc188f28cfa",
+      "symmetry_exponential_desktop_common.py": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445"
+    }
+  },
+  "symmetry-translation-unitarity": {
+    "video_sha256": "dcfab017f6ad0c457dd1e9d658fe5b586bbf2260a8a81911ea69c9b5ed455e31",
+    "sources": {
+      "generate_symmetry_translation_unitarity_desktop.py": "529f10c04fb8de6e2c0211da74f67b6416780dcba5126e89c30d5d866877c9be",
+      "symmetry_exponential_desktop_common.py": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445"
+    }
+  },
+  "symmetry-momentum-uncertainty": {
+    "video_sha256": "6d1d5d632251246fb3a6fd8fec6fcc769afdff267a41aa3726590033608c7024",
+    "sources": {
+      "generate_symmetry_momentum_uncertainty_desktop.py": "607e5165af06fe0eea24e63a032252c4c2ffe7dbd14dbde75943fd6ba036232e",
+      "generate_symmetry_casimir_desktop.py": "9dd635a3c6c0350cda20a0294c94f08b1ae0cf87efac4320ee46cda8509bd2e8"
+    }
+  }
+}

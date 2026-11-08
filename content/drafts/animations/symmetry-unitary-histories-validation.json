@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "model": "Two complex functions in the same orthonormal Dirichlet sine basis",
+  "basis": "2 sin(n*pi*x) sin(m*pi*y), 1 <= n,m <= 16",
+  "domain": "[0,1] x [0,1]",
+  "generator_eigenvalues": "0.055 * (n^2 + m^2)",
+  "evolution": "c_nm(t) = c_nm(0) exp(-i E_nm t)",
+  "duration": 8.0,
+  "mode_count_per_axis": 16,
+  "normalization": "Once at preparation only; never per frame",
+  "target_complex_overlap": {
+    "real": 0.4,
+    "imaginary": 0.0
+  },
+  "squared_overlap": 0.16000000000000003,
+  "errors": {
+    "norm": 2.220446049250313e-16,
+    "complex_overlap": 2.2487429915110773e-16,
+    "reverse_evolution": 1.2412670766236366e-16,
+    "group_composition": 8.886119947416683e-17,
+    "quadrature_norm_squared": 4.440892098500626e-16,
+    "quadrature_complex_overlap": 1.1857187100668868e-16,
+    "dirichlet_boundary": 1.3874818876792869e-15
+  },
+  "tolerance": 2e-12,
+  "quadrature": {
+    "points_per_axis": 193,
+    "time_samples": 129
+  },
+  "sampled_real_component_peaks": [
+    3.380016030121017,
+    3.454095785379636
+  ],
+  "sampled_complex_magnitude_peaks": [
+    3.654527156976077,
+    4.189551621286542
+  ],
+  "rigorous_all_time_magnitude_bounds": [
+    11.690131155425625,
+    11.836865616131522
+  ],
+  "recommended_fixed_real_height_denominator": 3.7304234482100074,
+  "samples": [
+    {
+      "time": 0.0,
+      "norm_squared": [
+        1.0000000000000002,
+        1.0000000000000002
+      ],
+      "overlap_real": 0.4000000000000001,
+      "overlap_imaginary": 1.3877787807814457e-17
+    },
+    {
+      "time": 1.0,
+      "norm_squared": [
+        1.0,
+        1.0000000000000002
+      ],
+      "overlap_real": 0.4,
+      "overlap_imaginary": 1.3877787807814457e-17
+    },
+    {
+      "time": 2.0,
+      "norm_squared": [
+        1.0000000000000002,
+        1.0000000000000002
+      ],
+      "overlap_real": 0.4000000000000001,
+      "overlap_imaginary": 1.3877787807814457e-17
+    },
+    {
+      "time": 3.0,
+      "norm_squared": [
+        1.0,
+        1.0000000000000004
+      ],
+      "overlap_real": 0.40000000000000013,
+      "overlap_imaginary": 1.3877787807814457e-17
+    },
+    {
+      "time": 4.0,
+      "norm_squared": [
+        1.0000000000000002,
+        1.0000000000000004
+      ],
+      "overlap_real": 0.4000000000000001,
+      "overlap_imaginary": 2.7755575615628914e-17
+    },
+    {
+      "time": 5.0,
+      "norm_squared": [
+        1.0000000000000002,
+        1.0000000000000002
+      ],
+      "overlap_real": 0.4000000000000001,
+      "overlap_imaginary": 2.7755575615628914e-17
+    },
+    {
+      "time": 6.0,
+      "norm_squared": [
+        1.0,
+        1.0000000000000004
+      ],
+      "overlap_real": 0.4000000000000001,
+      "overlap_imaginary": 0.0
+    },
+    {
+      "time": 7.0,
+      "norm_squared": [
+        1.0000000000000002,
+        1.0000000000000004
+      ],
+      "overlap_real": 0.4,
+      "overlap_imaginary": 2.7755575615628914e-17
+    },
+    {
+      "time": 8.0,
+      "norm_squared": [
+        1.0000000000000002,
+        1.0000000000000004
+      ],
+      "overlap_real": 0.4000000000000001,
+      "overlap_imaginary": 4.163336342344337e-17
+    }
+  ],
+  "source": "scripts/symmetry_unitary_waves.py"
+}

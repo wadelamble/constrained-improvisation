@@ -1,0 +1,27 @@
+{
+  "frame_count": 4416,
+  "duration_seconds": 184.0,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24.0,
+  "decode": "passed",
+  "video_sha256": "5ca57d9b7eefe4f2dd74fac6d66622b25bbc86713c6d6ec3a06fd46cebac344a",
+  "renderer_sha256": "d7fa6f2db7a3da60a0a11be0ecdca1fd24d2b2d124d9206cc72a591f3a156402",
+  "math_sha256": "0a264f4187b8008f15f145d982623910d8813bda4743cc3e1e58734493fa875b",
+  "decoded_contact_sheet_times": [
+    9,
+    34,
+    55,
+    75,
+    100,
+    118,
+    133,
+    145,
+    156,
+    167,
+    176,
+    182
+  ]
+}

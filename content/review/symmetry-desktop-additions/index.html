@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desktop Animation Additions</title><style>
+:root{color-scheme:light;--bg:#fffcf6;--ink:#232426;--muted:#6b675f;--line:#ded8cc;--gold:#926014}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}main{max-width:1240px;margin:auto;padding:44px 26px 80px}h1{font-size:clamp(30px,4vw,48px);line-height:1.12;margin:10px 0 18px;letter-spacing:-.03em}h2{font-size:clamp(23px,2.5vw,31px);font-weight:600;line-height:1.25;margin:7px 0 22px}.intro{max-width:770px;color:var(--muted);margin-bottom:28px}.eyebrow{color:var(--gold);font-size:14px;letter-spacing:.015em;margin:0}nav{position:sticky;top:0;background:#fffcf6f5;border-bottom:1px solid var(--line);display:flex;gap:9px;flex-wrap:wrap;padding:15px 0;z-index:3}a{color:#315f91;text-underline-offset:3px}nav a{padding:5px 11px;border:1px solid var(--line);border-radius:4px;text-decoration:none;font-size:14px;color:var(--ink)}nav a:hover{border-color:var(--gold);color:var(--gold)}section{padding-top:42px;margin-top:14px;padding-bottom:36px;border-bottom:1px solid var(--line)}video{display:block;width:100%;aspect-ratio:16/9;background:var(--bg);border:1px solid var(--line);border-radius:5px}.description{max-width:900px;margin:18px 0 10px}.links{display:flex;gap:25px;font-size:15px}details{font-size:14px;color:var(--muted);margin-top:19px}summary{cursor:pointer}footer{font-size:14px;margin-top:35px;color:var(--muted)}
+</style><main><p class="eyebrow">LOCAL REVIEW</p><h1>Desktop Animation Additions</h1><p class="intro">Six landscape adaptations from the reel series. Play each demonstration below. Opening another video pauses the one already playing.</p><nav><a href="#matrices">1. Matrices</a><a href="#invariants">2. Invariants</a><a href="#commutator">3. Commutator</a><a href="#eigenfunctions">4. Eigenfunctions</a><a href="#unitarity">5. Unitarity</a><a href="#momentum">6. Momentum</a></nav><section id="matrices">
+<p class="eyebrow">Symmetry to Waves · 5 · 34 seconds</p>
+<h2>Representing Symmetry with Matrices</h2>
+<video controls playsinline preload="none" poster="../../drafts/animations/symmetry-d3-transformation-matrices-poster.png?v=136deb3604f3"><source src="../../drafts/animations/symmetry-d3-transformation-matrices.mp4?v=136deb3604f3" type="video/mp4"></video>
+<p class="description">The same values move between component slots as the rotation and reflection matrices act.</p>
+<div class="links"><a href="../../drafts/animations/symmetry-d3-transformation-matrices.mp4?v=136deb3604f3">Open video</a><a href="../../drafts/animations/symmetry-d3-transformation-matrices-contact-sheet.png?v=136deb3604f3">View decoded frames</a></div>
+<details><summary>Placement and source</summary><p>Representations, after the worked matrix multiplication.</p>
+<a href="../../../scripts/generate_symmetry_d3_matrices_desktop.py">Generator</a> · <a href="../../drafts/animations/symmetry-d3-transformation-matrices-validation.json">Mathematical checks</a></details>
+</section><section id="invariants">
+<p class="eyebrow">Symmetry to Waves · 8 · 30 seconds</p>
+<h2>What the Triangle’s Symmetries Preserve</h2>
+<video controls playsinline preload="none" poster="../../drafts/animations/symmetry-d3-invariants-poster.png?v=2f01f291f871"><source src="../../drafts/animations/symmetry-d3-invariants.mp4?v=2f01f291f871" type="video/mp4"></video>
+<p class="description">Squared length stays fixed throughout. The cubic invariant returns to its original value at each allowed rotation.</p>
+<div class="links"><a href="../../drafts/animations/symmetry-d3-invariants.mp4?v=2f01f291f871">Open video</a><a href="../../drafts/animations/symmetry-d3-invariants-contact-sheet.png?v=2f01f291f871">View decoded frames</a></div>
+<details><summary>Placement and source</summary><p>Invariants, after the squared-length and cubic-invariant equations.</p>
+<a href="../../../scripts/generate_symmetry_d3_invariants_desktop.py">Generator</a> · <a href="../../drafts/animations/symmetry-d3-invariants-validation.json">Mathematical checks</a></details>
+</section><section id="commutator">
+<p class="eyebrow">Symmetry to Waves · 16 · 54 seconds</p>
+<h2>The Commutator Encodes Group Structure Locally</h2>
+<video controls playsinline preload="none" poster="../../drafts/animations/symmetry-commutator-sphere-poster.png?v=d164b0b5e4c4"><source src="../../drafts/animations/symmetry-commutator-sphere.mp4?v=d164b0b5e4c4" type="video/mp4"></video>
+<p class="description">Opposite rotation orders leave different endpoints. Shrinking the rotations reveals the third generator in the magnified mismatch.</p>
+<div class="links"><a href="../../drafts/animations/symmetry-commutator-sphere.mp4?v=d164b0b5e4c4">Open video</a><a href="../../drafts/animations/symmetry-commutator-sphere-contact-sheet.png?v=d164b0b5e4c4">View decoded frames</a></div>
+<details><summary>Placement and source</summary><p>Commutators and Lie Algebra, alongside the infinitesimal rotation relationships.</p>
+<a href="../../../scripts/generate_symmetry_commutator_sphere_desktop.py">Generator</a> · <a href="../../drafts/animations/symmetry-commutator-sphere-validation.json">Mathematical checks</a></details>
+</section><section id="eigenfunctions">
+<p class="eyebrow">Symmetry to Waves · 23 · authoring label 24 · 28 seconds</p>
+<h2>Translation Eigenfunctions Are Exponentials</h2>
+<video controls playsinline preload="none" poster="../../drafts/animations/symmetry-translation-eigenfunctions-poster.png?v=59c1a5bbe45c"><source src="../../drafts/animations/symmetry-translation-eigenfunctions.mp4?v=59c1a5bbe45c" type="video/mp4"></video>
+<p class="description">Differentiation and translation reproduce the exponential function multiplied by a number.</p>
+<div class="links"><a href="../../drafts/animations/symmetry-translation-eigenfunctions.mp4?v=59c1a5bbe45c">Open video</a><a href="../../drafts/animations/symmetry-translation-eigenfunctions-contact-sheet.png?v=59c1a5bbe45c">View decoded frames</a></div>
+<details><summary>Placement and source</summary><p>Eigenfunctions of Translational Symmetry, after the derivative equation.</p>
+<a href="../../../scripts/generate_symmetry_translation_eigenfunctions_desktop.py">Generator</a> · <a href="../../drafts/animations/symmetry-translation-eigenfunctions-validation.json">Mathematical checks</a></details>
+</section><section id="unitarity">
+<p class="eyebrow">Symmetry to Waves · 24 · authoring label 24a · 34 seconds</p>
+<h2>Translation of Complex Exponentials Preserves the Inner Product</h2>
+<video controls playsinline preload="none" poster="../../drafts/animations/symmetry-translation-unitarity-poster.png?v=dcfab017f6ad"><source src="../../drafts/animations/symmetry-translation-unitarity.mp4?v=dcfab017f6ad" type="video/mp4"></video>
+<p class="description">Compare two coefficients of one exponential mode. Real scaling changes their inner product, while a common complex rotation preserves it.</p>
+<div class="links"><a href="../../drafts/animations/symmetry-translation-unitarity.mp4?v=dcfab017f6ad">Open video</a><a href="../../drafts/animations/symmetry-translation-unitarity-contact-sheet.png?v=dcfab017f6ad">View decoded frames</a></div>
+<details><summary>Placement and source</summary><p>Unitarity, after the real-versus-complex exponential comparison.</p>
+<a href="../../../scripts/generate_symmetry_translation_unitarity_desktop.py">Generator</a> · <a href="../../drafts/animations/symmetry-translation-unitarity-validation.json">Mathematical checks</a></details>
+</section><section id="momentum">
+<p class="eyebrow">Waves to Quanta · 13 · 38 seconds</p>
+<h2>Wave Number Becomes Momentum</h2>
+<video controls playsinline preload="none" poster="../../drafts/animations/symmetry-momentum-uncertainty-poster.png?v=6d1d5d632251"><source src="../../drafts/animations/symmetry-momentum-uncertainty.mp4?v=6d1d5d632251" type="video/mp4"></video>
+<p class="description">The same translation is written using wave number and momentum, followed by the Gaussian width tradeoff in physical units.</p>
+<div class="links"><a href="../../drafts/animations/symmetry-momentum-uncertainty.mp4?v=6d1d5d632251">Open video</a><a href="../../drafts/animations/symmetry-momentum-uncertainty-contact-sheet.png?v=6d1d5d632251">View decoded frames</a></div>
+<details><summary>Placement and source</summary><p>Quantum Mechanics, after the position–momentum uncertainty relation.</p>
+<a href="../../../scripts/generate_symmetry_momentum_uncertainty_desktop.py">Generator</a> · <a href="../../drafts/animations/symmetry-momentum-uncertainty-validation.json">Mathematical checks</a></details>
+</section><footer>1600 × 900 · 24 fps · silent MP4s. Each movie has been decoded and checked against its generator.<br>The existing <a href="../../drafts/animations/symmetry-casimir-operator.mp4">Casimir animation</a> is available separately.</footer></main>
+<script>for(const video of document.querySelectorAll('video'))video.addEventListener('play',()=>{for(const other of document.querySelectorAll('video'))if(other!==video)other.pause();});</script></html>

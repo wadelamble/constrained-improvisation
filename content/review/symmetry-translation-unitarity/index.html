@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Translation of Complex Exponentials Preserves the Inner Product</title>
+  <style>
+    :root { color-scheme: light; --paper: #fffcf6; --ink: #232426; --muted: #6b675f; --line: #ded8cc; --accent: #926014; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.55 system-ui, "Segoe UI", sans-serif; }
+    main { max-width: 1240px; margin: 0 auto; padding: 40px 26px 48px; }
+    .eyebrow { margin: 0 0 10px; color: var(--accent); font-size: 13px; letter-spacing: .055em; }
+    h1 { margin: 0 0 16px; font-size: clamp(30px, 4vw, 48px); font-weight: 600; line-height: 1.12; letter-spacing: -.03em; }
+    .description { max-width: 850px; margin: 0 0 28px; color: var(--muted); }
+    video { display: block; width: 100%; aspect-ratio: 16 / 9; background: var(--paper); border: 1px solid var(--line); border-radius: 5px; }
+    .controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    button { padding: 7px 15px; border: 1px solid var(--line); border-radius: 4px; background: transparent; color: var(--ink); font: inherit; font-size: 14px; cursor: pointer; }
+    button:hover { color: var(--accent); border-color: var(--accent); }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .duration { margin-left: auto; color: var(--muted); font-size: 14px; }
+    .links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+    a { color: #315f91; text-underline-offset: 3px; }
+    @media (max-width: 600px) { main { padding: 28px 16px 36px; } .description { margin-bottom: 22px; } .duration { width: 100%; margin: 2px 0 0; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">LOCAL ANIMATION REVIEW</p>
+    <h1 id="title">Translation of Complex Exponentials Preserves the Inner Product</h1>
+    <p class="description">Translation stretches the real exponential amplitudes and rotates the complex exponential amplitudes. The right-hand displays compare the two amplitudes and their inner product.</p>
+    <video id="animation" aria-labelledby="title" controls preload="metadata" autoplay muted playsinline poster="../../drafts/animations/symmetry-translation-unitarity-poster.png?v=dcfab017f6ad">
+      <source src="../../drafts/animations/symmetry-translation-unitarity.mp4?v=dcfab017f6ad" type="video/mp4">
+      <a href="../../drafts/animations/symmetry-translation-unitarity.mp4?v=dcfab017f6ad">Open the animation</a>.
+    </video>
+    <div class="controls" aria-label="Playback shortcuts">
+      <button type="button" data-time="0">Replay</button>
+      <button type="button" data-time="3">Real exponentials · 0:03</button>
+      <button type="button" data-time="15">Complex exponentials · 0:15</button>
+      <span class="duration">34 seconds · silent</span>
+    </div>
+    <nav class="links" aria-label="Animation files">
+      <a href="../../drafts/animations/symmetry-translation-unitarity.mp4?v=dcfab017f6ad">Open video</a>
+      <a href="../../drafts/animations/symmetry-translation-unitarity-poster.png?v=dcfab017f6ad">View poster</a>
+      <a href="../../drafts/animations/symmetry-translation-unitarity-contact-sheet.png?v=dcfab017f6ad">View frames</a>
+      <a href="../symmetry-desktop-additions/index.html#unitarity">Desktop animation gallery</a>
+    </nav>
+  </main>
+  <script>
+    const animation = document.getElementById('animation');
+    for (const button of document.querySelectorAll('[data-time]')) {
+      button.addEventListener('click', () => {
+        const play = () => {
+          animation.currentTime = Number(button.dataset.time);
+          animation.play().catch(() => {});
+        };
+        if (animation.readyState >= 1) play();
+        else {
+          animation.addEventListener('loadedmetadata', play, { once: true });
+          animation.load();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

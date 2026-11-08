@@ -1,0 +1,51 @@
+{
+  "rotation_matrix": [
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "reflection_matrix": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "relations": [
+    "R^3=I",
+    "S^2=I",
+    "SRS=R^-1"
+  ],
+  "route_matrix_comparisons": 200,
+  "values_preserved": true,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "duration_seconds": 34,
+  "source_sha256": "170c27fb011f96078fc8d2af0f69c82e853686d0fd4ebfa44e33b489b997d260",
+  "helper_sha256": "2bf7b26741045de4fc7b1bfc18e80a33d5103632994eaa68bc91f8ed387eae52"
+}

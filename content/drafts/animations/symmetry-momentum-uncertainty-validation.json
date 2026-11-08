@@ -1,0 +1,55 @@
+{
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "duration_seconds": 38,
+  "hbar_Js": 1.054571817e-34,
+  "translation_multiplier_max_error": 1.8906416838689214e-15,
+  "independent_density_quadratures": [
+    {
+      "time": 20,
+      "sigma_x_nm": 1.22,
+      "sigma_p_1e25": 0.4322015643442622,
+      "norm_x": 1.0,
+      "norm_p": 1.0,
+      "product_relative_error": 2.220446049250313e-16
+    },
+    {
+      "time": 26,
+      "sigma_x_nm": 1.0472,
+      "sigma_p_1e25": 0.5035197751145912,
+      "norm_x": 1.0,
+      "norm_p": 1.0000000000000002,
+      "product_relative_error": 0.0
+    },
+    {
+      "time": 29,
+      "sigma_x_nm": 0.7015999999999999,
+      "sigma_p_1e25": 0.7515477601197265,
+      "norm_x": 1.0000000000000002,
+      "norm_p": 1.0,
+      "product_relative_error": 2.220446049250313e-16
+    },
+    {
+      "time": 33,
+      "sigma_x_nm": 0.41999999999999993,
+      "sigma_p_1e25": 1.2554426392857145,
+      "norm_x": 1.0,
+      "norm_p": 1.0,
+      "product_relative_error": 4.440892098500626e-16
+    },
+    {
+      "time": 37,
+      "sigma_x_nm": 0.41999999999999993,
+      "sigma_p_1e25": 1.2554426392857145,
+      "norm_x": 1.0,
+      "norm_p": 1.0,
+      "product_relative_error": 4.440892098500626e-16
+    }
+  ],
+  "preparations": "Gaussian family, not a simulation of free time evolution",
+  "source_sha256": "607e5165af06fe0eea24e63a032252c4c2ffe7dbd14dbde75943fd6ba036232e",
+  "renderer_sha256": "9dd635a3c6c0350cda20a0294c94f08b1ae0cf87efac4320ee46cda8509bd2e8"
+}

@@ -1,0 +1,18 @@
+{
+  "full_D3_actions_checked": 600,
+  "max_invariant_error": 7.105427357601002e-14,
+  "rotation_step_degrees": 120,
+  "initial_angle_degrees": 15,
+  "fixed_r_squared": 1,
+  "endpoint_cubic_value": 0.7071067811865476,
+  "interpolated_motions_are_not_group_actions": true,
+  "length_max_error": 2.220446049250313e-16,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "duration_seconds": 30,
+  "source_sha256": "02e805373138656421ee85c3e8183beafb0cc4d771510010cceea6803003c083",
+  "helper_sha256": "2bf7b26741045de4fc7b1bfc18e80a33d5103632994eaa68bc91f8ed387eae52"
+}

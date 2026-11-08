@@ -1,0 +1,22 @@
+{
+  "video_sha256": "fb0e07f8bc42e37e80cf50f1b6d039ff90323cd8612d3be423428ce89262defa",
+  "frame_count": 672,
+  "duration_seconds": 28.0,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24.0,
+  "decode": "passed",
+  "contact_sheet_frame_indices": [
+    0,
+    96,
+    168,
+    240,
+    312,
+    408,
+    504,
+    576,
+    648
+  ]
+}

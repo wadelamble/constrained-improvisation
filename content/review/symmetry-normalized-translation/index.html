@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Translation preserves the inner product</title>
+  <style>
+    :root {color-scheme:light;--paper:#fffcf6;--ink:#232426;--muted:#6b675f;--line:#ded8cc;--accent:#79518f}
+    * {box-sizing:border-box}
+    body {margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,"Segoe UI",sans-serif}
+    main {max-width:1240px;margin:0 auto;padding:36px 26px 48px}
+    .eyebrow {margin:0 0 10px;color:var(--accent);font-size:13px;letter-spacing:.055em}
+    h1 {margin:0 0 16px;font-size:clamp(30px,4vw,46px);font-weight:600;line-height:1.12;letter-spacing:-.025em}
+    .description {max-width:920px;margin:0 0 24px;color:var(--muted)}
+    video {display:block;width:100%;aspect-ratio:16/9;background:var(--paper);border:1px solid var(--line);border-radius:5px}
+    .controls {display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:16px}
+    button {padding:7px 15px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--ink);font:inherit;font-size:14px;cursor:pointer}
+    button:hover {color:var(--accent);border-color:var(--accent)}
+    button:focus-visible,a:focus-visible {outline:2px solid var(--accent);outline-offset:4px}
+    .duration {margin-left:auto;color:var(--muted);font-size:14px}
+    .note {max-width:920px;color:var(--muted);font-size:15px;margin-top:24px}
+    nav {display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:14px}
+    a {color:#315f91;text-underline-offset:3px}
+    @media(max-width:600px) {main{padding:24px 16px 36px}.duration{width:100%;margin:2px 0 0}}
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">LOCAL ANIMATION REVIEW</p>
+    <h1 id="title">Translation preserves the inner product</h1>
+    <p class="description">Two different, normalized wave packets translate together. Their normalizations remain one, and the shaded area gives their unchanged inner product.</p>
+    <video id="animation" aria-labelledby="title" controls preload="metadata" autoplay muted playsinline poster="../../drafts/animations/symmetry-normalized-translation-poster.png?v=fb0e07f8bc42">
+      <source src="../../drafts/animations/symmetry-normalized-translation.mp4?v=fb0e07f8bc42" type="video/mp4">
+      <a href="../../drafts/animations/symmetry-normalized-translation.mp4?v=fb0e07f8bc42">Open the animation</a>.
+    </video>
+    <div class="controls" aria-label="Playback shortcuts">
+      <button type="button" data-time="0">Replay</button>
+      <button type="button" data-time="4">Translate</button>
+      <button type="button" data-time="12">Compare at rest</button>
+      <button type="button" data-time="15">Reverse</button>
+      <span class="duration">28 seconds · silent</span>
+    </div>
+    <p class="note">The colored curves show each complete complex wave amplitude, with real and imaginary components projected around the position axis. Each packet is normalized once. Both have smooth, compact support entirely inside the displayed interval, so the integrals cover the whole functions. Their phase patterns match in this example, making ψ₁*ψ₂ real and positive: the shaded area is the full complex inner product. The two packets have different envelopes and are not multiples of one another.</p>
+    <nav aria-label="Animation files">
+      <a href="../../drafts/animations/symmetry-normalized-translation.mp4?v=fb0e07f8bc42">Open video</a>
+      <a href="../../drafts/animations/symmetry-normalized-translation-poster.png?v=fb0e07f8bc42">View poster</a>
+      <a href="../../drafts/animations/symmetry-normalized-translation-contact-sheet.png?v=fb0e07f8bc42">View frames</a>
+    </nav>
+  </main>
+  <script>
+    const animation=document.getElementById('animation');
+    for(const button of document.querySelectorAll('[data-time]')) {
+      button.addEventListener('click',()=>{
+        const play=()=>{animation.currentTime=Number(button.dataset.time);animation.play().catch(()=>{});};
+        if(animation.readyState>=1) play();
+        else {animation.addEventListener('loadedmetadata',play,{once:true});animation.load();}
+      });
+    }
+  </script>
+</body>
+</html>

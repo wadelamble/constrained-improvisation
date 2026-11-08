@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-commutator-sphere.mp4",
+  "video_sha256": "d164b0b5e4c469c7e0ae92da7c4e8113c519eb3c4b428f41a93a5508a80a912b",
+  "duration_seconds": 54.0,
+  "fps": 24.0,
+  "frame_count": 1296,
+  "width": 1600,
+  "height": 900,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "e64ab9ee6a7269b72a100d2093382afbb7e93fbcdc8d0f670dbd821586d58ae8"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 118,
+      "time_seconds": 4.916667,
+      "sha256": "01a34bdbd020d621bcda285d24c14727bb462abfae091a01ca6334a1fb996ab9"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 235,
+      "time_seconds": 9.791667,
+      "sha256": "34512752c1f37f6799c32590054be395e8f4ac610458a8b3e9795cde4cfdfbc7"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 353,
+      "time_seconds": 14.708333,
+      "sha256": "9ad76898a9887b3cb6078192b30ff45d31123e8208f8224af42eef1554bf47bc"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 471,
+      "time_seconds": 19.625,
+      "sha256": "e6e257551c028b56e678f00759c04bd365a9d7faf4241c924917166537cea88b"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 589,
+      "time_seconds": 24.541667,
+      "sha256": "94008e640ec86c6659b01201cfe8f69ef0d73b9d419e2e109fcaef8cd46653a5"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 706,
+      "time_seconds": 29.416667,
+      "sha256": "bebb0d77fb6dee47453a2929c8fe205b57381e79f2efcc9fc1cb7aec958a5101"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 824,
+      "time_seconds": 34.333333,
+      "sha256": "512058d5362ed38aaaa9d39c7701297b1a32fc54c9bd7bcd91d56b059f00a3ee"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 942,
+      "time_seconds": 39.25,
+      "sha256": "47df6410be383f9b4aab60eb8e7df6c006b1b82580b4511aee6c0d5482ffff75"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 1060,
+      "time_seconds": 44.166667,
+      "sha256": "373107d4b6cd4c42db6516cfe111c7e18f1a3e3f2d1e5c737801f60ba6d0fade"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 1177,
+      "time_seconds": 49.041667,
+      "sha256": "86e46aa8b359f049ca6ef3c6ff2a47f8ce1c92da6d8acdf467a4b635c430d9e1"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 1295,
+      "time_seconds": 53.958333,
+      "sha256": "5db9ecd6f68f1396cd8428d250ed0b8c55661d69b3d7df2386c3a6ed96feab62"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "dc23359e0904cecaaeb7ac1310c80077c296e1282fdef39eb98a10b271d5c3f8"
+  }
+}

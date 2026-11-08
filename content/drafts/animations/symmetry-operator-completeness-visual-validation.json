@@ -1,0 +1,108 @@
+{
+  "label_collisions": [],
+  "checked_times": [
+    2,
+    9,
+    18,
+    24,
+    34,
+    40,
+    46,
+    55,
+    61,
+    67,
+    75,
+    85,
+    91,
+    100,
+    109,
+    118,
+    123,
+    133,
+    145,
+    150,
+    156,
+    167,
+    170,
+    176,
+    182
+  ],
+  "duration_seconds": 184,
+  "scenes": [
+    {
+      "start": 0,
+      "title": "An operator combines input values",
+      "equation": "g_j=\\sum_i A_{ji} f_i",
+      "caption": [
+        "Every output receives a weighted contribution from the inputs.",
+        "Rows are output positions. Columns are input positions."
+      ]
+    },
+    {
+      "start": 20,
+      "title": "Position shifts select displacement diagonals",
+      "equation": "(T_x(a)f)_j=f_{j-a}",
+      "caption": [
+        "A shift sends every sample the same number of positions forward.",
+        "The periodic grid makes each shift an exact, reversible permutation."
+      ]
+    },
+    {
+      "start": 42,
+      "title": "Each displacement needs its own weights",
+      "equation": "g_j=w_a(j)\\,f_{j-a}",
+      "caption": [
+        "The shift chooses the displacement. The weights choose the contribution.",
+        "One diagonal connects every input to its displaced output."
+      ]
+    },
+    {
+      "start": 64,
+      "title": "Wave-number shifts supply phase patterns",
+      "equation": "(T_k(b)f)_j=e^{2\\pi i b j/8}f_j",
+      "caption": [
+        "A wave-number shift multiplies each sample by a unit complex number.",
+        "Across position, those multipliers form a Fourier pattern."
+      ]
+    },
+    {
+      "start": 88,
+      "title": "Fourier patterns build the weights",
+      "equation": "w_a(j)=\\sum_b c_{ab}\\,e^{2\\pi i b j/8}",
+      "caption": [
+        "Weight the phase patterns, then add them.",
+        "Their real and imaginary parts combine to reproduce the chosen weights."
+      ]
+    },
+    {
+      "start": 120,
+      "title": "All displacements build the operator",
+      "equation": "A=\\sum_a\\operatorname{diag}(w_a)T_x(a)=\\sum_{a,b}c_{ab}T_k(b)T_x(a)",
+      "caption": [
+        "Each displacement supplies one diagonal. Together they cover every entry.",
+        "Adding the weighted translations reconstructs the whole operator."
+      ]
+    },
+    {
+      "start": 146,
+      "title": "The same operator works on different states",
+      "equation": "A f=\\left(\\sum_{a,b}c_{ab}T_k(b)T_x(a)\\right)f",
+      "caption": [
+        "Change the input. Keep all 64 operator coefficients fixed.",
+        "Direct multiplication and the translation expansion give the same output."
+      ]
+    },
+    {
+      "start": 168,
+      "title": "From samples to functions",
+      "equation": "\\hat A=\\iint c(a,b)\\,T_k(b)T_x(a)\\,da\\,db",
+      "caption": [
+        "Refine the samples and widen the interval. Sums become integrals.",
+        "Position shifts select displacements. Fourier patterns supply the weights."
+      ]
+    }
+  ],
+  "finite_model": "Exact N=8 periodic Weyl basis, not a finite-dimensional CCR",
+  "continuum_scene": "Illustrative refinement of a smooth fixed kernel on wider windows",
+  "source_sha256": "d7fa6f2db7a3da60a0a11be0ecdca1fd24d2b2d124d9206cc72a591f3a156402"
+}

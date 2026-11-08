@@ -8,6 +8,31 @@ for now 10/30:
 7. state space: lead with commutation structure has to be and then, voi la, actual wave structure (H3) fits the bill. 
 8. change action/phase to more cut a dried: two views: particles moving on paths, wave propogation. what has to give: particles move on -many- paths at once.
 9. Variation of whole QFT field.
+10. Ask Bot about material from reel captions
+11. critic read
+12. derive SE
+13. introduct spacetime /
+14. mention energy, H = p^2, flesh out HE SE
+15. go back to intro
+16. webbook link on IG
+
+Last ChatGPT shows why H3 must apply. Not sure we need to discuss H3 separately, just do this, hmm, somhow merge. then shows how unitarity requires preserving commutator. says nothing about phase. should weave in phase. this is hilbert space say that. then ccr impact on dynamics is [x-dot, k] = [k-dot,x]. preserves  like hamilton's eqs for QM. and from SE
+
+\[
+\frac{d}{dt}[X_t,K_t]
+=
+[\dot X_t,K_t]+[X_t,\dot K_t]
+=
+0.
+\]
+It says that however \(X_t\) and \(K_t\) change, their commutator stays fixed. It doesn’t yet specify their rates of change.
+
+The quantum counterparts of Hamilton’s equations are the Heisenberg equations, writing \(P=\hbar K\):
+\[
+\dot X_t=\frac{i}{\hbar}[H,X_t],
+\qquad
+\dot P_t=\frac{i}{\hbar}[H,P_t].
+\]
 
 voice overs
 share with miles
@@ -97,8 +122,9 @@ With that, let's enumerate our bag of principles from which we will argue for th
 - Even if we could "deduce" valid theories from these principles, empirical observation must supply the values of constants in the theory. There are mathematical constants like pi and e that we can know from theory, but there is no way to deduce physical constants like the speed of light, the strength of gravitation, or the scale at which energy is quantized. 
 - There is guesswork in devising theories. Applying the principles above can greatly narrow down that guesswork. But theorizing proceeds by trying out different assumptions that are consistent with some set of principles and working out the consequences of those assumptions.
 - The last principle is more elusive as it is not apparent from instinct or intuition. It is the nexus of postulates, above and beyond our other principles, that form quantum mechanics. Summarizing these in a single slogan cannot do the theory justice, but that caution notwithstanding, we can say that the the new principle centers around the notion that the observations of an object's state always presents as distribution of outcomes. This principle is more extreme than merely saying observations of a system's state do present as distributions, it is saying they can must always present as distributions, that the theory rules out predicting definite values for all possible measurements of a systme.
+- Markovian - future contained in current state. is this corollary of unitary?
 
-The webbook is organized into chapters. First, we will discuss symmetry, mostly as a primer on vocabulary we will need throughout the remaining chapters. But we will sketch some derviations of results in quantum mechanics that come directly from symmetry relationships. Next, we will discuss the structure of spacetime, also known as special relativity. This will provide us with the full spacetime symmetry physical descriptions must abide, unify space and time into a single geometry, and, in terms of this geometry, give us an understanding of the maximum speed at which signals can travel, of the defining relationship between momentum and energy, and of defintion of mass. We will also discuss the different kinds of fields that can carry spacetime symmetry. Next, we will discuss the principle of least action. Here we will adopt the view that the description of forces acting on objects can be described equivalently, and with greater adherence to spacetime constraints, in terms of geometric structure, where paths are, in an abstract sense, some variation on the "shortest distance between two points." Next, we combine our understanding of spacetime and variational reasoning, along with an assumption that matter and forces are fields that permeate space, to describe two field theories -- gravitation and electromagnetism. In fact, we will not fully describe electromagnetism which requires later material, but will discuss enough to motivate the ideas of "gauge theory," which grows out of a consideration of symmetry and extends to the weak and strong forces as well. Next, we will delve into quantum mechanics. We'll look at some the key experiments that force us to reject classical assumptins, and then apply our understanding of symmetry and spacetime to work out a theory that explains these experiments. We will take time here to meditate on the strange ideas of superposition, uncertainty, wave collapse, and entanglement that seem to strain our ability to maintain all our principles. We will also describe the origin of particle classifications. Finally, we will put quantum mechanics into a relativistically compliant field setting, called quantum field theory. Here we will revisit motivating electromagnetism, with the language of QFT to bring to bear on the derivation.
+The book is organized into chapters. First, we will discuss symmetry, mostly as a primer on vocabulary we will need throughout the remaining chapters. But we will sketch some derviations of results in quantum mechanics that come directly from symmetry relationships. Next, we will discuss the structure of spacetime, also known as special relativity. This will provide us with the full spacetime symmetry physical descriptions must abide, unify space and time into a single geometry, and, in terms of this geometry, give us an understanding of the maximum speed at which signals can travel, of the defining relationship between momentum and energy, and of defintion of mass. We will also discuss the different kinds of fields that can carry spacetime symmetry. Next, we will discuss the principle of least action. Here we will adopt the view that the description of forces acting on objects can be described equivalently, and with greater adherence to spacetime constraints, in terms of geometric structure, where paths are, in an abstract sense, some variation on the "shortest distance between two points." Next, we combine our understanding of spacetime and variational reasoning, along with an assumption that matter and forces are fields that permeate space, to describe two field theories -- gravitation and electromagnetism. In fact, we will not fully describe electromagnetism which requires later material, but will discuss enough to motivate the ideas of "gauge theory," which grows out of a consideration of symmetry and extends to the weak and strong forces as well. Next, we will delve into quantum mechanics. We'll look at some the key experiments that force us to reject classical assumptins, and then apply our understanding of symmetry and spacetime to work out a theory that explains these experiments. We will take time here to meditate on the strange ideas of superposition, uncertainty, wave collapse, and entanglement that seem to strain our ability to maintain all our principles. We will also describe the origin of particle classifications. Finally, we will put quantum mechanics into a relativistically compliant field setting, called quantum field theory. Here we will revisit motivating electromagnetism, with the language of QFT to bring to bear on the derivation.
 
 I will hopefully keep philosophical ruminations to a minimum, but let's close with one here. Science seems to progress toward humility. We learn again and again, that we do not have an omniscient perspective, and things in the world are not obliged to fit into a structure that reflects our preconceptions. Modern physics pushes the humility to the limit. In relativity, we ask not "how do objects move through space in time that must be the same for everyone" but "how can observers from differnt perspectives relate their ruler and clock measurements to agree on a sequence of events?" With quantum mechanics, we take a radical step toward even greater humility, saying, as some would have it, that "our theory makes no claim, indeed, relies on making on no claim, about what takes place between observations." 
 

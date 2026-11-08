@@ -1,0 +1,38 @@
+{
+  "video_sha256": "d576c4c12ea9f6b62b0f96ac4c7fddcf1b1094dc38b4fc07a88c4775be739fa1",
+  "duration_seconds": 42.0,
+  "frame_count": 1008,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24.0,
+  "decoded": "passed",
+  "contact_sheet_frame_indices": [
+    0,
+    72,
+    192,
+    264,
+    336,
+    432,
+    552,
+    648,
+    768,
+    840,
+    912,
+    1006
+  ],
+  "source_sha256": "0522885e4503572828276cc4f73bebe3c1d3a210739aaf6f220b266bca14ea62",
+  "model_sha256": "045b476fe3ad3e05c1bef7b9713126187b358f3ff8a44b637d54206b75693c50",
+  "mean_map": "Squeeze(r) @ Shear(tau), shared by every wave and grid point",
+  "cells": "Moving subsets of the displaced-packet family, not single states or uncertainty cells",
+  "amplitude_scale": "fixed; no frame-by-frame normalization",
+  "scenes": [
+    0,
+    9,
+    15,
+    24,
+    33
+  ],
+  "restricted_evolution": true
+}

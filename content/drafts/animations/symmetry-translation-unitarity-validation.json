@@ -1,0 +1,26 @@
+{
+  "model": "One-dimensional coefficient representations, inner product conjugate(c1)*c2",
+  "not_a_spatial_integral": true,
+  "samples": 205,
+  "complex_inner_product_max_error": 1.6653345369377348e-16,
+  "translation_function_identity_max_error": 1.4210854715202004e-14,
+  "real_inner_product": [
+    0.57,
+    15.454204184775
+  ],
+  "real_amplitude_gain": 5.2069798271798495,
+  "real_plot_fixed_ymax": 15.5,
+  "helix_visible_turns": 3,
+  "helix_loop_derivative_margin": 50.79644737231007,
+  "complex_translation_full_turns": 1,
+  "fixed_complex_magnitudes": true,
+  "layout_bounds_frames": 69,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "duration_seconds": 34,
+  "source_sha256": "529f10c04fb8de6e2c0211da74f67b6416780dcba5126e89c30d5d866877c9be",
+  "helper_sha256": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445"
+}

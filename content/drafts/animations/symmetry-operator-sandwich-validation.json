@@ -1,0 +1,43 @@
+{
+  "model": "Whole-grid conjugation of horizontal stretch",
+  "A": [
+    [
+      2.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "stages": [
+    0,
+    6,
+    12
+  ],
+  "repetitions": 1,
+  "construction_cycle_seconds": 11,
+  "target": [
+    [
+      1.5,
+      -0.5
+    ],
+    [
+      -0.5,
+      1.5
+    ]
+  ],
+  "derivative_max_error": 3.636709267063054e-10,
+  "operator_change": 0.5,
+  "equation_cell_clearance_pixels": 125.5,
+  "label_collisions": [],
+  "scene_renderer_sha256": "4b107fe8b370807d58c50fb6adef51f2eef6fe638ec9d8f13aac08db90b74c3e",
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "duration_seconds": 23,
+  "source_sha256": "ca787e8209ac4294c658ce4b63e6b8071dac2fc67f3f98873c66943e309e6f07",
+  "helper_sha256": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445"
+}

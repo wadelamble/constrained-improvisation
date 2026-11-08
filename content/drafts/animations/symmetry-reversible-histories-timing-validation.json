@@ -1,0 +1,24 @@
+{
+  "duration_seconds": 24.0,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "separate_playback_cycles": 2,
+  "overlay_playback_cycles": 1,
+  "playback_speed": 1.5,
+  "merge_seconds": [
+    16.0,
+    17.333333333333332
+  ],
+  "merge_clock_paused": true,
+  "simultaneous_clock": true,
+  "independent_comparison_histories": true,
+  "colors": [
+    "#2b659b",
+    "#bc7520"
+  ],
+  "source_sha256": "a6112a89861a2ae2ac9bf4d8439d860a2602156419ffbbd3ce7b1afc3bea1e9e",
+  "physics_source_sha256": "011830e8d68ab978c4b78d484761caf3a281010222b0ac430318cc626a1034a9"
+}

@@ -1,0 +1,15 @@
+{
+  "generator_convention": "[Jx,Jy]=Jz, cyclically",
+  "J_squared": "-2I",
+  "C": "-J_squared = 2I",
+  "derivative_max_error": 5.1458393102166156e-11,
+  "random_vectors_checked": 100,
+  "varying_input_samples_checked": 200,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "duration_seconds": 72,
+  "source_sha256": "9dd635a3c6c0350cda20a0294c94f08b1ae0cf87efac4320ee46cda8509bd2e8"
+}

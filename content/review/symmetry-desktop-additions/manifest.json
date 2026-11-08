@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "animations": [
+    {
+      "id": "matrices",
+      "stem": "symmetry-d3-transformation-matrices",
+      "title": "Representing Symmetry with Matrices",
+      "reel": "Symmetry to Waves \u00b7 5",
+      "description": "The same values move between component slots as the rotation and reflection matrices act.",
+      "placement": "Representations, after the worked matrix multiplication.",
+      "script": "generate_symmetry_d3_matrices_desktop.py",
+      "helper": "symmetry_desktop_d3.py",
+      "video_sha256": "136deb3604f3b7d3bf2f666d2138b4773c6889e89a1cd26cd74d895f0eb1d1eb",
+      "frame_count": 816,
+      "duration_seconds": 34.0,
+      "size": [
+        1600,
+        900
+      ],
+      "fps": 24.0,
+      "decode": "passed",
+      "contact_sheet_frame_indices": [
+        0,
+        72,
+        132,
+        216,
+        276,
+        420,
+        504,
+        564,
+        648,
+        708,
+        744,
+        811
+      ],
+      "sources": {
+        "generate_symmetry_d3_matrices_desktop.py": "170c27fb011f96078fc8d2af0f69c82e853686d0fd4ebfa44e33b489b997d260",
+        "symmetry_desktop_d3.py": "2bf7b26741045de4fc7b1bfc18e80a33d5103632994eaa68bc91f8ed387eae52"
+      }
+    },
+    {
+      "id": "invariants",
+      "stem": "symmetry-d3-invariants",
+      "title": "What the Triangle\u2019s Symmetries Preserve",
+      "reel": "Symmetry to Waves \u00b7 8",
+      "description": "Squared length stays fixed throughout. The cubic invariant returns to its original value at each allowed rotation.",
+      "placement": "Invariants, after the squared-length and cubic-invariant equations.",
+      "script": "generate_symmetry_d3_invariants_desktop.py",
+      "helper": "symmetry_desktop_d3.py",
+      "video_sha256": "2f01f291f87111ef542c63692fbb97bbd6ff580be6e5b0e6b81029ddb4245183",
+      "frame_count": 720,
+      "duration_seconds": 30.0,
+      "size": [
+        1600,
+        900
+      ],
+      "fps": 24.0,
+      "decode": "passed",
+      "contact_sheet_frame_indices": [
+        0,
+        96,
+        168,
+        216,
+        312,
+        384,
+        432,
+        528,
+        600,
+        648,
+        684,
+        715
+      ],
+      "sources": {
+        "generate_symmetry_d3_invariants_desktop.py": "02e805373138656421ee85c3e8183beafb0cc4d771510010cceea6803003c083",
+        "symmetry_desktop_d3.py": "2bf7b26741045de4fc7b1bfc18e80a33d5103632994eaa68bc91f8ed387eae52"
+      }
+    },
+    {
+      "id": "commutator",
+      "stem": "symmetry-commutator-sphere",
+      "title": "The Commutator Encodes Group Structure Locally",
+      "reel": "Symmetry to Waves \u00b7 16",
+      "description": "Opposite rotation orders leave different endpoints. Shrinking the rotations reveals the third generator in the magnified mismatch.",
+      "placement": "Commutators and Lie Algebra, alongside the infinitesimal rotation relationships.",
+      "script": "generate_symmetry_commutator_sphere_desktop.py",
+      "video_sha256": "d164b0b5e4c469c7e0ae92da7c4e8113c519eb3c4b428f41a93a5508a80a912b",
+      "frame_count": 1296,
+      "duration_seconds": 54.0,
+      "size": [
+        1600,
+        900
+      ],
+      "fps": 24.0,
+      "decode": "passed",
+      "contact_sheet_frame_indices": [
+        96,
+        192,
+        348,
+        456,
+        528,
+        708,
+        888,
+        1068,
+        1128,
+        1200,
+        1248,
+        1272
+      ],
+      "sources": {
+        "generate_symmetry_commutator_sphere_desktop.py": "4106ce3eb126e8f7f6bcdc1c0e01c29bab7e9fec239e33ec5bc4d6730d248579"
+      }
+    },
+    {
+      "id": "eigenfunctions",
+      "stem": "symmetry-translation-eigenfunctions",
+      "title": "Translation Eigenfunctions Are Exponentials",
+      "reel": "Symmetry to Waves \u00b7 23 \u00b7 authoring label 24",
+      "description": "Differentiation and translation reproduce the exponential function multiplied by a number.",
+      "placement": "Eigenfunctions of Translational Symmetry, after the derivative equation.",
+      "script": "generate_symmetry_translation_eigenfunctions_desktop.py",
+      "helper": "symmetry_exponential_desktop_common.py",
+      "video_sha256": "59c1a5bbe45c61b4d9d4bd92f365cd7444ef3b3ab0e178cbb89c6e3f1cab2f94",
+      "frame_count": 672,
+      "duration_seconds": 28.0,
+      "size": [
+        1600,
+        900
+      ],
+      "fps": 24.0,
+      "decode": "passed",
+      "contact_sheet_frame_indices": [
+        0,
+        72,
+        144,
+        216,
+        288,
+        384,
+        456,
+        552,
+        648
+      ],
+      "sources": {
+        "generate_symmetry_translation_eigenfunctions_desktop.py": "ed6ea95d82dc4538dd42348bb08dc564d6d3232245103104f931bdc188f28cfa",
+        "symmetry_exponential_desktop_common.py": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445"
+      }
+    },
+    {
+      "id": "unitarity",
+      "stem": "symmetry-translation-unitarity",
+      "title": "Translation of Complex Exponentials Preserves the Inner Product",
+      "reel": "Symmetry to Waves \u00b7 24 \u00b7 authoring label 24a",
+      "description": "Compare two coefficients of one exponential mode. Real scaling changes their inner product, while a common complex rotation preserves it.",
+      "placement": "Unitarity, after the real-versus-complex exponential comparison.",
+      "script": "generate_symmetry_translation_unitarity_desktop.py",
+      "helper": "symmetry_exponential_desktop_common.py",
+      "video_sha256": "dcfab017f6ad0c457dd1e9d658fe5b586bbf2260a8a81911ea69c9b5ed455e31",
+      "frame_count": 816,
+      "duration_seconds": 34.0,
+      "size": [
+        1600,
+        900
+      ],
+      "fps": 24.0,
+      "decode": "passed",
+      "contact_sheet_frame_indices": [
+        0,
+        96,
+        168,
+        264,
+        360,
+        432,
+        528,
+        648,
+        792
+      ],
+      "sources": {
+        "generate_symmetry_translation_unitarity_desktop.py": "529f10c04fb8de6e2c0211da74f67b6416780dcba5126e89c30d5d866877c9be",
+        "symmetry_exponential_desktop_common.py": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445"
+      }
+    },
+    {
+      "id": "momentum",
+      "stem": "symmetry-momentum-uncertainty",
+      "title": "Wave Number Becomes Momentum",
+      "reel": "Waves to Quanta \u00b7 13",
+      "description": "The same translation is written using wave number and momentum, followed by the Gaussian width tradeoff in physical units.",
+      "placement": "Quantum Mechanics, after the position\u2013momentum uncertainty relation.",
+      "script": "generate_symmetry_momentum_uncertainty_desktop.py",
+      "helper": "generate_symmetry_casimir_desktop.py",
+      "helper_key": "renderer_sha256",
+      "video_sha256": "6d1d5d632251246fb3a6fd8fec6fcc769afdff267a41aa3726590033608c7024",
+      "frame_count": 912,
+      "duration_seconds": 38.0,
+      "size": [
+        1600,
+        900
+      ],
+      "fps": 24.0,
+      "decode": "passed",
+      "contact_sheet_frame_indices": [
+        0,
+        168,
+        360,
+        480,
+        600,
+        696,
+        768,
+        840,
+        900
+      ],
+      "sources": {
+        "generate_symmetry_momentum_uncertainty_desktop.py": "607e5165af06fe0eea24e63a032252c4c2ffe7dbd14dbde75943fd6ba036232e",
+        "generate_symmetry_casimir_desktop.py": "9dd635a3c6c0350cda20a0294c94f08b1ae0cf87efac4320ee46cda8509bd2e8"
+      }
+    }
+  ]
+}

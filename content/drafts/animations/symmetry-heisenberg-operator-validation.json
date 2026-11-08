@@ -1,0 +1,41 @@
+{
+  "numerical_errors": {
+    "unitarity": 2.220446049250313e-16,
+    "self_adjoint_G": 0.0,
+    "self_adjoint_A_s": 1.6653345369377348e-16,
+    "analytic_derivative": 0.0,
+    "finite_difference": 2.4532953446509964e-10,
+    "fixed_eigenvalues": 2.220446049250313e-16,
+    "sandwich": 1.6653345369377348e-16,
+    "circle_path": 2.220446049250313e-16,
+    "commuting_control": 2.220446049250313e-16
+  },
+  "first_order_residuals": [
+    {
+      "epsilon": 0.4,
+      "linear_prediction_error": 0.15717572639122174
+    },
+    {
+      "epsilon": 0.2,
+      "linear_prediction_error": 0.03982253805105049
+    },
+    {
+      "epsilon": 0.1,
+      "linear_prediction_error": 0.009988893826298445
+    },
+    {
+      "epsilon": 0.05,
+      "linear_prediction_error": 0.0024993056327126503
+    }
+  ],
+  "label_collisions": [],
+  "duration_seconds": 112,
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "model": "G=iJ, U=R(s), A=diag(1.6,0.6), v=(1,0)",
+  "scope": "Generic transformation parameter. No position-wave-number CCR used.",
+  "source_sha256": "7b3f5081ac4a60dce1383bb12cdedc72cc419bf60ce479a82cd05e644d9ece4a"
+}

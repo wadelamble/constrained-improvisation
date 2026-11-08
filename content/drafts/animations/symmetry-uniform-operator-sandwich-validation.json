@@ -1,0 +1,42 @@
+{
+  "model": "Whole-grid conjugation of uniform stretch",
+  "A": [
+    [
+      2.0,
+      0.0
+    ],
+    [
+      0.0,
+      2.0
+    ]
+  ],
+  "stages": [
+    0,
+    6
+  ],
+  "repetitions": 1,
+  "construction_cycle_seconds": 11,
+  "target": [
+    [
+      2.0,
+      0.0
+    ],
+    [
+      0.0,
+      2.0
+    ]
+  ],
+  "derivative_max_error": 0.0,
+  "operator_change": 0.0,
+  "equation_cell_clearance_pixels": 25.867965644035735,
+  "label_collisions": [],
+  "scene_renderer_sha256": "4b107fe8b370807d58c50fb6adef51f2eef6fe638ec9d8f13aac08db90b74c3e",
+  "size": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "duration_seconds": 17,
+  "source_sha256": "5a6a8154002ce71cfa6f3a572fcfc965c8fa4cc9b1951b098026b331235b3363",
+  "helper_sha256": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445"
+}

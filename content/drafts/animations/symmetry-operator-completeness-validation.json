@@ -1,0 +1,96 @@
+{
+  "model": "exact finite periodic Weyl operator basis",
+  "continuum_caveat": "Finite periodic analogue only; no finite exact [X,K]=iI is claimed. Any continuum limit displayed by the animation is schematic.",
+  "n": 8,
+  "basis_operator_count": 64,
+  "complex_matrix_space_dimension": 64,
+  "convention": "Tx(a)psi[j]=psi[(j-a)%N]; Tk(b)psi[j]=exp(2pi*i*b*j/N)psi[j]",
+  "coefficient_convention": "c[a,b]=fft(A[j,(j-a)%N], over j)[b]/N",
+  "partial_sums_may_be_complex": true,
+  "target_is_unitary": false,
+  "target_max_absolute_entry": 0.7461,
+  "target_condition_number": 2.3088489122959217,
+  "target_max_asymmetry": 1.0422,
+  "minimum_coefficient_magnitude": 0.009449999999999997,
+  "nonzero_coefficient_count": 64,
+  "selected_band_a2_weights": [
+    -0.1377,
+    -0.0693,
+    0.09090000000000001,
+    -0.1107,
+    0.522,
+    -0.2205,
+    -0.30870000000000003,
+    0.3096
+  ],
+  "input_names": [
+    "localized packet",
+    "signed two-lobe pattern"
+  ],
+  "random_complex_states_checked": 128,
+  "random_complex_matrices_checked": 16,
+  "tolerance": 1e-11,
+  "checks": {
+    "hilbert_schmidt_gram": {
+      "max_abs_error": 7.308562037726598e-16,
+      "passed": true
+    },
+    "basis_unitarity": {
+      "max_abs_error": 2.2610626239330836e-16,
+      "passed": true
+    },
+    "target_reconstruction": {
+      "max_abs_error": 9.770790517827884e-16,
+      "passed": true
+    },
+    "fft_coefficients_vs_trace": {
+      "max_abs_error": 3.7553457920377367e-16,
+      "passed": true
+    },
+    "each_band_reconstruction": {
+      "max_abs_error": 9.770790517827884e-16,
+      "passed": true
+    },
+    "weighted_shift_band_sum": {
+      "max_abs_error": 0.0,
+      "passed": true
+    },
+    "operator_action_130_states": {
+      "max_abs_error": 1.1879550512590531e-15,
+      "passed": true
+    },
+    "complex_linearity": {
+      "max_abs_error": 6.061909215660398e-16,
+      "passed": true
+    },
+    "positive_shift_column_action": {
+      "max_abs_error": 0.0,
+      "passed": true
+    },
+    "finite_weyl_relation": {
+      "max_abs_error": 8.79251776862914e-15,
+      "passed": true
+    },
+    "finite_loop_uniform_phase": {
+      "max_abs_error": 4.653814042639867e-15,
+      "passed": true
+    },
+    "all_64_matrix_units": {
+      "max_abs_error": 8.659073320846224e-16,
+      "passed": true
+    },
+    "16_random_complex_matrices": {
+      "max_abs_error": 6.237289866329941e-15,
+      "passed": true
+    },
+    "real_target_coefficient_conjugacy": {
+      "max_abs_error": 0.0,
+      "passed": true
+    },
+    "visible_input_normalization": {
+      "max_abs_error": 0.0,
+      "passed": true
+    }
+  },
+  "passed": true
+}

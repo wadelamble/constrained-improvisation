@@ -4,10 +4,30 @@
     "generation_note": "Main script --render draws the equal-mass elastic-disk trials and encodes frames directly with FFmpeg. --check and --encoded-check produce the companion numerical and decoded-video reports. It has no local Python imports or input movie.",
     "evidence": "The script's NAME and output match the linked movie. Matching validation and encoded-validation JSON record 1600 x 960, 30 fps, 420 frames, 14 s. The reports contain no movie hash, so this is source/output-name attribution rather than a hash-attested build."
   },
+  "symmetry-reversible-histories.mp4": {
+    "sources": ["scripts/generate_symmetry_reversible_histories.py", "scripts/symmetry_reversible_balls.py"],
+    "generation_note": "Run the main generator with --render --check. symmetry_reversible_balls supplies exact free-flight and elastic-collision histories. The renderer samples a 36-second story clock at 1.5 times speed to produce a 24-second movie directly; it does not consume or retime an earlier movie. The histories run forward and backward twice in separate panes, then once in a comparison overlay, with the physical clock paused during the merge. The histories remain independent.",
+    "evidence": "The timing and encoded reports agree on 1600 x 900, 24 fps, 576 frames and 24 seconds, with the views merging from 16 to 17.333 seconds. The physics report checks energy, collision momentum, non-overlap, independent reverse integration and distinguishability of the full states. The encoded report records a complete decode and the delivered movie hash; the decoded review-frame manifest records that same hash and twelve sampled frame indices."
+  },
+  "symmetry-mean-patch.mp4": {
+    "sources": ["scripts/generate_symmetry_mean_patch.py", "scripts/symmetry_mean_patch.py", "scripts/generate_symmetry_packet_phase_modes.py"],
+    "generation_note": "Run the main generator with --preview --render --check and the model module for numerical validation. Six normalized Weyl-displaced Gaussian wave functions evolve by a common free shear followed by a squeeze and their inverses. Their exact means transport the right-hand fine grid. The packet-phase-modes script supplies drawing and mathematical-text helpers only; no input movie is used. Cells follow subsets of the displaced-state family, not individual states or uncertainty cells.",
+    "evidence": "The model validation independently checks full complex overlap, norms, mean values, covariance, spectral propagation, reverse evolution, and all cell areas. The encoded report records a 1600 x 900, 24 fps, 42-second movie, source/model/movie hashes, full decoding, and sampled frame indices."
+  },
+  "symmetry-unitary-histories.mp4": {
+    "sources": ["scripts/generate_symmetry_unitary_histories.py", "scripts/symmetry_unitary_waves.py", "scripts/generate_symmetry_reversible_histories.py", "scripts/symmetry_reversible_balls.py"],
+    "generation_note": "Run the main generator with --render --check. symmetry_unitary_waves supplies two normalized complex states under the same exact diagonal unitary evolution. The reversible-histories generator supplies the drawing helpers and the 36-second story clock sampled at 1.5 times speed. Its billiard module is a transitive import, not the wave-evolution model. No input movie is used. Surface height depicts the real part on a fixed scale; the overlap uses the complete complex states. The final overlay compares alternatives without adding them.",
+    "evidence": "The encoded report records 1600 x 900, 24 fps, 576 frames, 24 seconds, a complete decode and the delivered movie hash. Mathematical validation checks norm and complex-inner-product preservation, reverse evolution, group composition, quadrature and Dirichlet boundaries for the shared sine-basis model. The overlap stays 0.4. The decoded review-frame manifest records the delivered hash and twelve sampled frame indices."
+  },
   "symmetry-triangle-actions.mp4": {
     "sources": ["scripts/generate_symmetry_triangle_actions_animation.py"],
     "generation_note": "Run the main script without arguments. It draws the triangle-action frames with Pillow and encodes them with FFmpeg, then writes a poster. It has no local Python imports or input movie.",
     "evidence": "main() explicitly writes symmetry-triangle-actions.mp4; constants specify 900 x 620 at 18 fps. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
+  },
+  "symmetry-d3-transformation-matrices.mp4": {
+    "sources": ["scripts/generate_symmetry_d3_matrices_desktop.py", "scripts/symmetry_desktop_d3.py"],
+    "generation_note": "Run the main generator with --render --check. The landscape adaptation routes colored component values through three applications of the rotation matrix and two of the reflection matrix. symmetry_desktop_d3 supplies drawing, encoding and decoded-review helpers. It is a code dependency, not an input movie.",
+    "evidence": "The generator writes a 1600 x 900, 24 fps, 34-second silent MP4. Mathematical validation checks R^3=I, S^2=I, SRS=R^-1 and 200 component-routing comparisons. The encoded report records the delivered movie hash, 816 frames, a complete decode and sampled frame indices."
   },
   "symmetry-d3-rotations-vs-flips.mp4": {
     "sources": ["scripts/generate_symmetry_d3_rotations_vs_flips_animation.py", "scripts/symmetry_d3_rendering.py"],
@@ -44,6 +64,26 @@
     "generation_note": "Run the main script without arguments. It uses symmetry_d3_rendering for shared geometry and drawing helpers, then encodes the ordered-rotation frames with FFmpeg. The imported module is a code dependency, not an input movie.",
     "evidence": "render() sets the output stem to symmetry-so3-rotation-order; constants specify 1200 x 700, 24 fps, 192 frames. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
   },
+  "symmetry-commutator-sphere.mp4": {
+    "sources": ["scripts/generate_symmetry_commutator_sphere_desktop.py"],
+    "generation_note": "Run the self-contained generator with --render --check. It applies the two rotation orders to a vector on a sphere, reduces their angles, magnifies their endpoint difference and compares it with the z-generator tangent. The connected magnifier uses the same camera and the exact inverse-square angle scale. No local Python imports or input movies are used.",
+    "evidence": "The generator writes a 1600 x 900, 24 fps, 54-second silent MP4. Mathematical validation checks preserved vector length, rotation order, the positive Jz sign, exact magnifier geometry and convergence of the scaled difference. The encoded report records the delivered movie hash, 1296 frames, a complete decode and sampled frame indices."
+  },
+  "symmetry-casimir-operator.mp4": {
+    "sources": ["scripts/generate_symmetry_casimir_desktop.py"],
+    "generation_note": "Run the self-contained generator with --render --check. Landscape adaptation of the revised stepwise Casimir reel: two applications of Jx, the other squared generators, vector addition, scalar sign reversal, and a changing input with recomputed contributions. Uses the real rotation generators and explicitly defines C=-J^2=2I. No local Python imports or input movies are used.",
+    "evidence": "The generator writes a 1600 x 900, 24 fps, 72-second silent MP4. Its mathematical report checks generator derivatives, cyclic commutators, squared-generator outputs and 200 changing-input samples. The encoded report records the delivered movie hash, frame count, full decode and contact-sheet frame indices."
+  },
+  "symmetry-operator-sandwich.mp4": {
+    "sources": ["scripts/generate_symmetry_operator_sandwich.py", "scripts/symmetry_stretch_operator_scenes.py", "scripts/symmetry_exponential_desktop_common.py"],
+    "generation_note": "Run the horizontal wrapper with --render --check. symmetry_stretch_operator_scenes supplies the shared whole-grid renderer: introduce the horizontal stretch A and undo it, introduce the rotation U_s and reverse it, then construct A_s=U_s†AU_s and vary the angle in the completed operator. The construction and angle sweep run once. Matrix entries and grid points use the same interpolated matrix. symmetry_exponential_desktop_common supplies drawing, encoding and decoded-review helpers. Both imported modules are code dependencies, not input movies.",
+    "evidence": "The delivered movie is 1600 x 900 at 24 fps, with 552 frames and a 23-second duration. Mathematical validation checks the introductory stretch and return, the conjugated matrix, its commutator derivative, determinant bounds, and equation and label clearance. The encoded report records a complete decode and the delivered movie hash. The decoded review-frame manifest records the same hash and twelve sampled frame indices."
+  },
+  "symmetry-uniform-operator-sandwich.mp4": {
+    "sources": ["scripts/generate_symmetry_uniform_operator_sandwich.py", "scripts/symmetry_stretch_operator_scenes.py", "scripts/symmetry_exponential_desktop_common.py"],
+    "generation_note": "Run the uniform wrapper with --render --check. symmetry_stretch_operator_scenes supplies the shared whole-grid renderer: introduce the uniform stretch A=2I and undo it, then construct A_s=U_s†AU_s and vary the angle in the completed operator. The construction and angle sweep run once. The completed uniform stretch stays unchanged because it commutes with rotations. Matrix entries and grid points use the same matrix. symmetry_exponential_desktop_common supplies drawing, encoding and decoded-review helpers. Both imported modules are code dependencies, not input movies.",
+    "evidence": "The delivered movie is 1600 x 900 at 24 fps, with 408 frames and a 17-second duration. Mathematical validation checks the introductory stretch and return, invariance of A_s=2I, its vanishing commutator derivative, monotone construction phases, determinant bounds, and equation and label clearance. The encoded report records a complete decode and the delivered movie hash. The decoded review-frame manifest records the same hash and twelve sampled frame indices."
+  },
   "symmetry-translation-point-linearity-failure.mp4": {
     "sources": ["scripts/generate_symmetry_translation_linearity_animations.py"],
     "generation_note": "Run the main script without arguments. It renders two separate movies: this point-translation example using draw_point_linearity_frame, and the function-linearity example using its other renderer. Frames are drawn with Pillow and encoded with FFmpeg; no local Python imports or input movie are used.",
@@ -54,20 +94,30 @@
     "generation_note": "Run the main script without arguments. It renders two separate movies: this function-linearity example using draw_function_linearity_frame, and the point-translation example using its other renderer. Frames are drawn with Pillow and encoded with FFmpeg; no local Python imports or input movie are used.",
     "evidence": "main() pairs the exact symmetry-translation-function-linearity stem with draw_function_linearity_frame. Constants specify 1280 x 720, 24 fps, 156 frames. No matching validation JSON is present; attribution is by source/output name and pipeline, not a recorded movie hash."
   },
-  "symmetry-function-translation-shape.mp4": {
-    "sources": ["scripts/generate_symmetry_function_translation_shape_animation.py"],
-    "generation_note": "Run the main script without --poster-only to draw and encode the translated-function frames. FFmpeg is resolved from configuration, the local tool installation, PATH, or imageio-ffmpeg. No local Python imports or input movie are used.",
-    "evidence": "main() explicitly writes symmetry-function-translation-shape.mp4; constants specify 1280 x 620, 24 fps, 132 frames. No matching validation JSON is present. Attribution is by source/output name and pipeline, not a recorded movie hash."
-  },
   "symmetry-translation-tangent-zoom.mp4": {
     "sources": ["scripts/generate_symmetry_translation_tangent_zoom_animation.py"],
     "generation_note": "Run the main script without arguments. It draws the translation-and-tangent-zoom frames with Pillow and encodes them with FFmpeg. It has no local Python imports or input movie.",
     "evidence": "render() sets the exact symmetry-translation-tangent-zoom output stem. Constants specify 1280 x 720, 24 fps, 360 frames. No matching validation JSON is present; attribution is by source/output name and pipeline, not a recorded movie hash."
   },
-  "symmetry-eigenbasis-stretch.mp4": {
-    "sources": ["scripts/generate_symmetry_eigenbasis_stretch_animation.py"],
-    "generation_note": "Run the main script without arguments. It draws the eigenbasis-stretch frames with Pillow and encodes them with FFmpeg. It has no local Python imports or input movie.",
-    "evidence": "render() sets the exact symmetry-eigenbasis-stretch output stem. Constants specify 1280 x 720 at 24 fps. No matching validation JSON is present; attribution is by source/output name and pipeline, not a recorded movie hash."
+  "symmetry-eigenbasis-comparison.mp4": {
+    "sources": ["scripts/generate_symmetry_eigenbasis_split.py", "scripts/generate_symmetry_eigenbasis_stretch_animation.py"],
+    "generation_note": "The splitter imports the original eigenbasis-stretch drawing functions and renders the basis-comparison act as a separate clip. It preserves the original motion and reallocates the former crossfade as a final hold in this clip. The original renderer is a code dependency, not an input movie. The combined original MP4 remains preserved.",
+    "evidence": "The split output is 1280 x 720 at 24 fps, with 192 frames and an 8-second duration. Together with the 6.5-second components clip, it retains the original 14.5-second total. The decoded review-frame manifest records the delivered movie hash, dimensions, frame count and twelve sampled frame indices."
+  },
+  "symmetry-eigenbasis-components.mp4": {
+    "sources": ["scripts/generate_symmetry_eigenbasis_split.py", "scripts/generate_symmetry_eigenbasis_stretch_animation.py"],
+    "generation_note": "The splitter imports the original eigenbasis-stretch drawing functions and renders the vector-components act as a separate clip, retaining its original motion. The original renderer is a code dependency, not an input movie. The combined original MP4 remains preserved.",
+    "evidence": "The split output is 1280 x 720 at 24 fps, with 156 frames and a 6.5-second duration. Together with the 8-second comparison clip, it retains the original 14.5-second total. The decoded review-frame manifest records the delivered movie hash, dimensions, frame count and twelve sampled frame indices."
+  },
+  "symmetry-translation-eigenfunctions.mp4": {
+    "sources": ["scripts/generate_symmetry_translation_eigenfunctions_desktop.py", "scripts/symmetry_exponential_desktop_common.py"],
+    "generation_note": "Run the main generator with --render --check. A fixed exponential is compared with its derivative, a translated copy and a vertically scaled copy. The demonstration runs once through differentiation and translation. symmetry_exponential_desktop_common supplies drawing, encoding and decoded-review helpers. It is a code dependency, not an input movie.",
+    "evidence": "The generator writes a 1600 x 900, 24 fps, 28-second silent MP4. Mathematical validation compares differentiation against finite differences, checks 101 translation-scaling samples and tests monotone staging and layout bounds. The encoded report records the delivered movie hash, 672 frames, a complete decode and sampled frame indices."
+  },
+  "symmetry-translation-unitarity.mp4": {
+    "sources": ["scripts/generate_symmetry_translation_unitarity_desktop.py", "scripts/symmetry_exponential_desktop_common.py"],
+    "generation_note": "Run the main generator with --render --check. Each panel compares two states in a one-mode representation, tracing how translation acts on their coefficients at x=0. Real-exponential coefficients scale, while complex-exponential coefficients rotate together. The inner product shown is conjugate(c1)*c2, not a finite-window spatial integral. symmetry_exponential_desktop_common supplies drawing, encoding and decoded-review helpers. No input movies are used.",
+    "evidence": "The generator writes a 1600 x 900, 24 fps, 34-second silent MP4. Mathematical validation checks 205 samples of coefficient inner products, translation identities and fixed complex magnitudes, as well as layout bounds. The encoded report records the delivered movie hash, 816 frames, a complete decode and sampled frame indices."
   },
   "symmetry-complex-plane-wave-v2.mp4": {
     "sources": ["scripts/generate_symmetry_complex_plane_wave_v2.py"],

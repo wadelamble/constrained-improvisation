@@ -12,22 +12,22 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "content" / "drafts" / "animations"
-SCRATCH = OUTPUT_DIR / "_symmetry_function_translation_shape_frames"
 
 WIDTH = 1280
 HEIGHT = 620
 SCALE = 2
 FPS = 24
-FRAMES = 132
+FRAMES = 192
+X_MIN, X_MAX = -3.4, 5.4
+SHIFT = 2.1
 
 BG = (255, 252, 246)
 PANEL = (250, 246, 238)
 PANEL_EDGE = (224, 216, 204)
 INK = (35, 36, 38)
 MUTED = (174, 168, 158)
-FAINT = (226, 219, 209)
+REFERENCE = (158, 154, 147)
 BLUE = (57, 103, 157)
-RED = (184, 72, 48)
 GOLD = (196, 132, 42)
 
 
@@ -64,9 +64,10 @@ def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.Im
     return ImageFont.load_default()
 
 
-TITLE = font(24, True)
-LABEL = font(17)
-SMALL = font(13)
+TITLE = font(26, True)
+EQUATION = font(27)
+LABEL = font(20)
+SMALL = font(17)
 
 
 def s(value: float) -> int:
@@ -76,10 +77,6 @@ def s(value: float) -> int:
 def ease(t: float) -> float:
     t = max(0.0, min(1.0, t))
     return t * t * (3 - 2 * t)
-
-
-def rgba(color: tuple[int, int, int], alpha: float) -> tuple[int, int, int, int]:
-    return color[0], color[1], color[2], max(0, min(255, round(255 * alpha)))
 
 
 def draw_text(
@@ -98,9 +95,8 @@ def draw_panel(draw: ImageDraw.ImageDraw, box: tuple[float, float, float, float]
 
 
 def graph_point(box: tuple[float, float, float, float], x: float, y: float) -> tuple[int, int]:
-    x_min, x_max = -3.4, 3.8
-    y_min, y_max = -0.18, 1.38
-    px = box[0] + (x - x_min) / (x_max - x_min) * (box[2] - box[0])
+    y_min, y_max = -0.12, 1.05
+    px = box[0] + (x - X_MIN) / (X_MAX - X_MIN) * (box[2] - box[0])
     py = box[3] - (y - y_min) / (y_max - y_min) * (box[3] - box[1])
     return s(px), s(py)
 
@@ -113,19 +109,13 @@ def base_shape(x: float) -> float:
     )
 
 
-def distorted_shape(x: float, amount: float) -> float:
-    stretch = 1.0 + 0.42 * amount
-    skew = 0.28 * amount
-    height = 1.0 - 0.28 * amount
-    wobble = 0.12 * amount * math.exp(-((x - 0.5) ** 2) / 1.8) * math.sin(3.2 * x)
-    return max(0.0, height * base_shape((x - skew) / stretch) + wobble)
-
-
 def draw_axes(draw: ImageDraw.ImageDraw, box: tuple[float, float, float, float]) -> None:
     y0 = graph_point(box, 0, 0)[1]
     x0 = graph_point(box, 0, 0)[0]
     draw.line((s(box[0]), y0, s(box[2]), y0), fill=MUTED, width=s(2))
-    draw.line((x0, s(box[1]), x0, s(box[3])), fill=rgba(MUTED, 0.45), width=s(2))
+    draw.line((x0, s(box[1]), x0, s(box[3])), fill=PANEL_EDGE, width=s(1))
+    draw_text(draw, (x0 / SCALE - 12, y0 / SCALE + 16), "0", fill=MUTED, font_obj=SMALL, anchor="mm")
+    draw_text(draw, (box[2] + 14, y0 / SCALE), "x", fill=INK, font_obj=LABEL, anchor="mm")
 
 
 def draw_curve(
@@ -136,8 +126,8 @@ def draw_curve(
     width: int = 5,
 ) -> None:
     points = []
-    for index in range(280):
-        x = -3.4 + 7.2 * index / 279
+    for index in range(800):
+        x = X_MIN + (X_MAX - X_MIN) * index / 799
         points.append(graph_point(box, x, fn(x)))
     draw.line(points, fill=color, width=s(width), joint="curve")
 
@@ -146,55 +136,44 @@ def shifted_shape(shift: float):
     return lambda x: base_shape(x - shift)
 
 
-def shifted_distorted_shape(shift: float, amount: float):
-    return lambda x: distorted_shape(x - shift, amount)
-
-
 def draw_frame(frame: int) -> Image.Image:
-    phase = ease(frame / (FRAMES - 1))
-    shift = 2.1 * phase
+    # A short opening hold, one translation, then a final hold. This parameter
+    # advances the group action; the animation does not assert an equation of motion.
+    shift = SHIFT * ease((frame / FPS - 0.75) / 5.75)
 
-    image = Image.new("RGBA", (WIDTH * SCALE, HEIGHT * SCALE), BG + (255,))
-    draw = ImageDraw.Draw(image, "RGBA")
+    image = Image.new("RGB", (WIDTH * SCALE, HEIGHT * SCALE), BG)
+    draw = ImageDraw.Draw(image)
 
-    left_panel = (48, 58, 618, 554)
-    right_panel = (662, 58, 1232, 554)
-    left_graph = (82, 176, 584, 494)
-    right_graph = (696, 176, 1198, 494)
-    draw_panel(draw, left_panel)
-    draw_panel(draw, right_panel)
+    panel = (48, 58, 1232, 562)
+    graph = (96, 232, 1184, 500)
+    draw_panel(draw, panel)
 
-    draw_text(draw, (82, 92), "Translation", font_obj=TITLE)
-    draw_text(draw, (82, 128), "shape preserved", fill=BLUE, font_obj=LABEL)
-    draw_text(draw, (696, 92), "Translation + deformation", font_obj=TITLE)
-    draw_text(draw, (696, 128), "shape distorted", fill=RED, font_obj=LABEL)
+    draw_text(draw, (96, 92), "Translation", font_obj=TITLE)
+    draw_text(draw, (1184, 110), "(Tₐ f)(x) = f(x − a)", font_obj=EQUATION, anchor="rm")
 
-    draw_axes(draw, left_graph)
-    draw_axes(draw, right_graph)
+    for x, text, color in ((96, "f(x)", REFERENCE), (268, "(Tₐ f)(x)", BLUE)):
+        draw.line((s(x), s(165), s(x + 38), s(165)), fill=color, width=s(3))
+        draw_text(draw, (x + 50, 165), text, fill=color, font_obj=LABEL, anchor="lm")
 
-    # Ghosts show the starting shape.
-    draw_curve(draw, left_graph, base_shape, rgba(BLUE, 0.22), width=4)
-    draw_curve(draw, right_graph, base_shape, rgba(RED, 0.22), width=4)
+    draw_axes(draw, graph)
+    draw_curve(draw, graph, base_shape, REFERENCE, width=3)
+    draw_curve(draw, graph, shifted_shape(shift), BLUE, width=4)
 
-    draw_curve(draw, left_graph, shifted_shape(shift), BLUE, width=5)
-    draw_curve(draw, right_graph, shifted_distorted_shape(shift, phase), RED, width=5)
+    # The arrow measures the same displacement as every point of the curve.
+    start = graph_point(graph, -1.18, 0)[0]
+    end = graph_point(graph, -1.18 + shift, 0)[0]
+    if end - start > s(24):
+        arrow_y = s(226)
+        draw.line((start, arrow_y, end, arrow_y), fill=GOLD, width=s(2))
+        draw.polygon([(end, arrow_y), (end - s(10), arrow_y - s(5)), (end - s(10), arrow_y + s(5))], fill=GOLD)
+        draw_text(draw, ((start + end) / (2 * SCALE), 210), "a", fill=GOLD, font_obj=LABEL, anchor="mm")
 
-    draw_text(draw, (318, 522), "same values, new position", fill=BLUE, font_obj=SMALL, anchor="mm")
-    draw_text(draw, (932, 522), "new position and new shape", fill=RED, font_obj=SMALL, anchor="mm")
-
-    # Small motion arrows.
-    arrow_y = 154
-    draw.line((s(212), s(arrow_y), s(378), s(arrow_y)), fill=GOLD, width=s(3))
-    draw.polygon([(s(378), s(arrow_y)), (s(362), s(arrow_y - 8)), (s(362), s(arrow_y + 8))], fill=GOLD)
-    draw.line((s(826), s(arrow_y), s(992), s(arrow_y)), fill=GOLD, width=s(3))
-    draw.polygon([(s(992), s(arrow_y)), (s(976), s(arrow_y - 8)), (s(976), s(arrow_y + 8))], fill=GOLD)
-
-    image = image.convert("RGB").resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
+    image = image.resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
     return image
 
 
 def make_contact_sheet() -> Path:
-    samples = [0, 26, 52, 78, 104, 131]
+    samples = [0, 36, 72, 108, 144, FRAMES - 1]
     thumb_w = 400
     thumb_h = 194
     label_h = 28
@@ -214,7 +193,7 @@ def make_contact_sheet() -> Path:
         y = margin + row * (thumb_h + label_h + margin)
         thumb = draw_frame(frame).resize((thumb_w, thumb_h), Image.Resampling.LANCZOS)
         sheet.paste(thumb, (x, y))
-        draw.text((x + 8, y + thumb_h + 6), f"{round(frame / (FRAMES - 1) * 100)}%", fill=(96, 92, 86), font=SMALL)
+        draw.text((x + 8, y + thumb_h + 6), f"{frame / FPS:.1f} s", fill=(96, 92, 86), font=font(8))
     out = OUTPUT_DIR / "symmetry-function-translation-shape-contact-sheet.png"
     sheet.save(out)
     return out
@@ -230,44 +209,33 @@ def make_poster() -> Path:
 def main() -> None:
     ffmpeg = find_ffmpeg()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    if SCRATCH.exists():
-        shutil.rmtree(SCRATCH)
-    SCRATCH.mkdir()
     video = OUTPUT_DIR / "symmetry-function-translation-shape.mp4"
-
+    temporary_video = video.with_suffix(".rendering.mp4")
+    process = subprocess.Popen(
+        [ffmpeg, "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{WIDTH}x{HEIGHT}",
+         "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264", "-crf", "18",
+         "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(temporary_video)],
+        stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+    )
     try:
         for index in range(FRAMES):
-            draw_frame(index).save(SCRATCH / f"frame_{index:04d}.png")
-        subprocess.run(
-            [
-                ffmpeg,
-                "-y",
-                "-framerate",
-                str(FPS),
-                "-i",
-                str(SCRATCH / "frame_%04d.png"),
-                "-c:v",
-                "libx264",
-                "-pix_fmt",
-                "yuv420p",
-                "-movflags",
-                "+faststart",
-                str(video),
-            ],
-            check=True,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
+            process.stdin.write(draw_frame(index).tobytes())
+        process.stdin.close()
+        if process.wait() != 0:
+            raise RuntimeError("FFmpeg failed to encode the translation animation.")
+        temporary_video.replace(video)
         print(video)
         print(make_contact_sheet())
         print(make_poster())
     finally:
-        if SCRATCH.exists():
-            shutil.rmtree(SCRATCH)
+        if process.poll() is None:
+            process.kill()
+            process.wait()
+        temporary_video.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Render function translation and deformation.")
+    parser = argparse.ArgumentParser(description="Render one translation acting on a function.")
     parser.add_argument("--poster-only", action="store_true", help="Write the final-frame poster without rendering video.")
     args = parser.parse_args()
     if args.poster_only:
