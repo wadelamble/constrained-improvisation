@@ -443,12 +443,15 @@ class Checker:
         if index.get("public_chapter_url") != PUBLIC_SITE + "/symmetry/":
             self.fail("animation-review/index.json: public_chapter_url does not identify the published chapter")
         image_references = list(dict.fromkeys(re.findall(r"!\[[^\]]*\]\(([^)]+)\)", chapter_text)))
+        image_references = [reference for reference in image_references
+                            if not (urlsplit(reference).scheme in {"http", "https"}
+                                    and urlsplit(reference).netloc)]
         assets = index.get("chapter_assets")
         if not isinstance(assets, list) or not all(isinstance(asset, dict) for asset in assets):
             self.fail("animation-review/index.json: chapter_assets must be a list of image records")
             return
         if [asset.get("original_reference") for asset in assets] != image_references:
-            self.fail("animation-review/index.json: chapter_assets do not cover the chapter's static images in order")
+            self.fail("animation-review/index.json: chapter_assets do not cover the chapter's local images in order")
         image_targets = {}
         for asset in assets:
             original = asset.get("original_reference")

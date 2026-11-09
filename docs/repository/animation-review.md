@@ -7,7 +7,8 @@ page through **Code and frames**. The other chapters are outside this packet.
 The packet provides chapter text, surrounding passages, decoded frames, source
 files and their dependencies, and existing generator reports where available.
 It contains no previous critiques, grades, private project memory, or chats.
-The ZIP excludes the MP4s and links to the published movies instead.
+The ZIP excludes the MP4s and links to the published movies instead. External
+images retain their original URLs and require an internet connection.
 
 For an outside review, supply the review page or its downloadable ZIP to a new
 reviewer. Read `review.md` first. A fresh chat is not itself a guarantee that a

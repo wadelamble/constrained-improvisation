@@ -255,10 +255,14 @@ def _existing_checks(entries: list[dict]) -> dict[str, list[tuple[dict, bytes]]]
 
 
 def _chapter_assets(markdown: str) -> list[tuple[dict, bytes]]:
+    """Collect local images for the packet; external images remain linked."""
     assets = []
     seen = set()
     for match in re.finditer(r"!\[[^\]]*\]\(([^)]+)\)", markdown):
         original = match[1]
+        parsed = urlsplit(original)
+        if parsed.scheme in {"http", "https"} and parsed.netloc:
+            continue
         path = _chapter_media_path(original)
         if original in seen:
             continue
@@ -382,14 +386,15 @@ def build_review_pages(out_dir, site_path, page_shell, render_markdown, chapter_
                      for entry in entries}
     portable_chapter = re.sub(
         r"(!\[[^\]]*\]\()([^)]+)(\))",
-        lambda match: match[1] + image_targets[match[2]] + match[3], chapter_markdown)
+        lambda match: match[1] + image_targets.get(match[2], match[2]) + match[3], chapter_markdown)
     portable_chapter = re.sub(
         r"(^\[Open MP4: [^\]]+\]\()([^)]+\.mp4)(\))",
         lambda match: match[1] + video_targets[match[2]] + match[3],
         portable_chapter, flags=re.MULTILINE)
     media_map = ["# Chapter media map", "The verbatim chapter.md retains its repository-relative media "
                  "references. chapter-portable.md changes only media link targets: images point to "
-                 "the included chapter-assets files and MP4s point to the public site."]
+                 "the included chapter-assets files and MP4s point to the public site. "
+                 "External images retain their original URLs and require an internet connection."]
     for asset, data in chapter_assets:
         write(asset["file"], data)
         media_map.append(f"- `{asset['original_reference']}`: [included image]({asset['file']}); "

@@ -753,7 +753,7 @@ A more intuitive way to understand this is to visualize the multiplying factors 
 Since complex exponential functions are the eigenbasis for the representation space we will use for quantum states, let's spend some time gaining intuition about them. Spoiler, they are, up to a lack of complete generality, waves.
 
 #### Primer - Complex Exponentials and Wave Packets
-If you are familiar with complex exponential functions, feel free to [skip this section](#the-fourier-structure-of-waves).
+If you are familiar with complex exponential functions, feel free to [skip this section](#fourier-analysis).
 
 We suggested above that the complex exponential function describes a wave. Let's explain that and generally build intuition around the complex exponential function. A single parameter complex exponential, $e^{i\theta}$, describes a circle. It is a way to repackage the rotation operator we have already seen:
 
@@ -847,7 +847,7 @@ e^{i\theta}=\cos\theta+i\sin\theta.
 
 Engineers often represent real sinusoidal waves with complex exponentials using this formula and reading off the real part as multiplying exponentials is algebraically simpler than multiplying trigonometric functions.
 
-Now let us turn from circular motion to a travelling complex wave. Let the **phase** vary with position $x$ and time $t$:
+Now let us turn from circular motion to an evolving complex wave. Let the **phase** vary with position $x$ and time $t$:
 
 ```math
 \theta(x,t)=kx-\omega t,
@@ -919,9 +919,10 @@ As we've mentioned before, an exact plane wave extends uniformly to infinity in 
 Quantum mechanics uses this structure to represent quantum states. Extending the quantum description to the universe as a whole, some physicists propose that the universe is a single wave function from which observations are, in a very loose manner of speaking, sampled. If we're inclined to channel our inner hippie, we might trip out to the formulation that the structure of the complexity that unfolds in time is that of a single cosmic chord. Or, perhaps, as a quote attributed to Pythagoras has it: "There is geometry in the humming of the strings. There is music in the spacings of the spheres.”
 
 ## The Canonical Structure of State Space
-Now that we understand our state space is a space of complex wave functions, we can ask ourselves the following startlingly fruitful questions. Do wave functions evolve into new wave functions? They better. And if they do, evolution must preserve the commutation structure of symmetry groups this space carries, for changing the wave function does not change that structure. We then ask, what implications does the preservation of this symmetry structure have for evolution? We will find that answering these questions, together with the principles that evolution must be unitary and that future states must be determined only by the current state, leads us, as a good argument can, to the abstract form of the quantum mechanical equations of motion.
+We now understand that complex wave functions form a representation space for translations. Because translations describe changes in position, the complex wave function space provides a suitable representation space for physical evolution. A state is taken here to mean an instantaneous state, $\psi(x)$, upon which time evolution acts. Now we can ask ourselves the following startlingly fruitful questions. Do wave functions evolve into new wave functions? They better. And if they do, evolution must preserve the commutation structure of symmetry groups this space carries, for changing the wave function does not change that structure. We then ask, what implications does the preservation of this symmetry structure have for evolution? We will find that answering these questions, together with the principles that evolution must be unitary and that future states must be determined only by the current state, leads us, as a good argument can, to the abstract form of the quantum mechanical equations of motion.
 
 ### The Heisenberg Symmetry Group on State Space
+Wave functions comprise our state space, that is the state at one instant. 
 The Fourier duality of wave functions provides us with two paired translation operators, one in position and one in wave number. 
 
 ![Separate translations in position and wave number, each shown in its own representation](../../content/drafts/animations/symmetry-ccr-x-k-translations-symmetric-poster.png)
@@ -1378,8 +1379,81 @@ This derivation is rather involved, but we can get a feel for the result by plot
 
 *Trade-off in uncertainty of position and wave number*
 
-### Wave Propagation and Interference
-Everyone who has taken a high-school physics class knows that given a particular setup, the laws of motion tell us the path an object follows. For example, under constant acceleration,
+## Wave Amplitude, Interference, and Path Summation 
+1. include propagators, show integrals, be organized.
+
+Let's ask the question, given an initial wave function, what is its amplitude at a given position at a later time? If we know the wave function, $\psi(x,t)$, we already know the answer. But what if we don't know $\psi(x,t)$ but instead a differential equation with boundary conditions that we solve to find the wave function. We just plug in $x$ and $t$. of a wave at any point? easy to answer with wave mechanics. at least in simple cases like free waves. but let's look at a different way to calculate. to do this calculation imaging a bunch of balls, each making more or less contribution to the amplitude.
+
+my idea: start w/ free wave. (maybe planar so we can write it directly in eigenbasis, maybe spherical as it make "rays coming from a source built-in and eases the transition to double slit). Tell Huygens principle and do the construction (visually and in words, no math) with wavefront secondary sources. say we sum up contributions. don't worry about how (phase), just that we do. again, say just huygens, just that this recovers the wave function. now switch to double slit. ask, how do we solve this? method 1 (tried and true) use a different wave eq. method 2, exploit (the part of) Huygens that we can add the contributions for sources where the wavefronts from each meet.  (explain how its ok that we're not using all of huygens to each infinitesimal layer, but only adding the contributions at the destination. (the argument -if- we can decompose into constituents whose wave functions we know, we don't need to know what happens in between the the source and destination). now, introduce rays. (no balls, just rays, more legit sounding and avoid bouncing back and forth, just always rays, and we don't need "imagine balls" just "use rays as you think you would") the rays tell us "where the wave constituents meet". that's where we need to add them. now answer: how do we add them. (magnitude and phase). then ask, of, but how do we know the 'phase of a ray (now a line segment). well first, we know it relative to the beginning of the line segment. so care is needed to ensure the phase was the same at the two sources (is this right, am i saying this right). and then we're off to the races to talk about phases cancel away from the stationary path.
+
+bot on why we don't need successive barriers:
+Yes—and Huygens–Fresnel already allows exactly that: choose a destination and sum the contributions arriving there. You needn’t first calculate the field everywhere the waves overlap. Huygens–Fresnel calculation
+
+The justification is linearity. Where waves overlap, they add, but that overlap does not alter how their separate contributions propagate.
+
+For two successive propagation steps:
+\[
+\underbrace{U_2(U_1\psi_1+U_1\psi_2)}_{\text{add partway, then propagate}}
+=
+\underbrace{U_2U_1\psi_1+U_2U_1\psi_2}_{\text{propagate separately, then add}}.
+\]
+We can therefore postpone the addition until the destination.
+
+There are two requirements:
+- Propagation must be linear. Both contributions follow the same propagation law, including the medium and boundaries.
+- We must know how each contribution propagates across the whole gap. That finite-distance rule replaces the explicit intermediate calculations. Linearity alone does not supply it.
+In our idealized slit setup, the slit amplitudes are given and the gap is unobstructed, so this works. Calculating the intervening interference pattern would tell us more about the field, but would not change the amplitude at our chosen destination.
+
+Interference along the way is not an additional interaction we have neglected.
+
+
+
+
+
+
+Yes. And Huygens–Fresnel already allows exactly that: choose a destination and add the secondary-wave contributions arriving there. You needn’t calculate the field at every intervening point first. Huygens–Fresnel calculation
+
+The justification is linearity. Where two waves overlap, their values add, but that overlap does not alter how their individual contributions propagate.
+
+Schematically, if \(U\) propagates the field to the destination \(P\),
+\[
+[U(\psi_1+\psi_2)](P)
+=
+[U\psi_1](P)+[U\psi_2](P).
+\]
+Combine, then propagate—or propagate separately, then combine. The destination amplitude is the same.
+
+There are two requirements:
+- Propagation must be linear, with both contributions governed by the same medium and boundary conditions.
+- We must know the propagation rule across the whole gap. Linearity lets us postpone addition, but does not itself supply that rule.
+For our idealized double slit, we specify the amplitudes at the openings and use the known free-wave propagation beyond them. Calculating the intervening interference pattern would tell us more about the field, but would not change the answer at \(P\).
+
+
+bot response to my proposal:
+Yes. This sequence works: the reader sees what the contributions are before being asked how to add them. Phase then enters to answer a question the construction has already raised.
+
+I would start with a plane wave. It connects directly to your existing modes, and normal incidence gives the two openings equal starting phases. Huygens’s secondary waves then supply the outward spreading and radial lines you wanted from a spherical starting wave.
+
+I’d retain your order, with these points pinned down:
+1. Method 1 uses the same wave equation with new boundary conditions. The barrier changes the problem we must solve, rather than requiring a different propagation law.
+2. Choose the destination, then draw the rays to it. The constituent waves overlap throughout the region. The rays identify the contributions we are evaluating at our chosen point. “Here each ray connects a secondary source to the point where we calculate its contribution” gives them a concrete role without importing ball mechanics.
+3. We need to know the relative starting phase, not necessarily make it equal. Your equal-phase setup is the simplest choice. Suppressing the common time dependence, the accounting is:
+   \[
+   \text{arrival phase}
+   =
+   \text{starting phase}
+   +
+   k\,\text{segment length}.
+   \]
+   With equal starting phases, the difference at the destination comes entirely from the difference in lengths. That is exactly why normal plane-wave illumination is convenient. Slit-phase accounting
+4. Return from two contributions to many before stationary phase. Two slits establish reinforcement and cancellation. Then return to your original Huygens construction, now equipped to add all its contributions. You can examine neighboring routes to the same destination and show how, in the short-wavelength regime, rapidly varying phases largely cancel while neighborhoods of stationary paths contribute coherently.
+That return to the opening construction is especially useful: first show that the contributions recover the wave, then reveal how their phases accomplish it.
+
+next: stationarity, where does it really appear here.
+
+---question all this, just stick to waves atm---
+
+Anyone who has taken a high-school physics class has seen that, given a particular setup, the equations of motion tell us the path an object follows. For example, under constant acceleration,
 
 ```math
 x = x_0 + v_0t + \frac{1}{2}at^2.
@@ -1393,7 +1467,25 @@ Such "physically valid" paths in the macroscopic world have a fascinating qualit
 
 *Interference and Rays*
 
-Thus far we have described the symmetry group of a wave with a single translation direction $x$ and wave number, $k$. If the wave is to propagate, we also require that the wave represent time translation. We also need to require that time translation commute with spatial translation, for otherwise, it would change the mode composition over time, and spatial translation would no longer be a symmetry of nature. A single-mode travelling wave is then given by
+---end question---
+We would now like to switch perspectives from time evolving instananeous state to considering entire histories, where time becomes another parameter of the wave function. In notation:
+
+We would now like to switch perspectives from evolving instantaneous states to considering entire histories, with time written explicitly as another argument of the wave function. In notation:
+
+```math
+\psi(x,t)=\psi_t(x)=(U_t\psi_0)(x).
+```
+
+At any fixed time, this gives an instantaneous state. Taken over all times, it describes the history.
+
+
+---confusing---
+
+Thus far we have described the symmetry group of a wave with a single translation direction $x$ and wave number, $k$. If the wave is to propagate, we also require that the wave represent time translation. We also need to require that time translation commute with spatial translation, for otherwise, it would change the mode composition over time, and spatial translation would no longer be a symmetry of nature. A single-mode evolving wave is then given by
+
+---end confusing---
+
+
 
 ```math
 M_0e^{i\left[kx-\omega t\right]}.
