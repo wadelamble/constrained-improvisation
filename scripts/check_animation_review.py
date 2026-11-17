@@ -559,7 +559,8 @@ def main() -> int:
     names = checker.chapter_names()
     checker.check_chapter(names)
     checker.check_packet(names)
-    paths = [checker.site / "symmetry" / "index.html"]
+    paths = [checker.site / "symmetry" / "index.html",
+             checker.site / "symmetry" / "contact-sheets" / "index.html"]
     paths += sorted((checker.site / "animation-review").rglob("*.html"))
     for path in paths:
         page = checker.page(path)

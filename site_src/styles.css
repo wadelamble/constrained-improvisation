@@ -207,6 +207,79 @@ a:hover {
   font-weight: 500;
 }
 
+.chapter-editions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+  margin: -0.65rem 0 1.4rem;
+  font: 0.84rem/1.45 system-ui, sans-serif;
+  color: var(--muted);
+}
+
+.contact-figure {
+  margin: 2rem 0;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--line);
+}
+
+.contact-figure figcaption {
+  margin-bottom: 0.65rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.contact-figure figcaption small,
+.contact-tile span {
+  display: block;
+  color: var(--muted);
+  font: 0.78rem/1.4 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.contact-figure figcaption small {
+  margin-bottom: 0.2rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.contact-figure a:has(> img) {
+  display: block;
+}
+
+.contact-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.contact-tile span {
+  margin-top: 0.25rem;
+}
+
+.contact-wide .contact-grid,
+.contact-photo .contact-grid {
+  grid-template-columns: 1fr;
+}
+
+.contact-photo .contact-tile {
+  width: min(100%, 9rem);
+  justify-self: center;
+}
+
+.contact-static img {
+  max-height: 24rem;
+  object-fit: contain;
+}
+
+@media (max-width: 650px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
 .article h2 {
   margin: 3.2rem 0 1rem;
   padding-top: 1rem;

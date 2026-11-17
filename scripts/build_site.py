@@ -8,6 +8,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from animation_review import build_review_pages, review_slug
+from symmetry_contact_sheets import ContactSheets
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +17,7 @@ OUT_DIR = ROOT / "site"
 PATH_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "lm-draft-polished.md"
 DIFFERENTIAL_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "Differential-Mechanics-With-Diagrams.md"
 SYMMETRY_DRAFT = ROOT / "content" / "drafts" / "symmetry-draft.md"
+SYMMETRY_CONTACT_PDF = ROOT / "output" / "pdf" / "symmetry-illustrated-review-2026-11-16.pdf"
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 REEL_DIR = ROOT / "content" / "reels" / "ccr2-series"
 SYMMETRY_REEL_DIR = ROOT / "content" / "reels" / "symmetry-series-stage"
@@ -330,9 +332,9 @@ class Footnotes:
             f'aria-label="Footnote {note.number}">{note.number}</a></sup>'
         )
 
-    def insert_groups(self, rendered: str) -> str:
+    def insert_groups(self, rendered: str, figures: ContactSheets | None = None) -> str:
         # Render every body before adding return links, so later references work.
-        bodies = {label: _render_markdown(note.markdown, self)[0]
+        bodies = {label: _render_markdown(note.markdown, self, figures)[0]
                   for label, note in self.notes.items()}
         for marker, labels in self.groups.items():
             items = []
@@ -501,15 +503,18 @@ def render_chapter_toc(items: list[tuple[int, str, str]]) -> str:
     )
 
 
-def render_markdown(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
+def render_markdown(markdown: str, figures: ContactSheets | None = None) -> tuple[str, list[tuple[int, str, str]]]:
     footnotes = Footnotes(markdown)
     if not footnotes.notes:
-        return _render_markdown(markdown)
-    rendered, toc = _render_markdown(footnotes.markdown, footnotes)
-    return footnotes.insert_groups(rendered), toc
+        return _render_markdown(markdown, figures=figures)
+    rendered, toc = _render_markdown(footnotes.markdown, footnotes, figures)
+    return footnotes.insert_groups(rendered, figures), toc
 
 
-def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple[str, list[tuple[int, str, str]]]:
+def _render_markdown(markdown: str, footnotes: Footnotes | None = None,
+                     figures: ContactSheets | None = None) -> tuple[str, list[tuple[int, str, str]]]:
+    render_image = figures.image if figures is not None else figure_for_image
+    render_video = figures.video if figures is not None else figure_for_video
     lines = markdown.splitlines()
     html_blocks: list[str] = []
     toc: list[tuple[int, str, str]] = []
@@ -584,7 +589,7 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
                 i += 1
             if i < len(lines):
                 i += 1
-            sidebar_html, _ = _render_markdown("\n".join(sidebar_lines), footnotes)
+            sidebar_html, _ = _render_markdown("\n".join(sidebar_lines), footnotes, figures)
             html_blocks.append(f'<aside class="manuscript-sidebar">{sidebar_html}</aside>')
             continue
 
@@ -597,7 +602,7 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
                 i += 1
             if i < len(lines):
                 i += 1
-            detail_html, _ = _render_markdown("\n".join(detail_lines), footnotes)
+            detail_html, _ = _render_markdown("\n".join(detail_lines), footnotes, figures)
             html_blocks.append(
                 '<details class="manuscript-details">'
                 f"<summary>{inline(summary, footnotes)}</summary>"
@@ -636,17 +641,17 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
                         if trailing_caption:
                             caption = trailing_caption.group(1).strip()
                             end_index = caption_index + 1
-                html_blocks.append(figure_for_video(alt, image_path, video_path, caption, footnotes))
+                html_blocks.append(render_video(alt, image_path, video_path, caption, footnotes))
                 i = end_index
             else:
-                html_blocks.append(figure_for_image(alt, image_path, caption, footnotes))
+                html_blocks.append(render_image(alt, image_path, caption, footnotes))
                 i = next_index if caption is not None else i + 1
             continue
 
         open_mp4_match = re.fullmatch(r"\[Open MP4: ([^\]]+)\]\(([^)]+)\)", stripped)
         if open_mp4_match:
             label, video_path = open_mp4_match.groups()
-            html_blocks.append(figure_for_video(label, "", video_path, footnotes=footnotes))
+            html_blocks.append(render_video(label, "", video_path, footnotes=footnotes))
             i += 1
             continue
 
@@ -730,21 +735,35 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
     return "\n".join(html_blocks), toc
 
 
-def render_article(article: Article) -> str:
+def render_article(article: Article, figures: ContactSheets | None = None) -> str:
     markdown = article_markdown(article)
     if article.slug == "symmetry":
         # Keep the manuscript contents list for Markdown readers. The website
         # already provides chapter navigation in the right-hand pane.
         markdown = re.sub(r"^<!-- chapter-toc:start -->\n.*?^<!-- chapter-toc:end -->\n?",
                           "", markdown, flags=re.MULTILINE | re.DOTALL)
-    article_html, toc_items = render_markdown(markdown)
+    article_html, toc_items = render_markdown(markdown, figures)
+    title = article.title
+    article_class = "article"
+    if article.slug == "symmetry":
+        edition_path = "/symmetry/contact-sheets/"
+        if figures is None:
+            links = f'<a href="{site_path(edition_path)}">Contact sheets</a>'
+        else:
+            title += " · Contact sheets"
+            article_class += " contact-edition"
+            links = (f'<span aria-current="page">Contact sheets</span> · '
+                     f'<a href="{site_path("/symmetry/")}">Animated chapter</a> · '
+                     f'<a href="{site_path(edition_path + "symmetry.pdf")}" download>Download PDF</a>')
+        edition_nav = f'<nav class="chapter-editions" aria-label="Chapter editions">{links}</nav>'
+        article_html = article_html.replace("</h1>", "</h1>\n" + edition_nav, 1)
     toc_links = "\n".join(
         f'<a class="depth-{depth}" href="#{hid}">{html.escape(text)}</a>'
         for depth, text, hid in toc_items
         if depth <= 4
     )
     body = f"""<main class="article-layout">
-  <article class="article">
+  <article class="{article_class}">
     {article_html}
   </article>
   <aside class="page-toc" aria-label="Page contents">
@@ -752,7 +771,7 @@ def render_article(article: Article) -> str:
     {toc_links}
   </aside>
 </main>"""
-    return page_shell(article.title, body)
+    return page_shell(title, body)
 
 
 def build() -> None:
@@ -764,8 +783,14 @@ def build() -> None:
         article_dir = OUT_DIR / article.slug
         article_dir.mkdir(parents=True, exist_ok=True)
         (article_dir / "index.html").write_text(render_article(article), encoding="utf-8")
-    build_review_pages(OUT_DIR, site_path, page_shell, render_markdown,
-                       article_markdown(ARTICLE_BY_SLUG['symmetry']))
+    symmetry = ARTICLE_BY_SLUG["symmetry"]
+    review_index = build_review_pages(OUT_DIR, site_path, page_shell, render_markdown,
+                                      article_markdown(symmetry))
+    figures = ContactSheets(review_index["animations"], site_path, inline, rewrite_asset_path)
+    edition_dir = OUT_DIR / "symmetry" / "contact-sheets"
+    shutil.copytree(SITE_SRC / "contact-sheets", edition_dir)
+    shutil.copy2(SYMMETRY_CONTACT_PDF, edition_dir / "symmetry.pdf")
+    (edition_dir / "index.html").write_text(render_article(symmetry, figures), encoding="utf-8")
     # Stable public media URLs for Buffer. Keep the review
     # gallery, manifests, and publishing records out of the public site.
     for video in sorted(REEL_DIR.glob("ccr2-*.mp4")):

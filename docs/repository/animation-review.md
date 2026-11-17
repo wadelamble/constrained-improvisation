@@ -4,6 +4,9 @@ The public `/animation-review/` page accompanies the full Symmetry chapter
 (`content/drafts/symmetry-draft.md`). Each animation in the chapter links to a review
 page through **Code and frames**. The other chapters are outside this packet.
 
+The [contact-sheet edition](https://wadelamble.github.io/constrained-improvisation/symmetry/contact-sheets/)
+presents the full chapter with selected, timestamped frames and links to the illustrated PDF.
+
 The packet provides chapter text, surrounding passages, decoded frames, source
 files and their dependencies, and existing generator reports where available.
 It contains no previous critiques, grades, private project memory, or chats.
