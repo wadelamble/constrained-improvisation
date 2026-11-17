@@ -242,6 +242,8 @@ INLINE_LITERAL = re.compile(
     r"(?P<ticks>`+)(?P<code>.+?)(?P=ticks)(?!`)|\$[^$\n]+\$|\\\((?P<escaped_math>.*?)\\\)"
 )
 FOOTNOTE_DEFINITION = re.compile(r"^ {0,3}\[\^([^\]\s]+)\]:[ \t]*(.*)$")
+ORDERED_ITEM = re.compile(r"\d+\.\s+(.+)")
+BULLET_ITEM = re.compile(r"[-+*]\s+(.+)")
 
 
 @dataclass
@@ -682,16 +684,18 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
             )
             continue
 
-        list_match = re.fullmatch(r"\d+\.\s+(.+)", stripped)
-        if list_match:
+        if ORDERED_ITEM.fullmatch(stripped) or BULLET_ITEM.fullmatch(stripped):
+            ordered = stripped[0].isdigit()
+            pattern = ORDERED_ITEM if ordered else BULLET_ITEM
+            tag = "ol" if ordered else "ul"
             items = []
             while i < len(lines):
-                match = re.fullmatch(r"\d+\.\s+(.+)", lines[i].strip())
+                match = pattern.fullmatch(lines[i].strip())
                 if not match:
                     break
                 items.append(f"<li>{inline(match.group(1), footnotes)}</li>")
                 i += 1
-            html_blocks.append(f"<ol>{''.join(items)}</ol>")
+            html_blocks.append(f"<{tag}>{''.join(items)}</{tag}>")
             continue
 
         paragraph_lines = [stripped]
@@ -706,7 +710,8 @@ def _render_markdown(markdown: str, footnotes: Footnotes | None = None) -> tuple
                 or candidate == "<!-- chapter-toc:start -->"
                 or re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)", candidate)
                 or re.fullmatch(r"\[Open MP4: ([^\]]+)\]\(([^)]+)\)", candidate)
-                or re.fullmatch(r"\d+\.\s+.+", candidate)
+                or ORDERED_ITEM.fullmatch(candidate)
+                or BULLET_ITEM.fullmatch(candidate)
                 or (
                     is_table_row(candidate)
                     and i + 1 < len(lines)

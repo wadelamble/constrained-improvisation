@@ -193,7 +193,9 @@ def frame(t):
         else:
             # Compact live readout; sigma is the spread of squared magnitude.
             art.paste_formula(image,(center-38,730),formula[col],23,COLORS[col])
-            text(d,(center+11,727),f"= {(sx,sk)[col]:.2f}",23,MUTED)
+            text(d,(center+11,727),f"≈ {(sx,sk)[col]:#.3g}",23,MUTED)
+    if ideal is None:
+        art.paste_formula(image,(1195,822),r"$\Delta x\,\Delta k=\frac{1}{2}$",27,INK,centered=True)
     status="Ideal Fourier limit" if ideal else "Gaussian Fourier partners"
     text(d,(1379,256),status,16,MUTED,anchor="ra")
     return image.resize((WIDTH,HEIGHT),Image.Resampling.LANCZOS)

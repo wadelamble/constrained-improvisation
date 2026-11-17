@@ -1,7 +1,7 @@
 # Reviewing Symmetry and its animations
 
 The public `/animation-review/` page accompanies the full Symmetry chapter
-(`content/drafts/symmetry-draft.md`). Each of its 40 animations links to a review
+(`content/drafts/symmetry-draft.md`). Each animation in the chapter links to a review
 page through **Code and frames**. The other chapters are outside this packet.
 
 The packet provides chapter text, surrounding passages, decoded frames, source
@@ -41,15 +41,16 @@ The site build needs only Python's standard library. Frame extraction needs
 Pillow and `imageio-ffmpeg`. The extraction script also checks the project's
 existing `.tools/animation-python-packages` installation.
 
-1. Update the explicit source mapping in `site_src/animation-sources.json` if a
-   generator, dependency or output changes.
+1. Keep one entry in `site_src/animation-sources.json` for each MP4 linked from
+   the current chapter. Update its source mapping when a generator, dependency
+   or output changes.
 2. After changing an MP4, extract its frames. Unchanged movie/frame hashes reuse
    the existing files.
 
    ```powershell
    python scripts/prepare_animation_review.py
    # Or just one animation
-   python scripts/prepare_animation_review.py --only symmetry-action-phase-desktop.mp4
+   python scripts/prepare_animation_review.py --only symmetry-triangle-actions.mp4
    ```
 
 3. Build and check the site.

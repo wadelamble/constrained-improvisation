@@ -239,8 +239,8 @@ class Checker:
                 names.append(PurePosixPath(chapter_media_path(link, video=True)).name)
             except ValueError as exc:
                 self.fail(str(exc))
-        if len(names) != 40:
-            self.fail(f"{CHAPTER.relative_to(ROOT)}: expected 40 linked MP4s, found {len(names)}; update coverage expectation if chapter intentionally changed")
+        if not names:
+            self.fail(f"{CHAPTER.relative_to(ROOT)}: no linked MP4s found")
         if len(names) != len(set(names)):
             self.fail(f"{CHAPTER.relative_to(ROOT)}: each chapter MP4 must appear exactly once")
         return names
@@ -516,8 +516,10 @@ class Checker:
             return
         if index.get("schema_version") != 1:
             self.fail("animation-review/index.json: expected schema_version 1")
-        if set(catalog) != set(names):
-            self.fail("site_src/animation-sources.json: catalog coverage differs from the 40 chapter MP4s")
+        chapter_movies = set(names)
+        if catalog.keys() != chapter_movies:
+            self.fail(f"site_src/animation-sources.json: missing={sorted(chapter_movies - catalog.keys())}, "
+                      f"extra={sorted(catalog.keys() - chapter_movies)}")
         copied_catalog = self.read_json(folder / "animation-sources.json")
         if copied_catalog != catalog:
             self.fail("animation-review/animation-sources.json differs from the approved source catalog")

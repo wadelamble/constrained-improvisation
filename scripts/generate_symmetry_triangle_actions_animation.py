@@ -44,7 +44,8 @@ def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.Im
     return ImageFont.load_default()
 
 
-FONT_SET = font(30, True)
+FONT_ACTION = font(36, True)
+FONT_SET = font(26)
 
 BASE = {
     "A": (CENTER[0], CENTER[1] - RADIUS),
@@ -55,13 +56,16 @@ BASE = {
 ORDER = ["A", "B", "C"]
 
 ACTIONS = [
-    ("e", "identity", None),
-    ("r", "rotate", 120.0),
-    ("r²", "rotate", 240.0),
-    ("s", "flip", "A"),
-    ("sr", "flip_rotate", ("A", 120.0)),
-    ("sr²", "flip_rotate", ("A", 240.0)),
+    ("e", "Identity", "identity", None),
+    ("r", "Rotate 120°", "rotate", 120.0),
+    ("r²", "Rotate 240°", "rotate", 240.0),
+    ("s", "Flip", "flip", "A"),
+    ("rs", "Flip then rotate 120°", "flip_rotate", ("A", 120.0)),
+    ("r²s", "Flip then rotate 240°", "flip_rotate", ("A", 240.0)),
 ]
+
+# One still per action, sampled while the movement is visible.
+CONTACT_FRAMES = (0, 76, 135, 196, 249, 332)
 
 
 def ease(t: float) -> float:
@@ -138,33 +142,18 @@ def draw_triangle(
 def set_text(count: int) -> str:
     if count <= 0:
         return ""
-    symbols = [symbol for symbol, _, _ in ACTIONS[:count]]
+    symbols = [action[0] for action in ACTIONS[:count]]
     body = ", ".join(symbols)
     if count == len(ACTIONS):
         return "{" + body + "} = D₃"
     return "{" + body + "}"
 
 
-def text_width(draw: ImageDraw.ImageDraw, text: str) -> int:
-    if not text:
-        return 0
-    box = draw.textbbox((0, 0), text, font=FONT_SET)
-    return box[2] - box[0]
-
-
-def draw_set(draw: ImageDraw.ImageDraw, count: int) -> None:
-    text = set_text(count)
-    if not text:
-        return
-    x = (WIDTH - text_width(draw, text)) / 2
-    draw.text((x, 500), text, fill=INK, font=FONT_SET)
-
-
 def draw_frame(action_index: int, progress: float, completed_count: int) -> Image.Image:
     image = Image.new("RGB", (WIDTH, HEIGHT), BG)
     draw = ImageDraw.Draw(image)
 
-    symbol, kind, parameter = ACTIONS[action_index]
+    symbol, description, kind, parameter = ACTIONS[action_index]
     draw_triangle(draw, BASE, REFERENCE, 3)
 
     if kind == "identity":
@@ -175,7 +164,10 @@ def draw_frame(action_index: int, progress: float, completed_count: int) -> Imag
         positions = positions_for(kind, parameter, progress)
 
     draw_triangle(draw, positions, INK, width)
-    draw_set(draw, completed_count)
+    draw.text((WIDTH / 2, 470), f"{symbol}   {description}", fill=INK, font=FONT_ACTION, anchor="mm")
+    if completed_count:
+        completed = "Completed   " + set_text(completed_count)
+        draw.text((WIDTH / 2, 532), completed, fill=INK, font=FONT_SET, anchor="mm")
     return image
 
 
@@ -225,6 +217,11 @@ def main() -> None:
         )
         poster = OUTPUT_DIR / "symmetry-triangle-actions-poster.png"
         frames[-1].save(poster)
+        sheet = Image.new("RGB", (1350, 620), BG)
+        for index, frame_number in enumerate(CONTACT_FRAMES):
+            tile = frames[frame_number].resize((450, 310), Image.Resampling.LANCZOS)
+            sheet.paste(tile, ((index % 3) * 450, (index // 3) * 310))
+        sheet.save(OUTPUT_DIR / "symmetry-triangle-actions-contact-sheet.png")
         print(video)
         print(poster)
     finally:
