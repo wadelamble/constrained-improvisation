@@ -14,6 +14,7 @@ from symmetry_contact_sheets import ContactSheets
 ROOT = Path(__file__).resolve().parents[1]
 SITE_SRC = ROOT / "site_src"
 OUT_DIR = ROOT / "site"
+INTRODUCTION_DRAFT = ROOT / "content" / "drafts" / "introduction-draft.md"
 PATH_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "lm-draft-polished.md"
 DIFFERENTIAL_MECHANICS_DRAFT = ROOT / "content" / "drafts" / "Differential-Mechanics-With-Diagrams.md"
 SYMMETRY_DRAFT = ROOT / "content" / "drafts" / "symmetry-draft.md"
@@ -54,6 +55,7 @@ class Article:
 
 
 ARTICLES = [
+    Article("Introduction", "principles", INTRODUCTION_DRAFT),
     Article("Symmetry", "symmetry", SYMMETRY_DRAFT),
     Article("Variational Approaches", "path-mechanics", PATH_MECHANICS_DRAFT),
     Article("State space", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
@@ -67,7 +69,9 @@ SECTIONS = [
         "Introduction",
         "principles",
         "How symmetry, locality, variational reasoning, and superposition form physical theories",
-        outline=["Invariant structure", "State, law, and observation"],
+        status="",
+        href="/principles/",
+        disabled=False,
     ),
     Section(
         "Symmetry",
@@ -762,14 +766,15 @@ def render_article(article: Article, figures: ContactSheets | None = None) -> st
         for depth, text, hid in toc_items
         if depth <= 4
     )
+    page_toc = f"""<aside class="page-toc" aria-label="Page contents">
+    <strong>On This Page</strong>
+    {toc_links}
+  </aside>""" if toc_links else ""
     body = f"""<main class="article-layout">
   <article class="{article_class}">
     {article_html}
   </article>
-  <aside class="page-toc" aria-label="Page contents">
-    <strong>On This Page</strong>
-    {toc_links}
-  </aside>
+  {page_toc}
 </main>"""
     return page_shell(title, body)
 
