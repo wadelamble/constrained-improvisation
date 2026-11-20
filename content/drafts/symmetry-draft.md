@@ -1,5 +1,5 @@
 # Symmetry
-Strike a pool ball with a cue, and the balls move in an expected way. Move the table over a few feet, and the balls move in recognizably the same way. Wait a few minutes, and the balls move in the same way. Turn the pool table a few degrees, and the balls still move the same way. Put the pool table on a train at constant velocity, and, again, the balls move in the same way. These are the manifest "symmetries" of the world we live in -- position and time translation, rotation, and velocity "boosts."
+Strike a pool ball with a cue, and the balls move in an expected way. Move the table over a few feet, and the balls move in recognizably the same way. Wait a few minutes, and the balls move in the same way. Turn the pool table a few degrees, and the balls still move the same way. Put the pool table on a train at constant velocity, and, again, the balls move in the same way. These are the manifest "symmetries" of the world we live in — position and time translation, rotation, and velocity "boosts."
 
 ![The same pool-ball collision under position and time translations, rotation, and a velocity boost](animations/symmetry-pool-table-poster.png)
 
@@ -613,7 +613,7 @@ The translation operator is then obtained from the derivative operator through t
 T_a=\exp\left(-a\frac{d}{dx}\right).
 ```
 
-#### Primer -- Eigenfunctions
+#### Primer — Eigenfunctions
 Readers familiar with eigenvectors can [skip this primer](#eigenfunctions-of-translational-symmetry).
 
 An **eigenvector** of an operator is a nonzero vector that the operator simply rescales. We will see that in a function representation of translation, waves are eigenvectors of translation operators and, as such, are at the center of understanding physical states. We will be well served, then, to build some intuition about eigenvectors before delving further into wave function states.
@@ -700,7 +700,7 @@ To resolve this, we will introduce the concept of unitary transformations. We wi
 
 Before we go further, we need to step back and add context about where the idea of representations enters in physics. We've said that a vector in a representation space is a "state" that is acted upon by operators built from a symmetry group. In and of itself, this is a purely mathematical statement. The group we want to act on the representation space is spacetime symmetry, but we've said nothing about why physics requires a representation space up to this point. And in fact, our **classical** system of hard balls does not require a linear representation space to store state. Instead, we simply store all the positions and momenta of the system in a single, finite **phase space** vector. In quantum mechanics, as we will see, evolution must act linearly on a linear combination, or **superposition**, of states.
 
-Thus, when we appeal to unitarity to choose our state representation, we are doing so in the context of quantum mechanics. Bearing that in mind, we can think of unitarity as being, in a way, the preservation of a principle that is self-evident in classical physics -- because objects occupy definite locations, have definite velocities, and follow definite, reversible trajectories, two states of a system, two different initial preparations, remain *distinguishable* as they evolve.
+Thus, when we appeal to unitarity to choose our state representation, we are doing so in the context of quantum mechanics. Bearing that in mind, we can think of unitarity as being, in a way, the preservation of a principle that is self-evident in classical physics — because objects occupy definite locations, have definite velocities, and follow definite, reversible trajectories, two states of a system, two different initial preparations, remain *distinguishable* as they evolve.
 
 ![Reversible and distinguishable histories](animations/symmetry-reversible-histories-poster.png)
 
