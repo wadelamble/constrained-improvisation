@@ -23,7 +23,7 @@ ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 REEL_DIR = ROOT / "content" / "reels" / "ccr2-series"
 SYMMETRY_REEL_DIR = ROOT / "content" / "reels" / "symmetry-series-stage"
 
-TITLE = "Variations on Symmetry"
+TITLE = "Nature’s Improvisation on Symmetry"
 BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
 
 
@@ -68,7 +68,7 @@ SECTIONS = [
     Section(
         "Introduction",
         "principles",
-        "How symmetry, locality, variational reasoning, and superposition form physical theories",
+        "A learner’s guide to the conceptual framework of modern physics.",
         status="",
         href="/principles/",
         disabled=False,
@@ -76,7 +76,7 @@ SECTIONS = [
     Section(
         "Symmetry",
         "symmetry",
-        "Symmetry, representations, waves, and the connection to quantum mechanics.",
+        "Symmetry, invariants, representations, unitarity, waves, and the connection to modern physics.",
         status="",
         href="/symmetry/",
         disabled=False,
@@ -216,10 +216,9 @@ def render_home() -> str:
     items = []
     for section in SECTIONS:
         status = f'<span class="status">{html.escape(section.status)}</span>' if section.status else ""
-        new_badge = '<span class="new-splatter">NEW</span>' if section.href else ""
         card_class = "section-card" if not section.disabled else "section-card section-card--disabled"
         label = html.escape(section.title)
-        title = f'<a href="{site_path(section.href)}">{label}</a>{status}{new_badge}' if section.href else f"<span>{label}</span>{status}"
+        title = f'<a href="{site_path(section.href)}">{label}</a>{status}' if section.href else f"<span>{label}</span>{status}"
         outline = ""
         section_outline = outline_for_section(section)
         if section_outline:
@@ -235,7 +234,7 @@ def render_home() -> str:
 
     body = f"""<main class="home">
   <h1 class="home-title">{html.escape(TITLE)}</h1>
-  <p class="home-intro">A work in progress on the wave description of nature that emerges from physical principles, stipulated symmetry, and seminal observations.</p>
+  <p class="home-intro">A work in progress on the wave description of nature that emerges from physical principles.</p>
   <h2 class="contents-heading">Contents</h2>
   <ol class="section-list">
     {''.join(items)}
