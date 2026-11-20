@@ -55,7 +55,7 @@ class Article:
 
 
 ARTICLES = [
-    Article("Introduction", "principles", INTRODUCTION_DRAFT),
+    Article("Introduction", "introduction", INTRODUCTION_DRAFT),
     Article("Symmetry", "symmetry", SYMMETRY_DRAFT),
     Article("Variational Approaches", "path-mechanics", PATH_MECHANICS_DRAFT),
     Article("State space", "differential-mechanics", DIFFERENTIAL_MECHANICS_DRAFT),
@@ -67,10 +67,10 @@ ARTICLE_BY_SLUG = {article.slug: article for article in ARTICLES}
 SECTIONS = [
     Section(
         "Introduction",
-        "principles",
+        "introduction",
         "A learner’s guide to the conceptual framework of modern physics.",
         status="",
-        href="/principles/",
+        href="/introduction/",
         disabled=False,
     ),
     Section(
@@ -778,6 +778,22 @@ def render_article(article: Article, figures: ContactSheets | None = None) -> st
     return page_shell(title, body)
 
 
+def render_redirect(destination: str) -> str:
+    target = html.escape(site_path(destination), quote=True)
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introduction</title>
+  <link rel="canonical" href="{target}">
+  <meta http-equiv="refresh" content="0; url={target}">
+</head>
+<body><p><a href="{target}">Continue to the Introduction</a>.</p></body>
+</html>
+"""
+
+
 def build() -> None:
     clean_dir(OUT_DIR)
     shutil.copy2(SITE_SRC / "styles.css", OUT_DIR / "styles.css")
@@ -787,6 +803,9 @@ def build() -> None:
         article_dir = OUT_DIR / article.slug
         article_dir.mkdir(parents=True, exist_ok=True)
         (article_dir / "index.html").write_text(render_article(article), encoding="utf-8")
+    legacy_intro_dir = OUT_DIR / "principles"
+    legacy_intro_dir.mkdir()
+    (legacy_intro_dir / "index.html").write_text(render_redirect("/introduction/"), encoding="utf-8")
     symmetry = ARTICLE_BY_SLUG["symmetry"]
     review_index = build_review_pages(OUT_DIR, site_path, page_shell, render_markdown,
                                       article_markdown(symmetry))
