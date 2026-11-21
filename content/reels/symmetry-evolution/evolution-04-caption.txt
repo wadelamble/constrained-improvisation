@@ -1,0 +1,27 @@
+State and evolution · 4/5
+Commuting operators
+
+A uniform stretch commutes with rotation. Stretch first and rotate afterward, or rotate first and stretch afterward: every vector reaches the same result.
+
+This time A doubles every component:
+
+A(x, y) = (2x, 2y), or A = 2I.
+
+The symbol I denotes the identity operator, which leaves each vector unchanged. Multiplying it by two doubles every vector without selecting a preferred direction. Rotating those vectors before doubling them therefore gives the same result as doubling them before rotating.
+
+For a rotation Uₛ, we can write this as AUₛ = UₛA. The difference between the two ordered products is the commutator:
+
+[A, Uₛ] = AUₛ − UₛA = 0.
+
+Now repeat the operator transformation from the previous reel: rotate the grid, apply A, and rotate back. Because A commutes with Uₛ, we can exchange their order in the product:
+
+Aₛ = Uₛ†AUₛ = Uₛ†UₛA = A.
+
+The rotations cancel and leave the original uniform stretch. Varying the rotation angle does not change the resulting operator. The grid may turn during the construction, but the complete transformation remains the same.
+
+A directional stretch changes when its direction is turned. A uniform stretch has no preferred direction to turn. Commutation expresses this independence algebraically: the order of the two actions makes no difference.
+
+Next: Information preservation and state-space geometry
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

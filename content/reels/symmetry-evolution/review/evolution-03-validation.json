@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "audio_codec": "aac",
+    "fps": 30.0,
+    "source_size": [
+      1080,
+      1920
+    ],
+    "size": [
+      1080,
+      1920
+    ],
+    "rotate": 0,
+    "duration": 23.0
+  },
+  "audio_rms": 0.022422678244480663,
+  "audio_peak": 0.24649396538734436,
+  "video_sha256": "50e2bb7ec6d989721c87880670b248b6d65660ce17f42f290b57fb3e819ab9a0",
+  "frames": 690,
+  "title": "Transforming an operator",
+  "source_sha256": "31f74da1dfb478b32e9218f853fdd9c31b8180b93327eee6e89275b552dfa5ae",
+  "render_source_sha256": {
+    "scripts/symmetry_evolution_reels/core.py": "fc1865c19b048cedd6d99a434c34471e80b2d1202d0e0350ac2d0333eb5a076b",
+    "scripts/symmetry_evolution_reels/geometry.py": "3d8ecdb389db8035b0891300518f4dfee70bcbb167fbb941f8d3bfa3bcc73851",
+    "scripts/symmetry_evolution_reels/histories.py": "a47b59499192f3578bb4bb4a6fde5831b53b473e3c55ddba59a982b34e491b1f",
+    "scripts/symmetry_evolution_reels/operators.py": "b0c2a66adbb00dbc7fa0d82a6d4149600dee498db7377134840219de8b8a507e",
+    "scripts/symmetry_evolution_reels/render.py": "178d0ad097c4f3769b2c464e8182e0b7586b057618e5b4b4841f421dee33345c"
+  }
+}

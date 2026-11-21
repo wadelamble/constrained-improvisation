@@ -1,0 +1,23 @@
+State and evolution · 3/5
+Transforming an operator
+
+Like a vector, we can transform an operator. When an evolution operator acts on a generator, it tells us whether the symmetry transformation given by that generator is preserved under evolution. In this example, a stretch in one direction becomes a stretch in another direction when we conjugate it by a rotation.
+
+Let A double the horizontal component of every vector while leaving its vertical component unchanged:
+
+A(x, y) = (2x, y).
+
+The square becomes a rectangle. The same rule acts on the entire grid, so we can see what A does to many vectors at once. Now let Uₛ be a rotation through an angle s. To transform the operator, we form
+
+Aₛ = Uₛ†AUₛ.
+
+Read this product from right to left. First Uₛ rotates the grid. Then A stretches it horizontally. Finally Uₛ† rotates it back. The dagger denotes the adjoint; for this rotation, it is the inverse. The two rotations would cancel if they were adjacent, but the directional stretch between them changes the result.
+
+The complete sequence is another stretch operator, with its stretching direction turned clockwise through s. At s = 45°, it doubles components along one diagonal while leaving components along the perpendicular diagonal unchanged. Varying s turns those special directions continuously.
+
+Here Uₛ is unitary: it preserves lengths and inner products. A doubles lengths along one direction, so A itself is not unitary. Conjugation lets us study how that operator changes under a unitary transformation. We are following the action of the stretch as its orientation changes.
+
+Next: Commuting operators
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

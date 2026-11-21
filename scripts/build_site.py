@@ -22,6 +22,7 @@ SYMMETRY_CONTACT_PDF = ROOT / "output" / "pdf" / "symmetry-illustrated-review-20
 ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 REEL_DIR = ROOT / "content" / "reels" / "ccr2-series"
 SYMMETRY_REEL_DIR = ROOT / "content" / "reels" / "symmetry-series-stage"
+EVOLUTION_REEL_DIR = ROOT / "content" / "reels" / "symmetry-evolution"
 
 TITLE = "Nature’s Improvisation on Symmetry"
 BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
@@ -825,6 +826,12 @@ def build() -> None:
     for number in range(1, 28):
         for suffix in (".mp4", "-cover.jpg"):
             asset = SYMMETRY_REEL_DIR / f"reel-{number:02d}{suffix}"
+            shutil.copy2(asset, media_dir / asset.name)
+    media_dir = OUT_DIR / "media" / "reels" / "state-and-evolution"
+    media_dir.mkdir(parents=True, exist_ok=True)
+    for number in range(1, 6):
+        for suffix in (".mp4", "-cover.jpg"):
+            asset = EVOLUTION_REEL_DIR / f"evolution-{number:02d}{suffix}"
             shutil.copy2(asset, media_dir / asset.name)
 
 

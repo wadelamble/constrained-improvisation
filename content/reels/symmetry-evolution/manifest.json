@@ -1,0 +1,106 @@
+{
+  "status": "local review",
+  "series": "State and evolution",
+  "episodes": [
+    {
+      "number": 1,
+      "title": "Reversible evolution preserves information",
+      "caption": "State and evolution · 1/5\nReversible evolution preserves information\n\nTwo different preparations of a system remain different under reversible evolution. Each later state retains enough information to recover its own starting state.\n\nThe animation follows two arrangements of balls under the same laws. Each ball moves freely between elastic collisions with other balls or the walls. Run the evolution backward and each history retraces its course, returning to its own initial preparation.\n\nWhy must the states remain different? Suppose two distinct initial states evolved into exactly the same later state. Reversing the evolution would then have to recover two different starting states from one state, which would imply a loss of information.\n\nA complete state here includes every ball’s position and velocity. A picture of positions alone can leave out the very information that distinguishes two preparations.\n\nThe final overlay places the two histories in one view so we can compare them. Each color still belongs to its own experiment, with its own collisions. What evolution preserves is the distinction between the complete states. The balls can travel, collide, and rearrange without erasing which preparation led to which outcome.\n\nNext: Unitary evolution preserves overlap\nFull chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/\n\n#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics",
+      "caption_count": 1450,
+      "on_screen_text": "- Two initial states · one reversible law\n- Overlay of independent histories\n- \\Phi_{-t}\\Phi_t=I\n- State A\n- State B\n- ≠\n- Distinct states remain distinct\n- FORWARD\n- BACKWARD\n- PAUSED",
+      "duration": 24,
+      "video": "evolution-01.mp4",
+      "cover": "evolution-01-cover.jpg",
+      "poster": "evolution-01-poster.jpg",
+      "contact_sheet": "review/evolution-01-decoded.jpg",
+      "source": "content/drafts/animations/symmetry-reversible-histories.mp4",
+      "caption_file": "evolution-01-caption.txt",
+      "video_available": true,
+      "video_sha256": "ebe9430c9e21feb7086f8b57c802ff94b9000b7f0f276ce0aa86f2f3d501a756"
+    },
+    {
+      "number": 2,
+      "title": "Unitary evolution preserves overlap",
+      "caption": "State and evolution · 2/5\nUnitary evolution preserves overlap\n\nUnitary evolution preserves the similarity between wave states, even while their wave functions change shape.\n\nThe two colored surfaces show two alternative initial preparations undergoing the same evolution. Each surface plots the real part of a complex wave function. The waves spread and develop new patterns, but their inner product remains fixed:\n\n⟨Uψ₁, Uψ₂⟩ = ⟨ψ₁, ψ₂⟩.\n\nThe inner product is a complex generalization of the dot product. To calculate it for wave functions, we multiply the complex conjugate of the first by the second and integrate over space. It compares the full complex functions, including their phases. Here its value stays at 0.40.\n\nSetting both states in the equation equal also shows that each state keeps its norm. A normalized wave function stays normalized as it evolves.\n\nIn quantum mechanics, this preserves total probability. For normalized pure states, the magnitude of the overlap also tells us how well the two preparations can be distinguished by measurement. Orthogonal states have zero overlap and can be distinguished perfectly. Nonzero overlap limits that distinction. Applying the same unitary transformation preserves it.\n\nAt the end, the surfaces share one view so we can compare their shapes. They remain two alternatives. Running the evolution backward recovers both original states, with their overlap unchanged throughout.\n\nNext: Transforming an operator\nFull chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/\n\n#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics",
+      "caption_count": 1637,
+      "on_screen_text": "- Two initial states · one unitary evolution\n- Overlay compares the two states\n- \\langle U\\psi_A\\mid U\\psi_B\\rangle=\\langle\\psi_A\\mid\\psi_B\\rangle\n- State A\n- State B\n- ≠\n- Complex overlap  0.40 + 0.00i\n- Surface height: Re ψ · fixed scale\n- FORWARD\n- BACKWARD\n- PAUSED",
+      "duration": 24,
+      "video": "evolution-02.mp4",
+      "cover": "evolution-02-cover.jpg",
+      "poster": "evolution-02-poster.jpg",
+      "contact_sheet": "review/evolution-02-decoded.jpg",
+      "source": "content/drafts/animations/symmetry-unitary-histories.mp4",
+      "caption_file": "evolution-02-caption.txt",
+      "video_available": true,
+      "video_sha256": "bbdace6a0b57d720ef093e43134e9a82703cb18ebdd5fc05f014a4e40154a1f9"
+    },
+    {
+      "number": 3,
+      "title": "Transforming an operator",
+      "caption": "State and evolution · 3/5\nTransforming an operator\n\nLike a vector, we can transform an operator. When an evolution operator acts on a generator, it tells us whether the symmetry transformation given by that generator is preserved under evolution. In this example, a stretch in one direction becomes a stretch in another direction when we conjugate it by a rotation.\n\nLet A double the horizontal component of every vector while leaving its vertical component unchanged:\n\nA(x, y) = (2x, y).\n\nThe square becomes a rectangle. The same rule acts on the entire grid, so we can see what A does to many vectors at once. Now let Uₛ be a rotation through an angle s. To transform the operator, we form\n\nAₛ = Uₛ†AUₛ.\n\nRead this product from right to left. First Uₛ rotates the grid. Then A stretches it horizontally. Finally Uₛ† rotates it back. The dagger denotes the adjoint; for this rotation, it is the inverse. The two rotations would cancel if they were adjacent, but the directional stretch between them changes the result.\n\nThe complete sequence is another stretch operator, with its stretching direction turned clockwise through s. At s = 45°, it doubles components along one diagonal while leaving components along the perpendicular diagonal unchanged. Varying s turns those special directions continuously.\n\nHere Uₛ is unitary: it preserves lengths and inner products. A doubles lengths along one direction, so A itself is not unitary. Conjugation lets us study how that operator changes under a unitary transformation. We are following the action of the stretch as its orientation changes.\n\nNext: Commuting operators\nFull chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/\n\n#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics",
+      "caption_count": 1788,
+      "on_screen_text": "- Apply horizontal stretch\n- Undo horizontal stretch\n- A:\\ (x,y)\\longmapsto(2x,y)\n- Horizontal stretch A\n- A^\\dagger A\\ne I\n- Rotate the grid, then rotate back\n- U_s=R(s)\n- Rotation Uₛ\n- U_s^\\dagger U_s=I\n- Rotate 45° counterclockwise\n- Apply the horizontal stretch\n- Rotate back\n- The complete operator\n- Vary the rotation angle s\n- A_s=U_s^\\dagger A U_s\n- Current grid map\n- Transformed operator\n- Rightmost factor acts first.\n- The stretching direction changes with s.",
+      "duration": 23,
+      "video": "evolution-03.mp4",
+      "cover": "evolution-03-cover.jpg",
+      "poster": "evolution-03-poster.jpg",
+      "contact_sheet": "review/evolution-03-decoded.jpg",
+      "source": "content/drafts/animations/symmetry-operator-sandwich.mp4",
+      "caption_file": "evolution-03-caption.txt",
+      "video_available": true,
+      "video_sha256": "50e2bb7ec6d989721c87880670b248b6d65660ce17f42f290b57fb3e819ab9a0"
+    },
+    {
+      "number": 4,
+      "title": "Commuting operators",
+      "caption": "State and evolution · 4/5\nCommuting operators\n\nA uniform stretch commutes with rotation. Stretch first and rotate afterward, or rotate first and stretch afterward: every vector reaches the same result.\n\nThis time A doubles every component:\n\nA(x, y) = (2x, 2y), or A = 2I.\n\nThe symbol I denotes the identity operator, which leaves each vector unchanged. Multiplying it by two doubles every vector without selecting a preferred direction. Rotating those vectors before doubling them therefore gives the same result as doubling them before rotating.\n\nFor a rotation Uₛ, we can write this as AUₛ = UₛA. The difference between the two ordered products is the commutator:\n\n[A, Uₛ] = AUₛ − UₛA = 0.\n\nNow repeat the operator transformation from the previous reel: rotate the grid, apply A, and rotate back. Because A commutes with Uₛ, we can exchange their order in the product:\n\nAₛ = Uₛ†AUₛ = Uₛ†UₛA = A.\n\nThe rotations cancel and leave the original uniform stretch. Varying the rotation angle does not change the resulting operator. The grid may turn during the construction, but the complete transformation remains the same.\n\nA directional stretch changes when its direction is turned. A uniform stretch has no preferred direction to turn. Commutation expresses this independence algebraically: the order of the two actions makes no difference.\n\nNext: Information preservation and state-space geometry\nFull chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/\n\n#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics",
+      "caption_count": 1571,
+      "on_screen_text": "- Apply uniform stretch\n- Undo uniform stretch\n- A:\\ (x,y)\\longmapsto(2x,2y)\n- Uniform stretch A\n- A^\\dagger A\\ne I\n- Rotate 45° counterclockwise\n- Apply the uniform stretch\n- Rotate back\n- The complete operator\n- Vary the rotation angle s\n- A_s=U_s^\\dagger A U_s\n- Current grid map\n- Transformed operator\n- Rightmost factor acts first.\n- [A,U_s]=0\\quad\\Longrightarrow\\quad A_s=A",
+      "duration": 17,
+      "video": "evolution-04.mp4",
+      "cover": "evolution-04-cover.jpg",
+      "poster": "evolution-04-poster.jpg",
+      "contact_sheet": "review/evolution-04-decoded.jpg",
+      "source": "content/drafts/animations/symmetry-uniform-operator-sandwich.mp4",
+      "caption_file": "evolution-04-caption.txt",
+      "video_available": true,
+      "video_sha256": "1b5aa42ee60a296a5b224e9e58ce8574ab43efd60a83922b11ad82eae5f6f58c"
+    },
+    {
+      "number": 5,
+      "title": "Information preservation and state-space geometry",
+      "caption": "State and evolution · 5/5\nInformation preservation and state-space geometry\n\nWe can follow a family of wave packets through a simpler geometric picture by mapping each wave function to its average position and average wave number:\n\nψ ↦ (⟨X⟩, ⟨K⟩).\n\nThis view gives us a visual interpretation of information preservation. The six colored waves are samples from one chosen family. Their matching points locate them in the plane of averages. These two numbers describe where each sample lies in this family; they do not specify an arbitrary wave function.\n\nApply the same unitary evolution to every wave. In the example shown, their averages obey a linear map. First the patch shears: points with different average wave numbers shift by different amounts in position. Then it stretches along the position direction and compresses along the wave-number direction. Every grid cell follows a small region of the chosen family through these changes.\n\nThe patch changes shape while its area stays fixed. A shear can change a side’s length and angle without changing area; the squeeze shown scales the two coordinate directions by reciprocal factors. The geometry depends on both lengths and angles.\n\nMeanwhile, the full wave functions retain all their pairwise complex overlaps. Reverse the operations in reverse order, and both the waves and their mapped patch return to the start.\n\nThis area-preserving map gives us a geometric view of this particular evolution. The cells mark regions of a continuous family, rather than counting quantum states. Preserving overlap is the full unitary statement; the moving patch shows how that evolution acts on these averages.\n\nFull chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/\n\n#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics",
+      "caption_count": 1825,
+      "on_screen_text": "- Map the waves to their averages\n- Each cell follows a family of states\n- Shear the patch and evolve the waves\n- Stretch one direction, compress the other\n- Reverse the evolution\n- \\psi\\ \\longmapsto\\ (\\langle\\hat X\\rangle_\\psi,\\langle\\hat K\\rangle_\\psi)\n- position x →\n- \\langle\\hat X\\rangle\n- \\langle\\hat K\\rangle\n- Patch area\n- same throughout\n- A family whose averages shear and stretch together",
+      "duration": 42,
+      "video": "evolution-05.mp4",
+      "cover": "evolution-05-cover.jpg",
+      "poster": "evolution-05-poster.jpg",
+      "contact_sheet": "review/evolution-05-decoded.jpg",
+      "source": "content/drafts/animations/symmetry-mean-patch.mp4",
+      "caption_file": "evolution-05-caption.txt",
+      "video_available": true,
+      "video_sha256": "94e544a9e14d65bccd9a104dfe5ff770ccb0cef9a6e6ca01694e6ab22d1b64ea"
+    }
+  ],
+  "editable_text": "notes/reels/symmetry-evolution/reel-text.md",
+  "music": {
+    "title": "String Quartet No. 5, movement I",
+    "artist": "Philip Glass · Kronos Quartet",
+    "bed": {
+      "key": {
+        "source_sha256": "cbf51c94e44b8c110a3c833f618290543db744b1926edba00a7167ea2c209c7d",
+        "duration_seconds": 776.0,
+        "gain_db": -4.0,
+        "crossfade_seconds": 2.0,
+        "sample_rate": 48000,
+        "version": 2
+      },
+      "source_duration_seconds": 71.0,
+      "copies": 12
+    },
+    "fade_in_seconds": 1.5,
+    "fade_out_seconds": 2
+  },
+  "published": false
+}

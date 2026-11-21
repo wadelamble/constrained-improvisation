@@ -1,0 +1,17 @@
+State and evolution · 1/5
+Reversible evolution preserves information
+
+Two different preparations of a system remain different under reversible evolution. Each later state retains enough information to recover its own starting state.
+
+The animation follows two arrangements of balls under the same laws. Each ball moves freely between elastic collisions with other balls or the walls. Run the evolution backward and each history retraces its course, returning to its own initial preparation.
+
+Why must the states remain different? Suppose two distinct initial states evolved into exactly the same later state. Reversing the evolution would then have to recover two different starting states from one state, which would imply a loss of information.
+
+A complete state here includes every ball’s position and velocity. A picture of positions alone can leave out the very information that distinguishes two preparations.
+
+The final overlay places the two histories in one view so we can compare them. Each color still belongs to its own experiment, with its own collisions. What evolution preserves is the distinction between the complete states. The balls can travel, collide, and rearrange without erasing which preparation led to which outcome.
+
+Next: Unitary evolution preserves overlap
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

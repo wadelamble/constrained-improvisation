@@ -1,0 +1,20 @@
+State and evolution · 5/5
+Information preservation and state-space geometry
+
+We can follow a family of wave packets through a simpler geometric picture by mapping each wave function to its average position and average wave number:
+
+ψ ↦ (⟨X⟩, ⟨K⟩).
+
+This view gives us a visual interpretation of information preservation. The six colored waves are samples from one chosen family. Their matching points locate them in the plane of averages. These two numbers describe where each sample lies in this family; they do not specify an arbitrary wave function.
+
+Apply the same unitary evolution to every wave. In the example shown, their averages obey a linear map. First the patch shears: points with different average wave numbers shift by different amounts in position. Then it stretches along the position direction and compresses along the wave-number direction. Every grid cell follows a small region of the chosen family through these changes.
+
+The patch changes shape while its area stays fixed. A shear can change a side’s length and angle without changing area; the squeeze shown scales the two coordinate directions by reciprocal factors. The geometry depends on both lengths and angles.
+
+Meanwhile, the full wave functions retain all their pairwise complex overlaps. Reverse the operations in reverse order, and both the waves and their mapped patch return to the start.
+
+This area-preserving map gives us a geometric view of this particular evolution. The cells mark regions of a continuous family, rather than counting quantum states. Preserving overlap is the full unitary statement; the moving patch shows how that evolution acts on these averages.
+
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics

@@ -1,0 +1,872 @@
+{
+  "histories": {
+    "passed": true,
+    "duration_seconds": 24,
+    "size": [
+      1080,
+      1920
+    ],
+    "playback_speed": 1.5,
+    "separate_cycles": 2,
+    "overlay_cycles": 1,
+    "merge_seconds": [
+      16.0,
+      17.333333333333332
+    ],
+    "merge_clock_paused": true,
+    "classical": {
+      "model": "equal-mass hard disks; exact free flight; specular walls; elastic binary collisions",
+      "duration_seconds": 8.0,
+      "box": [
+        1.0,
+        0.66
+      ],
+      "radius": 0.022,
+      "ball_count_per_history": 8,
+      "histories": [
+        {
+          "name": "A",
+          "initial_positions": [
+            [
+              0.43232197636987174,
+              0.555710752752853
+            ],
+            [
+              0.3077894897135398,
+              0.09682576018493913
+            ],
+            [
+              0.3389619395661452,
+              0.44563818667220084
+            ],
+            [
+              0.7388207445029557,
+              0.35051091312218424
+            ],
+            [
+              0.8638641847917088,
+              0.2963561171242653
+            ],
+            [
+              0.4430177592587159,
+              0.29920598634596507
+            ],
+            [
+              0.624095846424749,
+              0.5514678080996822
+            ],
+            [
+              0.11576329872624708,
+              0.11251114964110917
+            ]
+          ],
+          "initial_velocities": [
+            [
+              0.010037266373742252,
+              -0.13814983759770372
+            ],
+            [
+              -0.10881089360328944,
+              0.028158550601669236
+            ],
+            [
+              0.019663026781878163,
+              -0.1141317026612077
+            ],
+            [
+              -0.15031979978594423,
+              -0.037985093948611395
+            ],
+            [
+              -0.13333730255720394,
+              0.032577301939346846
+            ],
+            [
+              0.14065387515602198,
+              -0.04165578517990914
+            ],
+            [
+              -0.09012365877604812,
+              0.09795409579302856
+            ],
+            [
+              -0.09465704565205314,
+              -0.12527371007745233
+            ]
+          ],
+          "initial_speeds": [
+            0.13851398609717855,
+            0.11239534927537323,
+            0.11581312608927877,
+            0.15504486308798235,
+            0.1372593051668218,
+            0.14669259366225876,
+            0.1331062686495695,
+            0.15701419912907386
+          ],
+          "total_energy": 0.076,
+          "maximum_energy_error": 1.3877787807814457e-17,
+          "maximum_ball_collision_momentum_error": 1.3877787807814457e-17,
+          "maximum_ball_collision_energy_error": 1.3877787807814457e-17,
+          "wall_collision_count": 14,
+          "ball_collision_count": 8,
+          "collision_times": [
+            0.7225071372528946,
+            0.8833953414582623,
+            0.990558051757802,
+            1.6505909501466003,
+            1.7254830690954064,
+            2.183707370239093,
+            3.2535279413831653,
+            3.3305456602608623,
+            3.700532524450475,
+            3.803537159199124,
+            4.277823843343525,
+            5.344824539176599,
+            5.762064662549825,
+            5.8431838744649625,
+            5.863681469443588,
+            5.9068048025194635,
+            6.07438185950968,
+            6.188744387420182,
+            6.554487229130842,
+            6.668528999050551,
+            6.764556694211462,
+            7.034924234233722
+          ],
+          "clearance": {
+            "minimum_wall_clearance": -6.938893903907228e-17,
+            "minimum_disk_surface_clearance": -1.8735013540549517e-16,
+            "method": "analytic minima over every complete free-flight interval"
+          },
+          "independent_reverse_position_error": 8.087974734394265e-14,
+          "independent_reverse_velocity_error": 4.465872116554692e-14,
+          "independent_reverse_event_time_error": 3.8813396940895473e-13,
+          "independent_reverse_events_match": true,
+          "reversal_method": "new event-driven integration from final positions and negated final velocities",
+          "checked_times_count": 1637,
+          "passed": true
+        },
+        {
+          "name": "B",
+          "initial_positions": [
+            [
+              0.19291208859754916,
+              0.0673644821472416
+            ],
+            [
+              0.2923819971274449,
+              0.465462089321895
+            ],
+            [
+              0.8675603714407367,
+              0.4546268978581801
+            ],
+            [
+              0.8866954130847136,
+              0.2889255499665996
+            ],
+            [
+              0.398862607203845,
+              0.28864231314310096
+            ],
+            [
+              0.08263351629110048,
+              0.24736200248573414
+            ],
+            [
+              0.6328930567220922,
+              0.42119755506038825
+            ],
+            [
+              0.2262946248647945,
+              0.29517462755469037
+            ]
+          ],
+          "initial_velocities": [
+            [
+              0.045060497568505734,
+              0.12790216988397046
+            ],
+            [
+              -0.08660782780154702,
+              -0.09754682608648174
+            ],
+            [
+              -0.13687712882419142,
+              0.02782380146446833
+            ],
+            [
+              0.17705711188099235,
+              0.008985008199182094
+            ],
+            [
+              -0.006670519145092156,
+              -0.12238506971149897
+            ],
+            [
+              -0.02095201214480082,
+              0.16817689261815708
+            ],
+            [
+              0.13203141642979507,
+              0.051321125017728716
+            ],
+            [
+              -0.12323645619029301,
+              -0.025620143428209865
+            ]
+          ],
+          "initial_speeds": [
+            0.13560757169918408,
+            0.13044653738619794,
+            0.1396764558652905,
+            0.17728494363588132,
+            0.12256672107041741,
+            0.16947700145923933,
+            0.14165504861297143,
+            0.12587142600139262
+          ],
+          "total_energy": 0.083,
+          "maximum_energy_error": 1.3877787807814457e-17,
+          "maximum_ball_collision_momentum_error": 5.551115123125783e-17,
+          "maximum_ball_collision_energy_error": 6.938893903907228e-18,
+          "wall_collision_count": 16,
+          "ball_collision_count": 7,
+          "collision_times": [
+            0.5156787318244304,
+            0.7209648634535842,
+            1.6577450470446604,
+            2.032176082821358,
+            2.077435888041067,
+            2.178716029427959,
+            2.322780445237522,
+            2.762542906290948,
+            2.822146326543988,
+            2.8939233077977433,
+            3.2598114001690175,
+            3.777196605117816,
+            4.093342746681385,
+            4.115581530730626,
+            4.461499897698563,
+            5.664937050448694,
+            5.867621736982924,
+            5.985590421151503,
+            6.728025611639605,
+            6.77590051145729,
+            6.9394468412307635,
+            7.23061015830841,
+            7.592667133280573
+          ],
+          "clearance": {
+            "minimum_wall_clearance": -9.020562075079397e-17,
+            "minimum_disk_surface_clearance": -6.938893903907228e-17,
+            "method": "analytic minima over every complete free-flight interval"
+          },
+          "independent_reverse_position_error": 1.0552669849062113e-13,
+          "independent_reverse_velocity_error": 8.442552212883925e-14,
+          "independent_reverse_event_time_error": 1.0180745135812685e-13,
+          "independent_reverse_events_match": true,
+          "reversal_method": "new event-driven integration from final positions and negated final velocities",
+          "checked_times_count": 1645,
+          "passed": true
+        }
+      ],
+      "independent_systems": true,
+      "inter_history_collisions": false,
+      "unordered_full_states_are_distinct_for_all_times": true,
+      "distinctness_certificate": "different conserved energies forbid equality under any permutation",
+      "conserved_energy_difference": 0.007000000000000006,
+      "minimum_unordered_full_velocity_distance_lower_bound": 0.017559201956908743,
+      "passed": true
+    },
+    "quantum": {
+      "passed": true,
+      "model": "Two complex functions in the same orthonormal Dirichlet sine basis",
+      "basis": "2 sin(n*pi*x) sin(m*pi*y), 1 <= n,m <= 16",
+      "domain": "[0,1] x [0,1]",
+      "generator_eigenvalues": "0.055 * (n^2 + m^2)",
+      "evolution": "c_nm(t) = c_nm(0) exp(-i E_nm t)",
+      "duration": 8.0,
+      "mode_count_per_axis": 16,
+      "normalization": "Once at preparation only; never per frame",
+      "target_complex_overlap": {
+        "real": 0.4,
+        "imaginary": 0.0
+      },
+      "squared_overlap": 0.16000000000000003,
+      "errors": {
+        "norm": 2.220446049250313e-16,
+        "complex_overlap": 2.2487429915110773e-16,
+        "reverse_evolution": 1.2412670766236366e-16,
+        "group_composition": 8.886119947416683e-17,
+        "quadrature_norm_squared": 4.440892098500626e-16,
+        "quadrature_complex_overlap": 1.1857187100668868e-16,
+        "dirichlet_boundary": 1.3874818876792869e-15
+      },
+      "tolerance": 2e-12,
+      "quadrature": {
+        "points_per_axis": 193,
+        "time_samples": 129
+      },
+      "sampled_real_component_peaks": [
+        3.380016030121017,
+        3.454095785379636
+      ],
+      "sampled_complex_magnitude_peaks": [
+        3.654527156976077,
+        4.189551621286542
+      ],
+      "rigorous_all_time_magnitude_bounds": [
+        11.690131155425625,
+        11.836865616131522
+      ],
+      "recommended_fixed_real_height_denominator": 3.7304234482100074,
+      "samples": [
+        {
+          "time": 0.0,
+          "norm_squared": [
+            1.0000000000000002,
+            1.0000000000000002
+          ],
+          "overlap_real": 0.4000000000000001,
+          "overlap_imaginary": 1.3877787807814457e-17
+        },
+        {
+          "time": 1.0,
+          "norm_squared": [
+            1.0,
+            1.0000000000000002
+          ],
+          "overlap_real": 0.4,
+          "overlap_imaginary": 1.3877787807814457e-17
+        },
+        {
+          "time": 2.0,
+          "norm_squared": [
+            1.0000000000000002,
+            1.0000000000000002
+          ],
+          "overlap_real": 0.4000000000000001,
+          "overlap_imaginary": 1.3877787807814457e-17
+        },
+        {
+          "time": 3.0,
+          "norm_squared": [
+            1.0,
+            1.0000000000000004
+          ],
+          "overlap_real": 0.40000000000000013,
+          "overlap_imaginary": 1.3877787807814457e-17
+        },
+        {
+          "time": 4.0,
+          "norm_squared": [
+            1.0000000000000002,
+            1.0000000000000004
+          ],
+          "overlap_real": 0.4000000000000001,
+          "overlap_imaginary": 2.7755575615628914e-17
+        },
+        {
+          "time": 5.0,
+          "norm_squared": [
+            1.0000000000000002,
+            1.0000000000000002
+          ],
+          "overlap_real": 0.4000000000000001,
+          "overlap_imaginary": 2.7755575615628914e-17
+        },
+        {
+          "time": 6.0,
+          "norm_squared": [
+            1.0,
+            1.0000000000000004
+          ],
+          "overlap_real": 0.4000000000000001,
+          "overlap_imaginary": 0.0
+        },
+        {
+          "time": 7.0,
+          "norm_squared": [
+            1.0000000000000002,
+            1.0000000000000004
+          ],
+          "overlap_real": 0.4,
+          "overlap_imaginary": 2.7755575615628914e-17
+        },
+        {
+          "time": 8.0,
+          "norm_squared": [
+            1.0000000000000002,
+            1.0000000000000004
+          ],
+          "overlap_real": 0.4000000000000001,
+          "overlap_imaginary": 4.163336342344337e-17
+        }
+      ],
+      "source": "scripts/symmetry_unitary_waves.py"
+    },
+    "overlay_is_comparison": true,
+    "inter_history_collisions": false,
+    "quantum_states_added": false,
+    "surface_component": "real",
+    "surface_height_scale": 0.04,
+    "surface_autoscaling": false,
+    "sampled_surface_bounds": [
+      [
+        87.59999999999997,
+        600.0389808704756
+      ],
+      [
+        932.4000000000001,
+        1424.0
+      ]
+    ],
+    "representative_moments": [
+      0.0,
+      2.333333,
+      4.0,
+      6.0,
+      8.0,
+      13.333333,
+      16.666667,
+      18.933333,
+      23.666667
+    ]
+  },
+  "operators": {
+    "3": {
+      "source": {
+        "model": "Whole-grid conjugation of horizontal stretch",
+        "A": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ],
+        "stages": [
+          0,
+          6,
+          12
+        ],
+        "repetitions": 1,
+        "construction_cycle_seconds": 11,
+        "target": [
+          [
+            1.5,
+            -0.5
+          ],
+          [
+            -0.5,
+            1.5
+          ]
+        ],
+        "derivative_max_error": 3.636709267063054e-10,
+        "operator_change": 0.5,
+        "equation_cell_clearance_pixels": 125.5,
+        "label_collisions": [],
+        "scene_renderer_sha256": "4b107fe8b370807d58c50fb6adef51f2eef6fe638ec9d8f13aac08db90b74c3e"
+      },
+      "portrait_cell_min_edge_clearance_pixels": 121.0,
+      "portrait_label_collisions": [],
+      "sequence_repetitions": 1,
+      "rotation_unitary": true,
+      "stretch_unitary": false,
+      "duration_seconds": 23,
+      "size": [
+        1080,
+        1920
+      ]
+    },
+    "4": {
+      "source": {
+        "model": "Whole-grid conjugation of uniform stretch",
+        "A": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ]
+        ],
+        "stages": [
+          0,
+          6
+        ],
+        "repetitions": 1,
+        "construction_cycle_seconds": 11,
+        "target": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ]
+        ],
+        "derivative_max_error": 0.0,
+        "operator_change": 0.0,
+        "equation_cell_clearance_pixels": 25.867965644035735,
+        "label_collisions": [],
+        "scene_renderer_sha256": "4b107fe8b370807d58c50fb6adef51f2eef6fe638ec9d8f13aac08db90b74c3e"
+      },
+      "portrait_cell_min_edge_clearance_pixels": 96.2455992799496,
+      "portrait_label_collisions": [],
+      "sequence_repetitions": 1,
+      "rotation_unitary": true,
+      "stretch_unitary": false,
+      "duration_seconds": 17,
+      "size": [
+        1080,
+        1920
+      ]
+    },
+    "portrait_renderer_sha256": "b0c2a66adbb00dbc7fa0d82a6d4149600dee498db7377134840219de8b8a507e"
+  },
+  "geometry": {
+    "passed": true,
+    "model": "Six normalized Weyl Gaussian states under one common unitary",
+    "operators": "hbar=1; X=x; K=-i*d/dx",
+    "sigma": 0.65,
+    "initial_shear": 0.16,
+    "initial_samples": [
+      [
+        -1.78,
+        -3.0
+      ],
+      [
+        0.18,
+        -2.0
+      ],
+      [
+        -0.696,
+        -0.6
+      ],
+      [
+        1.044,
+        0.9
+      ],
+      [
+        -0.78,
+        2.0
+      ],
+      [
+        1.58,
+        3.0
+      ]
+    ],
+    "initial_patch_corners": [
+      [
+        -2.3760000000000003,
+        -3.6
+      ],
+      [
+        1.224,
+        -3.6
+      ],
+      [
+        2.3760000000000003,
+        3.6
+      ],
+      [
+        -1.224,
+        3.6
+      ]
+    ],
+    "initial_patch_area": 25.92,
+    "common_unitary": "U(tau,r)=S(r)*exp(-i*tau*K^2/2)",
+    "squeeze": "(S(r)*psi)(x)=exp(-r/2)*psi(exp(-r)*x)",
+    "mean_map": "diag(exp(r),exp(-r)) @ [[1,tau],[0,1]]",
+    "inverse_order": "U^-1=exp(+i*tau*K^2/2)*S(-r)",
+    "normalization": "Analytic initial normalization; no per-frame normalization",
+    "phase": "Complete complex phases retained in every state and overlap",
+    "initial_complex_gram": {
+      "real": [
+        [
+          1.0,
+          -0.11978969518644177,
+          0.1825808609630782,
+          0.0027417501493587444,
+          -0.0037142620529828875,
+          1.6855896881056355e-05
+        ],
+        [
+          -0.11978969518644177,
+          1.0,
+          0.38539587839108297,
+          0.05850125770653086,
+          0.021394361107779557,
+          -0.0007848862256575253
+        ],
+        [
+          0.1825808609630782,
+          0.38539587839108297,
+          1.0,
+          0.2538397427933953,
+          0.14304732504048712,
+          0.011766611077007388
+        ],
+        [
+          0.0027417501493587444,
+          0.05850125770653086,
+          0.2538397427933953,
+          1.0,
+          0.050614855673484706,
+          0.23743229544572655
+        ],
+        [
+          -0.0037142620529828875,
+          0.021394361107779557,
+          0.14304732504048712,
+          0.050614855673484706,
+          1.0,
+          -0.14402380765125883
+        ],
+        [
+          1.6855896881056355e-05,
+          -0.0007848862256575253,
+          0.011766611077007388,
+          0.23743229544572655,
+          -0.14402380765125883,
+          1.0
+        ]
+      ],
+      "imaginary": [
+        [
+          0.0,
+          0.23054253623462317,
+          -0.10212819588965574,
+          0.0026321179048442718,
+          -0.0007204624895017359,
+          -5.214139924992514e-06
+        ],
+        [
+          -0.23054253623462317,
+          0.0,
+          -0.3590334359861691,
+          0.12241805150833307,
+          -0.014636669924785944,
+          0.0027377299254058535
+        ],
+        [
+          0.10212819588965574,
+          0.3590334359861691,
+          0.0,
+          0.0,
+          -0.1918084144427767,
+          -0.007542027660577872
+        ],
+        [
+          -0.0026321179048442718,
+          -0.12241805150833307,
+          0.0,
+          0.0,
+          0.2849454979347031,
+          0.2730180603496418
+        ],
+        [
+          0.0007204624895017359,
+          0.014636669924785944,
+          0.1918084144427767,
+          -0.2849454979347031,
+          0.0,
+          -0.05947000741106071
+        ],
+        [
+          5.214139924992514e-06,
+          -0.0027377299254058535,
+          0.007542027660577872,
+          -0.2730180603496418,
+          0.05947000741106071,
+          0.0
+        ]
+      ]
+    },
+    "errors": {
+      "norm_squared": 8.881784197001252e-16,
+      "complex_gram": 1.3322678392199446e-15,
+      "mean_X": 2.220446049250313e-15,
+      "mean_K": 1.7785748166851362e-15,
+      "covariance": 5.551115123125783e-16,
+      "spectral_free_then_squeeze": 2.0801873471034385e-15,
+      "inverse_unsqueeze_then_free": 1.4217791915866692e-15,
+      "matrix_determinant": 0.0,
+      "each_grid_cell_area": 3.191891195797325e-16,
+      "patch_area": 7.105427357601002e-15,
+      "inverse_point_map": 1.3322676295501878e-15
+    },
+    "tolerance": 5e-11,
+    "quadrature": {
+      "x_domain": [
+        -24.0,
+        24.0
+      ],
+      "points": 8192,
+      "dx": 0.005859375,
+      "parameter_pairs": 85,
+      "tau_range": [
+        0.0,
+        0.42
+      ],
+      "r_range": [
+        0.0,
+        0.27763173659827955
+      ],
+      "negative_parameter_pairs": 4,
+      "momentum_derivative": "FFT spectral derivative"
+    },
+    "grid": {
+      "nu": 18,
+      "nv": 18,
+      "cells": 324
+    },
+    "maximum_boundary_amplitude": 3.65788800025161e-48,
+    "sampled_real_component_peaks": [
+      0.7802451869178606,
+      0.7816704165023008,
+      0.7722189912928505,
+      0.7344150536077916,
+      0.7528633467606025,
+      0.775716700414371
+    ],
+    "sampled_complex_magnitude_peaks": [
+      0.7834259502712692,
+      0.7834254268361082,
+      0.783425932050061,
+      0.7834261816014281,
+      0.7834264454129597,
+      0.7834247619324889
+    ],
+    "samples": [
+      {
+        "tau": 0.0,
+        "r": 0.0,
+        "means": [
+          [
+            -1.78,
+            -3.0
+          ],
+          [
+            0.18,
+            -2.0
+          ],
+          [
+            -0.696,
+            -0.6
+          ],
+          [
+            1.044,
+            0.9
+          ],
+          [
+            -0.78,
+            2.0
+          ],
+          [
+            1.58,
+            3.0
+          ]
+        ],
+        "norm_squared": [
+          0.9999999999999994,
+          1.0000000000000002,
+          0.9999999999999996,
+          0.9999999999999998,
+          1.0000000000000004,
+          0.9999999999999998
+        ]
+      },
+      {
+        "tau": 0.42,
+        "r": 0.0,
+        "means": [
+          [
+            -3.04,
+            -3.0
+          ],
+          [
+            -0.6599999999999999,
+            -2.0
+          ],
+          [
+            -0.948,
+            -0.6
+          ],
+          [
+            1.422,
+            0.9
+          ],
+          [
+            0.05999999999999994,
+            2.0
+          ],
+          [
+            2.84,
+            3.0
+          ]
+        ],
+        "norm_squared": [
+          1.0,
+          0.9999999999999996,
+          1.0000000000000002,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "tau": 0.42,
+        "r": 0.27763173659827955,
+        "means": [
+          [
+            -4.0128,
+            -2.2727272727272725
+          ],
+          [
+            -0.8712,
+            -1.5151515151515151
+          ],
+          [
+            -1.25136,
+            -0.45454545454545453
+          ],
+          [
+            1.8770400000000003,
+            0.6818181818181819
+          ],
+          [
+            0.07919999999999994,
+            1.5151515151515151
+          ],
+          [
+            3.7488,
+            2.2727272727272725
+          ]
+        ],
+        "norm_squared": [
+          0.9999999999999998,
+          1.0,
+          0.9999999999999998,
+          1.0,
+          0.9999999999999993,
+          0.9999999999999998
+        ]
+      }
+    ],
+    "source": "scripts/symmetry_mean_patch.py",
+    "portrait_patch_bounds": [
+      150.74879999999996,
+      1085.6,
+      869.2512,
+      1510.4
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+State and evolution · 2/5
+Unitary evolution preserves overlap
+
+Unitary evolution preserves the similarity between wave states, even while their wave functions change shape.
+
+The two colored surfaces show two alternative initial preparations undergoing the same evolution. Each surface plots the real part of a complex wave function. The waves spread and develop new patterns, but their inner product remains fixed:
+
+⟨Uψ₁, Uψ₂⟩ = ⟨ψ₁, ψ₂⟩.
+
+The inner product is a complex generalization of the dot product. To calculate it for wave functions, we multiply the complex conjugate of the first by the second and integrate over space. It compares the full complex functions, including their phases. Here its value stays at 0.40.
+
+Setting both states in the equation equal also shows that each state keeps its norm. A normalized wave function stays normalized as it evolves.
+
+In quantum mechanics, this preserves total probability. For normalized pure states, the magnitude of the overlap also tells us how well the two preparations can be distinguished by measurement. Orthogonal states have zero overlap and can be distinguished perfectly. Nonzero overlap limits that distinction. Applying the same unitary transformation preserves it.
+
+At the end, the surfaces share one view so we can compare their shapes. They remain two alternatives. Running the evolution backward recovers both original states, with their overlap unchanged throughout.
+
+Next: Transforming an operator
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #NaturalPhilosophy #Mathematics
