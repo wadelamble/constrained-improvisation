@@ -145,9 +145,9 @@ The common part lies on the rotation axis itself and is unchanged by every permu
 We also notice that vectors that lie on the axis of rotation itself are left unchanged by the transformation. A way to think of this is to allow the triangle's vertices to store some information, like a number. If the value they store is the same for all vertices, the symmetry actions have no effect, whereas if they are different, the actions permute those values in a way that can be represented in a 2-dimensional vector space. The 3-dimensional representation space we began with is thus decomposable into 2 subspaces, one 1-dimensional, the other 2-dimensional. These cannot be decomposed further. That is, neither subspace contains a smaller nonzero subspace preserved by every group transformation. The 1-dimensional and 2-dimensional representations are called **irreducible representations** or **irreps** for short. This is admittedly heavy math. Why bother? In the story we have to tell of quantum physics, the state of the fundamental constituents of matter, **particles** such as electrons or photons, must transform under the symmetries of evolution. Each particle type corresponds to an irreducible representation of this symmetry. 
 
 ### Invariants
-Once we have chosen a representation for a symmetry, we might well ask, how do we know our transformations preserve the symmetry? If we look at a triangle and rotate by 100 degrees we can "see" that doesn't preserve the symmetry. In a representation, we need some set of mathematical expressions that say "this transformation left the triangle the same." We call these the **invariants** of the transformation. 
+Once we have chosen a representation for a symmetry, we might well ask, "how do we know our transformations preserve the symmetry?" If we look at a triangle and rotate it by 100 degrees, we can "see" that this transformation does not preserve the symmetry. In a representation, we need some mathematical expressions that assert "this transformation left the triangle the same." We call these the **invariants** of the transformation.
 
-In our 2-dimensional irrep of $D_3$, we only need to check how a transformation acts on an arbitrary vector. The question "does the triangle overlay itself" becomes "is an arbitrary vector rotated by 120 degrees or flipped along a given axis." And this has a precise answer. Given the coordinates of a vector a transformation cannot change these invariants:
+In our 2-dimensional irrep of $D_3$, the question "does the triangle overlay itself" becomes "is an arbitrary vector rotated by 120 degrees or flipped along a given axis." The test is whether these two quantities remain unchanged:
 
 ```math
 r^2=x^2+y^2
@@ -159,10 +159,10 @@ u=x^3-3xy^2=r^3\cos(3\theta)
 \qquad\text{(its orientation relative to reference).}
 ```
 
-The first invariant allows every rotation and reflection in the plane. To see what the second adds, notice that $\cos(3\theta)$ has its maxima along three rays spaced $120^\circ$ apart. The rotations and reflections that preserve those three rays as a set are exactly the six symmetries of the triangle. 
+The first invariant allows every rotation and reflection in the plane. To see what the second adds, note that $\cos(3\theta)$ has its maxima along three rays spaced $120^\circ$ apart. The rotations and reflections that preserve those three rays as a set are exactly the six symmetries of the triangle. The details of this example are not important for us, and, in fact, for the symmetry representations that will arise in physics, the invariants we will encounter are generally simpler. The relevant idea to note is that these invariants are constructed from the representation space’s coordinates and are preserved by its symmetry transformations.
 
 #### Invariants in Physics
-The equations of motion of a system are, by definition, an invariant of the unified **spacetime** geometry in which systems evolve. That is, we defined these symmetries as those transformations under which the laws do not change. Generalizing the idea of a path of a single body to a **history** of a system, we can express what it means for $g$ to be a symmetry of the laws of motion in a compact schematic equation. Here $\Phi$ is a history and $\mathcal E$ encodes the equations of motion:
+The equations of motion of a system are, by definition, an invariant of the unified **spacetime** geometry in which systems evolve. Generalizing the idea of a path of a single body to a **history** of a system, we can express what it means for $g$ to be a symmetry of the laws of motion in a compact schematic equation. Here $\Phi$ is a history and $\mathcal E$ encodes the equations of motion:
 
 ```math
 \mathcal E[\Phi]=0
@@ -171,7 +171,7 @@ The equations of motion of a system are, by definition, an invariant of the unif
 \qquad\text{for every }g\in G.
 ```
 
-To make this concrete, let's work through a quick example. Let the equation of motion be $\ddot x+x=0$ and the history be $\Phi(t)=\cos t$:
+To make this concrete, let's work through a quick example. Let the equation of motion be $\ddot x+x=0$, where $\ddot x=d^2x/dt^2$, and the history be $\Phi(t)=\cos t$:
 
 ```math
 \mathcal E[\Phi](t)
@@ -201,35 +201,22 @@ Then
 0.
 ```
 
-But the equations of motion are not the only invariant of spacetime symmetry. As we would imagine, there are much simpler invariants, akin to distance between objects, that will define the allowable transformations of spacetime symmetry. 
+The equations of motion are but one invariant of spacetime symmetry. As we would imagine, there are much simpler invariants, akin to distance between objects, that will define the allowable transformations of spacetime symmetry.
 
-Later, we will discuss the idea that varying a functional of possible paths an object could travel can be used to single out the physically valid path. In the context of complex systems or **fields** we generalize the idea of a path to a **history**. We can vary a functional of this history and find a stationary point, that is a history near which the functional changes only in higher powers of the variation. Such a history will satisfy the equations of motion. Since the equations of motion that describe the history are invariants of the symmetry, might the functional itself be invariant? This functional is called the **action**. Under the full symmetry of spacetime, it is invariant up to terms that do not affect which histories are stationary. We might guess further that if the functional is an invariant, it is constructed by using the simple invariants, like those akin to distance between points. This is also generally the case. Thus we see a roadmap emerge provided by symmetry. Symmetry leads us to simple invariants, those invariants are arranged to construct an invariant functional, and finding the stationary points of that functional leads to equations of motion, which are themselves invariants of the symmetry.
+Later, we will discuss the principle of stationary action, or the idea that varying the possible paths an object could travel, or histories a system can have, can be used to single out the physically valid history. We can vary this history and find a stationary point (e.g. a minimum) of a functional of the history called the **action**. Such a history will satisfy the equations of motion. Since the equations of motion that describe the history are invariants of the symmetry, we might suspect that the action itself is invariant. And, in fact, under the full symmetry of spacetime, the action is invariant, at least up to terms that do not affect which histories are stationary. We might guess further that if the action is invariant, it is constructed using simple invariants, like those akin to the spacetime distance between events. This is also generally the case. Thus we see a roadmap emerge provided by symmetry. Symmetry leads us to simple invariants, those invariants are arranged to construct an invariant functional, and finding the stationary points of that functional leads to equations of motion, which are themselves invariants of the symmetry.
 
 
-#### Invariants and Groups
+#### Group Properties and Invariance
 A group is defined by formal properties.
 
-- **Closure**: combining actions stays within the group
-- **Associativity**: regrouping a sequence without reordering it leaves the result unchanged
-- **Identity**: there is a do-nothing action
-- **Inverses**: every action can be undone
+- **Closure**: Any composition of group actions is a group action
+- **Associativity**: Regrouping a sequence of actions leaves the result unchanged
+- **Identity**: There is an action defined that does nothing
+- **Inverses**: Every action can be undone by a defined inverse action
 
-Here we see a deep mathematical connection. Any group of actions that fulfill these properties is a "symmetry" in the intuitive sense that they preserve an invariant. Let the group act on its own elements by composition (written for the general case as multiplication). Now start with two elements $a,b$ and their "relative difference" $a^{-1}b$. Applying $g$ changes them to $ga,gb$, but leaves that relationship unchanged:
+Any set of actions that fulfills these properties is a symmetry group. We will leverage these properties as we explore symmetry in physics. But how do such formal properties map to our intuitive understanding of symmetry?
 
-```math
-\underbrace{(ga)^{-1}(gb)}_{\text{after}}
-=a^{-1}g^{-1}gb
-=\underbrace{a^{-1}b}_{\text{before}}.
-```
-
-We can see how this works for real numbers under addition: inverses are negatives, so the original difference is $-a+b=b-a$. Adding $g$ to both positions preserves it:
-
-```math
-\underbrace{(g+b)-(g+a)}_{\text{difference after}}
-=\underbrace{b-a}_{\text{difference before}}.
-```
-
-The positions change, but their separation is invariant. Addition acts as a translation of the number line.
+We previously defined $D_3$ invariance for a specific representation, but now consider the simpler, but more ineffable representation-agnostic definition that invariance is the quality that "the outline of the triangle stays on top of its starting position." Doing nothing clearly preserves the outline, so the set of transformations that preserves invariance includes the identity. If an action maps the triangle's outline onto itself, reversing that action also maps it onto itself, so the set includes inverses. As we can see in our mind's eye, if each allowable action preserves the outline, any combination of them must do so as well. This is closure. Finally, when we perform three actions in sequence, combining the first two into one action or the last two into one action gives exactly the same final transformation. This is associativity. The formal properties thus emerge directly from visualizing invariance-preserving actions.
 
 ## Continuous Symmetries
 What rotations return a circle to itself? All of them! Similarly, all translations return a line to itself. The symmetries of space and time are continuous and can therefore be represented as transformations that depend on continuously varying parameters. 
@@ -241,7 +228,9 @@ What rotations return a circle to itself? All of them! Similarly, all translatio
 *Continuous symmetries*
 
 ### Infinitesimal Generators
-As we saw, in the $D_3$ symmetry group, we can build any action from a combination of the elemental actions of rotations and flips about an axis. Now let us ask the question, what is the generator of a continuous transformation? Let's say we want to rotate a circle by 10°. We could compose 10 1° rotations. But what if we want to rotate by 1°? We can see where this is going. The generators must be infinitesimal rotations. Noting that if we zoom in enough, any curved surface appears flat, we see that a continuous symmetry's infinitesimal generators are basis vectors in the tangent plane to the symmetry's action. 
+As we saw, in the $D_3$ symmetry group, we can build any action from a combination of the elemental actions of rotations and flips about an axis. Now let us ask the question, what is the generator of a continuous transformation? Let's say we want to rotate a circle by 10°. We could compose 10 1° rotations. But what if we want to rotate by 1°? We can see where this is going. The generators must be infinitesimal rotations.
+
+Let us now think of the space, not of vectors to be rotated, but of the rotation transformations themselves. The generators are the infinitesimal counterparts of these transformations. Noting that if we zoom in enough, any surface appears flat, we can see that the rotation generators live in the tangent space to the space of transformations at the identity, where rotations are 0°.
 
 ![Curved surface with tangent plane and tangent vectors](diagrams/tangent-plane-curved-surface.png)
 
@@ -343,7 +332,7 @@ I
 \cdots .
 ```
 
-This is an **exponential map**. It takes the infinitesimal generator $\hat J$ and returns the finite symmetry transformation $R(\theta)$. We tend to think of exponentiation as purely algebraic, yet here it connects a tangent vector to a finite symmetry transformation.
+This is an **exponential map**. It takes the infinitesimal generator $\hat J$ and returns the finite symmetry transformation $R(\theta)$. We tend to think of exponentiation as purely algebraic, yet here it assumes a rich geometric interpretation of connecting a tangent vector to a finite symmetry transformation.
 
 #### Flows under Symmetry Transformations
 
