@@ -51,7 +51,7 @@ The desktop animations and manuscript were not modified. The two histories compa
 
 ## Instagram publication
 
-The original Philip Glass / Kronos Quartet versions were published to **@symmetryphysics** on November 20, 2026 (Pacific time). All five posts were confirmed sent, with exact caption, video URL, and selected-thumbnail matches. The links below still refer to those original posts. The Maiden Voyage reposts are listed below.
+The original Philip Glass / Kronos Quartet versions were published to **@symmetryphysics** on November 20, 2026 (Pacific time), then deleted from Instagram the same day at the user's request after the Maiden Voyage replacements were published. All five removals were verified on the refreshed profile. The links below are historical records of the deleted originals. The five Maiden Voyage links in the following section are the current public posts.
 
 - [1. Reversible evolution preserves information](https://www.instagram.com/reel/Df_GXoblLnh/)
 - [2. Unitary evolution preserves overlap](https://www.instagram.com/reel/Df_GkarkvXO/)

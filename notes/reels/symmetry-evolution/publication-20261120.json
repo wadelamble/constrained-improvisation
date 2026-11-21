@@ -90,6 +90,14 @@
       "verified": true
     }
   ],
+  "removal": {
+    "action": "deleted",
+    "verified_at": "2026-11-21T03:15:54Z",
+    "all_five_removed_from_public_view": true,
+    "verification": "Deleted each original by its recorded Instagram URL. Refreshed profile shows all five Maiden Voyage replacements, followed by the prior October posts, with none of the five originals remaining.",
+    "profile_post_count_after_removal": 46,
+    "replacement_publication": "notes/reels/symmetry-evolution/publication-20261120-maiden-voyage.json"
+  },
   "hosting_deployment_run": 44852808559,
   "updated_at": "2026-11-21T02:04:15.693158+00:00",
   "final_validation": {

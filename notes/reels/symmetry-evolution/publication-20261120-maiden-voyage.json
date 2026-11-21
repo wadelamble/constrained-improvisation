@@ -92,7 +92,9 @@
   ],
   "hosting_deployment_run": 44858483876,
   "prior_publication": "notes/reels/symmetry-evolution/publication-20261120.json",
-  "original_instagram_posts_retained": true,
+  "original_instagram_posts_retained": false,
+  "original_instagram_posts_public": false,
+  "original_removal_record": "notes/reels/symmetry-evolution/publication-20261120.json#removal",
   "updated_at": "2026-11-21T03:05:39.559446+00:00",
   "final_validation": {
     "all_five_confirmed_sent": true,
