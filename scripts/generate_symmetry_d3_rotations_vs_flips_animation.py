@@ -12,9 +12,15 @@ from symmetry_d3_rendering import (
     INK,
     RUST,
     TEAL,
+    U,
+    E1,
+    E2,
     Projection,
     Renderer,
+    add,
+    dot,
     ease,
+    mul,
     orbit,
     reflect_in_a_plane,
     reflect_progress,
@@ -42,6 +48,34 @@ RIGHT_ORIGIN = (920.0, 405.0)
 PANEL_SCALE = 128.0
 ROT_STATE = state_vector(1.34, 1.04, 45.0)
 FLIP_STATE = state_vector(1.34, 1.04, 125.0)
+SLICE_HEIGHT = dot(U, ROT_STATE)
+SLICE_RADIUS = 1.25
+SLICE_FILL = (247, 237, 213)
+SLICE_EDGE = (181, 151, 90)
+
+
+def slice_point(a: float, b: float):
+    """The invariant affine plane through both illustrated vector tips."""
+    return add(mul(SLICE_HEIGHT, U), add(mul(a, E1), mul(b, E2)))
+
+
+def draw_tip_plane(renderer: Renderer, projection: Projection) -> None:
+    r = SLICE_RADIUS
+    corners = [slice_point(a, b) for a, b in ((-r, -r), (r, -r), (r, r), (-r, r))]
+    projected = [projection.project(p)[:2] for p in corners]
+    renderer.polygon(projected, SLICE_FILL, 0.52, SLICE_EDGE, 0.45)
+    for value in (-0.8, -0.4, 0.0, 0.4, 0.8):
+        for ends in ((slice_point(-r, value), slice_point(r, value)),
+                     (slice_point(value, -r), slice_point(value, r))):
+            renderer.line([projection.project(p)[:2] for p in ends], SLICE_EDGE, 0.8, 0.22)
+
+
+def validate_tip_plane() -> None:
+    assert abs(dot(U, FLIP_STATE) - SLICE_HEIGHT) < 1e-12
+    for angle, _ in rotation_timeline():
+        assert abs(dot(U, rotate_about_axis(ROT_STATE, angle)) - SLICE_HEIGHT) < 1e-12
+    for i in range(157):
+        assert abs(dot(U, reflect_progress(FLIP_STATE, i / 156)) - SLICE_HEIGHT) < 1e-12
 
 
 def rotation_timeline() -> list[tuple[float, float]]:
@@ -62,6 +96,7 @@ def rotation_timeline() -> list[tuple[float, float]]:
 
 def draw_rotation_panel(renderer: Renderer, angle: float, trace: float) -> None:
     projection = Projection.from_view(LEFT_ORIGIN, PANEL_SCALE)
+    draw_tip_plane(renderer, projection)
     renderer.coordinate_axes(projection, 1.0)
     renderer.diagonal_axis(projection, 1.0)
     renderer.orbit_trace(orbit(ROT_STATE), projection, RUST, 0.88, progress=trace, width=2.8)
@@ -85,8 +120,9 @@ def draw_flip_trace(renderer: Renderer, projection: Projection, progress: float,
 
 def draw_flip_panel(renderer: Renderer, progress: float, global_progress: float) -> None:
     projection = Projection.from_view(RIGHT_ORIGIN, PANEL_SCALE)
+    renderer.reflection_plane(projection, 0.20)
+    draw_tip_plane(renderer, projection)
     renderer.coordinate_axes(projection, 1.0)
-    renderer.reflection_plane(projection, 0.28)
     renderer.diagonal_axis(projection, 1.0)
     draw_flip_trace(renderer, projection, progress, global_progress)
     renderer.component_axis_labels(projection)
@@ -110,6 +146,7 @@ def draw_frame(angle: float, trace: float, index: int, total: int) -> Image.Imag
 
 
 def build_frames() -> list[Image.Image]:
+    validate_tip_plane()
     timeline = rotation_timeline()
     total = len(timeline)
     return [draw_frame(angle, trace, index, total) for index, (angle, trace) in enumerate(timeline)]
@@ -117,6 +154,8 @@ def build_frames() -> list[Image.Image]:
 
 def encode(frames: list[Image.Image]) -> tuple[Path, Path]:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    assert SCRATCH.resolve().parent == OUTPUT_DIR.resolve()
+    assert SCRATCH.name == "_symmetry_d3_rotations_vs_flips_frames"
     if SCRATCH.exists():
         shutil.rmtree(SCRATCH)
     SCRATCH.mkdir()

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
   "video": "content/drafts/animations/symmetry-d3-rotations-vs-flips.mp4",
-  "video_sha256": "7aeb470b58e5a3bbc7801863594e883b9f1beb28283a29554a6a170abc513dcb",
+  "video_sha256": "f49419409b9590700adb44f26f087692f32cb30150091bb96cebc4b1f06695e6",
   "duration_seconds": 6.5,
   "fps": 24.0,
   "frame_count": 156,
@@ -14,77 +14,77 @@
       "file": "frame-01.jpg",
       "index": 0,
       "time_seconds": 0.0,
-      "sha256": "52b06a57fddc8085f013546f00ca59d368f7286d10855b7429b0ad8529468c85"
+      "sha256": "71d4a6604db861372ef08385b8241e6b15da5fdebeceed9c2d2212b863420c05"
     },
     {
       "file": "frame-02.jpg",
       "index": 14,
       "time_seconds": 0.583333,
-      "sha256": "75d6506795e024a2b13a47ec8718a7e6e188c06dcafcb2d47e5002b6c7e068ca"
+      "sha256": "5c65ae38f9369d486447c9173b3dc4bf94347b27d09deb16be0bf74da773544b"
     },
     {
       "file": "frame-03.jpg",
       "index": 28,
       "time_seconds": 1.166667,
-      "sha256": "b4c1f6320acc7bc418f35690df9368edf23996d44296020e463768d5b707a244"
+      "sha256": "d90c2a5ce87433800a2c0ff585337bae1abb9d3728d6db66171bf78ca301fc3f"
     },
     {
       "file": "frame-04.jpg",
       "index": 42,
       "time_seconds": 1.75,
-      "sha256": "a0acfd2c7b671534f2735395ef963335c614a3dd3599b4a2570b8c302570f09c"
+      "sha256": "cd6dede50c4b91dfb73746d0ee2c17355ccbc2df3e3e7d86f3931778990b66f4"
     },
     {
       "file": "frame-05.jpg",
       "index": 56,
       "time_seconds": 2.333333,
-      "sha256": "29e62d714e96334cd418d1102b644827cac1e7835549c2637cc696ea1e4a857b"
+      "sha256": "d807944288dfed23f373ac5ad3140bb90d15a76a7790a7d7f0e39a1a749ee64b"
     },
     {
       "file": "frame-06.jpg",
       "index": 70,
       "time_seconds": 2.916667,
-      "sha256": "75be4c0ea31ef32615594869f9534f3e0b7dc8f042f11a82aef390dcfc5b1bfc"
+      "sha256": "2182f162ea30cdf4cbbf16ff27e69751d8f1ef6ad2a31f3e9044e32a682e63ec"
     },
     {
       "file": "frame-07.jpg",
       "index": 85,
       "time_seconds": 3.541667,
-      "sha256": "1a63199342c1cfbfeca659ba339f1245e3c54d57f3a0a018fd8f76b3117ecf71"
+      "sha256": "73afe04bf2334325481365cc142d570c621fd0cb505728009a19d741be69c5ea"
     },
     {
       "file": "frame-08.jpg",
       "index": 99,
       "time_seconds": 4.125,
-      "sha256": "04adff850d6409773f4fe58a0f33d44675820e473cd2a8639553f5763cb768b1"
+      "sha256": "5b4eb0eaeb8466a3ab7749508f8fbbc97de7a404f19c0cd117dd165d552ae63d"
     },
     {
       "file": "frame-09.jpg",
       "index": 113,
       "time_seconds": 4.708333,
-      "sha256": "5752439b37ad9d339fcb811789c20600459179bb31a7e2197cf9eb0eba1940ef"
+      "sha256": "e768a4ee69409e5506257b2ef4488e408273a55871c1f5df3f4371ccdf41b185"
     },
     {
       "file": "frame-10.jpg",
       "index": 127,
       "time_seconds": 5.291667,
-      "sha256": "58a7fa50b29717874d00b7ca0377b4a252a73c860be818e3ec0fe4b66d966a19"
+      "sha256": "aa53b22ad5d438f484418fe88b193b0580d26fa0d19f411de6c77713a03c41e5"
     },
     {
       "file": "frame-11.jpg",
       "index": 141,
       "time_seconds": 5.875,
-      "sha256": "913fe367e782e463236873804f7cab674e7b6932d87fee1cb39a416b26177981"
+      "sha256": "ec551d555f7c9a2cb1fc5c19bfbeb81e7eef91fa6f6af88dd1065436f46e20d1"
     },
     {
       "file": "frame-12.jpg",
       "index": 155,
       "time_seconds": 6.458333,
-      "sha256": "49a28ec8664ee77bf0b02beabdd15d249859a5aac09458463d1f67164472b02f"
+      "sha256": "df455d512355fc872e826256139142cb554a791532f8ecce10fc2b5de14ef876"
     }
   ],
   "contact_sheet": {
     "file": "contact-sheet.jpg",
-    "sha256": "216e7fdf05aff44edaf6a44d7008ff39e01b73203ccadd4d0e0859a47ffaa082"
+    "sha256": "4d35e7ec23d193982419fc76dc1efb27169f5f1a776a0554b95f24bc9852e7a2"
   }
 }

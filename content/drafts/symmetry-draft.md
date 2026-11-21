@@ -7,13 +7,13 @@ Strike a pool ball with a cue, and the balls move in an expected way. Move the t
 
 *Symmetry transforms don't change how pool balls behave*
 
-These changes in the orientation or location of the pool table are equally well expressed as changes in the orientation or location of the observer. As such, we can call them changes to the **reference frame**.  The sense in which the behavior of our pool balls is the same in different reference frames is intuitively obvious, but going forward, we will work with a more specific definition. While observers in different frames record different coordinates for balls' paths, they agree on the **equations of motion** that predict those paths. Thus when we say a change of reference is a symmetry, we specifically mean that the equations of motion are preserved under such a change. 
+These changes in the orientation or location of the pool table are equally well expressed as changes in the orientation or location of the observer. As such, we can call them changes to the **reference frame**.  The sense in which the behavior of our pool balls is the same in different reference frames is intuitively obvious, but going forward, we will work with a more specific definition. While observers in different frames record different coordinates for balls’ paths, they agree on the **equations of motion** that specify the rates of change used to calculate those paths. Thus when we say a change of reference is a symmetry, we specifically mean that the equations of motion are preserved under such a change. 
 
-In addition to these symmetries of **evolution**, we will show that there are symmetries of the instantaneous **state** of a system whose structure must be preserved through the system's evolution if that evolution is to be information-preserving. We will see that this structure is then reflected in the equations of motion.
+In addition to these symmetries of **evolution**, we will see that if that evolution is to fulfill the principle of information preservation, it must preserve an additional symmetry structure carried by the space of instantaneous states. This structure will be reflected in the form of the equations of motion.
 
-Our pool game illustrates what we mean by symmetries of physical behavior, but why should we start our story here? We will argue that symmetry constrains both the laws that govern physical evolution and the classification of the objects that undergo that evolution. The term "symmetry" in this context may not at first glance seem like the same concept as, say, a triangle's symmetry, but it precisely is, as we will see.
+That physical behavior is unchanged under shifts in the frame of reference may well be an interesting observation, but why should we start our story here? We will argue that symmetry constrains both the laws that govern physical evolution and the classification of the objects that undergo that evolution. The term "symmetry" in this context may not at first glance seem like the same concept as, say, a triangle's symmetry, but it precisely is.
 
-We will start with the familiar world of these "discrete symmetries" and build up the definitions we need from there. Then we will turn to “continuous symmetries,” specifically rotations and translations, where we will encounter a new branch of math, Lie algebra, that joins symmetry ideas with calculus. We will discover that waves arise naturally as state objects when we represent translational symmetry, and this will lead us to a discussion of Fourier analysis and the symmetry that preserves the information contained in wave states. In a later chapter, we will situate these ideas in the context of quantum mechanics.
+We will start with the familiar world of "discrete symmetries" and build up the definitions we need from there. Then we will turn to “continuous symmetries,” specifically rotations and translations, where we will encounter a new branch of math, Lie algebra, that joins the study of symmetry with calculus. We will discover that waves arise naturally as state objects when we represent translational symmetry, and this will lead us to a discussion of Fourier analysis, the structure of the space of wave functions, and how that structure shapes their equations of motion.
 
 Let’s start, then, with the humble triangle.
 
@@ -48,15 +48,15 @@ We tend to think of a "triangle's symmetry" not the "symmetry of two rotations a
 
 
 ### Representations
-We can plainly "see" the symmetry of the triangle, but what if we want to write it down mathematically? Specifically, can we write group actions in terms of how they transform labels on an object? For example, suppose we label our triangle's vertices \(A, B, C\) and ask, if we rotate twice, flip once, then rotate again, where is vertex \(A\) sent? Recognizing that the triangle's state has three ordered components, we might guess that we could represent the triangle as a vector with 3 components. We could then represent 120° rotations as **transformations** of the labels that permute the vertices in accordance with the symmetry group actions. 
+We can plainly "see" the symmetry of the triangle, but what if we want to write it down mathematically? Specifically, can we write group actions in terms of how they transform labels on an object? For example, suppose we label our triangle's vertices \(A, B, C\) and ask, if we rotate twice, flip once, then rotate again, where is vertex \(A\) sent? Recognizing that the triangle's state has three ordered components, we might guess that we could represent the triangle as a vector with 3 components. We could then represent these actions as transformations of the vector that permute its components in the same way that the symmetry actions permute the triangle’s vertices.
 
-There is nothing special about the vertices here, we could just as easily have chosen the midpoints of the edges or any other triplet of points with the triangle's symmetries, and the same matrix that permutes the vertices would permute those vectors. That is, the group actions are represented by some set of **linear** transformations. A **representation** of a symmetry group is such a vector space and set of linear transformations that compose in the same way as the group actions:
+There is nothing special about the vertices here. We could just as easily have chosen the midpoints of the edges or any other triplet of points with the triangle's symmetries, and the same matrix that permutes the vertices would permute those vectors. That is, the group actions are represented by some set of **linear** transformations. A **representation** of a symmetry group is such a vector space and set of linear transformations that compose in the same way as the group actions:
 
 $$
 D(g_1g_2)=D(g_1)D(g_2),
 $$
 
-where $g_1$ and $g_2$ are group actions, such as a rotation and a flip, and $D(g_n)$ is the matrix representing the $g_n$ action, and $D$ itself is the map from symmetry actions to matrices in the representation. This says that the matrix for the composed action \($g_2$ followed by $g_1$\) is the product of the matrices for the separate actions.
+where $g_1$ and $g_2$ are group actions, such as a rotation and a flip, and $D(g_n)$ is the matrix representing the $g_n$ action, and $D$ itself is the map from symmetry actions to matrices in the representation. This says that the matrix for the composed action ($g_2$ followed by $g_1$) is the product of the matrices for the separate actions.
 
 To construct a 3-dimensional representation of $D_3$, we map the 3 vertices to components of a vector.
 
@@ -111,9 +111,10 @@ $$
 
 *Three rotations or two flips return the vector to its starting state*
 
-The matrices that provide a set of transformations from which all other symmetric transformations can be constructed are the symmetry's **generators**. For example, in the 3-dimensional representation of $D_3$, all operations can be constructed from one rotation matrix and one flip matrix. 
+A set of matrices whose products give every transformation in the symmetry group forms a set of **generators**. For example, in the 3-dimensional representation of $D_3$, all transformations can be constructed from one rotation matrix and one flip matrix. 
 
-Visually, permutations that correspond to rotations of the triangle are 120-degree rotations about a diagonal axis in this vector space, while those that correspond to flips are flips about three planes that contain the diagonal axis.
+#### Irreducible Representations
+Visually, permutations that correspond to rotations of the triangle are 120-degree rotations about a diagonal axis in this vector space, while those that correspond to flips are reflections in three planes that contain the diagonal axis. This is much easier to see than to say.
 
 ![D3 rotations and flips with labeled component axes and a fixed equal-components axis](animations/symmetry-d3-rotations-vs-flips-poster.png)
 
@@ -133,7 +134,7 @@ For our earlier example vector, the average of the components is 3. We can decom
 \begin{pmatrix}-2\\0\\2\end{pmatrix}.
 ```
 
-The common part lies on the rotation axis and is unchanged by every permutation. The zero-sum part lies in a plane through the origin. Although written with three components, it needs only two independent numbers since the third is constrained by the sum being zero.
+The common part lies on the rotation axis itself and is unchanged by every permutation. The zero-sum part lies in a plane through the origin. Although written with three components, it needs only two independent numbers since the third is constrained by the sum being zero.
 
 ![Subtracting the common component leaves the D3 representation in the zero-sum plane](animations/symmetry-d3-irrep-collapse-poster.png)
 
@@ -141,8 +142,7 @@ The common part lies on the rotation axis and is unchanged by every permutation.
 
 *Reducing 3-dimensional representation to 2-dimensional*
 
-We also notice that vectors that lie on the axis of rotation itself are left unchanged by the transformation. A way to think of this is to allow the triangle's vertices to store some information, like a number. If the value they store is the same for all vertices, the symmetry actions have no effect, whereas if they are different, the actions permute those values in a way that can be represented in a 2-dimensional vector space. The 3-dimensional representation space we began with is thus decomposable into 2 subspaces, one 1-dimensional, the other 2-dimensional. These cannot be decomposed further. That is, there is no lower-dimensional space such that an allowable transformation of any state remains in that space. The 1-dimensional and 2-dimensional representations are called **irreducible representations** or **irreps** for short. This is admittedly heavy math. Why do we bother? In the story we have to tell of quantum physics, the constituents of matter must abide by the symmetry of the laws of evolution. Each type of **particle**, such as an electron or a photon, corresponds to an irreducible representation of nature's symmetry. A particular state of the particle is encoded in an element in the corresponding irrep.
-
+We also notice that vectors that lie on the axis of rotation itself are left unchanged by the transformation. A way to think of this is to allow the triangle's vertices to store some information, like a number. If the value they store is the same for all vertices, the symmetry actions have no effect, whereas if they are different, the actions permute those values in a way that can be represented in a 2-dimensional vector space. The 3-dimensional representation space we began with is thus decomposable into 2 subspaces, one 1-dimensional, the other 2-dimensional. These cannot be decomposed further. That is, neither subspace contains a smaller nonzero subspace preserved by every group transformation. The 1-dimensional and 2-dimensional representations are called **irreducible representations** or **irreps** for short. This is admittedly heavy math. Why bother? In the story we have to tell of quantum physics, the state of the fundamental constituents of matter, **particles** such as electrons or photons, must transform under the symmetries of evolution. Each particle type corresponds to an irreducible representation of this symmetry. 
 
 ### Invariants
 Once we have chosen a representation for a symmetry, we might well ask, how do we know our transformations preserve the symmetry? If we look at a triangle and rotate by 100 degrees we can "see" that doesn't preserve the symmetry. In a representation, we need some set of mathematical expressions that say "this transformation left the triangle the same." We call these the **invariants** of the transformation. 
