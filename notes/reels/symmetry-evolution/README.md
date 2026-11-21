@@ -51,7 +51,7 @@ The desktop animations and manuscript were not modified. The two histories compa
 
 ## Instagram publication
 
-The original Philip Glass / Kronos Quartet versions were published to **@symmetryphysics** on November 20, 2026 (Pacific time). All five posts were confirmed sent, with exact caption, video URL, and selected-thumbnail matches. The links below still refer to those original posts. The local Maiden Voyage versions have not been reposted.
+The original Philip Glass / Kronos Quartet versions were published to **@symmetryphysics** on November 20, 2026 (Pacific time). All five posts were confirmed sent, with exact caption, video URL, and selected-thumbnail matches. The links below still refer to those original posts. The Maiden Voyage reposts are listed below.
 
 - [1. Reversible evolution preserves information](https://www.instagram.com/reel/Df_GXoblLnh/)
 - [2. Unitary evolution preserves overlap](https://www.instagram.com/reel/Df_GkarkvXO/)
@@ -60,3 +60,15 @@ The original Philip Glass / Kronos Quartet versions were published to **@symmetr
 - [5. Information preservation and state-space geometry](https://www.instagram.com/reel/Df_HMBmlnKG/)
 
 [Publication receipt](publication-20261120.json).
+
+### Maiden Voyage repost
+
+Published to **@symmetryphysics** on November 20, 2026 (Pacific time). All five posts were confirmed sent, with exact caption, video URL, and selected-thumbnail matches.
+
+- [1. Reversible evolution preserves information](https://www.instagram.com/reel/Df_Nd_jDqIR/)
+- [2. Unitary evolution preserves overlap](https://www.instagram.com/reel/Df_No0FAHqt/)
+- [3. Transforming an operator](https://www.instagram.com/reel/Df_N6pNGT-N/)
+- [4. Commuting operators](https://www.instagram.com/reel/Df_OCrLDIcD/)
+- [5. Information preservation and state-space geometry](https://www.instagram.com/reel/Df_ON-Tj9Jm/)
+
+[Publication receipt](publication-20261120-maiden-voyage.json).
