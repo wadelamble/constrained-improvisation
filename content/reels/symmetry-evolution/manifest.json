@@ -1,5 +1,5 @@
 {
-  "status": "local review",
+  "status": "published",
   "series": "State and evolution",
   "episodes": [
     {
@@ -16,7 +16,10 @@
       "source": "content/drafts/animations/symmetry-reversible-histories.mp4",
       "caption_file": "evolution-01-caption.txt",
       "video_available": true,
-      "video_sha256": "ebe9430c9e21feb7086f8b57c802ff94b9000b7f0f276ce0aa86f2f3d501a756"
+      "video_sha256": "ebe9430c9e21feb7086f8b57c802ff94b9000b7f0f276ce0aa86f2f3d501a756",
+      "buffer_post_id": "6b00fa1b9ffbc8503cee45a8",
+      "instagram_url": "https://www.instagram.com/reel/Df_GXoblLnh/",
+      "sent_at": "2026-11-21T01:56:37.607Z"
     },
     {
       "number": 2,
@@ -32,7 +35,10 @@
       "source": "content/drafts/animations/symmetry-unitary-histories.mp4",
       "caption_file": "evolution-02-caption.txt",
       "video_available": true,
-      "video_sha256": "bbdace6a0b57d720ef093e43134e9a82703cb18ebdd5fc05f014a4e40154a1f9"
+      "video_sha256": "bbdace6a0b57d720ef093e43134e9a82703cb18ebdd5fc05f014a4e40154a1f9",
+      "buffer_post_id": "6b00fa825e993799d844014d",
+      "instagram_url": "https://www.instagram.com/reel/Df_GkarkvXO/",
+      "sent_at": "2026-11-21T01:58:21.308Z"
     },
     {
       "number": 3,
@@ -48,7 +54,10 @@
       "source": "content/drafts/animations/symmetry-operator-sandwich.mp4",
       "caption_file": "evolution-03-caption.txt",
       "video_available": true,
-      "video_sha256": "50e2bb7ec6d989721c87880670b248b6d65660ce17f42f290b57fb3e819ab9a0"
+      "video_sha256": "50e2bb7ec6d989721c87880670b248b6d65660ce17f42f290b57fb3e819ab9a0",
+      "buffer_post_id": "6b00fad55102766245eb1518",
+      "instagram_url": "https://www.instagram.com/reel/Df_GuPuFKsa/",
+      "sent_at": "2026-11-21T01:59:44.193Z"
     },
     {
       "number": 4,
@@ -64,7 +73,10 @@
       "source": "content/drafts/animations/symmetry-uniform-operator-sandwich.mp4",
       "caption_file": "evolution-04-caption.txt",
       "video_available": true,
-      "video_sha256": "1b5aa42ee60a296a5b224e9e58ce8574ab43efd60a83922b11ad82eae5f6f58c"
+      "video_sha256": "1b5aa42ee60a296a5b224e9e58ce8574ab43efd60a83922b11ad82eae5f6f58c",
+      "buffer_post_id": "6b00fb36dd205ed779b020de",
+      "instagram_url": "https://www.instagram.com/reel/Df_G62eFCoE/",
+      "sent_at": "2026-11-21T02:01:21.019Z"
     },
     {
       "number": 5,
@@ -80,7 +92,10 @@
       "source": "content/drafts/animations/symmetry-mean-patch.mp4",
       "caption_file": "evolution-05-caption.txt",
       "video_available": true,
-      "video_sha256": "94e544a9e14d65bccd9a104dfe5ff770ccb0cef9a6e6ca01694e6ab22d1b64ea"
+      "video_sha256": "94e544a9e14d65bccd9a104dfe5ff770ccb0cef9a6e6ca01694e6ab22d1b64ea",
+      "buffer_post_id": "6b00fb9cdd205ed779b052c8",
+      "instagram_url": "https://www.instagram.com/reel/Df_HMBmlnKG/",
+      "sent_at": "2026-11-21T02:04:05.984Z"
     }
   ],
   "editable_text": "notes/reels/symmetry-evolution/reel-text.md",
@@ -102,5 +117,6 @@
     "fade_in_seconds": 1.5,
     "fade_out_seconds": 2
   },
-  "published": false
+  "published": true,
+  "publication_record": "notes/reels/symmetry-evolution/publication-20261120.json"
 }

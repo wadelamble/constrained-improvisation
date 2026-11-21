@@ -38,3 +38,15 @@ Exports are 1080 × 1920, 30 fps, H.264 MP4 with AAC audio. The soundtrack uses 
 Each reel includes a poster, a portrait cover, a caption `.txt`, and a decoded-video contact sheet. Mathematical model checks are recorded in `model-validation.json`. Individual reports in `review/` verify dimensions, duration, frame count, audio signal, and source hashes.
 
 The desktop animations and manuscript were not modified. The two histories compare separate states. The grid in Reel 5 maps a selected wave-packet family to its averages and does not count quantum states.
+
+## Instagram publication
+
+Published to **@symmetryphysics** on November 20, 2026 (Pacific time). All five posts were confirmed sent, with exact caption, video URL, and selected-thumbnail matches.
+
+- [1. Reversible evolution preserves information](https://www.instagram.com/reel/Df_GXoblLnh/)
+- [2. Unitary evolution preserves overlap](https://www.instagram.com/reel/Df_GkarkvXO/)
+- [3. Transforming an operator](https://www.instagram.com/reel/Df_GuPuFKsa/)
+- [4. Commuting operators](https://www.instagram.com/reel/Df_G62eFCoE/)
+- [5. Information preservation and state-space geometry](https://www.instagram.com/reel/Df_HMBmlnKG/)
+
+[Publication receipt](publication-20261120.json).
