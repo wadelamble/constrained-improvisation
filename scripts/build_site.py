@@ -827,12 +827,17 @@ def build() -> None:
         for suffix in (".mp4", "-cover.jpg"):
             asset = SYMMETRY_REEL_DIR / f"reel-{number:02d}{suffix}"
             shutil.copy2(asset, media_dir / asset.name)
-    media_dir = OUT_DIR / "media" / "reels" / "state-and-evolution"
-    media_dir.mkdir(parents=True, exist_ok=True)
-    for number in range(1, 6):
-        for suffix in (".mp4", "-cover.jpg"):
-            asset = EVOLUTION_REEL_DIR / f"evolution-{number:02d}{suffix}"
-            shutil.copy2(asset, media_dir / asset.name)
+    for edition, video_dir in (
+        ("state-and-evolution", EVOLUTION_REEL_DIR / "published-kronos"),
+        ("state-and-evolution-maiden-voyage", EVOLUTION_REEL_DIR),
+    ):
+        media_dir = OUT_DIR / "media" / "reels" / edition
+        media_dir.mkdir(parents=True, exist_ok=True)
+        for number in range(1, 6):
+            video = video_dir / f"evolution-{number:02d}.mp4"
+            cover = EVOLUTION_REEL_DIR / f"evolution-{number:02d}-cover.jpg"
+            for asset in (video, cover):
+                shutil.copy2(asset, media_dir / asset.name)
 
 
 if __name__ == "__main__":

@@ -16,9 +16,9 @@
     "rotate": 0,
     "duration": 23.0
   },
-  "audio_rms": 0.022422678244480663,
-  "audio_peak": 0.24649396538734436,
-  "video_sha256": "50e2bb7ec6d989721c87880670b248b6d65660ce17f42f290b57fb3e819ab9a0",
+  "audio_rms": 0.061338670723314906,
+  "audio_peak": 0.5884854197502136,
+  "video_sha256": "fb16a72f003aa9f72fa5049dc08ee20b4539eb3cb983dc42d8fa127fa8bb7776",
   "frames": 690,
   "title": "Transforming an operator",
   "source_sha256": "31f74da1dfb478b32e9218f853fdd9c31b8180b93327eee6e89275b552dfa5ae",
@@ -27,6 +27,6 @@
     "scripts/symmetry_evolution_reels/geometry.py": "3d8ecdb389db8035b0891300518f4dfee70bcbb167fbb941f8d3bfa3bcc73851",
     "scripts/symmetry_evolution_reels/histories.py": "a47b59499192f3578bb4bb4a6fde5831b53b473e3c55ddba59a982b34e491b1f",
     "scripts/symmetry_evolution_reels/operators.py": "b0c2a66adbb00dbc7fa0d82a6d4149600dee498db7377134840219de8b8a507e",
-    "scripts/symmetry_evolution_reels/render.py": "178d0ad097c4f3769b2c464e8182e0b7586b057618e5b4b4841f421dee33345c"
+    "scripts/symmetry_evolution_reels/render.py": "4cbf2b17ce637a3a04317fd91c1239e92c82a0b76f6f32c583d2e1aab6dad03f"
   }
 }

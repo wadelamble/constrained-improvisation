@@ -23,7 +23,8 @@ POSTERS={1:18.3,2:18.3,3:20.5,4:14.5,5:28}
 SOURCE_NAMES={1:'symmetry-reversible-histories',2:'symmetry-unitary-histories',
               3:'symmetry-operator-sandwich',4:'symmetry-uniform-operator-sandwich',
               5:'symmetry-mean-patch'}
-MUSIC=ROOT/'.tools/reel-audio/music-bed.wav'
+MUSIC=ROOT/'.tools/reel-audio/state-and-evolution-maiden-voyage.wav'
+MUSIC_CONFIG=MUSIC.with_suffix('.json')
 FFMPEG=imageio_ffmpeg.get_ffmpeg_exe()
 
 def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -33,6 +34,49 @@ def frame_at(n,t):
     im=module(n).render(n,float(t)).convert('RGB')
     assert im.size==(W,H)
     return im
+
+def prepare_music(source):
+    source=Path(source).resolve()
+    assert source.is_file(),f'Music source missing: {source}'
+    MUSIC.parent.mkdir(parents=True,exist_ok=True)
+    duration=sum(DURATIONS.values())
+    subprocess.run([FFMPEG,'-y','-v','error','-i',str(source),'-map','0:a:0','-vn',
+                    '-t',str(duration),'-af','volume=-4dB','-ar','48000','-ac','2',
+                    '-c:a','pcm_s24le','-map_metadata','-1',str(MUSIC)],check=True)
+    config=dict(title='Maiden Voyage (Remastered 2012)',artist='Herbie Hancock',
+                source_filename=source.name,source_sha256=sha(source),
+                bed_sha256=sha(MUSIC),duration_seconds=duration,gain_db=-4,
+                sample_rate=48000,channels=2,
+                excerpt_start_seconds={str(n):sum(DURATIONS[j] for j in range(1,n))
+                                       for n in DURATIONS})
+    MUSIC_CONFIG.write_text(json.dumps(config,indent=2,ensure_ascii=False),encoding='utf8')
+    print('Prepared 130 seconds of Maiden Voyage; original recording unchanged.',flush=True)
+
+def video_stream_hash(path):
+    result=subprocess.run([FFMPEG,'-v','error','-i',str(path),'-map','0:v:0',
+                           '-c:v','copy','-f','hash','-hash','sha256','-'],
+                          capture_output=True,text=True,check=True)
+    return result.stdout.strip()
+
+def replace_music(n):
+    import shutil
+    target=OUT/f'{slug(n)}.mp4'
+    assert target.exists() and MUSIC.exists() and MUSIC_CONFIG.exists()
+    backup=ROOT/'.tools/reel-audio/backups/state-and-evolution-kronos'/target.name
+    backup.parent.mkdir(parents=True,exist_ok=True)
+    if not backup.exists():shutil.copy2(target,backup)
+    old_video_hash=video_stream_hash(target)
+    offset=sum(DURATIONS[j] for j in range(1,n))
+    temp=target.with_name(f'{slug(n)}.audio-updating.mp4')
+    subprocess.run([FFMPEG,'-y','-v','error','-i',str(target),'-ss',str(offset),
+                    '-i',str(MUSIC),'-map','0:v:0','-map','1:a:0',
+                    '-c:v','copy','-c:a','aac','-b:a','192k','-ar','48000','-ac','2',
+                    '-af',f'afade=t=in:st=0:d=1.5,afade=t=out:st={DURATIONS[n]-2}:d=2',
+                    '-t',str(DURATIONS[n]),'-map_metadata','-1','-movflags','+faststart',
+                    str(temp)],check=True)
+    assert video_stream_hash(temp)==old_video_hash,'Audio replacement changed the video stream'
+    temp.replace(target)
+    print(f'Reel {n}: replaced music; original video stream preserved exactly.',flush=True)
 
 def entries():
     parts=re.split(r'^## Reel\s+(\d+)\s*$',TEXT.read_text(encoding='utf-8-sig'),flags=re.M)
@@ -147,10 +191,10 @@ def package():
 <p><a href="{e['video']}" download>MP4</a> · <a href="{e['cover']}">Cover</a> · <a href="{e['contact_sheet']}">Contact sheet</a> · <a href="{file}">Caption text</a></p>
 <button onclick="copyCaption(this)">Copy caption</button><small>{e['caption_count']} / 2200 characters</small>
 <pre>{html.escape(e['caption'])}</pre></div></div></article>''')
-    music_config=json.loads((ROOT/'.tools/reel-audio/music-bed.json').read_text())
+    music_config=json.loads(MUSIC_CONFIG.read_text(encoding='utf8'))
     manifest=dict(status='local review',series='State and evolution',episodes=all_entries,
                   editable_text=TEXT.relative_to(ROOT).as_posix(),
-                  music=dict(title='String Quartet No. 5, movement I',artist='Philip Glass · Kronos Quartet',
+                  music=dict(title=music_config['title'],artist=music_config['artist'],
                              bed=music_config,fade_in_seconds=1.5,fade_out_seconds=2),
                   published=False)
     (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2,ensure_ascii=False),encoding='utf8')
@@ -168,8 +212,11 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--reels',nargs='+',type=int,default=list(range(1,6)))
     p.add_argument('--preview',action='store_true');p.add_argument('--render',action='store_true')
     p.add_argument('--validate',action='store_true');p.add_argument('--package',action='store_true')
+    p.add_argument('--music-source',type=Path)
+    p.add_argument('--replace-music',action='store_true')
     p.add_argument('--models',action='store_true');a=p.parse_args()
     OUT.mkdir(exist_ok=True,parents=True)
+    if a.music_source:prepare_music(a.music_source)
     if a.models:
         checks={name:importlib.import_module(name).validate() for name in ('histories','operators','geometry')}
         (OUT/'model-validation.json').write_text(json.dumps(checks,indent=2),encoding='utf8')
@@ -177,6 +224,7 @@ def main():
     for n in a.reels:
         if a.preview:previews(n)
         if a.render:encode(n)
+        if a.replace_music:replace_music(n)
         if a.validate:validate_media(n)
     if a.package:package()
 

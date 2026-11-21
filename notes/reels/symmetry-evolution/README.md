@@ -33,7 +33,17 @@ The script uses packages under `.tools/animation-python-packages`. Use the proje
 | 4 | Commuting operators | 17 s |
 | 5 | Information preservation and state-space geometry | 42 s |
 
-Exports are 1080 × 1920, 30 fps, H.264 MP4 with AAC audio. The soundtrack uses the previously supplied Philip Glass / Kronos Quartet recording and existing soft music bed, with consecutive excerpts and gentle fades. The local recording is not copied into this folder.
+Exports are 1080 × 1920, 30 fps, H.264 MP4 with AAC audio. The current local soundtrack uses the supplied Herbie Hancock recording, *Maiden Voyage (Remastered 2012)*, with consecutive excerpts and gentle fades. The local recording is not copied into this folder.
+
+To prepare the music bed and replace audio without reencoding the visuals:
+
+```powershell
+python scripts/symmetry_evolution_reels/render.py --music-source '<path to supplied FLAC>' --replace-music --validate --package
+```
+
+The five excerpts begin at 0, 24, 48, 71, and 88 seconds. The music is reduced by 4 dB, with 1.5-second fade-ins and 2-second fade-outs. The original MP4s are backed up under the ignored `.tools/reel-audio/backups/state-and-evolution-kronos/` folder. Compressed video-stream hashes are checked before replacing each file, ensuring the visuals are unchanged.
+
+The published originals are also preserved in `content/reels/symmetry-evolution/published-kronos/`, keeping their existing public media URLs intact. The revised files have separate public URLs under `/media/reels/state-and-evolution-maiden-voyage/`.
 
 Each reel includes a poster, a portrait cover, a caption `.txt`, and a decoded-video contact sheet. Mathematical model checks are recorded in `model-validation.json`. Individual reports in `review/` verify dimensions, duration, frame count, audio signal, and source hashes.
 
@@ -41,7 +51,7 @@ The desktop animations and manuscript were not modified. The two histories compa
 
 ## Instagram publication
 
-Published to **@symmetryphysics** on November 20, 2026 (Pacific time). All five posts were confirmed sent, with exact caption, video URL, and selected-thumbnail matches.
+The original Philip Glass / Kronos Quartet versions were published to **@symmetryphysics** on November 20, 2026 (Pacific time). All five posts were confirmed sent, with exact caption, video URL, and selected-thumbnail matches. The links below still refer to those original posts. The local Maiden Voyage versions have not been reposted.
 
 - [1. Reversible evolution preserves information](https://www.instagram.com/reel/Df_GXoblLnh/)
 - [2. Unitary evolution preserves overlap](https://www.instagram.com/reel/Df_GkarkvXO/)

@@ -16,9 +16,9 @@
     "rotate": 0,
     "duration": 17.0
   },
-  "audio_rms": 0.023526301671929557,
-  "audio_peak": 0.2289239913225174,
-  "video_sha256": "1b5aa42ee60a296a5b224e9e58ce8574ab43efd60a83922b11ad82eae5f6f58c",
+  "audio_rms": 0.04963429763791912,
+  "audio_peak": 0.40155163407325745,
+  "video_sha256": "c923ba53b71cc25a7e6ddb31f7b84d77eec2d0db0e027672cbf20b99a775eac4",
   "frames": 510,
   "title": "Commuting operators",
   "source_sha256": "c683abf88b57235e3f656535fb11f02b8db317b4730e49572714fd983597518d",
@@ -27,6 +27,6 @@
     "scripts/symmetry_evolution_reels/geometry.py": "3d8ecdb389db8035b0891300518f4dfee70bcbb167fbb941f8d3bfa3bcc73851",
     "scripts/symmetry_evolution_reels/histories.py": "a47b59499192f3578bb4bb4a6fde5831b53b473e3c55ddba59a982b34e491b1f",
     "scripts/symmetry_evolution_reels/operators.py": "b0c2a66adbb00dbc7fa0d82a6d4149600dee498db7377134840219de8b8a507e",
-    "scripts/symmetry_evolution_reels/render.py": "0cdb81396d2897aa6ac4ea811fc326f1dd9cfe9e7f10c4a895296ab891b54891"
+    "scripts/symmetry_evolution_reels/render.py": "4cbf2b17ce637a3a04317fd91c1239e92c82a0b76f6f32c583d2e1aab6dad03f"
   }
 }

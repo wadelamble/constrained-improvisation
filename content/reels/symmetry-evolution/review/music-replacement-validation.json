@@ -1,0 +1,75 @@
+{
+  "music": {
+    "title": "Maiden Voyage (Remastered 2012)",
+    "artist": "Herbie Hancock",
+    "source_filename": "01 - Herbie Hancock - Maiden Voyage (Remastered 2012).flac",
+    "source_sha256": "13fc851b7f0b2e5959e4df296b069b0d916f9de7099d3830024d050fef4fd72f",
+    "bed_sha256": "8f27ca9f8864e494df174c7d152fcd717512f95a9d617e7a48c85c6ab40f5480",
+    "duration_seconds": 130,
+    "gain_db": -4,
+    "sample_rate": 48000,
+    "channels": 2,
+    "excerpt_start_seconds": {
+      "1": 0,
+      "2": 24,
+      "3": 48,
+      "4": 71,
+      "5": 88
+    }
+  },
+  "all_video_streams_unchanged": true,
+  "all_captions_unchanged": true,
+  "all_audio_matches_supplied_recording": true,
+  "reels": [
+    {
+      "reel": 1,
+      "video_sha256": "78f9e3cfbe6e57b8726bfb6476fcd11d324d45b1ac419219bc1b4c39b3511026",
+      "original_video_sha256": "ebe9430c9e21feb7086f8b57c802ff94b9000b7f0f276ce0aa86f2f3d501a756",
+      "unchanged_video_stream_hash": "SHA256=ac63c94fecd0852b7a61859767d64c8c6a02fa765888ab0e6cb2e5b6961d91ae",
+      "caption_unchanged": true,
+      "music_excerpt_start_seconds": 0,
+      "duration_seconds": 24,
+      "decoded_audio_source_correlation": 0.9995706323877308
+    },
+    {
+      "reel": 2,
+      "video_sha256": "4aa18ec26090cc63d583f09e9381aa113e3ad3d85f4ccd330cb509c20e7ce46d",
+      "original_video_sha256": "bbdace6a0b57d720ef093e43134e9a82703cb18ebdd5fc05f014a4e40154a1f9",
+      "unchanged_video_stream_hash": "SHA256=13586980691404024cd0aa88644bd27b3ca21fbe4139e3878596475aa1385f99",
+      "caption_unchanged": true,
+      "music_excerpt_start_seconds": 24,
+      "duration_seconds": 24,
+      "decoded_audio_source_correlation": 0.9992959967320209
+    },
+    {
+      "reel": 3,
+      "video_sha256": "fb16a72f003aa9f72fa5049dc08ee20b4539eb3cb983dc42d8fa127fa8bb7776",
+      "original_video_sha256": "50e2bb7ec6d989721c87880670b248b6d65660ce17f42f290b57fb3e819ab9a0",
+      "unchanged_video_stream_hash": "SHA256=62ee45f87e23ddcb2a5d1b7b58f702f2519ea96de2fe426f8531a9106c6db553",
+      "caption_unchanged": true,
+      "music_excerpt_start_seconds": 48,
+      "duration_seconds": 23,
+      "decoded_audio_source_correlation": 0.9990274240429651
+    },
+    {
+      "reel": 4,
+      "video_sha256": "c923ba53b71cc25a7e6ddb31f7b84d77eec2d0db0e027672cbf20b99a775eac4",
+      "original_video_sha256": "1b5aa42ee60a296a5b224e9e58ce8574ab43efd60a83922b11ad82eae5f6f58c",
+      "unchanged_video_stream_hash": "SHA256=d24182c54a22c74f72a2b6a5267b753a699cccae2beed4c64367f0c60e997304",
+      "caption_unchanged": true,
+      "music_excerpt_start_seconds": 71,
+      "duration_seconds": 17,
+      "decoded_audio_source_correlation": 0.9992527506299955
+    },
+    {
+      "reel": 5,
+      "video_sha256": "fdb937305827f8ce0b105458d3cd875a50e5ad06936a7833e6dda87541831662",
+      "original_video_sha256": "94e544a9e14d65bccd9a104dfe5ff770ccb0cef9a6e6ca01694e6ab22d1b64ea",
+      "unchanged_video_stream_hash": "SHA256=b34f06da3705e1a1bb19afed9dfd7ccb8b38652d7b0fdf6371c03c50548d1866",
+      "caption_unchanged": true,
+      "music_excerpt_start_seconds": 88,
+      "duration_seconds": 42,
+      "decoded_audio_source_correlation": 0.9990471563064007
+    }
+  ]
+}
