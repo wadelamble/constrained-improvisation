@@ -336,7 +336,7 @@ This is an **exponential map**. It takes the infinitesimal generator $\hat J$ an
 
 #### Flows under Symmetry Transformations
 
-We can think of a symmetry transformation as a "uniform looking" vector field, as illustrated below:
+We have been thinking of the continuous symmetry transformations in terms of taking one point to another, or acting on a single shape. We can gain insight by instead thinking of it as a "symmetric looking" vector field, in the sense illustrated below:
 
 ![Rotation generator as a vector field](animations/symmetry-so2-vector-field-flow-contact-sheet.png)
 
@@ -347,7 +347,7 @@ We can think of a symmetry transformation as a "uniform looking" vector field, a
 Here we ask not what happens when the transformation is applied to a single set of starting conditions, but what the transformation does to all starting conditions. Such a construction allows us to more easily see what is preserved by the symmetry.
 
 #### Invariants and Metrics
-What is the invariant of rotation in this representation? It is the length of vectors and the angles between them.
+In the rotation flow animation, we can see that lengths of vectors and angles between vectors are preserved. The animation below makes this explicit.
 
 ![Rotation preserves vector lengths and angles](animations/symmetry-rotation-vector-invariants-contact-sheet.png)
 
@@ -363,7 +363,36 @@ These relationships are expressed by a single invariant, the dot product.
 u_xv_x+u_yv_y.
 ```
 
-An invariant of this sort, that fixes some notion of placing reliable rulers and protractors on the space, is a **metric**. For normal rotations and translations, these relationships are intuitive, but a symmetry may preserve a less intuitive metric. If we define invariant length not as \(x^2+y^2\) but as \(t^2-\mathbf{x}^2\), we have a "hyperbolic rotation." Separation between points stretches out to infinity as the rotation approaches its asymptotes, leaving the invariant interval unchanged even though the separation appears to grow using our everyday notion of distance. Such a hyperbolic metric, as we will see, encodes the asymptotic limit of light speed in the relativistic geometry **spacetime**.
+An invariant of this sort, that fixes some notion of placing rulers and protractors on a space, is a **metric**. More abstractly, a metric is a "symmetric bilinear form" that maps two vectors to a number.
+
+```math
+g:\;(\mathbf u,\mathbf v)\longmapsto \text{a number}.
+```
+
+Symmetry means that exchanging the two input vectors leaves the result unchanged:
+
+```math
+g(\mathbf u,\mathbf v)=g(\mathbf v,\mathbf u).
+```
+
+Bilinearity means that adding or scaling vectors in either input separately adds or scales the result. For numbers $a,b$:
+
+```math
+\begin{aligned}
+g(a\mathbf u+b\mathbf v,\mathbf w)
+&=a\,g(\mathbf u,\mathbf w)+b\,g(\mathbf v,\mathbf w),\\
+g(\mathbf w,a\mathbf u+b\mathbf v)
+&=a\,g(\mathbf w,\mathbf u)+b\,g(\mathbf w,\mathbf v).
+\end{aligned}
+```
+
+For normal rotations and translations, the invariant metric is intuitive, but a symmetry may preserve a less intuitive metric. For example, we define the invariant metric as
+
+```math
+g(\mathbf u,\mathbf v)=u_t v_t-u_x v_x.
+```
+
+This form is preserved by "hyperbolic rotations." Separation between points stretches out to infinity as the rotation action approaches its asymptotes, leaving the invariant interval unchanged even though the separation appears to grow using our everyday notion of distance. Such a hyperbolic metric, as we will see in the next chapter on spacetime, encodes the asymptotic limit of light speed in the relativistic geometry **spacetime**.
 
 ![Hyperbolic rotation preserving the interval](animations/symmetry-hyperbolic-rotation-contact-sheet.png)
 
