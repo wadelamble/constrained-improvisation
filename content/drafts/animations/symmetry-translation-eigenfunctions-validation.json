@@ -1,15 +1,18 @@
 {
-  "derivative_finite_difference_error": 5.538680625249981e-11,
-  "translation_scaling_max_error": 8.881784197001252e-16,
-  "translation_samples": 101,
-  "monotone_single_pass": true,
-  "layout_bounds_frames": 57,
+  "translation_samples": 181,
+  "component_factor_product_error": 2.220446049250313e-16,
+  "translation_identity_max_error": 5.329070518200751e-15,
+  "shape_preservation_max_error": 3.552713678800501e-15,
+  "minimum_height_error": 4.440892098500626e-16,
+  "minimum_motion": "x=a, f=2",
+  "text_bounds_and_text_collisions": "checked on every rendered frame",
   "size": [
     1600,
     900
   ],
   "fps": 24,
-  "duration_seconds": 28,
-  "source_sha256": "ed6ea95d82dc4538dd42348bb08dc564d6d3232245103104f931bdc188f28cfa",
-  "helper_sha256": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445"
+  "duration_seconds": 34,
+  "source_sha256": "2ac1048139f8cf177f61e635370c723e3a4e31dadd095ad094725b335ce03890",
+  "helper_sha256": "7da29f950c9f3d285c35b6e250ef7f4fdfecfe28e93e70e0f4dbf71ee1d14445",
+  "source_hash_normalization": "UTF-8 source and helper with LF line endings"
 }

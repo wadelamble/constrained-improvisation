@@ -704,7 +704,7 @@ This says we are looking for a function whose derivative returns the same functi
 f(x)=Ce^{\lambda x}.
 ```
 
-Since
+Given that
 
 ```math
 \frac{d}{dx}Ce^{\lambda x}
@@ -713,30 +713,39 @@ Since
 
 the eigenvalue of $d/dx$ is $\lambda$. 
 
-We can now take note that a finite translation of an exponential function also acts by scalar multiplication:
+Because the exponential function is an eigenfunction of the generator of translation, it is also an eigenfunction of finite translations:
 
 ```math
-f(x-a)=e^{-\lambda a}f(x).
+\begin{aligned}
+T_a f
+&=e^{-a\frac{d}{dx}}f\\
+&=f-a\lambda f+\frac{a^2\lambda^2}{2!}f-\cdots\\
+&=e^{-a\lambda}f.
+\end{aligned}
 ```
 
-![Differentiation and translation each reproduce an exponential multiplied by a number](animations/symmetry-translation-eigenfunctions-poster.png)
+Exponentials form a natural eigenbasis for the function space in which translations act by rescaling each component. That is, given a state 
+
+```math
+f(x)=c_1e^{\lambda_1x}+c_2e^{\lambda_2x}+\cdots,
+```
+
+translation acts by scaling each exponential separately.
+
+![Rescaling exponential components translates their sum without changing its shape.](animations/symmetry-translation-eigenfunctions-poster.png)
 
 [Open MP4: symmetry-translation-eigenfunctions.mp4](animations/symmetry-translation-eigenfunctions.mp4)
 
-*Differentiation and translation each scale an exponential*
+*Exponential functions are an eigenbasis for translation*
 
-#### Unitarity
+#### Complex Exponentials and Unitarity
 We have determined that the eigenfunction of translation is the exponential function, but a question remains. Is the exponent real, imaginary, or complex? We will discuss imaginary numbers more below, but the bare-bones definition is
 
 ```math
 i = \sqrt{-1}.
 ```
 
-To resolve this, we will introduce the concept of unitary transformations. We will set the exponent question aside for a moment to explore some of the implications of unitary evolution in time. We should say that, while we are in a chapter about symmetry, in our treatment unitary evolution is not a consequence of symmetry, but follows from an additional physical principle. 
-
-Before we go further, we need to step back and add context about where the idea of representations enters in physics. We've said that a vector in a representation space is a "state" that is acted upon by operators built from a symmetry group. In and of itself, this is a purely mathematical statement. The group we want to act on the representation space is spacetime symmetry, but we've said nothing about why physics requires a representation space up to this point. And in fact, our **classical** system of hard balls does not require a linear representation space to store state. Instead, we simply store all the positions and momenta of the system in a single, finite **phase space** vector. In quantum mechanics, as we will see, evolution must act linearly on a linear combination, or **superposition**, of states.
-
-Thus, when we appeal to unitarity to choose our state representation, we are doing so in the context of quantum mechanics. Bearing that in mind, we can think of unitarity as being, in a way, the preservation of a principle that is self-evident in classical physics — because objects occupy definite locations, have definite velocities, and follow definite, reversible trajectories, two states of a system, two different initial preparations, remain *distinguishable* as they evolve.
+We will see below that our principle of information preservation requires choosing purely imaginary exponentials, but to get there, we must digress to consider how information preservation can be realized for quantum states. Let's first consider how information preservation is guaranteed in classical systems. Because objects follow definite, reversible trajectories, two states of a system remain distinguishable as they evolve.
 
 ![Reversible and distinguishable histories](animations/symmetry-reversible-histories-poster.png)
 
@@ -744,7 +753,9 @@ Thus, when we appeal to unitarity to choose our state representation, we are doi
 
 *States are self-evidently distinguishable in classical physics*
 
-In such a classical system, distinguishability is absolute. In a quantum system, distinguishability is statistical. Two states may be more or less distinguishable in the sense that the best possible measurement gives us more or less chance of correctly identifying which state was supplied. However, time evolution preserves the *degree* of distinguishability of states. Unitarity ensures this preservation, and is defined mathematically as the preservation of "overlap" or **inner product** (a generalization of the dot product) of states:
+In such a classical system, distinguishability of states is absolute. Because the states are distinguishable no matter how similar they are, evolution need not preserve the similarity between the states. In contrast, a quantum state is described by a function which cannot be observed directly but only ascertained probabilistically through measurement. That is, two states may be more or less distinguishable in the sense that the best possible measurement gives us more or less chance of correctly identifying which state was supplied. Because distinct quantum states need not be perfectly distinguishable by measurement, to preserve information we require more than the functions remaining distinct. We require them to retain the same degree of distinguishability.
+
+**Unitarity** is the property of transformations that ensure this preservation, and is defined mathematically as the preservation of the **inner product** (a generalization of the dot product) of states:
 
 ```math
 \langle U\psi_1,U\psi_2\rangle
@@ -764,33 +775,84 @@ In the animation below, the wave states evolve unitarily, preserving their overl
 
 *Unitary evolution preserves the overlap between states*
 
-In addition to distinguishability, unitary evolution ensures determinism and reversibility of a state's evolution. (Note that while quantum measurements are famously non-deterministic, the state evolution, nonetheless, is. The state can evolve deterministically while giving only probabilities for where things will be found.) Setting $\psi_1=\psi_2$ in the overlap formula shows that unitary evolution preserves the integral of a function’s squared magnitude. If the function is initially normalized to one, it stays normalized. In quantum mechanics, where the squared magnitude of the wave function gives a probability density, this ensures that total probability remains one.
+In addition to distinguishability, unitary evolution is deterministic, and its invertibility makes it reversible. (Note that while quantum measurements are famously non-deterministic, the state evolution, nonetheless, is. The state can evolve deterministically while giving only probabilities for where things will be found.) Setting $\psi_1=\psi_2$ in the overlap formula shows that unitary evolution preserves the integral of a function’s squared magnitude. If the function is initially normalized to one, it stays normalized. In quantum mechanics, where the squared magnitude of the wave function gives a probability density, this ensures that total probability remains one.
 
-Let's now return to finding a suitable eigenbasis for the position translation operator. Moving the observer cannot change distinguishability, and translations likewise preserve the inner product. This requires exponential eigenfunctions to have purely imaginary exponents. Taking $U=T_a$, consider a wave packet $v$ with $\langle v,v\rangle=1$ whose translation approximately satisfies $Uv\approx\mu v$. Preservation of the inner product gives
+We have discussed unitarity for time evolution. Spatial translations must also preserve distinguishability, because changing the observer’s position cannot change how well states can be told apart.
+
+We now ask whether this requirement forces us to choose real or imaginary exponentials.
+
+First, let the unitary operator be a spatial translation:
 
 ```math
-1
-=\langle Uv,Uv\rangle
+U=T_a.
+```
+
+A single exponential mode cannot be normalized over the whole line, so we work with a normalizable wave packet. We normalize it so that its inner product with itself is one:
+
+```math
+\langle v,v\rangle=1.
+```
+
+Consider a packet whose translation approximately rescales it (approximately because a pure exponential is technically not normalizable):
+
+```math
+Uv\approx\mu v.
+```
+
+The scalar is the rescaling factor. We want to find which factors unitarity permits.
+
+Unitarity requires the translated packet to have the same self-overlap as the original:
+
+```math
+\langle Uv,Uv\rangle=\langle v,v\rangle=1.
+```
+
+Rescaling multiplies the self-overlap by the scalar's squared magnitude, because the scalar multiplies its complex conjugate in the inner product. The approximate rescaling therefore gives:
+
+```math
+\langle Uv,Uv\rangle
 \approx|\mu|^2\langle v,v\rangle
 =|\mu|^2.
 ```
 
-As the approximation becomes arbitrarily accurate, $|\mu|=1$.
+Both expressions describe the same self-overlap, so:
 
-We need to add a technical caveat. Because single-mode complex exponentials, like pure sine waves, extend across all space without decaying, they cannot be normalized. This is not an issue in practice, as wave packets made from combinations of them are normalizable.
+```math
+|\mu|^2\approx1.
+```
 
-Translating $e^{\lambda x}$ by $a$ multiplies it by $\mu=e^{-\lambda a}$. Therefore,
+As the approximation becomes arbitrarily accurate, the rescaling factor must have magnitude one:
+
+```math
+|\mu|=1.
+```
+
+Now apply this requirement to the exponential eigenfunctions we found earlier. Their rescaling factor under translation is:
+
+```math
+\mu=e^{-\lambda a}.
+```
+
+Its squared magnitude depends only on the real part of the exponent:
+
+```math
+|\mu|^2=e^{-2a\,\operatorname{Re}\lambda}.
+```
+
+Here, Re denotes the real part. Requiring this squared magnitude to be one for every translation distance gives:
 
 ```math
 e^{-2a\,\operatorname{Re}\lambda}=1
-\quad\text{for all }a
-\quad\Longrightarrow\quad
+\qquad\text{for all }a.
+```
+
+This can hold for all translation distances only if the real part of the exponent is zero. The exponent must therefore be purely imaginary:
+
+```math
 \lambda=ik,\qquad k\in\mathbb R.
 ```
 
-$\operatorname{Re}$ stands for taking the real part of an expression.
-
-A more intuitive way to understand this is to visualize the multiplying factors produced by translation. For a growing or decaying real exponential, translation multiplies its coefficient by a factor that stretches or shrinks it. A unitary action on an eigenmode must instead multiply its coefficient by a factor of magnitude one. Translating a complex exponential \(e^{ikx}\) supplies exactly such a factor. It rotates the coefficient without stretching or shrinking it.
+A more intuitive way to understand this is to visualize the multiplying factors produced by translation. For a growing or decaying real exponential, translation multiplies its coefficient by a factor that stretches or shrinks it. A unitary action on an eigenmode must instead multiply its coefficient by a factor of magnitude one. Translating a complex exponential $e^{ikx}$ supplies exactly such a factor. It rotates the coefficient without stretching or shrinking it.
 
 ![Translations rescale real exponential coefficients but rotate complex exponential coefficients while preserving their inner product](animations/symmetry-translation-unitarity-poster.png)
 
@@ -885,7 +947,7 @@ At $\theta=\pi$, halfway around the unit circle, we then have
 e^{i\pi}=-1.
 ```
 
-This is Euler's identity, satisfyingly relating three fundamental mathematical constants. 
+This is *Euler's identity*, satisfyingly relating three fundamental mathematical constants. 
 
 We can map $z$ back to $x,y$ coordinates and obtain Euler's formula:
 
@@ -927,10 +989,10 @@ z(x-a,t)=e^{-ika}z(x,t).
 
 The eigenvalue $e^{-ika}$ has magnitude one. This is the phase-only scaling allowed by unitarity.
 
-Earlier we wrote a rotation as $e^{\theta\hat J}$ and called $\hat J$ its generator. For translations we now use the convention $T_a=e^{-ia\hat K}$. Comparing this with $T_a=e^{-a\,d/dx}$ gives $\hat K=-i\,d/dx$. The advantage is that $\hat K$ acting on $e^{ikx}$ returns the wave number $k$ as its eigenvalue.
+We previously used $d/dx$ as the generator of translations. For translations we now use the convention $T_a=e^{-ia\hat K}$. Comparing this with $T_a=e^{-a\,d/dx}$ gives $\hat K=-i\,d/dx$. The advantage is that $\hat K$ acting on $e^{ikx}$ returns the wave number $k$ as its eigenvalue.
 
 #### Fourier Analysis
-If you strike a chord on a piano, some complicated function of time describes how the sound pressure reaches your ear. It starts soft, gets louder, softens again. It has discernible main tones, but also a clutter of overtones that comprise the timbre of the piano. While you hear a clear tonal structure, a plot of the sound pressure level over time reaching your ear would completely obscure that structure. 
+If one strikes a chord on a piano, some complicated function of time describes how the sound pressure reaches our ear. It starts soft, gets louder, softens again. It has discernible main tones, but also a clutter of overtones that comprise the timbre of the piano. While we hear a clear tonal structure, a plot of the sound pressure level over time reaching our ears would completely obscure that structure. 
 
 ![Three-tone chord packet and its Fourier decomposition](animations/symmetry-fourier-three-tone-packet-contact-sheet.png)
 
@@ -938,7 +1000,7 @@ If you strike a chord on a piano, some complicated function of time describes ho
 
 *Fourier analysis separates a chord into its component tones*
 
-But we know something about this random-seeming function reaching your ear. We know it is comprised of mostly 3 pitches, and some overtones. If we plot the sound pressure level as a function of these pitches rather than as a function of time, the structure of our plot clearly reveals what we hear naturally with our ear. What we call a "pitch" is the frequency of a pure **mode**. The pattern of sound pressure over time is the sum, or "composition," of these modes. We can transform back and forth between the wave number and position representations. Typically we label the wave number representation with a tilde:
+But we know something about this random-seeming function. We know it is comprised of mostly 3 pitches, and some overtones. If we plot the sound pressure level as a function of these pitches rather than as a function of time, the structure of our plot clearly reveals what we hear naturally with our ear. What we call a "pitch" is the frequency of a pure **mode**. The pattern of sound pressure over time is the sum, or "composition," of these modes. We can transform back and forth between the wave number and position representations. Typically we label the wave number representation with a tilde:
 
 ```math
 \psi(x)\;\longleftrightarrow\;\tilde{\psi}(k).
@@ -964,7 +1026,7 @@ This idea of **decomposing** a wave packet into its "Fourier modes" is remarkabl
 \int_{-\infty}^{\infty}|f(x)|^2\,dx<\infty.
 ```
 
-But this is not new to us. It uses the eigenfunctions we found for the function representation of translation. 
+But this is not new to us. It uses exactly the eigenfunctions we found for the function representation of translation. 
 
 As we've mentioned before, an exact plane wave extends uniformly to infinity in the limit, so its own squared magnitude has an infinite integral. It is an ideal building block. Superpositions of these waves can nevertheless form packets with finite total squared magnitude, which we can normalize as quantum states. The transformation from an amplitude over translation coordinate to amplitude over wave number coordinate is called a **Fourier transformation**.
 

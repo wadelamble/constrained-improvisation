@@ -116,8 +116,8 @@
   },
   "symmetry-translation-eigenfunctions.mp4": {
     "sources": ["scripts/generate_symmetry_translation_eigenfunctions_desktop.py", "scripts/symmetry_exponential_desktop_common.py"],
-    "generation_note": "Run the main generator with --render --check. A fixed exponential is compared with its derivative, a translated copy and a vertically scaled copy. The demonstration runs once through differentiation and translation. symmetry_exponential_desktop_common supplies drawing, encoding and decoded-review helpers. It is a code dependency, not an input movie.",
-    "evidence": "The generator writes a 1600 x 900, 24 fps, 28-second silent MP4. Mathematical validation compares differentiation against finite differences, checks 101 translation-scaling samples and tests monotone staging and layout bounds. The encoded report records the delivered movie hash, 672 frames, a complete decode and sampled frame indices."
+    "generation_note": "Run the main generator with --render --check; without flags it produces review stills only. First, translating one exponential is compared with vertically rescaling a fresh copy. Next, two real exponential components are independently rescaled and summed pointwise, producing a rigid translation of their initial sum. symmetry_exponential_desktop_common supplies drawing primitives and library setup; the generator adds supersampling and its own delivery checks. The helper is a code dependency, not an input movie.",
+    "evidence": "The generator writes a 1600 x 900, 24 fps, 34-second silent MP4. Mathematical validation checks 181 translation samples, component scale factors, shape preservation and the translating minimum. Bounds and text collisions are checked on every rendered frame. Source and helper hashes use LF normalization. The encoded report records the delivered movie hash, 816 frames, a complete decode and sampled frame indices."
   },
   "symmetry-translation-unitarity.mp4": {
     "sources": ["scripts/generate_symmetry_translation_unitarity_desktop.py", "scripts/symmetry_exponential_desktop_common.py"],
