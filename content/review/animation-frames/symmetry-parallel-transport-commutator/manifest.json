@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recipe": "encoded-frames-v1-12-uniform-inclusive-native-resolution",
+  "video": "content/drafts/animations/symmetry-parallel-transport-commutator.mp4",
+  "video_sha256": "f76c213755807578d21ba58e37a96adb7a6abd5aafae4590c375dd676d163dcc",
+  "duration_seconds": 34.0,
+  "fps": 24.0,
+  "frame_count": 816,
+  "width": 1600,
+  "height": 900,
+  "method": "Twelve evenly spaced decoded frame indices, including first and last. Native-resolution JPEGs from the encoded MP4; timestamps read from FFmpeg showinfo. No source rerendering. Frame indices are zero-based. Sparse samples do not establish continuous motion or capture every transition.",
+  "frames": [
+    {
+      "file": "frame-01.jpg",
+      "index": 0,
+      "time_seconds": 0.0,
+      "sha256": "9d3816ef9f6a60ceae65b2a518e5a5e0922027f1b773a6330ca22110bbd192a2"
+    },
+    {
+      "file": "frame-02.jpg",
+      "index": 74,
+      "time_seconds": 3.083333,
+      "sha256": "abb2101fde5f5a8ba69a739be595b3ab437f106eec68d6336918f6e3683939d6"
+    },
+    {
+      "file": "frame-03.jpg",
+      "index": 148,
+      "time_seconds": 6.166667,
+      "sha256": "3fe506710dccdb1cdeafb6b9b6da82a5854d16a1ef4a56df99548c403717974d"
+    },
+    {
+      "file": "frame-04.jpg",
+      "index": 222,
+      "time_seconds": 9.25,
+      "sha256": "95c035e7082622a279b24f490285d827ee686a3ed7b9df19618168dbd85a7fb0"
+    },
+    {
+      "file": "frame-05.jpg",
+      "index": 296,
+      "time_seconds": 12.333333,
+      "sha256": "5201258006ff5eb5204fc37c807cdd91ea2f36248bedc0ebfc4882fb707eb46d"
+    },
+    {
+      "file": "frame-06.jpg",
+      "index": 370,
+      "time_seconds": 15.416667,
+      "sha256": "deb27361e88e255aba773f7f662dc7c01b83d1e18edae5aae2e861b013c42b2f"
+    },
+    {
+      "file": "frame-07.jpg",
+      "index": 445,
+      "time_seconds": 18.541667,
+      "sha256": "f3f4d0c2709cbeaa46289203d960ce1e31ffaf2c73aaaa6b462a315a5b025673"
+    },
+    {
+      "file": "frame-08.jpg",
+      "index": 519,
+      "time_seconds": 21.625,
+      "sha256": "fee3f147548abf03f44cc8b322150ba6c3883022b164c76ca098d09cbf41f3b9"
+    },
+    {
+      "file": "frame-09.jpg",
+      "index": 593,
+      "time_seconds": 24.708333,
+      "sha256": "d866b52b24c85bbaddfea50c054779b782aeb69566a76b76406dcde1f5c73bb8"
+    },
+    {
+      "file": "frame-10.jpg",
+      "index": 667,
+      "time_seconds": 27.791667,
+      "sha256": "1fcca0a97b52afbe79979f7838b2a82dc6db6d430edcac8131b8a4a809a2396a"
+    },
+    {
+      "file": "frame-11.jpg",
+      "index": 741,
+      "time_seconds": 30.875,
+      "sha256": "0916e77d01becfc92f5d2e9f3a239dc70e5ee40b19c68937298f15983951d2f8"
+    },
+    {
+      "file": "frame-12.jpg",
+      "index": 815,
+      "time_seconds": 33.958333,
+      "sha256": "2d3442ed1c2fda4fce79e66027439deac38b8f028087d87436d0d886d97ad378"
+    }
+  ],
+  "contact_sheet": {
+    "file": "contact-sheet.jpg",
+    "sha256": "7f3c53862ba1d2cffc2b7fad823127dda4da4c9d1daca2121544275d06530943"
+  }
+}

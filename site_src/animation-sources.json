@@ -69,6 +69,11 @@
     "generation_note": "Run the self-contained generator with --render --check. It applies the two rotation orders to a vector on a sphere, reduces their angles, magnifies their endpoint difference and compares it with the z-generator tangent. The connected magnifier uses the same camera and the exact inverse-square angle scale. No local Python imports or input movies are used.",
     "evidence": "The generator writes a 1600 x 900, 24 fps, 54-second silent MP4. Mathematical validation checks preserved vector length, rotation order, the positive Jz sign, exact magnifier geometry and convergence of the scaled difference. The encoded report records the delivered movie hash, 1296 frames, a complete decode and sampled frame indices."
   },
+  "symmetry-parallel-transport-commutator.mp4": {
+    "sources": ["scripts/generate_symmetry_parallel_transport_commutator.py", "scripts/parallel_transport_geometry.py"],
+    "generation_note": "Run the main generator with --render --check. The geometry module supplies exact parallel transport along great-circle arcs. Two coordinate routes in a gnomonic chart reach the same endpoint; an orthonormal tangent-plane inset shows the copper-minus-blue arrow difference. The finite commutator stays visible, and the generator relation is explicitly labeled as a small-step approximation. No input movie is used.",
+    "evidence": "The generator writes a 1600 x 900, 24 fps, 34-second silent MP4. Mathematical validation checks arrow length, tangency, a common endpoint and convergence of the normalized small-loop difference. The validation report records the main source hash. The encoded report records the delivered movie hash, 816 frames, a complete decode and review times."
+  },
   "symmetry-casimir-operator.mp4": {
     "sources": ["scripts/generate_symmetry_casimir_desktop.py"],
     "generation_note": "Run the self-contained generator with --render --check. Landscape adaptation of the revised stepwise Casimir reel: two applications of Jx, the other squared generators, vector addition, scalar sign reversal, and a changing input with recomputed contributions. Uses the real rotation generators and explicitly defines C=-J^2=2I. No local Python imports or input movies are used.",

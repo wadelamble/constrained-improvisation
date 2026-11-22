@@ -1,0 +1,62 @@
+{
+  "max_norm_error": 2.220446049250313e-16,
+  "max_tangency_error": 1.6653345369377348e-16,
+  "max_common_endpoint_error": 0.0,
+  "finite_arrow_difference": [
+    0.13119213894289516,
+    -0.44012514427893273,
+    0.33982630586964124
+  ],
+  "signed_blue_to_copper_angle_degrees": -33.19644555035348,
+  "small_loop_convergence": [
+    {
+      "a_equals_b": 0.3,
+      "normalized_gap_in_initial_frame": [
+        -2.6020852139652106e-16,
+        -0.9182153698306471,
+        7.709882115452476e-17
+      ],
+      "error_from_minus_Jv": 0.08178463016935289
+    },
+    {
+      "a_equals_b": 0.1,
+      "normalized_gap_in_initial_frame": [
+        -3.8665359976264294e-15,
+        -0.9901111427982014,
+        -3.035766082959412e-16
+      ],
+      "error_from_minus_Jv": 0.009888857201798551
+    },
+    {
+      "a_equals_b": 0.03,
+      "normalized_gap_in_initial_frame": [
+        1.4986895101818537e-14,
+        -0.9991009102488074,
+        4.381983780462247e-15
+      ],
+      "error_from_minus_Jv": 0.0008990897511925722
+    },
+    {
+      "a_equals_b": 0.01,
+      "normalized_gap_in_initial_frame": [
+        -6.464654136091898e-13,
+        -0.9999000112486252,
+        -5.0525515303719015e-15
+      ],
+      "error_from_minus_Jv": 9.998875137484653e-05
+    },
+    {
+      "a_equals_b": 0.003,
+      "normalized_gap_in_initial_frame": [
+        7.868146560511085e-12,
+        -0.999991000091124,
+        5.50512593982847e-14
+      ],
+      "error_from_minus_Jv": 8.999908876042959e-06
+    }
+  ],
+  "coordinate_model": "gnomonic, both coordinate curves great circles",
+  "finite_bracket_order": "copper y-then-x minus blue x-then-y",
+  "duration_seconds": 34.0,
+  "source_sha256": "2252d97e57d691c79c0d099230e0b85f14978781c7dff836f60b8b33d15fa594"
+}
