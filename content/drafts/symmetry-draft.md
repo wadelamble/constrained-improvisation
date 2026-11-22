@@ -50,13 +50,13 @@ We tend to think of a "triangle's symmetry" not the "symmetry of two rotations a
 ### Representations
 We can plainly "see" the symmetry of the triangle, but what if we want to write it down mathematically? Specifically, can we write group actions in terms of how they transform labels on an object? For example, suppose we label our triangle's vertices \(A, B, C\) and ask, if we rotate twice, flip once, then rotate again, where is vertex \(A\) sent? Recognizing that the triangle's state has three ordered components, we might guess that we could represent the triangle as a vector with 3 components. We could then represent these actions as transformations of the vector that permute its components in the same way that the symmetry actions permute the triangle’s vertices.
 
-There is nothing special about the vertices here. We could just as easily have chosen the midpoints of the edges or any other triplet of points with the triangle's symmetries, and the same matrix that permutes the vertices would permute those vectors. That is, the group actions are represented by some set of **linear** transformations. A **representation** of a symmetry group is such a vector space and set of linear transformations that compose in the same way as the group actions:
+There is nothing special about the vertices here. We could just as easily have chosen the midpoints of the edges or any other triplet of points with the triangle's symmetries, and the same matrix that permutes the vertices would permute those vectors. That is, the group actions are represented by some set of **linear** transformations (which preserve vector addition and scaling). These transformations are **operators**, represented by matrices in a chosen basis. A **representation** of a symmetry group is such a vector space and set of linear operators that compose in the same way as the group actions:
 
 $$
 D(g_1g_2)=D(g_1)D(g_2),
 $$
 
-where $g_1$ and $g_2$ are group actions, such as a rotation and a flip, and $D(g_n)$ is the matrix representing the $g_n$ action, and $D$ itself is the map from symmetry actions to matrices in the representation. This says that the matrix for the composed action ($g_2$ followed by $g_1$) is the product of the matrices for the separate actions.
+where $g_1$ and $g_2$ are group actions, such as a rotation and a flip, and $D(g_n)$ is the operator representing the $g_n$ action, and $D$ itself is the map from symmetry actions to operators in the representation. This says that the matrix for the composed action ($g_2$ followed by $g_1$) is the product of the matrices for the separate actions.
 
 To construct a 3-dimensional representation of $D_3$, we map the 3 vertices to components of a vector.
 
@@ -111,7 +111,7 @@ $$
 
 *Three rotations or two flips return the vector to its starting state*
 
-A set of matrices whose products give every transformation in the symmetry group forms a set of **generators**. For example, in the 3-dimensional representation of $D_3$, all transformations can be constructed from one rotation matrix and one flip matrix. 
+A set of operators whose products give every symmetry operator in the representation forms a set of **generators**. For example, in the 3-dimensional representation of $D_3$, all such operators are represented by products of one rotation matrix and one flip matrix. 
 
 #### Irreducible Representations
 Visually, permutations that correspond to rotations of the triangle are 120-degree rotations about a diagonal axis in this vector space, while those that correspond to flips are reflections in three planes that contain the diagonal axis. This is much easier to see than to say.
@@ -162,7 +162,7 @@ u=x^3-3xy^2=r^3\cos(3\theta)
 The first invariant allows every rotation and reflection in the plane. To see what the second adds, note that $\cos(3\theta)$ has its maxima along three rays spaced $120^\circ$ apart. The rotations and reflections that preserve those three rays as a set are exactly the six symmetries of the triangle. The details of this example are not important for us, and, in fact, for the symmetry representations that will arise in physics, the invariants we will encounter are generally simpler. The relevant idea to note is that these invariants are constructed from the representation space’s coordinates and are preserved by its symmetry transformations.
 
 #### Invariants in Physics
-The equations of motion of a system are, by definition, an invariant of the unified **spacetime** geometry in which systems evolve. Generalizing the idea of a path of a single body to a **history** of a system, we can express what it means for $g$ to be a symmetry of the laws of motion in a compact schematic equation. Here $\Phi$ is a history and $\mathcal E$ encodes the equations of motion:
+The equations of motion of a system are, by definition, an invariant of the unified **spacetime** geometry in which systems evolve. Generalizing the idea of a path of a single body to a **history** of a system, we can express what it means for $g$ to be a symmetry of the laws of motion in a compact schematic equation. Here $\Phi$ is a history, $\mathcal E$ encodes the equations of motion, and $G$ is the symmetry group:
 
 ```math
 \mathcal E[\Phi]=0
@@ -236,7 +236,7 @@ Let us now think of the space, not of vectors to be rotated, but of the rotation
 
 *Infinitesimal generators are vectors in the plane tangent to the space of symmetry transformations*
 
-In the case of a circle, in the 2-dimensional representation, we have a single variable that parameterizes the operator matrix:
+In the case of a circle, in the 2-dimensional representation, we have a single variable that parameterizes the matrix of the rotation operator:
 
 ```math
 R(\theta)
@@ -284,6 +284,8 @@ This is the infinitesimal generator matrix:
 1 & 0
 \end{pmatrix}.
 ```
+
+The $\hat{}$ sign says that $J$ is an operator acting on a vector.
 
 Now apply this tangential nudge to a state vector
 
@@ -469,7 +471,7 @@ a\hat J_x+b\hat J_y+\frac12ab\hat J_z+\cdots
 
 The combined generator therefore includes a $z$-rotation component, with coefficient $\tfrac12ab$.
 
-The commutator can encode the curvature of a surface. An observer confined to that surface can measure its curvature using **parallel transport**. On a sphere, one setup proceeds as follows. Carry an arrow around a loop made of great-circle arcs—the straightest paths along the sphere. Keep the arrow tangent to the surface and, along each segment, at the same angle to the direction of travel. At a corner, change the direction of travel without turning the arrow.  On a flat plane, carrying the arrow around a closed loop returns it to its original direction. On a curved surface, it generally returns to the same point pointing in a different direction. The gap is now an angle between the arrow's initial and final directions.
+The commutator can also be seen as encoding the curvature of a surface. An observer confined to that surface can measure its curvature using **parallel transport**. On a sphere, one setup proceeds as follows. Carry an arrow around a loop made of great-circle arcs, or **geodesics** — the straightest paths along the sphere. Hold the arrow tangent to the surface and, along each segment, at the same angle to the direction of travel. At a corner, change the direction of travel without turning the arrow.  On a flat plane, carrying the arrow around a closed loop returns it to its original direction. On a curved surface, it generally returns to the same point pointing in a different direction. The gap is now an angle between the arrow's initial and final directions.
 
 To write the comparison as a commutator, let $T_x(a)$ and $T_y(b)$ parallel-transport an arrow by steps $a$ and $b$ along two coordinate directions. Starting with the same arrow $\mathbf v$, both orders reach the same point, but generally produce different arrow directions:
 
@@ -538,7 +540,7 @@ T(\alpha u+\beta v)
 \alpha T(u)+\beta T(v).
 ```
 
-For translation of points on the number line, the candidate operator is
+For translation of points on the number line, the point transformation is
 
 ```math
 T_a(x)=x+a.
@@ -582,7 +584,7 @@ These operators compose just as the translations do:
 (T_aT_b f)(x)=(T_b f)(x-a)=f(x-a-b)=(T_{a+b}f)(x).
 ```
 
-Now the state is the whole function $f$, and $T_a$ is an **operator** on the vector space of functions. An operator is a generalization of a matrix when applied to continuous functions. A continuous function is an infinite-dimensional vector, in which its domain values are "axes," or component labels, and its range values are the component values. We can transform one function into another with an infinite dimensional matrix, but in practice, we can condense this into a well-known operation, such as taking the derivative. The derivative is a linear operator on the vector space of smooth functions.
+Now the state is the whole function $f$, and $T_a$ is an operator on the vector space of functions. A continuous function is an infinite-dimensional vector, in which its domain values are "axes," or component labels, and its range values are the component values. The derivative, for example, is a linear operator on the vector space of smooth functions.
 
 Linearity works because function addition is pointwise:
 
@@ -620,28 +622,25 @@ Indeed, this representation is completely analogous to our 3 dimensional represe
 
 The invariant of the function representation of translation is simply the shape of the function. Preserving that shape preserves the distances between its features, measured along the domain. The familiar distance invariant is therefore still present in this representation.
 
-It's a good time to pause for a moment and clarify something that could cause confusion. When we say the laws of physics have certain symmetries, such as rotational or translational, we do not mean that evolution in time must preserve their elementary geometric invariants. Instead, observers related by one of these symmetry transformations agree on those invariants. Say, for example, we have a temperature field. Observers whose coordinate origins are at different points will report the same distance between two temperature peaks at a given instant. But those peaks can definitely change separation as time passes. (This takes a little care when applied to time translation itself. In that case, we compare identically prepared systems started at different times, observing each after the same amount of elapsed time.)
+Now we need to say something explicitly that has been lurking in the background of our account thus far. Why are we focusing on linear representations of symmetries? If the number line space carries translation symmetry, why not express our physical state using it? The answer is that we absolutely can (and do) for classical (pre-quantum) theories in which a state is specified by a single set of position and velocity coordinates. But our story is about quantum mechanics, and there a state can be a **superposition**, or linear combination, of states corresponding to different possible measurement outcomes. A linear combination is a construct that is only defined in a linear vector space. Therefore, we must express a quantum state as a vector in such a space. We also require that translating a superposition gives the same result as translating its component states and then superposing them. This requires a linear representation.
 
 #### Generator of Translations
-Now that we have a function representation of translation, we want to find an infinitesimal generator that acts on functions to produce a translation. We can do so by considering what happens to a function's value under infinitesimal displacements. In that case, the new value $f(x-a)$ is close to the old value $f(x)$, and the correction is given, in the limit, by the slope at $x$. This is the same idea that any curve becomes flat when zoomed in sufficiently:
+Now that we have a function representation of translation, we want to find an infinitesimal generator that acts on functions to produce a translation. 
+
+In the limit where the function approaches its tangent, the slope of the tangent line, multiplied by the displacement $-a$ and added to the original function, produces an infinitesimal translation. That is, 
+
+```math
+(T_a f)(x)=f(x-a) = f(x)-a\frac{df(x)}{dx}+O(a^2).
+```
+
+This is just the **Taylor Expansion** of a function, where $O(a^2)$ represents the omitted terms of second order and higher.
 
 ![Tangent approximation under local zoom contact sheet](animations/symmetry-translation-tangent-zoom-contact-sheet.png)
 
 [Open MP4: symmetry-translation-tangent-zoom.mp4](animations/symmetry-translation-tangent-zoom.mp4)
 
-*A function value is translated by the function's slope*
+*Visualizing the Taylor Expansion and $d/dx$ as the generator of translations*
 
-That is the visual version of the first-order **Taylor expansion** that relates a function's derivatives to its value under translation:
-
-```math
-f(x-a)
-=
-f(x)
--
-a\frac{df}{dx}
-+
-O(a^2).
-```
 The translation operator is then obtained from the derivative operator through the exponential map:
 
 ```math
@@ -651,7 +650,7 @@ T_a=\exp\left(-a\frac{d}{dx}\right).
 #### Primer — Eigenfunctions
 Readers familiar with eigenvectors can [skip this primer](#eigenfunctions-of-translational-symmetry).
 
-An **eigenvector** of an operator is a nonzero vector that the operator simply rescales. We will see that in a function representation of translation, waves are eigenvectors of translation operators and, as such, are at the center of understanding physical states. We will be well served, then, to build some intuition about eigenvectors before delving further into wave function states.
+An **eigenvector** of an operator is a nonzero vector that the operator simply rescales. We will see that in a function representation of translation, pure waves are eigenvectors of translation operators and, as such, are at the center of understanding quantum states. We will be well served, then, to build some intuition about eigenvectors before delving further into wave function states.
 
 Imagine pulling on the corners of a rubber sheet whose sides are aligned with a coordinate grid's $x$ and $y$ axes. What does this action do to those axes? It rotates them toward each other while stretching them. Now, instead choose $u$ and $v$ to be diagonal axes. Now, when we stretch, the long axis is stretched but not rotated and the short axis is compressed but not rotated. The stretching action is now simply represented as scalar multiplication of the axes.
 
@@ -669,6 +668,8 @@ Letting $s$ be the factor by which the long-axis component is stretched, we can 
 |---|---|
 | $\displaystyle \begin{aligned}\mathbf r&=\frac12\begin{pmatrix}s+s^{-1}&s-s^{-1}\\s-s^{-1}&s+s^{-1}\end{pmatrix}\mathbf r_{\mathrm{in}}\\&=\frac12\left[(s+s^{-1})x+(s-s^{-1})y\right]\hat{\mathbf x}\\&\quad+\frac12\left[(s-s^{-1})x+(s+s^{-1})y\right]\hat{\mathbf y}\end{aligned}$ | $\displaystyle \begin{aligned}\mathbf r&=\begin{pmatrix}s&0\\0&s^{-1}\end{pmatrix}\mathbf r_{\mathrm{in}}\\&=su\hat{\mathbf u}+s^{-1}v\hat{\mathbf v}\end{aligned}$ |
 
+(Here $\hat{}$ denotes a unit basis vector, not an operator.)
+
 This is readily understood visually:
 
 ![An arbitrary vector transforms by scaling its eigenvector components](animations/symmetry-eigenbasis-components-poster.png)
@@ -677,7 +678,7 @@ This is readily understood visually:
 
 *Linear combinations of eigenvectors transform under diagonal matrices*
 
-Now for a bunch of terminology. The values an operation scales eigenvectors by are its **eigenvalues**. A basis made from eigenvectors is an **eigenbasis**. When the scaled "vectors" are functions, we tend to call them **eigenfunctions**. When our vector space is a representation and is thus thought of as a state space, we may call the eigenfunctions **eigenstates**. As the transformation matrix is diagonal in the eigenbasis, the procedure for finding an eigenbasis is typically called **diagonalization**. 
+Now for a bunch of terminology. The values an operation scales eigenvectors by are its eigenvalues. A basis made from eigenvectors is an **eigenbasis**. When the scaled "vectors" are functions, we tend to call them **eigenfunctions**. When our vector space is a representation and is thus thought of as a state space, we may call the eigenfunctions **eigenstates**. As the transformation matrix is diagonal in the eigenbasis, the procedure for finding an eigenbasis is typically called **diagonalization**. 
 
 An eigenvalue equation is an equation that can be solved to find the eigenvectors and eigenvalues of an operator. It takes the form:
 
@@ -689,7 +690,7 @@ An eigenvalue equation is an equation that can be solved to find the eigenvector
 Here $\hat A$ is the operator, $\mathbf v$ is an eigenvector, and $\lambda$ is its eigenvalue.
 
 #### Eigenfunctions of Translational Symmetry
-Since a function is an infinite-dimensional vector and the generator $d/dx$ is a way of writing an infinite-dimensional matrix, we can solve a similar eigenvalue equation here, which now takes the form of a differential equation:
+Since a function is an infinite-dimensional vector and the generator $d/dx$ is a linear operator on functions, we can solve a similar eigenvalue equation here, which now takes the form of a differential equation:
 
 ```math
 \frac{d}{dx}f(x)
@@ -753,7 +754,7 @@ In such a classical system, distinguishability is absolute. In a quantum system,
 \text{where }U\text{ is by definition a unitary operator.}
 ```
 
-For wave functions, the overlap is $\langle\psi_1,\psi_2\rangle=\int_{-\infty}^{\infty}\overline{\psi_1(x)}\,\psi_2(x)\,dx$, where the bar denotes complex conjugation.
+For wave functions, the overlap is $\langle\psi_1,\psi_2\rangle=\int_{-\infty}^{\infty}\overline{\psi_1(x)}\,\psi_2(x)\,dx$, where the bar denotes complex conjugation, defined as $\overline{x+iy}=x-iy$. 
 
 In the animation below, the wave states evolve unitarily, preserving their overlap.
 
@@ -776,7 +777,7 @@ Let's now return to finding a suitable eigenbasis for the position translation o
 
 As the approximation becomes arbitrarily accurate, $|\mu|=1$.
 
-We need to add a technical caveat. Because single-\(k\) complex exponentials extend across all space without decaying, they cannot be normalized. This is not an issue in practice, as wave packets made from combinations of them are normalizable.
+We need to add a technical caveat. Because single-mode complex exponentials, like pure sine waves, extend across all space without decaying, they cannot be normalized. This is not an issue in practice, as wave packets made from combinations of them are normalizable.
 
 Translating $e^{\lambda x}$ by $a$ multiplies it by $\mu=e^{-\lambda a}$. Therefore,
 
@@ -786,6 +787,8 @@ e^{-2a\,\operatorname{Re}\lambda}=1
 \quad\Longrightarrow\quad
 \lambda=ik,\qquad k\in\mathbb R.
 ```
+
+$\operatorname{Re}$ stands for taking the real part of an expression.
 
 A more intuitive way to understand this is to visualize the multiplying factors produced by translation. For a growing or decaying real exponential, translation multiplies its coefficient by a factor that stretches or shrinks it. A unitary action on an eigenmode must instead multiply its coefficient by a factor of magnitude one. Translating a complex exponential \(e^{ikx}\) supplies exactly such a factor. It rotates the coefficient without stretching or shrinking it.
 
@@ -1057,7 +1060,7 @@ Comparing the first-order terms,
 {(\hat X\psi)(x)=x\psi(x).}
 ```
 
-The position operator in the position basis is just the wave function multiplied by the position coordinate. We can make sense of this as follows. Suppose the wave function is an idealized spike at some position that integrates to $1$ around that spike. The position operator multiplies the spike by $x$, so integrating the result yields the value of the position where the spike is.
+The position operator in the position basis acts by multiplying the wave function by the position coordinate. We can make sense of this as follows. Suppose the wave function is an idealized spike at some position that integrates to $1$ around that spike. The position operator multiplies the spike by $x$, so integrating the result yields the value of the position where the spike is.
 
 From these definitions, we can compute the commutator.
 
@@ -1113,7 +1116,7 @@ Now let us ask how these $H_3$ generators evolve. Since we require time evolutio
 \hat A_s=U(s)^\dagger \hat A\,U(s).
 ```
 
-Here $\dagger$ denotes the adjoint, or conjugate transpose for matrices. For unitary $U$, the adjoint is its inverse: $U^\dagger=U^{-1}$.
+Here $\dagger$ denotes the adjoint, or conjugate transpose for matrices. $s$ is the transformation parameter. For unitary $U$, the adjoint is its inverse: $U^\dagger=U^{-1}$.
 
 ![Rotating a stretch operator and constructing the same transformation by rotating space, stretching, and rotating back](../../content/drafts/animations/symmetry-operator-sandwich-poster.png)
 
@@ -1134,7 +1137,7 @@ Using this procedure for transforming operators, we can now show that unitary ev
 \end{aligned}
 ```
 
-The evolved generators therefore obey the same commutation relation. We will use that relation below to show how each generator’s rate of change depends on how $\hat G$ varies with the other.
+The evolved generators therefore obey the same commutation relation. 
 
 As an important aside, we note that, since the generator of phase shifts is preserved under unitary evolution, phase is a symmetry of the equations of motion. We can add it to position and time translation, rotation, and velocity boosts as a transformation under which equations of motion do not change.
 
@@ -1155,7 +1158,7 @@ Here the angle brackets denote average values. Evolving the collection moves its
 #### The Suitability of $H_3$ Generators for Building the Evolution Generator
 Now that we have established that our state space carries the $H_3$ symmetry group and this is preserved under evolution, we can ask two questions that will allow us to ascertain how this group shapes the evolution of states. First, do the operators representing this group span the space of linear operators on our state space? Second, are its transformations unitary? If we can answer 'yes' to both of these, we will be justified in writing our time evolution generator *in terms of* $\hat X$ and $\hat K$.
 
-We won't show that $H_3$ transformations span the operator space but will take it as a given. By way of justification, we can imagine that, just as Fourier waves form a complete set for expressing functions, position and wave-number shifts form a complete set for expressing operators on those functions. By taking weighted combinations of these transformations, we can describe a general linear operation on our state space.
+We won't show that operators representing $H_3$ span the operator space but will take it as a given. By way of justification, we can imagine that, just as Fourier waves form a complete set for expressing functions, position and wave-number shifts form a complete set for expressing operators on those functions. By taking weighted combinations of these operators, we can describe a general linear operation on our state space.
 
 We already have shown that position translations are unitary. Since wave-number space is the dual of position space, wave-number translations are also unitary. And phase shifts, which are nothing more than scalar multiplication, are unitary. In sum, the Heisenberg group's transformations are unitary, or preserve the inner product between states:
 
@@ -1164,7 +1167,7 @@ We already have shown that position translations are unitary. Since wave-number 
 =
 \langle\psi_1,\psi_2\rangle
 \qquad
-\text{for every symmetry action }U.
+\text{for every symmetry operator }U.
 ```
 
 
@@ -1201,13 +1204,13 @@ Let's start by asking how a continuous one-parameter group of unitary transforma
 
 Let
 
-- $U(s)$ be a unitary transformation,
+- $U(s)$ be a unitary operator,
 - $\hat G$ be its generator,
 - $\hat A$ be the generator of another unitary transformation.
 
 The question we will ask is, what is the effect of $U$ on $\hat A$, expressed as a differential equation for $\hat A$. We can write a differential equation for the generator while holding the state fixed, or for the state while holding the generator fixed. These describe the same evolution, in the same sense that rotating coordinates one way is the same as rotating a vector the opposite way, or shifting a system one way is the same as shifting an observer the opposite way. The advantage of working with the evolution of the generator is that structural relations can be seen more directly than when working with state evolution, where the canonical pairing becomes explicit when we write the operators in the position or wave-number basis.
 
-As usual, we write such a transformation as
+As usual, we write this operator as
 
 ```math
 U(s)=e^{-is\hat G}.
@@ -1263,7 +1266,7 @@ When we do so, we find that
 \frac{\partial \hat G}{\partial \hat K_s}.
 ```
 
-This tells us that *if we know $\hat G$*, we can say exactly how $\hat X$ and $\hat K$ evolve in time. But we have already said that weighted combinations of transformations generated by $\hat X$ and $\hat K$ can express a general linear operator on our state space. That is, if we know $\hat G$, we know the equations of motion governing our state.
+This tells us that *if we know $\hat G$*, we can say exactly how $\hat X$ and $\hat K$ evolve in time. But we have already said that weighted combinations of operators generated by $\hat X$ and $\hat K$ can express a general linear operator on our state space. That is, if we know $\hat G$, we know the equations of motion governing our state.
 
 Let's now show this identity 
 

@@ -1,0 +1,46 @@
+{
+  "reference_x": 0.2,
+  "slope": 0.6270755176302496,
+  "taylor_remainders": [
+    {
+      "a": 0.1,
+      "error": -0.006741572386422673,
+      "error_over_a_squared": -0.6741572386422672,
+      "screen_error_pixels": 21.1415710038215
+    },
+    {
+      "a": 0.05,
+      "error": -0.0017023397127672313,
+      "error_over_a_squared": -0.6809358851068924,
+      "screen_error_pixels": 10.677074678476075
+    },
+    {
+      "a": 0.025,
+      "error": -0.00042693275446731294,
+      "error_over_a_squared": -0.6830924071477006,
+      "screen_error_pixels": 5.3554444720379735
+    },
+    {
+      "a": 0.01,
+      "error": -6.839928967594666e-05,
+      "error_over_a_squared": -0.6839928967594666,
+      "screen_error_pixels": 2.1450017242376873
+    },
+    {
+      "a": 0.0056,
+      "error": -2.1456550716225653e-05,
+      "error_over_a_squared": -0.6842012345735221,
+      "screen_error_pixels": 1.2015668401086368
+    }
+  ],
+  "uniform_zoom_and_fixed_tangent_slope": "checked on every frame",
+  "frame_count": 432,
+  "duration_seconds": 18.0,
+  "fps": 24,
+  "width": 1280,
+  "height": 720,
+  "video_sha256": "189a8709de11d1b9c496aa6d5871f557b7b932330bb328b8a0d98d57d7ea78be",
+  "source_sha256": "71223b802949d8a91236b6213e5fd9f73320227499efe78247627225c42f8dae",
+  "text_bounds": "checked on every rendered frame",
+  "source_hash_normalization": "UTF-8 source with LF line endings"
+}

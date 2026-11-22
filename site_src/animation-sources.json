@@ -101,8 +101,8 @@
   },
   "symmetry-translation-tangent-zoom.mp4": {
     "sources": ["scripts/generate_symmetry_translation_tangent_zoom_animation.py"],
-    "generation_note": "Run the main script without arguments. It draws the translation-and-tangent-zoom frames with Pillow and encodes them with FFmpeg. It has no local Python imports or input movie.",
-    "evidence": "render() sets the exact symmetry-translation-tangent-zoom output stem. Constants specify 1280 x 720, 24 fps, 360 frames. No matching validation JSON is present; attribution is by source/output name and pipeline, not a recorded movie hash."
+    "generation_note": "Run the main script without arguments, or use --preview for review stills. Pillow draws a uniform zoom of a smooth function and its fixed tangent, with a shrinking displacement and a labeled first-order Taylor triangle. Matplotlib renders the math labels; imageio-ffmpeg encodes the movie. There are no local Python imports or input movies.",
+    "evidence": "The source renders the exact output stem at 1280 x 720, 24 fps, 432 frames (18 seconds). The validation JSON records source and movie hashes, decoded frame count, every-frame uniform-zoom and tangent-slope checks, text bounds, and vanishing Taylor remainders. Encoded review frames are extracted separately from the delivered MP4."
   },
   "symmetry-eigenbasis-comparison.mp4": {
     "sources": ["scripts/generate_symmetry_eigenbasis_split.py", "scripts/generate_symmetry_eigenbasis_stretch_animation.py"],
