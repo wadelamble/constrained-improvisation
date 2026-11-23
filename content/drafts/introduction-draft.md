@@ -1,9 +1,5 @@
 # Introduction
 
-"If that's all there is, then let's keep dancing."
-
-—Peggy Lee
-
 "We live in a 4-dimensional space that is curved by gravity." "My time is different from yours." "Objects are in a state of being here and there at the same time — until we observe them." Such expressions strain language and seem beyond the reach of any but those who belong to some monastic order of theoretical physicists, cut off from ordinary language, who we trust, but leave alone. At the same time, terms like "energy" inhabit our metaphors, while their meanings arise from the same artifice as these strange expressions. Behind both lies the unfolding magic of the most ordinary thing — making logical arguments using precise definitions. With faith in this method, we can proceed together along a mystically motivated journey of demystifying modern physics.
 
 This animated book is, hopefully, only as rigorous as it needs to be to act as a faithful companion on this journey. It has two complementary goals. The first is to present the conceptual foundations of modern physics in as logically minimal a way as possible, and the second is to make individual steps along the way accessible. To aid in logical economy, there is no adherence to the history of physics, nor is there an attempt to solve problems or work out details of real-world systems, except by way of illustration. To aid in accessibility, the presentation leans on intuition, visualization, and equations as conceptual schematics. The book is not practically useful enough to be a textbook, but is too heavy with mathematical rigor to be popular science. It belongs to the genre of explainers, animators, and autodidacts. We will explore gravitation and electromagnetism through the theories of relativity and quantum mechanics. While the ideas we discuss include most of the elements used in the Standard Model of particle physics, the exposition stops short of that account.
