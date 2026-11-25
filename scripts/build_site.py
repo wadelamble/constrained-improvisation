@@ -23,6 +23,7 @@ ANIMATION_DIR = ROOT / "content" / "drafts" / "animations"
 REEL_DIR = ROOT / "content" / "reels" / "ccr2-series"
 SYMMETRY_REEL_DIR = ROOT / "content" / "reels" / "symmetry-series-stage"
 EVOLUTION_REEL_DIR = ROOT / "content" / "reels" / "symmetry-evolution"
+PARALLEL_TRANSPORT_REEL_DIR = ROOT / "content" / "reels" / "parallel-transport"
 
 TITLE = "Nature’s Improvisation on Symmetry"
 BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
@@ -838,6 +839,10 @@ def build() -> None:
             cover = EVOLUTION_REEL_DIR / f"evolution-{number:02d}-cover.jpg"
             for asset in (video, cover):
                 shutil.copy2(asset, media_dir / asset.name)
+    media_dir = OUT_DIR / "media" / "reels" / "parallel-transport"
+    media_dir.mkdir(parents=True, exist_ok=True)
+    for name in ("parallel-transport.mp4", "parallel-transport-cover.jpg"):
+        shutil.copy2(PARALLEL_TRANSPORT_REEL_DIR / name, media_dir / name)
 
 
 if __name__ == "__main__":

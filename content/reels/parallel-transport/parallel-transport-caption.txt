@@ -1,0 +1,15 @@
+The commutator encodes curvature
+
+Carry an arrow across a sphere in two different orders. Both routes reach the same point, but the arrows arrive pointing in different directions.
+
+This is parallel transport. The arrow stays tangent to the sphere. Along each great-circle segment, it keeps the same angle to the direction of travel; at a corner, the route turns without turning the arrow.
+
+Blue travels first in x, then in y. Gold reverses that order. At their common endpoint, the green arrow is the difference between the two results. That difference is the commutator acting on the initial arrow.
+
+For small coordinate steps, the difference is approximately the product of the steps times the commutator of the transport generators. This is how the commutator encodes curvature. On a flat plane, the two transported arrows would agree.
+
+Music: Herbie Hancock — Maiden Voyage (Remastered 2012).
+
+Full chapter: https://wadelamble.github.io/constrained-improvisation/symmetry/
+
+#Physics #ScienceExplained #Symmetry #Geometry #Mathematics
