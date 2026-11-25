@@ -1,0 +1,23 @@
+{
+  "title": "The commutator encodes curvature",
+  "channel": "symmetryphysics",
+  "channel_id": "6aab6b13ea19ca0bde63bbc2",
+  "organization_name": "My organization",
+  "organization_id": "6aab69e80b08cfd7d831a68e",
+  "mode": "shareNow",
+  "status": "sent",
+  "buffer_post_id": "6b067214608549ccf264e6a3",
+  "sent_at": "2026-11-25T05:29:50.727Z",
+  "instagram_url": "https://www.instagram.com/reel/DgJx8o5hns7/",
+  "hosting_commit": "1674c9a462c81a1606172b5306be618152ac1c31",
+  "media_url": "https://wadelamble.github.io/constrained-improvisation/media/reels/parallel-transport/parallel-transport.mp4?v=2024807bba16",
+  "thumbnail_offset_ms": 31500,
+  "video_sha256": "2024807bba16027fd1d6f15bbc114bc12f20b5cdf2127446cecda3ed6b63d1f6",
+  "music": "Herbie Hancock — Maiden Voyage (Remastered 2012)",
+  "music_excerpt_seconds": [
+    130,
+    164
+  ],
+  "verified": true,
+  "error": null
+}

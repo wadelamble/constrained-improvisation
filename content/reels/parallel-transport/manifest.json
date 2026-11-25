@@ -1,7 +1,7 @@
 {
   "series": "Parallel transport",
-  "status": "validated local reel",
-  "published": false,
+  "status": "published",
+  "published": true,
   "editable_text": "notes/reels/parallel-transport/reel-text.md",
   "episodes": [
     {
@@ -16,7 +16,8 @@
       "contact_sheet": "review/decoded-contact-sheet.jpg",
       "thumbnail_offset_ms": 31500,
       "source": "content/drafts/animations/symmetry-parallel-transport-commutator.mp4",
-      "video_sha256": "2024807bba16027fd1d6f15bbc114bc12f20b5cdf2127446cecda3ed6b63d1f6"
+      "video_sha256": "2024807bba16027fd1d6f15bbc114bc12f20b5cdf2127446cecda3ed6b63d1f6",
+      "instagram_url": "https://www.instagram.com/reel/DgJx8o5hns7/"
     }
   ],
   "music": {
@@ -24,5 +25,6 @@
     "title": "Maiden Voyage (Remastered 2012)",
     "excerpt_start_seconds": 130.0,
     "duration_seconds": 34.0
-  }
+  },
+  "publication_receipt": "notes/reels/parallel-transport/publication-20261124.json"
 }
