@@ -27,6 +27,7 @@ PARALLEL_TRANSPORT_REEL_DIR = ROOT / "content" / "reels" / "parallel-transport"
 
 TITLE = "Nature’s Improvisation on Symmetry"
 BASE_PATH = os.environ.get("SITE_BASE_PATH", "").rstrip("/")
+ANALYTICS_ENDPOINT = "https://constrainedimprovisation.goatcounter.com/count"
 
 
 def site_path(path: str) -> str:
@@ -185,6 +186,7 @@ def page_shell(title: str, body: str, toc: str = "") -> str:
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script defer src="{site_path('/main.js')}"></script>
+  <script defer src="{site_path('/analytics.js')}" data-endpoint="{html.escape(ANALYTICS_ENDPOINT, quote=True)}"></script>
 </head>
 <body>
   <div class="site-shell">
@@ -800,6 +802,7 @@ def build() -> None:
     clean_dir(OUT_DIR)
     shutil.copy2(SITE_SRC / "styles.css", OUT_DIR / "styles.css")
     shutil.copy2(SITE_SRC / "main.js", OUT_DIR / "main.js")
+    shutil.copy2(SITE_SRC / "analytics.js", OUT_DIR / "analytics.js")
     (OUT_DIR / "index.html").write_text(render_home(), encoding="utf-8")
     for article in ARTICLES:
         article_dir = OUT_DIR / article.slug
