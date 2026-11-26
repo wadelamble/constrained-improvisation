@@ -849,7 +849,7 @@ def build() -> None:
         shutil.copy2(PARALLEL_TRANSPORT_REEL_DIR / name, media_dir / name)
     media_dir = OUT_DIR / "media" / "reels" / "relativity-from-symmetry"
     media_dir.mkdir(parents=True, exist_ok=True)
-    for stem in ("00-full-film", "01-setup", "02-xx", "03-xt", "04-rt", "05-rr",
+    for stem in ("00-full-film", "00-full-film-v5", "01-setup", "02-xx", "03-xt", "04-rt", "05-rr",
                  "06-rx", "07-rb", "08-bt", "09-bx", "10-bb", "11-payoff"):
         for suffix in (".mp4", "-cover.jpg"):
             shutil.copy2(RELATIVITY_REEL_DIR / (stem + suffix), media_dir / (stem + suffix))
